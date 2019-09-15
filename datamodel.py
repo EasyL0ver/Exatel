@@ -21,6 +21,9 @@ class FileInfo(Base):
     cluster_id = Column(Integer, ForeignKey("clusters.id"), nullable=True)
     cluster = relationship("Cluster")
 
+    def __str__(self):
+        return 'File named: {} assigned to cluster: {}'.format(self.filename, self.cluster_id)
+
     def set_vector(self, coeffs):
         c = coeffs.todense()
         out = io.BytesIO()
