@@ -4,7 +4,7 @@ import os
 
 
 def organize_files(db_session, organize_path):
-    all_files = db_session.query(FileInfo).filter(FileInfo.cluster_id != None).order_by(FileInfo.cluster_id).all()
+    all_files = db_session.query(FileInfo).filter(FileInfo.cluster_id != None).filter(FileInfo.organized == False).order_by(FileInfo.cluster_id).all()
 
     if not os.path.exists(organize_path):
         os.mkdir(organize_path)
@@ -29,5 +29,6 @@ def organize_files(db_session, organize_path):
                 print
                 "rename failed, retrying..."
         file.filepath = file_target_path
+        file.organized = True
     db_session.commit()
 

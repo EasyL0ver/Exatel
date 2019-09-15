@@ -3,7 +3,7 @@ import sqlite3
 
 from pylab import *
 from scipy.sparse import csr_matrix
-from sqlalchemy import Column, Integer, String, BLOB, ForeignKey
+from sqlalchemy import Column, Integer, String, BLOB, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import deferred, relationship
 
@@ -15,6 +15,8 @@ class FileInfo(Base):
     id = Column(Integer, primary_key=True)
     filepath = Column(String(128), nullable=False)
     filename = Column(String(128), nullable=False)
+
+    organized = Column(Boolean, unique=False, default=False)
 
     vector = deferred(Column(BLOB(250000), nullable=False))
 
