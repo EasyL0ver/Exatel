@@ -1,0 +1,30 @@
+class String {
+
+var a =  3;
+
+String(r) {
+print "string made" + r +". ";
+}
+
+hi(v, b) {
+v = v + b;
+return "I just want to say I like math. [" + v +" + " + a + " = " + (v + a) +"]";
+}
+
+__getattr__(x) {
+return " sry could not find " + x;
+}
+
+}
+
+i = new String(" extra str");
+print i.a;
+print i.aesfdz;
+
+
+======================
+
+OUTPUTS: 
+string made extra str.
+3
+sry could not find aesfdz

@@ -1,0 +1,9 @@
+int foo(int inputA) {
+	bar(inputA);
+	bar(inputA);
+}
+
+int bar(int inputB) {
+	//do something
+	return 0;
+}

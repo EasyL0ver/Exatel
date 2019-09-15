@@ -1,0 +1,64 @@
+Copying Double Pointer Strings
+#include <string.h>
+#include <stdlib.h>
+
+struct my_struct
+{
+    int    argc;
+    char** argv;
+};
+
+int main(int argc,char** argv)
+{
+    int    i = 0;
+    size_t n = 0;
+    struct my_struct s;
+
+    memset(&s,0,sizeof(s));
+    s.argc = argc;
+    /* alloc one more element than 'argc' to terminate 's.argv' with NULL */
+    s.argv = (char**)malloc((argc + 1) * sizeof(char*));
+    /* terminate 's.argv' with NULL exactly as 'argv' in 'main' */
+    s.argv[argc] = NULL; 
+    for(i = 0; i < argc; ++i)
+    {
+        n = strlen(argv[i]) + 1;
+        s.argv[i] = (char*)malloc(n);
+        strcpy(s.argv[i],argv[i]);
+    }
+    return 0;
+}
+	
+n = strlen(argv[i]) + 1;
+s.argv[i] = (char*)malloc(n);
+strcpy(s.argv[i],argv[i]);
+	
+s.argv[i] = strdup(argv[i]);
+	
+char** copy_all(char** argv, int length) {
+  char** ppDest = malloc(sizeof(char**) * length);
+  if (!ppDest) {
+    return NULL;
+  }
+
+  int i = 0;
+  for (i < length; i++) {
+    char* pCurrent = argv[i];
+    size_t currentLength = strlen(pCurrent);
+    ppDest[i] = malloc(currentLength + 1);
+    if (!ppDest[i]) {
+      goto Error;
+    }
+    strcpy(ppDest[i], argv[i]);
+  }
+
+  return ppDest;
+
+Error:
+  while (i > 0) {
+    free(ppDest[i - 1]);
+    i--;
+  }
+  free(ppDest);
+  return NULL;
+}

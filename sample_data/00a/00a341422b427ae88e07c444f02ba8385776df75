@@ -1,0 +1,121 @@
+g.loadQueue.push({
+    fun: () => {
+        if (!localStorage.getItem(`pottionPos`)) {
+            let tmpobj = {
+            x: 0,
+            y: 0
+            };
+        localStorage.setItem(`pottionPos`, JSON.stringify(tmpobj));
+        };
+
+        if (!localStorage.getItem(`pottionPos1`)) {
+            let tmpobj1 = {
+                x: 1,
+                y: 1
+            };
+            localStorage.setItem(`pottionPos1`, JSON.stringify(tmpobj1));
+        };
+
+        if(!localStorage.getItem(`startMenu`))
+        {   
+            mAlert('Uruchamiasz dodatek poraz pierwszy raz, dodaj swój klan do listy klikając prawym przyciskiem na potke odejmującą  wyczerpanie w lewym górnym rogu, pamiętaj, że klan musi mieć wykupioną daną umiejętność inaczej wystąpi błąd, jeśli chcesz usunąć klan z bazy danych kliknij prawym na potke dodającą wyczerpanie');
+            let startDone = 1;
+            localStorage.setItem(`startMenu`, JSON.stringify(startDone));
+        };
+
+        let kordy = JSON.parse(localStorage.getItem('pottionPos'));
+        let kordy1 = JSON.parse(localStorage.getItem('pottionPos1'));
+
+        let clanListA = JSON.parse(localStorage.getItem('allClans'));
+        if(clanListA == null)
+        {
+            clanListA = [];
+        };
+        let heroClan = hero.clan.name;
+
+        let pottion = document.createElement('div');
+        pottion.style.position = 'absolute';
+        pottion.style.left = `${kordy.x}px`;
+        pottion.style.top = `${kordy.y}px`;
+        pottion.style.background = 'url(http://margonem.pl/obrazki/itemy/pot/mix50.gif)';
+        pottion.style.width = `35px`;
+        pottion.style.height = `35px`;
+        pottion.style.border = 'none';
+        pottion.setAttribute('id', 'pottion1');
+        pottion.setAttribute('tip', 'Kliknij dwuktrotnie, aby odebrać wyczerpanie, kliknij prawym aby dodać klan do listy');
+        pottion.addEventListener('contextmenu', function(ev) {
+        ev.preventDefault();
+        if(clanListA.includes(heroClan))
+        {
+            message('Twój klan znajduje się już w bazie danych!')
+        }else {
+            localStorage.setItem('heroClan', JSON.stringify(heroClan));
+            clanListA.push(heroClan);
+            localStorage.setItem('allClans', JSON.stringify(clanListA));
+            message('Pomyślnie dodano klan do bazy danych');
+        }
+        return false;
+        }, false);
+        pottion.addEventListener ('dblclick', function() {
+            if(clanListA.includes(heroClan))
+            {
+                _g(`clan&a=skills_use&name=timeTickets&opt=2`);
+            } else {
+                message('Twój klan nie znajduje się w bazie danych!')
+            }
+        });
+
+        document.body.appendChild(pottion);
+
+        $(pottion).draggable({
+            stop: () => {
+                let tmpobj = {
+                    x: parseInt(pottion.style.left),
+                    y: parseInt(pottion.style.top)
+                };
+                localStorage.setItem(`pottionPos`, JSON.stringify(tmpobj));
+                message(`Zapisano pozycję`);
+            }
+        });
+
+        let pottion1 = document.createElement('div');
+        pottion1.style.position = "absolute";
+        pottion1.style.left = `${kordy1.x}px`;
+        pottion1.style.top = `${kordy1.y}px`;
+        pottion1.style.background = 'url(http://margonem.pl/obrazki/itemy/pot/mix43.gif)';
+        pottion1.style.width = `35px`;
+        pottion1.style.height = `35px`;
+        pottion1.style.border = 'none';
+        pottion1.setAttribute('id', 'pottion2');
+        pottion1.setAttribute('tip', 'Kliknij dwuktrotnie, aby dodać wyczerpanie, kliknij prawym aby usunąć klan z listy');
+        pottion1.addEventListener('contextmenu', function(ev) {
+            ev.preventDefault();
+            localStorage.setItem('heroClan', JSON.stringify(heroClan));
+            clanListA.splice(clanListA.indexOf(heroClan), 1);
+            localStorage.setItem('allClans', JSON.stringify(clanListA));
+            message('Pomyślnie usunięto klan z bazy danych');
+            return false;
+        }, false);
+        pottion1.addEventListener ('dblclick', function() {
+            if(clanListA.includes(heroClan))
+            {
+                _g(`clan&a=skills_use&name=timeTickets&opt=1`);
+            } else {
+                message('Twój klan nie znajduje się w bazie danych!')
+            }
+        });
+
+        document.body.appendChild(pottion1);
+
+        $(pottion1).draggable({
+            stop: () => {
+                let tmpobj1 = {
+                    x: parseInt(pottion1.style.left),
+                    y: parseInt(pottion1.style.top)
+                };
+                localStorage.setItem(`pottionPos1`, JSON.stringify(tmpobj1));
+                message(`Zapisano pozycję`);
+            }
+        });
+    }
+});

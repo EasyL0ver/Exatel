@@ -1,0 +1,11 @@
+if ply:Team() == TEAM_POLICE_RCT then  ply:SetArmor(10) ply:SetHealth(200) ply:SetMaxHealth(220) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_05 then  ply:SetArmor(15) ply:SetHealth(220) ply:SetMaxHealth(220) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_05WE then  ply:SetArmor(15) ply:SetHealth(220) ply:SetMaxHealth(220) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_04 then  ply:SetArmor(25) ply:SetHealth(240) ply:SetMaxHealth(240) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_04WE then  ply:SetArmor(25) ply:SetHealth(240) ply:SetMaxHealth(240) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_03 then  ply:SetArmor(50) ply:SetHealth(255) ply:SetMaxHealth(255) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_03WE then  ply:SetArmor(50) ply:SetHealth(255) ply:SetMaxHealth(255) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_02 then  ply:SetArmor(60) ply:SetHealth(260) ply:SetMaxHealth(260) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_02WE then  ply:SetArmor(60) ply:SetHealth(260) ply:SetMaxHealth(260) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_01 then  ply:SetArmor(70) ply:SetHealth(280) ply:SetMaxHealth(280) ply:AllowFlashlight(true) end
+	if ply:Team() == TEAM_POLICE_01WE then  ply:SetArmor(70) ply:SetHealth(280) ply:SetMaxHealth(280) ply:AllowFlashlight(true) end

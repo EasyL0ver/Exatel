@@ -1,0 +1,25 @@
+PARAMETERS AIRLINE TYPE sflight-carrid.
+
+TYPES: sbc400focc_table_type TYPE STANDARD TABLE OF sbc400focc.
+
+DATA: sbc_str TYPE sbc400focc,
+      itable TYPE sbc400focc_table_type.
+
+SELECT carrid connid fldate seatsmax seatsocc
+  FROM sflight INTO CORRESPONDING FIELDS OF sbc_str WHERE carrid = AIRLINE.
+    sbc_str-percentage = sbc_str-seatsocc /  sbc_str-seatsmax * 100.
+    APPEND sbc_str TO itable.
+ENDSELECT.
+
+SORT itable DESCENDING BY percentage.
+
+DATA line LIKE LINE OF itable.
+
+ULINE.
+  FORMAT COLOR COL_HEADING.
+  WRITE: 'AL' , 5'FLT' , 10'DATE' , 27'AVL' , 38'OCC' , 43'PCT' .
+ULINE.
+
+FORMAT COLOR COL_BACKGROUND.
+LOOP AT itable INTO line.
+  WRITE: / line-carrid, line-connid, line-fldate, line-seatsmax, line-seatsocc, line-percentage.

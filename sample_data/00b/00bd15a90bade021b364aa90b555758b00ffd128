@@ -1,0 +1,21 @@
+ValueError: Cannot assign "(<CaseStatus: CaseStatus object (13)>,)": "PatientCase.status" must be a "CaseStatus" instance.
+	
+"status": {
+     "uuid": "233f02e474af40abbe909e15e5304e3d",
+     "message": "pending"
+},
+	
+def get_case_status(status_data):
+    defaults = {
+        "status": status_data['message'],
+        "status_message": generate_status_message(status_data['message']),
+    }
+    if status_data.get('extra_data'):
+        defaults['extra_data'] = status_data['extra_data']
+
+    status, created = CaseStatus.objects.get_or_create(
+        uuid=status_data['uuid'],
+        defaults = defaults
+    )
+
+    return status

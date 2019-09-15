@@ -1,0 +1,34 @@
+class DiorComSpider(CrawlSpider):
+    """A configuration of a spider."""
+    name = 'dior.com'
+    allowed_domains = ['www.dior.com']
+    start_urls = ['http://www.dior.com/en_us/', 'https://www.dior.com/fr_fr']
+
+    deny_url = (
+        r'/beauty/', r'/haute-couture/', r'/collections-and-fashion-shows/')
+    rules = (
+        Rule(LinkExtractor(allow=(r"/en_us/\D+", r"/fr_fr/\D+",),
+                           deny=deny_url),
+             callback='determine_sizes',
+             follow=True),
+        Rule(LinkExtractor(allow=(r'/en_us/', r'/fr_fr/'), deny=deny_url),
+             follow=True),
+    )
+
+    def __init__(self, category=None, *args, **kwargs):
+        super(DiorComSpider, self).__init__(*args, **kwargs)
+        if category is not None:
+            deny_url = (
+                r'/beauty/', r'/haute-couture/',
+                r'/collections-and-fashion-shows/')
+            self.rules = (
+                Rule(LinkExtractor(allow=(r"/{}/\D+".format(category)),
+                                   deny=deny_url),
+                     callback='determine_sizes',
+                     follow=True),
+                Rule(LinkExtractor(allow=(r'/{}/'.format(category)),
+                                   deny=deny_url),
+                     follow=True),
+            )
+        else:
+            self.logger.info('Scraping all subjects.')

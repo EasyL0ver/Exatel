@@ -1,0 +1,74 @@
+package OldExams;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class OnlineEducation {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String beforeSign = reader.readLine();
+        int beforeSignNum = Integer.parseInt(reader.readLine());
+        String onTimeSign = reader.readLine();
+        int onTimeSignNum = Integer.parseInt(reader.readLine());
+        String afterSign = reader.readLine();
+        int afterSignNum = Integer.parseInt(reader.readLine());
+
+        int onlineStudents = 0;
+        int onsiteStudents = 0;
+        int totalStudents = 0;
+
+        switch (beforeSign){
+            case "online" :
+                onlineStudents += beforeSignNum;
+                totalStudents += beforeSignNum;
+                break;
+            case "onsite" :
+                if (beforeSignNum >= 600){
+                    onsiteStudents = 600;
+                    onlineStudents = beforeSignNum - 600;
+                    totalStudents = onsiteStudents + onlineStudents;
+                } else {
+                    onsiteStudents += beforeSignNum;
+                    totalStudents += beforeSignNum;
+                }
+                break;
+        }
+        switch (onTimeSign){
+            case "online" :
+                onlineStudents += onTimeSignNum;
+                totalStudents += onTimeSignNum;
+                break;
+            case "onsite" :
+                if (onTimeSignNum >= 600){
+                    onsiteStudents = 600;
+                    onlineStudents = onTimeSignNum - 600;
+                    totalStudents = onsiteStudents + onlineStudents;
+                } else {
+                    onsiteStudents += onTimeSignNum;
+                    totalStudents += onTimeSignNum;
+                }
+                break;
+        }
+        switch (afterSign){
+            case "online" :
+                onlineStudents += afterSignNum;
+                totalStudents += afterSignNum;
+                break;
+            case "onsite" :
+                if (afterSignNum >= 600){
+                    onsiteStudents = 600;
+                    onlineStudents = afterSignNum - 600;
+                    totalStudents = onsiteStudents + onlineStudents;
+                } else {
+                    onsiteStudents += afterSignNum;
+                    totalStudents += afterSignNum;
+                }
+                break;
+        }
+        System.out.println("Online students: " + onlineStudents);
+        System.out.println("Onsite students: " + onsiteStudents);
+        System.out.println("Total students: " + totalStudents);
+
+    }
+}

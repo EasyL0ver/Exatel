@@ -1,0 +1,51 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+	
+import Vue from 'vue'
+import VueFire from 'vuefire'
+import App from './App.vue'
+Vue.use(VueFire)
+	
+<template>
+  <div>
+    <div v-for="place in places">
+       <div>{{place.to}}</div>
+    </div>
+    {{places}}
+  </div>
+</template>
+
+<script>
+  import Firebase from 'firebase';
+
+  /* конфигурация с console.firebase.google.com   */
+
+  let config = {
+    apiKey: "...",
+    authDomain: "...",
+    databaseURL: "...",
+    projectId: "...",
+    storageBucket: "...",
+    messagingSenderId: "..."
+  };
+
+
+  let app = Firebase.initializeApp(config);
+  let db = app.database();
+
+  console.log(db);
+  /* выводит Database {repo_: Repo, root_: Reference, INTERNAL: 
+  DatabaseInternals}  */
+
+
+  export default {
+    firebase: {
+      places: db.ref('places')
+    },
+  }
+</script>

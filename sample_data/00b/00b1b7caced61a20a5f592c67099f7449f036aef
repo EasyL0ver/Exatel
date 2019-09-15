@@ -1,0 +1,16 @@
+jochens-macbookpro41:~ jochen$ traceroute 109.68.160.129
+traceroute to 109.68.160.129 (109.68.160.129), 64 hops max, 52 byte packets
+ 1  10.0.1.1 (10.0.1.1)  5.128 ms  1.217 ms  2.060 ms
+ 2  1.92-245-81.adsl-dyn.isp.belgacom.be (81.245.92.1)  11.281 ms  11.247 ms  11.264 ms
+ 3  200.255-247-81.adsl-static.isp.belgacom.be (81.247.255.200)  11.988 ms  12.778 ms  12.635 ms
+ 4  ge0-0.intlstr1.isp.belgacom.be (194.78.0.46)  12.229 ms
+    ge1-0.intlstr1.isp.belgacom.be (194.78.0.146)  12.574 ms
+    ge0-0.intlstr1.isp.belgacom.be (194.78.0.46)  12.926 ms
+ 5  bru-11-r6-t3-4.car.belbone.be (80.84.20.206)  13.469 ms  12.410 ms  14.821 ms
+ 6  bru-22-r5-t2-2.car.belbone.be (80.84.18.141)  12.592 ms  12.872 ms  12.233 ms
+ 7  bru-bix-h2-g3-12.car.belbone.be (80.84.18.67)  12.413 ms  14.106 ms  12.919 ms
+ 8  kpn.bnix.net (194.53.172.59)  12.727 ms  13.990 ms  14.028 ms
+ 9  134.222.100.91 (134.222.100.91)  22.501 ms  20.489 ms  20.707 ms
+10  ge1-0-48.cs0.bebru1.unix-solutions.be (109.68.160.6)  20.908 ms  23.382 ms  20.764 ms
+11  control01.unix-solutions.be (109.68.160.129)  20.543 ms  21.070 ms  20.716 ms
+jochens-macbookpro41:~ jochen$

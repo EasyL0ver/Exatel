@@ -1,0 +1,10 @@
+using UnityEngine;
+
+public class Earth_Rotation : MonoBehaviour
+{
+     // Update is called once per frame
+     void Update()
+     {
+     Transform.Rotate (0, 10, 0);
+     }
+}

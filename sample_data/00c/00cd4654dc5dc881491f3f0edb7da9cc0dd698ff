@@ -1,0 +1,58 @@
+docker run -v /var/run.docker.sock:/var/run/docker.sock -p 8080:8080 -ti my-jenkins-image
+	
+FROM jenkins
+COPY plugins.txt /usr/share/jenkins/plugins.txt
+RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+
+USER root
+RUN apt-get update && apt-get install -y docker.io
+RUN usermod -aG docker jenkins
+USER jenkins
+	
+$ docker info
+FATA[0000] Get http:///var/run/docker.sock/v1.18/info: dial unix /var/run/docker.sock: permission denied. Are you trying to connect to a TLS-enabled daemon without TLS?
+	
+docker exec -u 0 -ti cocky_mccarthy bash
+root@5dbd0efad2b0:/# docker info
+Containers: 42
+Images: 50
+...
+	
+FROM jenkinsci
+ARG DOCKER_GROUP_ID
+
+USER root
+RUN curl -o /root/docker.tgz https://get.docker.com/builds/Linux/x86_64/docker-1.12.5.tgz && tar -C /root -xvf /root/docker.tgz && mv /root/docker/docker /usr/local/bin/docker && rm -rf /root/docker*
+RUN curl -L https://github.com/docker/compose/releases/download/1.7.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
+RUN groupadd -g $DOCKER_GROUP_ID docker && gpasswd -a jenkins docker
+USER jenkins
+	
+docker build --build-arg DOCKER_GROUP_ID=`getent group docker | cut -d: -f3` -t my-jenkins-image .
+	
+docker run -v /var/run/docker.sock:/var/run/docker.sock -p 8080:8080 -ti my-jenkins-image
+	
+FROM jenkins
+COPY plugins.txt /usr/share/jenkins/plugins.txt
+RUN /usr/local/bin/plugins.sh /usr/share/jenkins/plugins.txt
+
+USER root
+RUN apt-get update
+RUN groupadd docker && gpasswd -a jenkins docker
+USER jenkins
+	
+docker run -d 
+-v /var/run/docker.sock:/var/run/docker.sock 
+     -v $(which docker):/usr/bin/docker:ro 
+     -v /lib64/libdevmapper.so.1.02:/usr/lib/x86_64-linux-gnu/libdevmapper.so.1.02 
+     -v /lib64/libudev.so.0:/usr/lib/x86_64-linux-gnu/libudev.so.0 
+     -p 8080:8080 
+     --name jenkins 
+     --privileged=true -t -i 
+test/jenkins
+	
+$ docker exec -it 9fc27d5fcec1 bash
+jenkins@9fc27d5fcec1:/$ whoami 
+jenkins
+jenkins@9fc27d5fcec1:/$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                               NAMES
+9fc27d5fcec1        test                "/bin/tini -- /usr/lo"   6 minutes ago       Up 6 minutes        0.0.0.0:8080->8080/tcp, 50000/tcp   jenkins

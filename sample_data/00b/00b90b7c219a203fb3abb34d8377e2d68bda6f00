@@ -1,0 +1,39 @@
+public class ClownStuffer {
+
+    public static final int NB_CLOWNS = 20;
+    public static final Volkswagen vw = new Volkswagen();
+    public static final CountDownLatch latch = new CountDownLatch(NB_CLOWNS);
+
+    public static void main(String args[]) throws InterruptedException {
+        for (int i = 0; i < NB_CLOWNS; i++) {
+            Thread t = new Thread() {
+                public void run() {
+                    vw.add(new MyClown());
+                }
+            };
+            t.start();
+        }
+        latch.await();
+        vw.done();
+    }
+
+    private static class MyClown extends Clown {
+        private static int nbClowns = 0;
+        @Override
+        public int hashCode() {
+            synchronized (vw) {
+                nbClowns++;
+                while (nbClowns != NB_CLOWNS) {
+                    try {
+                        // Needed to release the monitor so that other threads can call add()
+                        vw.wait();
+                    } catch (InterruptedException ignored) {
+                    }
+                }
+                vw.notifyAll();
+            }
+            latch.countDown();
+            return super.hashCode();
+        }
+    }
+}

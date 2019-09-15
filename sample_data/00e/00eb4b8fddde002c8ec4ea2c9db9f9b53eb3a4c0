@@ -1,0 +1,92 @@
+Send JavaScript variable to PHP
+function testResults() {
+
+            if(navigator.geolocation) {
+                //Get the current position
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+                    document.write("lat", latitude);
+                    document.write('<br /><br />');
+                    document.write("long", longitude);
+                });
+            } else {
+                alert("Sorry... your browser does not support the HTML5 GeoLocation API");
+            }
+
+         //////////// Here I tried with jQuery/Ajax. I know that it's wrong.
+        ////////////  Im putting it here so that it maybe clarifies what Im 
+       ////////////   trying to do.
+
+            $.post("checkLocation.php", {
+                lat : latitude,
+                longi : longitude
+            }, function(data) {
+                alert("Data Loaded: " + data);
+            });
+
+      ////////////////////////////////////////////////////////////////////
+
+        }
+
+        testResults();
+	
+$.ajax({
+  type: "POST",
+  url: "checklocation.php",
+  data: "lat="+latitude+"&longi="+longitude
+}).done(function( msg ) {
+  alert( "Data Saved: " + msg );
+});
+	
+navigator.geolocation.getCurrentPosition(function(position) {
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+                document.write("lat", latitude);
+                document.write('<br /><br />');
+                document.write("long", longitude);
+            });
+	
+var latitude;
+var longitude;
+//...
+navigator.geolocation.getCurrentPosition(function(position) {
+                latitude = position.coords.latitude;
+                vlongitude = position.coords.longitude;
+                document.write("lat", latitude);
+                document.write('<br /><br />');
+                document.write("long", longitude);
+            });
+
+//usage(transfer) of vars
+	
+function testResults()
+{
+    if (navigator.geolocation)
+    {
+        //Get the current position
+        navigator.geolocation.getCurrentPosition(function (position)
+        {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            // do callback                
+            $.ajax(
+            {
+                type: "POST",
+                url: "checklocation.php",
+                data: "lat=" + latitude + "&lon=" + longitude
+            }).done(function (msg)
+            {
+                alert("Data Saved: " + msg);
+            });
+
+        });
+    }
+    else
+    {
+        alert("Sorry... your browser does not support the HTML5 GeoLocation API");
+    }
+}
+
+testResults();

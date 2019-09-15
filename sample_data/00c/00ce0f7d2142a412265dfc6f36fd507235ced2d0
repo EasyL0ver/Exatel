@@ -1,0 +1,37 @@
+SynchronizationLockException after await
+public void HandleMessage(string message)
+    {
+        Task.Factory.StartNew(async delegate
+        {
+            if (Monitor.TryEnter(o))
+            {
+                try
+                {
+                    do
+                    {
+                        await HandleMessageAsync(message);
+                    }
+                    while (queue.TryDequeue(out message));
+                }
+                finally
+                {
+                    Monitor.Exit(o);
+                }
+            }
+            else
+            {
+                queue.Enqueue(message);
+            }
+        });
+    }
+	
+public void HandleMessage(string message)
+{
+    Task.Factory.StartNew(async delegate
+    {
+        while (queue.TryDequeue(out message));
+        {
+           await HandleMessageAsync(message);
+        }
+    });
+}

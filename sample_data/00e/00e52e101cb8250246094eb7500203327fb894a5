@@ -1,0 +1,27 @@
+algoritmo "Teste de escolha"
+// Função : Simples escolha entre adição e subtração (caso/outrocaso)
+// Autor : Renarhd
+// Data : 19/02/2019
+var
+   n1, n2, n3, o: real
+   r: real
+inicio
+   escreva("Digite um número: ")
+   leia(n1)
+   escreva("Digite outro número: ")
+   leia(n2)
+   escreval(" Digite um número que corresponde à uma opção: ")
+   escreval(" Opção 1: Adção ")
+   escreval(" Opção 2: Subtração ")
+   leia (o)
+   escolha o
+   caso 1
+      r<-n1+n2
+   caso 2
+      r<-n1-n2
+   outrocaso
+      escreval("Escolha apenas '1' ou '2'")
+      r<-0
+   fimescolha
+   escreva("O resultado escolhido de acordo com as duas opções é",r)
+fimalgoritmo

@@ -1,0 +1,6 @@
+$topSevenPosts = Cache::tags(Post::class)->remember('seven_posts_html'.getLocal(), 5, function () {
+    $topSevenPosts = $this->getTopSevenPostLastTwenty();
+
+    $view = view('front.home.top_seven', compact('topSevenPosts'))->render();
+    return $view;
+});

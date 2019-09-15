@@ -1,0 +1,38 @@
+<ul id="myTabs" class="nav nav-tabs">
+ <li class=""><a href="#tab1" data-tongle="tab">Tab1</a></li>
+ <li class=""><a href="#tab2" data-tongle="tab">Tab2</a></li>
+ <li class="active"><a href="#tab3" data-tongle="tab">Tab3</a></li>
+ <li class=""><a href="#tab4" data-tongle="tab">Tab4</a></li>
+</ul>
+
+<div id="miboton">
+    <button type="button">Recargar datos</button>
+</div>
+	
+jQuery(document).ready(function () {
+
+    //Esta tab se mantiene como principal siempre y solo quiero 
+    //que se mantenga cuando se pulsa el botón y se hace el reload
+    jQuery('.nav-tabs a[href="#consultar-ahorro-tab"]').tab('show');
+
+    jQuery('#miboton button[type="button"]').on('click', function(event){
+        event.preventDefault();
+        var id_input = jQuery('#requestId').val();
+        viewAhorroData(id_input);
+    });
+
+    var viewAhorroData = function(itemId)
+    {
+        if(document.formvalidator.isValid(document.id('my-form')))
+        {                   
+            location.reload();
+
+        }
+        else
+        {
+            alert('Form invalid!');
+        }
+
+    }
+
+});

@@ -1,0 +1,7 @@
+volume= {u'InstanceId': 'i-03666a1aea6028cf0', u'BlockDeviceMappings': [{u'DeviceName': '/dev/xvda', u'Ebs': {u'Status': 'attached', u'DeleteOnTermination': True, u'VolumeId': 'vol-020922cefa6cfe695', u'AttachTime': datetime.datetime(2018, 11, 5, 22, 2, 54, tzinfo=tzlocal())}}], 'ResponseMetadata': {'RetryAttempts': 0, 'HTTPStatusCode': 200, 'RequestId': '243d6592-0b8d-4d63-a67a-11e322c2c15e', 'HTTPHeaders': {'date': 'Tue, 29 Jan 2019 13:09:25 GMT', 'content-length': '670', 'content-type': 'text/xml;charset=UTF-8', 'server': 'AmazonEC2'}}}
+
+volume = ec.describe_instance_attribute(InstanceId=instance['InstanceId'],Attribute='blockDeviceMapping')
+for v in volume:
+print v['BlockDeviceMappings']['AttachTime']
+	
+print v['AttachTime']

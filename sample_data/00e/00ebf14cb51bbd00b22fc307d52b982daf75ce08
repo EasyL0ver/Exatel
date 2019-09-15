@@ -1,0 +1,39 @@
+public class BoundedCounter {
+    private int value;
+    private int upperLimit;
+    private int minutes;
+    private int hours;
+    private final int MINUTESUPPERLIMIT = 59;
+    private final int HOURSUPPERLIMIT = 23;
+
+    public BoundedCounter(int upperLimit) {
+        this.upperLimit = upperLimit;
+        this.value = 0;
+    }
+
+    public void next() {
+        this.value++;
+        if (this.value > upperLimit) {
+            this.value = 0;
+        }
+    }
+    
+    public int getValue() {
+        if (this.minutes != 0) {
+            this.value += this.minutes;
+        }
+        if (this.minutes == 0) {
+            this.value += this.hours;
+        }     
+        return value;
+}
+
+    @Override
+    public String toString() {
+        if (this.value < 10) {
+            return ("Value: 0" + value);
+        } else {
+            return ("Value: " + value);
+        }
+    }
+}

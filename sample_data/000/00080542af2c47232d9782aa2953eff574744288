@@ -1,0 +1,34 @@
+@ rule1 @
+identifier activate_fn;
+identifier p;
+identifier m =~ "rx_led|tx_led|assoc_led|radio_led|tpt_led";
+@@
+p->m.activate = activate_fn;
+
+@ rule2 @
+identifier rule1.activate_fn;
+identifier rule1.p;
+identifier rule1.m;
+fresh identifier activate_fn_wrap = "bp_" ## activate_fn;
+@@
+<...
++#if LINUX_VERSION_IS_GEQ(4,19,0)
+p->m.activate = activate_fn;
++#else
++p->m.activate = activate_fn_wrap;
++#endif
+...>
+
+@@
+identifier rule1.activate_fn;
+identifier rule2.activate_fn_wrap;
+@@
+int activate_fn(...) {...}
++#if LINUX_VERSION_IS_LESS(4,19,0)
++/* Just declare it here to keep sparse happy */
++void activate_fn_wrap(struct led_classdev *led_cdev);
++void activate_fn_wrap(struct led_classdev *led_cdev)
++{
++activate_fn(led_cdev);
++}
++#endif

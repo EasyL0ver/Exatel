@@ -1,0 +1,129 @@
+"use strict"
+
+class LoginVO {
+  constructor(id, playerName, pw) {
+    this.id = id
+    this.playerName = playerName
+    this.pw = pw
+  }
+}
+
+class AmfResponse {
+  constructor(result) {
+    if (result) {
+      for (const key of Object.keys(result)) {
+        this[key] = result[key]
+      }
+    }
+  }
+}
+
+class LoginResultVO {
+  constructor(result) {
+    if (result) {
+      for (const key of Object.keys(result)) {
+        this[key] = result[key]
+      }
+    }
+  }
+}
+
+class PlayerInfoVO {
+  constructor(result) {
+    if (result) {
+      for (const key of Object.keys(result)) {
+        this[key] = result[key]
+      }
+    }
+  }
+}
+
+class ItemVO {
+  constructor(result) {
+    if (result) {
+      for (const key of Object.keys(result)) {
+        this[key] = result[key]
+      }
+    }
+  }
+}
+
+class PartnerTrackingVO {
+  constructor(result) {
+    if (result) {
+      for (const key of Object.keys(result)) {
+        this[key] = result[key]
+      }
+    }
+  }
+}
+
+class GameServerVO {
+  constructor(result) {
+    if (result) {
+      for (const key of Object.keys(result)) {
+        this[key] = result[key]
+      }
+    }
+  }
+}
+
+const ba = new (require("../../src/"))()
+
+ba.registerClassAlias("com.pandaland.mvc.model.vo.LoginVO", LoginVO)
+ba.writeUnsignedShort(0)
+ba.writeUnsignedShort(0)
+ba.writeUnsignedShort(1)
+ba.clearReferences()
+ba.writeUTF("amfConnectionService.doLogin")
+ba.writeUTF("/1")
+
+ba.writeInt(95)
+ba.endian = false
+ba.writeInt(10)
+ba.endian = true
+ba.writeByte(1)
+
+ba.writeObject(new LoginVO(0, "Zaseth", "Lol123456"))
+
+require("request").post({
+  url: "https://panfu.world/InformationServer/",
+  body: ba.buffer,
+  encoding: null,
+  headers: {
+    "content-type": "application/x-amf",
+    "content-length": ba.length,
+    "x-requested-with": "ShockwaveFlash/32.0.0.142",
+    "referer": "https://panfu.world/FlashClient/Panfu.swf?iServer=https://panfu.world/InformationServer/&langId=EN&mode=dev",
+    "origin": "https://panfu.world"
+  },
+  timeout: 5000
+}, (err, res) => {
+  if (err) throw err
+
+  ba.buffer = res.body
+  ba.position = 0
+  ba.clearReferences()
+
+  ba.registerClassAlias("com.pandaland.mvc.model.vo.AmfResponse", AmfResponse)
+  ba.registerClassAlias("com.pandaland.mvc.model.vo.LoginResultVO", LoginResultVO)
+  ba.registerClassAlias("com.pandaland.mvc.model.vo.PlayerInfoVO", PlayerInfoVO)
+  ba.registerClassAlias("com.pandaland.mvc.model.vo.ItemVO", ItemVO)
+  ba.registerClassAlias("com.pandaland.informationserver.api.vo.PartnerTrackingVO", PartnerTrackingVO)
+  ba.registerClassAlias("com.pandaland.mvc.model.vo.GameServerVO", GameServerVO)
+
+  if (ba.readUnsignedShort() === 0 && ba.readUnsignedShort() === 0 && ba.readUnsignedShort() === 1) {
+    const packet = {
+      requestURI: ba.readUTF(),
+      responseURI: ba.readUTF(),
+      length: ba.readUnsignedInt(),
+      value: ba.readObject()
+    }
+
+    if (packet.value.statusCode === 1) {
+      console.log("Incorrect username/password")
+    } else {
+      console.log(JSON.stringify(packet))
+    }
+  }
+})

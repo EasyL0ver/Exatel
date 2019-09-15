@@ -1,0 +1,6 @@
++ Solution
+  + Project.Domain (or Core if you prefer)
+  + Project.Domain.Test
+  + Project.Persistence.Service
+  -- etc.
+  * WebAPI

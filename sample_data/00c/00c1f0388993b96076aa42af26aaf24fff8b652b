@@ -1,0 +1,45 @@
+public class MyArrayListStatic {
+   
+   private static int[] a = {2, 8, 5, 4, 6};
+   
+   public static void update(int index, int value)
+   {
+      a[index] = value;
+   }
+   
+   public static void add(int value)
+   {
+      int[] temp = new int[a.length+1];
+      for (int i = 0; i < a.length; i++)
+        temp[i] = a[i];
+      temp[a.length] = value;
+      a = temp;
+   }
+   
+   public static void insert(int index, int value)
+   {
+       int[] temp = new int[a.length + 1];
+       for(int i = 0; i < index; i++)
+         temp[i] = a[i];
+       temp[index] = value;
+       for(int i = index; i < a.length; i++)
+         temp[i+1] = a[i];
+       a = temp;
+   }
+   
+   public static void delete(int index)
+   {
+       int[] temp = new int[a.length - 1];
+       for(int i = 0; i < index; i++)
+         temp[i] = a[i];
+       for(int i = index + 1; i < a.length; i++)
+         temp[i-1] = a[i];
+       a = temp;
+   }
+   
+   public void print(int[] array)
+   {
+      for(int i = 0; i < array.length; i++)
+        System.out.println("array["+i+"]: "+ array[i]);  
+   }
+}

@@ -1,0 +1,288 @@
+import java.net.URL;
+import javafx.application.Platform;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
+import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
+
+public class MapGameController implements Initializable {
+    public MapData mapData;
+    public MoveChara playerChara;
+    public MoveChara enemyChara;
+    public GridPane mapGrid;
+    public Label PL1HP;
+    public Label PL2HP;
+    public Label PL1BOMB;
+    public Label PL2BOMB;
+    public Label PL1BREAK;
+    public Label PL2BREAK;
+    public CharaAction playerCharaAction;
+    public CharaAction enemyCharaAction;
+    public ImageView[] mapImageView;
+    public Pane playerCharaPane;
+    public ImageView[] playerCharaImageViews;
+    public Pane enemyCharaPane;
+    public ImageView[] enemyCharaImageViews;
+
+    private static final int NONE = 0;
+    private static final int GOAL = 1;
+
+    private static final int TYPE_PLAYER = 1;
+    private static final int TYPE_ENEMY = 2;
+
+    public static final int TYPE_DOWN = 0;
+    public static final int TYPE_LEFT = 1;
+    public static final int TYPE_UP = 2;
+    public static final int TYPE_RIGHT = 3;
+
+    public static final int GRIDSIZE = 32;
+
+    public static final String[] DIRECTION_LABEL = { "DOWN", "LEFT", "UP", "RIGHT" };
+    public static final int[] DIRECTION_ACTION = { CharaAction.DOWN, CharaAction.LEFT, CharaAction.UP,
+            CharaAction.RIGHT };
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        initialize();
+    }
+
+    public void initialize() {
+        int x = 0;
+        int y = 0;
+
+        mapData = new MapData(21, 15);
+
+        while (mapData.getMap(x, y) != MapData.TYPE_NONE) {
+            x = (int) (Math.random() * mapData.getWidth() / 2) * 2 + 1;
+            y = (int) (Math.random() * mapData.getHeight() / 2) * 2 + 1;
+        }
+        playerChara = new MoveChara(x, y, mapData, 1);
+        playerCharaImageViews = new ImageView[4];
+        playerCharaPane.getChildren().clear();
+        for (int i = 0; i < 4; i++) {
+            playerCharaImageViews[i] = playerChara.getCharaImageView(i);
+            playerCharaPane.getChildren().add(playerCharaImageViews[i]);
+        }
+        playerChara.setCharaDir(TYPE_DOWN);
+
+        x = 0;
+        y = 0;
+        while (mapData.getMap(x, y) != MapData.TYPE_NONE) {
+            x = (int) (Math.random() * mapData.getWidth() / 2) * 2 + 1;
+            y = (int) (Math.random() * mapData.getHeight() / 2) * 2 + 1;
+        }
+        enemyChara = new MoveChara(x, y, mapData, 2);
+        enemyCharaImageViews = new ImageView[4];
+        enemyCharaPane.getChildren().clear();
+        for (int i = 0; i < 4; i++) {
+            enemyCharaImageViews[i] = enemyChara.getCharaImageView(i);
+            enemyCharaPane.getChildren().add(enemyCharaImageViews[i]);
+        }
+        enemyChara.setCharaDir(TYPE_DOWN);
+
+        mapImageView = new ImageView[mapData.getHeight() * mapData.getWidth()];
+        for (y = 0; y < mapData.getHeight(); y++) {
+            for (x = 0; x < mapData.getWidth(); x++) {
+                int index = y * mapData.getWidth() + x;
+                mapImageView[index] = new ImageView();
+                mapGrid.add(mapImageView[index], x, y);
+            }
+        }
+        printMap();
+        playerCharaAction = new CharaAction(playerChara, enemyChara, mapData);
+        enemyCharaAction = new CharaAction(enemyChara, playerChara, mapData);
+        printChara(TYPE_PLAYER);
+        printChara(TYPE_ENEMY);
+        setNumberLabel();
+        System.out.println("ca finished");
+    }
+
+    public void printCharaWithPOS(MoveChara mc, int x, int y, int cd, ImageView[] ivs) {
+        mc.setCharaDir(cd);
+        ivs[cd].setLayoutX(x * GRIDSIZE);
+        ivs[cd].setLayoutY(y * GRIDSIZE);
+    }
+
+    public void printCharaWithPOS(MoveChara mc, int x, int y, ImageView[] ivs) {
+        int cd = mc.getCharaDir();
+        ivs[cd].setLayoutX(x * GRIDSIZE);
+        ivs[cd].setLayoutY(y * GRIDSIZE);
+    }
+
+    public void printCharaWithPOS(MoveChara mc, ImageView[] ivs, int cd) {
+        mc.setCharaDir(cd);
+        ivs[cd].setLayoutX(mc.getPosX() * GRIDSIZE);
+        ivs[cd].setLayoutY(mc.getPosY() * GRIDSIZE);
+    }
+
+    public void printCharaWithPOS(MoveChara mc, ImageView[] ivs) {
+        int cd = mc.getCharaDir();
+        ivs[cd].setLayoutX(mc.getPosX() * GRIDSIZE);
+        ivs[cd].setLayoutY(mc.getPosY() * GRIDSIZE);
+    }
+
+    public void printChara(int type) {
+        if (type == TYPE_PLAYER) {
+            printCharaWithPOS(playerChara, playerCharaImageViews);
+        } else if (type == TYPE_ENEMY) {
+            printCharaWithPOS(enemyChara, enemyCharaImageViews);
+        }
+    }
+
+    public void printChara(int type, int cd) {
+        if (type == TYPE_PLAYER) {
+            printCharaWithPOS(playerChara, playerCharaImageViews, cd);
+        } else if (type == TYPE_ENEMY) {
+            printCharaWithPOS(enemyChara, enemyCharaImageViews, cd);
+        }
+    }
+
+    public void setLayoutForCharaImageView(ImageView iv, MoveChara mc) {
+        iv.setLayoutX(mc.getPosX() * GRIDSIZE);
+        iv.setLayoutY(mc.getPosY() * GRIDSIZE);
+    }
+
+    public void setNumberLabel() {
+        PL1HP.setText("" + playerChara.getHp());
+        PL1BOMB.setText("" + playerChara.getBombNum());
+        PL1BREAK.setText("" + playerChara.getBreakNum());
+        PL2HP.setText("" + enemyChara.getHp());
+        PL2BOMB.setText("" + enemyChara.getBombNum());
+        PL2BREAK.setText("" + enemyChara.getBreakNum());
+    }
+
+    public void printMap() {
+        for (int y = 0; y < mapData.getHeight(); y++) {
+            for (int x = 0; x < mapData.getWidth(); x++) {
+                int index = y * mapData.getWidth() + x;
+                // if (x==c1.getPosX() && y==c1.getPosY()){
+                // mapImageView[index].setImage(c1.getImage());
+                // } else if (x==c2.getPosX() && y==c2.getPosY()){
+                // mapImageView[index].setImage(c2.getImage());
+                // } else {
+                if (mapData.getMap(x, y) == MapData.TYPE_BOMB) {
+                    Bomb b = mapData.getBombRef(x, y);
+                    mapImageView[index].setImage(b.getBombImage());
+                } else {
+                    mapImageView[index].setImage(mapData.getImage(x, y));
+                }
+            }
+        }
+        setNumberLabel();
+    }
+
+    public void goal() {
+        Alert alert = new Alert(AlertType.NONE, "", ButtonType.NO, ButtonType.YES);
+        alert.getDialogPane().setContentText("GOAL!\nNEW GAME?");
+        ButtonType b = alert.showAndWait().orElse(ButtonType.CANCEL);
+        if (b == ButtonType.YES) {
+            initialize();
+        } else {
+            System.exit(0);
+        }
+    }
+
+    public void func1ButtonAction(ActionEvent event) {
+        int r;
+        playerCharaAction.performActionRandom();
+        enemyCharaAction.performActionRandom();
+        moveCheck();
+        printMap();
+        printChara(TYPE_PLAYER);
+        printChara(TYPE_ENEMY);
+        setNumberLabel();
+    }
+
+    public void func2ButtonAction(ActionEvent event) {
+        int r;
+        playerCharaAction.performActionAI();
+        enemyCharaAction.performActionRandom();
+        moveCheck();
+        printMap();
+        printChara(TYPE_PLAYER);
+        printChara(TYPE_ENEMY);
+        setNumberLabel();
+    }
+
+    public void func3ButtonAction(ActionEvent event) {
+    }
+
+    public void func4ButtonAction(ActionEvent event) {
+    }
+
+    public void func5ButtonAction(ActionEvent event) {
+    }
+
+    public void func6ButtonAction(ActionEvent event) {
+        initialize();
+    }
+
+    public void func7ButtonAction(ActionEvent event) {
+    }
+
+    public void func8ButtonAction(ActionEvent event) {
+    }
+
+    public void func9ButtonAction(ActionEvent event) {
+    }
+
+    public void func10ButtonAction(ActionEvent event) {
+    }
+
+    public void moveCheck() {
+        int i;
+        for (i = 0; i < mapData.getBombNum(); i++) {
+            mapData.getBombList()[i].step();
+        }
+        for (i = 0; i < mapData.getBombNum(); i++) {
+            Bomb b = mapData.getBombList()[i];
+            if (b.isBombed()) {
+                b.burn();
+            }
+        }
+        if (mapData.getTotalBreakableWallNum() == playerChara.getBreakNum() + enemyChara.getBreakNum()) {
+            printMap();
+            goal(); // goal() メソッドのメソッド名を変更
+        }
+    }
+
+    public void spaceButtonAction() {
+        if (mapData.getBombNum() < mapData.getBombMaxNum()) {
+            playerCharaAction.performAction(CharaAction.SETBOMB);
+            enemyCharaAction.performActionRandom();
+            setNumberLabel();
+            moveCheck();
+            printMap();
+            printChara(TYPE_PLAYER);
+            printChara(TYPE_ENEMY);
+        }
+    }
+
+    public void keyAction(KeyEvent event) {
+        KeyCode key = event.getCode();
+        if (key == KeyCode.B) {
+            spaceButtonAction();
+        } else if (key == KeyCode.DOWN) {
+            directMoveAction(TYPE_DOWN);
+        } else if (key == KeyCode.UP) {
+            directMoveAction(TYPE_UP);
+        } else if (key == KeyCode.LEFT) {
+            directMoveAction(TYPE_LEFT);
+        } else if (key == KeyCode.RIGHT) {
+            directMoveAction(TYPE_RIGHT);
+        }
+    }
+
+    public void directMoveAction(int type) {
+        int r;
+        System.out.println(DIRECTION_LABEL[type]);
+       

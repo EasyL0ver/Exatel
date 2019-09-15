@@ -1,0 +1,16 @@
+def open_entity(entity)
+  if gui = @gui
+    position = entity.position
+    window = Boleite::GUI::Window.new
+    window.header_text = "#{position.x}x#{position.y} #{entity.template.name}"
+    window.size = Boleite::Vector2f.new(200.0, 200.0)
+    window.set_next_to @window
+    window.add_close_button do
+      unless gui.nil?
+        gui.remove_root window
+      end
+    end
+    gui.add_root window
+    @entity_windows << window
+  end
+end

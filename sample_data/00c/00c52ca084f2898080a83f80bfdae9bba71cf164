@@ -1,0 +1,22 @@
+import yt
+import yt.units as u
+import matplotlib.pyplot as plt
+from mpl_toolkits.axes_grid1 import AxesGrid
+import sys
+
+
+fig = plt.figure()
+grid = AxesGrid(fig, (0.08, 0.075, 0.85, 0.85), nrows_ncols = (2, 2), axes_pad = 0.5, label_mode = "L", share_all = True,
+cbar_location = "right", cbar_mode = "single", cbar_size = "3%", cbar_pad = "0%")
+for i in range(1,len(sys.argv)):
+    ds = yt.load(sys.argv[i])
+    p = yt.SlicePlot(ds, 'z', "density", width = (1, 'kpc'))
+    p.set_zlim("density", 1e-26, 1.4e-23)
+    p.annotate_title('z = %.2f'%ds.current_redshift)
+    plot = p.plots["density"]
+    plot.figure = fig
+    plot.axes = grid[i-1].axes
+    plot.cax = grid.cbar_axes[i-1]
+
+    p._setup_plots()
+plt.savefig("multiplot_Density.png")

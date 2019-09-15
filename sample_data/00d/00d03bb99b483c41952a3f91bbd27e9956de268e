@@ -1,0 +1,36 @@
+---
+action: /login
+indicator: submit
+auto_fieldset: 1
+
+elements:
+  - type: Text
+    name: username
+    label: username
+    constraints:
+      - Required
+
+  - type: Password
+    name: password
+    label: password
+    constraints:
+      - Required
+
+  - type: Password
+    name: confirmpw
+    label: Confirm password
+    constraints:
+      - Required
+
+  - type: Text
+    name: captcha
+    label: Please verify this captcha
+    constraints:
+      - Required
+
+  - type: Submit
+    value: submit
+    name: submit
+
+constraints:
+  - SingleValue

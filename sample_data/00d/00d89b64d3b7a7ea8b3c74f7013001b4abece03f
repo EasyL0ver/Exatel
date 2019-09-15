@@ -1,0 +1,10 @@
+public class Persona {
+
+private String nombre;
+private Integer edad;
+private Char sexo;
+private String id;
+
+// getters / setters
+
+}

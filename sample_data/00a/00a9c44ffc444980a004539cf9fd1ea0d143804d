@@ -1,0 +1,26 @@
+local auraTime = {2, "min"}
+local deathStorage = 150000
+
+local function doSendAuraEffect(cid, delay)
+    if isPlayer(cid) then
+        if delay ~= 0 then
+            doSendMagicEffect(getPlayerPosition(cid), 183)
+            addEvent(doSendAuraEffect, 1000, cid, delay - 1)
+        end
+    end
+end
+
+function onPrepareDeath(cid, lastHitKiller, mostDamageKiller)
+    if isPlayer(cid) then
+        setPlayerStorageValue(cid, deathStorage, mathtime(auraTime) + os.time())
+    end
+    return true
+end
+       
+function onLogin(cid)
+    local checkAura = getPlayerStorageValue(cid, deathStorage) - os.time()
+    if checkAura > 0 then
+        doSendAuraEffect(cid, checkAura)
+    end
+    return true
+end

@@ -1,0 +1,10 @@
+     </p>
+                    <?php
+                      break;
+                   }
+             }
+       }
+      ?>
+      <p><a href="<?php echo site_url(); ?>/events">See all events</a></p>
+         <?php
+                       /* After widget (defined by themes). */

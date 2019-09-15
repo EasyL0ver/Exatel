@@ -1,0 +1,73 @@
+'a' 'b' 'c' 'd'
+
+// 'a' 'b' 'c'
+abc
+acb
+bac
+bca
+cab
+cba
+
+// 'a' 'b' 'd'
+abd
+adb
+bad
+bda
+dab
+dba
+
+// 'a' 'c' 'd'
+acd
+adc
+cad
+cda
+dac
+dca
+
+// 'b' 'c' 'd'
+bcd
+bdc
+cbd
+cdb
+dbc
+dcb
+
+4*3*2 = 24 = 6*4
+
+
+
+
+Another example: 'a' 'b' 'c' 'd' 'e'
+
+// 'a' 'b' 'c' 'd'
+abcd
+abdc
+acbd
+acdb
+adbc
+adcb
+bacd
+badc
+bcad
+bcda
+bdac
+bdca
+cabd
+cadb
+cbad
+cbda
+cdab
+cdba
+dabc
+dacb
+dbac
+dbca
+dcab
+dcba
+
+// 24 permutations for 'a' 'b' 'c' 'e'
+// 24 permutations for 'a' 'b' 'd' 'e'
+// 24 permutations for 'a' 'c' 'd' 'e'
+// 24 permutations for 'b' 'c' 'd' 'e'
+
+5*24 = 5*4*3*2 = 120

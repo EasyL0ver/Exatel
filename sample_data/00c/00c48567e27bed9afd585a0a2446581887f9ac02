@@ -1,0 +1,205 @@
+#include <stdio.h>
+
+void printNormalHouse(int x, int y) {
+    int xs = x;
+    int ys = y;
+    int spike = x / 2;
+    int w = 1;
+    for (; spike > 0; spike--) {
+        printf(" ");
+    }
+    printf("X\n");
+    spike = x / 2;
+    for (; spike > 1; spike--) {
+        for (int i = spike; i > 1; i--) {
+            printf(" ");
+        }
+        printf("X");
+        for (int j = 1; j <= w; j++) {
+            printf(" ");
+        }
+        printf("X");
+        printf("\n");
+        w += 2;
+    }
+    for (; x > 0; x--) {
+        printf("X");
+        if (x == 1) {
+            printf("\n");
+        }
+    }
+    x = xs;
+    for (; y > 2; y--) {
+        printf("X");
+        for (; x > 2; x--) {
+            printf(" ");
+        }
+        x = xs;
+        printf("X\n");
+    }
+    x = xs;
+    y = ys;
+    for (; x > 0; x--) {
+        printf("X");
+        if (x == 1) {
+            printf("\n");
+        }
+    }
+}
+void printSpecialHouse(int x, int y, int z) {
+    int xs = x;
+    int ys = y;
+    int zs = z;
+    int spike = x / 2;
+    int w = 1;
+    int xr = xs;
+    int zss = z;
+    for (; spike > 0; spike--) {
+        printf(" ");
+    }
+    printf("X\n");
+    spike = x / 2;
+    for (; spike > 1; spike--) {
+        for (int i = spike; i > 1; i--) {
+            printf(" ");
+        }
+        printf("X");
+        for (int j = 1; j <= w; j++) {
+            printf(" ");
+        }
+        printf("X");
+        printf("\n");
+        w += 2;
+    }
+    for (; x > 0; x--) {
+        printf("X");
+        if (x == 1) {
+            printf("\n");
+        }
+    }
+    x = xs;
+    for (; y > 2; y--) {
+        printf("X");
+        if (y % 2 == 1) {
+            for (; x > 2; x--) {
+                if (x % 2 == 1) {
+                    printf("o");
+                } else {
+                    printf("*");
+                }
+            }
+        }
+        x = xs;
+        if (y % 2 == 0) {
+            for (; x > 2; x--) {
+                if (x % 2 == 1) {
+                    printf("*");
+                } else {
+                    printf("o");
+                }
+            }
+        }
+        x = xs;
+        printf("X");
+        if (z + 1 >= xr) {
+            z = zs;
+            if (z <= (zss)) {
+                if (z % 2 == 1) {
+                    for (; z > 0; z--) {
+                        if (z % 2 == 1) {
+                            printf("|");
+                        } else {
+                            printf("-");
+                        }
+                    }
+                }
+                if (z % 2 == 0) {
+                    for (; z > 0; z--) {
+                        if (z % 2 == 1) {
+                            printf("|");
+                        } else {
+                            printf("-");
+                        }
+                    }
+                }
+                zss--;
+            } else {
+                z = zs;
+                if (z % 2 == 1) {
+                    for (; z > 0; z--) {
+                        if (z % 2 == 1) {
+                            printf("|");
+                        } else {
+                            printf(" ");
+                        }
+                    }
+                }
+                if (z % 2 == 0) {
+                    for (; z > 0; z--) {
+                        if (z % 2 == 1) {
+                            printf("|");
+                        } else {
+                            printf(" ");
+                        }
+                    }
+                }
+            }
+            z = zs;
+        } else {
+            xr--;
+        }
+        printf("\n");
+    }
+    x = xs;
+    y = ys;
+    for (; x > 0; x--) {
+        printf("X");
+    }
+    for (; z > 0; z--) {
+        if (z % 2 == 1) {
+            printf("|");
+        } else {
+            printf("-");
+        }
+    }
+    printf("\n");
+}
+int main() {
+    int x;
+    int y;
+    int z;
+    int con = scanf("%i %i", & x, & y);
+    int con2 = 0;
+    if (con == 2) {
+        if ((3 <= x && x <= 69) && (3 <= y && y <= 69)) {
+            if (x % 2 == 1) {
+                if (x == y) {
+                    con2 = scanf("%i", & z);
+                    if (con2 == 1) {
+                        if (z < (x - 1) && z > 0) {
+                            printSpecialHouse(x, y, z);
+                        } else {
+                            fprintf(stderr, "Error: Neplatna velikost plotu!\n");
+                            return 103;
+                        }
+                    } else {
+                        fprintf(stderr, "Error: Chybny vstup!\n");
+                        return 100;
+                    }
+                } else {
+                    printNormalHouse(x, y);
+                }
+            } else {
+                fprintf(stderr, "Error: Sirka neni liche cislo!\n");
+                return 102;
+            }
+        } else {
+            fprintf(stderr, "Error: Vstup mimo interval!\n");
+            return 101;
+        }
+    } else {
+        fprintf(stderr, "Error: Chybny vstup!\n");
+        return 100;
+    }
+    return 0;
+}

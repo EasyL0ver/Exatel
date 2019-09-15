@@ -1,0 +1,38 @@
+CREATE PROCEDURE geo_zip_dist (IN center_zip int, IN dist int)
+
+BEGIN
+declare center_lon float; declare center_lat float;
+declare lon1 float; declare lon2 float;
+declare lat1 float; declare lat2 float;
+
+-- Lookup the original lon and lat for the zip
+select lon, lat into center_lon, center_lat from zips
+ where zip=center_zip;
+
+-- calc lat and lon for the rectangle
+set lon1 = center_lon-dist/ABS(COS(radians(center_lat))*69);
+set lon2 = center_lon+dist/ABS(COS(radians(center_lat))*69);
+set lat1 = center_lat-(dist/69);
+set lat2 = center_lat+(dist/69);
+
+-- create temporary table
+-- DROP TABLE local_zips;
+CREATE TEMPORARY TABLE IF NOT EXISTS local_zips  (
+     zip int not null,
+     distance double,
+     primary key (zip)
+);
+TRUNCATE local_zips;
+
+-- run the query and insert into temp table
+INSERT INTO local_zips
+ SELECT dest.zip,
+ 3956 * 2 * ASIN(SQRT( POWER(SIN((orig.lat - dest.lat) * pi()/180 / 2), 2) +
+ COS(orig.lat * pi()/180) * COS(dest.lat * pi()/180) *
+ POWER(SIN((orig.lon -dest.lon) * pi()/180 / 2), 2) )) AS distance
+  FROM zips orig, zips dest
+   WHERE orig.zip=center_zip AND
+         dest.lon between lon1 and lon2 AND
+         dest.lat between lat1 and lat2 
+    having distance < dist
+     ORDER BY distance;

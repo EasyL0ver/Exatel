@@ -1,0 +1,25 @@
+    std::stack<Categoria*> cola;
+    catgs["root"]->nivel = 1;
+    cola.push (catgs["root"]);
+    data = "";
+    while (!cola.empty ())
+    {
+        current_catg = cola.top ();
+        string name = current_catg->get_nombre ();
+        int nivel = current_catg->nivel;
+        for (int i = 0; i <= nivel; i++)
+            data += "-";
+        data += "||" + name + "||\n";
+        for (auto marcador: categorias[name])
+        {
+            for (int i = 0; i <= nivel; i++)
+                data += "-";
+            data += marcador.get_url () + "\n";
+        }
+        cola.pop ();
+        for (int i = 0; i < (int) catgs[name]->childs.size (); i++)
+        {
+            current_catg->childs[i].nivel = nivel + 1;
+            cola.push (&current_catg->childs[i]);
+        }
+    }

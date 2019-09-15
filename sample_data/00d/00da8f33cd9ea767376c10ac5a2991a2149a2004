@@ -1,0 +1,8 @@
+telnet -l <USERNAME> <IP_ADDR> <PORT>
+	
+Trying <IP_ADDR>...
+Connected to <IP_ADDR>.
+Escape character is '^]'.
+
+telnet> close
+Connection closed.

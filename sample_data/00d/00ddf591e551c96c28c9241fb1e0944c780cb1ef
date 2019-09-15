@@ -1,0 +1,9 @@
+command /system:
+	description: /system
+	trigger:
+		command "/menu open %player% S"
+
+command /sy:
+	description: /sy
+	trigger:
+		command "/menu open %player% S"

@@ -1,0 +1,8 @@
+class Url(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    hash = db.Column(db.String(80), unique=True, nullable=False)
+    long = db.Column(db.Text(), nullable=False)
+    hits = db.Column(db.Numeric(), nullable=False, default=0)
+
+    def __repr__(self):
+        return '<Url %r>' % self.id

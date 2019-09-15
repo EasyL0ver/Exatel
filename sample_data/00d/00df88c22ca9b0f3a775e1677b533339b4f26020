@@ -1,0 +1,17 @@
+select * 
+from Movies_Genres 
+where MovieID = 271
+	
+ID    MovieID  GenreID
+======================
+924   271      8
+1251  271      13
+	
+select * 
+from Movies_Genres 
+where MovieID = 271
+and GenreID <> 13
+	
+ID    MovieID  GenreID
+======================
+924   271      8

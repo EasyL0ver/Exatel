@@ -1,0 +1,104 @@
+import { once } from '@ember/runloop';
+import { expandProperties } from '@ember/object/computed';
+import { addObserver } from '@ember/object/observers';
+
+const oncePending = new WeakMap();
+
+function onceFn(fn, abortFn) {
+  return function() {
+    // grab the map of oncePending functions for this instance
+    let pendingMap = oncePending.get(this);
+
+    if (pendingMap && pendingMap.get(fn)) {
+      // we found a map, and the current function is already schedule so we
+      // have no work todo, skipping...
+      return;
+    }
+
+    if (!pendingMap) {
+      // no map found, create a new one
+      pendingMap = new Map();
+      oncePending.set(this, pendingMap);
+    }
+
+    // set the current function as pending
+    pendingMap.set(fn, true);
+
+    once(() => {
+      // purge the current function from pending
+      oncePending.get(this).delete(fn);
+
+      // If target got destroyed or the state is not inDOM then don't call the target function
+      if (abortFn(this)) {
+        return;
+      }
+
+      fn.call(this);
+    });
+  }
+}
+
+/**
+ * Observes the properties and only run once the target function when properties have changed.
+ * Don't call the target function if the instance has been destroyed or is destroying.
+ * Don't call the target function if the component is not yet in the Document
+ * @param  {...any} params The list of properties to observe for changes
+ * @returns {void} 
+ */
+export function inDomObservesOnce(...params) {
+  return function(desc) {
+    const { kind, key, descriptor } = desc;
+    if (kind !== 'method') {
+      throw Error('@inDomObserves decorator can only be used on methods')
+    }
+
+    // Replace the current function by the onceFn function
+    descriptor.value = onceFn(descriptor.value, (target) => target.isDestroyed || target.isDestroying || ((target._state || target.state)) !== 'inDOM');
+
+    // Observer needs the actual prototype to be defined. Add a finisher to get the prototype
+    desc.finisher = target => {
+      const { prototype } = target;
+      for (let path of params) {
+        expandProperties(path, expandedPath => {
+          addObserver(prototype, expandedPath, null, key);
+        });
+      }
+
+      return target;
+    }
+
+    return desc;
+  }
+}
+
+/**
+ * Observes the properties and only run once the target function when properties have changed.
+ * Don't call the target function if the instance has been destroyed or is destroying.
+ * @param  {...any} params The list of properties to observe for changes
+ * @returns {void} 
+ */
+export function observesOnce(...params) {
+  return function(desc) {
+    const { kind, key, descriptor } = desc;
+    if (kind !== 'method') {
+      throw Error('@observes decorator can only be used on methods')
+    }
+
+    // Replace the current function by the onceFn function
+    descriptor.value = onceFn(descriptor.value, (target) => target.isDestroyed || target.isDestroying);
+
+    // Observer needs the actual prototype to be defined. Add a finisher to get the prototype
+    desc.finisher = target => {
+      const { prototype } = target;
+      for (let path of params) {
+        expandProperties(path, expandedPath => {
+          addObserver(prototype, expandedPath, null, key);
+        });
+      }
+
+      return target;
+    }
+
+    return desc;
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "agencyName":"Department of Defense",
+  "spendingLabel":"Major FY11 Spending",
+  "bureaus":[
+    {
+      "name":"Department of Defense Agencies",
+      "acronym":"",
+      "code":"97",
+      "totalSpending":"4.0B"
+    },
+    {
+      "name":"Department of the Air Force",
+      "acronym":"",
+      "code":"57",
+      "totalSpending":"2.3B"
+    },
+    {
+      "name":"Department of the Army",
+      "acronym":"",
+      "code":"21",
+      "totalSpending":"2.4B"
+    },
+    {
+      "name":"Department of the Navy",
+      "acronym":"",
+      "code":"17",
+      "totalSpending":"3.8B"
+    }
+  ]
+}

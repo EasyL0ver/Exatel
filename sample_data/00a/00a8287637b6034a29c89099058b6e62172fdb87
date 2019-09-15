@@ -1,0 +1,129 @@
+
+C:\Users\jackw\Desktop\gcraft>java -Xmx4G -Xms4G -jar server.jar nogui
+[17:25:19] [main/WARN]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[17:25:19] [main/WARN]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[17:25:19] [main/WARN]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[17:25:19] [main/WARN]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[17:25:19] [main/WARN]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[17:25:19] [main/INFO]: Loaded 0 recipes
+[17:25:19] [main/INFO]: Loaded 0 advancements
+[17:25:19] [Server thread/INFO]: Starting minecraft server version 1.13
+[17:25:19] [Server thread/INFO]: Loading properties
+[17:25:19] [Server thread/INFO]: Default game type: SURVIVAL
+[17:25:19] [Server thread/INFO]: Generating keypair
+[17:25:19] [Server thread/INFO]: Starting Minecraft server on *:25565
+[17:25:19] [Server thread/INFO]: Using default channel type
+[17:25:20] [Server thread/INFO]: Preparing level "world"
+[17:25:20] [Server thread/INFO]: Found new data pack vanilla, loading it automatically
+[17:25:20] [Server thread/INFO]: Reloading ResourceManager: Default
+[17:25:21] [Server thread/INFO]: Loaded 524 recipes
+[17:25:22] [Server thread/INFO]: Loaded 571 advancements
+[17:25:25] [Server thread/INFO]: Preparing start region for level 0
+[17:25:26] [Server thread/INFO]: Preparing spawn area: 0%
+[17:25:27] [Server thread/INFO]: Preparing spawn area: 0%
+[17:25:28] [Server thread/INFO]: Preparing spawn area: 4%
+[17:25:28] [Server thread/INFO]: Preparing spawn area: 8%
+[17:25:29] [Server thread/INFO]: Preparing spawn area: 12%
+[17:25:29] [Server thread/INFO]: Preparing spawn area: 16%
+[17:25:30] [Server thread/INFO]: Preparing spawn area: 20%
+[17:25:30] [Server thread/INFO]: Preparing spawn area: 24%
+[17:25:30] [Server thread/INFO]: Preparing spawn area: 28%
+[17:25:31] [Server thread/INFO]: Preparing spawn area: 32%
+[17:25:31] [Server thread/INFO]: Preparing spawn area: 36%
+[17:25:32] [Server thread/INFO]: Preparing spawn area: 40%
+[17:25:32] [Server thread/INFO]: Preparing spawn area: 44%
+[17:25:32] [Server thread/INFO]: Preparing spawn area: 48%
+[17:25:33] [Server thread/INFO]: Preparing spawn area: 52%
+[17:25:33] [Server thread/INFO]: Preparing spawn area: 56%
+[17:25:34] [Server thread/INFO]: Preparing spawn area: 60%
+[17:25:34] [Server thread/INFO]: Preparing spawn area: 64%
+[17:25:35] [Server thread/INFO]: Preparing spawn area: 68%
+[17:25:35] [Server thread/INFO]: Preparing spawn area: 72%
+[17:25:36] [Server thread/INFO]: Preparing spawn area: 76%
+[17:25:36] [Server thread/INFO]: Preparing spawn area: 80%
+[17:25:36] [Server thread/INFO]: Preparing spawn area: 84%
+[17:25:37] [Server thread/INFO]: Preparing spawn area: 88%
+[17:25:37] [Server thread/INFO]: Preparing spawn area: 92%
+[17:25:37] [Server thread/INFO]: Preparing spawn area: 96%
+[17:25:38] [Server thread/INFO]: Preparing spawn area: 100%
+[17:25:38] [Server thread/INFO]: Time elapsed: 12454 ms
+[17:25:38] [Server thread/INFO]: Done (18.140s)! For help, type "help"
+[17:31:03] [User Authenticator #1/INFO]: UUID of player JackWitherell is 0f2fa62b-7a11-438c-9951-d0976d13e548
+[17:31:03] [Server thread/INFO]: JackWitherell[/192.168.11.1:50407] logged in with entity id 684 at (-231.5, 71.0, 189.5)
+[17:31:03] [Server thread/INFO]: JackWitherell joined the game
+[17:33:41] [Server thread/INFO]: com.mojang.authlib.GameProfile@1d41c44[id=<null>,name=g3ntlemen,properties={},legacy=false] (/73.206.102.131:61655) lost connection: Disconnected
+op JackWitherell
+[17:35:58] [Server thread/INFO]: Made JackWitherell a server operator
+[17:35:59] [User Authenticator #2/INFO]: UUID of player g3ntlemen is e085a0e7-44f3-46fe-b970-328d7154d17c
+[17:35:59] [Server thread/INFO]: g3ntlemen[/73.206.102.131:61843] logged in with entity id 6457 at (-225.5, 72.0, 193.5)
+[17:35:59] [Server thread/INFO]: g3ntlemen joined the game
+[17:36:13] [Server thread/INFO]: [JackWitherell: Set the time to 0]
+[17:36:23] [Server thread/INFO]: [JackWitherell: Made g3ntlemen a server operator]
+[17:41:26] [Server thread/INFO]: [g3ntlemen: Set own game mode to Creative Mode]
+[17:41:54] [Server thread/INFO]: g3ntlemen has made the advancement [Getting an Upgrade]
+[17:42:00] [Server thread/INFO]: [g3ntlemen: Set own game mode to Survival Mode]
+[17:42:17] [Server thread/INFO]: [JackWitherell: Teleported JackWitherell to g3ntlemen]
+[17:43:35] [Server thread/INFO]: g3ntlemen has made the advancement [Stone Age]
+[17:43:59] [Server thread/INFO]: JackWitherell has made the advancement [Stone Age]
+[17:47:03] [Server thread/INFO]: JackWitherell has made the advancement [Getting an Upgrade]
+[17:47:13] [Server thread/INFO]: [g3ntlemen: Set the time to 1000]
+[17:48:14] [Server thread/INFO]: [JackWitherell: Created team [niggers]]
+[17:48:21] [Server thread/INFO]: [JackWitherell: Added JackWitherell to team [niggers]]
+[17:48:27] [Server thread/INFO]: [g3ntlemen: Added g3ntlemen to team [niggers]]
+[17:48:58] [Server thread/INFO]: [JackWitherell: Disabled friendly fire for team [niggers]]
+[17:51:56] [Server thread/INFO]: [JackWitherell: Gave 12 [Steak] to g3ntlemen]
+[17:54:15] [Server thread/INFO]: g3ntlemen has made the advancement [Monster Hunter]
+[17:57:06] [Server thread/INFO]: JackWitherell has made the advancement [Monster Hunter]
+[17:58:51] [Server thread/INFO]: <JackWitherell> 170 65 307
+[17:59:58] [Server thread/INFO]: [g3ntlemen: Gave 1 [Stone Pickaxe] to g3ntlemen]
+[18:09:31] [Server thread/INFO]: g3ntlemen has reached the goal [Sky's the Limit]
+[18:09:31] [Server thread/INFO]: [JackWitherell: Gave 1 [Elytra] to g3ntlemen]
+[18:09:39] [Server thread/INFO]: [JackWitherell: Gave 1 [Elytra] to JackWitherell]
+[18:09:43] [Server thread/INFO]: JackWitherell has reached the goal [Sky's the Limit]
+[18:10:31] [Server thread/INFO]: [JackWitherell: Gave 64 [Dirt] to g3ntlemen]
+[18:10:39] [Server thread/INFO]: [JackWitherell: Gave 64 [Dirt] to JackWitherell]
+[18:13:37] [Server thread/INFO]: [JackWitherell: Gave 64 [Dirt] to JackWitherell]
+[18:13:39] [Server thread/INFO]: [JackWitherell: Gave 64 [Dirt] to g3ntlemen]
+[18:15:10] [Server thread/INFO]: [g3ntlemen: Gave 1 [Stone Sword] to g3ntlemen]
+[18:17:24] [Server thread/INFO]: [JackWitherell: Teleported JackWitherell to g3ntlemen]
+[18:17:24] [Server thread/WARN]: JackWitherell moved too quickly! -135.0136955713434,-25.0,-22.63487820116842
+[18:17:45] [Server thread/INFO]: [g3ntlemen: Gave 1 [Shield] to g3ntlemen]
+[18:18:08] [Server thread/INFO]: g3ntlemen has made the advancement [Not Today, Thank You]
+[18:23:58] [Server thread/INFO]: JackWitherell has made the advancement [Acquire Hardware]
+[18:24:14] [Server thread/INFO]: JackWitherell has made the advancement [Isn't It Iron Pick]
+[18:29:58] [Server thread/INFO]: [JackWitherell: Teleported g3ntlemen to JackWitherell]
+[18:30:51] [Server thread/INFO]: g3ntlemen has made the advancement [Acquire Hardware]
+[18:31:08] [Server thread/INFO]: g3ntlemen has made the advancement [Suit Up]
+[18:32:13] [Server thread/INFO]: g3ntlemen has made the advancement [Isn't It Iron Pick]
+[18:33:23] [Server thread/INFO]: [JackWitherell: Teleported g3ntlemen to JackWitherell]
+[18:34:07] [Server thread/INFO]: [JackWitherell: Teleported JackWitherell to g3ntlemen]
+[18:34:12] [Server thread/INFO]: [g3ntlemen: Teleported JackWitherell to g3ntlemen]
+[18:34:36] [Server thread/INFO]: [g3ntlemen: Teleported JackWitherell to g3ntlemen]
+[18:35:34] [Server thread/INFO]: <JackWitherell> 270 46 -302
+[18:36:18] [Server thread/INFO]: [JackWitherell: Teleported 352 entities to 270.5, 46.0, -301.5]
+[18:36:18] [Server thread/WARN]: JackWitherell moved wrongly!
+[18:36:18] [Server thread/WARN]: Fetching addPacket for removed entity
+[18:36:18] [Server thread/WARN]: Fetching addPacket for removed entity
+[18:36:23] [Server thread/WARN]: Can't keep up! Is the server overloaded? Running 4377ms or 87 ticks behind
+[18:36:25] [Server thread/INFO]: JackWitherell was blown up by Creeper
+[18:36:47] [Server thread/INFO]: <g3ntlemen> rm -rf *
+[18:36:50] [Server thread/INFO]: [JackWitherell: Teleported JackWitherell to g3ntlemen]
+[18:37:18] [Server thread/INFO]: [g3ntlemen: Set own game mode to Creative Mode]
+[18:37:34] [Server thread/INFO]: [JackWitherell: Set own game mode to Creative Mode]
+[18:40:20] [Server thread/INFO]: g3ntlemen fell out of the world
+[18:40:20] [Server thread/INFO]: JackWitherell fell out of the world
+[18:40:20] [Server thread/INFO]: [JackWitherell: Killed 205 entities]
+[18:40:38] [Server thread/INFO]: [g3ntlemen: Teleported g3ntlemen to 269.5, 46.0, -303.5]
+[18:40:39] [Server thread/WARN]: Fetching addPacket for removed entity
+[18:40:42] [Server thread/WARN]: JackWitherell moved too quickly! -496.63580189805015,25.0,494.2665120009611
+[18:40:48] [Server thread/INFO]: [JackWitherell: Teleported JackWitherell to g3ntlemen]
+[18:41:14] [Server thread/INFO]: [JackWitherell: Set own game mode to Survival Mode]
+[18:42:06] [Server thread/INFO]: [JackWitherell: Gave 1 [Iron Sword] to JackWitherell]
+[18:48:13] [Server thread/INFO]: <JackWitherell> kill @e[type=!zombie]
+[18:48:16] [Server thread/INFO]: [g3ntlemen: Set own game mode to Survival Mode]
+[18:48:40] [Server thread/INFO]: <g3ntlemen> !=
+[18:48:53] [Server thread/INFO]: [JackWitherell: Killed 25 entities]
+[18:49:19] [Server thread/INFO]: [JackWitherell: Gave 1 [Iron Boots] to g3ntlemen]
+[18:49:26] [Server thread/INFO]: [JackWitherell: Gave 1 [Iron Chestplate] to g3ntlemen]
+[18:49:35] [Server thread/INFO]: [JackWitherell: Gave 1 [Iron Helmet] to g3ntlemen]
+[18:49:49] [Server

@@ -1,0 +1,55 @@
+// Codigos
+JOYSTICK = 1;
+MICROFONO = 2;
+ULTRASONIDO = 3;
+TERMOMETRO = 4;
+INFRARROJO = 5;
+ROTARY = 6;
+HUMEDAD = 7;
+POTENCIOMETRO = 8;
+
+// Claves para los struct. Facilitan el cambio
+CLAVE_1 = "nombre_grupo"
+CLAVE_2 = "id_arduino"
+CLAVE_3 = "id_sensor"
+
+// Lista de sensores. La posiciones en la lista indican el subplot correspondiente
+global SENSORES
+SENSORES = list(struct(CLAVE_1, "NANOGROUP", CLAVE_2, 1, CLAVE_3, JOYSTICK), ...
+                struct(CLAVE_1, "NANOGROUP", CLAVE_2, 1, CLAVE_3, MICROFONO), ...
+                struct(CLAVE_1, "JJM", CLAVE_2, 2, CLAVE_3, ULTRASONIDO), ...
+                struct(CLAVE_1, "JJM", CLAVE_2, 2, CLAVE_3, TERMOMETRO), ...
+                struct(CLAVE_1, "G3", CLAVE_2, 3, CLAVE_3, MICROFONO), ...
+                struct(CLAVE_1, "G3", CLAVE_2, 3, CLAVE_3, TERMOMETRO), ...
+                struct(CLAVE_1, "MICRO", CLAVE_2, 4, CLAVE_3, TERMOMETRO), ...
+                struct(CLAVE_1, "MICRO", CLAVE_2, 4, CLAVE_3, HUMEDAD), ...
+                struct(CLAVE_1, "PIN13", CLAVE_2, 5, CLAVE_3, INFRARROJO), ...
+                struct(CLAVE_1, "PIN13", CLAVE_2, 5, CLAVE_3, POTENCIOMETRO), ...
+                struct(CLAVE_1, "GENUINO", CLAVE_2, 6, CLAVE_3, JOYSTICK), ...
+                struct(CLAVE_1, "GENUINO", CLAVE_2, 6, CLAVE_3, ROTARY))
+                
+
+// Busca la posicion en la lista de un id_arduino junto al id_sensor.
+// id_arduino e id_sensor DEBEN SER numeros enteros.
+function [indice, sensor] = buscar_grafico(id_arduino, id_sensor)
+    // Inicializamos el resultado
+    indice = 0
+    sensor = struct()
+    
+    // Por cada sensor
+    for i = 1:length(SENSORES)
+        
+        // Obtenemos el sensor
+        s = SENSORES(i)
+        
+        // Si el sensor corresponde a los ids indicados como parametros
+        if (s.id_arduino == id_arduino & s.id_sensor == id_sensor) then
+            // Cargamos las variables
+            indice = i
+            sensor = s
+            
+            // Devolvemos
+            return indice, sensor
+        end
+    end
+endfunction

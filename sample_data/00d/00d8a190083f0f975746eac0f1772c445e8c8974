@@ -1,0 +1,316 @@
+<?
+ob_start('ob_gzhandler');
+
+if($_SERVER['REMOTE_ADDR'] !== '31.185.125.145')
+	error_reporting(0);
+
+$time = microtime(true);
+if(!isset($_GET['subtopic']) || !($subtopic = $_GET['subtopic'])) {
+	$subtopic = 'latestnews';
+}
+				
+foreach(array(
+	'home' => array('latestnews' => 'Latest News'/*, 'archive' => 'News Archive'*/),
+
+	'account' => array('accountmanagement' => 'Account Management', 'createaccount' => 'Create Account', 'downloads' => 'Downloads', 'lostaccount' => 'Lost Account?'),
+
+	'community' => array('characters' => 'Characters', 'whoisonline' => 'Who is online?', 'highscores' => 'Highscores', 'houses' => 'Houses', 'guilds' => 'Guilds', 'guildwars' => 'Guild Wars', 'deaths' => 'Latest Deaths', 'frags' => 'Top Fraggers', 'addonmakers' => 'Addonmakers', 'questmakers' => 'Top Questmakers'/*, 'elo' => 'Elo Ranking'*/, 'achievements' => 'Achievements'),
+
+	'library' => array('achievements' => 'Achievements', 'serverinfo' => 'Serverinfo', 'items' => 'Items', 'mounts' => 'Mounts', 'tasks' => 'Tasks', 'topcountries' => 'Top Countries', 'killstatistics' => 'Kill Statistics'/*, 'zombie' => 'Zombie Highscores'*/, 'bans' => 'Ban List', 'topguilds' => 'Top Guilds', 'polls' => 'Polls', 'pg' => 'Powergamers', 'experiencetable' => 'Experience Table'), 
+
+	'forum' => array('forum' => 'Forum Board','ticket' => 'Ticket Board'),
+
+	'shop' => array('buycoins' => 'Buy Coins', 'shop' => 'Donation Gifts', 'egypt' => 'Vodafone', 'shophistory' => 'Shop History', 'pay' => 'PayPal', 'bitcoin' => 'Bitcoin', 'paygol' => 'PayGol', 'payg' => 'PayG', 'paygol_f' => 'PayGol Success', 'paygol_c' => 'PayGol Failure', 'paygol_lt' => 'PayGol', 'paygol_lt_f' => 'PayGol Success', 'paygol_lt_c' => 'PayGol Failure'/*, 'polls' => 'Polls'*/),
+	
+	'help' => array('ticketroom' => 'Ticket Room','faq' => 'FAQ', 'rules' => 'Server Rules', 'staff' => 'Staff'),
+
+	'admin' => array('adminpanel' => 'Admin Panel', 'shopadmin' => 'Shop Admin', 'changes' => 'Changes', 'codes' => 'Code Generator')
+
+
+) as $k => $v) {
+	foreach($v as $a => $b) {
+		if($a === $subtopic) {
+			$topic = array($k, $b);
+			unset($k, $v, $a, $b);
+			break;
+		}
+	}
+}
+
+if(!isset($topic)) {
+	header('Location: /news');
+	exit;
+}
+
+session_start();
+$action = isset($_REQUEST['action']) ? $_REQUEST['action'] : NULL;
+
+$SQL = NULL; $qn=0; $qtime=0; $qstr = '';
+
+require 'config.php';
+
+function connect() {
+	global $host, $dbname, $user, $pass;
+	try {
+		$GLOBALS['SQL'] = new PDO('mysql:host='.$host.';dbname='.$dbname, $user, $pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING, PDO::MYSQL_ATTR_COMPRESS => true, PDO::ATTR_PERSISTENT => true));
+	}
+	catch(PDOException $e) {
+		die($e->getMessage());
+	}
+}
+
+function query($q) {
+	global $SQL;
+	if($SQL === NULL)
+		connect();
+	++$GLOBALS['qn'];
+
+	$t = microtime(true);
+	$res = $q[0] === 'S' ? $SQL->query($q) : $SQL->exec($q);
+	$t = microtime(true) - $t;
+	$GLOBALS['qtime'] += $t;
+	return $res;
+}
+
+function quote($s) {
+	global $SQL;
+	if($SQL === NULL)
+		connect();
+	return $SQL->quote($s);
+}
+
+function lastInsertId() {
+	global $SQL;
+	if($SQL === NULL)
+		connect();
+	return $SQL->lastInsertId();
+}
+
+function redir($s) {
+	header('Location: '.$s);
+	exit;
+}
+
+function check_account_name($s) {
+	$l = strlen($s);
+	return $l >= 1 && $l <= 30 && strspn($s, 'QWERTYUIOPASDFGHJKLZXCVBNM0123456789') === $l;
+}
+
+function check_password($s) {
+	$l = strlen($s);
+	return $l >= 1 && $l <= 30 && strspn($s, 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789_') === $l;
+}
+
+function check_name($s) {
+	$l = strlen($s);
+	return $l >= 3 && $l <= 25 && strspn($s, 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM \'') === $l;
+}
+
+function timestr($t) {
+	define('YEAR', 365 * 86400);
+	define('MONTH', 30 * 86400);
+	define('WEEK', 7 * 86400);
+	define('DAY', 86400);
+	define('HOUR', 3600);
+	define('MINUTE', 60);
+
+	if($t >= time())
+		$t = $t - time();
+	else
+		$t = time() - $t;
+
+	if($t >= YEAR) {
+		$t = (int)($t / YEAR);
+		$s = 'year';
+	}
+	elseif($t >= MONTH) {
+		$t = (int)($t / MONTH);
+		$s = 'month';
+	}
+	elseif($t >= WEEK) {
+		$t = (int)($t / WEEK);
+		$s = 'week';
+	}
+	elseif($t >= DAY) {
+		$t = (int)($t / DAY);
+		$s = 'day';
+	}
+	elseif($t >= HOUR) {
+		$t = (int)($t / HOUR);
+		$s = 'hour';
+	}
+	elseif($t >= MINUTE) {
+		$t = (int)($t / MINUTE);
+		$s = 'minute';
+	}
+	else
+		$s = 'second';
+
+	return $t .' '.$s.($t === 1 ? '' : 's');
+}
+
+if($subtopic === 'accountmanagement' && isset($_GET['page']) && $_GET['page'] === 'logout')
+	session_unset();
+elseif($subtopic === 'createaccount' && isset($_POST['step']) && $_POST['step'] === 'docreate') {
+	include('pages/createaccount2.inc');
+}
+
+$logged = false; $gid = 0;
+if(isset($_SESSION['account'])) {
+	$acc = $_SESSION['account'];
+	$pw = $_SESSION['password'];
+	$first = false;
+}
+elseif(isset($_POST['account_login']) && isset($_POST['password_login'])) {
+	$acc = strtoupper($_POST['account_login']);
+	$pw =  $_POST['password_login'];
+	$first = true;
+}
+if(isset($acc)) {
+	if( !$first || (check_account_name($acc) && check_password($pw)) ) {
+
+		if($first) {
+			if($sha1)
+				$a = query("SELECT id FROM accounts WHERE name = '$acc' AND password=SHA1(CONCAT(salt, ".quote($pw)."))");
+			else
+				$a = query("SELECT id FROM accounts WHERE name = '$acc' AND password=".quote($pw));
+		}
+		else {
+			if($sha1)
+				$a = query("SELECT id,name,password,premdays,email,`key`,premium_points,page_access,page_lastday,last_post,created,vote FROM accounts WHERE id = $acc AND password=SHA1(CONCAT(salt, ".quote($pw)."))");
+			else
+				$a = query("SELECT id,name,password,premdays,email,`key`,premium_points,page_access,page_lastday,last_post,created,vote FROM accounts WHERE id = $acc AND password=".quote($pw));
+		}
+		if($a = $a->fetch()) {
+			if($first) {
+				query('UPDATE accounts SET page_lastday='.time().' WHERE id='.$a['id']);
+				$_SESSION['account'] = $a['id'];
+				$_SESSION['password'] = $pw;
+				redir($_POST['redirect'] ?: '/account');
+			}
+			$logged = true;
+			$gid = (int)$a['page_access'];
+			if(!isset($_SESSION['country']))
+				$_SESSION['country'] = strtolower(query('SELECT cc FROM geoip WHERE end>='.ip2long($_SERVER['REMOTE_ADDR']).' LIMIT 1')->fetchColumn());
+
+
+			if(0 /*$gid === 3 && !in_array($_SESSION['country'], Array('eg','at'))*/) {
+				exit;
+			}
+		}
+	}
+	if(!$logged) {
+		if($first)
+			$lfail = true;
+		else
+			session_unset();
+	}
+}
+
+$stat = explode('|', file_get_contents('cache/status.tmp'));
+
+function active($opt) {
+	if($GLOBALS['subtopic'] === $opt)
+		echo ' class="active"';
+}
+function menu($opt) {
+	if($GLOBALS['topic'][0] === $opt)
+		echo 'active';
+} ?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<title>Evolera 8.60</title>
+
+		<link href="./css/css.css" rel="stylesheet">
+		<link href="./css/css_002.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./layout/tibiacom/css/style.css">
+		<link rel="stylesheet" type="text/css" href="./layout/tibiacom/css/fa.css">
+		<link rel="stylesheet" type="text/css" href="./layout/tibiacom/css/basic.css">
+		<link rel="stylesheet" type="text/css" href="./layout/tibiacom/css/basic_d.css">
+		<link rel="stylesheet" type="text/css" href="./layout/tibiacom/css/slider.css">
+		<link rel="stylesheet" type="text/css" href="./layout/tibiacom/fontawesome/css/all.css">
+
+		<script async="" type="text/javascript" src="./layout/tibiacom/js/a.js"></script>
+		<script type="text/javascript" async="" src="./layout/tibiacom/js/recaptcha__sv.js"></script>
+		<script src="./layout/tibiacom/js/jquery-1.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+		<script src="./layout/tibiacom/js/jquery.js"></script>
+		<script src="./layout/tibiacom/js/jquery_002.js"></script>
+		<script src="./layout/tibiacom/js/jquery_003.js"></script>
+		<script src="./layout/tibiacom/js/api.js" async="" defer="defer"></script>
+
+		<!--  IMG SLIDER -->
+		<script>
+			$(function() {
+				$('#slides').slidesjs({
+					width: 674,
+					height: 200,
+					navigation: true,
+					play: {
+						active: true,
+						auto: true,
+						interval: 5000,
+						swap: true,
+						pauseOnHover: false,
+						restartDelay: 2500
+					}
+				});
+			});
+		</script>
+		<!-- IMG SLIDER END -->
+
+		<script type="text/javascript">
+			$( document ).ready(function() {
+				$( ".ButtonText" ).each(function( index ) {
+
+				$(this).attr('type','submit');
+
+				});
+				$( ".ButtonText" ).each(function( index ) {
+				var alt = $(this).attr("alt");
+				$(this).attr("value", alt);
+				});
+
+				var imgcount = $('#slides').find('img').size();
+				var width = 100 / imgcount;
+				$('.slidesjs-pagination li a').css( 'width', width+'%' );
+			});
+		</script>
+
+		<style>
+			#slides {
+		 		display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="/" class="logo"></a>
+		<div class="content-cnt">
+
+			<div class="content">
+				<div class="col-w">
+					<div class="panel">
+						<h1>Quick Login</h1>
+						<div class="w-cnt">
+							<form action="?subtopic=accountmanagement" method="post">
+								<input type="text" name="account_login" class="w-input" placeholder="Account Login">
+								<input type="password" name="password_login" class="w-input" placeholder="Your password">
+								<input type="submit" name="submit" class="w-submit" value="Log In">
+								<span class="center small"><a href="/?subtopic=createaccount">Click here</a> to create account</span>
+							</form>
+						</div>
+					</div>
+					<div class="panel">
+						<h1>Latest News</h1>
+						<div class="w-cnt">
+							<ul>
+								<li><a href="/?subtopic=latestnews">Latest news</a></li>
+								<li><a href="/?subtopic=archive">News Archive</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="panel">
+					

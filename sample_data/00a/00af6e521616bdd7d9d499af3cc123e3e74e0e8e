@@ -1,0 +1,110 @@
+[09/16/18 13:30:23] - Running wine- --version (Working directory : /usr/share/playonlinux/python)
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+wine-3.0 (Ubuntu 3.0-1ubuntu1)
+
+PlayOnLinux logfile
+-------------------
+Date: 09/16/18 13:30:23
+
+> PlayOnLinux Version
+  4.2.12
+> uname -a
+  Linux miliuz-Lenovo 4.15.0-34-generic #37-Ubuntu SMP Mon Aug 27 15:21:48 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+> lsb_release -a
+  
+> wine --version
+  wine-3.0 (Ubuntu 3.0-1ubuntu1)
+> POL_WINEVERSION
+  
+> WINEPREFIX
+  /home/miliuz/.PlayOnLinux//wineprefix/EMILIO64
+> Distribution
+  Ubuntu 18.04.1 LTS
+> glxinfo \| grep rendering
+  direct rendering: Yes
+    GL_NV_path_rendering, GL_NV_pixel_data_range, GL_NV_point_sprite, 
+    GL_NV_path_rendering, GL_NV_pixel_data_range, GL_NV_point_sprite, 
+    GL_NV_packed_float_linear, GL_NV_path_rendering, 
+> glxinfo \| grep renderer
+  OpenGL renderer string: GeForce GT 755M/PCIe/SSE2
+> OpenGL libs (Direct rendering testing)
+  check_dd_x86 missing, test skipped
+  check_dd_amd64 missing, test skipped
+
+[09/16/18 13:30:23] - This is a 64bits prefix!
+[09/16/18 13:30:23] - Running wine- cmd /c echo %ProgramFiles% (Working directory : /usr/share/playonlinux/python)
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+C:\Program Files (x86)
+[09/16/18 13:30:54] - Running wine- /media/miliuz/A8E8908EE8905BFE/ProgramData/Ableton/Live 9 Suite/Program/Ableton Live 9 Suite.exe (Working directory : /media/miliuz/A8E8908EE8905BFE/ProgramData/Ableton/Live 9 Suite/Program)
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0028:err:module:import_dll Library mfc120u.dll (which is needed by L"Z:\\media\\miliuz\\A8E8908EE8905BFE\\ProgramData\\Ableton\\Live 9 Suite\\Program\\Ableton Live 9 Suite.exe") not found
+0028:err:module:attach_dlls Importing dlls for L"Z:\\media\\miliuz\\A8E8908EE8905BFE\\ProgramData\\Ableton\\Live 9 Suite\\Program\\Ableton Live 9 Suite.exe" failed, status c0000135
+[09/16/18 13:34:33] - Running wine- winecfg (Working directory : /usr/share/playonlinux/python)
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0029:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+0009:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+002d:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+[09/16/18 13:35:53] - Running wine- msiexec /i /home/miliuz/Desktop/ABL/ableton_live_suite_9.5_64/Setup.msi (Working directory : /home/miliuz/Desktop/ABL/ableton_live_suite_9.5_64)
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0029:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+0009:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:msi:ITERATE_Actions Execution halted, action L"WelcomeDlg" returned 1602
+[09/16/18 14:06:14] - Running wine- /media/miliuz/A8E8908EE8905BFE/ProgramData/Ableton/Live 9 Suite/Program/Ableton Live 9 Suite.exe (Working directory : /media/miliuz/A8E8908EE8905BFE/ProgramData/Ableton/Live 9 Suite/Program)
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0029:err:module:import_dll Library mfc120u.dll (which is needed by L"Z:\\media\\miliuz\\A8E8908EE8905BFE\\ProgramData\\Ableton\\Live 9 Suite\\Program\\Ableton Live 9 Suite.exe") not found
+0029:err:module:attach_dlls Importing dlls for L"Z:\\media\\miliuz\\A8E8908EE8905BFE\\ProgramData\\Ableton\\Live 9 Suite\\Program\\Ableton Live 9 Suite.exe" failed, status c0000135
+[09/16/18 14:07:47] - Running wine- msiexec /i /home/miliuz/Desktop/ABL/ableton_live_suite_9.5_64/Setup.msi (Working directory : /home/miliuz/Desktop/ABL/ableton_live_suite_9.5_64)
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0029:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+0009:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:msi:ITERATE_Actions Execution halted, action L"WelcomeDlg" returned 1602
+[09/16/18 14:09:35] - Running wine- msiexec /i /home/miliuz/Desktop/ABL/ableton_live_suite_9.5_64/Setup.msi (Working directory : /home/miliuz/Desktop/ABL/ableton_live_suite_9.5_64)
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0029:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+0009:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0009:err:mscoree:LoadLibraryShim error reading registry key for installroot
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0037:err:ole:CoCreateInstanceEx apartment not initialised
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0036:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+AppWinRegister... succeeded
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0041:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+ERROR: ld.so: object 'libgtk3-nocsd.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+0043:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+0049:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+0036:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0036:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0036:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0036:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0036:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0036:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0036:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0036:err:mscoree:LoadLibraryShim error reading registry key for installroot
+0049:err:ole:CoGetClassObject class {ea502722-a23d-11d1-a7d3-0000f87571e3} not registered
+0049:err:ole:CoGetClassObject no class object {ea502722-a23d-11d1-a7d3-0000f87571e3} could be created for context 0x1
+0049:err:setupapi:SetupCopyOEMInfW Could not add catalog
+0049:err:ole:CoGetClassObject class {ea502722-a23d-11d1-a7d3-0000f87571e3} not registered
+0049:err:ole:CoGetClassObject no class object {ea502722-a23d-11d1-a7d3-0000f87571e3} could be created for context 0x1
+003f:err:winediag:xrandr12_init_modes Broken NVIDIA RandR detected, falling back to RandR 1.0. Please consider using the Nouveau driver instead.
+004f:err:module:import_dll Library mfc120u.dll (which is needed by L"C:\\ProgramData\\Ableton\\Live 9 Suite\\Program\\Ableton Live 9 Suite.exe") not found
+004f:err:module:attach_dlls Importing dlls for L"C:\\ProgramData\\Ableton\\Live 9 Suite\\Program\\Ableton Live 9 Suite.exe" failed, status c0000135

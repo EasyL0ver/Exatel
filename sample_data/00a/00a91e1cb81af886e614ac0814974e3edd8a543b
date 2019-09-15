@@ -1,0 +1,36 @@
+public struct RGBA
+{
+	public byte R, G, B, A;
+}
+
+class MyClass
+{
+	static public RGBA[] ColorPixels = new RGBA[800 * 480];
+	static public byte[] Lookup = new byte[256];
+
+	public void CombineAlpha(RenderTarget2D RenderTarget, Texture2D TextureColor, byte[] AlphaChannel, float Step)
+	{
+		int Width = TextureColor.Width, Height = TextureColor.Height;
+		var WidthHeight = Width * Height;
+
+		int Offset = (int)(((Step * 2) - 1) * 255);
+		for (int n = 0; n < 256; n++)
+		{
+			var Alpha = n;
+			Alpha += Offset;
+			if (Alpha < 0) Alpha = 0;
+			if (Alpha > 255) Alpha = 255;
+			Lookup[n] = (byte)Alpha;
+		}
+		if (LastTextureColor != TextureColor)
+		{
+			TextureColor.GetData(0, new Rectangle(0, 0, Width, Height), ColorPixels, 0, WidthHeight);
+			LastTextureColor = TextureColor;
+		}
+		for (int n = 0; n < WidthHeight; n++)
+		{
+			ColorPixels[n].A = Lookup[AlphaChannel[n]];
+		}
+		RenderTarget.SetData(0, new Rectangle(0, 0, Width, Height), ColorPixels, 0, WidthHeight);
+	}
+}

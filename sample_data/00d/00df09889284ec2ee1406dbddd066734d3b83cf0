@@ -1,0 +1,20 @@
+$TotalSize = 0
+$ExpandTotal = 0 # Total requisite space for fully expanded drives
+$CurExpand = 0 # Current space usage by expandable VHDs
+$Vhdx = Get-ChildItem -path "D:\Hyper-V\VHD" -recurse -include *.vhdx
+ForEach ($vhd in $Vhdx){
+    $vhdStats = Get-VHD $vhd
+    $TotalSize += $vhdStats.Size
+    if ($vhdStats.VhdType -eq "Dynamic"){
+        write-host hi
+        $curExpand += $vhdStats.FileSize
+        $ExpandTotal += $vhdStats.Size
+    }
+}
+$TotalSize /= (1024*1024*1024) # convert bytes to GB
+$ExpandTotal /= (1024*1024*1024)
+$CurExpand /= (1024*1024*1024)
+Write-Host "Total space requirement: $TotalSize"
+Write-Host "Total space requirement for dynamic drives: $ExpandTotal"
+Write-Host "Current space usage for dynamic drives: $CurExpand"
+Write-Host "Expected free space required: $($ExpandTotal-$CurExpand)"

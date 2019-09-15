@@ -1,0 +1,157 @@
+#pragma GCC optimize("Ofast")
+#pragma GCC optimize("no-stack-protector")
+#pragma GCC optimize("unroll-loops")
+#pragma GCC target("sse,sse2,sse3,ssse3,popcnt,abm,mmx,tune=native")
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<vector>
+#include<set>
+#include<unordered_set>
+#include <stdio.h>
+#include<iterator>
+using namespace std;
+vector<int> makelist(vector<int>& eps) {
+	vector<int> ans;
+	for (int i = 0; i < eps.size(); i++) {
+		if (eps[i]) ans.push_back(i);
+	}
+	return ans;
+}
+
+vector<int> epsilon(vector<vector<int>>& eps, int x, int n, vector<vector<int>>& epsnew) {
+	vector<int> mainset(n);
+	vector<int> last(n);
+	mainset[x] = 1;
+	last[x] = 1;
+	while (1) {
+		vector<int> newlast(n);
+		for (int j = 0; j < n; j++) {
+			if (last[j]) {
+				for (int k = 0; k < eps[j].size(); k++) {
+					newlast[eps[j][k]] = 1;
+				}
+			}
+		}
+		int sum = 0;
+		for (int i = 0; i < n; i++) {
+			if (newlast[i] == 1 && mainset[i] == 1) {
+				last[i] = 0;
+			}
+			else {
+				last[i] = newlast[i];
+				if (newlast[i]) sum = 1;
+			}
+		}
+		
+		if (!sum) return makelist(mainset);
+		for (int i = 0; i < n; i++) {
+			if (last[i]) {
+				mainset[i] = 1;
+				if (i < x) {
+					for (int k = 0; k < epsnew[i].size(); k++) {
+						mainset[epsnew[i][k]] = 1;
+						last[epsnew[i][k]] = 0;
+					}
+					last[i] = 0;
+				}
+			}
+		}
+	}
+}
+
+int main() {
+#pragma warning(disable: 4996) 
+#ifdef _DEBUG 
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+	int n;
+	scanf("%d", &n);
+	vector<int> term(n, 0);
+	vector<vector<int>> eps0(n);
+	vector<vector<int>> eps(n);
+	vector<set<int>> v0(26);
+	vector<vector<set<int>>> tab(n, v0);
+	for (int i = 0; i < n; ++i) {
+		int s, e;
+		scanf("%d%d", &s, &e);
+		term[i] = s;
+		for (int j = 0; j < e; ++j) {
+			int sost;
+			scanf("%d", &sost);
+			eps0[i].push_back(sost);
+		}
+		int t;
+		scanf("%d", &t);
+		for (int j = 0; j < t; ++j) {
+			char c;
+			int state, let;
+			scanf("\n%c", &c);
+			//			cin >> c;
+			scanf("%d", &state);
+			let = int(c) - 'a';
+			tab[i][let].insert(state);
+		}
+	}
+	for (int i = 0; i < n; ++i) {
+		eps[i] = epsilon(eps0, i, n, eps);
+	}
+	int m;
+	scanf("%d", &m);
+	int firstres = term[0];
+	for (int i = 0; i < eps[0].size(); i++) {
+		if (firstres) break;
+		firstres += term[eps[0][i]];
+	}
+	if (firstres) {
+		cout << 1 << '\n';
+	}
+	else {
+		cout << 0 << '\n';
+	}
+	for (int j = 0; j < m; ++j) {
+		int res = 1;
+		string word;
+		cin >> word;
+		vector<int> states(n, 0);
+		states[0] = 1;
+		for (int k = 0; k < eps[0].size(); k++) {
+			states[eps[0][k]] = 1;
+		}
+		for (auto c : word) {
+			int x = int(c) - 'a';
+			vector<int> newstates(n);
+			bool size = 0;
+			for (int state = 0; state < n; state++) {
+				if (states[state]) {
+					for (int k : tab[state][x]) {
+						size = 1;
+						newstates[k] = 1;
+					}
+				}
+			}
+			if (!size) {
+				res = 0;
+				break;
+			}
+			states = newstates;
+			for (int state = 0; state < n; state++) {
+				if (states[state]) {
+					for (int k = 0; k < eps[state].size(); k++) {
+						states[eps[state][k]] = 1;
+					}
+				}
+			}
+		}
+		int sum = 0;
+		for (int state = 0; state < n; state++) {
+			if (states[state]) {
+				sum += term[state];
+			}
+			if (sum) break;
+		}
+		if (!sum) res = 0;
+		printf("%d\n", int(res));
+	}
+}

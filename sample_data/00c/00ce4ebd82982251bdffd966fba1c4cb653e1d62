@@ -1,0 +1,9 @@
+<form name="linkform" id="linkform" method="post" onsubmit="location.href='<?php echo get_site_url(); ?>/' + document.getElementById('sitename').value; return false;">
+    <p>
+        <label for="sitename">Site Name:</label>
+        <br /><input type="text" name="sitename" id="sitename" value="" size="50" />
+    </p>
+    <p class="submit">
+        <input id="submit" type="submit" name="Submit" class="submit" value="Go" />
+    </p>
+</form>

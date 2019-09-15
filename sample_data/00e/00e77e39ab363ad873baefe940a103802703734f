@@ -1,0 +1,81 @@
+[19:59:22 ERROR]: #!#!
+[19:59:22 ERROR]: #!#! [Skript] Severe Error:
+[19:59:22 ERROR]: #!#!
+[19:59:22 ERROR]: #!#! Something went horribly wrong with Skript.
+[19:59:22 ERROR]: #!#! This issue is NOT your fault! You probably can't fix it yourself, either.
+[19:59:22 ERROR]: #!#! It looks like you are using some plugin(s) that alter how Skript works (addons).
+[19:59:22 ERROR]: #!#! Here is full list of them:
+[19:59:22 ERROR]: #!#! skRayFall (https://sk.rayfall.net/) TuSKe (github.com/Tuke-Nuke/TuSKe) skript-yaml Skellett (https://forums.skunity.com/resources/skellett-the-addon-with-a-beast-name.24/)
+[19:59:22 ERROR]: #!#! We could not identify which of those are specially related, so this might also be Skript issue.
+[19:59:22 ERROR]: #!#! You should try disabling those plugins one by one, trying to find which one causes it.
+[19:59:22 ERROR]: #!#! If the error doesn't disappear even after disabling all listed plugins, it is probably Skript issue.
+[19:59:22 ERROR]: #!#! In that case, you will be given instruction on how should you report it.
+[19:59:22 ERROR]: #!#! On the other hand, if the error disappears when disabling some plugin, report it to author of that plugin.
+[19:59:22 ERROR]: #!#! Only if the author tells you to do so, report it to Skript's issue tracker.
+[19:59:22 ERROR]: #!#!
+[19:59:22 ERROR]: #!#! Stack trace:
+[19:59:22 ERROR]: #!#! java.lang.ClassCastException: java.util.HashMap cannot be cast to java.util.WeakHashMap
+[19:59:22 ERROR]: #!#!     at com.github.tukenuke.tuske.util.VariableUtil.<init>(VariableUtil.java:24)
+[19:59:22 ERROR]: #!#!     at com.github.tukenuke.tuske.util.VariableUtil.getInstance(VariableUtil.java:17)
+[19:59:22 ERROR]: #!#!     at com.github.tukenuke.tuske.sections.gui.EffMakeGUI.execute(EffMakeGUI.java:77)
+[19:59:22 ERROR]: #!#!     at com.github.tukenuke.tuske.util.EffectSection.check(EffectSection.java:54)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.Condition.run(Condition.java:56)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.Conditional.walk(Conditional.java:51)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:89)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.Trigger.execute(Trigger.java:57)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.function.ScriptFunction.execute(ScriptFunction.java:93)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.function.Function.execute(Function.java:119)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.function.FunctionReference.execute(FunctionReference.java:204)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.function.EffFunctionCall.execute(EffFunctionCall.java:53)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.Effect.run(Effect.java:52)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:61)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.TriggerItem.walk(TriggerItem.java:89)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.lang.Trigger.execute(Trigger.java:57)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.command.ScriptCommand.execute2(ScriptCommand.java:286)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.command.ScriptCommand.execute(ScriptCommand.java:243)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.command.Commands.handleCommand(Commands.java:254)
+[19:59:22 ERROR]: #!#!     at ch.njol.skript.command.Commands$1.onPlayerCommand(Commands.java:169)
+[19:59:22 ERROR]: #!#!     at sun.reflect.GeneratedMethodAccessor58.invoke(Unknown Source)
+[19:59:22 ERROR]: #!#!     at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[19:59:22 ERROR]: #!#!     at java.lang.reflect.Method.invoke(Unknown Source)
+[19:59:22 ERROR]: #!#!     at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:305)
+[19:59:22 ERROR]: #!#!     at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+[19:59:22 ERROR]: #!#!     at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:500)
+[19:59:22 ERROR]: #!#!     at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:485)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.PlayerConnection.handleCommand(PlayerConnection.java:1628)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.PlayerConnection.a(PlayerConnection.java:1476)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.PacketPlayInChat.a(PacketPlayInChat.java:45)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.PacketPlayInChat.a(PacketPlayInChat.java:1)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.PlayerConnectionUtils.a(SourceFile:10)
+[19:59:22 ERROR]: #!#!     at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+[19:59:22 ERROR]: #!#!     at java.util.concurrent.FutureTask.run(Unknown Source)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.SystemUtils.a(SourceFile:199)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.MinecraftServer.b(MinecraftServer.java:896)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.DedicatedServer.b(DedicatedServer.java:417)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.MinecraftServer.a(MinecraftServer.java:831)
+[19:59:22 ERROR]: #!#!     at net.minecraft.server.v1_13_R2.MinecraftServer.run(MinecraftServer.java:729)
+[19:59:22 ERROR]: #!#!     at java.lang.Thread.run(Unknown Source)
+[19:59:22 ERROR]: #!#!
+[19:59:22 ERROR]: #!#! Version Information:
+[19:59:22 ERROR]: #!#!   Skript: 2.3.1 (latest)
+[19:59:22 ERROR]: #!#!     Flavor: skriptlang-github
+[19:59:22 ERROR]: #!#!     Date: 2019-01-05
+[19:59:22 ERROR]: #!#!   Bukkit: 1.13.2-R0.1-SNAPSHOT
+[19:59:22 ERROR]: #!#!   Minecraft: 1.13.2
+[19:59:22 ERROR]: #!#!   Java: 1.8.0_171 (Java HotSpot(TM) 64-Bit Server VM 25.171-b11)
+[19:59:22 ERROR]: #!#!   OS: Windows 10 amd64 10.0
+[19:59:22 ERROR]: #!#!
+[19:59:22 ERROR]: #!#! Server platform: Spigot
+[19:59:22 ERROR]: #!#!
+[19:59:22 ERROR]: #!#! Current node: null
+[19:59:22 ERROR]: #!#! Current item: make next gui slot of gui with ([[itemtype:diamond]] named "º4Test" >> ch.njol.skript.classes.data.DefaultConverters$13@13742416: ch.njol.skript.aliases.ItemType->org.bukkit.inventory.ItemStack)
+[19:59:22 ERROR]: #!#! Current trigger: function testFunction (simple event) (Test.sk, line -1)
+[19:59:22 ERROR]: #!#!
+[19:59:22 ERROR]: #!#! Thread: Server thread
+[19:59:22 ERROR]: #!#!
+[19:59:22 ERROR]: #!#! Language: english
+[19:59:22 ERROR]: #!#! Link parse mode: DISABLED
+[19:59:22 ERROR]: #!#!
+[19:59:22 ERROR]: #!#! End of Error.
+[19:59:22 ERROR]: #!#!
+>

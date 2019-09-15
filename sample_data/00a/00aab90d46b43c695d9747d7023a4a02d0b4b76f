@@ -1,0 +1,34 @@
+use Red;
+model Person is rw {
+   has UInt     $.id      is id;
+   has Str      $.name    is column{ :unique, :!nullable };
+   has Str      $.email   is column{ :unique, :!nullable };
+   has UInt     $!pair-id is referencing{ ::?CLASS.^alias.id };
+   has ::?CLASS $.pair    is relationship{ .pair-id };
+
+   method draw(::?CLASS:U:) {
+      my @pairs = self.^all.pick(*);
+      for self.^all.pick: * {
+         my $pair = @pairs.shift;
+         if $pair.id == .id {
+            @pairs.push: $pair;
+            $pair = @pairs.shift
+         }
+         .pair = $pair;
+         .^save
+      }
+   }
+}
+
+my $*RED-DB = database "SQLite";
+
+Person.^create-table;
+
+Person.^create: :name<Fernando>, :email<fco@aco.com>;
+Person.^create: :name<Aline>,    :email<aja@aco.com>;
+Person.^create: :name<Fernanda>, :email<faco@aco.com>;
+Person.^create: :name<Sophia>,   :email<saco@aco.com>;
+
+Person.draw;
+
+say "{ .name } -> { .pair.name }" for Person.^all

@@ -1,0 +1,11 @@
+target thumb C++: libvideoeditorplayer <= frameworks/av/libvideoeditor/lvpp/I420ColorConverter.cpp
+target thumb C++: libvideoeditorplayer <= frameworks/av/libvideoeditor/lvpp/PreviewRenderer.cpp
+target thumb C++: libvideoeditorplayer <= frameworks/av/libvideoeditor/lvpp/VideoEditorBGAudioProcessing.cpp
+frameworks/av/libvideoeditor/lvpp/I420ColorConverter.cpp: In constructor 'I420ColorConverter::I420ColorConverter()':
+frameworks/av/libvideoeditor/lvpp/I420ColorConverter.cpp:45:11: error: 'class I420ColorConverter' has no member named 'openColorConverterLib'
+frameworks/av/libvideoeditor/lvpp/I420ColorConverter.cpp: In destructor 'I420ColorConverter::~I420ColorConverter()':
+frameworks/av/libvideoeditor/lvpp/I420ColorConverter.cpp:57:11: error: 'class I420ColorConverter' has no member named 'closeColorConverterLib'
+realmake: *** [out/target/product/primou/obj/SHARED_LIBRARIES/libvideoeditorplayer_intermediates/I420ColorConverter.o] Error 1
+realmake: *** Waiting for unfinished jobs....
+target thumb C++: libvideoeditorplayer <= frameworks/av/libvideoeditor/lvpp/DummyVideoSource.cpp
+frameworks/av/libvideoeditor/vss/stagefrightshells/src/VideoEditorVideoDecoder.cpp: In function 'M4OSA_ERR queryVideoDecoderCapabilities(M4DECODER_VideoDecoders**)':

@@ -1,0 +1,84 @@
+# To subscribe to the RCS mailing list: mail majordomo@chaotix.net and in
+# BODY of message, type subscribe rcs-list
+#
+# Feel free to Email me any suggestions/bug reports/etc.
+#
+# You are free to use this TCL/script as long as:
+# 1) You don't remove or change author credit
+# 2) You don't release it in modified form. (Only the original)
+#
+# If you have a "too cool" modification, send it to me and it'll be
+# included in the official release. (With your credit)
+#
+# Commands Added:
+# Where F CMD F CMD F CMD F CMD
+# ------- - --------- - ----------- - ---------- - --------- - -------
+# Public: - N/A
+# MSG: - N/A
+# DCC: - N/A
+#
+# Public Matching: N/A
+#
+
+
+set autolimit(ver) "v1.02.01"
+
+# Ésta es una lista de canales que usted quiere tener un automóvil-límite adelante. soporta canales multiples
+# separados por espacios.
+set autolimit(chans) "#Chateadores"
+
+# Éste es el número bajo para agregar a la cuenta del cauce total para el nuevo límite ejemplo
+# si es 90 usuarios en linea le aumentara +7 es igual a +97 que tendra como limite
+set autolimit(base) 15
+
+# Ésta es la diferencia entre el límite actual y cuenta del usuario antes
+# a new limit is set.
+set autolimit(diff) 5
+
+# Éste es el cronómetro de activacion del autolimite, de su rebision sera en minutos, entre los chequeos. por defecto es 1
+set autolimit(timer) 0
+
+proc check_autolimit {} {
+global autolimit
+foreach c [string tolower [channels]] {
+autolimit $c
+}
+timer $autolimit(timer) check_autolimit
+}
+
+proc autolimit {chan} {
+global autolimit
+
+set dochan 999
+foreach c [string tolower $autolimit(chans)] {
+if {$c == $chan} {set dochan 1}
+}
+if {$dochan != 1} {return 0}
+if {![botonchan $chan]} {return 0}
+set modes [string tolower [getchanmode $chan]]
+set modev [lindex $modes 0]
+
+set count 0
+set num 0
+set limit 0
+
+while {$count < [string length $modev]} {
+set ch [string index $modev $count]
+if {$ch == "k"} {incr num}
+if {$ch == "l"} {incr num
+set limit [lindex $modes $num]
+}
+incr count
+}
+set usercount [llength [chanlist $chan]]
+if {$limit > $usercount} {set ldiff [expr $limit - $usercount]
+} else {set ldiff [expr $usercount - $limit]}
+
+if {$limit == [expr $usercount + $autolimit(base)]} {return 0}
+
+if {$ldiff > $autolimit(diff)} {putserv "MODE $chan +l [expr $usercount + $autolimit(base)]"}
+}
+
+timer $autolimit(timer) check_autolimit
+putlog "AutoLimit $autolimit(ver) by David Proper (DrN) -: LoadeD :-"
+return "AutoLimit $autolimit(ver) by David Proper (DrN) -: LoadeD :-"

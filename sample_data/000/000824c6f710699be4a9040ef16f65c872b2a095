@@ -1,0 +1,28 @@
+
+
+--- tabela asocjacyjna
+tab = {owner = plr, seat2 = false, seat3 = false, seat4 = false} 
+--- tabela wskazująca kolejność tabeli asocjacyjnej (wskaznik)
+poi = {"owner","seat2","seat3","seat4"}
+
+
+-- własna funkcja dla for'each
+function ppairs(t,b)
+	local i=0 -- licznik indexu dla wskaznika
+	local function inter(t) -- funkcja przekazywania argumentów do [ k , v ]
+		i = i + 1
+		local v = t[i] -- wyciąganie wskaznika z tabeli poi
+		if v ~= nil then
+			return v,b[v] -- poi[i] , tab[ poi[i] ]    i zwrot do argumentów  k,v dla for 
+		else
+			return nil -- koniec wyników
+		end
+	end
+	return inter, t -- zwrot funkcji inter z wywoływaniem dopuki nie zwróci "return nil"
+end
+
+for k,v in ppairs(poi,tab) do
+	-- k == owner , v == plr
+	-- k == seat2 , v == false
+	--- i dalsze obroty petli for...
+end

@@ -1,0 +1,20 @@
+      <?php if (isset($_SESSION['u_id'])) {
+        print '<span class="navbar-text navbar-right">Welcome, ' . $_SESSION["u_first"] . '</span>';
+      } ?>  </div>
+      <ol class="nav navbar-nav navbar-right"></nav>
+        <li class="nav-item">
+          <a href="./settings.php"><span class="nav-link fas fa-wrench"></span> Settings</a>
+        </li>
+        <li class="nav-item">
+          <a href="./logout.php"><span class="nav-link fas fa-sign-out-alt"></span> Sign Out</a>
+        </li>
+        <?php  else: ?>
+            <ol class="nav navbar-nav navbar-right">
+                <li class="nav-item">
+                    <a href="./register.php"><span class="nav-link fas fa-user-plus"></span> Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a href="./login.php"><span class="nav-link fas fa-sign-in-alt"></span> Login</a>
+                </li>
+
+        <?php endif; ?>

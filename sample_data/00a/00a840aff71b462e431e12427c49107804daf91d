@@ -1,0 +1,27 @@
+class RangeGenerator {
+
+  constructor({
+    start = 0,
+    end = 1000,
+    step = 1
+  }) {
+    this.start = start;
+    this.end = end;
+    this.step = step;
+  }
+
+  *[Symbol.iterator]() {
+    let start = this.start;
+    while (start <= this.end) {
+      yield start;
+      start += this.step;
+    }
+  }
+}
+
+const range = new RangeGenerator({
+  start: 0,
+  end: 20,
+  step: 5
+});
+console.log(...range); // 0 5 10 15 20

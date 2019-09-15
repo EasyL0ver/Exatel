@@ -1,0 +1,6 @@
+Correct way of implemeting login in ASP.NET page
+_con = new SqlConnection(@"Data Source=myServerAddress;Initial Catalog=myDataBase;Integrated Security=True");
+_con.Open();
+	
+_con = new SqlConnection(@"Data Source=myServerAddress;Initial Catalog=myDataBase;User Id=myUsername;Password=myPassword;");
+_con.Open();

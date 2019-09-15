@@ -1,0 +1,15 @@
+sudo service apache2 start
+sudo service mysql start
+sublime
+	
+nano .bash_aliases
+	
+alias start-working='sudo service apache2 start; sudo service mysql start; sublime'
+	
+. ~/.bashrc
+	
+alias
+	
+start-working
+	
+alias hi='echo "Hey, how are you today?"'

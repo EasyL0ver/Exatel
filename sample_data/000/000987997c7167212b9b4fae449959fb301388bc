@@ -1,0 +1,45 @@
+##Sprite.h
+class Player : public Sprite
+{
+    private:
+        static int VELOCITY;
+        bool m_jumping;
+        int m_jumpvel;
+        int m_groundy;
+
+    public:
+        Player(sf::RenderWindow &window);
+        ~Player();
+        void update(const float dt);
+};
+
+#endif
+
+##Sprite.cpp
+Sprite::Sprite(sf::RenderWindow &window, std::string imageName, int x,int y): m_window(window)
+{
+    m_spriteTex.LoadFromFile(imageName);
+    m_sprite.SetTexture(m_spriteTex);
+    m_sprite.FlipY(true);
+    m_sprite.SetPosition(x,y);
+}
+
+void Sprite::drawz()
+{
+    m_window.Draw(m_sprite);
+}
+
+sf::Sprite Sprite::getSprite()
+{
+    return m_sprite;
+}
+
+Sprite::~Sprite(){}
+
+##main.cpp
+const int arrSize = 3;
+std::vector<Sprite> myGrasses;
+for( int i=0; i<arrSize; i++)
+{
+    myGrasses.push_back(Sprite(window, "datas/grass.png",12,20));
+}

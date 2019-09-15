@@ -1,0 +1,182 @@
+{
+  "workbench.colorTheme": "Cobalt2",
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.tabCompletion": true,
+  "emmet.triggerExpansionOnTab": false,
+  "editor.fontFamily": "OperatorMono-Book",
+  "editor.lineHeight": 25,
+  "editor.fontLigatures": true,
+  "eslint.autoFixOnSave": true,
+  "editor.letterSpacing": 0.5,
+  "files.trimTrailingWhitespace": true,
+  "editor.fontWeight": "400",
+  "prettier.singleQuote": true,
+  "html.format.wrapAttributes": "force",
+  "prettier.trailingComma": "none",
+  "vetur.format.defaultFormatterOptions": {
+    "js-beautify-html": {
+      "wrap_attributes": "auto"
+    }
+  },
+  "editor.renderWhitespace": "all",
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  // Run the linter on save (onSave) or on type (onType)
+  "eslint.run": "onSave",
+  "[vue]": {},
+  "prettier.disableLanguages": [
+    "vue"
+  ],
+  "editor.formatOnType": true,
+  "vetur.format.defaultFormatter.js": "prettier",
+  "editor.formatOnSave": true,
+  "prettier.semi": false,
+  "typescript.format.insertSpaceBeforeFunctionParenthesis": true,
+  // Defines space handling before function argument parentheses. Requires TypeScript >= 2.1.5.
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
+  "prettier.arrowParens": "avoid",
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": true,
+  "prettier.bracketSpacing": true,
+  "files.autoSave": "off",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [ {
+        "name": "Comment",
+        "scope": [
+          "comment",
+          "punctuation.definition.comment"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+        }
+      },
+
+      {
+        "name": "Keyword, Storage",
+        "scope": [
+          "Keyword",
+          "Storage"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+
+      {
+        "name": "Keyword Control",
+        "scope": [
+          "keyword.control"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+
+      {
+        "scope": "entity.other.attribute-name",
+        "settings": {
+          "fontStyle": "italic",
+        }
+      },
+
+
+      {
+        "name": "entity.name.method.js",
+        "scope": [
+          "entity.name.method.js"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+        }
+      },
+
+
+      {
+        "name": "Language methods",
+        "scope": [
+          "variable.language"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+        }
+      },
+
+
+      {
+        "name": "HTML Attributes",
+        "scope": [
+          "text.html.basic entity.other.attribute-name.html",
+          "text.html.basic entity.other.attribute-name"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+          //"foreground": "#FFCB6B"
+        }
+      },
+
+
+      {
+        "name": "Decorators",
+        "scope": [
+          "tag.decorator.js entity.name.tag.js",
+          "tag.decorator.js punctuation.definition.tag.js"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+          //"foreground": "#82AAFF"
+        }
+      },
+
+
+      {
+        "name": "ES7 Bind Operator",
+        "scope": [
+          "source.js constant.other.object.key.js string.unquoted.label.js"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+          //"foreground": "#FF5370"
+        }
+      },
+
+      {
+        "name": "Markup - Italic",
+        "scope": [
+          "markup.italic"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+          //"foreground": "#f07178"
+        }
+      },
+
+
+      {
+        "name": "Markup - Bold-Italic",
+        "scope": [
+          "markup.bold markup.italic",
+          "markup.italic markup.bold",
+          "markup.quote markup.bold",
+          "markup.bold markup.italic string",
+          "markup.italic markup.bold string",
+          "markup.quote markup.bold string"
+        ],
+        "settings": {
+          "fontStyle": "bold",
+          //"foreground": "#f07178"
+        }
+      },
+
+      {
+        "name": "Markup - Quote",
+        "scope": [
+          "markup.quote"
+        ],
+        "settings": {
+          "fontStyle": "italic",
+          //"foreground": ""
+        }
+      }
+    ]
+  },
+}

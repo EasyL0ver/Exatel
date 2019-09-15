@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="example1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <h3>Check your console to see the output, press F12 and go to the console tab.</h3>
+  
+  You can also view and edit the code if you press the top right button.
+<script id="jsbin-javascript">
+// Note: ES6 code, works in modern browsers
+
+const makeAjaxRequest = () => { /* production code */ };
+
+// say we have a User class somewhere
+class User {
+  trackAction(action, category) {
+    makeAjaxRequest({ action, category, isLoggedIn: this.loggedIn });  
+  }
+}
+
+const loggedInUser = new User();
+
+// elsewhere in the code..
+loggedInUser.fullName = 'Bob Jenkins';
+loggedInUser.id = 184643;
+loggedInUser.trackAction('add-product', 'shoes');
+
+const originalFn = loggedInUser.trackAction;
+
+// print the arguments of the function to the console
+// yet still call original function with right context and arguments
+loggedInUser.trackAction = function() {
+  // convert function arguments to array
+  const args = Array.prototype.slice.call(arguments);
+  
+  console.log('trackAction called for %s with the following arguments: %s.', this.fullName, args.join(', '));
+  
+  // being a good citizen means returning the result of the original function
+  // and making sure it is executed with the correct context and arguments
+  return originalFn.apply(this, args);
+};
+
+loggedInUser.trackAction('add-product', 'shoes');
+// trackAction called for Bob Jenkins with the following arguments: add-product, shoes.
+</script>
+
+
+
+<script id="jsbin-source-javascript" type="text/javascript">// Note: ES6 code, works in modern browsers
+
+const makeAjaxRequest = () => { /* production code */ };
+
+// say we have a User class somewhere
+class User {
+  trackAction(action, category) {
+    makeAjaxRequest({ action, category, isLoggedIn: this.loggedIn });  
+  }
+}
+
+const loggedInUser = new User();
+
+// elsewhere in the code..
+loggedInUser.fullName = 'Bob Jenkins';
+loggedInUser.id = 184643;
+loggedInUser.trackAction('add-product', 'shoes');
+
+const originalFn = loggedInUser.trackAction;
+
+// print the arguments of the function to the console
+// yet still call original function with right context and arguments
+loggedInUser.trackAction = function() {
+  // convert function arguments to array
+  const args = Array.prototype.slice.call(arguments);
+  
+  console.log('trackAction called for %s with the following arguments: %s.', this.fullName, args.join(', '));
+  
+  // being a good citizen means returning the result of the original function
+  // and making sure it is executed with the correct context and arguments
+  return originalFn.apply(this, args);
+};
+
+loggedInUser.trackAction('add-product', 'shoes');
+// trackAction called for Bob Jenkins with the following arguments: add-product, shoes.</script></body>
+</html>

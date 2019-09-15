@@ -1,0 +1,98 @@
+Log uploaded on Tuesday, January 01, 2019, 8:05:33 PM
+Loaded mods:
+Core: (no assemblies)
+
+Active Harmony patches:
+<MakeNewToils>c__Iterator0.<>m__4: PRE: Fluffy_BirdsAndBees.JobDriver_Lovin_MakeNewToils_FinishAction.Prefix
+Command.GizmoOnGUI: post: AllowTool.Patches.Command_GizmoOnGUI_Patch.InterceptInteraction TRANS: AllowTool.Patches.Command_GizmoOnGUI_Patch.DrawRightClickIcon
+DebugWindowsOpener.DevToolStarterOnGUI: TRANS: HugsLib.Patches.DevToolStarterOnGUI_Patch.ExtendButtonsWindow
+DebugWindowsOpener.DrawButtons: TRANS: HugsLib.Patches.DebugWindowsOpener_Patch.DrawAdditionalButtons
+DefGenerator.GenerateImpliedDefs_PreResolve: post: Fluffy.DefGenerator_GenerateImpliedDefs_PreResolve.Postfix, WorkTab.DefGenerator_GenerateImpliedDefs_PreResolve.Postfix, Fluffy_BirdsAndBees.GenerateImpliedDefs_PreResolve.Postfix
+DefOfHelper.RebindAllDefOfs: post: AllowTool.Patches.DefOfHelper_RebindAll_Patch.HookBeforeImpliedDefsGeneration
+Designator_PlantsCut.IconReverseDesignating: PRE: AllowTool.Patches.DesignatorCut_ReverseIcon_Patch.NeverChangeIcon
+Designator_PlantsCut.LabelCapReverseDesignating: PRE: AllowTool.Patches.DesignatorCut_ReverseLabel_Patch.NeverChangeLabel
+Dialog_Options.DoWindowContents: TRANS: HugsLib.Patches.Dialog_Options_Patch.ReplaceModOptionsButton
+EditWindow_Log.DoMessagesListing: PRE: HugsLib.Patches.EditWindow_Log_Patch.ExtraLogWindowButtons
+Game.DeinitAndRemoveMap: post: HugsLib.Patches.Game_DeinitAndRemoveMap_Patch.MapRemovalHook
+Game.FillComponents: PRE: HugsLib.Patches.Game_FillComponents_Patch.GameInitializationHook
+Game.FinalizeInit: post: HugsLib.Patches.Game_FinalizeInit_Patch.WorldLoadedHook
+HediffGiver.TryApply: PRE: Fluffy_BirdsAndBees.HediffGiver_TryApply.Prefix
+InspectGizmoGrid.DrawInspectGizmoGridFor: TRANS: AllowTool.Patches.InspectGizmoGrid_DrawInspectGizmoGridFor_Patch.RegisterReverseDesignatorCommandPair
+JobDriver_Wait.CheckForAutoAttack: post: AllowTool.Patches.JobDriverWait_CheckForAutoAttack_Patch.DoPartyHunting
+JobGiver_DoLovin.TryGiveJob: PRE: Fluffy_BirdsAndBees.JobGiver_DoLovin_TryGiveJob.Prefix post: Fluffy_BirdsAndBees.JobGiver_DoLovin_TryGiveJob.Postfix
+JobGiver_Mate.TryGiveJob: PRE: Fluffy_BirdsAndBees.JobGiver_Mate_TryGiveJob.Prefix
+LanguageDatabase.SelectLanguage: PRE: HugsLib.Patches.LanguageDatabase_Patch.ForceRestartAfterLangChange
+Map.ConstructComponents: post: HugsLib.Patches.Map_ConstructComponents_Patch.MapComponentsInitHook
+Map.FinalizeInit: post: HugsLib.Patches.Map_FinalizeInit_Patch.MapLoadedHook
+MapComponentUtility.MapGenerated: post: HugsLib.Patches.MapComponentUtility_MapGenerated_Patch.MapGeneratedHook
+ModsConfig.RestartFromChangedMods: PRE: HugsLib.Patches.ModsConfig_RestartFromChangedMods_Patch.QuickRestartInDevMode
+PathFinder.GetBuildingCost: PRE: FluffyManager.PathFinder_GetBuildingCost.Prefix
+Pawn.GetGizmos: post: AllowTool.Patches.Pawn_GetGizmos_Patch.InsertPartyHuntGizmo
+PawnTable.PawnTableOnGUI: PRE: WorkTab.PawnTable_PawnTableOnGUI.Prefix
+PawnTable.RecacheIfDirty: PRE: WorkTab.PawnTable_RecacheIfDirty.Prefix post: WorkTab.PawnTable_RecacheIfDirty.Postfix
+PawnUtility.FertileMateTarget: PRE: Fluffy_BirdsAndBees.PawnUtility_FertileMateTarget.Prefix
+PawnUtility.Mated: PRE: Fluffy_BirdsAndBees.PawnUtility_Mated.Prefix
+Pawn_DraftController.set_Drafted: post: AllowTool.Patches.DraftController_Drafted_Patch.NotifyPawnUndrafted
+Pawn_WorkSettings.CacheWorkGiversInOrder: PRE: WorkTab.Pawn_WorkSettings_CacheWorkGiversInOrder.Prefix
+Pawn_WorkSettings.DisableAll: PRE: WorkTab.Pawn_WorkSettings_DisableAll.Prefix
+Pawn_WorkSettings.GetPriority: PRE: WorkTab.Pawn_WorkSettings_GetPriority.Prefix
+Pawn_WorkSettings.SetPriority: PRE: WorkTab.Pawn_WorkSettings_SetPriority.Prefix
+PlayDataLoader.DoPlayLoad: post: HugsLib.Patches.PlayDataLoader_Patch.InitModsHook
+ReverseDesignatorDatabase.InitDesignators: post: AllowTool.Patches.ReverseDesignatorDatabase_Init_Patch.InjectReverseDesignators
+Root.Update: post: HugsLib.Patches.Root_Patch.UpdateHook
+Root_Play.SetupForQuickTestPlay: TRANS: HugsLib.Patches.RootPlay_TestPlay_Patch.InjectCustomQuickstartSettings
+ThingWithComps.GetFloatMenuOptions: post: AllowTool.Patches.Thing_GetFloatMenuOptions_Patch.FinishOffWhenDrafted
+Toils_Haul.PlaceHauledThingInCell: post: AllowTool.Patches.ToilsHaul_PlaceInCell_Patch.ClearHaulUrgently
+UIRoot.UIRootOnGUI: post: HugsLib.Patches.UIRoot_Patch.OnGUIHook
+Harmony versions present: 1.2.0.1: UnlimitedHugs.HugsLib, HugsLib.AllowTool, fluffy.colonymanager, fluffy.medicaltab, fluffy.worktab, Fluffy.BirdsAndBees
+
+Platform information: (hidden, hold Shift while publishing to include)
+
+Log file contents:
+Initialize engine version: 5.6.5f1 (2cac56bf7bb6)
+GfxDevice: [Renderer information redacted]
+Begin MonoManager ReloadAssembly
+Loading [Rimworld_dir]/Contents/Resources/Data/Managed/UnityEngine.dll into Unity Child Domain
+Loading [Rimworld_dir]/Contents/Resources/Data/Managed/Assembly-CSharp-firstpass.dll into Unity Child Domain
+Loading [Rimworld_dir]/Contents/Resources/Data/Managed/Assembly-CSharp.dll into Unity Child Domain
+Loading [Rimworld_dir]/Contents/Resources/Data/Managed/UnityEngine.UI.dll into Unity Child Domain
+Loading [Rimworld_dir]/Contents/Resources/Data/Managed/UnityEngine.Networking.dll into Unity Child Domain
+Loading [Rimworld_dir]/Contents/Resources/Data/Managed/TextMeshPro-1.0.55.56.0b11.dll into Unity Child Domain
+Setting breakpad minidump AppID = 294100
+[Steam Id redacted]
+RimWorld 1.0.2096 rev474
+(Filename: /Users/builduser/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+The class AbilityUser.AbilityDef could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.VitaeAbilityDef could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Verb_UseAbility could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Verb_UseAbility could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Verb_UseAbility could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Verb_UseAbility could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Verb_UseAbility could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Projectile_AbilityBase could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Projectile_AbilityBase could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Projectile_AbilityBase could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class JecsTools.FloatMenuPatch could not be loaded, used in 0JecsTools, Version=1.0.8.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Verb_UseAbility could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Verb_UseAbility could not be loaded, used in AbilityUser, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class Vampire.Verb_UseAbilityPawnEffect could not be loaded, used in Vampire, Version=1.18.0.0, Culture=neutral, PublicKeyToken=null
+The class AbilityUser.Verb_UseAbility could not be loaded, used in AbilityUser,

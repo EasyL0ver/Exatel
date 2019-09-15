@@ -1,0 +1,165 @@
+#include <iostream>
+#include <stdio.h>
+#include <conio.h>
+using namespace System;
+using namespace std;
+#define max_c 60
+#define max_f 30
+#define arriba 72
+#define abajo 80
+#define derecha 77
+#define izquierda 75
+void Generar(int **tablero)
+{
+	for (int i = 0; i < max_f; i++)
+	{
+		for (int j = 0; j < max_c; j++)
+		{
+			if (i == 0 || i == max_f - 1 || j == 0 || j == max_c - 1)
+			{
+				tablero[i][j] = 1;
+			}
+			else
+			{
+				tablero[i][j] = 0;
+			}
+		}
+	}
+
+}
+void Mostrar(int **tablero)
+{
+	for (int i = 0; i < max_f; i++)
+	{
+		for (int j = 0; j < max_c; j++)
+		{
+			Console::SetCursorPosition(j, i);
+			if (tablero[i][j] == 1) {
+				Console::ForegroundColor = ConsoleColor::White; cout << char(219);
+			}
+			if (tablero[i][j] == 2) {
+				Console::ForegroundColor = ConsoleColor::Yellow; cout << char(219);
+			}
+			if (tablero[i][j] == 0) {
+				cout << ' ';
+			}
+
+		}
+	}
+}
+void Mover(int **tablero, int *fic_f, int *fic_c)
+{
+
+	if (tablero[*fic_f + 1][*fic_c] == 0 || tablero[*fic_f + 1][*fic_c] == 2)
+	{
+		for (int i = 4; 0 < i; i--)
+		{
+			tablero[*fic_f - i][*fic_c] = 0;
+		}
+		*fic_f = *fic_f + 1;
+		for (int i = 0; i < 4; i++)
+		{
+			tablero[*fic_f - i][*fic_c] = 2;
+		}
+	}
+	_sleep(400);
+}
+void Mover_Derecha(int **tablero, int *fic_f, int *fic_c)
+{
+	if (tablero[*fic_f][*fic_c + 1] == 0)
+	{
+		for (int i = 4; 0 <= i; i--)
+		{
+			tablero[*fic_f - i][*fic_c] = 0;
+		}
+		*fic_c = *fic_c + 1; 
+		for (int i = 0; i < 4; i++)
+		{
+			tablero[*fic_f - i][*fic_c] = 2;
+		}
+	}
+}
+void Mover_Izquierda(int **tablero, int *fic_f, int *fic_c)
+{
+	if (tablero[*fic_f][*fic_c - 1] == 0)
+	{
+		for (int i = 4; 0 <= i; i--)
+		{
+			tablero[*fic_f - i][*fic_c] = 0;
+		}
+		*fic_c = *fic_c - 1;
+		for (int i = 0; i < 4; i++)
+		{
+			tablero[*fic_f - i][*fic_c] = 2;
+		}
+	}
+}
+void Mover_Arriba(int **tablero, int *fic_f, int *fic_c)
+{
+	
+	for (int i = 4; 0 <= i; i--)
+	{
+		tablero[*fic_f - i][*fic_c] = 0;
+	}
+
+	for (int i = 0; i < 4; i++)
+	{
+		tablero[*fic_f ][*fic_c+i] = 2;
+	}
+	
+	
+	
+}
+void Mover_Abajo(int **tablero, int *fic_f, int *fic_c)
+{
+	if (tablero[*fic_f + 2][*fic_c] == 0 || tablero[*fic_f + 1][*fic_c] == 2)
+	{
+		for (int i = 4; 0 < i; i--)
+		{
+			tablero[*fic_f - i][*fic_c] = 0;
+		}
+		*fic_f = *fic_f + 1;
+		for (int i = 0; i < 4; i++)
+		{
+			tablero[*fic_f - i][*fic_c] = 2;
+		}
+	}
+}
+
+int main()
+{
+	Console::SetWindowSize(100, 50);
+	Console::CursorVisible = false;
+	int *fic_c = new int; *fic_c = 20;
+	int *fic_f = new int; *fic_f = 10;
+	int **tablero;
+	tablero = new int*[max_f];
+	for (int i = 0; i < max_f; i++) { tablero[i] = new int[max_c]; }
+	Generar(tablero);
+
+	
+
+
+	int tecla = 0;
+	while (true)
+	{
+		tecla = 0;
+		if (kbhit())
+		{
+
+			tecla = (int)getch();
+			if (tecla == 224) tecla = (int)getch();
+			if (tecla == arriba) { Mover_Arriba(tablero, fic_f, fic_c); }
+			if (tecla == derecha) { Mover_Derecha(tablero, fic_f, fic_c); }
+			if (tecla == izquierda) { Mover_Izquierda(tablero, fic_f, fic_c); }
+			if (tecla == abajo) { Mover_Abajo(tablero, fic_f, fic_c); }
+
+		}
+		else { Mover(tablero, fic_f, fic_c); }
+		Mostrar(tablero);
+
+	}
+
+	getchar();
+
+}

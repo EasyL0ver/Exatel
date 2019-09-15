@@ -1,0 +1,290 @@
+
+Skip to content
+
+    Pull requests
+    Issues
+    Marketplace
+    Explore
+
+    @Chatodun
+
+0
+0
+
+    0
+
+Chatodun/neobis-summer Private
+Code
+Issues 0
+Pull requests 0
+Projects 0
+Wiki
+Insights
+Settings
+neobis-summer/DJANGO/CRM-Food/CRM/apps/views.py
+192eca1 on 22 Aug 2018
+@Chatodun Chatodun Unit tests
+248 lines (170 sloc) 7.57 KB
+from rest_framework import generics, status
+from rest_framework.permissions import AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from CRM import settings
+from apps.models import User
+from .serializers import UserSerializer
+from rest_framework.generics import RetrieveUpdateAPIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework_jwt.settings import api_settings
+from django.contrib.auth.signals import user_logged_in
+
+
+class UserListView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UsersDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class CreateUsersAPIView(APIView):
+    # Allow any user (authenticated or not) to access this url
+    permission_classes = (AllowAny,)
+
+    def post(self, request):
+        users = request.data
+        serializer = UserSerializer(data=users)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({'TEST': 'TEST2'})
+
+
+from rest_framework.views import APIView
+from rest_framework.permissions import AllowAny
+from apps.models import (User, Department, Meal,
+                         Order, Bill, Status,
+                         Role)
+from apps.serializers import ( DepartmentSerializer, MealsSerializers,
+                              OrderSerializer, ChecksSerializer, StatusesSerializer,
+                              RolesSerializers, UserSerializer)
+
+
+class UserListView(generics.ListCreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UsersDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class CreateUsersAPIView(APIView):
+    # Allow any user (authenticated or not) to access this url
+    permission_classes = (AllowAny,)
+
+    def post(self, request):
+        users = request.data
+        serializer = UserSerializer(data=users)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+
+class DepartmentsListView(generics.ListCreateAPIView):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+
+
+class DepartmentsDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+
+
+class MealsListView(generics.ListCreateAPIView):
+    queryset = Meal.objects.all()
+    serializer_class = MealsSerializers
+
+
+class MealsDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Meal.objects.all()
+    serializer_class = MealsSerializers
+
+
+class OrdersListView(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+class OrdersDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+class ChecksListView(generics.ListCreateAPIView):
+    queryset = Bill.objects.all()
+    serializer_class = ChecksSerializer
+
+
+class ChecksDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Bill.objects.all()
+    serializer_class = ChecksSerializer
+
+
+class StatusesListView(generics.ListCreateAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusesSerializer
+
+
+class StatusesDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusesSerializer
+
+
+class RolesListView(generics.ListCreateAPIView):
+    queryset = Role.objects.all()
+    serializer_class = RolesSerializers
+
+
+class RolesCategoriesDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Role.objects.all()
+    serializer_class = RolesSerializers
+
+
+class DepartmentListView(generics.ListCreateAPIView):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+
+    def perform_create(self, serializer):
+        serializer.save()
+
+
+class DepartmentDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+
+
+class MealListView(generics.ListCreateAPIView):
+    queryset = Meal.objects.all()
+    serializer_class = MealsSerializers
+
+
+class MealDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Meal.objects.all()
+    serializer_class = MealsSerializers
+
+
+class OrderListView(generics.ListCreateAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+class OrderDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+class CheckListView(generics.ListCreateAPIView):
+    queryset = Bill.objects.all()
+    serializer_class = ChecksSerializer
+
+
+class CheckDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Bill.objects.all()
+    serializer_class = ChecksSerializer
+
+
+class StatusListView(generics.ListCreateAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusesSerializer
+
+
+class StatusDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Status.objects.all()
+    serializer_class = StatusesSerializer
+
+
+class RoleListView(generics.ListCreateAPIView):
+    queryset = Role.objects.all()
+    serializer_class = RolesSerializers
+
+
+class RoleCategoriesDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Role.objects.all()
+    serializer_class = RolesSerializers
+
+
+@api_view(['POST'])
+@permission_classes([AllowAny, ])
+def authenticate_user(request):
+    try:
+        email = request.data['email']
+        password = request.data['password']
+        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
+
+        user = User.objects.get(email=email, password=password)
+        if user:
+            try:
+                payload = jwt_payload_handler(user)
+                token = jwt_encode_handler(payload, settings.SECRET_KEY)
+                user_details = {}
+                user_details['name'] = "%s %s" % (
+                    user.first_name, user.last_name)
+                user_details['token'] = token
+                user_logged_in.send(sender=user.__class__,
+                                    request=request, user=user)
+                return Response(user_details, status=status.HTTP_200_OK)
+
+            except Exception as e:
+                raise e
+        else:
+            res = {
+                'error': 'can not authenticate with the given credentials or the account has been deactivated'}
+            return Response(res, status=status.HTTP_403_FORBIDDEN)
+    except KeyError:
+        res = {'error': 'please provide a email and a password'}
+        return Response(res)
+
+
+class UserRetrieveUpdateAPIView(RetrieveUpdateAPIView):
+    # Allow only authenticated users to access this url
+    permission_classes = (IsAuthenticated,)
+    serializer_class = UserSerializer
+
+    def get(self, request, *args, **kwargs):
+        # serializer to handle turning our `User` object into something that
+        # can be JSONified and sent to the client.
+        serializer = self.serializer_class(request.user)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def put(self, request, *args, **kwargs):
+        serializer_data = request.data.get('user', {})
+
+        serializer = UserSerializer(
+            request.user, data=serializer_data, partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    © 2019 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Help
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
+Press h to open a hovercard with more details.

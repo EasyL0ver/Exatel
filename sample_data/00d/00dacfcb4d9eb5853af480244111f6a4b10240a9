@@ -1,0 +1,165 @@
+id1                                 id2         
+    date        cf      type            date        cf        type  
+    2017-04-04  42961   INTEREST        2015-04-07  33953   INTEREST    
+    2017-07-04  43438   INTEREST        2016-04-04  203161  INTEREST    
+    2017-10-04  43915   INTEREST        2017-04-04  203161  INTEREST    
+    2018-01-04  43915   INTEREST        2018-04-04  203161  INTEREST    
+    2018-04-04  42961   INTEREST        2019-04-04  203161  INTEREST    
+    2018-07-04  43438   INTEREST        2020-04-06  203161  INTEREST    
+    2018-10-04  43915   INTEREST        2021-04-06  203161  INTEREST    
+    2019-01-04  43915   INTEREST        2022-04-04  203161  INTEREST    
+    2019-04-04  42961   INTEREST        2023-04-04  203161  INTEREST    
+    2019-07-04  43438   INTEREST        2023-04-04  5016330 FINAL_EX    
+    2019-10-04  43915   INTEREST                    
+    2020-01-07  43915   INTEREST                    
+    2020-04-06  43438   INTEREST                    
+    2020-07-06  43438   INTEREST                    
+    2020-10-05  43915   INTEREST                    
+    2021-01-04  43915   INTEREST                    
+    2021-04-06  42961   INTEREST                    
+    2021-07-05  43438   INTEREST                    
+    2021-10-04  43915   INTEREST                    
+    2021-10-04  2988563 FINAL_EX
+	
+id1                                 id2     
+    date        cf      type            date        cf      type
+    2017-04-04  5250    INTEREST        2015-04-07  30938   INTEREST
+    2017-07-04  5308    INTEREST        2016-04-04  30938   INTEREST
+    2017-10-04  5367    INTEREST        2017-04-04  30938   INTEREST
+    2018-01-04  5367    INTEREST        2018-04-04  30938   INTEREST
+    2018-04-04  5250    INTEREST        2019-04-04  30938   INTEREST
+    2018-07-04  5308    INTEREST        2020-04-06  30938   INTEREST
+    2018-10-04  5367    INTEREST        2021-04-06  30938   INTEREST
+    2019-01-04  5367    INTEREST        2022-04-04  30938   INTEREST
+    2019-04-04  5250    INTEREST        2023-04-04  30938   INTEREST
+    2019-07-04  5308    INTEREST        2023-04-04  540000  FINAL_EX
+    2019-10-04  5367    INTEREST                
+    2020-01-06  5367    INTEREST                
+    2020-04-06  5308    INTEREST                
+    2020-07-06  5308    INTEREST                
+    2020-10-05  5367    INTEREST                
+    2021-01-04  5367    INTEREST                
+    2021-04-06  5250    INTEREST                
+    2021-07-05  5308    INTEREST                
+    2021-10-04  5367    INTEREST                
+    2021-10-04  315000  FINAL_EX
+	
+swap_id leg date        cf      type
+    id1     pay 2017-04-04  5250    INTEREST
+    id1     pay 2017-07-04  5308    INTEREST
+    id1     pay 2017-10-04  5367    INTEREST
+    id1     pay 2018-01-04  5367    INTEREST
+    id1     pay 2018-04-04  5250    INTEREST
+    id1     pay 2018-07-04  5308    INTEREST
+    id1     pay 2018-10-04  5367    INTEREST
+    id1     pay 2019-01-04  5367    INTEREST
+    id1     pay 2019-04-04  5250    INTEREST
+    id1     pay 2019-07-04  5308    INTEREST
+    id1     pay 2019-10-04  5367    INTEREST
+    id1     pay 2020-01-06  5367    INTEREST
+    id1     pay 2020-04-06  5308    INTEREST
+    id1     pay 2020-07-06  5308    INTEREST
+    id1     pay 2020-10-05  5367    INTEREST
+    id1     pay 2021-01-04  5367    INTEREST
+    id1     pay 2021-04-06  5250    INTEREST
+    id1     pay 2021-07-05  5308    INTEREST
+    id1     pay 2021-10-04  5367    INTEREST
+    id1     pay 2021-10-04  315000  FINAL_EX
+    id1     rec 2017-04-04  42961   INTEREST
+    id1     rec 2017-07-04  43438   INTEREST
+    id1     rec 2017-10-04  43915   INTEREST
+    id1     rec 2018-01-04  43915   INTEREST
+    id1     rec 2018-04-04  42961   INTEREST
+    id1     rec 2018-07-04  43438   INTEREST
+    id1     rec 2018-10-04  43915   INTEREST
+    id1     rec 2019-01-04  43915   INTEREST
+    id1     rec 2019-04-04  42961   INTEREST
+    id1     rec 2019-07-04  43438   INTEREST
+    id1     rec 2019-10-04  43915   INTEREST
+    id1     rec 2020-01-07  43915   INTEREST
+    id1     rec 2020-04-06  43438   INTEREST
+    id1     rec 2020-07-06  43438   INTEREST
+    id1     rec 2020-10-05  43915   INTEREST
+    id1     rec 2021-01-04  43915   INTEREST
+    id1     rec 2021-04-06  42961   INTEREST
+    id1     rec 2021-07-05  43438   INTEREST
+    id1     rec 2021-10-04  43915   INTEREST
+    id1     rec 2021-10-04  2988563 FINAL_EX
+    id2 …   …   …   … and so on...
+	
+## read file 
+# create path 
+file4 <- "GetSwapFlowdb2.xlsm"
+filepath3 <- paste(folder1, file4, sep="")
+# read. sheet 2 is recieve leg, and 3 is pay leg
+db_rec <- read_excel(filepath3, col_names = FALSE, sheet=2) %>% as.data.frame()
+db_pay <- read_excel(filepath3, col_names = FALSE, sheet=3) %>% as.data.frame() 
+
+## save swap IDs 
+(transid_list <- db_rec[1,] %>% t() %>% na.omit() %>% as.vector()) #%>% as.numeric()
+transid_list_pay <- db_pay[1,] %>% t() %>% na.omit() %>% as.vector()
+stopifnot(transid_list_pay == transid_list)
+rm(transid_list_pay)
+(nr_id <- length(transid_list))
+
+## make function that cleans a single swap
+db_clean_oneswap <- function(aswap){
+  # input...
+  # aswap: a single swap in the form fo data.frame
+  # output...
+  # aswpap: the cleaned version
+
+  # format cf 
+  aswap$cf <- as.numeric(aswap$cf)
+  # format dates from excel format to yyyy-mm-dd
+  aswap$date <- as.POSIXct(as.Date(as.numeric(aswap$date), origin="1899-12-30"))
+  aswap$date <- as.Date(aswap$date)
+  # create t 
+  aswap$t <- time_length(difftime(aswap$date, date_valuation), "years")
+  # save the swap to our list 
+  return(aswap)
+}
+
+
+## make function so we can save swap cashflows to a list 
+db_create_swaplist <- function(data, transids){
+  # input... 
+  # data: the dataframe which comes from excel 
+  # transids: a list character vector of swap trans IDs
+  # output... 
+  # a list with each element containing a dataframe of the swap 
+
+  # create empty list
+  swap_list <- NULL
+
+  # for loop to create a list containing each swap. 
+  for (id in transids){
+    # create df we will "eat" from 
+    data <- db_rec
+    # select three cols, save to a swap
+    one_swap <- data[-1, c(1,2,3)]
+    # remove those cols we saved 
+    data <- data[-c(1,2,3)]
+    # rename cols 
+    names(one_swap) <- c("date", "cf", "type")
+    # remove a row, remove na 
+    one_swap <- one_swap[-1, ]
+    one_swap <- na.omit(one_swap)
+
+    # clean it
+    one_swap <- db_clean_oneswap(one_swap)
+    # save the swap to our list 
+    swap_list[[id]] <- one_swap
+  }
+  return(swap_list)
+}
+
+## create a list for rec and pay
+swaps_rec <- db_create_swaplist(data = db_rec, transids = transid_list)
+swaps_pay <- db_create_swaplist(data = db_pay, transids = transid_list)
+
+## ways of accessing the lists
+swaps_rec[[1]]
+transid_list[1]
+swaps_rec[[ transid_list[2] ]]
+swaps_rec[[as.character(transid)]]

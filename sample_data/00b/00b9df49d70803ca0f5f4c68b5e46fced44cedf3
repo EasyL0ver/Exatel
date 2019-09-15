@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class Complex {
+private:
+    double re;
+    double im;
+
+public:
+    Complex(double Re = 0, double Im = 0) {
+        re = Re;
+        im = Im;
+    }
+    double Re() const {
+        return re;
+    }
+    double Im() const {
+        return im;
+    }
+    Complex operator+(const Complex& z) const {
+        return {re + z.Re(), im + z.Im()};
+    }
+    Complex operator-(const Complex& z) const {
+        return {re - z.Re(), im - z.Im()};
+    }
+    Complex operator*(const Complex& z) const {
+        return {re * z.Re() - im * z.Im(),
+                re * z.Im() + im * z.Re()};
+    }
+    Complex operator/(const Complex& z) const {
+        return {(re * z.Re() + im * z.Im()) / (z.Re() * z.Re() + z.Im() * z.Im()),
+                (z.Re() * im - re * z.Im()) / (z.Re() * z.Re() + z.Im() * z.Im())};
+    }
+    Complex operator+() {
+        return *this;
+    }
+    Complex operator-() {
+        return {-re, -im};
+    }
+    bool operator==(const Complex& z) const {
+        return (re == z.Re() && im == z.Im());
+    }
+    bool operator!=(const Complex& z) const {
+        return !(re == z.Re() && im == z.Im());
+    }
+};
+
+template<typename T>
+Complex operator+(const T &a, const Complex &z) {
+    return {z.Re() + a, z.Im()};
+}
+template<typename T>
+Complex operator+(const Complex &z, const T &a) {
+    return {z.Re() + a, z.Im()};
+}
+template<typename T>
+Complex operator-(const T &a, const Complex &z) {
+    return {a - z.Re(), -z.Im()};
+}
+template<typename T>
+Complex operator-(const Complex &z, const T &a) {
+    return {z.Re() - a, z.Im()};
+}
+template<typename T>
+Complex operator*(const T &a, const Complex &z) {
+    return {a * z.Re(), a * z.Im()};
+}
+template<typename T>
+Complex operator*(const Complex &z, const T &a) {
+    return {a * z.Re(), a * z.Im()};
+}
+template<typename T>
+Complex operator/(const T &a, const Complex &z) {
+    Complex w{static_cast<double>(a)};
+    return w / z;
+}
+template<typename T>
+Complex operator/(const Complex &z, const T &a) {
+    Complex w{static_cast<double>(a)};
+    return z / w;
+}
+double abs(const Complex& z) {
+    return sqrt(z.Re() * z.Re() + z.Im() * z.Im());
+}

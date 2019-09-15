@@ -1,0 +1,55 @@
+coding to an interface, in a list - syntax
+public List<ICity> Cities { get; private set; }
+
+var efCities = (from c in myentity.Cities  
+                  orderby c.CityName
+                  select c);
+
+Cities = (efCities.Select(o => new City() { Id = o.Id, Country = o.Country, 
+          Province = o.Province, CityName = o.CityName }).ToList());
+	
+ICity c = new City();
+	
+List<Orange> oranges = new List<Orange>();
+List<IFruit> fruits = oranges; // You are trying to do this, which is illegal.
+                               // Suppose it were legal. Then you could do this:
+fruits.Add(new Apple());
+	
+Orange[] oranges = new Orange[1];
+IFruit[] fruits = oranges; // dangerous, but legal!
+fruits[0] = new Apple(); // legal at compile time, crashes at runtime.
+	
+Cities = (efCities.Select(o => new City() { Id = o.Id, Country = o.Country, 
+          Province = o.Province, CityName = o.CityName }).Cast<ICity>.ToList());
+	
+interface IA
+{
+  int Foo();
+}
+
+class A : IA
+{
+  public int Foo()
+  {
+    return 0;
+  }
+}
+
+public DoStuff()
+{
+  List<A> la = new List<A> { new A(), new A(), new A(), new A() };
+
+  // This is an error -- List<A> is not covariant with List<IA>
+  // List<IA> lia = la;  
+
+  // This is fine; List<A> implements IEnumerable<A>
+  IEnumerable<A> iea = la; 
+
+  // Also fine: IEnumerable<A> is covariant with IEnumerable<IA>
+  IEnumerable<IA> ieia = la;     
+}
+	
+ICity c = new City();
+	
+Cities = (efCities.Select(o => (ICity)(new City() { Id = o.Id, Country = o.Country, 
+          Province = o.Province, CityName = o.CityName })).ToList());

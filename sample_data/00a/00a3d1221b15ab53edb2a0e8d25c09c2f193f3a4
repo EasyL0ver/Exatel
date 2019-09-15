@@ -1,0 +1,25 @@
+x = np.linspace(0,10,10)
+y = x**2
+c = np.linspace(-10,10,10)
+
+from matplotlib.widgets import RadioButtons
+
+fig, ax = plt.subplots()
+
+scat = plt.scatter(x,y,c=c, cmap='seismic', norm=None)
+plt.subplots_adjust(left=0.3)
+plt.colorbar()
+
+axcolor = 'lightgoldenrodyellow'
+rax = plt.axes([0.05, 0.7, 0.15, 0.15], facecolor=axcolor)
+radio = RadioButtons(rax, ('cmap','no-cmap'))
+
+def colorfunc(label):
+    if label=="cmap":
+        scat.set_cmap('seismic')
+    elif label=="no-cmap":
+        scat.set_facecolors('k')
+    else:
+        raise KeyError("invalid label")
+    plt.draw()
+radio.on_clicked(colorfunc)

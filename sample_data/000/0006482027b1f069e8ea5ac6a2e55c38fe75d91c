@@ -1,0 +1,4 @@
+cd ~/Desktop
+mkdir unit_tests
+cd unit_tests
+touch duckduck.js

@@ -1,0 +1,12 @@
+function cuadrado()
+      {
+         return lado * lado;
+		 
+	
+      }
+function ejercicio2()
+{
+	  var mete = prompt ("introduce la medida del lado del cuadrado")
+	  cuadrado (mete)
+	  
+}

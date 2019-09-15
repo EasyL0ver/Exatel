@@ -1,0 +1,14 @@
+Website			Status
+-------			------
+
+bysykler.no		Sends Password In Clear Text Upon Registration and Request
+expert.no		Sends Password In Clear Text Upon Request
+firsttuesday.no		Sends Password In Clear Text Upon Registration and Request
+foto.no			Sends Password In Clear Text Upon Registration and Request
+jobzone.no		Sends Password In Clear Text Upon Registration and Request
+toptemp.no		Sends Password In Clear Text Upon Registration and Request
+
+
+Other/misc
+----------
+one.com			Sends Password In Clear Text Upon Registration and Password Change

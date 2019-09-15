@@ -1,0 +1,285 @@
+/* CREDITS            02/26/2019
+Developer           : CROMARTIE
+VIDEO Youtube       : https://www.youtube.com/watch?v=7KKqpFGGo0Q
+CONTACT DISCORD TAG : Cromartie#4133
+*/
+
+#include <a_samp>
+#include <sscanf2>
+#include <zcmd>
+#include <YSI\y_hooks>
+
+new IDPLAYER;
+new CMDPlayer;
+new Float:GzRADIAU;
+new Float:GzX, Float:GzY, Float:GzZ;
+
+new CreatZONE;
+new CreatZONall;
+new COLORGz;
+
+new GzTIMERxALL;
+new GzTIMERy;
+
+#define ConstGz GzRADIAU
+new HPgzDEFINE, TIMEgzDEFINE;
+#define HPgz HPgzDEFINE
+#define TIMEgz TIMEgzDEFINE
+
+hook OnFilterScriptInit()
+{
+    HPgz = 5;
+    TIMEgz = 2000;
+    return 1;
+}
+
+CMD:zonedefine(playerid, params[])
+{
+    if(sscanf(params, "ii", HPgz, TIMEgz)) return SendClientMessage(playerid, -1, "{FF0000}[USAGE:]{33CC33} /zonedefine [LIFE going to lose] [Speed that will LOSE] {FF0000}[EX:]{FFFF00} 3 500");
+    new str[130]; format(str,sizeof(str),"[INFO:]{33CC33} Life is Speed DEFINED for {00FCFC}LIFE: {FFFF00}%i{00FCFC}, SPEED: {FFFF00}%i", HPgz, TIMEgz); SendClientMessage(playerid,0xFF0000FF,str);
+    return 1;
+}
+
+new bool:ZoneK[MAX_PLAYERS];
+CMD:zone(playerid, params[])
+{
+	if(ZoneK[playerid] == false)
+	{
+        if(sscanf(params, "ufN(0xFF000066)", IDPLAYER, GzRADIAU,COLORGz)) return SendClientMessage(playerid, -1, "{FF0000}[USAGE:]{33CC33} /zone [Player ID] [Radiau] [OPTIONAL: (COLOR)] {FF0000}[EX:]{FFFF00} 199 10 {FF0000}[EX:]{FFFF00} 199 10 0x33CC3366");
+        GzTIMERy = SetTimer("GangZONE", TIMEgz, true);
+        GetPlayerPos(CMDPlayer, GzX, GzY, GzZ);
+	    CreatZONE = GangZoneCreate(GzX+ConstGz, GzY+ConstGz, GzX-ConstGz, GzY-ConstGz);
+        GangZoneShowForAll(CreatZONE,COLORGz);
+        SendClientMessage(IDPLAYER, -1, "{FF0000}[WARNING!] DO NOT LEAVE THE AREA!");
+        SendClientMessage(playerid,-1,"{FF0000}[INFO:]{33CC33} SAFE AREA HAS BEEN CREATED");
+        ZoneK[CMDPlayer] = true;
+    }
+    else
+    {
+        ZoneK[CMDPlayer] = false;
+        KillTimer(GzTIMERy);
+        GangZoneDestroy(CreatZONE);
+    	SendClientMessage(playerid, -1, "{FF0000}[INFO:]{FFFF00} The SAFE AREA was {FF0000}DELETED!");
+    }
+	return 1;
+}
+
+new bool:ZoneALLx[MAX_PLAYERS];
+CMD:zoneall(playerid, params[])
+{
+	if(ZoneALLx[playerid] == false)
+	{
+    	for (new i = 0; i <MAX_PLAYERS; i++)
+		{
+        	if(sscanf(params, "fN(0xFF000066)", GzRADIAU ,COLORGz)) return SendClientMessage(playerid, -1, "{FF0000}[USAGE:]{33CC33} /zoneall [Radiau] [OPCIONAL: (COLOR)] {FF0000}[EX:]{FFFF00}/zoneall 10 {FF0000}[EX:]{FFFF00}/zoneall 10 0x33CC3366");
+        	GetPlayerPos(CMDPlayer, GzX, GzY, GzZ);
+    		SendClientMessage(i, -1, "{FF0000}[WARNING!] DO NOT LEAVE THE AREA!");
+    		SendClientMessage(i,-1,"{FF0000}[INFO:]{33CC33} SAFE AREA HAS BEEN CREATED");
+    		ZoneALLx[CMDPlayer] = true;
+		}
+		GzTIMERxALL = SetTimer("GangZONall", TIMEgz, true);
+	    CreatZONall = GangZoneCreate(GzX+ConstGz, GzY+ConstGz, GzX-ConstGz, GzY-ConstGz);
+        GangZoneShowForAll(CreatZONall,COLORGz);
+    }
+	else
+    {
+    	GangZoneDestroy(CreatZONall);
+    	SendClientMessage(playerid, -1, "{FF0000}[INFO:]{FFFF00} The SAFE AREA was {FF0000}DELETED!");
+    	ZoneALLx[CMDPlayer] = false;
+        KillTimer(GzTIMERxALL);
+    }
+    return 1;
+}
+
+new CreatREDOR[4];
+CMD:redor(playerid, params[])
+{
+	if(ZoneALLx[playerid] == false)
+	{
+		new COR, Float:VEZES;
+        if(sscanf(params, "fF(8)N(0xFF000066)", GzRADIAU,VEZES,COR))
+        {
+        	SendClientMessage(playerid, -1, "{FF0000}[USAGE:]{33CC33} /redor [Radiau INSIDE] [OPTIONAL:(Radiau OUT)(COLOR)]");
+        	SendClientMessage(playerid, -1, "{FF0000}[EX:]/redor{FFFF00} 10{FF0000}[EX:]{FFFF00}/redor 10 20 0x33CC3366");
+        	return 1;
+		}
+	    GetPlayerPos(playerid, GzX, GzY, GzZ);
+        CreatREDOR[0] = GangZoneCreate(GzX+GzRADIAU, GzY+GzRADIAU*VEZES, GzX+GzRADIAU*VEZES, GzY-GzRADIAU);
+        CreatREDOR[1] = GangZoneCreate(GzX-GzRADIAU, GzY-GzRADIAU*VEZES, GzX-GzRADIAU*VEZES, GzY+GzRADIAU);
+	    CreatREDOR[2] = GangZoneCreate(GzX-GzRADIAU*VEZES, GzY+GzRADIAU, GzX+GzRADIAU, GzY+GzRADIAU*VEZES);
+        CreatREDOR[3] = GangZoneCreate(GzX-GzRADIAU, GzY-GzRADIAU, GzX+GzRADIAU*VEZES, GzY-GzRADIAU*VEZES);
+        for (new i = 0; i < 4; i++){
+		GangZoneShowForAll(CreatREDOR[i],COR);}
+		for (new i = 0; i <MAX_PLAYERS; i++){
+        SendClientMessage(i, -1, "{FF0000}[WARNING!] DO NOT LEAVE THE AREA!");
+        SendClientMessage(i,-1,"{FF0000}[INFO:]{33CC33} SAFE AREA HAS BEEN CREATED");}
+        GzTIMERxALL = SetTimer("GangZONall", TIMEgz, true);
+        ZoneALLx[playerid] = true;
+    }
+    else
+    {
+        ZoneALLx[playerid] = false;
+        KillTimer(GzTIMERxALL);
+        for (new i = 0; i < 4; i++){
+        GangZoneDestroy(CreatREDOR[i]);}
+        SendClientMessage(playerid, -1, "{FF0000}[INFO:]{FFFF00} The SAFE AREA was {FF0000}DELETED!");
+    }
+    return 1;
+}
+
+CMD:zoneflash(playerid, params[])
+{
+    GangZoneFlashForAll(CreatZONE,0xFFFFFF00);
+    SendClientMessage(playerid,-1,"{FF0000}[INFO:]{33CC33} Flash GANGZONE was ON");
+    return 1;
+}
+
+CMD:zoneflashall(playerid, params[])
+{
+    GangZoneFlashForAll(CreatZONall,0xFFFFFF00);
+    SendClientMessage(playerid,-1,"{FF0000}[INFO:]{33CC33} Flash GANGZONE was ON");
+    return 1;
+}
+
+new bool:GzZONE[MAX_PLAYERS];
+CMD:zoneoff(playerid, params[])
+{
+	if(GzZONE[playerid] == false)
+	{
+        SendClientMessage(playerid,-1,"{FF0000}[INFO:]{33CC33} SECURE Zone {E60000}OFF");
+        GangZoneHideForAll(CreatZONE);
+		GzZONE[CMDPlayer] = true;
+	}
+	else
+    {
+        SendClientMessage(playerid,-1,"{FF0000}[INFO:]{33CC33} SECURE Zone {21DD00}ON");
+        GangZoneShowForAll(CreatZONE,COLORGz);
+		GzZONE[CMDPlayer] = false;
+	}
+    return 1;
+}
+
+new bool:GzZONEall[MAX_PLAYERS];
+CMD:zoneoffall(playerid, params[])
+{
+	if(GzZONEall[playerid] == false)
+	{
+        SendClientMessage(playerid,-1,"{FF0000}[INFO:]{33CC33} Zona SEGURA {E60000}OFF");
+        GangZoneHideForAll(CreatZONall);
+		GzZONEall[CMDPlayer] = true;
+	}
+	else
+    {
+        SendClientMessage(playerid,-1,"{FF0000}[INFO:]{33CC33} Zona SEGURA {21DD00}ON");
+        GangZoneShowForAll(CreatZONall,COLORGz);
+		GzZONEall[CMDPlayer] = false;
+    }
+    return 1;
+}
+
+forward GangZONE();
+public GangZONE()
+{
+	new Float:HP;
+    if(GzZONE[CMDPlayer] == false)
+	{
+	    if(IsPlayerInRangeOfPoint(IDPLAYER, GzRADIAU, GzX, GzY, GzZ))
+	    {
+            //SendClientMessage(IDPLAYER, -1, "STAY INSIDE THE AREA!");
+	    }
+    	else
+	    {
+            GetPlayerHealth(IDPLAYER, HP);
+		    SetPlayerHealth(IDPLAYER, HP-HPgz);
+        }
+    }
+	return 1;
+}
+
+forward GangZONall();
+public GangZONall()
+{
+	new Float:HP;
+	for (new i = 0; i <MAX_PLAYERS; i++)
+	{
+        if(GzZONEall[CMDPlayer] == false)
+	    {
+	        if(IsPlayerInRangeOfPoint(i, GzRADIAU, GzX, GzY, GzZ))
+	        {
+                //SendClientMessage(i, -1, "STAY INSIDE THE AREA!");
+	        }
+        	else
+	        {
+                GetPlayerHealth(i, HP);
+		        SetPlayerHealth(i, HP-HPgz);
+            }
+        }
+    }
+	return 1;
+}
+
+CMD:zonedelete(playerid, params[])
+{
+    GangZoneDestroy(CreatZONE);
+    KillTimer(GzTIMERy);
+    SendClientMessage(playerid,-1,"{FF0000}[INFO:]{33CC33} SAFE Zone was DELETED!");
+    return 1;
+}
+
+CMD:zonedeleteall(playerid, params[])
+{
+    GangZoneDestroy(CreatZONall);
+    KillTimer(GzTIMERxALL);
+    SendClientMessage(playerid,-1,"{FF0000}[INFO:]{33CC33} SAFE Zone was DELETED!");
+    return 1;
+}
+
+new bool:GzZONwar[MAX_PLAYERS];
+CMD:zonewarning(playerid, params[])
+{
+	if(GzZONwar[playerid] == false)
+	{
+        SendClientMessage(playerid,-1,"ZONA WARNING {FF0000}OFF");
+        SetTimer("GzWARNING1",2000,true);
+		GzZONwar[CMDPlayer] = true;
+	}
+	else
+    {
+        SendClientMessage(playerid,-1,"ZONA WARNING {21DD00}ON");
+		GzZONwar[CMDPlayer] = false;
+	}
+    return 1;
+}
+
+forward GzWARNING1();
+public GzWARNING1()
+{
+    if(GzZONwar[0] == false)
+	{
+        for(new i; i < MAX_PLAYERS; i++)
+		{
+            GameTextForPlayer(i,"WARNING!",1000,4);
+            GetPlayerPos(i,GzX,GzY,GzZ);
+            PlayerPlaySound(i,1056,GzX,GzY,GzZ);
+        }
+    }
+}
+
+new strGzA[1818];
+new NamGzA;
+
+	CMD:cmdzone(playerid)
+	{ 
+		strcat(strGzA, " {FF0000}COMMANDS: {FFFFFF}[OBS:]{FFFF00} {00FCFC}SAFE AREA{FFFFFF} {FF0000}={FFFF00} If the PLAYER is IN, it does not lose life, IF IT IS OUT, it loses LIFE\n");
+		strcat(strGzA, " {FFFFFF}[OBS:]{00BFFF}[ID] {FF0000}={FFFFFF} GANGZONE, is {00FCFC}SAFE AREA{FFFFFF} for a PLAYER    {FF0000}// {FF4500}[ALL] {FF0000}={FFFFFF} GANGZONE, is {00FCFC}SAFE AREA{FFFFFF} for ALL PLAYERS\n");
+ 		strcat(strGzA, " {FF0000}_________________________________________________________________________________________________________________________________________\n");
+ 		strcat(strGzA, " {33CC33}/zone {FF0000}={00FCFC} Create a SAFE AREA, IT'S A GANGZONE FOR A PLAYER {00BFFF}[ID]\n");
+		strcat(strGzA, " {33CC33}/zoneall {FF0000}={00FCFC} Create a SAFE AREA, it's a GANGZONE for all PLAYERS {FF4500}[ALL]\n");
+		strcat(strGzA, " {33CC33}/redor {FF0000}={00FCFC} Create a SAFE AREA {FFFF00}[INVERTED]{00FCFC}, 'Clean center, off red' {FF4500}[ALL]\n");
+		strcat(strGzA, " {33CC33}/zoneflash {FF0000}={00FCFC} THE GANGZONE OF SAFE AREA FLASHING {00BFFF}[ID]\n");
+		strcat(strGzA, " {33CC33}/zoneflashall {FF0000}={00FCFC} THE GANGZONE OF SAFE AREA FLASHING {FF4500}[ALL]\n");
+		strcat(strGzA, " {33CC33}/zoneoff {FF0000}={00FCFC} {33CC33}[ACTIVE/ {FF0000}DISABLED]{00FCFC} GANGZONE is the SAFE AREA {00BFFF}[ID]\n");
+		strcat(strGzA, " {33CC33}/zoneoffall {FF0000}={00FCFC} {33CC33}[ACTIVE/ {FF0000}DISABLED]{00FCFC} GANGZONE is the SAFE AREA {FF4500}[ALL]\n");
+		strcat(strGzA, " {33CC33}/zonedelete {FF0000}={00FCFC} DELETE or GANGZONE SAFE PLAYER AREA {00BFFF}[ID]\n");
+		strcat(strGzA, " {33CC33}/zonedeleteall {FF0000}={00FCFC} DELETE GANGZONE OF SAFE PLAYERs AREA {FF4500}[ALL]\n");
+	

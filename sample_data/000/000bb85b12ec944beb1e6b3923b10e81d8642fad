@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main(){
+
+    std::vector<int> vector;
+    std::vector<int> duplicates;
+    int number;
+    while(std::cin >> number){
+        vector.push_back(number);
+    }
+    if(!vector.empty()){
+        std::sort(vector.begin(), vector.end());
+        for(int i = 0; i < vector.size()-1; ++i){
+            if(vector[i] == vector[i+1]){
+                if( duplicates.empty()){
+                    duplicates.push_back(vector[i]);
+                } else if( vector[i] != duplicates.back()){
+                    duplicates.push_back(vector[i]);
+                }
+            }
+        }
+    }
+
+    for(number: duplicates){
+
+        std::cout << number<< " ";
+    }
+
+    return 0;
+}

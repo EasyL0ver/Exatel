@@ -1,0 +1,14 @@
+    var PYRAMIDE_HEIGHT = 4;
+    var PYRAMIDE_SHORT_WIDTH = 2;
+    var alpha = Math.atan((PYRAMIDE_SHORT_WIDTH / 2) / PYRAMIDE_HEIGHT) * 180 / Math.PI;
+    var beta = 90 - alpha;
+    var hypo = Math.sqrt(Math.pow((PYRAMIDE_SHORT_WIDTH / 2), 2) + Math.pow(PYRAMIDE_HEIGHT, 2));
+    
+    // Die Winkelhalbierenden eines gleichschenkligen Dreiecks schneiden die Höhengerade immer bei 2/3 der Höhe  
+    var yOff = Math.cos(beta) * (hypo * 2 / 3);
+    var zOff = Math.sin(beta) * (hypo * 2 / 3);
+
+    model = mult(model, translate(0, (4 - yOff), 1-zOff));
+    model = mult(model, rotate(-beta, [1, 0, 0]));
+    model = mult(model, scalem(0.4, 0.4, 0.4));
+    gl.uniformMatrix4fv(gl.getUniformLocation(program, "modelMatrix"), false, flatten(model));

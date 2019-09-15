@@ -1,0 +1,333 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+char easy[20][20] =
+{
+	{' ', ' ', (char)201, (char)205, (char)187, ' ', ' ', ' ', ' ', },
+	{' ', ' ', (char)186, 'o', (char)186, ' ', ' ', ' ', ' ', },
+	{' ', ' ', (char)186, ' ', (char)200, (char)205, (char)205, (char)187, ' ', },
+	{(char)201, (char)205, (char)188, 'x', ' ', 'x', 'o', (char)186, ' ', },
+	{(char)186, 'o', ' ', 'x', 'R', (char)201, (char)205, (char)188, ' ', },
+	{(char)200, (char)205, (char)205, (char)187, 'x', (char)186, ' ', ' ', ' ', },
+	{' ', ' ', ' ', (char)186, 'o', (char)186, ' ', ' ', ' ', },
+	{' ', ' ', ' ', (char)200, (char)205, (char)188, ' ', ' ', ' ', },
+	{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', },
+
+};
+
+char medium[20][20] =
+{
+	{'T', 'T', (char)201, (char)205, (char)205, (char)187, 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', },
+	{(char)201, (char)205, (char)188, ' ', ' ', (char)200, (char)205, (char)205, (char)205, (char)205, (char)205, (char)205, (char)205, (char)205, (char)187, },
+	{(char)186, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'x', ' ', 'x', ' ', ' ', (char)186, },
+	{(char)186, ' ', ' ', ' ', ' ', (char)205, (char)205, (char)187, ' ', ' ', ' ', ' ', ' ', ' ', (char)186, },
+	{(char)186, 'o', ' ', ' ', ' ', ' ', 'o', (char)204, (char)205, (char)205, ' ', ' ', (char)205, (char)205, (char)185, },
+	{(char)204, (char)205, (char)205, (char)205, (char)205, (char)205, (char)205, (char)202, (char)187, ' ', ' ', ' ', ' ', 'R', (char)186, },
+	{(char)186, 'o', ' ', ' ', ' ', ' ', ' ','o', (char)204, (char)205, ' ', ' ', (char)205, (char)205, (char)185, },
+	{(char)186, ' ', ' ', ' ', ' ', ' ', (char)205, (char)205, (char)188, ' ', ' ', ' ', ' ', ' ', (char)186, },
+	{(char)186, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', (char)186, },
+	{(char)186, ' ', ' ', 'x', ' ', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', (char)186, },
+	{(char)200, (char)205, (char)205, (char)205, (char)205, (char)205, (char)205, (char)205, (char)205, (char)187, ' ', ' ', (char)201, (char)205, (char)188, },
+	{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', (char)200, (char)205, (char)205, (char)188, 'T', 'T', },
+};
+
+char hard[20][20] =
+{
+	{' ', ' ', ' ', ' ', (char)201, (char)205, (char)205, (char)205, (char)187, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', },
+	{' ', ' ', ' ', ' ', (char)186, ' ', ' ', ' ', (char)186, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', },
+	{' ', ' ', ' ', ' ', (char)186, 'x', ' ', ' ', (char)186, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', },
+	{' ', ' ', (char)201, (char)205, (char)188, ' ', ' ', ' ', (char)200, (char)187, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', },
+	{' ', ' ', (char)186, ' ', ' ', 'x', ' ', 'x', ' ', (char)186, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', },
+	{(char)201, (char)205, (char)188, ' ', (char)186, ' ', (char)201, (char)187, ' ', (char)186, ' ', ' ', ' ', (char)201, (char)205, (char)205, (char)205, (char)205, (char)187, },
+	{(char)186, ' ', ' ', ' ', (char)186, ' ', (char)200, (char)188, ' ', (char)200, (char)205, (char)205, (char)205, (char)188, ' ', ' ', ' ', 'o', (char)186, },
+	{(char)186, 'o', ' ', ' ', ' ', 'x', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'o', (char)186, },
+	{(char)200, (char)205, (char)205, (char)205, (char)187, ' ', (char)205, (char)205, (char)205, ' ', (char)186, 'R', (char)201, (char)187, ' ', ' ', ' ', 'o', (char)186, },
+	{' ', ' ', ' ', ' ', (char)186, ' ', ' ', ' ', ' ', ' ', (char)204, (char)205, (char)202, (char)202, (char)205, (char)205, (char)205, (char)205, (char)188, },
+	{' ', ' ', ' ', ' ', (char)200, (char)205, (char)205, (char)205, (char)205, (char)205, (char)188, ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', },
+};
+
+void draw(char depot[20][20])
+{
+	for (int i = 0; i < 20; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			cout << depot[i][j];
+		}
+		cout << endl;
+	}
+}
+
+void instruction()
+{
+	cout << "\t INSTRUKCJA" << endl;
+	cout << "1) Poruszanie sie za pomoca klawiszy W S A D. Kazdy wybor trzeba zatwierdzic enterem" << endl;
+	cout << "2) Aby wyjsc w trakcie gry nacisnij q" << endl;
+	cout << "3) Twoim celem jest przesuniecie wszystkich znakow 'x' (paczek) na pola 'o' (miejsce na paczki)" << endl << endl;
+
+}
+
+
+
+int warunek(char tab[20][20], int &wygrana)//zlicza wszystkie punkty 'o'
+{
+	wygrana = 0;
+	for (int i = 0; i < 20; i++)
+	{
+		for (int j = 0; j < 20; j++)
+		{
+			if (tab[i][j] == 'o')
+			{
+				wygrana++;
+			}
+		}
+
+	}
+	return wygrana;
+}
+int win(int &wygrana, int &koniec)//funkcja konczaca program po wygraniu
+{
+
+	if (wygrana == 0)
+	{
+		system("cls");
+		cout << "Brawo! Udalo Ci sie przejsc poziom!" << endl;
+		koniec = 0;
+	}
+	return koniec;
+}
+
+char control(char depot[20][20], int &x, int &y, int &koniec)//sterowanie
+{
+	char direction;
+	cin >> direction;
+
+
+	if (direction == 'w') //gdy zostanie wcisniety znak w i zatwierdzony enterem
+	{
+		if (depot[y - 1][x] == (char)32)//sprawdzenie czy pole powyzej robotnika to puste pole
+		{
+			depot[y - 1][x] = 'R';//przesuniecie robotnika o pole w gore
+			depot[y][x] = (char)32;
+			y--;
+		}
+		else if (depot[y - 1][x] == (char)120)//sprawdzenie czy robotnik chce stanac na miejscu paczki-powoduje przesuniecie paczki i robotnika
+		{
+			if (depot[y - 2][x] == (char)32 || depot[y - 2][x] == (char)111)//warunek aby nie przejsc przez ssciane
+			{
+				depot[y - 2][x] = (char)120;
+				depot[y - 1][x] = 'R';
+				depot[y][x] = (char)32;
+				y--;
+			}
+
+		}
+		else cout << endl << "Tam jest sciana" << endl;
+	}
+	else if (direction == 's') {
+		if (depot[y + 1][x] == (char)32)
+		{
+			depot[y + 1][x] = 'R';
+			depot[y][x] = (char)32;
+			y++;
+
+		}
+		else if (depot[y + 1][x] == (char)120)
+		{
+			if (depot[y + 2][x] == (char)32 || depot[y + 2][x] == (char)111)
+			{
+				depot[y + 2][x] = (char)120;
+				depot[y + 1][x] = 'R';
+				depot[y][x] = (char)32;
+				y++;
+
+			}
+		}
+		else cout << endl << "Tam jest sciana" << endl;
+	}
+
+	else if (direction == 'a') {
+		if (depot[y][x - 1] == (char)32)
+		{
+			depot[y][x - 1] = 'R';
+			depot[y][x] = (char)32;
+			x--;
+
+		}
+		else if (depot[y][x - 1] == (char)120)
+		{
+			if (depot[y][x - 2] == (char)32 || depot[y][x - 2] == (char)111)
+			{
+
+				depot[y][x - 2] = (char)120;
+				depot[y][x - 1] = 'R';
+				depot[y][x] = (char)32;
+				x--;
+
+			}
+		}
+		else cout << endl << "Tam jest sciana" << endl;
+	}
+
+	else if (direction == 'd') {
+		if (depot[y][x + 1] == (char)32)
+		{
+			depot[y][x + 1] = 'R';
+			depot[y][x] = (char)32;
+			x++;
+
+		}
+		else if (depot[y][x + 1] == (char)120)
+		{
+			if (depot[y][x + 2] == (char)32 || depot[y][x + 2] == (char)111)
+			{
+
+				depot[y][x + 2] = (char)120;
+				depot[y][x + 1] = 'R';
+				depot[y][x] = (char)32;
+				x++;
+			}
+		}
+		else cout << endl << "Tam jest sciana" << endl;
+	}
+	else if (direction == 'q')//wyjscie z gry
+	{
+		system("cls");
+		cout << "wyszedles z gry" << endl << endl;
+		koniec = 0;
+	}
+
+	else cout << "niepoprawny klawisz" << endl;
+
+	return depot, x, y, koniec;
+}
+
+
+int main()
+{
+	int koniec = 1;
+	int wygrana;
+	int x, y;
+	char tab[20][20];
+	int option;
+	cout << "\t Witaj w grze Sokoban" << endl;
+	while (true)
+	{
+		
+		cout << "1. Zagraj w gre" << endl;
+		cout << "2. Zasady i sterowanie" << endl;
+		cout << "3. Wyjscie z gry" << endl;
+
+		cin >> option;
+		if (option == 1)
+		{
+			system("cls");
+			cout << "\t Jaka mape chcesz zagrac?" << endl;
+			cout << "1. Mapa latwa" << endl;
+			cout << "2. Mapa srednia" << endl;
+			cout << "3. Mapa trudna" << endl;
+			int lvl;
+			cin >> lvl;
+			if (lvl == 1)
+			{
+
+				wygrana = 4;
+				x = 4;
+				y = 4;
+				for (int i = 0; i < 20; i++)
+				{
+					for (int j = 0; j < 20; j++)
+					{
+						tab[i][j] = easy[i][j];
+
+					}
+					cout << endl;
+
+				}
+				system("cls");
+				while (!(koniec == 0))
+				{
+					system("cls");
+					cout << "pozostalo jeszcze:" << wygrana << "nieulozone paczki" << endl;
+					draw(tab);
+					control(tab, x, y, koniec);
+					warunek(tab, wygrana);
+					win(wygrana, koniec);
+				}
+			}
+
+
+			else if (lvl == 2)
+			{
+				wygrana = 4;
+				x = 13;
+				y = 5;
+				for (int i = 0; i < 20; i++)
+				{
+					for (int j = 0; j < 20; j++)
+					{
+						tab[i][j] = medium[i][j];
+
+					}
+				}
+				system("cls");
+				while (!(koniec == 0))
+				{
+					system("cls");
+					cout << "pozostalo jeszcze:" << wygrana << "nieulozone paczki" << endl;
+					draw(tab);
+					control(tab, x, y, koniec);
+					warunek(tab, wygrana);
+					win(wygrana, koniec);
+				}
+			}
+
+			else if (lvl == 3)
+			{
+				wygrana = 4;
+				x = 11;
+				y = 8;
+				for (int i = 0; i < 20; i++)
+				{
+					for (int j = 0; j < 20; j++)
+					{
+						tab[i][j] = hard[i][j];
+
+					}
+				}
+				system("cls");
+				while (!(koniec == 0))
+				{
+					system("cls");
+					cout << "pozostalo jeszcze:" << wygrana << "nieulozone paczki" << endl;
+					draw(tab);
+					control(tab, x, y, koniec);
+					warunek(tab, wygrana);
+					win(wygrana, koniec);
+				}
+			}
+			else cout << "zly przycisk" << endl;
+		}
+		else if (option == 2)
+		{
+			system("cls");
+			instruction();
+		}
+		else if (option == 3)
+		{
+			system("cls");
+			koniec = 0;
+			cout << "Koniec gry." << endl;
+			break;
+		}
+		else
+		{
+			system("cls");
+			cout << "niepoprawny klawisz" << endl;
+			
+
+		}
+	}
+
+}

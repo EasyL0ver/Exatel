@@ -1,0 +1,32 @@
+@ExtendWith(DropwizardExtensionsSupport.class)
+public class ASampleTest {
+  public static final DropwizardAppExtension<Configuration> DROPWIZARD = new DropwizardAppExtension<Configuration>(TestApp.class, new Configuration());
+
+	@Test
+	public void simpleTest(){
+    //at this point you could interact with DROPWIZARD to interact with the running container
+		int port = DROPWIZARD.getLocalPort();
+    //... your tests here
+  }
+  
+  @Test
+  public void otherTests(){
+        ....
+  }
+
+	@Path("/")
+  @Consumes(MediaType.APPLICATION_JSON)
+  @Produces(MediaType.APPLICATION_JSON)
+  public static class TestApp extends Application<Configuration> {
+    @Override
+    public void initialize(Bootstrap<Configuration> bootstrap) {
+      bootstrap.addBundle(new MyBundleForTest<>());
+     }
+    
+    @Override
+    public void run(Configuration configuration, Environment environment) {
+      environment.jersey().register(this);
+    }
+    //... your web resources here
+  }
+}

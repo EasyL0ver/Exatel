@@ -1,0 +1,310 @@
+<!-- SET GLOBAL VARIABLES -->
+{% set table_id = module.hubdb_id %}
+{% set quarter = module.quarter %}
+{% set year = module.year %}
+{% set date = module.date %}
+{% set embargo_date = module.embargo_date %}
+{% set url_prefix = module.url_prefix %}
+{% set url_suffix = module.url_suffix %}
+{% set queryparams = "&year__eq=" ~ year ~ "&quarter__eq=" ~ quarter %}
+
+<!--ALABAMA-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/alabama/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=AL") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--ALASKA-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/alaska/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=AK") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--ARIZONA-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/arizona/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=AZ") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--ARKANSAS-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/arkansas/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=AR") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--CALIFORNIA-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/california/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=CA") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--COLORADO-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/colorado/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=CO") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--CONNECTICUT-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/connecticut/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=CT") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--DELAWARE-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/delaware/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=DE") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--FLORIDA-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/florida/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=FL") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--GEORGIA-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/georgia/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=GA") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+
+<!--HAWAII-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/hawaii/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=HI") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+
+
+<!--IDAHO-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/idaho/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=ID") %}
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--ILLINOIS-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/illinois/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=IL") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+{% endif %}
+
+
+<!--INDIANA-->
+{# path to listing page #}
+{% if request.path == "/press/category/archives/indiana/" %}
+{% set table = hubdb_table_rows(table_id, "&name__contains=IN") %}
+
+<section class="container-fluid">
+  <h1 class="listing-headline">{{ quarter }}&nbsp;{{ year }}&nbsp;|&nbsp;{{ embargo_date }}</h1>
+  {% for row in table %}
+  <div class="row-fluid">
+    <div class="listing-content">
+      <ul>
+        <li><a target="_blank" href="{{ url_prefix }}{{ year }}_{{ quarter }}/{{ row['embed'] }}{{ url_suffix }}">
+            {{ date }} | {{ row['forecast'] }}&nbsp;{{ row['title'] }}&nbsp;{{ row['name'] }}</a></li>
+      </ul>
+    </div>
+  </div>
+  {% endfor %}

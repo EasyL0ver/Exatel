@@ -1,0 +1,20 @@
+    public void statement() {
+        Connection conn = HibernateUtil.getInstance().getSession().connection();
+        Statement statement = null;
+        try {
+            try {
+                statement = conn.createStatement();
+                statement.execute("SELECT nr_cnpj,no_razao_social FROM agspcrp100.tb_empresa");
+                ResultSet rs = statement.getResultSet();
+                while(rs.next()) {
+                    long cnpj = rs.getLong("nr_cnpj");
+                    String razaoSocial = rs.getString("no_razao_social");
+                }
+            }  finally {
+                statement.close();
+                conn.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.                                
+        }        
+    }

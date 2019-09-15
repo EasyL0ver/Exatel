@@ -1,0 +1,293 @@
+if game:GetService("RunService"):IsClient() then error("Script must be server-side in order to work; use h/ and not hl/") end
+local Player,Mouse,mouse,UserInputService,ContextActionService = owner
+do
+	print("FE Compatibility code by Mokiros | Translated to FE by iPxter")
+	script.Parent = Player.Character
+
+	--RemoteEvent for communicating
+	local Event = Instance.new("RemoteEvent")
+	Event.Name = "UserInput_Event"
+
+	--Fake event to make stuff like Mouse.KeyDown work
+	local function fakeEvent()
+		local t = {_fakeEvent=true,Connect=function(self,f)self.Function=f end}
+		t.connect = t.Connect
+		return t
+	end
+
+	--Creating fake input objects with fake variables
+    local m = {Target=nil,Hit=CFrame.new(),KeyUp=fakeEvent(),KeyDown=fakeEvent(),Button1Up=fakeEvent(),Button1Down=fakeEvent()}
+	local UIS = {InputBegan=fakeEvent(),InputEnded=fakeEvent()}
+	local CAS = {Actions={},BindAction=function(self,name,fun,touch,...)
+		CAS.Actions[name] = fun and {Name=name,Function=fun,Keys={...}} or nil
+	end}
+	--Merged 2 functions into one by checking amount of arguments
+	CAS.UnbindAction = CAS.BindAction
+
+	--This function will trigger the events that have been :Connect()'ed
+	local function te(self,ev,...)
+		local t = m[ev]
+		if t and t._fakeEvent and t.Function then
+			t.Function(...)
+		end
+	end
+	m.TrigEvent = te
+	UIS.TrigEvent = te
+
+	Event.OnServerEvent:Connect(function(plr,io)
+	    if plr~=Player then return end
+		if io.isMouse then
+			m.Target = io.Target
+			m.Hit = io.Hit
+		else
+			local b = io.UserInputState == Enum.UserInputState.Begin
+			if io.UserInputType == Enum.UserInputType.MouseButton1 then
+				return m:TrigEvent(b and "Button1Down" or "Button1Up")
+			end
+			for _,t in pairs(CAS.Actions) do
+				for _,k in pairs(t.Keys) do
+					if k==io.KeyCode then
+						t.Function(t.Name,io.UserInputState,io)
+					end
+				end
+			end
+			m:TrigEvent(b and "KeyDown" or "KeyUp",io.KeyCode.Name:lower())
+			UIS:TrigEvent(b and "InputBegan" or "InputEnded",io,false)
+	    end
+	end)
+	Event.Parent = NLS([==[
+	local Player = owner
+	local Event = script:WaitForChild("UserInput_Event")
+
+	local UIS = game:GetService("UserInputService")
+	local input = function(io,a)
+		if a then return end
+		--Since InputObject is a client-side instance, we create and pass table instead
+		Event:FireServer({KeyCode=io.KeyCode,UserInputType=io.UserInputType,UserInputState=io.UserInputState})
+	end
+	UIS.InputBegan:Connect(input)
+	UIS.InputEnded:Connect(input)
+
+	local Mouse = Player:GetMouse()
+	local h,t
+	--Give the server mouse data 30 times every second, but only if the values changed
+	--If player is not moving their mouse, client won't fire events
+	while wait(1/30) do
+		if h~=Mouse.Hit or t~=Mouse.Target then
+			h,t=Mouse.Hit,Mouse.Target
+			Event:FireServer({isMouse=true,Target=t,Hit=h})
+		end
+	end]==],Player.Character)
+	Mouse,mouse,UserInputService,ContextActionService = m,m,UIS,CAS
+end
+wait(0.001); 
+
+--------------------------------------------------------------------------------------
+
+_clear=function()
+        local c={char;bag;gui;};
+        for i=1,#c do
+                local c=c[i]:children();
+                for i=1,#c do
+                        if(c[i].Name==name)then
+                                c[i].Parent=nil;
+                        end;
+                end;
+        end;
+        local n=name..user.Name;
+        local c=workspace:children();
+        for i=1,#c do
+                if(c[i].Name==n)then
+                        c[i].Parent=nil;
+                end;
+        end;
+end;
+
+_valid_key=function(object,key)
+        return object[key],key;
+end;
+
+_new=function(class)
+        return function(props)
+                if(type(list_base_props)=='table')then
+                        for i,v in next,list_base_props do
+                                if(props[i]==nil)then
+                                        props[i]=v;
+                                end;
+                        end;
+                end;
+                
+                local object=class;
+                
+                if(type(class)=='string')then
+                        object=Instance.new(class:sub(1,1):upper()..class:sub(2));
+                end;
+                
+                local parent=props[1];
+                        props[1]=nil;
+                
+                for i,v in next,props do
+                        local load,res,key=pcall(_valid_key,object,i:sub(1,1):upper()..i:sub(2));
+                        if(not load)then
+                                load,res,key=pcall(_valid_key,object,i);
+                        end;
+                        
+                        if(key)then
+                                t=type(res);
+                                s=tostring(res);
+                                if(t=='userdata'and s=='Signal '..key)then
+                                        if(type(v)=='table')then
+                                                for i=1,#v do
+                                                        res:connect(v[i]);
+                                                end;
+                                        else
+                                                res:connect(v);
+                                        end;
+                                else
+                                        object[key]=v;
+                                end;
+                        end;
+                end;
+                
+                if(parent)then
+                        object.Parent=parent;
+                end;
+                
+                return object;
+        end;
+end;
+
+_RGB=function(r,g,b)
+        return Color3.new(r/255,g/255,b/255);
+end;
+
+_copy=function(o)
+        local def=o.archivable;
+        o.archivable=true;
+        local c=o:clone();
+        o.archivable=def;
+        return c;
+end;
+
+_hum=function(char)
+        local hum=char:findFirstChild'Humanoid';
+        if(not hum or hum.className~='Humanoid')then
+                local c=char:children();
+                for i=1,#c do
+                        if(c[i].className=='Humanoid')then
+                                return c[i];
+                        end;
+                end;
+        else
+                return hum;
+        end;
+end;
+
+_hum_tag=function(hum)
+        local c=hum:findFirstChild'creator'or Instance.new('ObjectValue',hum);
+                c.Name='creator';
+                c.Value=user;
+        if(hum.Health==0 and not hum:findFirstChild'killed')then
+                Instance.new('BoolValue',hum).Name='killed';
+                bullets.clip=bullets.clip+10;
+        end;
+end;
+
+_hum_dam=function(hum,dam,percent)
+        hum.Health=hum.Health-(percent and hum.MaxHealth*(dam*0.01)or dam);
+        if(hum.Health<=hum.MaxHealth*0.1)then
+                _hum_tag(hum);
+        end;
+end;
+
+_ray=function(v0,v1,i)
+        local mag=(v0-v1).magnitude;
+        local ray=Ray.new(v0,(v1-v0).unit*(mag>999 and 999 or mag));
+        
+        return(type(i)=='table'and workspace.FindPartOnRayWithIgnoreList or workspace.FindPartOnRay)(workspace,ray,i);
+end;
+
+_must=function(v0,v1,i)
+        local hit,pos=_ray(v0,v1,i);
+        return not hit and mouse.target or hit,pos;
+end;
+
+_cframe=function(x,y,z,r0,r1,r2)
+        return CFrame.Angles(
+                math.rad(r0 or 0),
+                math.rad(r1 or 0),
+                math.rad(r2 or 0)
+        )*CFrame.new(x,y,z);
+end;
+
+_update=function()
+        if(bool_active and not screen.Parent)then
+                screen.Parent=gui;
+        elseif(not bool_active and screen.Parent)then
+                screen.Parent=nil;
+        end;
+end;
+
+_light=function(v0,v1)
+        local mag=(v0-v1).magnitude;
+        local len=math.random(2,7);
+                len=len>mag/2 and mag/2 or len;
+        
+        local light=_new'part'{
+                cFrame=CFrame.new(v0,v1);
+                size=Vector3.new(1,1,1);
+                color=_RGB(255,255,0);
+                anchored=true;
+                inv;
+        };
+                _new'blockMesh'{
+                        scale=Vector3.new(0.2,0.2,len);
+                        offset=Vector3.new(0,0,-len/2);
+                        light;
+                };
+                
+        local bb=_new'billboardGui'{
+                size=UDim2.new(2,0,2,0);
+                adornee=light;
+                light;
+        };
+                _new'imageLabel'{
+                        image=url:format(109101526);
+                        backgroundTransparency=1;
+                        size=UDim2.new(1,0,1,0);
+                        bb;
+                };
+                
+        _rem(light,0.15);
+end;
+
+_rem=function(object,del)
+        if(del)then
+                delay(del,function()
+                        if(object.Parent)then
+                                object.Parent=nil;
+                        end;
+                end);
+        else
+                pcall(function()
+                        if(object.Parent)then
+                                object.Parent=nil;
+                        end;
+                end);
+        end;
+end;
+
+_blood=function(pos,count)
+        for i=1,count do
+                local p=_new'part'{
+                        rotVelocity=Vector3.new(math.random(),math.random(),math.random())*50;
+                        position=pos+Vector3.new(math.random(),math.random(),math.random());
+                        velocity=Vector3.new(math.random(),math.random(),math.random())*50;
+                        size=Vector3.new(math.random(),math.random(),math.random())/3;
+                        color=_RGB(255,0,0);
+                        transparency=0.5;
+                        canCollide=true;
+                        bottomSurface=0;
+                        topSurface=0;
+                        formFactor=3;
+                      

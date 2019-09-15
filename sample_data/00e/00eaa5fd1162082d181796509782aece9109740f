@@ -1,0 +1,17 @@
+src
+  + main
+    + scala
+      + com
+        + acme
+          + app
+            Class.scala
+            AnotherClass.scala
+          + ui
+            SomeForm.scala
+	
+src.main.scala.com.acme
+  + app
+    Class.scala
+    AnotherClass.scala
+  + ui
+    SomeForm.scala

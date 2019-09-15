@@ -1,0 +1,125 @@
+import React, { Component } from 'react';
+import './App.css';
+import Timer from "./Timer";
+import Questions from "./Questions/Questions.js";
+import Results from "../src/Results";
+
+class App extends Component {
+
+state = {
+    totalTrue: 0,
+    totalFalse: 0,
+}
+
+componentDidMount() {
+    return (
+        <Timer />
+    )
+}
+
+// submit button
+handleFormSubmit = event => {
+    event.preventDefault();
+    console.log("submit button clicked");
+        return (
+            <Results />
+        )
+};
+
+callbackHandlerFunction = ( selectedOption ) => {
+    const answerValue = selectedOption.value;
+    if (answerValue === true) {
+        this.setState({totalTrue: this.state.totalTrue + 1}, () => {
+            console.log(`New TotalTrue: ${this.state.totalTrue}`);
+        });
+    };
+    if (answerValue === false) {
+        this.setState({totalFalse: this.state.totalFalse + 1}, () => {
+            console.log(`New TotalFalse: ${this.state.totalFalse}`);
+        });
+    };
+  } 
+
+  render() {
+    return (
+
+  <div className="parallax">
+
+    <div className="App">
+
+        <div className="wrapper">
+
+        <div className="headerDiv">
+            <h1>Pixar Trivia!</h1>
+        </div>
+
+        <div className="timerDiv">
+            <Timer />   
+        </div>
+
+        <div className="questionSection">
+            <Questions 
+                handleClickInParent={this.callbackHandlerFunction} 
+            />
+
+            <div>
+                <button onClick={this.handleFormSubmit}>Submit</button>
+            </div>
+        </div>
+
+
+
+        {/* this code will hide Results until these conditions are met. This was an experiment to see if anything hid Results from mounting on load */}
+        {this.state.totalTrue >= 8 && this.state.totalFalse >= 8 &&
+        <div className="resultsDiv">
+            <Results 
+                totalTrue={this.state.totalTrue}
+                totalFalse={this.state.totalFalse}
+            />
+        </div>
+        }      
+        </div>
+
+    </div>
+
+  </div>
+   );
+  }
+}
+
+export default App;
+	
+import React, { Component } from 'react';
+
+class Timer extends Component {
+
+  state = {
+timer: 10
+  };
+
+  startTimer = () => {
+    this.timer = setInterval(() => this.setState({
+    timer: this.state.timer - 1}), 1000); 
+    // onClick, load Questions
+    // but do I need to import Questions?
+   };
+
+  stopTimer = () => {
+    clearInterval(this.timer);
+    alert("Time's up!");
+    // when this.state.timer === 0, load Results
+    // do I need to import Results?
+  };
+
+  render() {
+    return (
+      <div className="Timer">
+        <div>{this.state.timer} seconds</div>
+        <button onClick={this.startTimer}>Start!</button>
+        {this.state.timer === 0 && this.stopTimer()}
+      </div>
+    );
+  }
+}
+
+export default Timer;

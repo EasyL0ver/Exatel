@@ -1,0 +1,43 @@
+# example from problem
+my_input = ['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz']
+
+# PART ONE
+
+def _acc_ch_count(count_by_letter, ch):
+    count_by_letter[ch] += 1
+    return count_by_letter
+
+def _acc_doubles_triples(doubles_triples, count_by_letter):
+    twos, threes = doubles_triples
+    counts = set(count_by_letter.values())
+    return twos + 1 if 2 in counts else twos, threes + 1 if 3 in counts else threes
+
+def find_checksum(box_ids):
+    counts_by_letters = (reduce(_acc_ch_count, b, defaultdict(int)) for b in box_ids)
+    twos, threes = reduce(_acc_doubles_triples, counts_by_letters, (0, 0))
+    return twos * threes
+
+checksum = find_checksum(my_input)
+print(checksum)
+
+# ============================
+# PART TWO
+
+def _find_single_diff_ch_index(x, y):
+    diff_i = None
+    for i, (x_ch, y_ch) in enumerate(zip(x, y)):
+        if x_ch != y_ch:
+            if diff_i is not None:
+                return
+            diff_i = i
+    return diff_i
+
+def find_common_letters_between_correct_box_ids(box_ids):
+    for i, x in enumerate(box_ids):
+        for y in box_ids:
+            diff_index = _find_single_diff_ch_index(x, y)
+            if diff_index:
+                return x[:diff_index] + x[diff_index + 1:]
+
+answer = find_common_letters_between_correct_box_ids(my_input)
+print(answer)

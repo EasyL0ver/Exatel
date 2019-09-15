@@ -1,0 +1,18 @@
+delimiter = ','
+names = 'aaa,bbb,ccc'
+numbers = '111,222,333'
+
+for name in names.split(delimiter):
+    # a lot of for loops here
+    # ...
+    for number in numbers.split(delimiter):
+        print(name + '/' + number) # inplace function with all values of all for loops
+	
+aaa/222
+aaa/333
+bbb/111
+bbb/222
+bbb/333
+ccc/111
+ccc/222
+ccc/333

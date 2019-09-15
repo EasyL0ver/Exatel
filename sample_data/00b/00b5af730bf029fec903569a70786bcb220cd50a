@@ -1,0 +1,61 @@
+ SELECT
+                                        substr(og_inciso, 1, 1) AS og_inciso, og_inciso_nombre AS og_inciso_nomb
+re, 
+                                sum(importe_credito) as importe_credito,
+                                sum(importe_preventivo) as importe_preventivo,
+                                sum(importe_compromiso) as importe_compromiso,
+                                sum(importe_devengado) as importe_devengado
+                                ,sum(importe_pagado) as importe_pagado
+                                
+                                FROM (
+                                        SELECT sau_np_detalles_movimientos.etapa_presupuestaria as etapa_presupu
+estaria,
+                                        sau_np_detalles_movimientos.partida as partida,
+                                        og_inciso.codigo_completo as og_inciso,
+                                        og_inciso.nombre as og_inciso_nombre,
+                                        og_pprincipal.codigo_completo as og_pprincipal,
+                                        og_pprincipal.nombre as og_pprincipal_nombre,
+                                        og_pparcial.codigo_completo as og_pparcial,
+                                        og_pparcial.nombre as og_pparcial_nombre,
+                                        rp_programa.codigo_completo as rp_programa,
+                                        rp_programa.nombre as rp_programa_nombre,
+                                        rp_subprograma.codigo_completo as rp_subprograma,
+                                        rp_subprograma.nombre as rp_subprograma_nombre,
+                                        rp_proyecto.codigo_completo as rp_proyecto,
+                                        rp_proyecto.nombre as rp_proyecto_nombre,
+                                        up_unidad.codigo_completo as up_unidad,
+                                        up_unidad.nombre as up_unidad_nombre,
+                                        up_subunidad.codigo_completo as up_subunidad,
+                                        up_subunidad.nombre as up_subunidad_nombre,
+                                        up_subsubunidad.codigo_completo as up_subsubunidad,
+                                        up_subsubunidad.nombre as up_subsubunidad_nombre,
+                                        CASE WHEN etapa_presupuestaria = 'CR' THEN sau_np_detalles_movimientos.importe ELSE 0 END AS importe_credito,
+                                        CASE WHEN etapa_presupuestaria = 'PR' THEN sau_np_detalles_movimientos.importe ELSE 0 END AS importe_preventivo,
+ CASE WHEN etapa_presupuestaria = 'CD' THEN sau_np_detalles_movimientos.importe ELSE 0 END AS importe_compromiso,
+                                        CASE WHEN etapa_presupuestaria = 'DE' THEN sau_np_detalles_movimientos.importe ELSE 0 END AS importe_devengado
+                                        ,CASE WHEN etapa_presupuestaria = 'PA' THEN sau_np_detalles_movimientos.importe ELSE 0 END AS importe_pagado
+                                        FROM sau_no_mapeador_transaccional,
+                                        sau_np_detalles_movimientos
+                                        JOIN sau_np_elementos og_inciso ON sau_np_detalles_movimientos.inc = og_inciso.elemento 
+                                        LEFT OUTER JOIN sau_np_elementos og_pprincipal ON sau_np_detalles_movimientos.pp = og_pprincipal.elemento
+                                                LEFT OUTER JOIN sau_np_elementos og_pparcial ON sau_np_detalles_movimientos.pl = og_pparcial.elemento
+                                                JOIN sau_np_elementos rp_programa ON  sau_np_detalles_movimientos.pr = rp_programa.elemento
+                                                LEFT OUTER JOIN sau_np_elementos rp_subprograma ON sau_np_detalles_movimientos.sp = rp_subprograma.elemento
+                                                LEFT OUTER JOIN sau_np_elementos rp_proyecto ON sau_np_detalles_movimientos.py = rp_proyecto.elemento
+                                                LEFT OUTER JOIN sau_np_elementos rp_actividad ON sau_np_detalles_movimientos.ac = rp_actividad.elemento
+                                                LEFT OUTER JOIN sau_np_elementos rp_obra ON sau_np_detalles_movimientos.ob = rp_obra.elemento
+                                                JOIN sau_np_elementos up_unidad ON sau_np_detalles_movimientos.ul = up_unidad.elemento
+                                                LEFT OUTER JOIN sau_np_elementos up_subunidad ON sau_np_detalles_movimientos.su = up_subunidad.elemento
+LEFT OUTER JOIN sau_np_elementos fu ON sau_np_detalles_movimientos.fu = fu.elemento
+                                                LEFT OUTER JOIN sau_np_elementos ej ON sau_np_detalles_movimientos.ej = ej.elemento
+                                        WHERE sau_no_mapeador_transaccional.mov_presupuestario_contable = sau_np_detalles_movimientos.mov_presupuestario_contable
+                                        AND (sau_np_detalles_movimientos.etapa_presupuestaria = 'CR' AND sau_no_mapeador_transaccional.fecha_valor BETWEEN date('2018-01-01') and date('2019-01-03')
+                                          OR sau_np_detalles_movimientos.etapa_presupuestaria in ('PR', 'CD', 'DE','PA') AND sau_no_mapeador_transaccional.fecha_valor BETWEEN date('2018-01-01') and date('2019-01-03'))
+                                         AND sau_no_mapeador_transaccional.ejercicio = '2018    ' 
+                                        ) movimientos
+                                GROUP BY
+                                        og_inciso, og_inciso_nombre
+                                HAVING 
+                                        sum(importe_credito + importe_preventivo + importe_compromiso + importe_devengado + importe_pagado ) <> 0
+                                ORDER BY 
+                                        og_inciso, og_inciso_nombre ;

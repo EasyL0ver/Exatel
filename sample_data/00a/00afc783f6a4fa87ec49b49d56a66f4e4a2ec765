@@ -1,0 +1,13 @@
+def hilbert_huang(self, imf, res):
+    # Reconstruct the signal
+    sig = np.sum(imf, axis=0) + res
+    # Hilbert Transform of IMFs
+    hil_imf = np.array([sp.fftpack.hilbert(imf[i]) for i in range(len(imf))])
+    # Instantaneous Amplitude
+    inst_amp = np.array([np.sqrt(imf[i]**2 + hil_imf[i]**2) for i in range(len(imf))])
+    # Instaneous Phase
+    inst_phase = np.array([np.arctan(hil_imf[i]/imf[i]) for i in range(len(imf))])
+    # Instaneous Temporal Frequency
+    inst_freq = np.array([(1/(2*np.pi))* np.gradient(inst_phase[i]) for i in range(len(imf))])
+
+    return inst_amp, inst_phase, inst_freq, sig

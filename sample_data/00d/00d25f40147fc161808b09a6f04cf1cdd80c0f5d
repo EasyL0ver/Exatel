@@ -1,0 +1,86 @@
+\documentclass[journal=jacsat,manuscript=article]{achemso}
+\usepackage{chemformula} % Formula subscripts using \ch{}
+\usepackage[T1]{fontenc} % Use modern font encodings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Meta-data block
+%% ---------------
+%% Each author should be given as a separate \author command.
+%%
+%% Corresponding authors should have an e-mail given after the author
+%% name as an \email command. Phone and fax numbers can be given
+%% using \phone and \fax, respectively; this information is optional.
+%%
+%% The affiliation of authors is given after the authors; each
+%% \affiliation command applies to all preceding authors not already
+%% assigned an affiliation.
+%%
+%% The affiliation takes an option argument for the short name.  This
+%% will typically be something like "University of Somewhere".
+%%
+%% The \altaffiliation macro should be used for new address, etc.
+%% On the other hand, \alsoaffiliation is used on a per author basis
+%% when authors are associated with multiple institutions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\author{John A. Dodson}
+\email{jdosdon3@cub.uca.edu}
+\affiliation[UCA]
+{Department of Chemistry, University of Central Arkansas, Conway, Arkansas}
+\author{Nicole Gaile}
+\affiliation[UCA]
+{Department of Chemistry, University of Central Arkansas, Conway, Arkansas}
+\author{Lindsey Hazeslip}
+\affiliation[UCA]
+{Department of Chemistry, University of Central Arkansas, Conway, Arkansas}
+\author{Joseph Schneider}
+\affiliation[UCA]
+{Department of Chemistry, University of Central Arkansas, Conway, Arkansas}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Document title, given as usual
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[Reaction Rates]
+  { Experimental Determination of Rate Laws and Arrhenius Parameters for Formation of a Halogen Complex }
+\abbreviations{ }
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start the main part of the manuscript here.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+The objective of this experiment was to determine 
+
+
+
+\section{Methods}
+
+\subsection{Preparation of solutions.}
+
+\subsection{Part A}
+
+\subsection{Part B}
+
+
+
+
+\section{Results and discussion.}
+
+\subsection{Part A}
+
+\subsection{Part B}
+
+
+
+
+
+\section{Conclusions.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The appropriate \bibliography command should be placed here.
+%% Notice that the class file automatically sets \bibliographystyle
+%% and also names the section correctly.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliography{achemso-demo}
+
+\end{document}

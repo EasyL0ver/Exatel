@@ -1,0 +1,324 @@
+void AsteriskConnector::ReadData()
+{
+    qint64 availBytes = mSocket.size();
+    if (availBytes == 0) return;
+    QByteArray array = mSocket.read(availBytes);
+    DEBUG(4,QString("Asterisk Connector :")+QString().setNum((ulong)this)+"read data:\n"+QString().append(array));
+    const char * buffer = array.constData();
+    int buffSize = array.size();
+    char currentChar=0;
+    switch (mParserState)
+    {
+    case KEY_1:
+        goto _key_1;
+    case KEYGARBAGE_2:
+        goto _keygarbage_2;
+    case ENDKEY_3:
+        goto _endkey_3;
+    case PREDOVALUEGARBAGE_4:
+        goto _predovaluegarbage_4;
+    case VALUE_5:
+        goto _value_5;
+    case AFTERVALUEGARBAGE_6:
+        goto _aftervaluegarbage_6;
+    case ENDL_P1_7:
+        goto _endl_p1_7;
+    case ENDL_P2_8:
+        goto _endl_p2_8;
+    case ENDP_P1_9:
+        goto _endp_p1_9;
+    case ERR_10:
+        goto _err;
+    case ERR_P2_11:
+        goto _err_p2_11;
+    }
+
+_key_1:
+    if (!buffSize)
+    {
+        mParserState = KEY_1;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar == ' ')
+    {
+        mCurrentGarbage.push_back(currentChar);
+        goto _keygarbage_2;
+    }
+    if (currentChar == ':')
+    {
+        goto _endkey_3;
+    }
+    if ((currentChar >='!')&&(currentChar <='~'))
+    {
+        mCurrentKey.push_back(currentChar);
+        goto _key_1;
+    }
+    mCurrentKey.clear();
+    goto _err;
+_keygarbage_2:
+    if (!buffSize)
+    {
+        mParserState = KEYGARBAGE_2;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar == ' ')
+    {
+        mCurrentGarbage.push_back(currentChar);
+        goto _keygarbage_2;
+    }
+    if (currentChar == ':')
+    {
+        mCurrentGarbage.clear();
+        goto _endkey_3;
+    }
+    if ((currentChar >='!')&&(currentChar <='~'))
+    {
+        mCurrentKey.append(mCurrentGarbage);
+        mCurrentKey.append(currentChar);
+        mCurrentGarbage.clear();
+        goto _key_1;
+    }
+    mCurrentKey.clear();
+    mCurrentGarbage.clear();
+    goto _err;
+_endkey_3:
+    if (!buffSize)
+    {
+        mParserState = ENDKEY_3;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar == ' ')
+    {
+        mCurrentGarbage.push_back(currentChar);
+        goto _predovaluegarbage_4;
+    }
+    if (currentChar == '\r')
+    {
+        mCurrentGarbage.append(currentChar);
+        goto _endl_p1_7;
+    }
+    if ((currentChar >='!')&&(currentChar <='~'))
+    {
+        mCurrentValue.push_back(currentChar);
+        goto _value_5;
+    }
+    mCurrentKey.clear();
+    goto _err;
+_predovaluegarbage_4:
+    if (!buffSize)
+    {
+        mParserState = PREDOVALUEGARBAGE_4;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar == ' ')
+    {
+        mCurrentGarbage.push_back(currentChar);
+        goto _predovaluegarbage_4;
+    }
+    if (currentChar == '\r')
+    {
+        mCurrentGarbage.push_back(currentChar);
+        goto _endl_p1_7;
+    }
+    if ((currentChar >='!')&&(currentChar <='~'))
+    {
+        mCurrentGarbage.clear();
+        mCurrentValue.push_back(currentChar);
+        goto _value_5;
+    }
+    mCurrentKey.clear();
+    mCurrentGarbage.clear();
+    goto _err;
+_value_5:
+    if (!buffSize)
+    {
+        mParserState = VALUE_5;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar == ' ')
+    {
+        mCurrentGarbage.push_back(currentChar);
+        goto _aftervaluegarbage_6;
+    }
+    if ((currentChar >='!')&&(currentChar <='~'))
+    {
+        mCurrentValue.push_back(currentChar);
+        goto _value_5;
+    }
+    if (currentChar == '\r')
+    {
+        mCurrentGarbage.push_back(currentChar);
+        goto _endl_p1_7;
+    }
+    mCurrentKey.clear();
+    mCurrentValue.clear();
+    goto _err;
+_aftervaluegarbage_6:
+    if (!buffSize)
+    {
+        mParserState = AFTERVALUEGARBAGE_6;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar == ' ')
+    {
+        mCurrentGarbage.push_back(currentChar);
+        goto _aftervaluegarbage_6;
+    }
+    if ((currentChar >='!')&&(currentChar <='~'))
+    {
+        mCurrentValue.append(mCurrentGarbage);
+        mCurrentValue.append(currentChar);
+        mCurrentGarbage.clear();
+        goto _value_5;
+    }
+    if (currentChar == '\r')
+    {
+        mCurrentGarbage.append(currentChar);
+        goto _endl_p1_7;
+    }
+    mCurrentGarbage.clear();
+    mCurrentKey.clear();
+    mCurrentValue.clear();
+    goto _err;
+_endl_p1_7:
+    if (!buffSize)
+    {
+        mParserState = ENDL_P1_7;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar == '\n')
+    {
+        (*mCurrentPacket)[QString(mCurrentKey)]=QString(mCurrentValue);
+        mCurrentGarbage.clear();
+        mCurrentKey.clear();
+        mCurrentValue.clear();
+        mCurrentLine.clear();
+        goto _endl_p2_8;
+    }
+    if (currentChar == ' ')
+    {
+        mCurrentGarbage.append(currentChar);
+        goto _aftervaluegarbage_6;
+    }
+    if ((currentChar >='!')&&(currentChar <='~'))
+    {
+        mCurrentValue.append(mCurrentGarbage);
+        mCurrentValue.append(currentChar);
+        mCurrentGarbage.clear();
+        goto _value_5;
+    }
+    mCurrentGarbage.clear();
+    mCurrentKey.clear();
+    mCurrentValue.clear();
+    goto _err;
+_endl_p2_8:
+    if (!buffSize)
+    {
+        mParserState = ENDL_P2_8;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar == '\r')
+    {
+        mCurrentKey.append(currentChar);
+        goto _endp_p1_9;
+    }
+    if (currentChar==':')
+    {
+        goto _err;
+    }
+    if ((currentChar >='!')&&(currentChar <='~'))
+    {
+        mCurrentKey.append(currentChar);
+        goto _key_1;
+    }
+    mCurrentGarbage.clear();
+    mCurrentKey.clear();
+    mCurrentValue.clear();
+    goto _err;
+_endp_p1_9:
+    if (!buffSize)
+    {
+        mParserState = ENDP_P1_9;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar=='\n')
+    {
+        mCurrentKey.clear();
+        ProcessPacket(mCurrentPacket);
+        mCurrentPacket = PServerPacket(new ServerPacket());
+        goto _key_1;
+    }
+    if (currentChar==' ')
+    {
+        mCurrentGarbage.append(currentChar);
+        goto _keygarbage_2;
+    }
+    if ((currentChar >='!')&&(currentChar <='~'))
+    {
+        mCurrentKey.append(currentChar);
+        goto _key_1;
+    }
+    mCurrentGarbage.clear();
+    mCurrentKey.clear();
+    mCurrentValue.clear();
+    goto _err;
+_err:
+    if (currentChar == '\r')
+    {
+        goto _err_p2_11;
+    }
+    if (!buffSize)
+    {
+        mParserState = ERR_10;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    goto _err;
+_err_p2_11:
+    if (!buffSize)
+    {
+        mParserState = ERR_P2_11;
+        goto exit;
+    }
+    currentChar = *(buffer++);
+    --buffSize;
+    mCurrentLine.push_back(currentChar);
+    if (currentChar == '\n')
+    {
+        ERROR("Invalid parse asterisk string: "+mCurrentLine);
+        mCurrentLine.clear();
+        goto _endl_p2_8;
+    }
+    goto _err;
+exit:
+    return;
+}

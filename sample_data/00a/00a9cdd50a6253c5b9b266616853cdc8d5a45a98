@@ -1,0 +1,13 @@
+module N
+	(output Y3,Y2,Y1,Y0,
+	input G,
+	input X1, X0);
+wire a,b;
+
+not G5(a,X0);
+not G4(b,X1);
+and G3(Y3,G,X1,X0);
+and G2(Y2,G,X1,a);
+and G1(Y1,G,b,X0);
+and G0(Y0,G,a,b);
+endmodule

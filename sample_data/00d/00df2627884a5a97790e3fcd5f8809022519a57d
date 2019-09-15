@@ -1,0 +1,216 @@
+commit 4706bf0efded664f72770df6f1edfd265640e238
+Author: bartoszek <zero.knowlage.proof@gmail.com>
+Date:   Sun Jan 27 22:23:47 2019 +0100
+
+    update comment v4
+
+diff --git "a/CPF_position:000_videoId:-NGeasRWbRg_title:\"PZ - \"Poka\305\274 mi kraw\304\231dz kosmosu\" - hangout otwarty.\".json" "b/CPF_position:000_videoId:-NGeasRWbRg_title:\"PZ - \"Poka\305\274 mi kraw\304\231dz kosmosu\" - hangout otwarty.\".json"
+index d0634d1..efa33ed 100644
+--- "a/CPF_position:000_videoId:-NGeasRWbRg_title:\"PZ - \"Poka\305\274 mi kraw\304\231dz kosmosu\" - hangout otwarty.\".json"	
++++ "b/CPF_position:000_videoId:-NGeasRWbRg_title:\"PZ - \"Poka\305\274 mi kraw\304\231dz kosmosu\" - hangout otwarty.\".json"	
+@@ -544,7 +544,7 @@
+           }
+         },
+         "canReply": true,
+-        "totalReplyCount": 3,
++        "totalReplyCount": 2,
+         "isPublic": true
+       },
+       "replies": {
+@@ -570,28 +570,6 @@
+               "publishedAt": "2019-01-27T10:59:10.000Z",
+               "updatedAt": "2019-01-27T10:59:10.000Z"
+             }
+-          },
+-          {
+-            "kind": "youtube#comment",
+-            "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/xz9koDWGobDe3pWb9I4e5BQGZx4\"",
+-            "id": "Ugzo0ifzaE0Viioo1HZ4AaABAg.8q_oqb1saOb8qaqykboVSo",
+-            "snippet": {
+-              "authorDisplayName": "sudoScience",
+-              "authorProfileImageUrl": "https://yt3.ggpht.com/-cD43V_UKutA/AAAAAAAAAAI/AAAAAAAAAAA/wxn7iB0PJ9I/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+-              "authorChannelUrl": "http://www.youtube.com/channel/UCplb0qoyekrslGF08Zu3IDQ",
+-              "authorChannelId": {
+-                "value": "UCplb0qoyekrslGF08Zu3IDQ"
+-              },
+-              "videoId": "-NGeasRWbRg",
+-              "textDisplay": "Nie streamujÄ… bo Uplink jest drogi.",
+-              "textOriginal": "Nie streamujÄ… bo Uplink jest drogi.",
+-              "parentId": "Ugzo0ifzaE0Viioo1HZ4AaABAg",
+-              "canRate": true,
+-              "viewerRating": "none",
+-              "likeCount": 0,
+-              "publishedAt": "2019-01-27T07:56:04.000Z",
+-              "updatedAt": "2019-01-27T07:56:04.000Z"
+-            }
+           }
+         ]
+       }
+@@ -797,7 +775,7 @@
+           }
+         },
+         "canReply": true,
+-        "totalReplyCount": 4,
++        "totalReplyCount": 3,
+         "isPublic": true
+       },
+       "replies": {
+@@ -824,28 +802,6 @@
+               "updatedAt": "2019-01-27T08:00:53.000Z"
+             }
+           },
+-          {
+-            "kind": "youtube#comment",
+-            "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/zH17TnkaDJ3Yru1IHJBxW7MfZpk\"",
+-            "id": "UgwSlkSblgHd4_154LF4AaABAg.8q_faDM5e4u8qaqpjA_wBU",
+-            "snippet": {
+-              "authorDisplayName": "sudoScience",
+-              "authorProfileImageUrl": "https://yt3.ggpht.com/-cD43V_UKutA/AAAAAAAAAAI/AAAAAAAAAAA/wxn7iB0PJ9I/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+-              "authorChannelUrl": "http://www.youtube.com/channel/UCplb0qoyekrslGF08Zu3IDQ",
+-              "authorChannelId": {
+-                "value": "UCplb0qoyekrslGF08Zu3IDQ"
+-              },
+-              "videoId": "-NGeasRWbRg",
+-              "textDisplay": "Bo kratery powstajÄ… w wyniku eksplozji a nie uderzenia, zobaczy jak meteory CzelabiĹ„ski wybuchĹ‚ w atmosferze.",
+-              "textOriginal": "Bo kratery powstajÄ… w wyniku eksplozji a nie uderzenia, zobaczy jak meteory CzelabiĹ„ski wybuchĹ‚ w atmosferze.",
+-              "parentId": "UgwSlkSblgHd4_154LF4AaABAg",
+-              "canRate": true,
+-              "viewerRating": "none",
+-              "likeCount": 0,
+-              "publishedAt": "2019-01-27T07:54:50.000Z",
+-              "updatedAt": "2019-01-27T07:54:50.000Z"
+-            }
+-          },
+           {
+             "kind": "youtube#comment",
+             "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/ofNWGAmAZ3Wj3AoCem9QUK8uj_g\"",
+@@ -1185,26 +1141,6 @@
+         "updatedAt": "2019-01-27T10:59:10.000Z"
+       }
+     },
+-    {
+-      "kind": "youtube#comment",
+-      "id": "Ugzo0ifzaE0Viioo1HZ4AaABAg.8q_oqb1saOb8qaqykboVSo",
+-      "snippet": {
+-        "authorDisplayName": "sudoScience",
+-        "authorProfileImageUrl": "https://yt3.ggpht.com/-cD43V_UKutA/AAAAAAAAAAI/AAAAAAAAAAA/wxn7iB0PJ9I/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+-        "authorChannelUrl": "http://www.youtube.com/channel/UCplb0qoyekrslGF08Zu3IDQ",
+-        "authorChannelId": {
+-          "value": "UCplb0qoyekrslGF08Zu3IDQ"
+-        },
+-        "textDisplay": "Nie streamujÄ… bo Uplink jest drogi.",
+-        "textOriginal": "Nie streamujÄ… bo Uplink jest drogi.",
+-        "parentId": "Ugzo0ifzaE0Viioo1HZ4AaABAg",
+-        "canRate": true,
+-        "viewerRating": "none",
+-        "likeCount": 0,
+-        "publishedAt": "2019-01-27T07:56:04.000Z",
+-        "updatedAt": "2019-01-27T07:56:04.000Z"
+-      }
+-    },
+     {
+       "kind": "youtube#comment",
+       "id": "Ugzo0ifzaE0Viioo1HZ4AaABAg.8q_oqb1saOb8q_ppDebW8U",
+@@ -1251,26 +1187,6 @@
+         "updatedAt": "2019-01-27T08:00:53.000Z"
+       }
+     },
+-    {
+-      "kind": "youtube#comment",
+-      "id": "UgwSlkSblgHd4_154LF4AaABAg.8q_faDM5e4u8qaqpjA_wBU",
+-      "snippet": {
+-        "authorDisplayName": "sudoScience",
+-        "authorProfileImageUrl": "https://yt3.ggpht.com/-cD43V_UKutA/AAAAAAAAAAI/AAAAAAAAAAA/wxn7iB0PJ9I/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+-        "authorChannelUrl": "http://www.youtube.com/channel/UCplb0qoyekrslGF08Zu3IDQ",
+-        "authorChannelId": {
+-          "value": "UCplb0qoyekrslGF08Zu3IDQ"
+-        },
+-        "textDisplay": "Bo kratery powstajÄ… w wyniku eksplozji a nie uderzenia, zobaczy jak meteory CzelabiĹ„ski wybuchĹ‚ w atmosferze.",
+-        "textOriginal": "Bo kratery powstajÄ… w wyniku eksplozji a nie uderzenia, zobaczy jak meteory CzelabiĹ„ski wybuchĹ‚ w atmosferze.",
+-        "parentId": "UgwSlkSblgHd4_154LF4AaABAg",
+-        "canRate": true,
+-        "viewerRating": "none",
+-        "likeCount": 0,
+-        "publishedAt": "2019-01-27T07:54:50.000Z",
+-        "updatedAt": "2019-01-27T07:54:50.000Z"
+-      }
+-    },
+     {
+       "kind": "youtube#comment",
+       "id": "UgwSlkSblgHd4_154LF4AaABAg.8q_faDM5e4u8q_oSil1_Os",
+@@ -1417,26 +1333,6 @@
+         "updatedAt": "2019-01-27T14:24:50.000Z"
+       }
+     },
+-    {
+-      "kind": "youtube#comment",
+-      "id": "Ugyw3upr2AUjn0xaM-B4AaABAg.8q_XTlrqm4e8qaqaTC4WKP",
+-      "snippet": {
+-        "authorDisplayName": "sudoScience",
+-        "authorProfileImageUrl": "https://yt3.ggpht.com/-cD43V_UKutA/AAAAAAAAAAI/AAAAAAAAAAA/wxn7iB0PJ9I/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+-        "authorChannelUrl": "http://www.youtube.com/channel/UCplb0qoyekrslGF08Zu3IDQ",
+-        "authorChannelId": {
+-          "value": "UCplb0qoyekrslGF08Zu3IDQ"
+-        },
+-        "textDisplay": "+natura ziemia tak, bezwĹ‚adnoĹ›Ä‡ i druga zasada dynamiki Newtona.  <br />(ďĽŤâ€¸áš)",
+-        "textOriginal": "+natura ziemia tak, bezwĹ‚adnoĹ›Ä‡ i druga zasada dynamiki Newtona.  \n(ďĽŤâ€¸áš)",
+-        "parentId": "Ugyw3upr2AUjn0xaM-B4AaABAg",
+-        "canRate": true,
+-        "viewerRating": "none",
+-        "likeCount": 0,
+-        "publishedAt": "2019-01-27T07:52:45.000Z",
+-        "updatedAt": "2019-01-27T07:52:45.000Z"
+-      }
+-    },
+     {
+       "kind": "youtube#comment",
+       "id": "Ugyw3upr2AUjn0xaM-B4AaABAg.8q_XTlrqm4e8qaplRmcQLt",
+diff --git "a/CPF_position:001_videoId:FBf9JU4V-L0_title:\"Meandry heliocentrycznej dogma-edukacji #SHORT\".json" "b/CPF_position:001_videoId:FBf9JU4V-L0_title:\"Meandry heliocentrycznej dogma-edukacji #SHORT\".json"
+index 465ecc5..7448753 100644
+--- "a/CPF_position:001_videoId:FBf9JU4V-L0_title:\"Meandry heliocentrycznej dogma-edukacji #SHORT\".json"	
++++ "b/CPF_position:001_videoId:FBf9JU4V-L0_title:\"Meandry heliocentrycznej dogma-edukacji #SHORT\".json"	
+@@ -37,7 +37,7 @@
+         "comments": [
+           {
+             "kind": "youtube#comment",
+-            "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/ftCw5d6cOs7vFTa2Gn8Vvp51GVw\"",
++            "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/C5r7BuYGh0xclTNXSEuRxqrAef4\"",
+             "id": "UgwEoolEQPgL-eJPQDZ4AaABAg.8qaVZPCAqjK8qbk8wu2uCo",
+             "snippet": {
+               "authorDisplayName": "Kacper Karp",
+@@ -52,7 +52,7 @@
+               "parentId": "UgwEoolEQPgL-eJPQDZ4AaABAg",
+               "canRate": true,
+               "viewerRating": "none",
+-              "likeCount": 1,
++              "likeCount": 2,
+               "publishedAt": "2019-01-27T16:15:40.000Z",
+               "updatedAt": "2019-01-27T16:15:40.000Z"
+             }
+@@ -168,7 +168,7 @@
+           }
+         },
+         "canReply": true,
+-        "totalReplyCount": 5,
++        "totalReplyCount": 3,
+         "isPublic": true
+       },
+       "replies": {
+@@ -195,28 +195,6 @@
+               "updatedAt": "2019-01-26T19:33:55.000Z"
+             }
+           },
+-          {
+-            "kind": "youtube#comment",
+-            "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/FHZNCfM-QneHNK1QPnB03zPcAgI\"",
+-            "id": "Ugzh2SEeaUXeZTuB9W94AaABAg.8qZgZpqGd5y8q_8zb_toyc",
+-            "snippet": {
+-              "authorDisplayName": "obracajÄ…cy siÄ™ ksiÄ™ĹĽyc",
+-              "authorProfileImageUrl": "https://yt3.ggpht.com/-SylEHbMcXc0/AAAAAAAAAAI/AAAAAAAAAAA/U-bFAOBwStg/s28-c-k-no-mo-rj-c0xffffff/photo.jpg",
+-              "authorChannelUrl": "http://www.youtube.com/channel/UCk1ACQIH4uQJE-yK6FI_Row",
+-              "authorChannelId": {
+-                "value": "UCk1ACQIH4uQJE-yK6FI_Row"
+-              },
+-              "videoId": "FBf9JU4V-L0",
+-              "textDisplay": "+Kaz Kryptolanser Nie magia, tylko fizyka - dlatego stosuje siÄ™ wagi szalkowe, ktĂłre sÄ… niewraĹĽliwe na przyspieszenie odĹ›rodkowe.",
+-              "textOriginal": "+Kaz Kryptolanser

@@ -1,0 +1,179 @@
+#include "global.c"
+
+int findIndex(char a);
+void putInArray(char *str);
+void putGrammarInArray(FILE *fin);
+void findFirst(char *str, int n);
+void findEpsFirst(char *str, int n);
+int isDup(char c,char *str);
+char prod_rules[MAX][MAX];
+
+int i=0;
+int pff_count = 0;
+int f_count=0;
+int term_flag=0;
+int rec_flag=0;
+int g_inx=0;
+int s_flag=0;
+typedef struct PROD_FIRST_FOLL{
+
+    char prod[MAX];
+    char first_elemes[MAX];
+    //char foll_elemes[MAX];
+
+}PFF;
+
+PFF pff_elem[MAX];
+
+int main(){
+
+    FILE *fin = fopen(TXTIN,"r");
+    int c;
+    putGrammarInArray(fin);
+
+    for(c=0;c<i;c++){
+
+        putProdRule(prod_rules[c]);
+
+        findFirst(prod_rules[c],c);
+        //findFollow(prod_rules[c][0]);
+        pff_elem[pff_count].first_elemes[f_count] = '\0';
+
+        f_count = 0;
+        term_flag = 0;
+        pff_count++;
+        puts("");
+
+    }
+    displayAllPFF();
+}
+int isDup(char c,char *str){
+
+    int x;
+    for(x=0;x<strlen(str);x++){
+        printf("[%c] vs [%c]",c,str[x]);
+        if(c==str[x])
+            return 1;
+    }
+    return 0;
+
+}
+void displayAllPFF(){
+
+    int x=0;
+    for(;x<pff_count;x++){
+
+        puts("PRODUCTION RULE");
+        puts(pff_elem[x].prod);
+        puts("FIRST");
+        puts(pff_elem[x].first_elemes);
+    }
+
+}
+
+
+void putProdRule(char *str){
+
+    strcpy(pff_elem[pff_count].prod,str);
+//    puts(pff_elem[pff_count].prod);
+
+}
+
+void putGrammarInArray(FILE *fin){
+
+    char str[MAX];
+
+    while(fgets(str,MAX,fin)!=NULL){
+        str[strlen(str)-1] = '\0';
+        putInArray(str);
+        //puts(prod_rules[i-1]);
+
+    }
+}
+
+void findFirst(char *str, int n){
+    puts("[----------]");
+    puts(str);
+    puts("[----------]");
+    int flag=s_flag;
+    int c=1;
+    int ind=0;
+    int curr_ind=0;
+    int terms_flag=0;
+    for(;c<strlen(str);c++){
+        printf("[%c]\n",str[c]);
+        if(str[c]=='>' || str[c]=='|')
+            flag = 1;
+        if (flag ==1 && isalpha(str[c])){
+            puts("ALPHA ENTRY");
+            if(islower(str[c])){
+
+                if(!isDup(str[c], pff_elem[pff_count].first_elemes)){
+                    pff_elem[pff_count].first_elemes[f_count] = str[c];
+                    f_count++;
+                }
+            }
+            else if (isupper(str[c])){
+                term_flag = 1;
+                ind = findIndex(str[c]); ///1 rec -  2 rec
+
+                findFirst(prod_rules[ind],n);
+
+            }
+            if(s_flag && term_flag==1) {
+
+                if (str[c+1]=='\0'){
+                    if(!isDup(str[c], pff_elem[pff_count].first_elemes)){
+                        pff_elem[pff_count].first_elemes[f_count] = '#';
+                        f_count++;
+                    }
+                }
+
+
+                s_flag=0;
+
+            }
+
+            else flag = 0;
+        }
+        if (flag == 1 && str[c]=='#'){
+            if(!term_flag){
+                if(!isDup(str[c], pff_elem[pff_count].first_elemes)){
+                    pff_elem[pff_count].first_elemes[f_count] = '#';
+                    f_count++;
+                }
+            }
+            puts("# ENTRY");
+            s_flag=1;
+            return;
+        }
+    }
+
+}
+
+int findIndex(char a){
+
+    int c ;
+
+    for(c=0;c<i;c++){
+
+        if (a == prod_rules[c][0])
+            return c;
+
+    }
+
+}
+
+void putInArray(char *str){
+
+    strcpy(prod_rules[i],str);
+    i++;
+}
+
+void printProd(){
+    int c=0;
+
+    for(;c<i;c++){
+        puts(prod_rules[c]);
+    }
+}

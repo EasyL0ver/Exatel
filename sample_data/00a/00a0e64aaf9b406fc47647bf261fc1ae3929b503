@@ -1,0 +1,49 @@
+#include <SoftwareSerial.h>
+
+#define rxPin 19
+#define txPin 18
+SoftwareSerial BTserial(rxPin, txPin);
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(rxPin, INPUT);
+  pinMode(txPin, OUTPUT);
+  BTserial.begin(38400);
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  char mot[] = "plz help me.";
+  BTserial.print(mot);
+  delay(1000);  
+} 
+     
+public void run() {
+        byte[] buffer = new byte[1024];
+        int bytes;
+        String temp_msg="";
+
+        // Keep looping to listen for received messages
+        while (true) {
+            try {
+                bytes = mmInStream.read();//read bytes from input buffer
+                String readMessage = new String(buffer, 0, bytes);
+                Log.d("TH", "run: "+readMessage);
+                if(readMessage.contains(".")){
+                    temp_msg = temp_msg + readMessage;
+                    byte[] temp_buffer = temp_msg.getBytes();
+                    int temp_bytes= temp_buffer.length;
+                    temp_msg="";
+                    bluetoothIn.obtainMessage(handlerState, temp_bytes, -1, temp_buffer).sendToTarget();
+                }else{
+                    temp_msg = temp_msg+readMessage;
+
+                }
+                }
+                catch (IOException e) {
+                break;
+            }
+        }
+    }

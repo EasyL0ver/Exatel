@@ -1,0 +1,23 @@
+a = 0
+arr = int(input())
+while(a<1):
+    
+    print (arr)
+    one = arr//100000
+    twy = (arr//10000)%10
+    three = (arr//1000)%10
+    four = (arr//100)%10
+    five = (arr//10)%10
+    six = (arr//1)%10
+    '''print (one),
+    print (twy),
+    print (three),
+    print (four),
+    print (five),
+    print (six),'''
+    if((one + twy + three) == (four + five + six)):
+        print (True)
+        print (arr)
+        a+=1
+    else:
+        arr+=1

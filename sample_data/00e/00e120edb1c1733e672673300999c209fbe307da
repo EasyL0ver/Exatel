@@ -1,0 +1,10 @@
+arr3 = []
+		arr1.each do |first|
+			min = first + 3
+			max = first + 3
+			arr2.each do |second|
+				if second < max && second > min
+					arr3 << second
+				end
+			end
+		end

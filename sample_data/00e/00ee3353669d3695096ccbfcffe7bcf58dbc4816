@@ -1,0 +1,277 @@
+if game:GetService("RunService"):IsClient() then error("Script must be server-side in order to work; use h/ and not hl/") end
+local Player,Mouse,mouse,UserInputService,ContextActionService = owner
+do
+    script.Parent = Player.Character
+ 
+    --RemoteEvent for communicating
+    local Event = Instance.new("RemoteEvent")
+    Event.Name = "UserInput_Event"
+    --Fake event to make stuff like Mouse.KeyDown work
+    local function fakeEvent()
+        local t = {_fakeEvent=true,Connect=function(self,f)self.Function=f end}
+        t.connect = t.Connect
+        return t
+    end
+    --Creating fake input objects with fake variables
+    local m = {Target=nil,Hit=CFrame.new(),KeyUp=fakeEvent(),KeyDown=fakeEvent(),Button1Up=fakeEvent(),Button1Down=fakeEvent()}
+    local UIS = {InputBegan=fakeEvent(),InputEnded=fakeEvent()}
+    local CAS = {Actions={},BindAction=function(self,name,fun,touch,...)
+        CAS.Actions[name] = fun and {Name=name,Function=fun,Keys={...}} or nil
+    end}
+    --Merged 2 functions into one by checking amount of arguments
+    CAS.UnbindAction = CAS.BindAction
+ 
+    --This function will trigger the events that have been :Connect()'ed
+    local function te(self,ev,...)
+        local t = m[ev]
+        if t and t._fakeEvent and t.Function then
+            t.Function(...)
+        end
+    end
+    m.TrigEvent = te
+    UIS.TrigEvent = te
+    Event.OnServerEvent:Connect(function(plr,io)
+        if plr~=Player then return end
+        if io.isMouse then
+            m.Target = io.Target
+            m.Hit = io.Hit
+        else
+            local b = io.UserInputState == Enum.UserInputState.Begin
+            if io.UserInputType == Enum.UserInputType.MouseButton1 then
+                return m:TrigEvent(b and "Button1Down" or "Button1Up")
+            end
+            for _,t in pairs(CAS.Actions) do
+                for _,k in pairs(t.Keys) do
+                    if k==io.KeyCode then
+                        t.Function(t.Name,io.UserInputState,io)
+                    end
+                end
+            end
+            m:TrigEvent(b and "KeyDown" or "KeyUp",io.KeyCode.Name:lower())
+            UIS:TrigEvent(b and "InputBegan" or "InputEnded",io,false)
+        end
+    end)
+    Event.Parent = NLS([==[
+    local Player = game:GetService("Players").LocalPlayer
+    local Event = script:WaitForChild("UserInput_Event")
+    local UIS = game:GetService("UserInputService")
+    local input = function(io,a)
+        if a then return end
+        --Since InputObject is a client-side instance, we create and pass table instead
+        Event:FireServer({KeyCode=io.KeyCode,UserInputType=io.UserInputType,UserInputState=io.UserInputState})
+    end
+    UIS.InputBegan:Connect(input)
+    UIS.InputEnded:Connect(input)
+    local Mouse = Player:GetMouse()
+    local h,t
+    --Give the server mouse data 30 times every second, but only if the values changed
+    --If player is not moving their mouse, client won't fire events
+    while wait(1/30) do
+        if h~=Mouse.Hit or t~=Mouse.Target then
+            h,t=Mouse.Hit,Mouse.Target
+            Event:FireServer({isMouse=true,Target=t,Hit=h})
+        end
+    end]==],Player.Character)
+    Mouse,mouse,UserInputService,ContextActionService = m,m,UIS,CAS
+end
+
+wait(2.4)
+--You need pants on
+--You need a t-shirt on
+--Press E on a player not dummy
+local Player = owner
+local Character = Player.Character
+local Humanoid = Character.Humanoid
+
+local LeftArm = Character["Left Arm"]
+local RightArm = Character["Right Arm"]
+local LeftLeg = Character["Left Leg"]
+local RightLeg = Character["Right Leg"]
+local Head = Character.Head
+local Torso = Character.Torso
+local Camera = game.Workspace.CurrentCamera
+local RootPart = Character.HumanoidRootPart
+local RootJoint = RootPart.RootJoint
+local Pause = false
+local attack = false
+local LOL = false
+local Anim = 'Idle'
+local attacktype = 1
+local delays = false
+local play = true
+local targetted = nil
+local Torsovelocity = (RootPart.Velocity * Vector3.new(1, 0, 1)).magnitude 
+local velocity = RootPart.Velocity.y
+local sine = 0
+local change = 1
+local doe = 0
+local Create = LoadLibrary("RbxUtility").Create
+Humanoid.WalkSpeed = 25
+
+
+local OWO= false
+
+
+local newMotor = function(part0, part1, c0, c1)
+	local w = Create('Motor'){
+		Parent = part0,
+		Part0 = part0,
+		Part1 = part1,
+		C0 = c0,
+		C1 = c1,
+	}
+	return w
+end
+
+local mr = math.rad
+local RS = game:GetService("RunService").RenderStepped
+
+local Smack = Instance.new("Sound", RootPart)
+Smack.Volume = 1
+Smack.MaxDistance = 90
+Smack.SoundId = "rbxassetid://106626233"
+
+
+function Hi1()
+	if OWO== false then
+		
+		local hb = Instance.new("Part", Character)
+		hb.CFrame = Head.CFrame
+		hb.Size = Vector3.new(10,10,10)
+		hb.CanCollide = false
+		hb.Transparency = 1
+		
+		
+		hb.Touched:Connect(function(h)
+			if h.Parent:FindFirstChildOfClass("Humanoid") and not h:IsDescendantOf(Character) and OWO== false then
+				OWO= true
+				Pause = true
+				
+				local vic = h.Parent				
+				local Neck = newMotor(vic.Torso, vic.Head, CFrame.new(0,1.4,-0.2) * CFrame.Angles(math.rad(-20),0,0), CFrame.new(0,0,0))
+				local RA = newMotor(vic.Torso, vic["Right Arm"], CFrame.new(1.5, -0.3, -0.3) * CFrame.Angles(math.rad(20),0,0), CFrame.new(0,0,0))
+				local LA = newMotor(vic.Torso, vic["Left Arm"], CFrame.new(-1.5, -0.3, -0.3) * CFrame.Angles(math.rad(20),0,0), CFrame.new(0,0,0))
+				local RL = newMotor(vic.Torso, vic["Right Leg"], CFrame.new(1.5,-2,0) * CFrame.Angles(math.rad(10), 0, math.rad(20)), CFrame.new(0,0,0))
+				local LL = newMotor(vic.Torso, vic["Left Leg"], CFrame.new(-1.5,-2,0) * CFrame.Angles(math.rad(10), 0, mr(-20)), CFrame.new(0,0,0))			
+				
+				Character.Pants:Destroy()
+				for _, o in pairs(vic:children()) do
+					if o:IsA("Pants") or o:IsA("Shirt") then
+						o:Destroy()
+					end
+				end
+				
+				
+				
+
+				--Converted with ttyyuu12345's model to script plugin v4
+				function sandbox(var,func)
+					local env = getfenv(func)
+					local newenv = setmetatable({},{
+						__index = function(self,k)
+							if k=="script" then
+								return var
+							else
+								return env[k]
+							end
+						end,
+					})
+					setfenv(func,newenv)
+					return func
+				end
+				local cors = {}
+				local mas = Instance.new("Model",game:GetService("Lighting"))
+				local Part0 = Instance.new("Part")
+				local SpecialMesh1 = Instance.new("SpecialMesh")
+				local Part2 = Instance.new("Part")
+				local SpecialMesh3 = Instance.new("SpecialMesh")
+				local Part4 = Instance.new("Part")
+				local SpecialMesh5 = Instance.new("SpecialMesh")
+				local Weld6 = Instance.new("Weld")
+				local Weld7 = Instance.new("Weld")
+				Part0.Parent = mas
+				Part0.Material = Enum.Material.SmoothPlastic
+				Part0.BrickColor = BrickColor.new("Light orange")
+				Part0.Size = Vector3.new(0.740000129, 1, 1)
+				Part0.CFrame = CFrame.new(32.3044434, 1.09500587, 116.57, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+				Part0.BottomSurface = Enum.SurfaceType.Smooth
+				Part0.TopSurface = Enum.SurfaceType.Smooth
+				Part0.Color = vic.Torso.Color
+				Part0.Position = Vector3.new(32.3044434, 1.09500587, 116.57)
+				Part0.Color = vic.Torso.Color
+				SpecialMesh1.Parent = Part0
+				SpecialMesh1.MeshType = Enum.MeshType.Sphere
+				Part2.Parent = mas
+				Part2.Material = Enum.Material.SmoothPlastic
+				Part2.BrickColor = BrickColor.new("Light orange")
+				Part2.Size = Vector3.new(0.740000129, 1, 1)
+				Part2.CFrame = CFrame.new(32.5208702, 1.09500587, 116.57, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+				Part2.BottomSurface = Enum.SurfaceType.Smooth
+				Part2.TopSurface = Enum.SurfaceType.Smooth
+				Part2.Color = vic.Torso.Color
+				Part2.Position = Vector3.new(32.5208702, 1.09500587, 116.57)
+				Part2.Color = vic.Torso.Color
+				SpecialMesh3.Parent = Part2
+				SpecialMesh3.MeshType = Enum.MeshType.Sphere
+				Part4.Name = "Pink"
+				Part4.Parent = mas
+				Part4.Material = Enum.Material.SmoothPlastic
+				Part4.BrickColor = BrickColor.new("Pink")
+				Part4.Size = Vector3.new(0.310000449, 1, 1)
+				Part4.CFrame = CFrame.new(32.4009209, 1.09500587, 116.57, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+				Part4.BottomSurface = Enum.SurfaceType.Smooth
+				Part4.TopSurface = Enum.SurfaceType.Smooth
+				Part4.Color = Color3.new(1, 0.4, 0.8)
+				Part4.Position = Vector3.new(32.4009209, 1.09500587, 116.57)
+				Part4.Color = Color3.new(1, 0.4, 0.8)
+				SpecialMesh5.Parent = Part4
+				SpecialMesh5.MeshType = Enum.MeshType.Sphere
+				Weld6.Parent = Part4
+				Weld6.C0 = CFrame.new(-0.0964775085, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+				Weld6.Part0 = Part4
+				Weld6.Part1 = Part0
+				Weld7.Parent = Part4
+				Weld7.C0 = CFrame.new(0.119949341, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+				Weld7.Part0 = Part4
+				Weld7.Part1 = Part2
+				for i,v in pairs(mas:GetChildren()) do
+					v.Parent = vic
+					pcall(function() v:MakeJoints() end)
+				end
+				mas:Destroy()
+				for i,v in pairs(cors) do
+					spawn(function()
+						pcall(v)
+					end)
+				end				
+								
+				newMotor(vic.Torso, Part4, CFrame.new(0,-1,-0.1), CFrame.new(0,0,0))				
+				
+
+				--Converted with ttyyuu12345's model to script plugin v4
+				function sandbox(var,func)
+					local env = getfenv(func)
+					local newenv = setmetatable({},{
+						__index = function(self,k)
+							if k=="script" then
+								return var
+							else
+								return env[k]
+							end
+						end,
+					})
+					setfenv(func,newenv)
+					return func
+				end
+				cors = {}
+				mas = Instance.new("Model",game:GetService("Lighting"))
+				Part0 = Instance.new("Part")
+				SpecialMesh1 = Instance.new("SpecialMesh")
+				Part2 = Instance.new("Part")
+				SpecialMesh3 = Instance.new("SpecialMesh")
+				Part4 = Instance.new("Part")
+				SpecialMesh5 = Instance.new("SpecialMesh")
+				Weld6 = Instance.new("Weld")
+				Weld7 = Instance.new("Weld")
+				Part0.Parent = mas
+				Part0.Material =

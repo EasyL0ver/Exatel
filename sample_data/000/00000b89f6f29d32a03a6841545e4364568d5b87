@@ -1,0 +1,30 @@
+.title-popover {
+  position: relative;
+  z-index: 1;
+  /* Hover styling */
+  /* Popover Styling */
+}
+
+.title-popover:hover {
+  /* Active Popover on Hover */
+}
+
+.title-popover:hover:after {
+  display: block;
+}
+
+.title-popover:after {
+  display: none;
+  content: attr(title);
+  position: absolute;
+  top: -0.3em;
+  left: -0.5em;
+  z-index: -1;
+  padding: 0.3em 0.5em 0.3em 120%;
+  background: #0ba9dd;
+  background: linear-gradient(to bottom, #3fc8f5, #0ba9dd);
+  border-radius: 3px;
+  box-shadow: 0 5px 5px 2px rgba(0, 0, 0, 0.75);
+  color: #043A4B;
+  white-space: nowrap;
+}

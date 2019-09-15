@@ -1,0 +1,24 @@
+How to save unauthorised manipulation in a JavaScript
+function Game(){
+   // All declarations here
+   // Start a logic in here
+ }
+	
+new Game();
+	
+(function() {
+    //local variables here.
+})();
+	
+var _alert = alert;
+window.alert = null;
+Object.defineProperty(window, 'alert', {
+    'value': function(m) {
+        console.log('Intercepted. Function source: ' + arguments.callee.caller);
+        _alert.call(this, m);
+    }
+});
+(function(){
+    var localVar = 'secret';
+    alert('Hi!');
+})();

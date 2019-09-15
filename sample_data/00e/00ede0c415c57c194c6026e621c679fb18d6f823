@@ -1,0 +1,27 @@
+SMART/Health Information (NVMe Log 0x02, NSID 0xffffffff)
+Critical Warning:                   0x00
+Temperature:                        27 Celsius
+Available Spare:                    98%
+Available Spare Threshold:          10%
+Percentage Used:                    21%
+Data Units Read:                    29,834,793 [15.2 TB]
+Data Units Written:                 765,829,644 [392 TB]
+Host Read Commands:                 341,748,298
+Host Write Commands:                8,048,478,631
+Controller Busy Time:               1
+Power Cycles:                       27
+Power On Hours:                     5,890
+Unsafe Shutdowns:                   0
+Media and Data Integrity Errors:    0
+Error Information Log Entries:      0
+	
+zpool iostat rpool 60
+capacity operations bandwidth
+pool alloc free read write read write
+
+rpool 342G 74.3G 0 91 10.0K 1.95M
+rpool 342G 74.3G 0 90 7.80K 1.95M
+rpool 342G 74.3G 0 107 7.60K 2.91M
+rpool 342G 74.3G 0 85 22.1K 2.15M
+rpool 342G 74.3G 0 92 8.47K 2.16M
+rpool 342G 74.3G 0 90 6.67K 1.71M

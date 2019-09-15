@@ -1,0 +1,11 @@
+Rewrite Urls without breaking real files
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteRule ^(.*)$ index.php?name=$0 [L]
+	
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !^*your* *RegEx* *for* *normal* *request*
+RewriteRule ^(.*)$ index.php?name=$0 [L]

@@ -1,0 +1,115 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Swipe : MonoBehaviour
+{
+
+    public int magnitude;
+    public int speed;
+    private RectTransform canva;
+    GameObject panel;
+    GameObject handler;
+
+    float[] goal;
+    bool lerp;
+    Vector2 startPosition;
+    int page;
+
+    public Sprite[] immagini;
+
+
+    // Use this for initialization
+    void Awake()
+    {
+
+        immagini = Resources.LoadAll<Sprite>("ITA/Cap1");
+        goal = new float[immagini.Length];
+        canva = GameObject.Find("Canvas").GetComponent<RectTransform>();
+
+        page = 0;
+        // scale lunghezza delle pagine per scorrimento
+        for (int i = 0; i < immagini.Length; i++)
+        {
+            goal[i] = -i * (canva.localScale.x * canva.rect.width);
+        }
+        lerp = false;
+    }
+
+    private void Start()
+    {
+        panel = GameObject.Find("ImageBase");
+        handler = GameObject.Find("Handler");
+
+        for (int i = 1; i < immagini.Length; i++)
+        {
+            GameObject panico = (GameObject)Instantiate(panel, handler.transform);
+            panico.name = "img" + i;
+            panico.GetComponent<Image>().sprite = immagini[i];
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Vector2 touchDelta;
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            startPosition = Input.GetTouch(0).position;
+        }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+        {
+            touchDelta = Input.GetTouch(0).deltaPosition;
+            float movement = touchDelta.x / 200;
+            transform.Translate(movement, 0, 0);
+        }
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            Vector2 endPosition = Input.GetTouch(0).position;
+            Vector2 deltaPosition = endPosition - startPosition;
+            //This was a flick to the right with magnitude of 5 or more
+            if (deltaPosition.x > magnitude)
+            {
+                lerp = true;
+                page--;
+            }
+            else lerp = true;
+            //This was a flick to the left with magnitude of 5 or more
+            if (deltaPosition.x < -magnitude)
+            {
+                lerp = true;
+                page++;
+                //transform.position = new Vector3(Mathf.Lerp(transform.position.x, goal, speed * Time.deltaTime), transform.position.y, transform.position.z);
+            }
+            else lerp = true;
+        }
+
+        //Provvisorio per spostamento da pc
+        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetButtonDown("Fire1"))
+        {
+            lerp = true;
+            page++;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetButtonDown("Fire2"))
+        {
+            lerp = true;
+            page--;
+        }
+
+        if (lerp)
+        {
+            //book is over
+            if (page == goal.Length) page--;
+            //first page
+            if (page < 0) page = 0;
+            transform.position = Vector3.Lerp(transform.position, new Vector3(goal[page], 0, 0), speed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, new Vector3(goal[page], 0, 0)) == 0)
+            {
+                lerp = false;
+            }
+        }
+    }
+}
+
+// FUNZIONE CUSTOM CHE GENERA IMAGEPANEL PER IL CONTROLLER CON NOME VARIABILIZZATO

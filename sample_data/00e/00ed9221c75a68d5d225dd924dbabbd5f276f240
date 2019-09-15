@@ -1,0 +1,3 @@
+update tdato set valor= (select max(valor)+1 from tdato)
+	
+update tdato set valor= ('AG'+ RIGHT (REPLICATE('-',1) + CONVERT (SELECT MAX(valor)+1 from tdato,1))

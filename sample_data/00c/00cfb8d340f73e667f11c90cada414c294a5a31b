@@ -1,0 +1,236 @@
+#!/usr/bin/env python
+"""
+@file interfaces.py
+@author Paul Hubbard
+@brief Using doxygen and mscgen to sketch out APIs for pubsub in R1C2
+
+@mainpage
+This is documentation for DM design efforts for pubsub in R1C1, class (API) specs as well as the main
+use-case sequence chart below.
+
+@msc
+arcgradient = 0, width="800";
+
+bootstrap_code, dataset_controller, publisher, subscriber, PubSub_controller, EMS, Broker, ResourceRegistry;
+--- [label="define science data XP"];
+bootstrap_code-> PubSub_controller [label="declare science data XP"];
+PubSub_controller -> EMS  [label="declare science data XP"];
+EMS -> Broker [label="declare science data XP"];
+EMS -> ResourceRegistry  [label="new XP resource"];
+EMS << ResourceRegistry [label="OK"];
+PubSub_controller << EMS [label="OK"];
+bootstrap_code << PubSub_controller [label="OK"];
+--- [label="define new topic"];
+dataset_controller -> PubSub_controller [label="define new topic(dataset name)"];
+PubSub_controller -> ResourceRegistry [label="new Topic()"];
+PubSub_controller << ResourceRegistry [label="resource_id"];
+dataset_controller << PubSub_controller [label="resource_id"];
+--- [label="define/register a publisher"];
+publisher -> PubSub_controller [label="register publisher"];
+PubSub_controller -> ResourceRegistry [label="new Publisher"];
+PubSub_controller << ResourceRegistry [label="resource_id"];
+publisher << PubSub_controller [label="resource_id"];
+--- [label="publish! (or perish)"];
+publisher -> Broker [label="send data"];
+... [label="see send diagram"];
+subscriber -> PubSub_controller [label="subscribe(topic)"];
+PubSub_controller -> EMS [label="new subscription"];
+EMS -> Broker [label="bind to queue"];
+EMS << Broker [label="OK"];
+PubSub_controller << EMS [label="OK"];
+publisher -> Broker [label="data"];
+subscriber <- Broker [label="data"];
+@endmsc
+"""
+
+class boostrap_code():
+    """
+    @brief stub representation of ion.core, here as initiator only.
+    """
+    pass
+
+class dataset_controller():
+    """
+    @brief The dataset controller class does...what?
+    @note All returns are HTTP return codes, 2xx for success, etc, unless otherwise noted.
+    """
+    def define_new_topic(self, dataset_name):
+        """
+        @brief Tells pubsub controller to define a new science data topic
+        @param dataset_name String name of a dataset. URL perhaps?
+        @retval resource id (opaque)
+        """
+        pass
+    def remove_topic(self, resource_id):
+        """
+        @brief Remove a topic from the routing system
+        @param resource_id Previously defined topic
+        @retval Return code only
+        """
+        pass
+
+    def query_topics(self, topic_regex):
+        """
+        @brief List/query defined topics
+        @param topic_regex Regular expression to match against defined topics
+        @retval List of matching topics, possibly empty
+        """
+        pass
+
+class Publisher():
+    """
+    @brief This represents publishers of (mostly) science data. Intended use is
+    to be instantiated within another class/process/codebase, as an object for sending data to OOI.
+    @note All returns are HTTP return codes, 2xx for success, etc, unless otherwise noted.
+    """
+
+    def __init__(self, proc=None):
+        """
+        Save class variables for later
+        """
+        # Same as ion.core.process
+        if not proc:
+            proc = Process()
+        self._proc = proc
+        self._resource_id = ''
+        self._exchange_point = ''
+
+    def register(self, xp_name, publisher_name, credentials):
+        """
+        @brief Register a new publisher, also does the access control step.
+        @param xp_name Name of exchange point to use
+        @param publisher_name Name of new publisher process, free-form string
+        @param credentials Placeholder for auth* tokens
+        @retval OK or error
+        @note saves resource id to self._resource_id
+        """
+        pass
+
+    def unregister(self):
+        """
+        @brief Remove a registration when done
+        @note Uses class variables self._resource_id and self._exchange_point
+        @retval Return code only
+        """
+        pass
+
+    def publish(self, topic, data):
+        """
+        @brief Publish data on a specified resource id/topic
+        @param topic Topic to send to, in form of dataset.variable
+        @param data Data, OOI-format, protocol-buffer encoded
+        @retval Deferred on send, not RPC
+        @todo Need Publisher receiver with this send signature
+        """
+
+        self.proc.send(self._exchange_point, topic, self._resource_id, data)
+
+        pass
+
+class Subscriber():
+    """
+    @brief This represents subscribers, both user-driven and internal (e.g. dataset persister)
+    @note All returns are HTTP return codes, 2xx for success, etc, unless otherwise noted.
+    @todo Need a subscriber receiver that can hook into the topic xchg mechanism
+    """
+    def __init__(self, proc = None):
+        """
+        Save class variables for later
+        """
+        # Same as ion.core.process
+        if not proc:
+            proc = Process()
+        self._proc = proc
+        self._resource_id = ''
+        self._exchange_point = ''
+
+    def subscribe(self, xp_name, topic_regex):
+        """
+        @brief Register a topic to subscribe to. Results will be sent to our private queue.
+        @note Allow third-party subscriptions?
+        @note Allow multiple subscriptions?
+        @param xp_name Name of exchange point to use
+        @param topic_regex Dataset topic of interest, using amqp regex
+        @retval Return code only, with new queue automagically hooked up to ondata()?
+        """
+        pass
+
+    def unsubscribe(self):
+        """
+        @brief Remove a subscription
+        @retval Return code only
+        """
+        pass
+
+    def ondata(self, data):
+        """
+        @brief Data callback, in the pattern of the current subscriber code
+        @param data Data packet/message matching subscription
+        @retval None, may daisy chain output back into messaging system
+        """
+        raise NotImplemented('Must be implmented by subclass')
+
+class PubSubController():
+    """
+    @brief Control surface for the pub-sub system
+    @note All returns are HTTP return codes, 2xx for success, etc, unless otherwise noted.
+    """
+    def declare_exchange_point(self, xp_name):
+        """
+        @brief Called by bootstrap code and others, ???. Calls exchange mgmt service and thence broker,
+        also the resource registry.
+        @param xp_name Exchange point name to register, e.g. science data. Details TBD.
+        @retval Return code only
+        """
+        pass
+
+    def undeclare_exchange_point(self, xp_name):
+        """
+        @brief Remove previously declared XP
+        @param xp_name XP to remove
+        @retval Return code only
+        """
+        pass
+
+    def query_exchange_points(self, xp_regex):
+        pass
+
+    def query_topics(self, xp_name, topic_regex):
+        pass
+
+    def define_topic(self, topic):
+        """
+        @brief Used by the dataset controller, this defines new topics in an XP, e.g. per-dataset
+        Contacts Resource registry to define it.
+        @param topic New topic to define.
+        @retval Resource ID
+        """
+        pass
+
+    def define_publisher(self, xp_name, publisher_name, credentials):
+        """
+        @brief Called by the publisher, this drops through to the resource registry
+        @param xp_name Name of exchange point to use
+        @param publisher_name Name of new publisher process, free-form string
+        @param credentials Placeholder for auth* tokens
+        @retval Resource ID or None if error
+        """
+        pass
+
+    def subscribe(self, topic_regex):
+        """
+        @brief Called by subscribers, this calls the EMS to setup the data flow
+        @param topic_regex Topic of interest. If no publishers, then no data, but no error
+        @note Order of calls on publish/subscribe does not matter
+        @note creates the queue via EMS
+        @retval Address of queue for ondata() callback and resource id
+        """
+        pass
+
+    def unsubscribe(self, resource_id):
+        """
+        @brief Remove subscription
+        @param resource_id Resource id from subscribe call
+        @retval OK if no problems, error otherwise
+        """
+        pass

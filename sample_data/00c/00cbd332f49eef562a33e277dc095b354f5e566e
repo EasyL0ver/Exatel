@@ -1,0 +1,72 @@
+private func parseJSON(_ data: Data) throws -> [ParsedType] 
+{
+    let decoder = JSONDecoder()
+    let parsed = try decoder.decode([ParsedType].self, from: data)
+    return parsed
+}
+
+private func parsePlist(_ data: Data) throws -> [ParsedType] 
+{
+    let decoder = PropertyListDecoder()
+    let parsed = try decoder.decode([ParsedType].self, from: data)
+    return parsed
+}
+	
+private func parse(_ data: Data, using decoder: /*Something*/) throws -> [ParsedType]
+{
+    let parsed = try decoder.decode([ParsedType].self, from: data)
+    return parsed
+}
+	
+func decode<T: Decodable >(_ type: T.Type, from data: Data) throws -> T
+	
+protocol DecoderType {
+    func decode<T: Decodable >(_ type: T.Type, from data: Data) throws -> T
+}
+
+extension JSONDecoder: DecoderType { }
+extension PropertyListDecoder: DecoderType { }
+	
+func parseData(_ data: Data, with decoder: DecoderType) throws ->  [ParsedType] {
+    return try decoder.decode([ParsedType].self, from: data)
+}
+	
+import Foundation
+
+// Generic decode method for Decodable
+func decode<T: Decodable>(data: Data) throws -> T {
+    let decoder = JSONDecoder()
+    return try decoder.decode(T.self, from: data)
+}
+	
+import XCTest
+@testable import YourProject
+
+class Decodable_EncodableTests: XCTestCase {
+    func testDecodableEncodable() {
+        struct User: Decodable, Encodable {
+            let name: String
+            let sex: String
+        }
+        let json = """
+        {
+            "name": "Ronaldo",
+            "sex": "Female"
+        }
+        """.data(using: .utf8)!
+
+        do {
+            // When
+            let name = "Ronaldo"
+            let sex = "Female"
+            let user: User = try decode(data: json)
+
+            // Then
+            XCTAssertEqual(user.name, name)
+            XCTAssertEqual(user.sex, sex)
+
+        } catch let error {
+            XCTFail(error.localizedDescription)
+        }
+    }
+}

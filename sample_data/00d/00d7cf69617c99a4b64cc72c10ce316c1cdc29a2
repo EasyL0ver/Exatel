@@ -1,0 +1,20 @@
+			string name;
+            int nameLength;
+            int median;
+
+            Console.WriteLine("Enter your name");
+            name = Console.ReadLine();
+            nameLength = name.Length - 1;
+
+            median = nameLength / 2;
+
+            if (median % 2 != 0)
+            {
+                Console.WriteLine("The middle letter of your name is: {0} and {1}", name[median], name[median + 1]);
+                Console.ReadLine();
+            }
+            else if (median % 2 == 0)
+            {
+                Console.WriteLine("The middle letter of your name is: {0}", name[median]);
+                Console.ReadLine();
+            }

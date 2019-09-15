@@ -1,0 +1,90 @@
+########################################################################
+#                            AbuseReport 1.0
+#
+#This TCL shows the channel where the bot has problems
+#!report abused ( shows the channels where the bot is not on chan )
+#!report deoped ( shows the channels where the bot has no op )
+#!report users ( shows the channels where the limit of the users is not # achived. You can set the limit of users in the TCL)
+#
+#                                 BLaCkShaDoW ProductionS
+#######################################################################
+
+
+#Here you can set the first char of the command
+
+set report(char) "!"
+
+#Here you set the limit of users. If a chan doesent have a number a #users higher than the one you set , you will see the chan on #executing the !report users command  
+
+set report(minusers) "5"
+
+#Here you can set the flags to use this command
+
+set report(flags) "nm|-"
+
+
+#######################################################################
+setudef flag report
+setudef flag chanserv
+bind pub $report(flags) $report(char)report reporting
+
+proc reporting {nick host hand chan arg} {
+global report botnick
+set sta ""
+set ::chan $chan
+set ew [lindex [split $arg] 0]
+set number [llength [channels]]
+if {[channel get $chan report]} {
+if {$arg == ""} { puthelp "NOTICE $nick :Please use : $report(char)report <abused> | <deoped> | <users> ."
+return 0
+}
+
+if {([regexp -nocase -- {(#[0-9]+|abused|deoped|users)} $ew tmp reported]) && (![regexp -nocase -- {\S#} $ew])} {
+    switch $reported {
+
+ abused {
+foreach c [channels] {
+if {[onchan $botnick $c]} {set sta 1} else { lappend ab $c }
+}
+
+if {[info exists ab]} { 
+puthelp "PRIVMSG $chan :I am not on this channels :[join $ab ", "]." 
+} else { 
+puthelp "PRIVMSG $chan :I dont have any chan in my list."
+}
+}
+
+deoped {
+foreach c [channels] {
+if {[onchan $botnick $c]} {
+if {[botisop $c]} { set sta 1 } else { lappend noopchans $c }
+}
+}
+if {[info exists noopchans]} { 
+puthelp "PRIVMSG $chan :Channels where i am not OP are: [join $noopchans ", "]." 
+} else { 
+puthelp "PRIVMSG $chan :I dont have any chan in my list"
+}
+}
+
+users {
+foreach c [channels] {
+if {[onchan $botnick $c]} {
+set usersnumber [llength [chanlist $c]]
+if {$usersnumber < $report(minusers)} {
+lappend minuserschans $c
+}
+}
+}
+if {[info exists minuserschans]} { 
+puthelp "PRIVMSG $chan :The channels with a number of users lower than $report(minusers) are: [join $minuserschans ", "]." 
+} else { 
+puthelp "PRIVMSG $chan :I dont have any chan in my list."
+}
+}
+}
+}
+}
+}
+
+putlog "AbuseReport Tcl 1.0 by BLaCkShaDoW Loaded"

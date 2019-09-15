@@ -1,0 +1,46 @@
+import React, { Component } from 'react';
+import { Icon, Label, Menu, Table } from 'semantic-ui-react';
+import faker from 'faker';
+import s from './updatesPage.css';
+
+const UpdatesPage = () => (
+    <Table celled className={s.updateForm}>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Name</Table.HeaderCell>
+          <Table.HeaderCell>URN number</Table.HeaderCell>
+          <Table.HeaderCell>Parish</Table.HeaderCell>
+          <Table.HeaderCell>Last Updated</Table.HeaderCell>
+          <Table.HeaderCell>Notes</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>{faker.name.findName()}</Table.Cell>
+          <Table.Cell>{faker.random.number()}</Table.Cell>
+          <Table.Cell>{faker.address.streetAddress()}</Table.Cell>
+          <Table.Cell>{faker.date.weekday()}</Table.Cell>
+          <Table.Cell>{faker.random.words()}</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>{faker.name.findName()}</Table.Cell>
+          <Table.Cell>{faker.random.number()}</Table.Cell>
+          <Table.Cell>{faker.address.streetAddress()}</Table.Cell>
+          <Table.Cell>{faker.date.weekday()}</Table.Cell>
+          <Table.Cell>{faker.random.words()}</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+)
+
+export default UpdatesPage;
+	
+.updateForm {
+    margin-top: 100px;
+    margin-left: 50px;
+}
+	
+import './updatesPage.css';
+	
+<Table celled className='updateForm'>

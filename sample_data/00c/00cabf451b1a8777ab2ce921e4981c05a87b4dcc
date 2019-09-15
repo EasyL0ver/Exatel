@@ -1,0 +1,10 @@
+class Order
+{
+	private $items = [];
+
+	public function addItem(string $productId, int amount, OrderItemFactory $itemFactory)
+	{
+		$item = $itemFactory->createFromProduct($productId, $amount);
+		$this->items[] = $item;
+	}
+}

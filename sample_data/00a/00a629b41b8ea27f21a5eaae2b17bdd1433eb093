@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class proga1 {
+	
+	public static void sravnenie(int a, int b, int c) {
+		if (a>b&&a>c&&b>c) {System.out.println(a+" "+b+" "+c);}
+		if (a>b&&a>c&&b<c) {System.out.println(a+" "+c+" "+b);}
+		if (b>a&&b>c&&a>c) {System.out.println(b+" "+a+" "+c);}
+		if (b>a&&b>c&&a<c) {System.out.println(a+" "+c+" "+b);}
+		if (c>a&&c>b&&a>b) {System.out.println(c+" "+a+" "+b);}
+		if (c>a&&c>b&&a<b) {System.out.println(c+" "+b+" "+a);}
+	}
+
+	public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+int a, b, c;
+a = scanner.nextInt();
+b = scanner.nextInt();
+c = scanner.nextInt();
+System.out.println("Ввод");
+System.out.println(a+" "+b+" "+c);
+System.out.println("Вывод");
+sravnenie(a, b, c);
+}
+}

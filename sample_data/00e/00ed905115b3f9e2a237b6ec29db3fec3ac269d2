@@ -1,0 +1,7 @@
+# 3. Designing functional domain models
+
+> # 3. 機能ドメインモデルの設計
+
+Previous chapters covered the parallels between functional programming and mathematics in general, and algebra in particular. You explored algebraic data types, sum types, and product types, and you learned how to combine them to form abstractions that model your domain elements. This chapter takes this discussion to the next level; you’ll begin with specifications of the model and, using algebraic composition of types, build APIs for our domain model. These APIs are contracts that obey the laws of the domain, and you’ll use the algebra of types to ensure that they’re correctly constructed. You’ll learn how to develop APIs as algebraic specifications and write properties that verify the laws that form the business rules.
+
+> これまでの章では、関数型プログラミングと数学、特に代数の間の類似点について説明しました。代数データ型、合計型、積型を調べ、それらを組み合わせてドメイン要素をモデル化する抽象化を形成する方法を学びました。この章では、この議論を次のレベルに進めます。モデルの仕様から始めて、型の代数的構成を使用して、ドメインモデル用のAPIを構築します。これらのAPIはドメインの法律に準拠した規約であり、それらが正しく構築されていることを確認するために型の代数を使用します。あなたは代数的仕様としてAPIを開発する方法を学び、ビジネスルールを形成する法律を検証するプロパティを書くでしょう。

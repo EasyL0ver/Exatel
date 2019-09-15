@@ -1,0 +1,31 @@
+coll.update_one({'topic.items.item_id': item_id},{'$set':{'topic.$[i].$[j].isAuthorized': True}},{'$arrayFilters': [{'i.topic_name': topic_name},{'j.item_id': item_id}]},upsert=False)
+	
+{
+    "_id": '',
+    "author": {
+        "provider": "",
+        "user_id": "",
+        "email": "",
+        "name": ""
+    },
+    "topic": [
+        {
+            "items": [
+                {
+                    "isAuthorized": false,
+                    "item_name": "In Madrid",
+                    "downvotes": [],
+                    "topic_name": "Shakira Concert",
+                    "downvotesCount": 0,
+                    "item_author_name": "Author 1",
+                    "upvotesCount": 0,
+                    "item_id": "71x0k4",
+                    "upvotes": [],
+                    "_id": "71x0k4"
+                }
+            ],
+            "name": "Shakira Concert",
+            "author": "Author 1"
+        }
+    ]
+}

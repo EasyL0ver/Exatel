@@ -1,0 +1,180 @@
+package kattis;
+
+public class Matrix2048 {
+	public static final int ROWS = 4;
+	public static final int COLS = 4;
+	
+	Node[][] nodes = new Node[ROWS][COLS];
+	String[][] splits = new String[ROWS][];
+	
+	public void pushTo(String message) {
+		System.out.println(message);
+		if (message == "0") {
+			System.out.println("this fucking shit doesent run");
+			//push everything left
+			for (int x = ROWS - 1; x >= 0; x--) {
+				for (int y = COLS - 1; y >= 0; y--) {
+					if (nodes[x][y].west != null) {
+						if (nodes[x][y].west.value == 0) {
+							nodes[x][y-1].value = nodes[x][y].value;
+							nodes[x][y].value = 0;
+						} else if (nodes[x][y].value == nodes[x][y].west.value && nodes[x][y].west != null && !nodes[x][y].changed) {
+							nodes[x][y-1].value = nodes[x][y].value + nodes[x][y].west.value;
+							nodes[x][y-1].changed = true;
+							nodes[x][y].value = 0;
+						}
+					}
+				}
+			}
+
+			for (int y = 0; y < COLS; y++) {
+				for (int x = 0; x < ROWS; x++) {
+					if (nodes[x][y].east != null) {
+						if (nodes[x][y].value == 0 && nodes[x][y].east.value > 0) { //and west != null
+							nodes[x][y].value = nodes[x][y+1].value;
+							nodes[x][y+1].value = 0;
+						}
+					}
+				}
+			}
+		} else if (message == "1") {
+			//push everything up
+			for (int x = ROWS - 1; x >= 0; x--) {
+				for (int y = COLS - 1; y >= 0; y--) {
+					if (nodes[x][y].north != null) {
+						if (nodes[x][y].north.value == 0) {
+							nodes[x-1][y].value = nodes[x][y].value;
+							nodes[x][y].value = 0;
+						} else if (nodes[x][y].value == nodes[x][y].north.value && nodes[x][y].north != null && !nodes[x][y].changed) {
+							nodes[x-1][y].value = nodes[x][y].value + nodes[x][y].north.value;
+							nodes[x-1][y].changed = true;
+							nodes[x][y].value = 0;
+						}
+					}
+				}
+			}
+			
+			for (int x = 0; x < ROWS; x++) {
+				for (int y = 0; y < COLS; y++) {
+					if (nodes[x][y].south != null) {
+						if (nodes[x][y].value == 0 && nodes[x][y].south.value > 0) { //and west != null
+							nodes[x][y].value = nodes[x+1][y].value;
+							nodes[x+1][y].value = 0;
+						}
+					}
+				}
+			}
+			
+		} else if (message == "2") {
+			//push everything right
+			for (int x = 0; x < ROWS; x++) {
+				for (int y = 0; y < COLS; y++) {
+					if (nodes[x][y].east != null) {
+						if (nodes[x][y].east.value == 0) {
+							nodes[x][y+1].value = nodes[x][y].value;
+							nodes[x][y].value = 0;
+						} else if (nodes[x][y].value == nodes[x][y].east.value && nodes[x][y].east != null && !nodes[x][y].changed) {
+							nodes[x][y+1].value = nodes[x][y].value + nodes[x][y].east.value;
+							nodes[x][y+1].changed = true;
+							nodes[x][y].value = 0;
+						}
+					}
+				}
+			}
+			
+			for (int y = COLS - 1; y >= 0; y--) {
+				for (int x = 0; x < ROWS; x++) {
+					if (nodes[x][y].west != null) {
+						if (nodes[x][y].value == 0 && nodes[x][y].west.value > 0) { //and west != null
+							nodes[x][y].value = nodes[x][y-1].value;
+							nodes[x][y-1].value = 0;
+						}
+					}
+				}
+			}
+		} else if (message == "3") {
+			//push everything down
+			for (int x = 0; x < ROWS; x++) {
+				for (int y = 0; y < COLS; y++) {
+					if (nodes[x][y].south != null) {
+						if (nodes[x][y].south.value == 0) {
+							nodes[x+1][y].value = nodes[x][y].value;
+							nodes[x][y].value = 0;
+						} else if (nodes[x][y].value == nodes[x][y].south.value && nodes[x][y].south != null && !nodes[x][y].changed) {
+							nodes[x+1][y].value = nodes[x][y].value + nodes[x][y].south.value;
+							nodes[x+1][y].changed = true;
+							nodes[x][y].value = 0;
+						}
+					}
+				}
+			}
+			
+			for (int x = ROWS - 1; x > 0; x--) {
+				for (int y = COLS - 1; y > 0; y--) {
+					if (nodes[x][y].north != null) {
+						if (nodes[x][y].value == 0 && nodes[x][y].north.value > 0) { //and west != null
+							nodes[x][y].value = nodes[x+1][y].value;
+							nodes[x-1][y].value = 0;
+						}
+					}
+				}
+			}
+		}
+		
+		this.printMatrix();
+	}
+	
+	public void printMatrix() {
+		for (int x = 0; x < ROWS; x++) {
+			for (int y = 0; y < COLS; y++) {
+				if (y == 3) {
+					System.out.print(nodes[x][y].value);
+					continue;
+				}
+				System.out.print(nodes[x][y].value + " ");
+			}
+			System.out.println("");
+		}
+	}
+	
+	public Matrix2048(String Input1, String Input2, String Input3, String Input4, String Input5) {
+		//this.message = Input5;
+		//splitting up the input to a 2d array
+		for (int split = 0; split < 4; split++) {
+			if (split == 0) {
+				this.splits[split] = Input1.split(" ");
+			} else if (split == 1) {
+				this.splits[split] = Input2.split(" ");
+			} else if (split == 2) {
+				this.splits[split] = Input3.split(" ");
+			} else if (split == 3) {
+				this.splits[split] = Input4.split(" ");
+			}
+		}
+		
+		//setting all the values for the nodes
+		for (int x = 0; x < ROWS; x++) {
+			for (int y = 0; y < COLS; y++) {
+				nodes[x][y] = new Node(Integer.parseInt(splits[x][y]));
+			}
+		}
+		
+		//setting all the neighbors for the nodes
+		for (int x = 0; x < ROWS; x++) {
+			for (int y = 0; y < COLS; y++) {
+				//System.out.println(x + " " + y);
+				
+				if (x > 0) {
+					nodes[x][y].north = nodes[x-1][y];
+				} if (x < 3) {
+					nodes[x][y].south = nodes[x+1][y];
+				} if (y > 0) {
+					nodes[x][y].west = nodes[x][y-1];
+				} if (y < 3) {
+					nodes[x][y].east = nodes[x][y+1];
+				}
+			}
+		}
+		this.pushTo(Input5);
+	}
+}

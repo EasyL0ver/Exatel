@@ -1,0 +1,7 @@
+SCREEN SECTION.
+       01  CLRSCR.
+           05 BLANK SCREEN.
+
+       01  DESIGN-1.
+           05 LINE y COLUMN x "===========".
+		...

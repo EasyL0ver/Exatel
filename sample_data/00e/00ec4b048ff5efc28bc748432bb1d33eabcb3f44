@@ -1,0 +1,41 @@
+System.out.println("Introduce el id");
+		int id=sc.nextInt();sc.nextLine();
+		System.out.println("Introduce la descripcion");
+		String desc = sc.nextLine();
+		System.out.println("Introduce el precio");
+		Float precio=sc.nextFloat();sc.nextLine();
+		
+		//Declaramos el fichero para escribir en el 
+		DataOutputStream fichero=null;
+		
+		
+		try {
+			//Abrimos el fichero para escritura, si existe se añadiram registros
+			fichero = new DataOutputStream(new FileOutputStream("productos.bin", true));
+			//Escribimos el registro con los datos del producto 
+			//ID
+			fichero.writeInt(id);
+			//Descripcion, añadimos \n para saber donde acaba la cadena
+			fichero.writeChars(desc+"\n");
+			//Precio
+			fichero.writeFloat(precio);
+			//Escribimos false por defecto está de alta el producto
+			fichero.writeBoolean(false);
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Fichero no encontrado");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error al escribir en el fichero productos.bin");
+		}
+		finally {
+			if(fichero!=null) {
+				try {
+					fichero.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}

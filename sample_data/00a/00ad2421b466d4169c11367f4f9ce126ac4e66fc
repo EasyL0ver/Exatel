@@ -1,0 +1,37 @@
+$ gfortran -fopenmp -O3 calc.f90 test_do.f90
+
+$ time OMP_NUM_THREADS=1 ./a.out
+
+ nsize, ndiv, nchunk =              16000000                   16              1000000
+ ans =    11643183.886972876     
+
+real	0m1.857s
+user	0m1.792s
+sys	0m0.056s
+
+$ time OMP_NUM_THREADS=2 ./a.out
+
+ nsize, ndiv, nchunk =              16000000                   16              1000000
+ ans =    11643183.886972876     
+
+real	0m0.935s
+user	0m1.719s
+sys	0m0.051s
+
+$ time OMP_NUM_THREADS=4 ./a.out
+
+ nsize, ndiv, nchunk =              16000000                   16              1000000
+ ans =    11643183.886972876     
+
+real	0m0.529s
+user	0m1.769s
+sys	0m0.049s
+
+$ time OMP_NUM_THREADS=8 ./a.out
+
+ nsize, ndiv, nchunk =              16000000                   16              1000000
+ ans =    11643183.886972876     
+
+real	0m0.365s
+user	0m2.032s
+sys	0m0.057s

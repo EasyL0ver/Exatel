@@ -1,0 +1,121 @@
+diff --git a/../twentyseventeen/assets/js/global.js b/assets/js/global.js
+index 6e2f429..c9dc97d 100644
+--- a/../twentyseventeen/assets/js/global.js
++++ b/assets/js/global.js
+@@ -3,8 +3,8 @@
+ 
+ 	// Variables and DOM Caching.
+ 	var $body = $( 'body' ),
++		$siteHeader = $body.find( '.site-header' ),
+ 		$customHeader = $body.find( '.custom-header' ),
+-		$branding = $customHeader.find( '.site-branding' ),
+ 		$navigation = $body.find( '.navigation-top' ),
+ 		$navWrap = $navigation.find( '.wrap' ),
+ 		$navMenuItem = $navigation.find( '.menu-item' ),
+@@ -13,7 +13,6 @@
+ 		$sidebar = $body.find( '#secondary' ),
+ 		$entryContent = $body.find( '.entry-content' ),
+ 		$formatQuote = $body.find( '.format-quote blockquote' ),
+-		isFrontPage = $body.hasClass( 'twentyseventeen-front-page' ) || $body.hasClass( 'home blog' ),
+ 		navigationFixedClass = 'site-navigation-fixed',
+ 		navigationHeight,
+ 		navigationOuterHeight,
+@@ -21,6 +20,7 @@
+ 		navMenuItemHeight,
+ 		idealNavHeight,
+ 		navIsNotTooTall,
++		siteHeaderMargin,
+ 		headerOffset,
+ 		menuTop = 0,
+ 		resizeTimer;
+@@ -52,6 +52,7 @@
+ 		navMenuItemHeight     = $navMenuItem.outerHeight() * 2;
+ 		idealNavHeight        = navPadding + navMenuItemHeight;
+ 		navIsNotTooTall       = navigationHeight <= idealNavHeight;
++		siteHeaderMargin      = parseFloat( $siteHeader.css( 'margin-top' ) );
+ 	}
+ 
+ 	// Make navigation 'stick'.
+@@ -64,10 +65,10 @@
+ 			if ( navIsNotTooTall ) {
+ 
+ 				// When there's a custom header image or video, the header offset includes the height of the navigation.
+-				if ( isFrontPage && ( $body.hasClass( 'has-header-image' ) || $body.hasClass( 'has-header-video' ) ) ) {
+-					headerOffset = $customHeader.innerHeight() - navigationOuterHeight;
++				if ( $body.hasClass( 'has-header-image' ) || $body.hasClass( 'has-header-video' ) ) {
++					headerOffset = $customHeader.innerHeight() - navigationOuterHeight + siteHeaderMargin;
+ 				} else {
+-					headerOffset = $customHeader.innerHeight();
++					headerOffset = $customHeader.innerHeight() + siteHeaderMargin;
+ 				}
+ 
+ 				// If the scroll is more than the custom header, set the fixed class.
+@@ -85,23 +86,6 @@
+ 		}
+ 	}
+ 
+-	// Set margins of branding in header.
+-	function adjustHeaderHeight() {
+-		if ( 'none' === $menuToggle.css( 'display' ) ) {
+-
+-			// The margin should be applied to different elements on front-page or home vs interior pages.
+-			if ( isFrontPage ) {
+-				$branding.css( 'margin-bottom', navigationOuterHeight );
+-			} else {
+-				$customHeader.css( 'margin-bottom', navigationOuterHeight );
+-			}
+-
+-		} else {
+-			$customHeader.css( 'margin-bottom', '0' );
+-			$branding.css( 'margin-bottom', '0' );
+-		}
+-	}
+-
+ 	// Set icon for quotes.
+ 	function setQuotesIcon() {
+ 		$( twentyseventeenScreenReaderText.quote ).prependTo( $formatQuote );
+@@ -178,7 +162,7 @@
+ 	// Fire on document ready.
+ 	$( document ).ready( function() {
+ 
+-		// If navigation menu is present on page, setNavProps and adjustScrollClass.
++		// If navigation menu is present on page, setNavProps, adjustScrollClass, and closeMobileMenu.
+ 		if ( $navigation.length ) {
+ 			setNavProps();
+ 			adjustScrollClass();
+@@ -206,7 +190,6 @@
+ 			});
+ 		}
+ 
+-		adjustHeaderHeight();
+ 		setQuotesIcon();
+ 		if ( true === supportsInlineSVG() ) {
+ 			document.documentElement.className = document.documentElement.className.replace( /(\s*)no-svg(\s*)/, '$1svg$2' );
+@@ -223,7 +206,6 @@
+ 		// On scroll, we want to stick/unstick the navigation.
+ 		$( window ).on( 'scroll', function() {
+ 			adjustScrollClass();
+-			adjustHeaderHeight();
+ 		});
+ 
+ 		// Also want to make sure the navigation is where it should be on resize.
+@@ -231,6 +213,11 @@
+ 			setNavProps();
+ 			setTimeout( adjustScrollClass, 500 );
+ 		});
++
++		$( window ).on( 'wp-amp-app-shell-load', function() {
++			setNavProps();
++			setTimeout( adjustScrollClass, 500 );
++		});
+ 	}
+ 
+ 	$( window ).resize( function() {
+@@ -238,7 +225,6 @@
+ 		resizeTimer = setTimeout( function() {
+ 			belowEntryMetaClass( 'blockquote.alignleft, blockquote.alignright' );
+ 		}, 300 );
+-		setTimeout( adjustHeaderHeight, 1000 );
+ 	});
+ 
+ 	// Add header video class after the video is loaded.

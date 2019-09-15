@@ -1,0 +1,221 @@
+/*
+ * Kevin Tednes
+ */
+public class Salesperson {
+	
+	private String sName;
+	private double janSales;
+	private double febSales;
+	private double marSales;
+	private String title;
+	
+	
+//-------------------------------------------------
+	/**
+	 * 
+	 * @param sName
+	 * @param janSales
+	 * @param febSales
+	 * @param marSales
+	 * @param title
+	 */
+	
+	//Constructors
+	public Salesperson(String newSName, double newJanSales, double newFebSales, double newMarSales, String newTitle)
+	{
+		if(newJanSales>=0 && newJanSales<120000)
+		{
+			janSales = newJanSales;
+		}
+		else
+		{
+			janSales = -1;
+		}
+	
+		if(newFebSales>=0 && newFebSales<120000)
+		{
+			febSales = newFebSales;
+		}
+		else
+		{
+			febSales = -1;
+		}
+		if(newMarSales>=0 && newMarSales<120000)
+		{
+			marSales = newMarSales;
+		}
+		else
+		{
+			marSales = -1;
+		}
+		
+		title = newTitle.toUpperCase();
+	}
+	
+	public Salesperson(String newSName)
+	{
+		janSales = -1;
+		febSales = -1;
+		marSales = -1;
+		title = "UNKNOWN";
+	}
+	//------------------------------------------------------------------------------------------------
+	
+	//Get Methods
+	public String getSName()
+	{
+		return sName;
+	}
+	public double getJanSales()
+	{
+		return janSales;
+	}
+	public double getFebSales()
+	{
+		return febSales;
+	}
+	public double getMarSales()
+	{
+		return marSales;
+	}
+	public String getTitle()
+	{
+		return title;
+	}
+	//----------------------------------------------------------------------------------------------------
+	
+	//Set Methods
+	public void setJanSales(double newJanSales)
+	{
+		if(newJanSales>=0 && newJanSales<120000)
+		{
+			janSales = newJanSales;
+		}
+		else
+		{
+			System.out.println(janSales + " is not a valid sales figure. The value must be greater than zero and less than one hundred twenty thousand in order to be valid.");
+		}
+	}
+	public void setFebSales(double newFebSales)
+	{
+		if(newFebSales>=0 && newFebSales<120000)
+		{
+			febSales = newFebSales;
+		}
+		else
+		{
+			System.out.println(febSales + " is not a valid sales figure. The value must be greater than zero and less than one hundred twenty thousand in order to be valid.");
+		}
+	}
+	public void setMarSales(double newMarSales)
+	{
+		if(newMarSales>=0 && newMarSales<120000)
+		{
+			marSales = newMarSales;
+		}
+		else
+		{
+			System.out.println(marSales + " is not a valid sales figure. The value must be greater than zero and less than one hundred twenty thousand in order to be valid.");
+		}
+	}
+	public void setTitle(String newTitle)
+	{
+		title = newTitle.toUpperCase();
+	}
+	
+	//-------------------------------------------------------------------------------------------------------------------------------------------
+	
+	public double getTotalSales()
+	{
+		double totalSales;
+		
+		
+		if(janSales<0 || janSales>120000)
+		{
+			janSales = 0;
+		}
+		if(febSales<0 || febSales>120000)
+		{
+			febSales = 0;
+		}
+		if(marSales<0 || marSales>120000)
+		{
+			marSales = 0;
+		}
+		
+		totalSales = janSales + febSales + marSales;
+		
+		
+		return totalSales;
+	}
+	
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+	public String getBestMonth()
+	{
+		String bestMonth;
+		
+		if(janSales>febSales && janSales>marSales && janSales>=0 && febSales>=0 && marSales>=0 && janSales<120000 && febSales<120000 && marSales<120000)
+		{
+			bestMonth = "January";
+		}
+		else if(febSales>janSales && febSales>marSales && janSales>=0 && febSales>=0 && marSales>=0 && janSales<120000 && febSales<120000 && marSales<120000)
+		{
+			bestMonth = "February";
+		}
+		else if(marSales>janSales && marSales>febSales && janSales>=0 && febSales>=0 && marSales>=0 && janSales<120000 && febSales<120000 && marSales<120000)
+		{
+			bestMonth = "March";
+		}
+		else
+		{
+			bestMonth = "Unknown";
+		}
+		
+		return bestMonth;
+	}
+	
+	//------------------------------------------------------------------------------------------------------------------------------------------------------
+	public double getBonus()
+	{
+		double bonus;
+		double totalSales;
+		totalSales = janSales + febSales + marSales;
+		
+	
+		if(totalSales>=0 && totalSales<35000)
+		{
+			bonus = totalSales * .06;
+		}
+		else if(totalSales>=35000 && totalSales<60000)
+		{
+			bonus = totalSales * .07;
+		}
+		else 
+		{
+			bonus = totalSales * .09;
+		}
+		
+		if(title == "Manager")
+		{
+			return bonus + 4000;
+		}
+		else if(title == "Vice President" || title == "President")
+		{
+			return bonus + 7200;
+		}
+		else
+		{
+			return bonus;
+		}
+	}
+	//------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	public double printInfo()
+	{
+		
+	
+	
+	
+	
+	}
+}

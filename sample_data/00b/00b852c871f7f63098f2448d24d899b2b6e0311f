@@ -1,0 +1,38 @@
+> [00:00:01 INFO]: [Hub] Enabling Hub v1.0
+> [00:00:01 WARN]: java.lang.IllegalArgumentException: Plugin source cannot be null
+> [00:00:01 WARN]: at org.bukkit.plugin.messaging.StandardMessenger.validatePluginMessage(StandardMessenger.java:473)
+> [00:00:01 WARN]: at org.bukkit.craftbukkit.v1_7_R4.CraftServer.sendPluginMessage(CraftServer.java:1613)
+> [00:00:01 WARN]: at me.blazingtide.hub.scoreboard.GetBungeePlayers.getPlayers(GetBungeePlayers.java:62)
+> [00:00:01 WARN]: at me.blazingtide.hub.scoreboard.JoinEvent.<init>(JoinEvent.java:26)
+> [00:00:01 WARN]: at me.blazingtide.hub.Main.register(Main.java:158)
+> [00:00:01 WARN]: at me.blazingtide.hub.Main.onEnable(Main.java:105)
+> [00:00:01 WARN]: at org.bukkit.plugin.java.JavaPlugin.setEnabled(JavaPlugin.java:316)
+> [00:00:01 WARN]: at org.bukkit.plugin.java.JavaPluginLoader.enablePlugin(JavaPluginLoader.java:332)
+> [00:00:01 WARN]: at org.bukkit.plugin.SimplePluginManager.enablePlugin(SimplePluginManager.java:412)
+> [00:00:01 WARN]: at org.bukkit.craftbukkit.v1_7_R4.CraftServer.loadPlugin(CraftServer.java:476)
+> [00:00:01 WARN]: at org.bukkit.craftbukkit.v1_7_R4.CraftServer.enablePlugins(CraftServer.java:394)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.MinecraftServer.n(MinecraftServer.java:360)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.MinecraftServer.g(MinecraftServer.java:334)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.MinecraftServer.a(MinecraftServer.java:290)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.DedicatedServer.init(DedicatedServer.java:210)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.MinecraftServer.run(MinecraftServer.java:458)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.ThreadServerApplication.run(SourceFile:628)
+> [00:00:01 INFO]: [Hub] [Core] File auth.yml loaded successfully.
+> [00:00:01 WARN]: java.lang.NullPointerException
+> [00:00:01 WARN]: at me.blazingtide.hub.scoreboard.GetBungeePlayers.getPlayers(GetBungeePlayers.java:64)
+> [00:00:01 WARN]: at me.blazingtide.hub.scoreboard.GetBungeePlayers.registerBungee(GetBungeePlayers.java:27)
+> [00:00:01 WARN]: at me.blazingtide.hub.Main.onEnable(Main.java:107)
+> [00:00:01 WARN]: at org.bukkit.plugin.java.JavaPlugin.setEnabled(JavaPlugin.java:316)
+> [00:00:01 WARN]: at org.bukkit.plugin.java.JavaPluginLoader.enablePlugin(JavaPluginLoader.java:332)
+> [00:00:01 WARN]: at org.bukkit.plugin.SimplePluginManager.enablePlugin(SimplePluginManager.java:412)
+> [00:00:01 WARN]: at org.bukkit.craftbukkit.v1_7_R4.CraftServer.loadPlugin(CraftServer.java:476)
+> [00:00:01 WARN]: at org.bukkit.craftbukkit.v1_7_R4.CraftServer.enablePlugins(CraftServer.java:394)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.MinecraftServer.n(MinecraftServer.java:360)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.MinecraftServer.g(MinecraftServer.java:334)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.MinecraftServer.a(MinecraftServer.java:290)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.DedicatedServer.init(DedicatedServer.java:210)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.MinecraftServer.run(MinecraftServer.java:458)
+> [00:00:01 WARN]: at net.minecraft.server.v1_7_R4.ThreadServerApplication.run(SourceFile:628)
+> [00:00:01 INFO]: 0
+> [00:00:01 INFO]: [Hub] Shutdown
+> [00:00:01 INFO]: [Hub] 0.0.0.0

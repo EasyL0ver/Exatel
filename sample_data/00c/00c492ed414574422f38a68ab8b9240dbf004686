@@ -1,0 +1,295 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package control;
+
+import entity.*;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+import nl.vh5ib2.javax.swing.table.CustomTableModel;
+import static org.junit.Assert.*;
+import org.junit.*;
+
+/**
+ *
+ * @author Sebastiaan s
+ */
+public class FacturatieControlTest {
+    
+    public FacturatieControlTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    
+    @After
+    public void tearDown() {
+    }
+
+       
+      public Behandelingen createBehandelingen(){
+               // methode aangemaakt om testdata op voor unittest aan te maken.
+       
+        Klant klant;
+         klant = new Klant("Bas", "de", "Bruin", 1223323, "dorpsplein", "9", "4811az", "Breda", "138103", 1, 320.00f, 1 , true, "test@test.nl");
+                 Behandelcode bhehandelCOde1 = new Behandelcode(1, "Massage", 221.5);
+        Behandelcode bhehandelCOde2 = new Behandelcode(2, "RugLaser", 89.5);
+        Behandelcode bhehandelCOde3 = new Behandelcode(3, "loopLes", 60.5);
+ 
+        Behandelcode[] behandelCodes = new Behandelcode[3];
+        behandelCodes[0] = bhehandelCOde1;
+        behandelCodes[1] = bhehandelCOde2;
+        behandelCodes[2] = bhehandelCOde3;
+        Time time = new Time(12, 12, 12);
+        Date date = new Date(2012, 10, 10);
+     
+        ArrayList<Behandelcode> behandelcodes;
+        behandelcodes = new ArrayList<Behandelcode>();
+        behandelcodes.add(bhehandelCOde3);
+        behandelcodes.add(bhehandelCOde2);
+        behandelcodes.add(bhehandelCOde1);
+        
+             ArrayList<Behandelcode> behandelcodes2;
+        behandelcodes2 = new ArrayList<Behandelcode>();
+        behandelcodes2.add(bhehandelCOde3);
+      
+        behandelcodes2.add(bhehandelCOde1);
+        
+       
+       
+        Behandeling behandeling1 = new Behandeling(1, behandelcodes, klant, date, time, time);
+        
+        Behandeling behandeling2 = new Behandeling(1, behandelcodes2, klant, date, time, time);
+        
+        Behandelingen behandelingen;
+        behandelingen = Behandelingen.getInstance();
+        behandelingen.addBehandeling(behandeling2);
+        behandelingen.addBehandeling(behandeling1);
+        
+        
+//        ArrayList<Behandeling> behandelingen = new ArrayList<Behandeling>();
+//        behandelingen.add(behandeling2);
+//        behandelingen.add(behandeling1);
+        return behandelingen;
+    }
+    
+
+    
+    public Factuur createFactuur(){
+        // methode van gemaakt om dubbele code te voorkomen. dit is geen bestaand metho
+                
+        // in constructor gezet om dubbele code te voorkomen.
+             int aFactuurNr = 1;
+       
+      
+        Calendar now;
+        now = Calendar.getInstance();
+        
+        
+        Factuur instance = new Factuur(createBehandelingen().getBehandelingen(), aFactuurNr, now, false, false, 682.5f);
+        
+        return instance;
+    }
+    
+              public Factuur createFactuur2(){
+        // methode van gemaakt om dubbele code te voorkomen. dit is geen bestaand metho
+               
+        // in constructor gezet om dubbele code te voorkomen.
+             int aFactuurNr = 2;
+         Calendar now;
+        now = Calendar.getInstance();
+        Factuur instance = new Factuur(createBehandelingen().getBehandelingen(), aFactuurNr, now, false, false, 682.5f);
+       
+        return instance;
+       
+    }
+           
+           public Facturen createFacuren(){
+               // methode om facturen aan te maken voor het testen van unittest
+               
+               Facturen facturen;
+               facturen = Facturen.getInstance();
+               
+               Factuur factuur = createFactuur();
+               Factuur factuur2 = createFactuur2();
+               facturen.getFacturen().add(factuur);
+               facturen.getFacturen().add(factuur2);
+              
+            return  facturen;
+             
+           }
+    
+    
+    /**
+     * Test of getGegevensMaatschappij method, of class FacturatieControl.
+     */
+    @Test
+    public void testGetGegevensMaatschappij() {
+        System.out.println("getGegevensMaatschappij");
+        FacturatieControl instance = new FacturatieControl();
+        String[] expResult = null;
+        String[] result = instance.getGegevensMaatschappij();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getFacturen method, of class FacturatieControl.
+     */
+    @Test
+    public void testGetFacturen() {
+        System.out.println("getFacturen");
+        FacturatieControl instance = new FacturatieControl();
+        Facturen expResult = createFacuren();
+        Facturen result = instance.getFacturen();
+        assertEquals(expResult, result);
+        
+    }
+
+    /**
+     * Test of getBehandelLijstOpBSN method, of class FacturatieControl.
+     */
+    @Test
+    public void testGetBehandelLijstOpBSN() {
+        System.out.println("getBehandelLijstOpBSN");
+        int BSN = 1223323;
+        FacturatieControl instance = new FacturatieControl();
+        ArrayList expResult = createBehandelingen().getBehandelingen();
+        ArrayList result = instance.getBehandelLijstOpBSN(BSN);
+        assertEquals(expResult, result);
+ 
+       
+    }
+
+    /**
+     * Test of getBehandelingen method, of class FacturatieControl.
+     */
+    @Test
+    public void testGetBehandelingen() {
+        System.out.println("getBehandelingen");
+        FacturatieControl instance = new FacturatieControl();
+        Behandelingen expResult = createBehandelingen();
+        Behandelingen result = instance.getBehandelingen();
+        assertEquals(expResult, result);
+     
+    }
+
+    /**
+     * Test of getKlant method, of class FacturatieControl.
+     */
+    @Test
+    public void testGetKlant() {
+        System.out.println("getKlant");
+        FacturatieControl instance = new FacturatieControl();
+        Klant expResult = createBehandelingen().getBehandelingen().get(0).getmCustomer();
+        Klant result = instance.getKlant();
+    }
+
+    /**
+     * Test of getVerzekeringsNr method, of class FacturatieControl.
+     */
+    @Test
+    public void testGetVerzekeringsNr() {
+        System.out.println("getVerzekeringsNr");
+        FacturatieControl instance = new FacturatieControl();
+        int expResult = 0;
+        int result = instance.getVerzekeringsNr();
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Test of changeBetaalStatusFactuur method, of class FacturatieControl.
+     */
+    @Test
+    public void testChangeBetaalStatusFactuur() {
+        System.out.println("changeBetaalStatusFactuur");
+        int factuurNR = 1;
+        FacturatieControl instance = new FacturatieControl();
+        instance.changeBetaalStatusFactuur(factuurNR);
+       
+    }
+
+    /**
+     * Test of ChangeFactuurVerzendStatus method, of class FacturatieControl.
+     */
+    @Test
+    public void testChangeFactuurVerzendStatus() {
+        System.out.println("ChangeFactuurVerzendStatus");
+        int factuurNR = 1;
+        FacturatieControl instance = new FacturatieControl();
+        instance.ChangeFactuurVerzendStatus(factuurNR);
+  
+    }
+
+    /**
+     * Test of setVervalDatum method, of class FacturatieControl.
+     */
+    @Test
+    public void testSetVervalDatum() {
+        System.out.println("setVervalDatum");
+        int factuurnr = 0;
+        int dagen = 0;
+        FacturatieControl instance = new FacturatieControl();
+        instance.setVervalDatum(factuurnr, dagen);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of BerekenTotaalPrijsBehandelmethodes method, of class FacturatieControl.
+     */
+    @Test
+    public void testBerekenTotaalPrijsBehandelmethodes() {
+        System.out.println("BerekenTotaalPrijsBehandelmethodes");
+        String[][] behandelmethodesNietBetaald = null;
+        FacturatieControl instance = new FacturatieControl();
+        float expResult = 0.0F;
+        float result = instance.BerekenTotaalPrijsBehandelmethodes(behandelmethodesNietBetaald);
+        assertEquals(expResult, result, 0.0);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getTablebehandelingenOpBSN method, of class FacturatieControl.
+     */
+    @Test
+    public void testGetTablebehandelingenOpBSN() {
+        System.out.println("getTablebehandelingenOpBSN");
+        int BSN = 0;
+        FacturatieControl instance = new FacturatieControl();
+        DefaultTableModel expResult = null;
+        DefaultTableModel result = instance.getTablebehandelingenOpBSN(BSN);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getBSNKlant method, of class FacturatieControl.
+     */
+    @Test
+    public void testGetBSNKlant() {
+        System.out.println("getBSNKlant");
+        int factuurNR = 0;
+        FacturatieControl instance = new FacturatieControl();
+        int expResult = 0;
+        int result = instance.getBSNKlant(factuurNR);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default

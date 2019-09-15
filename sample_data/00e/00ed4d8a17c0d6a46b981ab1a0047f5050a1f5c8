@@ -1,0 +1,27 @@
+public function validatePositions($responses){
+        $inProgressGeoposition = null;
+        $reportedGeoposition = null;
+        $checkInProgressGeoposition = false;
+        foreach ($responses as $key => $response){
+            /** Comprovacio de InProgressGeoposition */
+            if($key == "InprogressGeoposition" && $responses[$key] != null){
+                $inProgressGeoposition = explode(',',$response);
+                /** Aquesta casuistica es per el que ha dit l'arian */
+            }else if($key == "InprogressGeoposition" && $responses[$key] == null){
+                $checkInProgressGeoposition = true;
+            }
+            /** Comprovacio de ReportedGeoposition */
+            if($key == "ReportedGeoposition" && $responses[$key] != null){
+                $reportedGeoposition = explode(',',$response);
+            }
+        }
+        /** 
+         * Si el InProgressGeoposition arriba a NULL entra automaticament,
+         * sino es fal el calcul per comprovar si esta dintre del radi
+         */
+        if($checkInProgressGeoposition) {
+            return 0;
+        }else{
+            return $this->distanceCalculation($inProgressGeoposition[0],$inProgressGeoposition[1],$reportedGeoposition[0],$reportedGeoposition[1]);
+        }
+    }

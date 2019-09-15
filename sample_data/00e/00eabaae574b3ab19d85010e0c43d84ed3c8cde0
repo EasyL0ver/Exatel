@@ -1,0 +1,5 @@
+string Block::int2string(int n){
+    stringstream flujo;
+    flujo << n;
+    return(flujo.str());
+}

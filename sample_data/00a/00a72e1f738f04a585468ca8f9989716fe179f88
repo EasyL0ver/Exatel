@@ -1,0 +1,61 @@
+ElasticLoadBalancer, xxxx
+AMIId, ami-f0091d91
+KeyName, xxxx
+AvailabilityZone, us-west-2b
+SecurityGroup, xxxx
+
+
+Syntax for creating autoscaling launch group:
+aws autoscaling create-launch-configuration --image-id <PasteYourAMIIdHere> --instance-type t2.micro --key-name <PasteYourKeyNameHere> --security-groups <PasteYourSecurityGroupHere> --user-data file:///home/ec2-user/as-bootstrap.sh --launch-configuration-name lab-lc
+
+-----
+
+Syntax for creating auto scaling group:
+aws autoscaling create-auto-scaling-group --auto-scaling-group-name lab-as-group --availability-zones <PasteYourAvailabilityZoneHere> --launch-configuration-name lab-lc --load-balancer-names <PasteYourElasticLoadBalancerHere> --max-size 4 --min-size 1
+
+------
+
+Syntax for creating a Name tag for autoscaling instances:
+aws autoscaling create-or-update-tags --tags "ResourceId=lab-as-group, ResourceType=auto-scaling-group, Key=Name, Value=AS-Web-Server, PropagateAtLaunch=true"
+
+------
+
+SNS Topic ARN for autoscaling notification:
+
+arn:aws:sns:us-west-2:xxxx
+
+------
+
+Syntax to create autoscaling notifications:
+aws autoscaling put-notification-configuration --auto-scaling-group-name lab-as-group --topic-arn <PasteTheTopicARNHere> --notification-types autoscaling:EC2_INSTANCE_LAUNCH autoscaling:EC2_INSTANCE_TERMINATE
+
+------
+
+Syntax for creating scale-up policy:
+aws autoscaling put-scaling-policy --policy-name lab-scale-up-policy --auto-scaling-group-name lab-as-group --scaling-adjustment 1 --adjustment-type ChangeInCapacity --cooldown 300 --query 'PolicyARN' --output text
+
+(the above example works without inserting any values)
+
+-----
+
+Syntax for creating scale-down policy:
+aws autoscaling put-scaling-policy --policy-name lab-scale-down-policy --auto-scaling-group-name lab-as-group --scaling-adjustment -1 --adjustment-type ChangeInCapacity --cooldown 300 --query 'PolicyARN' --output text
+
+Step 86 in autoscaling for linux servers does not have the right instructions
+
+-----
+
+Default cool-down period for autoscaling is 5 minutes (300 seconds)
+
+To generate load on the LB:
+Go to EC2 - load balancers, copy the DNS Name and enter it into the URL field of the browser
+
+Then click on generate load
+
+Repeat for additional instances that are created by autoscaling
+
+------
+
+Syntax to check auto scaling activities:
+
+aws autoscaling describe-scaling-activities --auto-scaling-group-name lab-as-group

@@ -1,0 +1,177 @@
+# Kill-Levels version 1.0 by Gent1emen
+
+# Unless you know what you're doing, do not edit below.
+# This WILL replace all prefixes already set. For example, if my prefix is ADMIN Gent1emen, it will not be "1 ADMIN Gent1emen" it will be "1 Gent1emen".
+# I'm trying to figure out a way to override that, and have it so it appears like "1 ADMIN Gent1emen"
+
+#options:
+# Note that some of these options will mess up the ENTIRE CODE if you don't know what you're doing. Don't report errors in the options, because it was most likely your fault.
+	#spigot: https://www.spigotmc.org/resources/%E2%9E%A1-kill-levels-%E2%AC%85.26395/
+	#github: https://github.com/dariusnorwood
+
+on death of a player:
+	attacker is a player
+	set {_aU} to uuid of attacker
+	add 1 to {kills::level::%{_aU}%}
+	set attacker's action bar to "&aYou killed &f%victim% &8(&f+1&8)"
+	
+	if {kills::level::%{_aU}%} = 1:
+		set attacker's prefix to "&7[&a1&7] "
+		send "&9Kill Levels » &7You are now level &7[&a1&7]!" to attacker
+		play sound "note.block.pling" at attacker for attacker
+	
+	if {kills::level::%{_aU}%} = 10:
+		set attacker's prefix to "&7[&a2&7] "
+		send "&9Kill Levels » &7You are now level &7[&a2&7]" to attacker
+		play sound "note.block.pling" at attacker for attacker
+	
+	if {kills::level::%{_aU}%} = 20:
+		set attacker's prefix to "&7[&33&7] "
+		send "&9Kill Levels » &7You are now level &7[&33&7]!" to attacker
+		play sound "note.block.pling" at attacker for attacker
+
+	if {kills::level::%{_aU}%} = 35:
+		set attacker's prefix to "&7[&34&7] "
+		send "&9Kill Levels » &7You are now level &7[&34&7]" to attacker
+		play sound "note.block.pling" at attacker for attacker
+	
+	if {kills::level::%{_aU}%} = 50:
+		set attacker's prefix to "&7[&95&7] "
+		send "&9Kill Levels » &7You are now level &7[&95&7]" to attacker
+		play sound "note.block.pling" at attacker for attacker
+		broadcast "&9Kill Levels » &7%attacker% is now level &95! (50 kills)"
+	
+	if {kills::level::%{_aU}%} = 75:
+		set attacker's prefix to "&7[&96&7] "
+		send "&9Kill Levels » &7You are now level &7[&96&7]!" to attacker
+		play sound "note.block.pling" at attacker for attacker
+	
+	if {kills::level::%{_aU}%} = 100:
+		set attacker's prefix to "&7[&17&7] "
+		send "&9Kill Levels » &7You are now level &7[&17&7]!" to attacker
+		play sound "note.block.pling" at attacker for attacker
+		broadcast "&9Kill Levels » &7%attacker% is now level &96! (100 KILLS!)"
+	
+	if {kills::level::%{_aU}%} = 150:
+		set attacker's prefix to "&7[&18&7] "
+		send "&9Kill Levels » &7You are now level &7[&18&7]!" to attacker
+		play sound "note.block.pling" at attacker for attacker
+	
+	if {kills::level::%{_aU}%} = 200:
+		set attacker's prefix to "&7[&e9&7] "
+		send "&9Kill Levels » &7You are now level &7[&e9&7]!" to attacker
+		play sound "note.block.pling" at attacker for attacker
+		broadcast "&9Kill Levels » &7%attacker% is now level &99! (200 KILLS!)"
+	
+	if {kills::level::%{_aU}%} = 250:
+		set attacker's prefix to "&7[&610&7] "
+		send "&9Kill Levels » &7You are now level &7[&610&7]" to attacker
+		play sound "note.block.pling" at attacker for attacker
+	
+	if {kills::level::%{_aU}%} = 300:
+		set attacker's prefix to "&7[&c11&7] "
+		send "&9Kill Levels » &7You are now level &7[&c11&7]" to attacker
+		play sound "note.block.pling" at attacker for attacker
+	
+	if {kills::level::%{_aU}%} = 350:
+		set attacker's prefix to "&cPVP-MASTER "
+		send "&9Kill Levels » &7You are now level &912! &8(&cPVP-MASTER&8)" to attacker
+		play sound "note.block.pling" at attacker for attacker
+	
+	
+command /levels [<text=help>] [<text>] [<text>]:
+	permission: levels.view
+	permission message: §cYou do not have permission!
+	trigger:
+		if arg 1 is "view":
+			send "&9Kill Levels » Levels"
+			send "&71 &e» One kill"
+			send "&72 &e» Ten kills"
+			send "&73 &e» Twenty kills"
+			send "&a4 &e» &eThirty-Five kills"
+			send "&a5 &e» &EFifty kills"
+			send "&a6 &e» &eSeventy-Five kills"
+			send "&a7 &e» &eOne Hundred kills"
+			send "&c8 &e» &eOne Hundred Fifty kills"
+			send "&c9 &e» &eTwo Hundred kills"
+			send "&c10 &e» &eTwo Hundred Fifty kills"
+			send "&c11 &e» &eThree Hundred Kills"
+			send "&c12 &E» Three Hundred Fifty kills"
+			send "&cPVP MASTER &e» &eAnywhere between 351 kills or 1,000,000. This ranks requirements change often."
+			send "&7&oLevels will be constantly added! Keep an eye on the Spigot page!"
+			send "&7&oRunning Kill Levels version 1.0 by Gent1emen"
+		if arg 1 is "info":
+			send "&9Kill Levels » Information"
+			send "&7Kill Levels is a plugin that brings in levels per kill. Each kill the player gets is"
+			send "&7registered into a database that houses all players and their levels. When they reach a certain set number in the code,"
+			send "&7they get leveled up to the next level."
+		if arg 1 is "help":
+			send ""
+			send "&9Kill Levels » Help"
+			send "&a /levels help"
+			send "&a /levels reset [player]"
+			send "&a /levels set <player> <integer>"
+			send "&a /levels stats [player]"
+			send "&a /levels setprefix <player> <text>"
+			send ""
+			#send "&7SPIGOT DOWNLOAD: {@spigot}"
+			#send "&7AUTHORS GITHUB: "
+		if arg 1 is "reset":
+			if arg-2 is not set:
+				set {_p} to player
+			else:
+				set {_p} to arg-2 parsed as a player
+			set {_pU} to uuid of {_p}
+			set {kills::level::%{_pU}%} to 0
+			set {_p}'s prefix to "&70 "
+			send "&9Kill Levels » &aKills Level of &f%{_p}% &ahas been reset."
+			stop
+
+		if arg 1 is "set":
+			if arg-2 is not set:
+				set {_p} to player
+			else:
+				set {_p} to arg-2 parsed as a player
+			if arg-3 parsed as integer is not set:
+				send "&9Kill Levels » &cYou must choose a number (integer type)."
+				stop
+			set {_pU} to uuid of {_p}
+			set {kills::level::%{_pU}%} to arg-3 parsed as integer
+			send "&9Kill Levels » &aKills Level of &f%{_p}% &ahas been reset."
+			stop
+
+		if arg 1 is "setprefix":
+			if arg-2 is not set:
+				set {_p} to player
+			else:
+				set {_p} to arg-2 parsed as a player
+			#set {_pU} to uuid of {_p}
+			set {_p}'s prefix to "%colored arg-3%"
+			send "&9Kill Levels » &aYou've set prefix of &f%{_p}% &ato &r%colored arg-3%&a."
+			stop
+
+		if arg 1 is "stats":
+			if arg-2 is not set:
+				set {_p} to player
+			else:
+				set {_p} to arg-2 parsed as a player
+			set {_pU} to uuid of {_p}
+			if {kills::level::%{_pU}%} is set:
+				send "&9Kill Levels » &aLevel: &f%{kills::level::%{_pU}%}%"
+			else:
+				send "&9Kill Levels » &aLevel: &f0"
+			stop
+
+# DO NOT EDIT DOWN HERE EITHER!
+
+on script load:
+	send "&9Running Kill Levels version 1.0 by Gent1emen" to all players where [input has permission "op"]
+	send "&7Only ops see this message!" to all players where [input has permission "op"]
+		
+on join:
+	if {kills::level::%uuid of player%} is not set:
+		set {kills::level::%uuid of player%} to 0
+		
+	if {kills::level::%uuid of player%} < 1:
+		set player's prefix to "&70 "
+		send "&9Kill Levels » &7Begin killing players to level up!"

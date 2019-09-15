@@ -1,0 +1,121 @@
+<weapon>
+  <group x="980.05" y="991.7" rotation="0" scale="0.5" flip="1,1">
+    <group x="-15.4" y="-57.65" rotation="0" scale="1" flip="1,1">
+      <group x="-12.65" y="-157.1" rotation="0" scale="4" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-12.65" y="-125.1" rotation="0" scale="4" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-11.65" y="-93.1" rotation="-1.5" scale="4" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-10.65" y="-60.1" rotation="-3.5" scale="4.000028664143497" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-8.65" y="-27.1" rotation="-5" scale="4.000030178491969" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-5.65" y="5.85" rotation="-6" scale="4.000039422952247" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-1.65" y="38.85" rotation="-7" scale="4.000028735971235" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="2.3" y="71.85" rotation="-8.5" scale="4.000046426655681" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="7.3" y="104.85" rotation="-9" scale="4.000038069287997" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="13.3" y="137.85" rotation="-11.5" scale="4.000020665179642" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-12.65" y="-141.1" rotation="0" scale="4" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-12.65" y="-109.1" rotation="-0.75" scale="4" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-11.65" y="-77.1" rotation="-2.25" scale="4.000028664143497" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-9.65" y="-44.1" rotation="-4.25" scale="4.000030178491969" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-6.65" y="-11.1" rotation="-5.5" scale="4.000039422952247" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="-3.65" y="21.85" rotation="-6.5" scale="4.000028735971235" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="0.3" y="54.85" rotation="-7.75" scale="4.000046426655681" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="4.3" y="87.85" rotation="-8.75" scale="4.000038069287997" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+      <group x="10.3" y="120.85" rotation="-10.25" scale="4.000020665179642" flip="1,1">
+        <part id="Ammo556mmB" x="15.9" y="-0.05" rotation="0" scale="1" flip="1,1" colors=""/>
+        <part id="Ammo556mmS" x="-5.5" y="0" rotation="0" scale="1" flip="1,1" colors=""/>
+      </group>
+    </group>
+    <group x="0" y="0" rotation="0" scale="1" flip="1,1">
+      <group x="0" y="0" rotation="0" scale="1" flip="1,1">
+        <group x="-98.1" y="-10.95" rotation="0" scale="1" flip="1,1">
+          <part id="Shape07" x="-30.5" y="-171.65" rotation="89.50039826141658" scale="0.3499888912209109" flip="1,1" colors="0"/>
+          <part id="Shape04" x="-29.9" y="-131.65" rotation="88.00122026057562" scale="0.34999016617313655" flip="1,1" colors="0"/>
+          <part id="Shape07" x="-27.8" y="-91.55" rotation="86.50064084977753" scale="0.3499872746559715" flip="1,1" colors="0"/>
+          <part id="Shape07" x="-19.2" y="7.6" rotation="83.49898867778646" scale="0.3499983419891025" flip="1,1" colors="0"/>
+          <part id="Shape04" x="-24.35" y="-42.35" rotation="85.00007085584721" scale="0.3499798124155945" flip="1,1" colors="0"/>
+          <part id="Shape04" x="13.65" y="185.35" rotation="74.50036049089654" scale="0.3499618630035609" flip="1,1" colors="0"/>
+          <part id="Shape07" x="-9.6" y="74.55" rotation="80.49866252294773" scale="0.3499700444703858" flip="1,1" colors="0"/>
+          <part id="Shape07" x="2.75" y="139.45" rotation="77.50045579554617" scale="0.34996988579931665" flip="1,1" colors="0"/>
+          <part id="Shape01" x="25.4" y="206.25" rotation="-60.49975595037609" scale="0.53" flip="1,1" colors="0"/>
+          <part id="Shape04" x="15.35" y="191.3" rotation="74.67383230372012" scale="0.34966987547231804" flip="1,1" colors="0"/>
+          <part id="Shape01" x="-24.9" y="-205.8" rotation="44.50049830606915" scale="0.53" flip="1,1" colors="0"/>
+        </group>
+        <group x="-96.05" y="-10.95" rotation="0" scale="1" flip="1,1">
+          <part id="Shape07" x="-30.5" y="-171.7" rotation="89.5" scale="0.35" flip="1,1" colors="555555"/>
+          <part id="Shape04" x="-29.9" y="-131.7" rotation="88" scale="0.35" flip="1,1" colors="555555"/>
+          <part id="Shape07" x="-27.8" y="-91.6" rotation="86.5" scale="0.3499908447265625" flip="1,1" colors="555555"/>
+          <part id="Shape07" x="-19.2" y="7.6" rotation="83.5" scale="0.34999712028553404" flip="1,1" colors="555555"/>
+          <part id="Shape04" x="-24.35" y="-42.4" rotation="85" scale="0.34998893978426887" flip="1,1" colors="555555"/>
+          <part id="Shape04" x="13.7" y="185.35" rotation="74.5" scale="0.3499716371646789" flip="1,1" colors="555555"/>
+          <part id="Shape07" x="-9.6" y="74.55" rotation="80.5" scale="0.34998464489466635" flip="1,1" colors="555555"/>
+          <part id="Shape07" x="2.8" y="139.45" rotation="77.5" scale="0.34998136182315887" flip="1,1" colors="555555"/>
+          <part id="Shape01" x="25.5" y="206.25" rotation="-60.5" scale="0.5" flip="1,1" colors="555555"/>
+          <part id="Shape04" x="15.4" y="191.3" rotation="74.50035328636996" scale="0.3499675080531705" flip="1,1" colors="555555"/>
+          <part id="Shape01" x="-24.9" y="-205.8" rotation="44.5" scale="0.5" flip="1,1" colors="555555"/>
+        </group>
+        <group x="1.55" y="1.15" rotation="0" scale="1" flip="1,1">
+          <part id="Shape04" x="-27.15" y="-186.6" rotation="0" scale="2.0999908447265625" flip="1,1" colors="0"/>
+          <part id="Shape10" x="73.7" y="-214.15" rotation="0" scale="0.4" flip="1,1" colors="0"/>
+          <part id="Shape01" x="-20.85" y="-213.5" rotation="-77.99919543793033" scale="0.5" flip="1,1" colors="0"/>
+          <part id="Shape01" x="-23.95" y="-214.5" rotation="-65.99963625363829" scale="0.5" flip="1,1" colors="0"/>
+          <part id="Shape01" x="-26.5" y="-216.1" rotation="-54.00022358909105" scale="0.5" flip="1,1" colors="0"/>
+          <part id="Shape01" x="-27.75" y="-217" rotation="-47.99996442319564" scale="0.5" flip="1,1" colors="0"/>
+          <part id="Shape01" x="-29.85" y="-219.35" rotation="-35.99840608618116" scale="0.5" flip="1,1" colors="0"/>
+          <part id="Shape01" x="-31.45" y="-222" rotation="-24.000363746361717" scale="0.5" flip="1,1" colors="0"/>
+          <part id="Shape01" x="-32.35" y="-225" rotation="-12.000804562069687" scale="0.5" flip="1,1" colors="0"/>
+          <part id="Shape02" x="-31.3" y="-228.05" rotation="0" scale="0.4" flip="1,-1" colors="0"/>
+          <part id="Shape02" x="-39.15" y="-228.05" rotation="0" scale="0.4" flip="1,-1" colors="0"/>
+          <part id="Shape02" x="-125.45" y="-228.05"

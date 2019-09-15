@@ -1,0 +1,84 @@
+package com.kodilla.testing.shape;
+import com.kodilla.testing.shape.Circle;
+import com.kodilla.testing.shape.Square;
+import com.kodilla.testing.shape.Triangle;
+
+import org.junit.*;
+
+public class ShapeCollectorTestSuite {
+
+    private static int testCounter = 0;
+
+    @BeforeClass
+    public static void beforeAllTests() {
+        System.out.println("This is the beginning of tests.");
+    }
+
+    @AfterClass
+    public static void afterAllTests() {
+        System.out.println("All tests are finished.");
+    }
+
+    @Before
+    public void beforeEveryTest() {
+        testCounter++;
+        System.out.println("Preparing to execute test #" + testCounter);
+    }
+    @Test
+    public void testAddFigure () {
+        //given
+        Triangle triangle1 = new Triangle(4.0, 4.0);
+        ShapeCollector collector = new ShapeCollector();
+
+        //when
+        collector.addFigure(triangle1);
+
+        //then
+        Assert.assertEquals(1, shapeCollection.size());
+    }
+    @Test
+    public void testRemoveFigure () {
+        //given
+        Triangle triangle1 = new Triangle(4.0, 4.0);
+        ShapeCollector collector = new ShapeCollector();
+        collector.addFigure(triangle1);
+
+        //when
+        boolean result = collector.removeFigure(triangle1);
+
+        //then
+        Assert.assertTrue(result);
+        Assert.assertEquals(0, shapeCollection.size());
+    }
+    @Test
+    public void testGetFigure () {
+        //given
+        Triangle triangle1 = new Triangle(4.0, 4.0);
+        ShapeCollector collector = new ShapeCollector();
+        collector.addFigure(triangle1);
+
+        //when
+        Triangle retreivedShape = collector.getFigure(0);
+
+        //then
+        Assert.assertEquals(triangle1, retreivedShape);
+
+    }
+    @Test
+    public void testShowFigures () {
+        //given
+        Triangle triangle1 = new Triangle(4.0, 4.0);
+        Square square1 = new Square(5.0);
+        ShapeCollector collector = new ShapeCollector();
+        collector.addFigure(triangle1);
+        collector.addFigure(square1);
+
+        //when
+        boolean result = collector.showFigures();
+
+        //then
+        Assert.assertTrue(result);
+
+
+    }
+}

@@ -1,0 +1,4 @@
+let filters = Keys.map(field => ({ field, values: results.map(e => 
+ *here i want if condition if(e[field] !=null)***({
+label: e[field], value: e[field]
+}))

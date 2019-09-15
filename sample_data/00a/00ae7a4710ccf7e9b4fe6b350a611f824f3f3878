@@ -1,0 +1,28 @@
+export const SET_PRODUCT = 'SET_PRODUCT'
+export function setProduct(product: Product) {
+  return { type: SET_PRODUCT, product }
+}
+
+export const SET_PRODUCT_ERROR = 'SET_PRODUCT_ERROR'
+export function setProductError(message: string) {
+  return { type: SET_PRODUCT_ERROR, message }
+}
+
+export const TOGGLE_PRODUCT_PENDING = 'TOGGLE_PRODUCT_PENDING'
+export function toggleProductPending(pending: boolean) {
+  return { type: TOGGLE_PRODUCT_PENDING, pending }
+}
+
+export const GET_PRODUCT = 'GET_PRODUCT'
+export async function getProduct(name: string) {
+  toggleProductPending(true)
+
+  try {
+    const product = await axios.get('/products' + name)
+    return setProduct(product)
+  } catch (e) {
+    setProductError(e.message)
+  }
+
+  toggleProductPending(false)
+}

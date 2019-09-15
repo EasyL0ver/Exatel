@@ -1,0 +1,14 @@
+//Łab 4 zadacza 1
+//Pri pomoszczi funkcii List.iter – wywjeditje spisok czjetnych ełjemjentow spiska. Prjedwaritjełno udałitje w spiskje wsje ełjemjenty kratnyje 7.
+
+open System
+
+//Sozdat spisok iz 100 ełjemjentow ot 1 do 100
+let list = [1..100]
+
+//Otfiłtrowat spisok i na osnowje njego sozdat drugoj. Fiłtrujem iz usłowija zadaczi. Prjedwaritjełno udałitje w spiskje wsje ełjemjenty kratnyje 7.
+let filterList = List.filter(fun x -> x % 7 <> 0 ) list
+
+//Połucziłi nowyj spisok iz ełjemjentow nje kratnych 7. Tjepjer s pomoszczju iter wywodim tołko spisok tjech ełjemjentow, kotoryje czjotnyje
+List.iter (fun x -> if x % 2 = 0 then printfn "List.iter: element is %d" x) filterList
+Console.ReadLine()

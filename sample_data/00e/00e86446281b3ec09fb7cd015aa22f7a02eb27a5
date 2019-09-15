@@ -1,0 +1,23 @@
+module Dom (M : Map.OrderedType) :
+sig
+  val domain : 'a Map.Make(M).t -> Set.Make(M).t
+end =
+struct
+
+  type 'a map = 'a Map.Make(M).t
+  type set = Set.Make(M).t
+
+  type 'a _map =
+  | MEmpty
+  | MNode of 'a map * M.t * 'a * 'a map * int
+
+  type _set =
+  | SEmpty
+  | SNode of set * M.t * set * int
+
+  let rec domain (s : 'a map) : set = match Obj.magic s with
+  | MEmpty -> Obj.magic SEmpty
+  | MNode (l, k, _, r, h) ->
+    Obj.magic (SNode (domain l, k, domain r, h))
+
+end

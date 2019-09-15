@@ -1,0 +1,28 @@
+function Game(){
+  // property + public accessor for (total score)
+  var total_score = 0;
+  this.score = function (){ return total_score; };
+
+  // other properties
+  var scoring_map = {ghost: 10, fruit: 5, pellet: 1};
+
+  // public eat function (method)
+  this.eat = function eat(edible){
+    total_score += scoring_map[edible] ? scoring_map[edible] : 0;
+  };
+}
+
+var pacman = new Game();
+
+pacman.eat('ghost');
+pacman.eat('fruit');
+
+pacman.eat('pellet');
+pacman.eat('pellet');
+pacman.eat('pellet');
+pacman.eat('pellet');
+
+pacman.eat('not-in-scoring-map');
+
+// This only works because the called function is a closure; so yes, the function totalScore() must be "applied" in order to retrieve the property value.
+console.log('Score:', pacman.score()); // 19

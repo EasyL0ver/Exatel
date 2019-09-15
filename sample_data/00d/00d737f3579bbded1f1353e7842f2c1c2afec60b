@@ -1,0 +1,7 @@
+<VirtualHost *:80>
+ServerName bugs.lib.mcmaster.ca
+DocumentRoot /var/www/redmine-1.3.1/public
+#PassengerAppRoot /var/www/redmine-0.8.5
+RailsEnv production
+#RailsBaseURI /
+</VirtualHost>

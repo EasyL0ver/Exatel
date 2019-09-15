@@ -1,0 +1,63 @@
+//Map Exported with Texture Studio By: [uL]Pottus////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////and Crayder////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Map Information////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+	Exported on "2019-02-23 19:45:22" by "Bokenzi_Stallone"
+	Created by "Bokenzi_Stallone"
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Remove Buildings///////////////////////////////////////////////////////////////////////////////////////////////
+RemoveBuildingForPlayer(playerid, 13759, 1413.414, -804.742, 83.437, 0.250);
+RemoveBuildingForPlayer(playerid, 13722, 1413.414, -804.742, 83.437, 0.250);
+RemoveBuildingForPlayer(playerid, 13831, 1413.414, -804.742, 83.437, 0.250);
+
+//Objects////////////////////////////////////////////////////////////////////////////////////////////////////////
+new tmpobjid;
+tmpobjid = CreateDynamicObjectEx(19380, 1421.519287, -812.545410, 75.879348, 0.000000, 0.000000, 90.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1431.069824, -812.545410, 75.879302, 0.000000, 0.000000, 90.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1440.650756, -812.545410, 75.879302, 0.000000, 0.000000, 90.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1450.169677, -812.545410, 75.879302, 0.000000, 0.000000, 90.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1416.700439, -807.818725, 75.879302, 0.000000, 0.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1416.700439, -798.251586, 75.879302, 0.000000, 0.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1454.917480, -807.818725, 75.879302, 0.000000, 0.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1449.610229, -807.777526, 81.045997, 0.000000, 90.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1439.099121, -807.777526, 81.045997, 0.000000, 90.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1428.693115, -807.777526, 81.045997, 0.000000, 90.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1421.908325, -807.777526, 81.045997, 0.000000, 90.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1421.908325, -800.682373, 81.045997, 0.000000, 90.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1432.278564, -800.682373, 81.045997, 0.000000, 90.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1442.315429, -800.682373, 81.045997, 0.000000, 90.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(19380, 1449.674560, -800.682373, 81.045997, 0.000000, 90.000000, 0.000000, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+tmpobjid = CreateDynamicObjectEx(8327, 1438.013916, -811.178161, 77.111717, 0.000000, 0.000000, 36.000019, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 10101, "2notherbuildsfe", "Bow_Abpave_Gen", 0x00000000);
+SetDynamicObjectMaterialText(tmpobjid, 0, "Hawaii Community", 120, "Calibri", 80, 0, 0xFFFFFFFF, 0x00000000, 1);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+tmpobjid = CreateDynamicObjectEx(13756, 1349.204589, -809.033447, 68.882812, 0.000000, 0.000000, 0.000000, 300.00, 300.00); 
+tmpobjid = CreateDynamicObjectEx(19380, 1432.315429, -800.682373, 81.045997, 0.000000, 90.000000, 0.000000, 300.00, 300.00); 
+tmpobjid = CreateDynamicObjectEx(18657, 1445.386962, -808.937683, 79.209053, 164.520034, 578.819824, 96.620002, 300.00, 300.00); 
+tmpobjid = CreateDynamicObjectEx(18657, 1432.584838, -807.502868, 79.239128, 164.520034, 578.819824, 280.819824, 300.00, 300.00); 
+tmpobjid = CreateDynamicObjectEx(17071, 1452.798950, -811.368774, 68.837753, 0.000000, 0.000000, -41.639991, 300.00, 300.00); 
+tmpobjid = CreateDynamicObjectEx(17071, 1413.609130, -811.492248, 68.837753, 0.000000, 0.000000, 60.240001, 300.00, 300.00); 
+tmpobjid = CreateDynamicObjectEx(17071, 1402.070922, -802.882568, 76.127586, 0.000000, 0.000000, 60.240001, 300.00, 300.00); 
+tmpobjid = CreateDynamicObjectEx(17071, 1470.044677, -792.493286, 68.837753, 0.000000, 0.000000, -41.639991, 300.00, 300.00); 
+tmpobjid = CreateDynamicObjectEx(17071, 1470.411987, -800.346069, 75.354446, 0.000000, 0.000000, -41.639991, 300.00, 300.00);

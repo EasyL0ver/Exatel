@@ -1,0 +1,50 @@
+Let's make a game!
+	name:The Simpsons Clicked Out
+	by:Liam
+	desc:An Idle Game Based Off Of The Simpsons Tapped Out
+	created:11/15/2018
+	updated:11/15/2018
+	
+Buttons
+	*bunnyButton1
+		name:Make a bunny
+		desc:Click this little bunny to get more bunnies!
+		on click:anim icon wobble
+		on click:yield 1 bunny
+		on click:if (have goldenTouch and chance(1%)) yield 1 goldenCarrot
+		icon:stuff/bunny.png
+		no text
+		class:bigButton hasFlares
+		icon class:shadowed
+		tooltip origin:bottom
+
+	*bunnyButton
+		name:Make a bunny
+		desc:Click this little bunny to get more bunnies!
+		on click:anim icon wobble
+		on click:yield 1 bunny
+		on click:if (have goldenTouch and chance(1%)) yield 1 goldenCarrot
+		icon:stuff/bunny.png
+		no text
+		class:bigButton hasFlares
+		icon class:shadowed
+		tooltip origin:bottom
+
+Resources
+	*bunny|bunnies
+		name:Bunny|Bunnies
+		desc:These are your bunnies. You can use them to purchase things. Your goal is to have as many bunnies as possible!
+		icon:icons[0,0]
+		class:noBackground
+		show earned
+Buildings
+	*TEMPLATE
+		on click:anim glow
+		
+	*bunnyButton
+		name:Rabbit cage|Rabbit cages
+		desc:A tiny little cage.<//><b>Effect:</b><.>Produces 1 rabbit every 10 seconds.
+		icon:icons[3,0]
+		cost:15 bunnies
+		on tick:yield 0.1 bunny
+		unlocked

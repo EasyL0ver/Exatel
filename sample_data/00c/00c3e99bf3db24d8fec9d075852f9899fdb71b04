@@ -1,0 +1,70 @@
+march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -o vgcreate.d vgcreate.c; \
+sed -i "s/\(.*\)\.o[ :]*/$FILE.o $FILE.d $FILE.pot: $DEPS /g" vgcreate.d; \
+[ -s vgcreate.d ] || rm -f vgcreate.d
+/bin/mkdir -p ./; \
+set -e; \
+FILE=`echo vgck.d | sed 's/\\//\\\\\\//g;s/\\.d//g'`; \
+DEPS=`echo ../make.tmpl ../VERSION ../Makefile ../include/.symlinks_created | sed -e 's/\\//\\\\\\//g'`; \
+x86_64-pc-linux-gnu-gcc -MM -I. -I../include -DLVM_SHARED_PATH=\"/usr/sbin/lvm\" -DHAVE_CONFIG_H -DDM_IOCTLS -O2 -march=amdfam10 -fomit-frame-pointer -pipe -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -o vgck.d vgck.c; \
+sed -i "s/\(.*\)\.o[ :]*/$FILE.o $FILE.d $FILE.pot: $DEPS /g" vgck.d; \
+[ -s vgck.d ] || rm -f vgck.d
+/bin/mkdir -p ./; \
+set -e; \
+FILE=`echo vgchange.d | sed 's/\\//\\\\\\//g;s/\\.d//g'`; \
+DEPS=`echo ../make.tmpl ../VERSION ../Makefile ../include/.symlinks_created | sed -e 's/\\//\\\\\\//g'`; \
+x86_64-pc-linux-gnu-gcc -MM -I. -I../include -DLVM_SHARED_PATH=\"/usr/sbin/lvm\" -DHAVE_CONFIG_H -DDM_IOCTLS -O2 -march=amdfam10 -fomit-frame-pointer -pipe -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -o vgchange.d vgchange.c; \
+sed -i "s/\(.*\)\.o[ :]*/$FILE.o $FILE.d $FILE.pot: $DEPS /g" vgchange.d; \
+[ -s vgchange.d ] || rm -f vgchange.d
+/bin/mkdir -p ./; \
+set -e; \
+FILE=`echo vgcfgrestore.d | sed 's/\\//\\\\\\//g;s/\\.d//g'`; \
+DEPS=`echo ../make.tmpl ../VERSION ../Makefile ../include/.symlinks_created | sed -e 's/\\//\\\\\\//g'`; \
+x86_64-pc-linux-gnu-gcc -MM -I. -I../include -DLVM_SHARED_PATH=\"/usr/sbin/lvm\" -DHAVE_CONFIG_H -DDM_IOCTLS -O2 -march=amdfam10 -fomit-frame-pointer -pipe -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -o vgcfgrestore.d vgcfgrestore.c; \
+sed -i "s/\(.*\)\.o[ :]*/$FILE.o $FILE.d $FILE.pot: $DEPS /g" vgcfgrestore.d; \
+[ -s vgcfgrestore.d ] || rm -f vgcfgrestore.d
+/bin/mkdir -p ./; \
+set -e; \
+FILE=`echo vgcfgbackup.d | sed 's/\\//\\\\\\//g;s/\\.d//g'`; \
+DEPS=`echo ../make.tmpl ../VERSION ../Makefile ../include/.symlinks_created | sed -e 's/\\//\\\\\\//g'`; \
+x86_64-pc-linux-gnu-gcc -MM -I. -I../include -DLVM_SHARED_PATH=\"/usr/sbin/lvm\" -DHAVE_CONFIG_H -DDM_IOCTLS -O2 -march=amdfam10 -fomit-frame-pointer -pipe -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -o vgcfgbackup.d vgcfgbackup.c; \
+sed -i "s/\(.*\)\.o[ :]*/$FILE.o $FILE.d $FILE.pot: $DEPS /g" vgcfgbackup.d; \
+[ -s vgcfgbackup.d ] || rm -f vgcfgbackup.d
+/bin/mkdir -p ./; \
+set -e; \
+FILE=`echo toollib.d | sed 's/\\//\\\\\\//g;s/\\.d//g'`; \
+DEPS=`echo ../make.tmpl ../VERSION ../Makefile ../include/.symlinks_created | sed -e 's/\\//\\\\\\//g'`; \
+x86_64-pc-linux-gnu-gcc -MM -I. -I../include -DLVM_SHARED_PATH=\"/usr/sbin/lvm\" -DHAVE_CONFIG_H -DDM_IOCTLS -O2 -march=amdfam10 -fomit-frame-pointer -pipe -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -o toollib.d toollib.c; \
+sed -i "s/\(.*\)\.o[ :]*/$FILE.o $FILE.d $FILE.pot: $DEPS /g" toollib.d; \
+[ -s toollib.d ] || rm -f toollib.d
+/bin/mkdir -p ./; \
+set -e; \
+FILE=`echo segtypes.d | sed 's/\\//\\\\\\//g;s/\\.d//g'`; \
+DEPS=`echo ../make.tmpl ../VERSION ../Makefile ../include/.symlinks_created | sed -e 's/\\//\\\\\\//g'`; \
+x86_64-pc-linux-gnu-gcc -MM -I. -I../include -DLVM_SHARED_PATH=\"/usr/sbin/lvm\" -DHAVE_CONFIG_H -DDM_IOCTLS -O2 -march=amdfam10 -fomit-frame-pointer -pipe -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -o segtypes.d segtypes.c; \
+sed -i "s/\(.*\)\.o[ :]*/$FILE.o $FILE.d $FILE.pot: $DEPS /g" segtypes.d; \
+[ -s segtypes.d ] || rm -f segtypes.d
+rm -f libdevmapper-event.a
+ar rs libdevmapper-event.a libdevmapper-event.o
+ar: creating libdevmapper-event.a
+set -e; (echo "Base {"; echo "	global:"; \
+	 sed "s/^/		/;s/$/;/" < .exported_symbols_generated; \
+	 echo "	local:"; echo "		*;"; echo "};") > .export.sym
+x86_64-pc-linux-gnu-gcc -O2 -march=amdfam10 -fomit-frame-pointer -pipe -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -Wl,-O1 -Wl,--as-needed -Wl,-O1 -Wl,--as-needed -Wl,--export-dynamic -L./libdm -L./lib -L./daemons/dmeventd -Wl,-O1 -Wl,--as-needed -Wl,--export-dynamic -L../libdm -L../lib -L../daemons/dmeventd -Wl,-O1 -Wl,--as-needed -Wl,--export-dynamic -L../../libdm -L../../lib -L../../daemons/dmeventd -Wl,--no-export-dynamic -static -L. -L../../libdm/ioctl -o dmeventd.static \
+dmeventd.o -ldl -ldevmapper-event -lpthread  -ldevmapper  -ludev -lrt  
+/bin/mkdir -p ./; \
+set -e; \
+FILE=`echo reporter.d | sed 's/\\//\\\\\\//g;s/\\.d//g'`; \
+DEPS=`echo ../make.tmpl ../VERSION ../Makefile ../include/.symlinks_created | sed -e 's/\\//\\\\\\//g'`; \
+x86_64-pc-linux-gnu-gcc -MM -I. -I../include -DLVM_SHARED_PATH=\"/usr/sbin/lvm\" -DHAVE_CONFIG_H -DDM_IOCTLS -O2 -march=amdfam10 -fomit-frame-pointer -pipe -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -o reporter.d reporter.c; \
+sed -i "s/\(.*\)\.o[ :]*/$FILE.o $FILE.d $FILE.pot: $DEPS /g" reporter.d; \
+[ -s reporter.d ] || rm -f reporter.d
+/bin/mkdir -p ./; \
+set -e; \
+FILE=`echo pvscan.d | sed 's/\\//\\\\\\//g;s/\\.d//g'`; \
+DEPS=`echo ../make.tmpl ../VERSION ../Makefile ../include/.symlinks_created | sed -e 's/\\//\\\\\\//g'`; \
+x86_64-pc-linux-gnu-gcc -MM -I. -I../include -DLVM_SHARED_PATH=\"/usr/sbin/lvm\" -DHAVE_CONFIG_H -DDM_IOCTLS -O2 -march=amdfam10 -fomit-frame-pointer -pipe -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -O2 -march=amdfam10 -fomit-frame-pointer -pipe -fPIC -Wall -Wundef -Wshadow -Wcast-align -Wwrite-strings -Wmissing-prototypes -Wmissing-declarations -Wnested-externs -Winline -Wmissing-noreturn -Wformat-security -Wredundant-decls -Wpointer-arith -O2 -o pvscan.d pvscan.c; \
+sed -i "s/\(.*\)\.o[ :]*/$FILE.o $FILE.d $FILE.pot: $DEPS /g" pvscan.d; \
+[ -s pvscan.d ] || rm -f pvscan.d
+/bin/mkdir -p ./; \
+set -e; \
+FILE=`echo pvresize.d | sed

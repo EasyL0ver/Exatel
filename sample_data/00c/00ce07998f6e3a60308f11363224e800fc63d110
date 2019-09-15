@@ -1,0 +1,9 @@
+/nix/store/mlyd99fqapnx9h8nahpilbzl3aajn69x-tree-1.8.0
+├── bin
+│   └── tree
+└── share
+    └── man
+        └── man1
+            └── tree.1.gz
+
+4 directories, 2 files

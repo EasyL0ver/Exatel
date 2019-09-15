@@ -1,0 +1,11 @@
+// Directory path for input and output files.
+string dirPath = "D:\\Download\\";
+
+// Specify that you want to load TSV file.
+LoadOptions opts = new LoadOptions(LoadFormat.TSV);
+
+// Load your sample TSV file inside the Workbook object using specified LoadOptions.
+Aspose.Cells.Workbook wb = new Aspose.Cells.Workbook(dirPath + "sampleConvertTSVToExcelFormats.tsv", opts);
+
+// Save TSV file to XLSB format.
+wb.Save(dirPath + "outputConvertTSVToExcelFormats.xlsb", SaveFormat.Xlsb);

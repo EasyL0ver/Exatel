@@ -1,0 +1,54 @@
+library ieee;
+  use ieee.std_logic_1164.all;
+  use ieee.std_logic_unsigned.all;
+  
+ entity fsm_temp_converter is
+  port (
+    i_sw1  :  in std_logic; -- chave 1
+	 i_sw2  :  in std_logic; -- chave 2
+	 i_btn  :  in std_logic; -- botão para alternar estado
+	 i_clock  :  in std_logic; -- clock
+	 i_rst  :  in std_logic; --sinal de reset
+    o_mux  :  out std_logic_vector (2 downto 0) -- saída final	 
+  );
+end entity;
+
+architecture arch of fsm_temp_converter is
+	type t_state is (celsius, farenheit, kelvin);
+	signal atual,proximo : t_state;
+
+begin
+
+u_atual : process(i_clock,i_rst)
+begin
+
+if(i_rst = '1') then 
+		atual <=  celsius;
+	elsif (rising_edge(i_clock)) then --rising_edge é a subida do clock, qe só ira ser verdadeiro caso nao esteja no modo de reset
+		atual <= proximo;
+	end if;
+	
+end process u_atual;
+
+u_prox : process(atual,i_sw1,i_sw2,i_btn)
+begin
+	case atual is 
+	
+		when celsius => 
+			proximo <= farenheit;
+			
+		when farenheit =>
+			if(i_btn='1') then proximo <= celsius;
+			else proximo <= kelvin;
+			end if;
+			
+		when kelvin =>
+			proximo <= celsius;	
+			
+		when others =>
+			proximo <= celsius;
+			
+	end case;
+  
+end process u_prox;
+end arch;

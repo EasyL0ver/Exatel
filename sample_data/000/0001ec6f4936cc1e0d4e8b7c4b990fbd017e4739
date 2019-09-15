@@ -1,0 +1,6 @@
+root@kali:~/Downloads# wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3047_amd64.deb
+--2019-02-07 07:45:58--  http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3047_amd64.deb
+Resolving c758482.r82.cf2.rackcdn.com (c758482.r82.cf2.rackcdn.com)... 2.20.142.219, 2.20.142.228, 2600:1417:16::17c8:5531, ...
+Connecting to c758482.r82.cf2.rackcdn.com (c758482.r82.cf2.rackcdn.com)|2.20.142.219|:80... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2019-02-07 07:45:59 ERROR 404: Not Found.

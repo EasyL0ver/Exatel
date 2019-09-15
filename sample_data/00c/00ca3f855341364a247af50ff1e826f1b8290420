@@ -1,0 +1,1 @@
+ssh -i "/home/build/key.pem" -o "StrictHostKeyChecking=no" hadoop@host_name "sudo crontab -l ; echo "2 * * * * python /home/hadoop/<file> >> /var/log/log_file.log 2>&1" | crontab -"

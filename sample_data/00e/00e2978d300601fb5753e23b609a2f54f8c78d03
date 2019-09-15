@@ -1,0 +1,96 @@
+import * as React from 'react';
+import styled, {css} from 'styled-components';
+import { IStyledProps } from 'types/theme-types';
+
+function validate(value) {
+  if (value.length > 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const errorState = css`
+  border-color: ${(props: IStyledProps) => props.theme.colors.errorColor};
+`;
+
+const StyledInput = styled.input`
+  ${(props: IFieldProps) => props.isErrored ? errorState : ''};
+`;
+
+interface IFieldState {
+  value?: string;
+  valid?: boolean;
+  touched?: boolean;
+}
+interface IFieldProps {
+  type?: string;
+  placeholder?: string;
+  className?: string;
+  min?: number;
+  max?: number;
+  isErrored?: boolean;
+}
+
+export class FieldWrapper extends React.Component<IFieldProps, IFieldState> {
+  public static defaultProps: Partial<IFieldProps> = {
+    type: 'text',
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: '',
+      touched: false,
+      valid: false,
+    };
+  }
+
+  public handleFieldChange = (evt) => {
+    this.setState({ value: evt.target.value });
+    this.isValid();
+  }
+  public handleFieldFocus = (evt) => {
+    this.setState({ touched: true });
+  }
+
+  public handleBlur = (evt) => {
+    this.isValid();
+  }
+
+  public handleSubmit = (evt) => {
+    if (!this.isValid()) {
+      evt.preventDefault();
+      return;
+    }
+  }
+
+  public isValid() {
+    let isValid;
+    const isTouched = this.state.touched;
+
+    isTouched ? isValid = validate(this.state.value) : isValid = false;
+
+    this.setState({
+      valid: isValid,
+    });
+  }
+
+  public render() {
+    console.log(this.state);
+    return (
+      <StyledInput
+        className={this.props.className}
+        type={this.props.type}
+        placeholder={this.props.placeholder}
+        value={this.state.value}
+        onChange={this.handleFieldChange}
+        onBlur={this.handleBlur}
+        onFocus={this.handleFieldFocus}
+        min={this.props.min}
+        max={this.props.max}
+        isErrored={!this.state.valid && this.state.touched}
+      />
+    );
+  }
+}

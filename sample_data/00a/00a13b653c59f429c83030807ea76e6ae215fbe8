@@ -1,0 +1,7 @@
+Validate.ArgumentNotNull(response, "response");
+Validate.ArgumentNotNull(drawingModel, "drawingModel");
+using (Bitmap bitmap = CaptchaUtils.ImageGeneratorFactory(drawingModel).Generate(drawingModel))
+{
+   response.ContentType = "image/gif";
+   bitmap.Save(response.OutputStream, ImageFormat.Gif);
+}

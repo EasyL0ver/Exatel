@@ -1,0 +1,6 @@
+Assembly a = Assembly.LoadFile(@"C:PrototypesComTestDebugWin32ComTest.dll");
+        System.Type objType = a.GetType("comTest.TimeServer");
+
+        dynamic comTest = System.Activator.CreateInstance(objType);
+
+        label1.Text = comTest.GetTimeString();

@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <math.h>
+#include <pthread.h>
+int silnia (int k)//definicja funkcji silnia
+{
+if(k<=1)
+return(1);
+else
+return(k*silnia(k-1));
+}
+
+
+struct zesp
+{
+        float i, x;
+};
+
+float* licz (struct zesp* arg)
+{
+        float wynik;
+
+
+        wynik = (pow(-1,arg -> i)*pow(arg -> x,2*arg -> i))/silnia(2*arg -> i);
+        float *f = &wynik;
+
+        return f;
+        pthread_exit((void*)f);
+
+
+
+}
+
+int main (void)
+{
+        int N;
+        int r;
+        float i, x, tmp;
+	float wynik = 0.0;
+
+
+
+        printf("Podaj ile liczb obliczyc: ");
+        scanf("%d", &N);
+	N++;
+
+        pthread_t watki[N];
+        struct zesp arg[N];
+
+
+	printf("Podaj x: ");
+        scanf("%f", &x);
+
+
+        for (r = 1; r <= N; r++)
+        {
+
+
+
+
+
+
+
+		arg[r].i = r;
+
+		arg[r].x = x;
+
+
+
+                pthread_create(&watki[r], NULL, (void*)licz, &arg[r]);
+        }
+        float *f;
+
+        for (r = 1; r <= N; r++)
+        {
+                pthread_join(watki[r], (void**)&f);
+                //printf("%f\n", f);
+                wynik += *f;
+        }
+
+
+        for (r = 1; r < N; r++)
+        {
+                printf("id watku %d: %ld\n", r, watki[r]);
+
+        }
+
+        printf("S = %f\n", wynik);
+
+return 0;
+}

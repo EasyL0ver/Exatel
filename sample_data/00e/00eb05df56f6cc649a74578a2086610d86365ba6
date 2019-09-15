@@ -1,0 +1,6 @@
+local userInput
+
+term.write("schreib hurensohn ok?")
+userInput = read()
+
+print (userInput)

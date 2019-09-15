@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+/*double area(int argc, char *argv[]) {
+   double N = atof(argv[1]);
+   double end = atof(argv[2]);
+   double incNum = atof(argv[3]);
+   double low = atof(argv[4]);
+   double high = atof(argv[5]);
+   double numArgs = argc - 7;
+
+
+}*/
+
+double sum(int argc, char *argv[], double width, double recArea, int i, double N) {
+   double end = atof(argv[2]);
+   double incNum = atof(argv[3]);
+   double low = atof(argv[4]);
+   double high = atof(argv[5]);
+   double numArgs = argc - 7;
+
+   if (i > N) return 0;
+
+   double leftEdge = (low + ((i-1) * width));
+   double rightEdge = (low + i*width);
+   double midRec = (leftEdge + rightEdge)/2.0;
+   double recHeight = 0.0;
+   double temp = numArgs;
+
+   recHeight = 5;
+
+   recArea = recHeight * width;
+   return recArea + sum(argc, argv, width, recArea, i + 1, N);
+}
+
+double incFunc(double N, int argc, char *argv[]) {
+   double end = atof(argv[2]);
+   double incNum = atof(argv[3]);
+   double low = atof(argv[4]);
+   double high = atof(argv[5]);
+   double numArgs = argc - 7;
+
+   if (N > end) return 0;
+
+   double width = (high - low)/N;
+   double recArea = 0.0;
+   int i = 0;
+      recArea = sum(argc, argv, width, recArea, i, N);
+
+   printf("%lf\t %lf\n", N, recArea);
+   return N + incFunc(N + incNum, argc, argv);
+}
+
+
+int main(int argc, char *argv[]){
+   double N = atof(argv[1]);
+
+   incFunc(N, argc, argv);
+
+   /*
+      for(int i = 1; i <= N; i++){
+         double leftEdge = (low + ((i-1) * width));
+         double rightEdge = (low + i*width);
+         double midRec = (leftEdge + rightEdge)/2.0;
+         double recHeight = 0.0;
+         double temp = numArgs;
+
+         for(int j = 0; j <= numArgs; j++){
+            recHeight = ((atof(argv[j+6]) * pow(midRec,temp)) + recHeight);
+            temp--;
+         }
+
+         recArea = (recArea + (recHeight * width));
+      }
+*/
+}

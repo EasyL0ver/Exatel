@@ -1,0 +1,70 @@
+<?php
+$q = $_GET['id'];
+ $search = array(
+  '-',
+  'x',
+ );
+
+ $replace = array(
+  '-',
+  'video-',
+ );
+
+ $teksperbaikan= str_replace($search, $replace, $q);
+$qq = $_GET['id'];
+include 'vf.php';
+$grabindex=file_get_contents('http://kompas.com/'.$teksperbaikan.'');
+$list = explode('<head>',$grabindex);
+if(!empty($grabindex)){
+for($i=1; $i<=1; $i++){
+$name1 = potong($list[$i],'<meta property="og:title" content="','"');
+$img = potong($list[$i],'<meta property="og:image" content="','"');
+$date = potong($list[$i],'<span class="date">',' - <');
+$deskrpsi = potong($list[$i],'<meta description">','</p');
+$tags = potong($list[$i],'em><u>Tags:</u></em>&nbsp;&nbsp;','</div>');
+$view = potong($list[$i],'<span id="nb-views-number">','</span>');
+$rate = potong($list[$i],'<span class="rating-box value">','</span>');
+$waktu = potong($list[$i],'<span class="value">','</span>');
+
+$kalimat = $name1;
+$kalimat_kecil = strtolower($kalimat);
+$name = ucwords($kalimat_kecil);
+$title=' '.$name.' - Berita Update';
+
+include 'tm-inc/head.php';
+
+ $pa =$tags;
+
+$tet= str_replace("tags", "cn", $pa);
+echo '<div class="hl-player-box">
+    <div class="container">
+        <div class="panel panel-defult" id="play-container" style="position: relative;">
+            <div class="panel-body">'; ?>
+                
+<?php echo '</div><div class="container" id="container">
+    <div class="row">
+    	<section id="content" class="col-xs-12">
+        <div class="panel panel-default info">
+    			<h1 class="title">'.$name.' </h1>
+					<!-- BEGIN ADSPACE CODE -->
+
+
+
+					<span class="description">
+					Berita Hari Ini <em>'.$name.'</em> '.$deskrpsi.' </span>
+		    			    					    	
+					<div class="tag-list">
+						<span>New Search:</span> 	: '.$tet.'
+								    		<div style="padding:5px" class="pull-right">
+						<a class="btn btn-xs btn-default"></i> View: '.$view.'</a>
+
+		    					    			<a class="btn btn-xs btn-info" aria-expanded="true" href="" data-toggle="collapse"> '.$waktu.'</a>
+		    					    			<a class="btn btn-xs btn-default"><i class="glyphicon glyphicon-eye-open"></i>Rating : '.$rate.'</a>
+		    		</div>
+		    </div></section>';
+}
+}
+include 'related.php';
+echo '</div></div>';
+include 'tm-inc/foot.php';
+?>

@@ -1,0 +1,33 @@
+@ECHO ON
+
+:: SELECTING PLUGIN VERSION ::
+set version=1.0
+set /p version= Plugin version (default - %version%)?:
+echo Version : %version%
+
+:: SELECTING PATH ::
+set currentPath=%cd%
+echo Packing : %currentPath%
+
+:: SELECTING ENGINE VERSION ::
+set list=4.19 4.20 4.21 
+echo Engines : %list%
+
+set zipPath="D:\Program Files\WinRAR\WinRAR.exe"
+
+if(%zipPath% == "") echo Missing Zip Path.
+
+
+:: LOOP THROUGH ALL PLUGINS ::
+for /d %%f in (%currentPath%\*) do ( 
+cd "%%f"
+mkdir -p Zips
+	:: LOOP THROUGH ALL THE ENGINE VERSIONS ::
+	for %%a in (%list%) do (
+		for %%I in (%%f) do set CurrDirName=%%~nxI
+		%zipPath% a -afzip -m5 -ed -pTest -r -ep1 Zips/%CurrDirName%%version%-%%a.zip . -xr!Binaries -xr!Intermediate -xr!Zips
+	)
+)
+
+cd ..
+pause

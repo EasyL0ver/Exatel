@@ -1,0 +1,14 @@
+/**
+ * Пример разной анимации в обе стороны
+ */
+
+div {
+	height: 1.5em;
+	background: orange;
+	
+	line-height: 1.5;
+	}
+	
+	div:hover {
+	
+	}

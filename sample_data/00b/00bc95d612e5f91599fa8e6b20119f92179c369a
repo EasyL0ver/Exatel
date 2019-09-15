@@ -1,0 +1,9 @@
+_root["objek"].posX = _root["objek"]._x;
+_root["objek"].kecepatan = 10;
+_root["objek"].onEnterFrame = function(){
+this._x += this.kecepatan;
+if (this._x>500) {
+this._x = this.posX;
+this.kecepatan = 10;
+};
+}

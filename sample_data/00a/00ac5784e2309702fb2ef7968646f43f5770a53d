@@ -1,0 +1,16 @@
+class SkateparksController < ApplicationController
+
+  def index
+      #find(:all, :conditions => ["name LIKE ?",params[:search]])
+      @skateparks = Skatepark.search(params[:search]).paginate( :page => params[:page], :per_page => 3)
+  end
+
+  def show
+      @skateparks = Skatepark.find(params[:id])
+  end
+
+  def new
+      @skateparks = Skatepark.new
+  end
+
+end

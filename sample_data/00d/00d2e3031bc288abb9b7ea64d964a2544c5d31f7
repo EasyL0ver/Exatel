@@ -1,0 +1,216 @@
+const btnNum = [
+    document.getElementById("zero"),
+    document.getElementById("1"),
+    document.getElementById("2"),
+    document.getElementById("3"),
+    document.getElementById("4"),
+    document.getElementById("5"),
+    document.getElementById("6"),
+    document.getElementById("7"),
+    document.getElementById("8"),
+    document.getElementById("9")]
+const btnClear = document.getElementById("clear");
+const btnReturn = document.getElementById("return");
+const btnDiv = document.getElementById("division");
+const btnMult = document.getElementById("multiplication");
+const btnSubstr = document.getElementById("substraction");
+const btnAdd = document.getElementById("addition");
+const btnEquals = document.getElementById("equals");
+const btnDot = document.getElementById("dot");
+const res_span = document.querySelector(".result");
+const topMini = document.getElementById("topMini");
+const botMini = document.getElementById("botMini");
+const actionDisplay = document.getElementById("action")
+let displayedNum = "";
+let topDisplay = "";
+let botDisplay = "";
+let actionMark = ["", "+", "-", "x", "/"]
+let dig1 = 0;
+let dig2 = 0;
+let actionNum = 0;
+let result = "";
+let submited = 0;
+let dotsNum = 0;
+
+function getResult()
+{
+    if(dig2!=0)
+    {switch (actionNum)
+        {
+        case 1: result = dig1 + dig2;
+        break;
+        case 2: result = dig1 - dig2;
+        break;
+        case 3: result = dig1 * dig2;
+        break;
+        case 4: result = dig1 / dig2;
+        break;
+        }
+    }
+}
+
+function clearDisplay()
+{
+    topMini.innerHTML = "";
+    res_span.innerHTML = "";
+    botMini.innerHTML = "";
+}
+
+function reset()
+{
+    result = "";
+    displayedNum = "";
+    makeAction(0);
+    dig1 = 0;
+    dig2 = 0;
+    dotsNum = 0;
+}
+
+function submit()
+{
+    if(dig2!=0)
+    {
+    switch (actionNum) {
+        case 1:
+        topMini.innerHTML = dig1 + " + " + dig2;
+        break;
+        case 2:
+        topMini.innerHTML = dig1 + " - " + dig2;
+        break;
+        case 3:
+        topMini.innerHTML = dig1 + " x " + dig2;
+        break;
+        case 4:
+        topMini.innerHTML = dig1 + " / " + dig2;
+        break;
+    }
+    res_span.innerHTML = result;
+    actionDisplay.classList.remove('action');
+    actionDisplay.innerHTML = "";
+    botMini.innerHTML = "";
+    reset();
+    submited = 1;
+    }
+}
+
+function makeAction(act)
+{
+
+        if(displayedNum!="" || act==0)
+        {
+        if(dig1==0)
+        {
+            dig1 = Number(displayedNum);
+            displayedNum = "";
+            res_span.innerHTML = displayedNum;
+            topMini.innerHTML = dig1;
+            dotsNum = 0;
+        }
+
+        actionDisplay.innerHTML = actionMark[act];
+        actionNum = act;
+        if(act==0) actionDisplay.classList.remove('action');
+        else actionDisplay.classList.add('action');
+        }
+        getResult();
+        botMini.innerHTML = "=" + result;
+}
+
+function addToResDisplay(mark)
+{
+    if(submited==1)
+    {
+        clearDisplay();
+        submited=0;
+    }
+    displayedNum += mark;
+    if(displayedNum==".") displayedNum = "0.";
+    res_span.innerHTML = displayedNum;
+    if(dig1!=0)
+    {
+        dig2 = Number(displayedNum);
+        getResult();
+        botMini.innerHTML = "=" + result;
+    }
+}
+
+function main()
+{
+    btnNum[0].addEventListener('click', function()
+    {
+        addToResDisplay(0);
+    })
+    btnNum[1].addEventListener('click', function()
+    {
+        addToResDisplay(1);
+    })
+    btnNum[2].addEventListener('click', function()
+    {
+        addToResDisplay(2);
+    })
+    btnNum[3].addEventListener('click', function()
+    {
+        addToResDisplay(3);
+    })
+    btnNum[4].addEventListener('click', function()
+    {
+        addToResDisplay(4);
+    })
+    btnNum[5].addEventListener('click', function()
+    {
+        addToResDisplay(5);
+    })
+    btnNum[6].addEventListener('click', function()
+    {
+        addToResDisplay(6);
+    })
+    btnNum[7].addEventListener('click', function()
+    {
+        addToResDisplay(7);
+    })
+    btnNum[8].addEventListener('click', function()
+    {
+        addToResDisplay(8);
+    })
+    btnNum[9].addEventListener('click', function()
+    {
+        addToResDisplay(9);
+    })
+    btnDot.addEventListener('click', function()
+    {
+        if(dotsNum<1)
+        {
+        dotsNum ++;
+        addToResDisplay(".");
+        }
+    })
+
+    btnAdd.addEventListener('click', function()
+    {
+        makeAction(1);
+    })
+    btnSubstr.addEventListener('click', function()
+    {
+        makeAction(2);
+    })
+    btnMult.addEventListener('click', function()
+    {
+        makeAction(3);
+    })
+    btnDiv.addEventListener('click', function()
+    {
+        makeAction(4);
+    })
+
+    btnEquals.addEventListener('click', function()
+    {
+        submit();
+    })
+    btnClear.addEventListener('click', function clear()
+    {
+        reset();
+        clearDisplay();
+    })
+}
+
+main();

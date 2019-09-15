@@ -1,0 +1,9 @@
+<div class="col">
+<div class="input-group">
+        <label class="input-group-btn">
+                <span class="btn" style="background-color:rgba(161,37,14,1);">
+                    Subir foto&hellip;  <input type="file" accept="image/*" name="img_arma3" class="form-control" id="img_arma3" style="display: none;" >
+                </span>
+        </label>
+        <input type="text" class="form-control" readonly>
+</div>

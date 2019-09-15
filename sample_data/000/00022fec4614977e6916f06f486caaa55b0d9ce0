@@ -1,0 +1,5 @@
+vVAR = Range("myName").value2
+	
+Cells("A1").value = vVAR
+	
+Cell("A1").value = vVAR(1, 1)

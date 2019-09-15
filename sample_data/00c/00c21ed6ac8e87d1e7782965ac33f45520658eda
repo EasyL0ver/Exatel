@@ -1,0 +1,5 @@
+local Amount = 999999 --Amount of DevilFruit, Execute then reset.
+local A_1 = "DevilFruitL"
+local A_2 = Amount
+local Event = game:GetService("ReplicatedStorage").ImpFolder.NewGame
+Event:FireServer(A_1, A_2)

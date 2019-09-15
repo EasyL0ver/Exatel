@@ -1,0 +1,8 @@
+new TowaryTir[][] =
+{
+	{"Mleko",560,"Spozywcze"},
+	{"Kompresory",485,"Przemyslowe"},
+	{"Warzywa",490,"Spozywcze"},
+	{"Sprzet AGD",445,"Elektryczne"},
+	{"ADR:Paliwo",786,"ADR"}
+};

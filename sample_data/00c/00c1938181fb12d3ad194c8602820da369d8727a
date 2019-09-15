@@ -1,0 +1,9 @@
+s = Root[-2 + #^6 &, 1];
+a = (s + x^2) (s - x^3) // Expand;
+b = (s + x^2) (s - 12 x^2) // Expand;
+PolynomialGCD[a, b, x, Extension -> Automatic]
+	
+s = AlgebraicNumber[Root[-2 + #^6 &, 1], {0, 1}];
+a = (s + x^2) (s - x^3) // Expand;
+b = (s + x^2) (s - 12 x^2) // Expand;
+PolynomialGCD[a, b, x, Extension -> s]

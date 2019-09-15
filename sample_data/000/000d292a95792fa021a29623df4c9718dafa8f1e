@@ -1,0 +1,63 @@
+Ogólne
+Pełna ścieżka                           : G:\Sony Bravia OLED 4K Demo.mp4
+Format                                  : MPEG-4
+Format_Commercial_IfAny                 : HDR10
+Profil formatu                          : Base Media
+ID kodeka                               : isom (isom)
+Rozmiar pliku                           : 724 MiB
+Czas trwania                            : 1 min 23s
+Rodzaj całkowitej przepływności bitów   : Zmienna
+Całkowita przepływność bitów            : 73,1 Mb/s
+Zdekodowana data                        : UTC 2016-10-24 05:40:14
+Znakowana data                          : UTC 2016-10-24 05:40:14
+
+Wideo
+ID                                      : 1
+Format                                  : HEVC
+Format/Informacja                       : High Efficiency Video Coding
+Format_Commercial_IfAny                 : HDR10
+Profil formatu                          : Main 10@L5.1@High
+ID kodeka                               : hvc1
+ID kodeka/Informacja                    : High Efficiency Video Coding
+Czas trwania                            : 1 min 23s
+Przepływność bitów                      : 72,9 Mb/s
+Przwpływność maksymalna                 : 94,2 Mb/s
+Szerokość                               : 3.840 pikseli
+Wysokość                                : 2.160 pikseli
+Proporcje obrazu                        : 16:9
+Tryb wyświetlania klatek                : Stały
+Szybkość wyświetlania klatek            : 59,940 (60000/1001) kl/s
+ColorSpace                              : YUV
+ChromaSubsampling/String                : 4:2:0 (Type 2)
+BitDepth/String                         : 10 bitów
+bity/(piksele*ramki)                    : 0.147
+Rozmiar strumienia                      : 722 MiB (100%)
+Zdekodowana data                        : UTC 2016-10-24 06:37:11
+Znakowana data                          : UTC 2016-10-24 05:40:23
+colour_range                            : Limited
+colour_primaries                        : BT.2020
+transfer_characteristics                : PQ
+matrix_coefficients                     : BT.2020 non-constant
+MasteringDisplay_ColorPrimaries         : R: x=1.000000 y=1.000000, G: x=1.000000 y=1.000000, B: x=1.000000 y=1.000000, White point: x=1.000000 y=1.000000
+MasteringDisplay_Luminance              : min: 0.1000 cd/m2, max: 1 cd/m2
+Codec configuration box                 : hvcC
+
+Audio
+ID                                      : 2
+Format                                  : AAC LC
+Format/Informacja                       : Advanced Audio Codec Low Complexity
+ID kodeka                               : mp4a-40-2
+Czas trwania                            : 1 min 23s
+Source_Duration/String                  : 1 min 23s
+Rodzaj przepływności                    : Zmienna
+Przepływność bitów                      : 192 kb/s
+Przwpływność maksymalna                 : 197 kb/s
+Kanały                                  : 2 kanały
+Channel layout                          : L R
+Częstotliwość próbkowania               : 48,0 kHz
+Szybkość wyświetlania klatek            : 46,875 kl/s (1024 SPF)
+Rozmiar strumienia                      : 1,90 MiB (0%)
+Source_StreamSize/String                : 1,90 MiB (0%)
+Język                                   : Angielski
+Zdekodowana data                        : UTC 2016-10-24 06:37:11
+Znakowana data                          : UTC 2016-10-24 05:40:23

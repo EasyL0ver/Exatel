@@ -1,0 +1,47 @@
+
+
+import java.util.Scanner;
+public class pr_zizo {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            int reviewedComputers = Integer.parseInt(scanner.nextLine());
+
+            double ratingAll = 0;
+            double possibleSales = 0;
+            double allSales = 0;
+            double allSalesPc = 0;
+
+            for (int i = 1; i <= reviewedComputers; i++) {
+
+                int numberForPc = Integer.parseInt(scanner.nextLine());
+                int raiting = numberForPc % 10;
+
+                 if (raiting == 2) {
+                    allSales = 0;
+                }else if (raiting == 3) {
+                    possibleSales = numberForPc / 10;
+                    int possibleSales1 = (int)(possibleSales);
+                    allSales = possibleSales1 * 0.5;
+                } else if (raiting == 4) {
+                     possibleSales = numberForPc / 10;
+                     int possibleSales1 = (int)(possibleSales);
+                     allSales = possibleSales1 * 0.7;
+                } else if (raiting == 5) {
+                    possibleSales = numberForPc / 10;
+                     int possibleSales1 = (int)(possibleSales);
+                     allSales = possibleSales1 * 0.85;
+                } else if (raiting == 6) {
+                    allSales = numberForPc / 10;
+                }
+
+                allSalesPc = allSalesPc + allSales;
+                ratingAll = ratingAll + raiting;
+
+            }
+
+            ratingAll = ratingAll / reviewedComputers;
+            allSalesPc = Math.floor(allSalesPc);
+            System.out.printf("%.2f%n", allSalesPc);
+            System.out.printf("%.2f%n", ratingAll);
+        }
+    }

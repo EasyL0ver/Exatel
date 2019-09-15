@@ -1,0 +1,8 @@
+shell script : navigate to root
+pass= $1
+navigateToRoot($pass)
+	
+chmod +s yourfile
+chown root yourfile
+	
+chmod o-w yourfile

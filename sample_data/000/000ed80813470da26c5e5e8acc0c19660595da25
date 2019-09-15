@@ -1,0 +1,3 @@
+$all['zip']         = 'application/zip';  
+$all['gz|gzip']     = 'application/zip';  
+$all['gz|gzip|zip'] = 'application/x-zip';

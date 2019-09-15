@@ -1,0 +1,7 @@
+protected function writeOrder($order, $fp) 
+    {
+        $common = $this->getCommonOrderValues($order);
+
+
+        fputcsv($fp, $common, self::DELIMITER, self::ENCLOSURE);
+    }

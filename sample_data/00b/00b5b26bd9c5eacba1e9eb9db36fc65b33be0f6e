@@ -1,0 +1,45 @@
+[Updated] Update 1.3 - New ride, new map tile and much more
+21 DECEMBER - PIXELSPLIT
+ 
+Hi,
+ 
+We know you waited so long for this (us too!) - today we release Update 1.3 to you.
+ 
+At first
+Please note that you will probably have to re-adjust your screen resolution, when starting the game.
+ 
+Furthermore it seems that the save location changed on some systems.
+C:/Users/YourUserName/AppData/LocalLow/Zeichenkraftwer Jeutter & Schaller/Virtual Rides 3 maybe changed to C:/Users/DeinBenutzerName/AppData/LocalLow/Zeichenkraftwer Jeutter _ Schaller/Virtual Rides 3. Just copy the folder "Virtual Rides 3" from the old folder to the new one (old with & and new with _ in the path).
+ 
+ 
+New ride and new map tile
+We extended the map (to the left of the current city tile) and added a new ride to it. We hope you enjoy it!
+ 
+ 
+New customization parts
+We also added some new customization parts, several of which are Christmas themed. But more importantly we added a new effect part. We present to you: The Flamethrower.
+ 
+ 
+Ride automatics (BETA)
+To give the fairground a more lively feel we added automatic programs. These are started automatically when you enter a fairground tile. They are interrupted as soon as you take over the ride controls.
+ 
+Please note that this is a beta feature, so it could have some bugs here and there. Also note that there is no automatic program for the Crazy Spin right now.
+ 
+ 
+ 
+Other changes
+Upgraded to new engine version which allows future improvements
+Improved: Increased speed of animations in queue
+Improved: Increased microphone volume
+Improved: Performance (due to new engine upgrade)
+Improved: Running lights also have a color during daytime
+Fixed: Adjusted some of the navmeshs so visitors can walk more fluently
+Fixed: Visitors glitching in the lot booth
+Fixed: Graphic issues on some Mac devices
+ 
+Future outlook
+We are definitely not done here! In the next updates we will be working on:
+Customizable logos (font + color)
+Further performance optimizations
+Support for MP3s for your custom music
+More rides!

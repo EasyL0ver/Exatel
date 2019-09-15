@@ -1,0 +1,8 @@
+$.ajax({
+	'success': function(data) {
+		if (typeof(cachedObject) == 'object' && cachedObject['div_name'] != data['div_name']) {
+			//Switch out the content
+		}
+		cachedObject = data;
+	}
+});

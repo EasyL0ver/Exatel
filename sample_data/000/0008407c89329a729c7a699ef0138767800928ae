@@ -1,0 +1,36 @@
+MessageCenter [ERROR] CRITICAL ERROR, PLEASE REPORT:
+Delegate InitializeContract - Standard for message type OnInitializeContract failed with exception 
+ is not a valid value for Int32.
+at System.ComponentModel.BaseNumberConverter.ConvertFrom (System.ComponentModel.ITypeDescriptorContext,System.Globalization.CultureInfo,object) <0x00311>
+at System.ComponentModel.TypeConverter.ConvertFrom (object) <0x00040>
+at System.ComponentModel.TypeConverter.ConvertFromString (string) <0x00024>
+at BattleTech.Variant.SetValue (string) <0x00086>
+at BattleTech.StatisticEffect.SetupVariant (BattleTech.ICombatant,BattleTech.EffectData) <0x00094>
+at BattleTech.StatisticEffect.initStatisiticEffect (BattleTech.ICombatant,BattleTech.EffectData,BattleTech.StatCollection) <0x0002a>
+at BattleTech.StatisticEffect..ctor (BattleTech.CombatGameState,string,int,BattleTech.ICombatant,BattleTech.ICombatant,BattleTech.StatCollection,BattleTech.EffectData,BattleTech.WeaponHitInfo,int) <0x000e0>
+at BattleTech.EffectManager.CreateEffect (BattleTech.EffectData,string,int,BattleTech.ICombatant,BattleTech.ICombatant,BattleTech.WeaponHitInfo,int,bool) <0x001c2>
+at BattleTech.MechComponent.InitEffects () <0x001bd>
+at BattleTech.Mech.InitStats () <0x01e30>
+at (wrapper dynamic-method) BattleTech.Mech.Init_Patch1 (object,UnityEngine.Vector3,single,bool) <0x00b7f>
+at BattleTech.UnitSpawnPointGameLogic.initializeActor (BattleTech.AbstractActor,BattleTech.Team,Lance) <0x000d8>
+at BattleTech.UnitSpawnPointGameLogic.SpawnMech (BattleTech.MechDef,BattleTech.PilotDef,BattleTech.Team,Lance,BattleTech.HeraldryDef) <0x00099>
+at BattleTech.UnitSpawnPointGameLogic.SpawnUnit (bool) <0x005c8>
+at BattleTech.LanceSpawnerGameLogic.SpawnUnits (bool) <0x00066>
+at BattleTech.PlayerLanceSpawnerGameLogic.SpawnUnits (bool) <0x00024>
+at BattleTech.LanceSpawnerGameLogic.OnTriggerSpawn (MessageCenterMessage) <0x00132>
+at BattleTech.PlayerLanceSpawnerGameLogic.OnTriggerSpawn (MessageCenterMessage) <0x00024>
+at BattleTech.LanceSpawnerGameLogic.OnEnterActive () <0x002a3>
+at BattleTech.PlayerLanceSpawnerGameLogic.OnEnterActive () <0x0001c>
+at HBS.FSM.BasicMachine.SetState (HBS.FSM.BasicState,bool,bool) <0x00119>
+at HBS.FSM.BasicMachine.SetState (int,bool,bool) <0x0007f>
+at BattleTech.EncounterObjectGameLogic.SetState (BattleTech.EncounterObjectStatus) <0x000e5>
+at BattleTech.EncounterObjectGameLogic.PropagateStateToChildren () <0x000f3>
+at BattleTech.EncounterObjectGameLogic.OnEnterActive () <0x00023>
+at HBS.FSM.BasicMachine.SetState (HBS.FSM.BasicState,bool,bool) <0x00119>
+at HBS.FSM.BasicMachine.SetState (int,bool,bool) <0x0007f>
+at BattleTech.EncounterObjectGameLogic.EncounterStart () <0x00102>
+at BattleTech.EncounterChunkGameLogic.EncounterStart () <0x0001d>
+at BattleTech.EncounterLayerData.EncounterStart () <0x00078>
+at BattleTech.EncounterLayerParent.FirstTimeInitialization () <0x00025>
+at BattleTech.EncounterLayerParent.InitializeContract (MessageCenterMessage) <0x004a8>
+at MessageCenter.SendMessagesForType (MessageCenterMessageType,MessageCenterMessage) <0x00186>

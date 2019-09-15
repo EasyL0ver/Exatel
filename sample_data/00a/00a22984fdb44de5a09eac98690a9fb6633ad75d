@@ -1,0 +1,18 @@
+I use Jquery addClass() to change background, but it's not work in IE6
+<div id="index_sidebar">
+      <div class="mycats">
+        <div class="item"><a href="#" class="parent">Category</a>
+          <p class="sub_cats"><a href="#">NXP</a> <a href="#">ABB</a> <a href="#">CTS</a></p>
+        </div>
+        <div class="sub_menu">
+          <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+        </div>
+      </div>
+</div>
+	
+#container #index_sidebar .mycats .item:hover {
+    background:#fff;
+}
+#container #index_sidebar .mycats .item:hover a {
+    color:#59a818;
+}

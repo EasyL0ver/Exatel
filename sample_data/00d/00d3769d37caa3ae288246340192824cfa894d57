@@ -1,0 +1,5 @@
+Multiple <input>s with same CSS class updated instead of one specific
+<input class="date"/>
+<input class="date"/>
+	
+<body onload="FlipCalendar.placeholder('date')"/>

@@ -1,0 +1,15 @@
+@client.command(name="Player Notes",
+                description="Allows players to view and edit their tabletop notes. Create/View/List/Add",
+                brief="List editing and viewing",
+                aliases=["notes", "Notes", "NOTES"],
+                pass_context=True)
+async def notes(context, command):      #input variable
+
+if command == "create":
+    import file_edit
+    file_edit.create()
+	
+from app3 import client
+async def create(context):
+    await client.say(context.message.author.mention + "To create a new file, enter a filename. " 
+                                                   "Please use _ instead of space. ")

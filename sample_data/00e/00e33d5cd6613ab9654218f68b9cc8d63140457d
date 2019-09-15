@@ -1,0 +1,5 @@
+try { x = y[n]; }
+catch (IndexOutOfBoundsException e) {
+   //handle IndexOutOfBoundsException from the array access y[n]
+}
+i = Arrays.search(z, x);

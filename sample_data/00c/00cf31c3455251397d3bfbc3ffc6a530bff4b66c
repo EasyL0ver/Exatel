@@ -1,0 +1,61 @@
+using System;
+using Xamarin.Forms.Xaml;
+
+namespace MySample
+{
+    public class SampleClass : IMarkupExtension
+    {
+        public IParameter Parameter { get; set; }
+        public object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return Parameter.GetData();//TODO: throw Exception("Parameter must be of type SampleData1")
+        }
+    }
+
+    public interface IParameter
+    {
+        string GetData();
+    }
+    public class SampleData1 : IParameter
+    {
+        public string GetData()
+        {
+            return "Data1";
+        }
+    }
+    public class SampleData2 : IParameter
+    {
+        public string GetData()
+        {
+            return "Data2";
+        }
+    }
+}
+	
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mysample="clr-namespace:MySample"
+             x:Class="MySample.SamplePage">
+    <ContentPage.Resources>
+        <mysample:SampleData2 x:Key="SampleData2" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label>
+                <Label.Text>
+                    <mysample:SampleClass Parameter="{StaticResource SampleData2}" />
+                </Label.Text>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+	
+<mysample:SampleData2 x:Key="SampleData2" />
+	
+Parameter="{StaticResource SampleData2}"
+	
+public object ProvideValue(IServiceProvider serviceProvider)
+{
+    return Parameter.GetData();//TODO: throw Exception("Parameter must be of type SampleData1")
+}

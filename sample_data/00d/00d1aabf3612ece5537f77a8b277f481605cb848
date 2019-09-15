@@ -1,0 +1,21 @@
++-----------------------------------------------------------------+
+| Keywords   : axe aardwolf (399025)                              |
+| Name       : Axe of Aardwolf                                    |
+| Id         : 1901275837                                         |
+| Type       : Weapon                    Level  :   241           |
+| Worth      : 1,000                     Weight :    20           |
+| Wearable   : wield                                              |
+| Score      : 4152                                               |
+| Flags      : unique, glow, hum, magic, held, nolocate, V3,      |
+|            : precious                                           |
+| Owned By   : Derevo                                             |
+| Found at   : Immortal Homes                                     |
++-----------------------------------------------------------------+
+| Weapon Type: dagger                 Average Dam :    723        |
+| Inflicts   : light                  Damage Type : Light         |
+| Specials   : vorpal                                             |
++-----------------------------------------------------------------+
+| Stat Mods  : Damage roll  : +120     Hit roll     : +120        |
+|              Luck         : +1       Strength     : +1          |
+|              Intelligence : +2       Dexterity    : +1          |
++-----------------------------------------------------------------+

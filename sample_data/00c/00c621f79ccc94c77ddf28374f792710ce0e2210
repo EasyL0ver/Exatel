@@ -1,0 +1,3 @@
+<?php
+echo null ? "mange moer le steak" : "va scier du bois";
+?>

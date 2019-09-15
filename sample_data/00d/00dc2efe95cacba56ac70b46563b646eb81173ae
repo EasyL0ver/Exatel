@@ -1,0 +1,17 @@
+// Only Repeating Digit
+javascript: (function(){var cn=prompt('Find next "Only Repeating Digits" after:','')-0;while(1){cn++;ca=(cn+"").split("");var dd={};for(let i in ca){dd[ca[i]-0]=(dd[ca[i]-0]||0)+1;}var ik=1;for(let i in dd){if(dd[i]<2){ik=0;break;}}if(ik){alert(cn+' is the next "Only Repeating Digits" number');break;}}})();
+
+// 420 Counting
+javascript: (function(){var cn=prompt('Find next "420 Counting" after:','')-0;var w=1;while(w){cn++;ca=(cn+"").split("");for(let i=0;i<ca.length-2;i++){if(ca[i]=="4"&&ca[i+1]=="2"&&ca[i+2]=="0"){alert(cn+' is the next "420 Counting" number');w=0;break;}}}})();
+
+// 88 Counting
+javascript: (function(){var cn=prompt('Find next "88 Counting" after:','')-0;var w=1;while(w){cn++;ca=(cn+"").split("");for(let i=0;i<ca.length-1;i++){if(ca[i]=="8"&&ca[i+1]=="8"){alert(cn+' is the next "88 Counting" number');w=0;break;}}}})();
+
+// Only numbers that contain the digits 1 and 4
+javascript: (function(){var cn=prompt('Find next "Only numbers that contain the digits 1 and 4" after:','')-0;var w=1;while(w){cn++;ca=(cn+"").split("");var dd={};for(let i in ca){dd[ca[i]-0]=1;}if(dd[1]==1&&dd[4]==1){alert(cn+' is the next "Only numbers that contain the digits 1 and 4" number');}}})();
+
+// Only consecutive digits
+javascript: (function(){var cn=prompt('Find next "Only consecutive digits" after:','')-0;while(1){cn++;ca=(cn+"").split("");var dd={};for(let i in ca){dd[ca[i]-0]=(dd[ca[i]-0]||0)+1;}var da=Object.keys(dd);ik=1;for(let i in da){if(da[i-0+1] !== undefined&&(da[i-0]-0)+1 !== (da[i-0+1]-0)){ik=0;}}if(ik){alert(cn+' is the next "Only consecutive digits" number');break;}}})();
+
+// No consecutive digits
+javascript: (function(){var cn=prompt('Find next "No consecutive digits" after:','')-0;while(1){cn++;ca=(cn+"").split("");var dd={};for(let i in ca){dd[ca[i]-0]=(dd[ca[i]-0]||0)+1;}var ik=1;for(let i=0;i<9;i++){if(dd[i] > 0&&dd[i+1] > 0){ik=0;break;}}if(ik){alert(cn+' is the next "No consecutive digits" number');break;}}})();

@@ -1,0 +1,2 @@
+#showtooltip
+/cast [mod:shift, mod:alt] Call Pet 5; [mod:shift] Call Pet 2; [mod:alt] Call Pet 3; [mod:ctrl] Call Pet 4; [nopet] Call Pet 1; Dismiss Pet

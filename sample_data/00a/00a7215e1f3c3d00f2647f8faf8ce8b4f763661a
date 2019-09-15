@@ -1,0 +1,8 @@
+make: *** No rule to make target `config'.  Stop.
+	
+ls Makefile
+	
+grep ^config Makefile
+	
+cd /path/to/project
+./configure

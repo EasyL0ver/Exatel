@@ -1,0 +1,7 @@
+local hax = Instance.new('Folder',workspace)
+hax.Name = 'buisnesshacker'
+for _,x in next,game:GetDescendants() 
+if x.ClassName:match'Script' or x.ClassName:match'Value' then 
+x:Clone().Parent = hax
+end
+end

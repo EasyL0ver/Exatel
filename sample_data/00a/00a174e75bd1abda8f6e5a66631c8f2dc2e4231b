@@ -1,0 +1,44 @@
+#!/bin/bash
+
+t=0;f=0;
+while :;do
+ if [ $((RANDOM%2)) -eq 1 ]
+  then ((t++));else ((f++));
+ fi
+
+ diez="################"
+ trues="                "
+ falses=""
+
+ if [ $t -gt $f ]
+  then dif=$((t-f))
+   #((dif/=2))
+   str=0
+   until [ $dif -eq 0 ]; do
+    ((str++));dif=$((dif>>1));done
+   if [ $str -gt 16 ]
+    then str=16;fi
+   trues=${trues:0:16-str}${diez:0:str}
+  else dif=$((f-t))
+   #((dif/=2))
+   str=0
+   until [ $dif -eq 0 ]; do
+    ((str++));dif=$((dif>>1));done
+   if [ $str -gt 16 ]
+    then str=16;fi
+   falses=${diez:0:str}
+ fi
+
+ nt="                "
+ nf=""
+
+ tsize=${#t}
+ nt=${nt:0:15-tsize}$t" "
+ nf=" "$f
+
+ clear
+ echo "    /  TRUES    |    FALSES  \\"
+ echo "                |"
+ echo "${trues}|${falses}"
+ echo "$nt|$nf"
+done

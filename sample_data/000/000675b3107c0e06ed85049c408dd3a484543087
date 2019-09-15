@@ -1,0 +1,225 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(WTBObject))]
+public class SyncWTBObject : Photon.PunBehaviour
+{
+    // MasterPlayer ID
+    public int MasterPlayerViewID {
+        get { return masterPlayerViewID; }
+        set { /*this.photonView.RPC("SetMasterPlayer", PhotonTargets.All, value, Timestamp);*/
+            if (value != this.photonView.ownerId) {
+                this.photonView.TransferOwnership(value);
+            }
+            //this.photonView.TransferOwnership(value);
+        }
+    }
+    int masterPlayerViewID = -1;
+    //public float Timestamp = 0f; //higher is more recent, favor more recent
+    [PunRPC] void SetMasterPlayer(int _id, float _timestamp) {
+        /*
+        Debug.LogError("Set Master to " + _id + " timestamp is " + _timestamp);
+        masterPlayerViewID = _id;
+        Timestamp = _timestamp;
+        this.photonView.ownerId = _id;
+        */
+    }    
+
+    Collider col;
+    Rigidbody rb;
+    CharacterController ply;
+
+    
+
+    void Awake()
+    {
+        col = this.GetComponent<Collider>();
+        rb = this.GetComponent<Rigidbody>();
+        wtbo = this.GetComponent<WTBObject>();
+
+        masterPlayerViewID = PhotonNetwork.masterClient.ID;
+    }
+
+    #region Zombie network system
+
+    public List<GameObject> Touching = new List<GameObject>();
+    public void OnCollisionExit(Collision collision) { Touching.Remove(collision.gameObject); }
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (ply==null) {
+            GameObject character = PhotonNetwork.player.Character;
+            if (character!=null) {
+                ply = character.GetComponent<CharacterController>();
+            }
+        }
+        if (!wtbo.TransformProperties.Physics) return;
+        if (collision.transform.root.tag != "Player" && collision.transform.tag != "Part") return;
+        
+        if (collision.transform.root.tag == "Player" && ply && ply.movementVector.magnitude>0.05f)
+        {
+            int localPlayerOwnerID = PhotonNetwork.player.ID;
+            if (localPlayerOwnerID == MasterPlayerViewID) return; //don't set it if it's already the same
+            int collidingPlayerOwnerID = collision.transform.root.GetComponent<PhotonView>().ownerId;
+            if (localPlayerOwnerID != collidingPlayerOwnerID) return; //don't set it if it isn't local player
+
+            //Timestamp = (float)PhotonNetwork.time;
+            MasterPlayerViewID = localPlayerOwnerID;
+
+            //StartCoroutine(RunInfectionChunking());
+        }
+
+        if (collision.transform.tag == "Part")
+        {
+            if (collision.transform.GetComponent<SyncWTBObject>() == null) return;
+            if (collision.transform.GetComponent<TransformProperties>().Physics == false) return;
+
+            Touching.Add(collision.gameObject);
+
+            int collidingPartMasterID = collision.transform.GetComponent<SyncWTBObject>().MasterPlayerViewID;
+            if (collidingPartMasterID == MasterPlayerViewID) return; //don't set it if it's already the same
+            //if (collision.transform.GetComponent<SyncWTBObject>().Timestamp <= this.Timestamp - 3) return; //favor higher timestamps
+
+            //this.Timestamp = collision.transform.GetComponent<SyncWTBObject>().Timestamp;
+            MasterPlayerViewID = collidingPartMasterID;
+
+            //StartCoroutine(RunInfectionChunking());
+        }
+    }
+
+    private int maxChunkSize = 100; // this seems to never become inefficient, I dont think theres a cost analysis here :p
+    [HideInInspector] public float lastInfectionTime = 0;
+    float infectionDelayTime = 0.1f;
+    IEnumerator RunInfectionChunking()
+    {
+        if (lastInfectionTime < Time.time-infectionDelayTime) {
+            lastInfectionTime = Time.time;
+
+            // assemble spiderweb of all touching objects
+            List<int> viewIDs = new List<int>();
+            
+
+            foreach(GameObject playerTouch in Touching) {
+                playerTouch.GetComponent<SyncWTBObject>().lastInfectionTime = Time.time;
+                foreach (GameObject zombieTouch in playerTouch.GetComponent<SyncWTBObject>().Touching){
+                    zombieTouch.GetComponent<SyncWTBObject>().lastInfectionTime = Time.time;
+                    int viewID = zombieTouch.GetPhotonView().viewID;
+                    if (!viewIDs.Contains(viewID)) {
+                        viewIDs.Add(viewID);
+                        PhotonView.Find(viewID).TransferOwnership(MasterPlayerViewID);
+                        //if (viewIDs.Count>maxChunkSize) {
+                            //this.photonView.RPC("RPCInfectThese", PhotonTargets.All, viewIDs.ToArray(), MasterPlayerViewID, Timestamp);
+                            //viewIDs = new List<int>();
+                        //}
+                    }
+                }
+            }
+
+            yield return null;
+        }
+    }
+
+    #endregion
+    
+    /// <summary>
+    /// Called by PUN several times per second to allow write and read synchronization data for the PhotonView
+    /// </summary>
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isReading)
+        {
+            this.transform.position = (Vector3)stream.ReceiveNext();
+            this.transform.rotation = (Quaternion)stream.ReceiveNext();
+            rb.velocity = (Vector3)stream.ReceiveNext();
+            rb.angularVelocity = (Vector3)stream.ReceiveNext();
+            int newOwner = (int)stream.ReceiveNext();
+            //Debug.LogWarning("lets transfer "+print_i);
+            if (newOwner != this.photonView.ownerId) {
+                this.photonView.TransferOwnership((int)stream.ReceiveNext());
+            }
+        }
+        // only writes if you are the owner of the photonView
+        if (stream.isWriting)
+        {
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+            stream.SendNext(rb.velocity);
+            stream.SendNext(rb.angularVelocity);
+            stream.SendNext(this.photonView.ownerId);
+        }
+    }
+
+
+    #region WTBO OnJoined Sync
+
+    WTBObject wtbo;
+    WTBObjectData wtbod;
+
+    [PunRPC]
+    void RPCSyncWTBObject(
+        string name,
+        bool visible,
+        bool physics,
+        bool collision,
+        Vector3 position,
+        Vector3 rotation,
+        Vector3 scale,
+        string partTypeString,
+        string colorString
+    )
+    {
+        //Debug.LogError("received wtbobject data");
+
+        wtbod = new WTBObjectData(
+            name,
+            visible,
+            physics,
+            collision,
+            position,
+            rotation,
+            scale,
+            partTypeString,
+            colorString
+        );
+        wtbo.ExtractData(wtbod);
+    }
+
+    void GatherWTBOData()
+    {
+        wtbod = new WTBObjectData(
+            wtbo.GlobalProperties.Name,
+            wtbo.TransformProperties.Visible,
+            wtbo.TransformProperties.Physics,
+            wtbo.TransformProperties.Collision,
+            this.transform.position,
+            this.transform.rotation.eulerAngles,
+            wtbo.TransformProperties.Scale,
+            wtbo.TransformProperties.PartType.ToString(),
+            wtbo.TransformProperties.Color.ToString()
+        );
+    }
+
+    public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
+    {
+        Debug.LogError("SYNC another player joined");
+
+        if (!PhotonNetwork.isMasterClient) return; //don't have every single player send an RPC to the new player
+
+        GatherWTBOData();
+        this.photonView.RPC("RPCSyncWTBObject", newPlayer,
+            wtbod.Name,
+            wtbod.Visible,
+            wtbod.Physics,
+            wtbod.Collision,
+            wtbod.Position,
+            wtbod.Rotation,
+            wtbod.Scale,
+            wtbod.PartType,
+            wtbod.Color
+        );
+    }
+    #endregion
+
+}

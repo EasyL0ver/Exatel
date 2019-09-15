@@ -1,0 +1,74 @@
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <iostream>
+#include <conio.h>
+#include <string>
+
+
+using namespace std;
+char inputStr[100];
+char outputStr[100];
+
+char* encryptStr(char inputStr[], char key[]) {
+
+	int lengthofKey = strlen(key);
+
+	for (int i = 0; inputStr[i] != '\0'; i++)
+	{
+
+		if (inputStr[i] >= 'a' && inputStr[i] <= 'z')
+		{
+			inputStr[i] = 'a' + (inputStr[i] - 'z' + key[i%lengthofKey] - '0') % 26;
+		}
+
+		if (inputStr[i] >= 'A' && inputStr[i] <= 'Z')
+		{
+			inputStr[i] = 'A' + (inputStr[i] - 'Z' + key[i%lengthofKey] - '0') % 26;
+		}
+
+	}
+
+	return 0;
+}
+
+char* decryptStr(char outputStr[], char inputStr[], char key[]) {
+
+	int lengthofKey = strlen(key);
+
+	for (int i = 0; outputStr[i] != '\0'; i++)
+	{
+
+		if (outputStr[i] >= 'a' && outputStr[i] <= 'z')
+		{
+			outputStr[i] = 'a' + (inputStr[i] + 'z' - key[i%lengthofKey] - '0') % 26;
+		}
+
+		if (outputStr[i] >= 'A' && outputStr[i] <= 'Z')
+		{
+			outputStr[i] = 'A' + (inputStr[i] + 'Z' - key[i%lengthofKey] - '0') % 26;
+		}
+
+	}
+	return 0;
+}
+
+int main() {
+	char str[1000];
+	char  key[100];
+	
+
+	setlocale(LC_ALL, "Russian");
+	printf("\n Введите строку для шифрования:");
+	gets_s(str, 1000);
+	printf("\n Введите ключ для шифра:");
+	gets_s(key, 100);
+
+	printf("\n Шифр:");
+	puts(inputStr);
+	printf("\n Дешифр:");
+	puts(outputStr);
+
+	_getch();
+	return 0;
+}

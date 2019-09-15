@@ -1,0 +1,57 @@
+乱射君:
+    Item_Information:
+        Item_Name: "&e乱射君"
+        Item_Type: 261
+        Item_Lore: "&eかなり弱いライフル。|&eでも乱射しまくって、使い方によるとヤバいｗ"
+        Sounds_Acquired: BAT_TAKEOFF-1-1-0
+    Shooting:
+        Right_Click_To_Shoot: true
+        Cancel_Left_Click_Block_Damage: true
+        Cancel_Right_Click_Interactions: true
+        Delay_Between_Shots: 4
+        Recoil_Amount: 2
+        Projectile_Amount: 15
+        Projectile_Type: snowball
+        Projectile_Speed: 2
+        Projectile_Damage: 1
+        Bullet_Spread: 5
+        Sounds_Shoot: IRONGOLEM_HIT-1-2-0,SKELETON_HURT-1-2-0,ZOMBIE_WOOD-1-2-0
+    Sneak:
+        Enable: true
+        No_Recoil: true
+        Bullet_Spread: 1
+    Burstfire:
+        Enable: true
+        Shots_Per_Burst: 2
+        Delay_Between_Shots_In_Burst: 3
+    Reload:
+        Enable: true
+        Reload_Amount: 250
+        Reload_Bullets_Individually: false
+        Reload_Duration: 25
+        Sounds_Out_Of_Ammo: ITEM_BREAK-1-1-0
+        Sounds_Reloading: FIRE_IGNITE-1-1-4,DOOR_OPEN-1-2-6,FIRE_IGNITE-1-1-36,HURT_FLESH-1-0-37,DOOR_CLOSE-1-2-38
+    Firearm_Action:
+        Type: bolt
+        Close_Duration: 10
+        Close_Shoot_Delay: 12
+        Sound_Close: PISTON_RETRACT-1-2-0,PISTON_RETRACT-1-2-3
+    Scope:
+        Enable: true
+        Zoom_Amount: 5
+        Zoom_Bullet_Spread: 0
+        Sounds_Toggle_Zoom: ENDERDRAGON_WINGS-1-2-0
+    Abilities:
+        Reset_Hit_Cooldown: true
+    Headshot:
+        Enable: true
+        Bonus_Damage: 99999999
+    Critical_Hits:
+        Enable: true
+        Bonus_Damage: 15
+        Chance: 35
+    Hit_Events:
+        Enable: true
+        Sounds_Shooter: SHOOT_ARROW-1-2-0
+    Extras:
+        One_Time_Use: false

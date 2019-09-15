@@ -1,0 +1,2 @@
+// Get an instance of the routing service
+var router = platform.getRoutingService();

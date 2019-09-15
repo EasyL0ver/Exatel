@@ -1,0 +1,20 @@
+/* Returns YES if s1 and s2 contain not empty substring, if not - NO.
+ * NOTE: HashMap can be replaced with HashSet */
+public class TwoStringsSubString {
+
+    static String twoStrings(String s1, String s2) {
+        final Map<Character, Boolean> stringMap = new HashMap<>();
+        for (int i = 0; i < s1.length(); ++i) {
+            stringMap.put(s1.charAt(i), false);
+        }
+
+        for (int i = 0; i < s2.length(); ++i) {
+            if (stringMap.containsKey(s2.charAt(i))) {
+                return "YES";
+            }
+        }
+
+        return "NO";
+    }
+
+}

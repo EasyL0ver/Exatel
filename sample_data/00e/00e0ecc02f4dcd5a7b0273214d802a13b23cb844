@@ -1,0 +1,54 @@
+import scala.util.parsing.combinator._
+
+class javacNode(tagInit: String, propInit: Map[String, String], childInit: Map[String, List[javacNode]]) {
+  val tag = tagInit
+  val prop = propInit
+  val child = childInit
+}
+
+object javacNodeParser extends JavaTokenParsers {
+  lazy val chartoken: Parser[String] = "\\\\" | "\\\"" | """[^\"\\]+""".r
+  lazy val symtoken: Parser[String] = "\\(" | "\\)" | "\\\\" | "\\\"" |
+      """[^\s()\"\\]+""".r
+  lazy val str: Parser[String] = rep(chartoken) ^^ {
+    _.mkString
+  }
+  lazy val sym: Parser[String] = rep(symtoken) ^^ {
+    _.mkString
+  }
+  lazy val strlit: Parser[String] = "\"" ~ str ~ "\"" ^^ {
+    case "\"" ~ tok ~ "\"" => tok
+  }
+  lazy val atom: Parser[String] = strlit | sym
+  lazy val pair: Parser[(String, String)] = "(" ~ atom ~ atom ~ ")" ^^ {
+    case "(" ~ key ~ prop ~ ")" => Pair(key, prop)
+  }
+  lazy val jcpair: Parser[(String, List[javacNode])] = "(" ~ atom ~ rep(jctree) ~ ")" ^^ {
+    case "(" ~ key ~ children ~ ")" => Pair(key, children)
+  }
+  lazy val proplist: Parser[List[(String, String)]] = "(" ~ "properties" ~ rep(pair) ~ ")" ^^ {
+    case "(" ~ "properties" ~ plst ~ ")" => plst
+  }
+  lazy val childlist: Parser[List[(String, List[javacNode])]] = "(" ~ "children" ~ rep(jcpair) ~ ")" ^^ {
+    case "(" ~ "children" ~ clst ~ ")" => clst
+  }
+
+  lazy val jctree: Parser[javacNode] = "(" ~ ident ~ proplist ~ ")" ^^ {
+    case "(" ~ idt ~ plst ~ ")" => new javacNode(idt, plst.toMap, Map())
+  } | "(" ~ ident ~ childlist ~ ")" ^^ {
+    case "(" ~ idt ~ clst ~ ")" => new javacNode(idt, Map(), clst.toMap) // use toMap instead of Map(x: _*)
+  } | "(" ~ ident ~ childlist ~ proplist ~ ")" ^^ {
+    null
+  } | "(" ~ ident ~ proplist ~ childlist ~ ")" ^^ {
+    null
+  }
+
+  def apply(in: String) = parseAll(jctree, in)
+
+  def main(args: Array[String]) {
+    val lines =
+      scala.io.Source.fromFile("/home/zonko/linguablaze/prometheus/frontendJavaMacho/smallexample.ast").getLines.mkString
+    print(javacNodeParser(lines))
+    //    print(SExprParser("(jctree (properties (\"blah\" \"str\\\"lit\"))    (children)) "))
+  }
+}

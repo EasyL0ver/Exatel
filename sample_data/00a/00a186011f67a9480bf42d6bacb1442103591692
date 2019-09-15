@@ -1,0 +1,106 @@
+
+public class CFG
+{
+
+    String[] Code;
+    char startNT;
+    char saveNT;
+
+    CFG(String[] C)
+    {
+        Code = C;
+        startNT = Code[0].charAt(0);
+    }
+
+    char getStartNT()
+    {
+        return startNT;
+    }
+
+    void setStartNT(char stNT)
+    {
+        startNT = stNT;
+    }
+
+    boolean processData(String inString, String wkString)
+    {
+        System.out.println("inString: " + inString + "\n");
+        System.out.println("wkString: " + wkString + "\n");
+
+        if (inString.equals(wkString))
+        {
+            System.out.println("Accepted!!!!!!!!!! AS:    " + wkString + "\n");
+            return true;
+        }
+
+        if (wkString.length() > inString.length())
+        {
+            System.out.println("Not accepted length:          " + wkString + "\n");
+            return false;
+        }
+
+        if (wkString.matches("[a-z]"))
+        {
+            System.out.println("Returning false at wkString.matches a-z: " + wkString + "\n");
+            return false;
+        }
+
+        for (String c : Code)
+        {
+            if (wkString.contains(Character.toString(c.charAt(0))))
+            {
+                System.out.println("c.charAT(0) is:    " + Character.toString(c.charAt(0)) + " \n");
+                wkString = wkString.replace(Character.toString(c.charAt(0)), c.substring(3));
+                System.out.println("Working string right after new assignment: " + wkString + " \n");
+                boolean result = processData(inString, wkString);
+                if (result)
+                    return true;
+                else
+                {
+                    wkString = Character.toString(getStartNT());
+                    System.out.println("working string before continue:    " + wkString + "\n");
+                    continue;
+                }
+                
+            }
+        }
+        return false;
+    }
+}
+
+
+
+****************************************  MAIN CLASS FOLLOWS *****************
+
+// Test Context-Free Grammar Class
+import java.io.*;
+
+public class TestCFG
+{
+   public static void main(String[] args)
+   {
+      // Language: strings that contain 0+ b's, followed by 2+ a's,
+      // followed by 1 b, and ending with 2+ a's.
+      String[] C = {"S=>bS",
+                    "S=>aaT",
+                    "T=>aT",
+                    "T=>bU",
+                    "U=>Ua",
+                    "U=>aa"};
+
+      String inString, startWkString;
+      boolean accept1;
+      CFG CFG1 = new CFG(C);
+      
+      if(args.length >= 1)
+      {
+         // Input string is command line parameter
+         inString = args[0];
+         char[] startNonTerm = new char[1];
+         startNonTerm[0] = CFG1.getStartNT();
+         startWkString = new String(startNonTerm);
+         accept1 = CFG1.processData(inString, startWkString);
+         System.out.println("  Accept String?  " + accept1);
+      }
+   } // end main
+} // end class

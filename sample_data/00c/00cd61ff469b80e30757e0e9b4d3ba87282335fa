@@ -1,0 +1,11 @@
+class Factorial {
+    // Get the factorial of a number recursively
+    func getFactorial(of number: Int) -> Int {
+        
+        // if we are at 1 return 1
+        if number == 1 { return 1 }
+        // add our current number to the factorial of 
+        // the number minus 1
+        return number + getFactorial(of: number - 1)
+    }
+}

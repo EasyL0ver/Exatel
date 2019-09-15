@@ -1,0 +1,173 @@
+every tick:
+	loop all players:
+		if {cooltimeTA::%loop-player%} is not set:
+			set {cooltimeTA::%loop-player%} to 0
+		if {cooltimeTA::%loop-player%} > 0:
+			remove 1 from {cooltimeTA::%loop-player%}
+
+Function tickConvMSMS(i: integer):
+	set {_second} to floor({_i}/20)
+	set {_tick} to {_i}-20*{_second}
+	set {_minute} to floor({_second}/60)
+	set {_second} to {_second}-60*{_minute}
+	set {_tick} to {_tick}*5
+	if {_tick} < 10:
+		set {__tick} to "0%{_tick}%"
+	else:
+		set {__tick} to "%{_tick}%"
+	if {_second} < 10:
+		set {__second} to "0%{_second}%"
+	else:
+		set {__second} to "%{_second}%"
+	if {_minute} < 10:
+		set {__minute} to "0%{_minute}%"
+	else:
+		set {__minute} to "%{_minute}%"
+	set {tickConvMSMS} to "%{__minute}%:%{__second}%.%{__tick}%"
+
+command /editcp [<text>] [<text>]:
+	permission: skript.admin
+	trigger:
+		if arg 1 is "select":
+			set {editcp.mode::%player%} to "s"
+			set {editcp.name::%player%} to arg 2
+			message "&aYou can set it by placing a signboard"
+		else if arg 1 is "time":
+			set {editcp.mode::%player%} to "t"
+			set {editcp.name::%player%} to arg 2
+			message "&aYou can set it by placing a signboard"
+		else if arg 1 is "check":
+			set {editcp.mode::%player%} to "c"
+			set {editcp.name::%player%} to arg 2
+			message "&aYou can set it by placing a signboard"
+		else if arg 1 is "goal":
+			set {editcp.mode::%player%} to "g"
+			set {editcp.name::%player%} to arg 2
+			message "&aYou can set it by placing a signboard"
+		else if arg 1 is "off":
+			set {editcp.mode::%player%} to "o"
+			clear {editcp.name::%player%}
+			message "&cswitched off setting of the signboard"
+		else:
+			message "&c[Error] &9/editcp &6<mode> <cp name>"
+			message "&7mode: &eselect, time, check, goal, off"
+
+on place of sign:
+	if {editcp.mode::%player%} is "s":
+        set line 1 of event-block to "&3■■&2■&1|-||&5Select&1||-|&2■&3■■"
+        set line 2 of event-block to "&8Right click s"
+        set line 3 of event-block to "&0%{editcp.name::%player%}%"
+        set line 4 of event-block to "&3■■&2■&1|-||&9ground&1||-|&2■&3■■"
+    if {editcp.mode::%player%} is "t":
+        set line 1 of event-block to "&3■■&2■&1|-||&cTimeAttack&1||-|&2■&3■■"
+        set line 2 of event-block to "&8Right click t"
+        set line 3 of event-block to "&0%{editcp.name::%player%}%"
+        set line 4 of event-block to "&3■■&2■&1|-||&9ground&1||-|&2■&3■■"
+    if {editcp.mode::%player%} is "w":
+        set line 1 of event-block to "&3■■&2■&1|-||&5WayPoint&1||-|&2■&3■■"
+        set line 2 of event-block to "&8Right click w"
+        set line 3 of event-block to "&0%{editcp.name::%player%}%"
+        set line 4 of event-block to "&3■■&2■&1|-||&9ground&1||-|&2■&3■■"
+    if {editcp.mode::%player%} is "g":
+        set line 1 of event-block to "&3■■&2■&1|-||&6Goal&1||-|&2■&3■■"
+        set line 2 of event-block to "&8Right click g"
+        set line 3 of event-block to "&0%{editcp.name::%player%}%"
+        set line 4 of event-block to "&3■■&2■&1|-||&9ground&1||-|&2■&3■■"
+on rightclick:
+	if player's held item is quartz named "&aWayPoint":
+		event-block is not sign
+		command "/cp %player%"
+	if line 2 of event-block is "&8Right click s":
+		set {_line2} to line 3 of event-block
+		replace "&b" in {_line2} with ""
+		set {cpselect::%player%} to {_line2}
+		message "&f&l<&e&l< &f&lWP &e&l>&f&l> &aWaypoint has been saved &7(%{editcp.name::%player%}%)"
+		command "/execute %player% ~ ~ ~ entity.player.levelup master @p ~ ~ ~ 1 2"
+		command "/execute %player% ~ ~ ~ entity.player.levelup master @p ~ ~ ~ 1 1.6"
+	if line 2 of event-block is "&8Right click t":
+		{cooltimeTA::%player%} = 0
+		set {cooltimeTA::%player%} to 4
+		set {_line2} to line 3 of event-block
+		replace "&b" in {_line2} with ""
+		set {enableTA.%{_line2}%::%player%} to false
+		set {countTA.%{_line2}%::%player%} to 0
+		message "&f&l<&e&l< &e&lTA &e&l>&f&l> &f%{editcp.name::%player%}% のTAを開始しました。"
+		command "/execute %player% ~ ~ ~ entity.enderdragon.ambient master @p ~ ~ ~ 1 2"
+		wait 2 tick
+		command "/execute %player% ~ ~ ~ entity.enderdragon.ambient master @p ~ ~ ~ 1 1.3"
+		wait 2 tick
+		command "/execute %player% ~ ~ ~ entity.player.levelup master @p ~ ~ ~ 1 1"
+		set {enableTA.%{_line2}%::%player%} to true
+		while {enableTA.%{_line2}%::%player%} is true:
+			wait a tick
+			add 1 to {countTA.%{_line2}%::%player%}
+			if {goalTA.%{_line2}%::%player%} is true:
+				tickConvMSMS({countTA.%{_line2}%::%player%})
+				broadcast "&7[&6T&aA&7] &d%player%&a: &b'%{_line2}%' &e&l%{tickConvMSMS}% &7(%{countTA.%{_line2}%::%player%}%Tick)"
+				if {recordTA.%{_line2}%::%player%} is not set:
+					set {recordTA.%{_line2}%::%player%} to {countTA.%{_line2}%::%player%}
+					message "&f&l<&e&l< &e&lTA &e&l>&f&l> &eCongratulations to your first clear!"
+				else if {recordTA.%{_line2}%::%player%} <= {countTA.%{_line2}%::%player%}:
+					tickConvMSMS({recordTA.%{_line2}%::%player%})
+					message "&f&l<&e&l< &e&lTA &e&l>&f&l> Congratulations to clear! &6(Best Time：&l%{tickConvMSMS}%&6)"
+				else if {recordTA.%{_line2}%::%player%} > {countTA.%{_line2}%::%player%}:
+					tickConvMSMS({recordTA.%{_line2}%::%player%})
+					set {recordTA.%{_line2}%::%player%} to {countTA.%{_line2}%::%player%}
+					message "&f&l<&e&l< &e&lTA &e&l>&f&l> &3自己記録を更新しました! &d(旧自己最高：&l%{tickConvMSMS}%&6)"
+				message "&f&l<&e&l< &e&lTA &e&l>&f&l> &3タイムアタックお疲れ様でした！"
+				command "/execute %player% ~ ~ ~ entity.enderdragon.ambient master @p ~ ~ ~ 1 2"
+				wait 2 tick
+				command "/execute %player% ~ ~ ~ entity.enderdragon.ambient master @p ~ ~ ~ 1 1.3"
+				wait 2 tick
+				command "/execute %player% ~ ~ ~ entity.player.levelup master @p ~ ~ ~ 1 1"
+				set {goalTA.%{_line2}%::%player%} to false
+				set {enableTA.%{_line2}%::%player%} to false
+				set {countTA.%{_line2}%::%player%} to 0
+	if line 2 of event-block is "&7&l:. &cgoal &7&l.:":
+		set {_line2} to line 3 of event-block
+		replace "&b" in {_line2} with ""
+		if {enableTA.%{_line2}%::%player%} is false:
+			message "&f&l<&e&l< &e&lTA &e&l>&f&l> &cタイムアタックを開始していません"
+			stop
+		if distance between event-block and player > 2:
+			message "&f&l<&e&l< &e&lTA &e&l>&f&l> &c近くまで来てからクリックしてください"
+			stop
+		set {goalTA.%{_line2}%::%player%} to true
+		clear {checkpoint.%{cpselect::%{_player}%}%::%{_player}%}
+	if line 2 of event-block is "&8Right click w":
+		if block below player is air:
+			message "&c&l<&4&l<&4&l WP &4&l>&c&l> &c空中で設定することはできません！"
+			stop
+		set {_line2} to line 3 of event-block
+		replace "&b" in {_line2} with ""
+		set {checkpoint.%{_line2}%::%player%} to location of player
+		set {_line2} to line 3 of event-block
+		replace "&b" in {_line2} with ""
+		set {cpselect::%player%} to {_line2}
+		message "&f&l<&e&l< &f&lWP &e&l>&f&l> &aWaypoint has been saved &7(%{editcp.name::%player%}%)"
+		command "/execute %player% ~ ~ ~ entity.player.levelup master @p ~ ~ ~ 1 2"
+		command "/execute %player% ~ ~ ~ entity.player.levelup master @p ~ ~ ~ 1 1.8"
+
+command /goal [<player>]:
+	permission: skript.admin
+	trigger:
+		set {_player} to arg 1
+		if arg 1 is not set:
+			set {_player} to player
+		clear {checkpoint.%{cpselect::%{_player}%}%::%{_player}%}
+		add 1 to {clear.%{cpselect::%{_player}%}%::%{_player}%}
+
+command /checkpoint [<player>]:
+	aliases: /cp
+	trigger:
+		set {_player} to arg 1
+		if arg 1 is not set:
+			set {_player} to player
+		teleport {_player} to location of {checkpoint.%{cpselect::%{_player}%}%::%{_player}%}
+
+command /item [<player>]:
+	trigger:
+		set {_player} to arg 1
+		if arg 1 is not set:
+			set {_player} to player
+		set slot 1 of player to stick named "&cCheck&9Point"

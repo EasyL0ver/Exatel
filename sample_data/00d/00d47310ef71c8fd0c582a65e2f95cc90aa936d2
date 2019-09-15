@@ -1,0 +1,158 @@
+import turtle
+import time
+import random
+
+wn = turtle.Screen()
+wn.setup(width=600, height=600) 
+wn.tracer(0)
+
+head = turtle.Turtle()
+head.speed(0)
+head.shape("square")
+head.penup()
+head.goto(0,0)
+head.direction = "stop"
+
+food = turtle.Turtle()
+food.speed(0)
+food.shape("circle")
+food.color("red")
+food.penup()
+food.goto(0,100)
+
+cc=0
+last=""
+a=0
+s="score:  "
+score=turtle.Turtle()
+score.hideturtle()
+score.pencolor("white")
+score.goto(200,280)
+score.write(s+"0",align="left", font=("Arial", 14, "normal"))
+def move():
+  global last
+  def checkof(x,y):
+    global a,cc,segments,flag,head
+    for index in range(1,len(segments)):
+        if abs(segments[index].xcor()-x)<10 and abs(segments[index].ycor()-y)<10:
+          cc+=1
+          #print(str(cc)+"__index:_"+str(index)+" "+str(segments[index].xcor())+" "+str(head.xcor())+" "+str(segments[index].ycor())+" "+str(head.ycor()))
+          a=0
+          score.clear()
+          score.write("You died",align="center left", font=("Arial", 14, "normal"))
+          time.sleep(3)
+          for elem in segments:
+            elem.reset()
+            elem.hideturtle()
+          segments=[]
+          head.setx(0)
+          head.sety(0)
+          return False
+    return True
+  #if flag<>False:
+  if head.xcor()==300:
+    head.setx(-280)
+  if head.xcor()==-300:
+    head.setx(300)
+  if head.ycor()==-300:
+    head.sety(300)
+  if head.ycor()==300:
+    head.sety(-280)
+  if head.direction == "up":
+    y = head.ycor()
+    if last<>"down" and checkof(head.xcor(),y+20):
+        last="up"
+    #    if y+20>300:
+    #      head.sety(-300)
+    #    else:
+        head.sety(y + 20)
+    #else:
+    #  head.sety(y-20)
+
+  if head.direction == "down":
+    y = head.ycor()
+    if last<>"up" and checkof(head.xcor(),y-20):
+      last="down"
+    #  if y-20<-300:
+    #    head.sety(300)
+    #  else:
+      head.sety(y - 20)
+    #else:
+    #  head.sety(y + 20)
+
+  if head.direction == "left" :
+    x = head.xcor()
+    if last<>"right"and checkof(x-20,head.ycor()):
+      last="left"
+    #  if x-20<-300:
+    #    head.setx(300)
+    #  else:
+      head.setx(x - 20)
+    #else:
+    #  head.setx(x+20)
+
+  if head.direction == "right" :
+    x = head.xcor()
+    if last<>"left" and checkof(x+20,head.ycor()):
+      last="right"
+    #  if x+20>300:
+    #    head.setx(-300)
+    #  else:
+      head.setx(x + 20)
+    #else:
+    #  head.setx(x-20)
+
+
+
+
+def go_up():
+  head.direction = "up"
+
+def go_down():
+  head.direction = "down"
+
+def go_left():
+  head.direction = "left"
+
+def go_right():
+  head.direction = "right"
+
+
+wn.listen()
+wn.onkey(go_up, "up")
+wn.onkey(go_down, "down")
+wn.onkey(go_left, "left")
+wn.onkey(go_right, "right")
+
+segments = []
+def gaming():
+  global a,head
+  while True:
+      wn.update()
+      if head.distance(food) < 20:
+          x = random.randint(-290, 290)
+          y = random.randint(-290, 290)
+          food.goto(x,y)
+          a+=1
+          score.clear()
+          score.write(s[:-len(str(a))]+str(a),align="center left", font=("Arial", 14, "normal"))
+          new_segment = turtle.Turtle()
+          new_segment.speed(0)
+          new_segment.shape("square")
+          new_segment.color("grey")
+          new_segment.penup()
+          segments.append(new_segment)
+      
+      for index in range(len(segments)-1, 0, -1):
+          x = segments[index-1].xcor()
+          y = segments[index-1].ycor()
+          segments[index].goto(x, y)
+
+      if len(segments) > 0:
+          x = head.xcor()
+          y = head.ycor()
+          segments[0].goto(x,y)
+      move()          
+
+      time.sleep(0.1)
+gaming()

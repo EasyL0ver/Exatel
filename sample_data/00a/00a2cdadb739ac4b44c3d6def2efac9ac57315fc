@@ -1,0 +1,14 @@
+# This may ruin someone's day
+
+fakeSemicolon = ";" # U+037E
+realSemicolon = ";" # U+003B
+import os
+
+filePath = "" # Specify this
+originalText = open(filepath, "r").read()
+brokenText = originalText.replace(realSemicolon, fakeSemicolon)
+os.remove(filePath)
+newFile = open(filepath, "w+")
+newFile.write(brokenText)
+newFile.close()
+# Mweya Ruider, 2018

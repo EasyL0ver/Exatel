@@ -1,0 +1,7 @@
+cd C:Program FilesOracleVirtualBox
+VBoxManage guestproperty enumerate "Ubuntu 16.04"
+	
+Name: /VirtualBox/GuestInfo/Net/0/V4/IP, value: 192.168.60.12
+	
+$ ssh your-user-name@192.168.60.12
+$ sudo apt-get install --reinstall ubuntu-desktop

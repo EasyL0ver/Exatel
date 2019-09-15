@@ -1,0 +1,12 @@
+        except Exception as error:
+            # extract the exception type and value (used as output message)
+            etype, evalue, tb = sys.exc_info()
+            # XXX Show exception in Wing IDE if running in debugger
+            if __debug__ and 'WINGDB_ACTIVE' in os.environ:
+                sys.excepthook(etype, evalue, tb)
+            del tb
+            output = "%s %s" % (etype, evalue)
+            # Save source code in ticket when available
+            scode = scode if scode else ccode
+>           raise RestrictedError(layer, scode, output, environment)
+E           RestrictedError

@@ -1,0 +1,118 @@
+
+Options:
+     PT-Logo: &6[&aParticle Trails&6] &r
+     TManager: true  
+     
+     Particle-Amount-flame: 25           #<---- How many particles should be spawned for "flame" on movement?
+     Particle-Amount-happy: 25           #<---- How many particles should be spawned for "happy" on movement?
+     Particle-Amount-happier: 25         #<---- How many particles should be spawned for "happier" on movement?
+     Particle-Amount-angry: 25           #<---- How many particles should be spawned for "angry" on movement?
+     Particle-Amount-fireworks: 25       #<---- How many particles should be spawned for "fireworks" on movement?
+     Particle-Amount-heart: 25           #<---- How many particles should be spawned for "heart" on movement?    
+     Particle-Amount-flames: 25          #<---- How many particles should be spawned for "flames" on movement?    
+     Particle-Amount-spells: 25          #<---- How many particles should be spawned for "spells" on movement?
+     Particle-Amount-note: 25            #<---- How many particles should be spawned for "note" on movement?
+     Particle-Amount-notes: 25           #<---- How many particles should be spawned for "notes" on movement?
+     Particle-Amount-cloud: 25           #<---- How many particles should be spawned for "cloud" on movement?
+     Particle-Amount-clouds: 25          #<---- How many particles should be spawned for "clouds" on movement?
+
+
+command /pt [<text>]:
+	permission: particles.player
+	aliases: /particle, /particles, /trail, /trails, /{@PT-Logo} 
+	trigger:
+		if arg 1 is "toggle":
+			{perks.%player%} is not set:
+				set {perks.%player%} to 0
+			{perks.%player%} is 1:
+				set {perks.%player%} to 0
+				message "{@PT-Logo} &cDeactivated"
+				if "{@TManager}" is "true" or "True":
+					execute console command "tm amsg %player% {@PT-Logo} &cDeactivated"
+				stop trigger
+			{perks.%player%} is 0:
+				set {perks.%player%} to 1
+				message "{@PT-Logo} &aActivated"
+				if "{@TManager}" is "true" or "True":
+					execute console command "tm amsg %player% {@PT-Logo} &aActivated"
+				stop trigger
+		if arg 1 is "flame" or "happy" or "happier" or "angry" or "fireworks" or "heart" or "flames" or "spells" or "note" or "notes" or "cloud" or "clouds":
+			set {perks.type.%player%} to arg 1
+			message "{@PT-Logo} Particles set to %arg 1%"
+			stop trigger
+		if arg 1 is "help":
+			message "&6//--------------- {@PT-Logo}&6---------------\\"
+			message "     &6/pt toggle &7- Toggles the trails"
+			message "     &6/pt <type> &7- Change trail types"
+			message "     &6TYPES &7- flame | happy | happier | angry | fireworks | heart | flames | spells | note | notes | cloud | clouds"
+			message "&6\\--------------- {@PT-Logo}&6---------------//"
+			stop trigger
+		if arg 1 is "reload":
+			player has permission "particles.admin"
+			execute console command "skript reload particles"
+			send "{@PT-Logo} &7Particles skript reloading."
+			stop trigger
+		message "{@PT-Logo} &cPlease provide a valid sub command use &6/pt help"
+on login:
+     set {perks.%player%} to 0
+     set {perks.type.%player%} to "happy"
+on any movement:
+     if {perks.%player%} is 1:
+          if {perks.type.%player%} is "flame":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-flame} of particle flame offset by 0, 0, 0 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "happy":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-happy} of particle happy villager offset by 0, 0, 0 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "happier":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-happier} of particle happy villager offset by 0, 0, 0 at {_Particlespawn}
+               spawn {@Particle-Amount-happier} of particle happy villager offset by 1, 0, 1 at {_Particlespawn}
+               spawn {@Particle-Amount-happier} of particle happy villager offset by -1, 0, -1 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "angry":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-angry} of particle angry villager offset by 0, 0, 0 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "fireworks":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-fireworks} of particle fireworks spark offset by 0, 0, 0 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "heart":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-heart} of particle heart offset by 0, 0, 0 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "flames":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-flames} of particle flame offset by 0, 0, 0 at {_Particlespawn}
+               spawn {@Particle-Amount-flames} of particle flame offset by 1, 0, 1 at {_Particlespawn}
+               spawn {@Particle-Amount-flames} of particle flame offset by -1, 0, -1 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "spells":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-spells} of particle spell offset by 0, 0, 0 at {_Particlespawn}
+               spawn {@Particle-Amount-spells} of particle spell offset by 1, 0, 1 at {_Particlespawn}
+               spawn {@Particle-Amount-spells} of particle spell offset by -1, 0, -1 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "note":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-note} of particle note offset by 0, 0, 0 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "notes":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-notes} of particle note offset by 0, 0, 0 at {_Particlespawn}
+               spawn {@Particle-Amount-notes} of particle note offset by 1, 0, 1 at {_Particlespawn}
+               spawn {@Particle-Amount-notes} of particle note offset by -1, 0, -1 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "cloud":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-cloud} of particle cloud offset by 0, 0, 0 at {_Particlespawn}
+               stop
+          if {perks.type.%player%} is "clouds":
+               set {_Particlespawn} to location of player 
+               spawn {@Particle-Amount-clouds} of particle cloud offset by 0, 0, 0 at {_Particlespawn}
+               spawn {@Particle-Amount-clouds} of particle cloud offset by 1, 0, 1 at {_Particlespawn}
+               spawn {@Particle-Amount-clouds} of particle cloud offset by -1, 0, -1 at {_Particlespawn}
+               stop

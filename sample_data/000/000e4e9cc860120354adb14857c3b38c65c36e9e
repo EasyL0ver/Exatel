@@ -1,0 +1,39 @@
+Let's make a game!
+  name:New Alcania
+  author:FC500
+  created: 01/05/18
+  version: 0.1 (Alpha!)
+
+
+CSS
+
+#game
+  {
+    background:cornflowerblue;
+    font-family:"Times New Roman",Times,serif;
+    color:black;
+  }
+
+.thing-icon,.particle
+  {
+    width:64px;
+    height:64px;
+  }
+
+#game.filtersOn .thing.cantAfford.notOwned
+  {
+    filter:blur(3px);
+  }
+Resources
+  *pie
+    name:Pie
+    desc:A delicious pie.
+
+Upgrades
+  *applePieRecipe
+    name:Apple pie recipe
+    desc:Unlocks the ability to make apple pies!
+    
+  *cherryPieRecipe
+    name:Cherry pie recipe
+    desc:Boy, you'll never guess

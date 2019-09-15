@@ -1,0 +1,55 @@
+GameAction [AppID 65530, ActionID 5] : LaunchApp changed task to Completed with ""
+>>> Adding process 31160 for game ID 65530
+>>> Adding process 31161 for game ID 65530
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_64/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS64): ignored.
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_64/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS64): ignored.
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+>>> Adding process 31166 for game ID 65530
+>>> Adding process 31167 for game ID 65530
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+wine: cannot find L"C:\\windows\\system32\\winemenubuilder.exe"
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+>>> Adding process 31169 for game ID 65530
+>>> Adding process 31172 for game ID 65530
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+>>> Adding process 31174 for game ID 65530
+>>> Adding process 31177 for game ID 65530
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+>>> Adding process 31180 for game ID 65530
+>>> Adding process 31189 for game ID 65530
+>>> Adding process 31194 for game ID 65530
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_64/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS64): ignored.
+>>> Adding process 31202 for game ID 65530
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_64/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS64): ignored.
+>>> Adding process 31204 for game ID 65530
+ERROR: ld.so: object '/home/noxp/.local/share/Steam/ubuntu12_32/gameoverlayrenderer.so' from LD_PRELOAD cannot be preloaded (wrong ELF class: ELFCLASS32): ignored.
+>>> Adding process 31260 for game ID 65530
+Game update: AppID 65530 "", ProcID 31204, IP 0.0.0.0:0
+Game update: AppID 65530 "", ProcID 31204, IP 0.0.0.0:0
+Installing breakpad exception handler for appid(gameoverlayui)/version(20181031001627)
+Installing breakpad exception handler for appid(gameoverlayui)/version(1.0)
+Installing breakpad exception handler for appid(gameoverlayui)/version(1.0)
+[1031/200934.655700:INFO:crash_reporting.cc(239)] Crash reporting enabled for process: renderer
+Installing breakpad exception handler for appid(gameoverlayui)/version(1.0)
+Installing breakpad exception handler for appid(gameoverlayui)/version(1.0)
+OnFocusWindowChanged to game window type: AppID 65530, 65530
+Controller 0 mapping uses xinput : false
+Loaded Config for Local Override Path for App ID 65530: /home/noxp/.local/share/Steam//controller_base/empty.vdf
+Controller 0 mapping uses xinput : false
+JS method call WebChat.GetOverlayChatBrowserInfo with 1 arguments
+JS method call WebChat.GetOverlayChatBrowserInfo with 1 arguments
+JS method call Storage.SetString with 2 arguments
+Setting breakpad minidump AppID = 65530
+Steam_SetMinidumpSteamID:  Caching Steam ID:  76561197992914963 [API loaded no]
+Game removed: AppID 65530 "", ProcID 31204 
+JS method call WebChat.GetOverlayChatBrowserInfo with 1 arguments
+JS method call Storage.SetString with 2 arguments
+JS method call Storage.SetString with 2 arguments
+pid 31170 != 31169, skipping destruction (fork without exec?)
+OnFocusWindowChanged to window type: k_nGameIDControllerConfigs_Desktop, AppID 413080
+Loaded Config for Local Override Path for App ID 413080: /home/noxp/.local/share/Steam//controller_base/empty.vdf
+saving roaming config store to 'sharedconfig.vdf'
+roaming config store 2 saved successfully

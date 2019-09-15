@@ -1,0 +1,44 @@
+package carpckg;
+
+public enum CarMakers {
+	
+	FIAT("FIAT"),
+    FORD("Ford"),
+    VOLVO("Volvo"),
+    BMW("BMW"),
+    CHRYSLER("Chrysler"),
+    GM("GM"),
+    OTHER("Other");
+ 
+    private final String name;
+ 
+    CarMakers(String nameString) {
+        this.name = nameString;
+    }
+    
+	public static CarMakers convertString(String s) {
+		s = s.toUpperCase().trim();
+		switch (s) {
+		case "FIAT":
+			return CarMakers.FIAT;
+		case "FORD":
+			return CarMakers.FORD;
+		case "VOLVO":
+			return CarMakers.VOLVO;
+		case "BMW":
+			return CarMakers.BMW;
+		case "CHRYSLER":
+			return CarMakers.CHRYSLER;
+		case "GM" :
+			return CarMakers.GM;
+		default:
+			return CarMakers.OTHER;
+		}
+		
+	}
+	
+	public String getString() {
+		return name;
+	}
+	
+}

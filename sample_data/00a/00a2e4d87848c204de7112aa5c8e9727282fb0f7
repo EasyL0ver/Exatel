@@ -1,0 +1,29 @@
+%Wopros 27%
+\documentclass[12pt]{article}
+\usepackage{cmap}                  
+\usepackage[T2A]{fontenc}  
+\usepackage[utf8]{inputenc}        
+\usepackage[english,russian]{babel}
+\usepackage{euscript}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{esvect}
+ 
+\begin{document}
+\section{Dokażitje , czto jesłi $f(x)\geq g(x)$ w njekotoroj prokołotoj okrjestnosti toczki $x_0$ i suszczjestwujut $\lim_{x\to \x_0}f(x)=a$ , $\lim_{x\to x_0} {g(x)}=b$ , to $a \geq b$ (tjeorjema o prjedjełnom pjerjechodje w njerawjenstwach dłja funkcij) .}
+  \begin{theorem}
+  Pust $\lim_{x\to x_0}f(x)=a$ , $\lim_{x\to x_0} {g(x)}=b$ i $f(x) \geq g(x)$ w njekotoroj prokołotoj okrjestnosti toczki $x_0$.
+\item  Togda $a \geq b$.
+  \end{theorem}
+\begin{proof}
+ Dłja dokazatjełstwa etoj tjeorjemy nam ponadobitsja słjedujuszczaja łjemma.
+ \item Łjemma o sochranjenii znaka. Pust funkcija $f(x)$ njeprjerywna i otłiczna s $0$ w toczkje $x_0$. Togda $f(x)$ sochranjajet znak w njekotoroj okrjestnosti toczki $x_0$ (t.je. jesłi $f(x)>0$ , to $f(x)>0$ w $O(x_0)$  , a jesłi $f(x) < 0$ , to $f(x) < 0 $ w $O(x_0)$).
+ \item Dokazatjełstwo tjeorjemy. Rassmotrim funkciju $\varphi(x) = 
+ \begin{cases}
+   $$f(x)-g(x)$$ &\text{ $x \neq x_0$}\\
+  $$a - b$$ &\text{ $x = x_0$}
+ \end{cases}$
+ \item Ona njeprjerywna w toczkje $x_0$ , tak kak \item $\lim_{x\to \x_0}\varphi(x)=\lim_{x\to \x_0}f(x)-\lim_{x\to \x_0}g(x) = a - b = \varphi(x_0)$
+ \item Tjepjer dokażjem utwjerżdjenije tjeorjemy ot protiwnogo. Dopustim , czto $a - b = \varphi(x_0) < 0$. Togda po łjemmje o sochranjenii znaka $\varphi(x) < 0$ , t.je. $f(x) < g(x)$ , w njekotoroj prokołotoj okrjestnosti toczki $x_0$. My poułucziłi protiworjeczije , kotoroje i dokazywajet tjeorjemu.
+ \end{proof}
+ 
+\end{document}

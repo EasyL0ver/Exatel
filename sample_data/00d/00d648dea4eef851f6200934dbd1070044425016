@@ -1,0 +1,49 @@
+var xDoc = XDocument.Parse(soapResult, LoadOptions.None)
+                        .Descendants(ns + "ListaNfse")
+                         .Descendants(ns + "CompNfse")
+                          .Descendants(ns + "Nfse")
+                        .Elements(ns + "InfNfse")
+                        .Select(x => new
+                        {
+                            OutrasInformacoes = x.Element(ns + "OutrasInformacoes")?.Value,
+                            Numero = x.Element(ns + "Numero")?.Value,
+                            Codigo = x.Element(ns + "CodigoVerificacao")?.Value,
+                        }).ToList();
+
+                var xDoc1 = XDocument.Parse(soapResult, LoadOptions.None)
+                        .Descendants(ns + "ListaNfse")
+                         .Descendants(ns + "CompNfse")
+                          .Descendants(ns + "Nfse")
+                        .Elements(ns + "InfNfse")
+                        .Descendants(ns + "DeclaracaoPrestacaoServico")
+                        .Descendants(ns + "InfDeclaracaoPrestacaoServico")
+                        .Descendants(ns + "Rps")
+                        .Elements(ns + "IdentificacaoRps")
+                        .Select(x => new
+                        {
+                            NumeroRPS = x.Element(ns + "Numero")?.Value,
+                        }).ToList();
+	
+int indice = 0;
+                foreach (var item in xDoc)
+                {
+                    OutrasInformacoes = xDoc[indice].OutrasInformacoes;
+                    Numero = xDoc[indice].Numero;
+                    CodigoVerificacao = xDoc[indice].Codigo;
+                    foreach (var item1 in xDoc1)
+                    {
+                        NumeroRPS = xDoc1[indice].NumeroRPS;
+                        var Nfse = erpdb.NFSe.Where(t => t.NumeroRps == int.Parse(NumeroRPS)).Single();
+                        Nfse.OutrasInformacoes = OutrasInformacoes;
+                        Nfse.NumeroNfse = long.Parse(Numero);
+                        Nfse.CodigoVerificacao = CodigoVerificacao;
+                        erpdb.Update(Nfse);
+                        erpdb.SaveChanges();
+
+                        var lote = erpdb.NFSeEnvioLote.Where(t => t.NumeroRps == int.Parse(item1.NumeroRPS)).Single();
+                        lote.NumeroNfse = long.Parse(Numero);
+                        erpdb.Update(lote);
+                        erpdb.SaveChanges();
+                    }
+                    indice++;
+                }

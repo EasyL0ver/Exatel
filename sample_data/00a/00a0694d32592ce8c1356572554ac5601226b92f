@@ -1,0 +1,14 @@
+Algoritmo numeroprimo
+	definir numero, cont, i como entero
+	leer numero
+	para i<- 1 hasta numero con paso 1 hacer 
+		si numero % i == 0 entonces
+			cont = cont + 1
+		FinSi
+	FinPara
+	si cont == 2 Entonces
+		escribir "el numero es primo"
+	sino 
+		Escribir "el numero no es primo"
+	FinSi
+	FinAlgoritmo

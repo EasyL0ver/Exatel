@@ -1,0 +1,44 @@
+{
+    "Map": {
+        "RemoveFromWorld": null,
+        "Markers": null,
+        "Objects": {
+            "MapObject": [{
+                "Type": "Prop",
+                "Hash": "1459092192",
+                "Dynamic": "false",
+                "Door": "false",
+                "Position": {
+                    "X": "1595.7393798828125",
+                    "Y": "3623.04931640625",
+                    "Z": "34.14631652832031"
+                },
+                "Rotation": {
+                    "X": "0",
+                    "Y": "0",
+                    "Z": "0"
+                }
+            }, {
+                "Type": "Prop",
+                "Hash": "1459092192",
+                "Dynamic": "false",
+                "Door": "false",
+                "Position": {
+                    "X": "1595.0506591796875",
+                    "Y": "3621.85546875",
+                    "Z": "34.14631652832031"
+                },
+                "Rotation": {
+                    "X": "0",
+                    "Y": "0",
+                    "Z": "0"
+                }
+            }]
+        },
+        "Metadata": {
+            "Creator": "test",
+            "Name": "test",
+            "Description": null
+        }
+    }
+}

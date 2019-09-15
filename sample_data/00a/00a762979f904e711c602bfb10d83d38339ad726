@@ -1,0 +1,101 @@
+array_merge
+array_replace
+array_merge_recursive
+array_replace_recursive
+	
+{
+  "server": {
+    "SERVER-01": [
+        {
+            "svc": "SERVICE01",
+            "id": 1
+        },
+        {
+            "svc": "SERVICE02",
+            "id": 2
+        },
+        {
+            "svc": "SERVICE03",
+            "id": 3
+        },
+        {
+            "svc": "SERVICE04",
+            "id": 4
+        }
+    ]
+  }
+}
+	
+{
+  "server": {
+    "SERVER-01": [
+        {
+            "svc": "SERVICE01",
+            "id": 1
+        },
+        {
+            "svc": "SERVICE02",
+            "id": 2
+        },
+        {
+            "svc": "SERVICE03",
+            "id": 3
+        },
+        {
+            "svc": "SERVICE04",
+            "id": 4
+        }
+    ]
+    "SERVER-02": [
+        {
+            "svc": "SERVICE01",
+            "id": 1
+        },
+        {
+            "svc": "SERVICE02",
+            "id": 2
+        },
+        {
+            "svc": "SERVICE03",
+            "id": 3
+        },
+        {
+            "svc": "SERVICE04",
+            "id": 4
+        }
+    ]
+  }
+}
+	
+// load file
+$file = file_get_contents($filename_moni);
+
+// decode copy of json to associative array
+$data = json_decode($file, true);
+
+// get ID to delete
+$ID = $ID - 1;
+
+unset($data['server'][$Server][$ID]);   
+
+$var=array();
+foreach($data['server'][$Server] as $key => $item) {
+
+    $var['server'][$Server][] = $item;      
+
+}
+
+foreach($var['server'][$Server] as $key => $item) {
+
+    if ( $key != $var['server'][$Server][$key]['id'] ) {
+
+        $var['server'][$Server][$key]['svc'] = $item['svc'];
+        $var['server'][$Server][$key]['id'] = $key + 1;
+
+    }       
+
+}
+
+$data = array_replace($data,$var);
+$jsondata = json_encode($data, JSON_PRETTY_PRINT|JSON_NUMERIC_CHECK);
+file_put_contents($filename_moni, $jsondata);

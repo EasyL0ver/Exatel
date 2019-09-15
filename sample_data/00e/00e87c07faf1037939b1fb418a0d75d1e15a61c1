@@ -1,0 +1,14 @@
+pools@pools-MS-6380E:~$ sudo fdisk -l
+
+Disk /dev/sda: 41.1 GB, 41110142976 bytes
+255 heads, 63 sectors/track, 4998 cylinders, total 80293248 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk identifier: 0x0009717c
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048    75575295    37786624   83  Linux
+/dev/sda2        75577342    80291839     2357249    5  Extended
+/dev/sda5        75577344    80291839     2357248   82  Linux swap / Solaris
+pools@pools-MS-6380E:~$

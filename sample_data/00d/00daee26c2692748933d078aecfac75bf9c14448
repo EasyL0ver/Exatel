@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+int a;
+int b;
+void print(int qwe[a][b]) {
+    for (size_t i = 0; i < a; i++) {
+        for (size_t j = 0; j < b; j++) {
+            printf("%d ", qwe[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+
+void change_two(int qwe[a][b])
+{
+
+    int x;
+    int y;
+    int tmp;
+
+    y = -1;
+    while (++y < b - 1)
+    {
+        x = -1;
+        while (++x < a - 1)
+        {
+            if (x + y == 2)
+            {
+                if (qwe[y][x] > qwe[y + 1][x - 1] && (x != a/2 &&  y != b/2 || qwe[y + 1][x - 1] != a/2 && qwe[y+1][x - 1] != b/2))
+                {
+                    tmp = qwe[y + 1][x - 1];
+                    qwe[y + 1][x - 1] = qwe[y][x];
+                    qwe[y][x] = tmp;
+                    y = -1;
+                    break;
+                }
+            }
+        }
+    }
+    print(qwe);
+}
+
+void change(int qwe[a][b])
+{
+    int x;
+    int y;
+    int tmp;
+
+    y = -1;
+    while (++y < a - 1)
+    {
+        x = -1;
+        while (++x < b - 1)
+        {
+            if (x == y )
+            {
+                if (qwe[y][x] > qwe[y + 1][x + 1])
+                {
+                    tmp = qwe[y + 1][x + 1];
+                    qwe[y + 1][x + 1] = qwe[y][x];
+                    qwe[y][x] = tmp;
+                    y = -1;
+                    break;
+                }
+            }
+        }
+    }
+    print(qwe);
+}
+
+int main(void)
+{
+    int save;
+    scanf("%d", &a);
+    scanf("%d", &b);
+    int privet[a][b];
+    srand(time(0));
+    for (int i = 0; i < a; i++)
+        for (size_t j = 0; j < b; j++) {
+            privet[i][j] = 1 + rand() % 10;
+        }
+    save = privet[a/2][b/2];
+    print(privet);
+    change(privet);
+    privet[a/2][b/2] = save;
+    change_two(privet);
+    privet[a/2][b/2] = save;
+    print(privet);
+
+
+    //its_me(privet);
+}

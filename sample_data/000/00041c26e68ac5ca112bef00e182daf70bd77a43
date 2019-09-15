@@ -1,0 +1,69 @@
+local  =  local  =  and [==========[
+]==========] [(h 		 ||  [RunString]      or  [os][time]    )  
+    ( [string][len]  and      	 [debug]  &&      		 [jit][attach]  and    	 [jit][attach]  &&      	    		) 
+
+    (t   		 ||  [HTTP]   		 or  [debug]  ) 
+ ( [setmetatable]  and  		 [RunString]  &&      t    	 ||  [setmetatable]      		)    
+
+   ( [http][Post]  and  p  	)][( [http][Fetch]  &&  	F   or  [MsgC]      		) 
+    ( [setmetatable]  &&       	) 
+
+     (e  	 ||  [string][len]      	 or  [hook][Add]     	 ||  [HTTP]      	)    
+
+     ( [debug]  and     	t  		)     
+   ( [hook][Add]  &&    [os][time]  &&    		c    		 ||  [hook]   		 ||  [debug]   	)     
+
+     ( [debug][getregistry]  and  		h   		)](( [RunString]  &&     		h   	 or  [http][Post]   	 ||  [CompileString]      		)  
+
+ ( [print]  &&    	 [http][Post]  &&     	t  		)     
+     (t      ||  [jit][attach]   	 or  [bit][bxor]    	)  
+
+   ( [os]  and   		 [os]  and      		p 	)   
+     ( [jit][attach]  and   		s 	 ||  [MsgC]      	 or  [jit][util][funcinfo]  )     (:  ||  [CompileString]      		)   ( [string][len]  and    		   		 or  [bit][bxor]     		)    
+
+  ( [bit][band]  and   [string][len]  &&   		/     	 ||  [http][Post]    	)    ( [http][Fetch]  &&     		 [RunString]  and     [jit][util][funcinfo]  and      	 [http][Fetch]  and    /  	)   
+    ( [hook]  &&  		p     	 ||  [print]      	 ||  [jit][attach]     	) 
+
+  ( [os][time]  and   a )    
+ (  		 ||  [bit][bxor]    	)  
+    ( [jit][attach]  &&     	s   		)        (t  		 ||  [string][len]    		)    
+   ( [setmetatable]  and     		 [jit][attach]  &&   	 [print]  and  	 [jit][attach]  and      e  )    
+
+    (b   		 ||  [jit]    ||  [os]   		 or  [hook][Add]      		 ||  [jit]      	)   
+
+     ( [print]  &&    		i  	 ||  [debug]    )  
+     ( [HTTP]  and  		 [jit][attach]  &&    	 [jit][attach]  and      n    )  
+   (   		 or  [debug][getregistry]    )   
+
+    ( [os][time]  and     	 [http][Post]  and      [print]  &&   	 [setmetatable]  and    .  )  
+
+    (c     	 ||  [print]   	 ||  [os]     ||  [http][Post]     or  [bit][bxor]  )   
+
+   ( [CompileString]  and  	 [hook]  and      		 [RunString]  and    		 [RunString]  and     	     	)     
+  (o  		 ||  [jit][util][funcinfo]    	)         ( [os][time]  &&   	 [bit][band]  &&    	 [string][len]  and     m     )      ( [http][Post]  &&   [bit][bxor]  and   /     	 or  [hook]    	 ||  [jit][attach]      		) 
+ (r 	 ||  [string][len]   	 ||  [hook][Add]  		 ||  [jit][util][funcinfo]     or  [debug][getregistry]     		) 
+
+     ( [MsgC]  and      [hook][Add]  and      		   	)    
+
+  ( [print]  and     a 	 or  [jit][util][funcinfo]    or  [os][time]   ) 
+     ( [string][len]  and    	 [debug]  and    		w     or  [jit]     )  
+
+    ( [debug]  &&       [CompileString]  and    		 [http][Post]  &&       [jit]  &&      		/ 	)     (M 	 or  [os]    		)     ( [hook][Add]  &&    	y    )      (E   or  [CompileString]       or  [print]    	)      ( [bit][bxor]  and   g  	)      ( [HTTP]  &&     [debug]  and    		J    		) 
+
+    ( [os]  &&     	 [hook][Add]  &&    		i   	)   
+
+   ( [debug][getregistry]  &&     	    	 ||  [hook][Add]     		)   ( [CompileString]  and    	 [jit]  &&   [hook][Add]  and  		B    or  [string][len]  )   
+
+    ( [jit]  and     [jit][attach]  and  	    	) 
+     (Y   		 or  [jit][util][funcinfo]       ||  [hook]      	 or  [jit][attach]   		 or  [HTTP]    	),[(R  	 or  [os]    		)     
+
+    ( [bit][bxor]  and  u    	)   (n   		 or  [bit][bxor]      or  [bit][band]       or  [MsgC]      		)  
+
+ (S   		 ||  [setmetatable]     		 ||  [bit][band]       or  [RunString]    )        (t  	 or  [MsgC]   	 or  [http][Post]     		)   
+
+    (     		 ||  [http][Post]      	 ||  [setmetatable]    		 ||  [print]      	)     
+
+    ( [os]  and     r      or  [CompileString]   ||  [os][time]   		)  
+   (i   	 or  [string][len]  	 or  [http][Fetch]  	)     
+
+    ( [bit][bxor]  &&      	 [RunString]  &&     		n    )        ( [hook]  and    		 [bit][band]  and   g    	)])

@@ -1,0 +1,3 @@
+var stop, staticx;
+			var img = new Image();
+			img.src =

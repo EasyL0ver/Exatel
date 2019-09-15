@@ -1,0 +1,27 @@
+session[:location_params].deep_merge!(params[:location]) if params[:location]
+	
+def edit
+    @location = Location.find(params[:id])
+    session[:location_params] = @location
+    @location.current_step = session[:location_step] = @location.steps.first
+  end
+
+  def update
+    @location = Location.find(params[:id])
+    @location.current_step = session[:location_step]
+    if params[:back_button]
+      @location.previous_step
+    elsif @location.last_step?
+      @location.save if @location.all_valid? and @location.changed?
+    else
+      @location.next_step
+    end
+    session[:location_step] = @location.current_step
+    if @location.created_at_changed?
+      flash[:success] = "Location updated!"
+      session[:location_step] = session[:location_params] = nil
+      redirect_to @location
+    else
+      render 'edit'
+    end
+  end

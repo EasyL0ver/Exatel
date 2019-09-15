@@ -1,0 +1,48 @@
+template<class Base>
+struct poly_any:private std::any
+{
+  using std::any::reset;
+  using std::any::has_value;
+  using std::any::type;
+
+  poly_any( poly_any const& ) = default;
+  poly_any& operator=( poly_any const& ) = default;
+
+  Base& base() { return get_base(*this); }
+  Base const& base() const { return const_cast<Base const&>(get_base(const_cast<poly_any&>(*this))); }
+
+  template< class ValueType,
+    std::enable_if_t< /* todo */, bool > =true
+  >
+  poly_any( ValueType&& value ); // todo
+
+  // TODO: sfinae on ValueType?
+  template< class ValueType, class... Args >
+  explicit poly_any( std::in_place_type_t<ValueType>, Args&&... args );  // todo
+
+  // TODO: sfinae on ValueType?
+  template< class ValueType, class U, class... Args >
+  explicit poly_any( std::in_place_type_t<ValueType>, std::initializer_list<U> il,
+          Args&&... args ); // todo
+
+  void swap( poly_any& other ) {
+    static_cast<std::any&>(*this).swap(other);
+    std::swap( get_base, other.get_base );
+  }
+
+  poly_any( poly_any&& o ); // todo
+  poly_any& operator=( poly_any&& o ); // todo
+
+  template<class ValueType, class...Ts>
+  std::decay_t<ValueType>& emplace( Ts&&... ); // todo
+  template<class ValueType, class U, class...Ts>
+  std::decay_t<ValueType>& emplace( std::initializer_list<U>, Ts&&... ); // todo
+private:
+  using to_base = Base&(*)(std::any&);
+  to_base get_base = 0;
+};
+
+template<class Base, class Derived>
+auto any_to_base = +[](std::any& in)->Base& {
+  return std::any_cast<Derived&>(in);
+};

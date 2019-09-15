@@ -1,0 +1,55 @@
+#include<iostream>
+#include <math.h> 
+using namespace std;
+
+class fibonacci_finder
+{
+    public:
+        bool fibonacci_checker(int n)
+        {
+            long check1 = 5*n*n + 4;
+            long check2 = 5*n*n - 4;
+            long sqr1 = sqrt(check1);
+            long sqr2 = sqrt(check2);
+            return ((check1 == sqr1*sqr1) || (check2 == sqr2*sqr2));
+        }
+        void fibonacci_generator(int n)
+        {
+            int first = 0, second = 1, next, c;
+            for ( c = 0 ; c < n ; c++ )
+            {
+                if ( c <= 1 )
+                    next = c;
+                else
+                {
+                    next = first + second;
+                    first = second;
+                    second = next;
+                }
+                cout << next << " ";
+            }
+            cout << endl;
+        }
+        void fibonacci_range(int x, int y)
+        {
+            int a = 0, b = 1, c;
+            while(a < y)
+            {
+                if(a > x)
+                    cout << a << " ";
+                c = a + b;
+                a = b;
+                b = c;
+            }
+            cout << endl;
+        }
+};
+
+int main()
+{
+    fibonacci_finder fib_fndr;
+    cout << fib_fndr.fibonacci_checker(999983) << endl;
+    fib_fndr.fibonacci_generator(81);
+    fib_fndr.fibonacci_range(78, 29992);
+    return 0;
+}

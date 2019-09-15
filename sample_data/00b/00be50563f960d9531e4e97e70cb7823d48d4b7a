@@ -1,0 +1,11 @@
+{
+.......
+
+  "strings" : {
+    "en" : {
+      "my_pane_title" : "My Settings",
+      "my_group_title" : "My Group",
+      "my_title" : "My Preference",
+      "my_description" : "My Preference Description"
+    }
+  }

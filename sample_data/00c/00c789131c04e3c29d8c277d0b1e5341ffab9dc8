@@ -1,0 +1,122 @@
+# SimC Addon 1.10.10
+hunter="Eleana"
+level=120
+race=blood_elf
+region=eu
+server=teldrassil
+role=attack
+professions=alchemy=126/herbalism=150
+talents=1121212
+spec=survival
+
+head=,id=157953,bonus_id=1562/4786/5399/4775,context=28,azerite_powers=371/30/44/13
+neck=,id=158075,bonus_id=4936/4929/4930/1540,context=11,azerite_level=35
+shoulder=,id=159385,bonus_id=5054/1542/4786/4775,context=35,azerite_powers=372/30/83/13
+back=,id=166762,bonus_id=5126/1507/4783,context=6
+chest=,id=163282,bonus_id=5125/1562/4786/5398/4775,context=28,azerite_powers=488/31/543/13
+tabard=,id=69210,context=14
+wrist=,id=165487,bonus_id=5126/1512/4783,context=6
+hands=,id=157920,bonus_id=4803/1562/4786,context=28
+waist=,id=158347,bonus_id=5008/1542/4786,context=35
+legs=,id=159384,bonus_id=5007/1532/4786,context=16
+feet=,id=157919,bonus_id=4803/1562/4786,context=28
+finger1=,id=159462,enchant_id=5939,bonus_id=5010/1552/4783,context=35
+finger2=,id=159461,enchant_id=5939,bonus_id=5010/1542/4786,context=16
+trinket1=,id=160652,bonus_id=4798/1477/4786,context=3
+trinket2=,id=165662,bonus_id=4803/1562/4786,context=28
+main_hand=,id=163871,enchant_id=5963,bonus_id=5126/1562/4786,context=6
+
+### Gear from Bags
+#
+# Helm von Pa'kus Windreiter (370)
+# head=,id=157921,bonus_id=1562/4786/5399,context=28,azerite_powers=
+#
+# Schreckenssumpfhelm (375)
+# head=,id=157889,bonus_id=1562/4786/5399/4775,context=28,azerite_powers=211/22/83/13
+#
+# Schädelschutz der eidgebundenen Vorhut (375)
+# head=,id=163446,bonus_id=5125/1562/4786/5399/4775,context=29,azerite_powers=487/30/83/13
+#
+# Talisman der wahren Schatzjagd (58)
+# neck=,id=27944,context=14
+#
+# Schulterschützer der eidgebundenen Vorhut (370)
+# shoulder=,id=163441,bonus_id=5125/1562/4786/5400,context=29,azerite_powers=
+#
+# Schulterschützer der eidgebundenen Vorhut (375)
+# shoulder=,id=163441,bonus_id=5125/1562/4786/5400/4775,context=29,azerite_powers=212/31/14/13
+#
+# Schulterschützer der eidgebundenen Vorhut (370)
+# shoulder=,id=163441,bonus_id=5126/1562/4786/5400,context=6,azerite_powers=
+#
+# Schiftung des umhüllenden Schlunds (355)
+# shoulder=,id=161357,bonus_id=4822/1477/4786/5397,context=3,azerite_powers=
+#
+# Rammschutzschiftung (375)
+# shoulder=,id=159360,bonus_id=5060/1542/4786/4775,context=35,azerite_powers=504/22/15/13
+#
+# Schuppenpanzerkampfharnisch (375)
+# chest=,id=161458,bonus_id=5120/1492/4786/5398/4775,context=3,azerite_powers=366/30/15/13
+#
+# Kettenpanzer der eidgebundenen Vorhut (370)
+# chest=,id=163282,bonus_id=5125/1562/4786/5398,context=28,azerite_powers=
+#
+# Kettenweste der geprüften Qualität (360)
+# chest=,id=160627,bonus_id=4822/1477/4786/4775,context=3,azerite_powers=483/22/15/13
+#
+# Eisen des Schreckenskapitäns (370)
+# wrist=,id=159372,bonus_id=5010/4802/41/1542/4786,context=16
+#
+# Bindungen der eidgebundenen Vorhut (370)
+# wrist=,id=163308,bonus_id=5126/1562/4786,context=6
+#
+# Handschützer der eidgebundenen Vorhut (370)
+# hands=,id=163448,bonus_id=5126/1562/4786,context=6
+#
+# Taillenschutz der schwindenden Anmut (375)
+# waist=,id=159403,bonus_id=5009/1547/4786,context=35
+#
+# Nesselverätzte Schienbeinschützer (375)
+# legs=,id=159400,bonus_id=5009/1547/4783,context=16
+#
+# Gamaschen der eidgebundenen Vorhut (370)
+# legs=,id=163445,bonus_id=5126/1562/4786,context=6
+#
+# Beinschützer des gerinnenden Plasmas (370)
+# legs=,id=160631,bonus_id=4799/40/1492/4786,context=5
+#
+# Trittsichere Sabatons (370)
+# feet=,id=159379,bonus_id=5010/1542/4786,context=16
+#
+# Geladenes Sandsteinband (370)
+# finger1=,id=158366,enchant_id=5939,bonus_id=5008/1542/4783,context=35
+#
+# Feuriger Winterskornreif (370)
+# finger1=,id=165680,enchant_id=5939,bonus_id=4803/1562/4786,context=28
+#
+# Ring der unendlichen Leere (370)
+# finger1=,id=160647,enchant_id=5939,bonus_id=4799/1492/4786,context=5
+#
+# Endlose Tinktur des erneuerten Kampfgeists (225)
+# trinket1=,id=152634,bonus_id=4927,context=13
+#
+# Azerokks resonierendes Herz (375)
+# trinket1=,id=159612,bonus_id=5008/1547/4783,context=35
+#
+# Kanonenkugelwerfer von Kul Tiras (370)
+# trinket1=,id=159628,bonus_id=5008/1542/4783,context=16
+#
+# Glänzend goldenes Gefieder (390)
+# trinket1=,id=159617,bonus_id=5010/1562/4783,context=35
+#
+# Alchemistenstein der Sirene (225)
+# trinket1=,id=152637,bonus_id=4927,context=13
+#
+# Korgus' Schwarzpulverflinte (360)
+# main_hand=,id=159657,bonus_id=5007/1532/4786,context=16
+#
+# Thruks Angelrute (20)
+# main_hand=,id=120163,context=1
+
+# Stacks of reorigination array based on hidden quest completion
+# bfa.reorigination_array_stacks=2

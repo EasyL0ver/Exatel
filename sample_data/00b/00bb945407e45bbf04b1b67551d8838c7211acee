@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div id="container">
+	<ul class="userlist">
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+</body>
+</html>

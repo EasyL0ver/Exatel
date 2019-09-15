@@ -1,0 +1,36 @@
+# form date sequence to data frame
+dateBreaks <- seq(ymd("2017-01-01"), today(), by = 'months')
+m1n2 <- bind_cols(m1 = dateBreaks, m2 = lead(dateBreaks))
+
+# custom count function for loop
+count_between_interval <- function(month1, month2) {
+  # 
+  hmwork %>% 
+    # interval between 2 months
+    filter(day >= month1, day < month2) %>% 
+    # exclude some
+    filter(homework_type %in% c("All", "Review", "OnlineMatch")) %>% 
+    select(day, finish_day, homework_id, teacher_id, student_count, commit) %>% 
+    # pick relevant columns
+    collect()
+  # give a little break
+  system("sleep 3")
+  # export to csv
+  write_csv(dat, sprintf("Data/n_homework_by_day_%s.csv", month1))
+  message(sprintf("Done period %s", month1))
+}
+# testing purpose
+count_between_interval("2018-11-01", "2018-12-01")
+
+# loop to extract data from database
+purrr::map2(
+  .x = m1n2$m1,
+  .y = m1n2$m2,
+  .f = ~ safe_count(
+    df = hmwork,
+    grp = day,
+    item = homework_id,
+    month1 = .x,
+    month2 = .y
+  )
+)

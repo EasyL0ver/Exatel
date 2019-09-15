@@ -1,0 +1,7 @@
+$recaptcha_tries = Session::get('recaptcha_tries', 0); // default 0
+
+if ($recaptcha_tries > 5) { // the limit
+    return abort(429); // Too Many Requests error
+} else {
+    Session::put('recaptcha_tries', $recaptcha_tries + 1);
+}

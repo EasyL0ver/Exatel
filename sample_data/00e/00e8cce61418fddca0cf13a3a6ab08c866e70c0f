@@ -1,0 +1,30 @@
+#include <cmath>
+
+class Point{
+
+private:
+  float x, y;
+  Point(float a, float b){
+    x = a;
+    y = b;
+  }
+
+public:
+  struct Factory {
+
+    static Point newCartesian(float x, float y){
+      return {x, y};
+    }
+
+    static Point newPolar(float rho, float theta){
+      return {rho*cosf(theta), rho*sinf(theta)};
+    }
+  };
+
+};
+
+int main() {
+  Point point = Point::Factory::newCartesian(10, 20);
+  Point point2 = Point::Factory::newPolar(100, 200);
+  return 0;
+}

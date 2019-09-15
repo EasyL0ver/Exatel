@@ -1,0 +1,46 @@
+<html>
+<head>
+<SCRIPT LANGUAGE="JavaScript">
+function AppendMsgBoxScript(){
+var selectmenu=myform.nazwa
+var chosenoption=selectmenu.selectedIndex
+var lol = 0
+switch(chosenoption) {
+case 0:
+lol = 16
+break;
+case 1:
+lol = 32
+break;
+case 2:
+lol = 48
+break;
+case 3:
+lol = 0
+break;
+}
+var hehe = ('x = MsgBox("' + myform.inputbox2.value + '", ' + lol + ' , "' + myform.inputbox.value + '")\n')
+myform.pozdro.value += hehe
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<FORM NAME="myform" ACTION="" METHOD="GET">
+Nazwa Okna:
+<INPUT TYPE="text" NAME="inputbox" VALUE="">
+Tekst Okna:
+<INPUT TYPE="text" NAME="inputbox2" VALUE=""><P>
+<textarea TYPE="text" NAME="pozdro" cols="58" rows="6" readonly="readonly"></textarea><P>
+	Typ Błędu:
+	<select name="nazwa">
+		<option>Czerwony</option>
+		<option>Niebieski</option>
+		<option>Żółty</option>
+		<option>Brak</option>
+	</select>
+<INPUT TYPE="button" NAME="button" Value="Generuj Skrypt VBS" onClick="AppendMsgBoxScript()"><P>
+Wypełnij wszystkie pola i kliknij na przycisk Generuj Skrypt VBS.<BR>
+Następnie wklej kod do notatnika i zapisz jako plik VBS.
+</FORM>	
+</body>
+</html>

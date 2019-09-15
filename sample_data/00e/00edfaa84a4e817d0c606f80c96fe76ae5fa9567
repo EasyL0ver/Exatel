@@ -1,0 +1,7 @@
+var variableNameGlobal bool  // it global variable
+var isOn, isOff = true, false  // ignores the type of variables
+
+func main() {
+    var variableName bool  // local variable
+    variableName1 := false      // without var and datatype
+    variableName2 = true

@@ -1,0 +1,23 @@
+local origin, target, pa, pb = workspace.origin, workspace.target, workspace.a, workspace.b
+local la, lb = pa.Size.Z, pb.Size.Z
+
+local function solveIK(originpos, targetpos, a, b, angle)
+	local planeCF = CFrame.new(originpos, targetpos) * CFrame.Angles(0, 0, math.rad(angle or 0))
+	local c = (originpos - targetpos).magnitude
+
+	if c < math.max(a, b) - math.min(a, b) then
+		return planeCF * CFrame.new(0, 0, math.max(a, b) - math.min(a, b) - c), 0, math.pi
+	elseif c > a + b then
+		return planeCF, 0, 0
+	else
+		local B =         -math.acos((a*a + c*c - b*b)/(2*a*c))
+		local C = math.pi -math.acos((a*a + b*b - c*c)/(2*a*b))
+		return planeCF, B, C
+	end
+end
+
+game:GetService("RunService").Stepped:Connect(function()
+	local planeCF, B, C = solveIK(origin.Position, target.Position, la, lb, 0)
+	pa.CFrame =   planeCF *                            CFrame.Angles(B, 0, 0) * CFrame.new(0, 0, -la/2)
+	pb.CFrame = pa.CFrame * CFrame.new( 0, 0, -la/2) * CFrame.Angles(C, 0, 0) * CFrame.new(0, 0, -lb/2)
+end)

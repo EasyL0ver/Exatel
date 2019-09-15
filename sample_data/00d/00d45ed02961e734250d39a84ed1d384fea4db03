@@ -1,0 +1,178 @@
+# SimC Addon 1.10.8
+rogue="Wuhhbamouff"
+level=120
+race=void_elf
+region=eu
+server=ravencrest
+role=attack
+professions=leatherworking=150/alchemy=150
+talents=2212231
+spec=assassination
+
+head=,id=163596,bonus_id=4824/1507/4786/4775,context=6,azerite_powers=485/461/473/13
+neck=,id=158075,bonus_id=4936/4929/4930/1540,context=11,azerite_level=35
+shoulder=,id=159339,bonus_id=5063/1557/4786/4775,context=35,azerite_powers=249/30/217/13
+back=,id=158375,gem_id=154127,bonus_id=5010/4802/42/1542/4786,context=16
+chest=,id=160619,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=408/31/83/13
+shirt=,id=52019
+tabard=,id=69210,context=14
+wrist=,id=160621,bonus_id=4800/42/1507/4786,context=6
+hands=,id=159968,bonus_id=5010/1557/4784,context=16
+waist=,id=163384,gem_id=154127,bonus_id=5125/4802/42/1567/4783,context=29
+legs=,id=160625,gem_id=153708,bonus_id=4800/1808/1517/4783,context=6
+feet=,id=160624,bonus_id=4800/1507/4786,context=6
+finger1=,id=159463,enchant_id=5943,gem_id=154126,bonus_id=5010/4802/1547/4783,context=16
+finger2=,id=160646,enchant_id=5943,gem_id=154126,bonus_id=4800/1808/1507/4786,context=6
+trinket1=,id=159623,bonus_id=5010/1557/4784,context=35
+trinket2=,id=159614,gem_id=154126,bonus_id=5010/4802/1547/4783,context=16
+main_hand=,id=160683,enchant_id=5963,bonus_id=4800/1507/4786,context=6
+off_hand=,id=165624,enchant_id=5964,bonus_id=5126/1502/4786,context=6
+
+### Gear from Bags
+#
+# Hood of Pestilent Ichor (375)
+# head=,id=160623,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=483/22/15/13
+#
+# 7th Legionnaire's Visage (370)
+# head=,id=163380,bonus_id=5125/1562/5136/5381,context=28,azerite_powers=
+#
+# Flashpowder Hood (390)
+# head=,id=159334,bonus_id=5062/1557/4786/4775,context=35,azerite_powers=407/22/473/13
+#
+# Cowl of Dark Portents (375)
+# head=,id=163596,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=485/461/473/13
+#
+# Irontide Captain's Hat (390)
+# head=,id=155888,bonus_id=5062/1557/4786/4775,context=35,azerite_powers=479/30/85/13
+#
+# 7th Legionnaire's Leather Mantle (375)
+# shoulder=,id=163377,bonus_id=5125/1562/4786/5400/4775,context=11,azerite_powers=407/31/473/13
+#
+# Gravethorn Shoulderguards (375)
+# shoulder=,id=158011,bonus_id=1562/5140/5382/4775,context=28,azerite_powers=414/30/15/13
+#
+# Wrap of Unity (35)
+# back=,id=63206,context=14
+#
+# Dread Gladiator's Greatcloak (385)
+# back=,id=163730,bonus_id=4986/5129/1577/4784,context=39
+#
+# Cloak of Coordination (58)
+# back=,id=65360,context=14
+#
+# Shroud of Cooperation (35)
+# back=,id=63352,context=14
+#
+# Cloak of Rippling Whispers (385)
+# back=,id=160642,bonus_id=4800/1507/4786,context=6
+#
+# Tunic of the Sanguine Deity (375)
+# chest=,id=160728,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=485/30/14/13
+#
+# Cephalohide Jacket (390)
+# chest=,id=159314,bonus_id=5061/1557/4786/4775,context=35,azerite_powers=240/30/44/13
+#
+# 7th Legionnaire's Vest (375)
+# chest=,id=163251,bonus_id=5125/1562/5138/5383/4775,context=28,azerite_powers=414/22/15/13
+#
+# 7th Legionnaire's Vest (375)
+# chest=,id=163251,bonus_id=5125/1562/5138/5383/4775,context=28,azerite_powers=136/31/15/13
+#
+# Armbands of Sacrosanct Acts (385)
+# wrist=,id=160720,bonus_id=4800/1507/4786,context=6
+#
+# Bracers of Dreadful Maladies (380)
+# wrist=,id=159340,bonus_id=5010/1552/4783,context=35
+#
+# Underrot Grotto Tenders (380)
+# hands=,id=159344,bonus_id=5010/1552/4783,context=35
+#
+# Corrosive Handler's Gloves (370)
+# hands=,id=159305,enchant_id=5932,bonus_id=5010/1542/4786,context=16
+#
+# Sharkhide Grips (385)
+# hands=,id=155889,bonus_id=5010/1557/4784,context=16
+#
+# Bloodstorm Buckle (385)
+# waist=,id=160622,bonus_id=4800/1507/4786,context=6
+#
+# Replicated Chitin Cord (380)
+# waist=,id=160717,bonus_id=4799/1502/4783,context=5
+#
+# Replicated Chitin Cord (385)
+# waist=,id=160717,bonus_id=4800/1507/4786,context=6
+#
+# Sand-Shined Snakeskin Sandals (380)
+# feet=,id=159327,bonus_id=5010/1552/4783,context=35
+#
+# Emblazoned Tempest Boots of the Quickblade (385)
+# feet=,id=162485,bonus_id=1682,context=13
+#
+# Kragg's Rigging Scalers (370)
+# feet=,id=155862,gem_id=154129,bonus_id=5010/4802/1542/4786,context=16
+#
+# Thornwoven Band (370)
+# finger1=,id=162548,enchant_id=5943,gem_id=154127,bonus_id=5010/4802/1542/4786,context=16
+#
+# Seal of the Regal Loa (375)
+# finger1=,id=159458,enchant_id=5939,bonus_id=5005/1547/4784,context=16
+#
+# Jade Ophidian Band (380)
+# finger1=,id=162544,enchant_id=5944,bonus_id=5010/42/1552/4783,context=35
+#
+# Loop of Pulsing Veins (365)
+# finger1=,id=159463,enchant_id=5943,gem_id=154127,bonus_id=5008/4802/1537/4786,context=16
+#
+# Dread Gladiator's Signet (390)
+# finger1=,id=161898,enchant_id=5944,bonus_id=4986/5128/1582/4784,context=39
+#
+# Band of the Ancient Dredger (365)
+# finger1=,id=159461,enchant_id=5943,gem_id=154127,bonus_id=5009/4802/40/1537/4786,context=16
+#
+# Rot-Scour Ring (390)
+# finger1=,id=160645,enchant_id=5943,bonus_id=4800/1512/4783,context=6
+#
+# Frenetic Corpuscle (385)
+# trinket1=,id=160648,bonus_id=4800/42/1507/4786,context=6
+#
+# Azerokk's Resonating Heart (370)
+# trinket1=,id=159612,bonus_id=5010/1542/4786,context=16
+#
+# Dread Gladiator's Medallion (365)
+# trinket1=,id=161674,bonus_id=4986/5128/1557/4783,context=39
+#
+# Darkmoon Deck: Fathoms (355)
+# trinket1=,id=159125,context=13
+#
+# Harlan's Loaded Dice (375)
+# trinket1=,id=155881,bonus_id=5010/1547/4783,context=16
+#
+# Lustrous Golden Plumage (380)
+# trinket1=,id=159617,bonus_id=5010/1552/4783,context=16
+#
+# Heart-Piercing Stalactite (370)
+# main_hand=,id=159134,bonus_id=5010/1542/4786,context=16
+#
+# Heart-Piercing Stalactite (380)
+# main_hand=,id=159134,bonus_id=5010/1552/4783,context=16
+#
+# Howlis' Crystal Shiv (370)
+# main_hand=,id=159131,bonus_id=5010/1542/4786,context=16
+#
+# 7th Legionnaire's Warhammer (370)
+# main_hand=,id=163883,bonus_id=5125/1562/4786,context=11
+#
+# Heart-Piercing Stalactite (370)
+# off_hand=,id=159134,bonus_id=5010/1542/4786,context=16
+#
+# Heart-Piercing Stalactite (380)
+# off_hand=,id=159134,bonus_id=5010/1552/4783,context=16
+#
+# Howlis' Crystal Shiv (370)
+# off_hand=,id=159131,bonus_id=5010/1542/4786,context=16
+#
+# 7th Legionnaire's Warhammer (370)
+# off_hand=,id=163883,bonus_id=5125/1562/4786,context=11
+
+# Stacks of reorigination array based on hidden quest completion
+# bfa.reorigination_array_stacks=10

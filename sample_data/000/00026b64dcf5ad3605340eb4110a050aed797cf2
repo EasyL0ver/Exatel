@@ -1,0 +1,44 @@
+const Path = require('path');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+
+module.exports = function(env) {
+	const isProduction = env !== undefined && env.production === true;
+
+	// const plugins = [
+	// 	new ForkTsCheckerWebpackPlugin({tslint: true})
+	// ];
+
+	return {
+		entry: "./src/index.tsx",
+		output: {
+			filename: 'bundle.js',
+			path: Path.join(__dirname, '/dist'),
+			globalObject: '(new Function("return this")())'
+		},
+
+		devtool: 'source-map',
+
+		resolve: {
+			extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
+		},
+		module: {
+			rules: [
+				{
+					test: /\.(ts|tsx)?$/,
+					exclude: /node_modules/,
+					loader: "awesome-typescript-loader"
+				},
+				{
+					enforce: "pre",
+					test: /\.js$/,
+					exclude: /node_modules/,
+					use: [
+						"source-map-loader"
+					]
+				}
+			]
+		},
+		plugins: []
+	}
+};

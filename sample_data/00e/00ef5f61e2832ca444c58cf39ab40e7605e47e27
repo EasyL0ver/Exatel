@@ -1,0 +1,23 @@
+class characterise{
+    public characterise(String name) {
+        super(name);
+    } 
+	void roo{
+	if (name='Chicken' && age>1 && sex='Male'){
+    @Override public String type() {
+        return " Rooster";
+    }}}
+	void sound{
+	if (name='Chicken' && age>1 && sex='Male'){
+    @Override public String sound() {
+        return "Cock-a-doodle-doo";
+    }}}
+}
+
+public class AnimalDemo {
+    public static void main(String[] args) {
+        Animal h = new animal("chicken");
+        h.roo();
+		h.sound();
+    }
+}

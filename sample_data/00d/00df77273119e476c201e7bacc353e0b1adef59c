@@ -1,0 +1,50 @@
+Stacktrace:
+
+  at <unknown> <0xffffffff>
+  at (wrapper managed-to-native) object.__icall_wrapper_mono_gc_alloc_obj (intptr,intptr) <0x0006f>
+  at (wrapper alloc) object.AllocSmall (intptr,intptr) [0x00077] in <b75790b9c16849d4aa8c31d6541d670a>:0
+  at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize (System.IO.Stream,object,System.Runtime.Remoting.Messaging.Header[],bool) [0x0005a] in <b75790b9c16849d4aa8c31d6541d670a>:0
+  at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize (System.IO.Stream,object,System.Runtime.Remoting.Messaging.Header[]) [0x00005] in <b75790b9c16849d4aa8c31d6541d670a>:0
+  at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize (System.IO.Stream,object) [0x00004] in <b75790b9c16849d4aa8c31d6541d670a>:0
+  at System.Runtime.Remoting.RemotingServices.SerializeCallData (object) [0x0005a] in <b75790b9c16849d4aa8c31d6541d670a>:0
+  at (wrapper xdomain-invoke) CitizenFX.Core.MonoScriptRuntime/WrapScriptHost.InvokeNative (intptr) [0x0004a] in <88b8647aea7f4cf2b4cab80d09f3a9d0>:0
+  at CitizenFX.Core.ScriptContext.InvokeInternal (ulong,CitizenFX.Core.IScriptHost) [0x00014] in /src/code/client/clrcore/ScriptContext.cs:273
+  at CitizenFX.Core.ScriptContext.Invoke (ulong,CitizenFX.Core.IScriptHost) [0x00000] in /src/code/client/clrcore/ScriptContext.cs:262
+  at CitizenFX.Core.ScriptContext.Invoke (ulong) [0x00000] in /src/code/client/clrcore/ScriptContext.cs:259
+  at CitizenFX.Core.Native.API.InternalGetCurrentResourceName () [0x00025] in /src/code/client/clrcore/NativesServer.cs:533
+  at CitizenFX.Core.Native.API.GetCurrentResourceName () [0x00000] in /src/code/client/clrcore/NativesServer.cs:520
+  at CitizenFX.Core.NetworkFunctionManager.HandleEventTrigger (string,object[],string) [0x00000] in /src/code/client/clrcore/RemoteFunctionReference.cs:104
+  at CitizenFX.Core.InternalManager.TriggerEvent (string,byte[],string) [0x00074] in /src/code/client/clrcore/InternalManager.cs:208
+  at (wrapper remoting-invoke-with-check) CitizenFX.Core.InternalManager.TriggerEvent (string,byte[],string) [0x00035] in <88b8647aea7f4cf2b4cab80d09f3a9d0>:0
+  at (wrapper xdomain-dispatch) CitizenFX.Core.InternalManager.TriggerEvent (object,byte[]&,byte[]&,string,byte[],string) [0x00061] in <88b8647aea7f4cf2b4cab80d09f3a9d0>:0
+  at (wrapper xdomain-invoke) CitizenFX.Core.InternalManager.TriggerEvent (string,byte[],string) <0x0015e>
+  at (wrapper remoting-invoke-with-check) CitizenFX.Core.InternalManager.TriggerEvent (string,byte[],string) [0x00029] in <88b8647aea7f4cf2b4cab80d09f3a9d0>:0
+  at CitizenFX.Core.MonoScriptRuntime.TriggerEvent (string,byte[],int,string) <0x0005b>
+  at (wrapper cominterop) CitizenFX.Core.IScriptEventRuntime.TriggerEvent (intptr,string,byte[],int,string) <0x00052>
+  at (wrapper native-to-managed) CitizenFX.Core.IScriptEventRuntime.TriggerEvent (intptr,intptr,intptr,int,intptr) <0x0014b>
+/proc/self/maps:
+40187000-4031c000 rwxp 00000000 00:00 0
+406b7000-407ea000 rwxp 00000000 00:00 0
+40d1d000-40e22000 rwxp 00000000 00:00 0
+413dd000-416f5000 rwxp 00000000 00:00 0
+41bec000-41cbc000 rwxp 00000000 00:00 0
+41e9e000-41eae000 rwxp 00000000 00:00 0
+7ffac480000-7ffac500000 rw-p 00000000 00:00 0
+82b05d80000-82b05daf000 rw-p 00000000 00:00 0
+868d03cc000-868d03d4000 rw-p 00000000 00:00 0
+e92b0100000-e92b0103000 rw-p 00000000 00:00 0
+ea7d8880000-ea7d8883000 rw-p 00000000 00:00 0
+ea7d8883000-ea7d8900000 r--p 00000000 00:00 0
+137601200000-137601280000 rw-p 00000000 00:00 0
+2c5a8c100000-2c5a8c180000 rw-p 00000000 00:00 0
+31f10d66e000-31f10d680000 ---p 00000000 00:00 0
+31f10d680000-31f10d683000 rw-p 00000000 00:00 0
+31f10d683000-31f10d684000 ---p 00000000 00:00 0
+31f10d684000-31f10d6ff000 r-xp 00000000 00:00 0
+31f10d6ff000-31f11566e000 ---p 00000000 00:00 0
+7f275c77c000-7f275f34b000 rw-p 00000000 00:00 0
+7f275f34b000-7f275f8c5000 rw-p 00000000 00:00 0
+7f275f8c5000-7f2764565000 rw-p 00000000 00:00 0
+7f2764add000-7f27662ae000 rw-p 00000000 00:00 0
+7f276630e000-7f27706dc000 rw-p 00000000 00:00 0
+7f2770786000-7f2770c54000 rw-p 00000000 00:00 0

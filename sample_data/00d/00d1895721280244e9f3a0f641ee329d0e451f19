@@ -1,0 +1,15 @@
+hifly@Notebook ~]$ oc get pods -n istio-system -w
+NAME                                          READY     STATUS              RESTARTS   AGE
+elasticsearch-0                               0/1       ContainerCreating   0          41s
+grafana-648c7d5cc6-nd6hm                      1/1       Running             0          45s
+istio-citadel-64f86c964-7kgs6                 1/1       Running             0          3m
+istio-egressgateway-8579f6f649-s7csl          1/1       Running             0          3m
+istio-galley-569c79fcbf-6x4pv                 1/1       Running             0          3m
+istio-ingressgateway-5457546784-rxsgt         1/1       Running             0          3m
+istio-pilot-78d8f7465f-trs4p                  2/2       Running             0          3m
+istio-policy-b57648f9f-wxqjd                  2/2       Running             0          3m
+istio-sidecar-injector-5876f696f-8p47q        1/1       Running             0          3m
+istio-statsd-prom-bridge-549d687fd9-7t259     1/1       Running             0          3m
+istio-telemetry-56587b8fb6-mgcgq              2/2       Running             0          3m
+openshift-ansible-istio-installer-job-c2k6g   1/1       Running             0          5m
+prometheus-6ffc56584f-kzl55                   1/1       Running             0          3m

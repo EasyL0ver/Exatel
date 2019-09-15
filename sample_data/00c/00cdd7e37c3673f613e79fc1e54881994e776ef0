@@ -1,0 +1,335 @@
+-- This script has been converted to FE by iPxter
+
+
+if game:GetService("RunService"):IsClient() then error("Script must be server-side in order to work; use h/ and not hl/") end
+local Player,Mouse,mouse,UserInputService,ContextActionService = owner
+do
+	print("FE Compatibility code by Mokiros | Translated to FE by iPxter")
+	script.Parent = Player.Character
+
+	--RemoteEvent for communicating
+	local Event = Instance.new("RemoteEvent")
+	Event.Name = "UserInput_Event"
+
+	--Fake event to make stuff like Mouse.KeyDown work
+	local function fakeEvent()
+		local t = {_fakeEvent=true,Connect=function(self,f)self.Function=f end}
+		t.connect = t.Connect
+		return t
+	end
+
+	--Creating fake input objects with fake variables
+    local m = {Target=nil,Hit=CFrame.new(),KeyUp=fakeEvent(),KeyDown=fakeEvent(),Button1Up=fakeEvent(),Button1Down=fakeEvent()}
+	local UIS = {InputBegan=fakeEvent(),InputEnded=fakeEvent()}
+	local CAS = {Actions={},BindAction=function(self,name,fun,touch,...)
+		CAS.Actions[name] = fun and {Name=name,Function=fun,Keys={...}} or nil
+	end}
+	--Merged 2 functions into one by checking amount of arguments
+	CAS.UnbindAction = CAS.BindAction
+
+	--This function will trigger the events that have been :Connect()'ed
+	local function te(self,ev,...)
+		local t = m[ev]
+		if t and t._fakeEvent and t.Function then
+			t.Function(...)
+		end
+	end
+	m.TrigEvent = te
+	UIS.TrigEvent = te
+
+	Event.OnServerEvent:Connect(function(plr,io)
+	    if plr~=Player then return end
+		if io.isMouse then
+			m.Target = io.Target
+			m.Hit = io.Hit
+		else
+			local b = io.UserInputState == Enum.UserInputState.Begin
+			if io.UserInputType == Enum.UserInputType.MouseButton1 then
+				return m:TrigEvent(b and "Button1Down" or "Button1Up")
+			end
+			for _,t in pairs(CAS.Actions) do
+				for _,k in pairs(t.Keys) do
+					if k==io.KeyCode then
+						t.Function(t.Name,io.UserInputState,io)
+					end
+				end
+			end
+			m:TrigEvent(b and "KeyDown" or "KeyUp",io.KeyCode.Name:lower())
+			UIS:TrigEvent(b and "InputBegan" or "InputEnded",io,false)
+	    end
+	end)
+	Event.Parent = NLS([==[
+	local Player = owner
+	local Event = script:WaitForChild("UserInput_Event")
+
+	local UIS = game:GetService("UserInputService")
+	local input = function(io,a)
+		if a then return end
+		--Since InputObject is a client-side instance, we create and pass table instead
+		Event:FireServer({KeyCode=io.KeyCode,UserInputType=io.UserInputType,UserInputState=io.UserInputState})
+	end
+	UIS.InputBegan:Connect(input)
+	UIS.InputEnded:Connect(input)
+
+	local Mouse = Player:GetMouse()
+	local h,t
+	--Give the server mouse data 30 times every second, but only if the values changed
+	--If player is not moving their mouse, client won't fire events
+	while wait(1/30) do
+		if h~=Mouse.Hit or t~=Mouse.Target then
+			h,t=Mouse.Hit,Mouse.Target
+			Event:FireServer({isMouse=true,Target=t,Hit=h})
+		end
+	end]==],Player.Character)
+	Mouse,mouse,UserInputService,ContextActionService = m,m,UIS,CAS
+end
+
+-----------/XESTER THE CARD MASTER\\-----------
+--[[Movelist
+Q = The disappearing act.
+E = Full house
+R = Cardnado
+T = Teleport
+Y = Big card(Click to smash.)
+U = Black hole
+P = Card shield(Click to bounce people off, press p again to shred.)
+F = Transform(You can switch between modes any time.)
+-----------/SECOND FORM MOVES\-----------
+T = Laugh
+G = Fire ball
+H = Huge fire ball
+J = Dragon's breath(The longer you hold, the more insaner it gets.)
+K = Beam(The longer you hold down the key, the stronger it gets/longer it lasts.)
+---------]]
+
+--"Now you see me 2" is a good movie, which is why i've made this.--
+--IF YOU'RE USING THIS IN A SB, BE SURE TO ALWAYS TYPE G/NL AFTER USING THIS SCRIPT!, IF YOU DON'T, IT'LL MESS UP!--
+--DON'T YOU DARE REMOVE SB'S ROBLOX!!!--
+--Do you hear those heavy footsteps? Hmmmm, what could it be?--
+--Don't you guys just hate it when people come in sb just to be "overpowered"? Pisses me off.--
+--If your character gets bugged, such as missing limbs, you can press . to fix yourself!--
+
+
+--Look if this was logged cause I used it on VSB I'm sorry Supr, I know you won't be able to trust me again.
+--Creterisk
+
+wait(1/60)
+
+Player=owner
+Character=Player.Character
+Character.Humanoid.Name = "noneofurbusiness"
+hum = Character.noneofurbusiness
+LeftArm=Character["Left Arm"]
+LeftLeg=Character["Left Leg"]
+RightArm=Character["Right Arm"]
+RightLeg=Character["Right Leg"]
+Root=Character["HumanoidRootPart"]
+Head=Character["Head"]
+Torso=Character["Torso"]
+Neck=Torso["Neck"]
+walking = false
+jumping = false
+allowgrassy = false
+zxc = false
+matte = nil
+colori = nil
+bigball = false
+attacking = false
+laughing = false
+running = false
+downpress = false
+taim = nil
+change = 0
+ws = 10
+appi = false
+tauntdebounce = false
+position = nil
+staybooming = false
+MseGuide = true
+levitate = false
+firsttime5 = false
+notallowedtransform = false
+settime = 0
+firsttime2 = false
+sine = 0
+t = 0
+combo1 = true
+dgs = 75
+combo2 = false
+firsttime3 = false
+combo3 = false
+local bl = {907530553,907527750,907527912}
+colortable = {"Really black","Really red"}
+colors = #colortable
+blz = #bl
+local aces = {1880203893,1881287656,1881287420,1881288034}
+ace = #aces
+local laughs = {2011349649,2011349983,2011351501,2011352223,2011355991,2011356475}
+laugh = #laughs
+RunSrv = game:GetService("RunService")
+RenderStepped = game:GetService("RunService").RenderStepped
+removeuseless = game:GetService("Debris")
+damageall={}
+Repeater={}
+Repeater2={}
+magictable={}
+nonmeshRepeater={}
+nonmeshRepeater2={}
+dmgii={}
+DamageAll2={}
+SlowlyFade={}
+th1={}
+lolzor={}
+lolzor2={}
+th2={}
+keyYsize={}
+blocktrail={}
+keyYtransparency={}
+th3={}
+laughingtable={}
+Extreme={}
+ExtremeM={}
+ExtremeM2={}
+m3={}
+th4={}
+th5={}
+UpMover={}
+openshocktable={}
+LessSize={}
+ForwardMover={}
+FadeIn={}
+signtransparency={}
+signmover={}
+signrotator={}
+
+screenGui = Instance.new("ScreenGui")
+screenGui.Parent = script.Parent
+
+FireBall = Instance.new("Sound",LeftArm)
+FireBall.SoundId = "rbxassetid://842332424"
+FireBall.Volume = 5
+FireBall.Pitch = 2.5
+
+BigFireBall = Instance.new("Sound",LeftArm)
+BigFireBall.SoundId = "rbxassetid://842332424"
+BigFireBall.Volume = 8
+BigFireBall.Pitch = 1.5
+
+local HEADLERP = Instance.new("ManualWeld")
+HEADLERP.Parent = Head
+HEADLERP.Part0 = Head
+HEADLERP.Part1 = Head
+HEADLERP.C0 = CFrame.new(0, -1.5, -0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+
+local TORSOLERP = Instance.new("ManualWeld")
+TORSOLERP.Parent = Root
+TORSOLERP.Part0 = Torso
+TORSOLERP.C0 = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+
+local ROOTLERP = Instance.new("ManualWeld")
+ROOTLERP.Parent = Root
+ROOTLERP.Part0 = Root
+ROOTLERP.Part1 = Torso
+ROOTLERP.C0 = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+
+local RIGHTARMLERP = Instance.new("ManualWeld")
+RIGHTARMLERP.Parent = RightArm
+RIGHTARMLERP.Part0 = RightArm
+RIGHTARMLERP.Part1 = Torso
+RIGHTARMLERP.C0 = CFrame.new(-1.5, 0, -0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+
+local LEFTARMLERP = Instance.new("ManualWeld")
+LEFTARMLERP.Parent = LeftArm
+LEFTARMLERP.Part0 = LeftArm
+LEFTARMLERP.Part1 = Torso
+LEFTARMLERP.C0 = CFrame.new(1.5, 0, -0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+
+local RIGHTLEGLERP = Instance.new("ManualWeld")
+RIGHTLEGLERP.Parent = RightLeg
+RIGHTLEGLERP.Part0 = RightLeg
+RIGHTLEGLERP.Part1 = Torso
+RIGHTLEGLERP.C0 = CFrame.new(-0.5, 2, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+
+local LEFTLEGLERP = Instance.new("ManualWeld")
+LEFTLEGLERP.Parent = LeftLeg
+LEFTLEGLERP.Part0 = LeftLeg
+LEFTLEGLERP.Part1 = Torso
+LEFTLEGLERP.C0 = CFrame.new(0.5, 2, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+
+local function weldBetween(a, b)
+    local weld = Instance.new("ManualWeld", a)
+    weld.Part0 = a
+    weld.Part1 = b
+    weld.C0 = a.CFrame:inverse() * b.CFrame
+    return weld
+end
+
+function makeblockytrail()
+coroutine.wrap(function()
+while true do
+for i,v in pairs(blocktrail) do
+smke = Instance.new("Part",v)
+smke.CFrame = v.CFrame * CFrame.Angles(math.random(-180,180),math.random(-180,180),math.random(-180,180))
+smke.Material = "Neon"
+smke.Anchored = true
+smke.CanCollide = false
+removeuseless:AddItem(smke,2)
+end
+swait()
+end
+end)()
+end
+
+local function ci(x, c, y, n)
+so = Instance.new("Sound", x)
+so.SoundId = c
+so.Volume = y
+so.Looped = n
+end
+
+function ghost()
+fakeeyo2 = Instance.new("Part",Head)
+fakeeyo2.BrickColor = BrickColor.new("White")
+fakeeyo2.Material = "Neon"
+fakeeyo2.Shape = "Ball"
+fakeeyo2.Anchored = true
+fakeeyo2.CFrame = eyo2.CFrame
+fakeeyo2.CanCollide = false
+fakeeyo2.Size = Vector3.new(0.33, 0.33, 0.33)
+table.insert(ghosttable,fakeeyo2)
+removeuseless:AddItem(fakeeyo2,3)
+
+fakeeyo1 = Instance.new("Part",Head)
+fakeeyo1.BrickColor = BrickColor.new("White")
+fakeeyo1.Material = "Neon"
+fakeeyo1.Shape = "Ball"
+fakeeyo1.CanCollide = false
+fakeeyo1.Anchored = true
+fakeeyo1.CFrame = eyo1.CFrame
+fakeeyo1.Size = Vector3.new(0.33, 0.33, 0.33)
+table.insert(ghosttable,fakeeyo1)
+removeuseless:AddItem(fakeeyo1,3)
+
+fakemask = Instance.new("Part",Character)
+fakemask.Size = Vector3.new(1,1,1)
+fakemask.CFrame = mask.CFrame
+fakemask.Material = "Neon"
+fakemask.CanCollide = false
+fakemask.Anchored = true
+fakemask.BrickColor = BrickColor.new("White")
+fakemask.Transparency = .5
+mfMask = Instance.new("SpecialMesh", fakemask)
+mfMask.MeshType = "FileMesh"
+mfMask.Scale = Vector3.new(0.13, 0.13, 0.1)
+mfMask.MeshId = 'http://www.roblox.com/asset/?id=5158270'
+table.insert(ghosttable,fakemask)
+removeuseless:AddItem(fakemask,3)
+
+
+fakejester = Instance.new("Part",Character)
+fakejester.Size = Vector3.new(2,2,2)
+fakejester.CFrame = jester.CFrame
+fakejester.CanCollide = false
+fakejester.Transparency = .5
+fakejester.Anchored = true
+fakejester.BrickColor =

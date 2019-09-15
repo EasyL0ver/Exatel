@@ -1,0 +1,18 @@
+var Web3 = require('web3');
+var web3 = new Web3(new 
+Web3.providers.HttpProvider("http://localhost:8545"));
+var Personal = require('web3-eth-personal')
+var personal = new Personal(Personal.givenProvider)
+
+var ABI = {contract abi}
+web3.eth.personal.unlockAccount("0xcc8d743....97278fe497ee90", "password", 
+60).then(
+contract.methods.transfer('0x43a91c052B913299Dd4F47C91bB7d982D8A8632e', 
+2).send({from:'0xCc8d743eB486bF38ED1197278Fe497eE9050F547', gas:210000})
+.on("result", 
+contract.methods.balanceOf('0x43a91c052B913299Dd4F47C91bB7d982D8A8632e')
+.call((error, result)=>console.log(result))).on("error", function(error) 
+{console.log(error);}))
+	
+100000008
+Error: Returned error: authentication needed: password or unlock

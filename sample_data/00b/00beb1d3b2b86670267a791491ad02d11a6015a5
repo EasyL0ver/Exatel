@@ -1,0 +1,176 @@
+// Implements a dictionary's functionality
+#include <cs50.h>
+#include <ctype.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <string.h>
+#include <strings.h>
+
+
+#include "dictionary.h"
+
+//defines trie structure with number of branches and bool for end of word
+    typedef struct trie_nodes
+    {
+        bool eow;
+        struct trie_nodes *children[27];
+    } tnode;
+
+//declares word counter
+int word_count = 0;
+
+//declares head value
+tnode *head;
+
+// Returns true if word is in dictionary else false
+bool check(const char *word)
+{
+    tnode *current = head;
+    int length = strlen(word);
+    char wordlow[length + 1];
+    //copies and lower cases string
+    for(int l = 0; l < length; l++)
+    {
+        wordlow[l] = tolower(word[l]);
+    }
+    wordlow[length] = '\0';
+
+    for (int m = 0; m < strlen(wordlow); m++)
+    {
+        int index;
+        if(wordlow[m] == '\'')
+        {
+            index = 26;
+        }
+        else
+        {
+            index = wordlow[m] - 'a';
+        }
+
+        if(wordlow[m] != '\0')
+        {
+            if (current -> children[index] == NULL)
+            {
+                return false;
+            }
+            else
+            {
+                current = current -> children[index];
+            }
+        }
+        else
+        {
+            if (current->eow == true)
+            {
+                return true;
+            }
+
+        }
+    }
+    return false;
+}
+
+// Loads dictionary into memory, returning true if successful else false
+bool load(const char *dictionary)
+{
+    // TODO
+
+    // Locate and OPEN Dictionary File
+    FILE * dic = fopen(dictionary, "r");
+    //prints error and returns false on fail
+    if (dic == NULL)
+    {
+        fprintf(stderr, "Could not open file.\n");
+        return false;
+    }
+
+    int index;
+
+    //creates head and sets cursor to head
+    head = malloc(sizeof(tnode));
+    tnode *current = head;
+    for (int o = 0; o < 27; o++)
+        {
+            current->children[o] = NULL;
+        }
+
+    while(true)
+    {
+        //pulls next character
+        char c = fgetc(dic);
+
+        //breaks if EOF
+        if(c == EOF)
+        {
+            break;
+        }
+        //establishes index number of character
+        if(c == '\'')
+        {
+            index = 26;
+        }
+        else
+        {
+            index = c - 'a';
+        }
+
+        if(c != '\n')
+        {
+            //unitialized node
+            if (current -> children[index] == NULL)
+            {
+                current -> children[index] = malloc(sizeof(tnode));
+                current = current -> children[index];
+                for (int n = 0; n < 27; n++)
+                    {
+                        current->children[n] = NULL;
+                    }
+            }
+            //intialized node -> navigates to next node
+            else
+            {
+                current = current -> children[index];
+            }
+        }
+        //line break coded as eow
+        else
+        {
+            current -> eow = true;
+            word_count++;
+
+            current = head;
+        }
+
+    }
+    fclose(dic);
+    return true;
+}
+
+// Returns number of words in dictionary if loaded else 0 if not yet loaded
+unsigned int size(void)
+{
+    // TODO
+    return word_count;
+}
+
+// Unloads dictionary from memory, returning true if successful else false
+void unloadnode(tnode *head);
+
+bool unload(void)
+{
+    unloadnode(head);
+    return true;
+}
+
+void unloadnode(tnode *head)
+{
+    //checks if all branches are null.  If all null then frees, else recurses
+    for (int k = 0; k < 27; k++)
+    {
+        if (head -> children[k] != NULL)
+        {
+            unloadnode(head -> children[k]);
+        }
+    }
+    free(head);
+}

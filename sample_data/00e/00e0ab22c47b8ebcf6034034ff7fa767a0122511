@@ -1,0 +1,347 @@
+//arhiva zip:B4_Solitar_Popescu_Gavrilovici.zip
+#include <iostream>
+#include <winbgim.h>
+#include <stdlib.h>
+#include <string.h>
+#include <cmath>
+#include <time.h>
+using namespace std;
+
+#define MAX 11
+#define FUNDAL COLOR(212,182,199)
+#define VAPOR2 BLUE
+#define VAPOR22 MAGENTA
+#define VAPOR3 COLOR(155, 165, 0)
+#define VAPOR4 RED
+#define MISS   6
+#define HIT    7
+#define SINKED 8
+const int MAX_LENGTH = 10;
+
+struct Position
+{
+    int x;
+    int y;
+};
+struct buton
+{
+    int x1=0, x2=0, y1=0, y2=0;
+    char text[20];
+};
+
+buton bVapor[6],gataV;
+
+struct Vapor
+{
+    int id, dimensiune, dirct;
+    bool checked=false;
+    Position pozitieInitiala;
+    int nrHits=0;
+};
+Vapor v[5], vC[5];
+int stanga1, stanga2, stanga3, sus1, sus2, sus3, width, height, latura, numar, liniaaux, coloanaaux, linia, coloana, numarColoane, numarLinii;
+int tablaJoc, tablaMeniu;
+bool gata, verif;
+int nr=0, nrHit=0;
+int TablaDeJoc[MAX][MAX], TablaComputer[MAX][MAX];
+int xmijloc, ymijloc;
+int vID, vIDC;
+void meniuJoc ();
+void desenareTabla ();
+void desen1()
+{
+    int i,j;
+    numar=10;
+    width=350;
+    height=350;
+    latura=width/numar;
+    sus1=(getmaxy()-width)/2;
+    stanga1=(getmaxx()-height)/8;
+    setcolor(BLUE);
+    for (i=1; i<=numar; i++)
+        for (j=1; j<=numar; j++)
+            rectangle(stanga1+latura*(i-1),sus1+latura*(j-1),stanga1+latura*i,sus1+latura*j);
+}
+void desen2()
+{
+    int i,j;
+    numar=10;
+    width=350;
+    height=350;
+    latura=width/numar;
+    sus2=(getmaxy()-width)/2;
+    stanga2=(getmaxx()-height)/1.5;
+    setcolor(BLUE);
+    for (i=1; i<=numar; i++)
+        for (j=1; j<=numar; j++)
+            rectangle(stanga2+latura*(i-1),sus2+latura*(j-1),stanga2+latura*i,sus2+latura*j);
+}
+void desen3 ()
+{
+    int i, j;
+    int width3, height3, latura3;
+    numarColoane=1;
+    numarLinii=4;
+    width3=141;
+    height3=350;
+    latura3=35;
+    sus3=(getmaxy()-width3)/2;
+    stanga3=(getmaxx()-height3)+150;
+    setcolor(BLACK);
+    for (i=1; i<=numarColoane; i++)
+        for (j=1; j<=numarLinii; j++)
+            rectangle(stanga3+latura3*(i-1), sus3+latura3*(j-1), stanga3+latura3*i, sus3+latura3*j);
+}
+buton buton_home(int x, int y)
+{
+    buton B;
+    setcolor(WHITE);
+    rectangle(x-1, y-1, x+90, y+29);
+    setbkcolor(LIGHTGRAY);
+    setcolor(BLACK);
+    settextstyle(GOTHIC_FONT, HORIZ_DIR, 2);
+    setfillstyle(SOLID_FILL,LIGHTGRAY);
+    settextjustify(0,2);
+    floodfill (x+1, y+1, WHITE);
+    outtextxy (x+1, y+6, "Home");
+    B.x1=x;
+    B.x2=x+90;
+    B.y1=y;
+    B.y2=y+29;
+    return B;
+}
+buton buton_restart (int x, int y)
+{
+    buton B;
+    setcolor(WHITE);
+    rectangle(x-1, y-1, x+110, y+29);
+    setbkcolor(LIGHTGRAY);
+    setcolor(BLACK);
+    settextstyle(GOTHIC_FONT, HORIZ_DIR, 2);
+    setfillstyle(SOLID_FILL, LIGHTGRAY);
+    settextjustify(0,2);
+    floodfill (x+1, y+1, WHITE);
+    outtextxy(x+1, y+6, "Restart");
+    B.x1=x;
+    B.x2=x+110;
+    B.y1=y;
+    B.y2=y+29;
+    return B;
+}
+buton buton_next (int x, int y)
+{
+    buton B;
+    setcolor(WHITE);
+    rectangle(x-1, y-1, x+80, y+29);
+    setbkcolor(LIGHTGRAY);
+    setcolor(BLACK);
+    settextstyle(GOTHIC_FONT, HORIZ_DIR, 2);
+    setfillstyle(SOLID_FILL, LIGHTGRAY);
+    settextjustify(0,2);
+    floodfill (x+1, y+1, WHITE);
+    outtextxy(x+1, y+6, "Next");
+    B.x1=x;
+    B.x2=x+80;
+    B.y1=y;
+    B.y2=y+29;
+    return B;
+}
+buton buton_back (int x, int y)
+{
+    buton B;
+    setcolor(WHITE);
+    rectangle(x-1, y-1, x+80, y+29);
+    setbkcolor(LIGHTGRAY);
+    setcolor(BLACK);
+    settextstyle(GOTHIC_FONT, HORIZ_DIR, 2);
+    setfillstyle(SOLID_FILL, LIGHTGRAY);
+    settextjustify(0,2);
+    floodfill (x+1, y+1, WHITE);
+    outtextxy(x+1, y+6, "Back");
+    B.x1=x;
+    B.x2=x+80;
+    B.y1=y;
+    B.y2=y+29;
+    return B;
+}
+bool buton_apasat(buton B)
+{
+    int x=mousex();
+    int y=mousey();
+    if((x >= B.x1 && x <= B.x2) and (y >= B.y1 && y <= B.y2))
+        return true;
+    return false;
+}
+void meniu_instructiuni1();
+void meniu_instructiuni2()
+{
+    const char *img2="congrats.jpg";
+    tablaMeniu=initwindow(600, 600, "Instructiuni", 250, 50);
+    setcurrentwindow(tablaMeniu);
+    setfillstyle(SOLID_FILL, FUNDAL);
+    bar(0, 0, getmaxx(), getmaxy());
+    setbkcolor(FUNDAL);
+    setcolor(BLACK);
+    buton homeB=buton_home(500, 500);
+    buton backB=buton_back(20, 500);
+    setbkcolor(FUNDAL);
+    do
+    {
+
+        if (ismouseclick(WM_LBUTTONDOWN))
+        {
+            if(buton_apasat(homeB))
+            {
+                clearmouseclick(WM_LBUTTONDOWN);
+                closegraph();
+                initwindow(600, 600, "Meniu", 250, 50);
+                meniuJoc();
+            }
+            if(buton_apasat(backB))
+            {
+                clearmouseclick(WM_LBUTTONDOWN);
+                closegraph();
+                tablaMeniu=initwindow(600, 600, "Instructiuni", 250, 50);
+                meniu_instructiuni1();
+            }
+        }
+        settextstyle(BOLD_FONT, HORIZ_DIR, 5);
+        settextjustify(1, 1);
+        setusercharsize(2, 1, 3, 2);
+        outtextxy(300, 70, "Vaporase");
+
+        setusercharsize(1, 3, 1, 1);
+        settextstyle(BOLD_FONT, HORIZ_DIR, 1);
+        outtextxy(300, getmaxy()/4, "Dupa acest pas, urmeaza atacul propriu-zis.");
+        outtextxy(300, getmaxy()/4+20, "Jocul urmeaza regula 'one shot', deci fiecare jucator");
+        outtextxy(300, getmaxy()/4+40, "va lovi cate un patratel.");
+        outtextxy(300, getmaxy()/4+60, "Conform regulilor, in momentul in care unul dintre");
+        outtextxy(300, getmaxy()/4+80, "jucatori a lovit toate vapoarele, acesta castiga.");
+        readimagefile(img2, 158, getmaxy()/5+160, 158+284, getmaxy()/5+444);
+
+    }
+    while (true);
+}
+void meniu_instructiuni1 ()
+{
+    const char *img="putShips.jpg";
+
+    tablaMeniu=initwindow(600, 600, "Instructiuni", 250, 50);
+    setcurrentwindow(tablaMeniu);
+    setfillstyle(SOLID_FILL, FUNDAL);
+    bar(0, 0, getmaxx(), getmaxy());
+    setbkcolor(FUNDAL);
+    setcolor(BLACK);
+    buton homeB=buton_home(500, 500);
+    buton nextB=buton_next(500, 540);
+    do
+    {
+        if (ismouseclick(WM_LBUTTONDOWN))
+        {
+            if(buton_apasat(homeB))
+            {
+                clearmouseclick(WM_LBUTTONDOWN);
+                closegraph();
+                initwindow(600, 600, "Meniu", 250, 50);
+                meniuJoc();
+            }
+            if(buton_apasat(nextB))
+            {
+                clearmouseclick(WM_LBUTTONDOWN);
+                closegraph();
+                tablaMeniu=initwindow(600, 600, "Instructiuni", 250, 50);
+                meniu_instructiuni2();
+            }
+        }
+        setbkcolor(FUNDAL);
+        settextstyle(BOLD_FONT, HORIZ_DIR, 5);
+        settextjustify(1, 1);
+        setusercharsize(2, 1, 3, 2);
+        outtextxy(300, 70, "Vaporase");
+
+        setusercharsize(1, 3, 1, 1);
+        settextstyle(BOLD_FONT, HORIZ_DIR, 1);
+        outtextxy(300, getmaxy()/5, "Jucatorul isi marcheaza pe harta “Vaporasele”.");
+        outtextxy(300, getmaxy()/5+20, "Toate vaporasele sunt disponibile pe orizontala,");
+        outtextxy(300, getmaxy()/5+40, "verticala si oblica.");
+        outtextxy(300, getmaxy()/5+60, "Conform regulilor, puteti insera 2 vaporase de");
+        outtextxy(300, getmaxy()/5+80, "dimensiune 2, un vaporas de dimensiune 3 si unul de");
+        outtextxy(300, getmaxy()/5+100, "dimensiune 4, ca si in imagine.");
+        readimagefile(img, 158, getmaxy()/5+160, 158+284, getmaxy()/5+444);
+
+    }
+    while (true);
+}
+void colorare_vapor (int culnr, int cul)
+{
+    int x1, y1, x2, y2;
+    nr++;
+    liniaaux=linia;
+    coloanaaux=coloana;
+    TablaDeJoc[linia][coloana]=culnr;
+    //setcolor(FUNDAL);
+    setfillstyle(SOLID_FILL,cul);
+    x1=stanga1+latura*(coloana-1);
+    y1=sus1+latura*(linia-1);
+    x2=x1+latura;
+    y2=y1+latura;
+    xmijloc=(x1+x2)/2;
+    ymijloc=(y1+y2)/2;
+    bar(xmijloc-15, ymijloc-15, xmijloc+17, ymijloc+17);
+}
+int directie (int linia, int coloana, int liniaaux, int coloanaaux)
+{
+    const int Y_DIRECTION[] = {0,1,1,1,0,-1,-1,-1};
+    const int X_DIRECTION[] = {-1,-1,0,1,1,1,0,-1};
+    for (int i=0; i<=7; i++)
+    {
+        if (linia-liniaaux==X_DIRECTION[i] && coloana-coloanaaux==Y_DIRECTION[i])
+            return i+1;
+    }
+    /*if (linia-liniaaux==-1 && coloana-coloanaaux==0)
+        return 1; ///sus
+    if (linia-liniaaux==-1 && coloana-coloanaaux==1)
+        return 2; /// dreapta sus
+    if (linia-liniaaux==0 && coloana-coloanaaux==1)
+        return 3; /// orizontala dreapta
+    if (linia-liniaaux==1 && coloana-coloanaaux==1)
+        return 4; ///dreapta jos
+    if (linia-liniaaux==1 && coloana-coloanaaux==0)
+        return 5; /// jos
+    if (linia-liniaaux==1 && coloana-coloanaaux==-1)
+        return 6; /// stanga jos
+    if (linia-liniaaux==0 && coloana-coloanaaux==-1)
+        return 7; /// orizontala stanga
+    if (linia-liniaaux==-1 && coloana-coloanaaux==-1)
+        return 8; ///stanga sus
+    return 0;*/
+}
+void putVapor2()
+{
+    int x, y;
+    int x1, y1, x2, y2;
+    buton homeB=buton_home(getmaxx()-200,getmaxy()-100);
+    buton restartB=buton_restart(getmaxx()-200, getmaxy()-140);
+    if(ismouseclick(WM_LBUTTONDOWN))
+    {
+        if(buton_apasat(homeB))
+        {
+            clearmouseclick(WM_LBUTTONDOWN);
+            closegraph();
+            initwindow(600, 600, "Meniu", 250, 50);
+            meniuJoc();
+        }
+        if (buton_apasat(restartB))
+        {
+            clearmouseclick(WM_LBUTTONDOWN);
+            closegraph();
+            initwindow(1200,600, "Tabla de joc");
+            desenareTabla();
+        }
+        if (nr==0)
+        {
+            liniaaux=0;
+            coloanaaux=0;
+        }
+        clearmouseclick(WM_LBUTTONDOWN);
+      

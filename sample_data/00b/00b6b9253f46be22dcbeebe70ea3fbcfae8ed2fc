@@ -1,0 +1,7 @@
+select id_teacher, fio, post, teachersanddepartments.id_department , d1.name_of_department, id_subject, name_of_subject, subjects.specific, subjects.id_department, d2.name_of_department,
+id_classroom, number_of_classroom, classrooms.specific, classrooms.id_department, d3.name_of_department, id_group, name_of_group, groups.id_department, d4.name_of_department,
+specifics, daytime, pair, NUMERATOR_DENOMINATOR, keyy, typekey
+from ((((classes join teachers using(id_teacher) join teachersanddepartments using(id_teacher) join departments d1 on d1.id_department = teachersanddepartments.id_department)
+join subjects using (id_subject) join departments d2 on d2.id_department = subjects.id_department)
+join classrooms using(id_classroom) join departments d3 on d3.id_department = classrooms.id_department)
+join groups using (id_group) join departments d4 on d4.id_department = groups.id_department)

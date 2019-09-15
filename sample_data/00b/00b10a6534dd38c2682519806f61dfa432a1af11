@@ -1,0 +1,31 @@
+───────────────┬──────────────┬──────────┬──────────
+ UPPER SECTION │ HOW TO SCORE │ PLAYER 1 │ PLAYER 2
+───────────────┼──────────────┼──────────┼──────────
+ ACES      = 1 │ ADD ACES     │          │
+ TWOS      = 2 │ ADD TWOS     │          │
+ THREES    = 3 │ ADD THREES   │          │
+ FOURS     = 4 │ ADD FOURS    │          │
+ FIVES     = 5 │ ADD FIVES    │          │
+ SIXES     = 6 │ ADD SIXES    │          │
+───────────────┴──────────────┼──────────┼──────────
+  TOTAL SCORE --------------> │          │
+  BONUS (total 63/over) 35 -> │          │
+  TOTAL (of upper section) -> │          │
+──────────────────────────────┴──────────┴──────────
+ 
+───────────────┬──────────────┬──────────┬──────────
+ LOWER SECTION │ HOW TO SCORE │ PLAYER 1 │ PLAYER 2
+───────────────┼──────────────┼──────────┼──────────
+ 3 OF A KIND   │ ADD ALL DICE │          │
+ 4 OF A KIND   │ ADD ALL DICE │          │
+ FULL HOUSE    │   SCORE 25   │          │
+ SM. STRAIGHT  │   SCORE 30   │          │
+ LG. STRAIGHT  │   SCORE 40   │          │
+ YAHTZEE       │   SCORE 50   │          │
+ CHANCE        │ ADD ALL DICE │          │
+───────────────┴──────────────┼──────────┼──────────
+  TOTAL (lower section) ----> │          │
+  TOTAL (upper section) ----> │          │
+──────────────────────────────┼──────────┼──────────
+  GRAND TOTAL --------------> │          │
+──────────────────────────────┴──────────┴──────────

@@ -1,0 +1,13 @@
+Sub asignCSWhotkey()
+
+    Application.MacroOptions Macro:="zeroDecCommaThou", _
+                             Description:="No decimals with comma thousands separator.", _
+                             ShortcutKey:="W"
+
+End Sub
+
+Sub zeroDecCommaThou()
+
+    Selection.NumberFormat = "#,###0"
+
+End Sub

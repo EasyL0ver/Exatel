@@ -1,0 +1,9 @@
+FLUX=first
+DATE=`date +%Y%m%d_%H_%M`
+justName=$FLUX
+DIR_LOG=$REP_LOG_TD/DDL_TABLES_LOG/$justName'_'$DATE
+if [ condition ]
+then
+ justName=other
+ DIR_LOG=$DIR_LOG
+fi

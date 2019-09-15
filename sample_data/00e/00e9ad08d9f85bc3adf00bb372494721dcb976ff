@@ -1,0 +1,12 @@
+SELECT 
+T0.DocNum, 
+T0.CardCode, 
+T0.CardName, 
+T0.DocDate, 
+T0.DocTotal,
+10000 AS 'Budget',
+T2.GroupName AS 'CustomerGroup',
+T1.Country
+FROM OINV T0 
+JOIN OCRD T1 ON T0.CardCode = T1.CardCode
+JOIN OCRG T2 ON T1.GroupCode = T2.GroupCode

@@ -1,0 +1,32 @@
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:
+      (NSIndexPath*)indexPath
+{
+    NSUInteger section = [indexPath section];
+    NSString *key = [chapters objectAtIndex:section];
+    NSArray *linesSection = [lines objectForKey:key];
+    NSString* theText =  [linesSection objectAtIndex:indexPath.row];
+
+    int labelWidth = LW_CHAPTERINDEX_10;
+    if (chapters.count < 100){
+        if (chapters.count < NB_MIN_CHAP){
+            labelWidth = LABELWIDTH;
+        } else {
+            labelWidth = LW_CHAPTERINDEX_10;
+        }
+    }
+
+    CGSize textSize = [theText sizeWithFont:[UIFont systemFontOfSize:14]
+        constrainedToSize:CGSizeMake(labelWidth, MAXFLOAT) 
+        lineBreakMode:UILineBreakModeWordWrap];
+
+    return textSize.height;
+}
+	
+int labelWidth = LW_CHAPTERINDEX_10;
+if (chapters.count < 100){
+    if (chapters.count < NB_MIN_CHAP){
+        labelWidth = LABELWIDTH;
+    } else {
+        labelWidth = LW_CHAPTERINDEX_10;
+    }
+}

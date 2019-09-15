@@ -1,0 +1,40 @@
+import java.io.*;
+import javax.swing.JOptionPane;
+
+public class EsercizioL1 {
+
+static int n;
+
+public static int[] leggi() throws IOException{
+String s = " ";
+int a;
+int[] ris = new int[100];
+	for (int i = 0; i < 100 && s!= null && s != ""; i++) {
+	s = JOptionPane.showInputDialog("Inserisci un numero o premere annulla per terminare");
+	if (s == "")
+	return ris;
+	else if (s != null) {
+	a = Integer.parseInt(s);
+	ris[i] = a;
+	n++;
+	}
+	}
+return ris;
+}
+
+public static void scrivi() throws IOException{
+String file = JOptionPane.showInputDialog("Inserisci il nome del file") + ".txt";
+FileWriter f = new FileWriter (file);
+PrintWriter out = new PrintWriter(f);
+
+int[] array = leggi();
+
+	for (int i = 0; i < n; i++) {
+	out.println(array[i]);
+	}
+}
+
+public static void main(String[] args) throws IOException{
+scrivi();
+}
+}

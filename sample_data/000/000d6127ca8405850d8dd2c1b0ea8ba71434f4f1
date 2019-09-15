@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+  int n;
+  int nk;
+  scanf("%d",&n);
+  scanf("%d",&nk);
+  while (n<nk){
+  if (n%2==0){
+  printf("%d \n", n);
+  n++;
+  continue;
+  }
+  else{ 
+  n++;
+  continue;
+  }
+              }
+  system("PAUSE");	
+  return 0;
+}

@@ -1,0 +1,426 @@
+/** 
+* Arduino USB HID Keyboard Demo
+* Keys 1, 2, 3 and 4 on pins 4, 5, 6 and 7
+* 
+* @info check details on my website
+* @link http://blog.realhe.ro
+*/
+uint8_t buf[8] = {
+0 }; /* Keyboard report buffer */
+
+#define KEY_P1_UP       0x52
+#define KEY_P1_DOWN     0x51
+#define KEY_P1_LEFT     0x50
+#define KEY_P1_RIGHT    0x4f
+#define KEY_P1_LCTRL    0xe0
+#define KEY_P1_ALT      0xe2
+#define KEY_P1_SPACE    0x2c
+#define KEY_P1_LSHIFT   0xe1
+#define KEY_P1_Z        0x1d
+#define KEY_P1_X        0x1b
+#define KEY_P1_5        0x22
+#define KEY_P1_1        0x1e
+
+#define KEY_P2_R        0x15
+#define KEY_P2_F        0x09
+#define KEY_P2_D        0x07
+#define KEY_P2_G        0x0a
+#define KEY_P2_A        0x04
+#define KEY_P2_S        0x16
+#define KEY_P2_Q        0x14
+#define KEY_P2_W        0x1a
+#define KEY_P2_I        0x0c
+#define KEY_P2_K        0x0e
+#define KEY_P2_6        0x23
+#define KEY_P2_2        0x1f
+
+
+#define KEY_VOLUP		0x57
+#define KEY_VOLDOWN		0x56
+#define KEY_F7			0x40
+#define KEY_F8			0x41
+#define KEY_ENTER		0x28
+#define KEY_ESC			0x29
+#define KEY_P			0x13
+#define KEY_TAB			0x2b
+
+
+#define PIN_P1_UP      30
+#define PIN_P1_DOWN    31
+#define PIN_P1_LEFT    32
+#define PIN_P1_RIGHT   33
+#define PIN_P1_LCTRL   34
+#define PIN_P1_ALT     35
+#define PIN_P1_SPACE   36
+#define PIN_P1_LSHIFT  37
+#define PIN_P1_Z       38
+#define PIN_P1_X       39
+#define PIN_P1_5       40
+#define PIN_P1_1       41
+
+#define PIN_P2_R       42
+#define PIN_P2_F       43
+#define PIN_P2_D       44
+#define PIN_P2_G       45
+#define PIN_P2_A       46
+#define PIN_P2_S       47
+#define PIN_P2_Q       48
+#define PIN_P2_W       49
+#define PIN_P2_I       50
+#define PIN_P2_K       51
+#define PIN_P2_6       52
+#define PIN_P2_2       53
+
+int state = 1;
+
+void setup()
+{
+  Serial.begin(9600);
+  randomSeed(analogRead(0));
+  delay(200);
+
+  pinMode(PIN_P1_UP, INPUT);
+  pinMode(PIN_P1_DOWN, INPUT);
+  pinMode(PIN_P1_LEFT, INPUT);
+  pinMode(PIN_P1_RIGHT, INPUT);
+  pinMode(PIN_P1_LCTRL, INPUT);
+  pinMode(PIN_P1_ALT, INPUT);
+  pinMode(PIN_P1_SPACE, INPUT);
+  pinMode(PIN_P1_LSHIFT, INPUT);
+  pinMode(PIN_P1_Z, INPUT);
+  pinMode(PIN_P1_X, INPUT);
+  pinMode(PIN_P1_5, INPUT);
+  pinMode(PIN_P1_1, INPUT);
+  
+  pinMode(PIN_P2_R, INPUT);
+  pinMode(PIN_P2_F, INPUT);
+  pinMode(PIN_P2_D, INPUT);
+  pinMode(PIN_P2_G, INPUT);
+  pinMode(PIN_P2_A, INPUT);
+  pinMode(PIN_P2_S, INPUT);
+  pinMode(PIN_P2_Q, INPUT);
+  pinMode(PIN_P2_W, INPUT);
+  pinMode(PIN_P2_I, INPUT);
+  pinMode(PIN_P2_K, INPUT);
+  pinMode(PIN_P2_6, INPUT);
+  pinMode(PIN_P2_2, INPUT);
+
+
+  digitalWrite(PIN_P1_UP, 1);
+  digitalWrite(PIN_P1_DOWN, 1);
+  digitalWrite(PIN_P1_LEFT, 1);
+  digitalWrite(PIN_P1_RIGHT, 1);
+  digitalWrite(PIN_P1_LCTRL, 1);
+  digitalWrite(PIN_P1_ALT, 1);
+  digitalWrite(PIN_P1_SPACE, 1);
+  digitalWrite(PIN_P1_LSHIFT, 1);
+  digitalWrite(PIN_P1_Z, 1);
+  digitalWrite(PIN_P1_X, 1);
+  digitalWrite(PIN_P1_5, 1);
+  digitalWrite(PIN_P1_1, 1);
+  
+  digitalWrite(PIN_P2_R, 1);
+  digitalWrite(PIN_P2_F, 1);
+  digitalWrite(PIN_P2_D, 1);
+  digitalWrite(PIN_P2_G, 1);
+  digitalWrite(PIN_P2_A, 1);
+  digitalWrite(PIN_P2_S, 1);
+  digitalWrite(PIN_P2_Q, 1);
+  digitalWrite(PIN_P2_W, 1);
+  digitalWrite(PIN_P2_I, 1);
+  digitalWrite(PIN_P2_K, 1);
+  digitalWrite(PIN_P2_6, 1);
+  digitalWrite(PIN_P2_2, 1);
+}
+
+void loop()
+{
+
+  state = digitalRead(PIN_P1_UP);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_UP;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_DOWN);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_DOWN;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_LEFT);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_LEFT;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_RIGHT);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_RIGHT;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_LCTRL);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_LCTRL;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_ALT);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_ALT;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_SPACE);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_SPACE;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_LSHIFT);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_LSHIFT;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_Z);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_Z;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_X);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_X;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_5);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_5;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P1_1);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P1_1;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_R);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_R;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_F);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_F;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_D);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_D;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_G);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_G;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_A);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_A;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_S);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_S;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_Q);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_Q;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_W);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_W;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_I);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_I;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_K);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_K;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_6);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_6;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+
+  state = digitalRead(PIN_P2_2);
+  if (state != 1) {
+    buf[0] = 0;
+    buf[2] = KEY_P2_2;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+  }
+  
+  if ((digitalRead(PIN_P1_1) == LOW) && (digitalRead(PIN_P1_UP) == LOW)) {
+	buf[0] = 0;
+    buf[2] = KEY_VOLUP;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+	} 
+	
+  if ((digitalRead(PIN_P1_1) == LOW) && (digitalRead(PIN_P1_DOWN) == LOW)) {
+	buf[0] = 0;
+    buf[2] = KEY_VOLDOWN;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+	}
+	
+  if ((digitalRead(PIN_P1_1) == LOW) && (digitalRead(PIN_P1_LEFT) == LOW)) {
+	buf[0] = 0;
+    buf[2] = KEY_F7;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+	} 
+	
+  if ((digitalRead(PIN_P1_1) == LOW) && (digitalRead(PIN_P1_RIGHT) == LOW)) {
+	buf[0] = 0;
+    buf[2] = KEY_F8;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+	}
+	
+  if ((digitalRead(PIN_P1_1) == LOW) && (digitalRead(PIN_P1_LCTRL) == LOW)) {
+	buf[0] = 0;
+    buf[2] = KEY_ENTER;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+	} 
+	
+  if ((digitalRead(PIN_P1_1) == LOW) && (digitalRead(PIN_P1_LSHIFT) == LOW)) {
+	buf[0] = 0;
+    buf[2] = KEY_ESC;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+	}
+	
+  if ((digitalRead(PIN_P1_1) == LOW) && (digitalRead(PIN_P1_ALT) == LOW)) {
+	buf[0] = 0;
+    buf[2] = KEY_P;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+	} 
+	
+  if ((digitalRead(PIN_P1_1) == LOW) && (digitalRead(PIN_P1_Z) == LOW)) {
+	buf[0] = 0;
+    buf[2] = KEY_TAB;
+    Serial.write(buf, 8);
+    releaseKey();
+    delay(200);
+	}
+
+}
+
+void releaseKey()
+{
+  buf[0] = 0;
+  buf[2] = 0;
+  Serial.write(buf, 8); // Release key
+}

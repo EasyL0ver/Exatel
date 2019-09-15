@@ -1,0 +1,65 @@
+AS3 which item in an array has the lower value?
+var enemyArray:Array = new Array();
+var turretArray:Array = new Array();
+
+addEventListener(Event.EnterFrame, loop);
+
+// adding enemies
+for(var i:int=0; i<3; i++){
+    var enemy:Enemy = new Enemy();
+    ...
+    ...
+    enemyArray.push(enemy);
+    addChild(enemy);
+}
+
+// adding turret
+for(var t:int=0; t<2; t++){
+    var turret:Turret = new Turret();
+    ...
+    ...
+    turret.destinationX = 0;
+    turret.destinationY = 0;
+    turret.distance = 0;
+    turretArray.push(turret);
+    addChild(turret);
+}
+
+// loop
+function loop(event:Event):void{
+    for(var j:int=enemyArray.length-1; j>=0; j--){
+        for(var k:int=turretArray.length-1; k>=0; k--){
+
+            // getting destination
+            turretArray[k].destinationX = turretArray[k].x - enemyArray[j].x;
+            turretArray[k].destinationY = turretArray[k].y - enemyArray[j].y;
+
+            // getting distance between turret and enemy
+            turretArray[k].distance =   Math.sqrt(turretArray[k].destinationX*turretArray[k].destinationX+turretArray[k].destinationY*turretArray[k].destinationY);
+
+            // here i need to get min value from all turrets distance
+        }
+    }
+}
+	
+// loop
+function loop(event:Event):void{
+    for(var k:int=turretArray.length-1; k>=0; k--)
+    {
+        turretArray[k].distance = -1;
+
+        for(var j:int=enemyArray.length-1; j>=0; j--)
+        {
+            var dx = turretArray[k].x - enemyArray[j].x;
+            var dy = turretArray[k].y - enemyArray[j].y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+
+            if(dist < turretArray[k].distance || turretArray[k].distance < 0)
+            {
+                turretArray[k].distance = dist;
+                turretArray[k].destinationX = dx;
+                turretArray[k].destinationY = dy;
+            }
+        }
+    }
+}

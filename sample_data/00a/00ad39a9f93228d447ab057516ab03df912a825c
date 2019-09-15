@@ -1,0 +1,108 @@
+public void RegisterType<T>(Func<T, uint> func)
+	
+RegisterType<Post>(p => p.PostId );
+RegisterType<Comment>(p => p.CommentId );
+	
+GetObjectId(myPost);
+	
+public uint GetObjectId(object obj)
+	
+private Dictionary<Type, Func<object, uint>> _typeMap;
+	
+public void RegisterType<T>(Func<T, uint> func){
+             _typeMap.Add(typeof(T), obj=>func((T)obj));
+}
+	
+public class Registration
+    {
+        public static Registration Instance = new Registration();
+
+        private Registration()
+        {
+        }
+
+        private Dictionary<Type, object> Dictionary = new Dictionary<Type, object>();
+
+        public void Register<T>(Func<T, uint> aFunc)
+        {
+            Dictionary[typeof(T)] = aFunc;
+        }
+
+        public uint GetId<T>(T aT)
+        {
+            var f = Dictionary[typeof(T)];
+            var g = (Delegate)f;
+            return (uint) g.DynamicInvoke(aT);
+        }
+    }
+	
+private Dictionary<Type, Func<object, uint>> _typeMap;
+	
+class Post
+{
+    public uint PostId { get; set; }
+}
+
+static public void RegisterType<T>(Func<T, uint> getUintFromT)
+{
+    Func<object, T> toT = (t => (T)t);
+
+    Func<object, uint> getUintFromObject = 
+        @object => getUintFromT(toT(@object));
+
+    _typeMap.Add(typeof(T), getUintFromObject);
+}
+
+static public uint GetObjectId(object obj)
+{
+    return _typeMap[obj.GetType()](obj);
+}
+	
+class Program
+{
+    private static Dictionary<Type, Func<object, uint>> _typeMap 
+        = new Dictionary<Type, Func<object, uint>>();
+
+    static void Main(string[] args)
+    {
+        RegisterType<Post>(p => p.PostId);
+
+        Post myPost = new Post();
+        myPost.PostId = 4;
+
+        var i = GetObjectId(myPost);
+
+        Console.WriteLine(i);
+        Console.ReadKey();
+
+    }
+}
+	
+private Dictionary<Type, Delegate> _typeMap
+	
+public uint GetObjectId(object obj)
+{
+    uint id = 0;
+
+    var objType = obj.GetType();
+
+    // busco si el type está registrado
+    if (_typeMap.Keys.Contains(objType))            
+    {
+        id = (uint) _typeMap[objType].Method.Invoke(obj, new object[] { obj } );                
+    }
+
+    return id;
+}
+	
+private Dictionary<Type, Func<object, uint>> _typeMap;
+
+public void RegisterType<T>(uint typeId, Func<T, uint> func)
+{            
+    _typeMap[typeof(T)] = (o) => func((T)o);
+}
+
+public uint GetObjectId(object obj)
+{
+    return _typeMap[obj.GetType()](obj);
+}

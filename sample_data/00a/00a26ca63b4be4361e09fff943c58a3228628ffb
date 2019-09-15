@@ -1,0 +1,19 @@
+let a = 1, b = 2, c = 3
+
+let min = 0, mid = 0, max = 0
+
+if (a > b && a > c) { max = a }
+if (b > a && b > c) { max = b }
+if (c > a && c > b) { max = c }
+
+if (a > b && a < c) { mid = a }
+if (b > a && b < c) { mid = b }
+if (c > a && c < b) { mid = c }
+
+if (a < b && a < c) { min = a }
+if (b < a && b < c) { min = b }
+if (c < a && c < b) { min = c }
+
+console.log('Максимальное: ' + max)
+console.log('Среднее: ' + mid)
+console.log('Минимальное: ' + min)

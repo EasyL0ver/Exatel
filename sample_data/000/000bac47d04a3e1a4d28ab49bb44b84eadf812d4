@@ -1,0 +1,290 @@
+import time
+
+from agent import AlphaBetaAgent
+import minimax
+import random
+
+EARLY_GAME = 1
+MID_GAME = 2
+LATE_GAME = 3
+
+FLAT_STONE = 0
+STANDING_STONE = 1
+CAP_STONE = 2
+
+MAX_TURN_AVERAGE = 45
+
+class MyAgent(AlphaBetaAgent):
+
+  def __init__(self):
+    self.first_tak = False
+    self.first_captured = False
+    self.game_stage = EARLY_GAME
+    self.nb_turn = 0
+
+    self.current_depth = 0
+    self.tak_threat = False
+
+    self.last_turn_time = 0
+    self.previous_time_left = 0
+    self.time_bank = 0
+    self.max_time = 0
+    self.average_time_per_turn = 0
+    self.start_turn = 0
+
+    self.max_depth = 0
+
+  #TODO Test whether an hashmap with (state, eval) could give better perf
+
+  def get_name(self):
+    return "Group 71"
+
+  def get_action(self, state, last_action, time_left):
+    # print(last_action)
+    # print("depth previous turn : ", self.max_depth)
+    self.last_action = last_action
+
+    self.start_turn = time.time()
+    self.time_left = time_left
+    if self.nb_turn == 0:
+      self.max_time = time_left
+      self.average_time_per_turn = self.max_time/MAX_TURN_AVERAGE
+    self.time_bank += self.average_time_per_turn - self.previous_time_left
+
+    # print("time bank: ", self.time_bank)
+
+    self.tak_threat = False
+    self.set_game_stage(state)
+    self.nb_turn += 1
+    # print("time left : " + str(time_left))
+    return minimax.search(state, self)
+
+  """
+  The successors function must return (or yield) a list of
+  pairs (a, s) in which a is the action played to reach the
+  state s.
+  """
+  def successors(self, state):
+    # At the moment, the successor function returns all the possible actions
+    # with a new state where the action has been applied
+
+    #print(self.nb_turn)
+    #First turn logic
+    if self.nb_turn == 1:
+      if self.id == 0:  # We begin
+        actions = [('place', FLAT_STONE, state.size-1, 0), ('place', FLAT_STONE, 0, state.size-1),
+                   ('place', FLAT_STONE, 0, 0), ('place', FLAT_STONE, state.size-1, state.size-1)]
+        action = random.choice(actions)
+      else:             # The opponent has begun
+        if self.last_action[2] == 0 and self.last_action[3] == 0:
+          action = ('place', FLAT_STONE, state.size - 1, state.size -1)
+        elif self.last_action[2] == state.size - 1 and self.last_action[3] == 0:
+          action = ('place', FLAT_STONE, 0, state.size - 1)
+        elif self.last_action[2] == 0 and self.last_action[3] == state.size-1:
+          action = ('place', FLAT_STONE, state.size - 1, 0)
+        elif self.last_action[2] == \
+            state.size - 1 and self.last_action[3] == state.size - 1:
+          action = ('place', FLAT_STONE, 0, 0)
+        else:
+          actions = [('place', FLAT_STONE, state.size - 1, 0), ('place', FLAT_STONE, 0, state.size - 1),
+                     ('place', FLAT_STONE, 0, 0), ('place', FLAT_STONE, state.size - 1, state.size - 1)]
+          action = random.choice(actions)
+      state_copy = state.copy()
+      state_copy.apply_action(action)
+      return [(action, state_copy)]
+
+    candidates = []
+    possible_actions = state.get_current_player_actions()
+
+    for action in possible_actions:
+      state_copy = state.copy()
+      state_copy.apply_action(action)
+
+      if action[0] == 'place':
+        my_neigh, opp_neigh = self.count_neighbor(action[2], action[3], self.id, state_copy)
+        if my_neigh != 0 or opp_neigh != 0:
+          candidates.append((action, state_copy))
+      else:
+        candidates.append((action, state_copy))
+
+    random.shuffle(candidates)
+    sorted_candidates = sorted(candidates, reverse=self.max_value_call, key=lambda x: self.evaluate(x[1]))
+    return sorted_candidates
+
+  """
+  The cutoff function returns true if the alpha-beta/minimax
+  search has to stop and false otherwise.
+  """
+  def cutoff(self, state, depth):
+    self.max_value_call = (depth%2 == 0)
+    self.current_depth = depth
+    self.max_depth = max(depth, self.max_depth)
+
+    # print(depth)
+    # if self.max_value_call:
+    #   print("max")
+    # else: print("min")
+
+    # Returns true if the game is over or if we've applied one action
+    if state.game_over_check(): # Terminal node
+      return True
+    if self.nb_turn == 1 and depth == 1:
+      return True
+    if self.nb_turn <= 3 and depth == 1:  # Opening phase
+      return True
+    # if depth == 2:
+    #   return False
+    if depth == 3:
+      return True
+
+    time_taken = time.time() - self.start_turn
+    if self.time_bank > 10:
+      if time_taken > self.average_time_per_turn + 5:
+        # print("final depth ", depth)
+        return True
+      else:
+        return False
+    else:
+      return False
+
+
+    # if self.game_stage == EARLY_GAME and depth == 3:
+    #   return True
+    # if self.game_stage == MID_GAME and depth == 2:
+    #   return True
+    # if self.game_stage == LATE_GAME and depth == 2:
+    #   return True
+    # return False
+
+  """
+  The evaluate function must return an integer value
+  representing the utility function of the board.
+  """
+  def evaluate(self, state):
+    #TODO Other evaluations
+    # - On number of controlled stacks ?
+
+    return self.game_over(state, self.game_stage) + self.flat_win(state, self.game_stage) \
+            + self.influence(state, self.game_stage) #+ self.fortress_pattern(state, self.game_stage) \
+          # + self.road_crawl_threat(state, self.game_stage)
+
+  def set_game_stage(self, state):
+    if self.game_stage == LATE_GAME:
+      return
+
+    if state.stones[0] <= 7 or state.stones[1] <= 7:
+      # print(self.id, "Set game stage to LATE")
+      self.game_stage = LATE_GAME
+      return
+
+    if self.game_stage == MID_GAME:
+      return
+
+    if not self.first_captured:
+      for row in range(state.size):
+        for col in range(state.size):
+          stack = state.board[row][col]
+          my_color = False
+          opp_color = False
+          for _, owner in stack:
+            if owner == self.id:
+              my_color = True
+            else:
+              opp_color = True
+          if my_color and opp_color:
+            self.first_captured = True
+            # print("First captured set to True")
+
+    if self.first_captured and self.first_tak:
+      # print(self.id, "Set game stage to MID")
+      self.game_stage = MID_GAME
+
+
+  def in_grid(self, row, col, size):
+    return row >= 0 and col >= 0 and row < size and col < size
+
+  def count_neighbor(self, row, col, player, state):
+    player_piece = 0
+    opponent_piece = 0
+    if self.in_grid(row-1, col, state.size):
+      if state.is_controlled_by(row-1, col, player):
+        player_piece += 1
+      elif state.is_controlled_by(row-1, col, 1-player):
+        opponent_piece += 1
+
+    if self.in_grid(row + 1, col, state.size):
+      if state.is_controlled_by(row + 1, col, player):
+          player_piece += 1
+      elif state.is_controlled_by(row + 1, col, 1 - player):
+          opponent_piece += 1
+
+    if self.in_grid(row, col-1, state.size):
+      if state.is_controlled_by(row, col-1, player):
+        player_piece += 1
+      elif state.is_controlled_by(row, col-1, 1-player):
+        opponent_piece += 1
+
+    if self.in_grid(row, col + 1, state.size):
+      if state.is_controlled_by(row, col + 1, player):
+          player_piece += 1
+      elif state.is_controlled_by(row, col + 1, 1 - player):
+          opponent_piece += 1
+
+    return player_piece, opponent_piece
+
+  def influence(self, state, game_stage):
+    eval = 0
+    row_controlled = [] #row where we have at least one controlled
+    col_controlled = [] #col where we have at least one controlled
+    for row in range(state.size):
+      for col in range(state.size):
+        piece = state.get_top_piece(row, col)
+        if piece != None:
+          (my_piece, opp_piece) = self.count_neighbor(row, col, self.id, state)
+          if state.is_controlled_by(row, col, self.id):
+            eval += 3 * my_piece
+            fortress = self.fortress_capacity(row,col,self.id,state)
+            if fortress:
+              eval += 25
+              if (row == 1 and col <= 3) or (col == 1 and row <= 3) or (row == 3 and col <=3) or (col == 3 and row <=3):
+                eval += 10
+
+            # Reduce the influence if we use the capstone too early, increase it if there is a tak_threat
+            if piece[0] == CAP_STONE and self.game_stage == EARLY_GAME:
+              eval -= 30
+              if self.tak_threat:
+                eval += 50
+
+            if row not in row_controlled: # To evaluate the expense
+              row_controlled.append(row)
+            if col not in col_controlled:
+              col_controlled.append(col)
+
+            if row == 2 and col == 2: #More influence if the center is controlled
+              eval += 3
+            elif row >= 1 and row <= 3 and col >= 1 and col <= 3:
+              eval += 2
+
+            if len(state.board[row][col]) >= 2:
+              eval += self.influence_stack(state.board[row][col], self.id)
+
+          elif state.is_controlled_by(row, col, 1-self.id):
+            eval -= 2 * opp_piece
+
+            if row == 2 and col == 2: #More influence if the center is controlled
+              eval -= 2
+            elif row >= 1 and row <= 3 and col >= 1 and col <= 3:
+              eval -= 1
+
+            if len(state.board[row][col]) >= 2:
+              eval -= self.influence_stack(state.board[row][col], self.id)
+
+          # Give influence to standing stone if it blocks opponents
+          elif piece[1] == self.id and piece[0] == STANDING_STONE and opp_piece >= 2:
+            eval += 5 * (opp_piece-2)
+            eval += 20 + (5 * len(state.board[row][col]))
+    eval += 10 * max(len(row_controlled), len(col_controlled)) # To evaluate the expense
+
+    # if game_stage == MID_GAME:
+    #   eval /= 2
+    # if game_stage ==

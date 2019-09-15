@@ -1,0 +1,19 @@
+########
+# First set your existing ~/.ssh/config how you like.
+# Next create a second config called "config_proxy" in ~/.ssh
+# Then run swapconf to swap between them.
+#######
+function swapconf {
+	PROXY_CONFIG_FILENAME="config_proxy";
+	CONFIG_FILENAME="config_noproxy":
+	SSH_PATH="/Users/mhdevita/.ssh";
+	if [ -f "${SSH_PATH}/${PROXY_CONFIG_FILENAME}" ]; then
+	  mv -f "${SSH_PATH}/config" "${SSH_PATH}/${CONFIG_FILENAME}";
+	  mv -f "${SSH_PATH}/${PROXY_CONFIG_FILENAME}" "${SSH_PATH}/config";
+	  echo "SSH proxy config enabled."
+	else
+	  mv -f "${SSH_PATH}/config" "${SSH_PATH}/${PROXY_CONFIG_FILENAME}";
+	  mv -f "${SSH_PATH}/${CONFIG_FILENAME}" "${SSH_PATH}/config";
+	  echo "SSH proxy config disabled."
+	fi
+}

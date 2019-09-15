@@ -1,0 +1,107 @@
+{$F+}
+
+program integral;
+
+const
+  eps1 = 0.00000001;
+  eps2 = 0.00000001;
+type func = function(x: real):real;
+var funca:array [1..3] of func;
+
+//-------------------------------------------------------------
+{function zn1(n: byte; x: real): real;
+
+begin
+  case n of
+    1: zn1 := x * x * x + 4;
+    2: zn1 := exp(-x);
+    3: zn1 := 10 - 10 * x;
+  end;
+end;}
+
+function f1(x:real):real;
+begin
+f1 := x * x * x + 4
+end;
+function f2(x:real):real;
+begin
+f2 := exp(-x)
+end;
+function f3(x:real):real;
+begin
+f3 := 10 - 10 * x
+end;
+
+//-------------------------------------------------------------
+function zn2(no1, no2: byte; x: real): real;
+
+begin
+  zn2 := funca[no1](x) - funca[no2](x);
+end;
+//-------------------------------------------------------------
+function f(no1, no2: byte): real;{точка пересечения}
+var
+  a, b, c: real;
+begin
+  a := -3; b := 100;
+  while abs(zn2(no1, no2, a)) > eps1 do 
+  begin
+    
+    c := (a + b) / 2;
+    if (zn2(no1, no2, a) * zn2(no1, no2, c) < 0) then b := c else a := c;
+    
+  end;
+  
+  f := a;
+  
+end;
+//-------------------------------------------------------------
+function prem(n: byte): real;
+var
+  Fcur, Iprev, a, b, h, Icur: real; n1, n2: byte; j: integer;
+begin
+  n1 := (n) mod 3 + 1;
+  //writeln(n1);
+  n2 := (n + 1) mod 3 + 1;
+  //writeln(n2);
+  a := f(n, n1);b := f(n, n2); 
+  //writeln(a,' ',b);
+  if a>b then begin h:=a;a:=b;b:=h; end;
+  
+  n := 0;
+  Icur := 0;
+  
+  repeat
+    
+ n:=n + 10; writeln(n);
+ Iprev := Icur; 
+ h := (b - a) / n;
+ Icur:=0;
+  
+ for j:=1 to n do begin
+
+    Fcur := funca[n]( a + (j + 0.5) * h);
+   Icur := Icur + Fcur;
+     
+   end;
+
+Fcur := Fcur * h;
+ 
+ until abs(Icur - Iprev) < eps2;
+  
+  prem := Icur;
+  
+end;
+//-------------------------------------------------------------
+begin
+ funca[1] := f1;
+funca[2] := f2;
+funca[3] := f3;
+
+  //write(zn2(1,2,-1.04752));
+  writeln(f(3, 1));
+  writeln(f(3, 2));
+  writeln(f(2, 1));
+  writeln(prem(1));
+  
+end.

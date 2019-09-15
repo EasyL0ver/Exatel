@@ -1,0 +1,142 @@
+class netstream
+{
+private:
+	std::iostream& m_stream;
+	char m_c;
+public:
+	netstream(std::iostream& stream) : m_stream(stream) {}
+	template<typename T>
+	T read();
+
+	template<>
+	int8_t read()
+	{
+		int8_t val;
+		m_stream.read(&m_c, 1);
+		val = m_c;
+		return val;
+	}
+	template<>
+	int16_t read()
+	{
+		int16_t val;
+		val = read<int8_t>() << 8;
+		val |= read<int8_t>();
+		return val;
+	}
+	template<>
+	int32_t read()
+	{
+		int32_t val;
+		val = read<int16_t>() << 16;
+		val |= read<int16_t>();
+		return val;
+	}
+	template<>
+	int64_t read()
+	{
+		int64_t val;
+		val = read<int32_t>() << 32;
+		val |= read<int32_t>();
+		return val;
+	}
+	template<>
+	bool read()
+	{
+		bool val;
+		val = read<int8_t>() != 0;
+		return val;
+	}
+	template<>
+	char read()
+	{
+		char val;
+		val = read<int8_t>();
+		return val;
+	}
+	template<>
+	std::string read()
+	{
+		std::stringstream sstream;
+		while (true)
+		{
+			auto res = read<char>();
+			if (res == '\0')
+				break;
+			sstream << res;
+		}
+		return sstream.str();
+	}
+	template<typename T, size_t size>
+	std::array<T, size> read()
+	{
+		std::array<T, size> val;
+		for (size_t i = 0; i < size; i++)
+		{
+			val[i] = read<T>();
+		}
+		return val;
+	}
+
+	template<typename T>
+	void write(T val);
+
+	template<>
+	void write(int8_t val)
+	{
+		m_c = val;
+		m_stream.write(&m_c, 1);
+	}
+	template<>
+	void write(int16_t val)
+	{
+		write<int8_t>(val >> 8);
+		write<int8_t>(val);
+	}
+	template<>
+	void write(int32_t val)
+	{
+		write<int16_t>(val >> 16);
+		write<int16_t>(val);
+	}
+	template<>
+	void write(int64_t val)
+	{
+		write<int32_t>(val >> 32);
+		write<int32_t>(val);
+	}
+	template<>
+	void write(bool val)
+	{
+		write<int8_t>(val);
+	}
+	template<>
+	void write(char val)
+	{
+		write<int8_t>(val);
+	}
+	template<typename T, size_t size>
+	void write(std::array<T, size> val)
+	{
+		for (auto& it : val)
+		{
+			write<T>(it);
+		}
+	}
+	template<>
+	void write(const char* val)
+	{
+		size_t i;
+		for (i = 0; val[i] != '\0'; i++)
+		{
+			write(val[i]);
+		}
+		write(val[i]);
+	}
+	void write(std::string val) { write<const char*>(val.c_str()); }
+	void write_null() { write<int8_t>(0); }
+
+	template<typename T>
+	void read(T& val) { val = read<T>(); }
+	void read(std::string& val) { val = read<char*>(); }
+};

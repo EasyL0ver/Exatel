@@ -1,0 +1,5 @@
+const myCoach = new Coach();
+const wheels = Array(4).fill(new Wheel());
+const windows = Array(4).fill(new Window());
+myCoach.setWheels(wheels);
+myCoach.setWindows(windows);

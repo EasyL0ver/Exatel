@@ -1,0 +1,306 @@
+/********************************************************************
+ * Name:        DiffPressureServer
+ * Author:      Rod Naugler
+ * Version:     0.1
+ * Date:        18 Sept 2018
+ * Copyright:   All rights reserved
+ * Description: Arduino IDE script designed to be uploaded to Sonoff
+ *              Basic WiFi switch. Communicates with SPD810-125PA
+ *              differential presseure sensor over the I2C bus.
+ *              The relay can be triggered either by a differential
+ *              pressue in excess of the set point, or bythe button
+ *              in the web interface. The web interface also displays
+ *              the current differential pressure, the set point, and
+ *              the relay status.
+ ********************************************************************/
+
+//Include the ESP8266 WiFi library to allow the unit to act as access point
+  #include <ESP8266WiFi.h>
+//Include the ESP8266 Webserver library to allow us to process the web forms
+  #include <ESP8266WebServer.h>
+//Include the EEPROM library to allow setpoints to persist across reboots
+  #include <EEPROM.h>
+
+//Include the Wire library to allow I2C communication with the sensors.
+  #include <Wire.h>
+
+//This is the station ID and password to access the pressure sensor with your WiFi device
+  const char *ssid = "HAWK-EYE-DP-Sensor";
+  const char *password = "thereisnospoon";
+  char storedPassword[64];
+
+// Create an instance of the server on standard port 80
+  ESP8266WebServer server(80);
+
+//Create a string to hold the received header
+  String header;
+
+//Create a string to show the state of the relay and default to off
+  char* outputRelayState;
+
+//Create constants for the two GPIOs we'll be using.
+  const int outputLED = 13;      //Active low
+  const int outputRelay = 12;    //Active high
+
+//Define the i2c address to work with
+  int i2cAddress = 0x25;
+
+//A long to hold the returned values
+  float i2cValue = 00;
+
+//A long to hold the sensor temperature
+  float i2cTemp = 00;
+  float i2cTempConv = 200;
+
+//A long to hold the sensor scale value
+  float i2cScale = 00;
+
+//A byte to hold the CRC value
+  byte i2cCRC = 00;
+
+//A long to hold the high setpoint
+  float highSet = 00;
+//A long to hold the low setpoint
+  float lowSet = 00;
+//Define the maximum set value
+  #define MaxSet 125
+//Define the minimum set value
+  #define MinSet -125
+
+//Define a BOOL to hold the automatic state  
+  char* automatic;
+
+//A character string to hold our webpage
+  char html[3000];
+
+//A character string to hold the fan button code
+  char fanButton[100];
+
+//Variables for change password function
+  char* errorMessage="";
+  char charBuf[50];
+
+//Setup everything
+  void setup() {
+
+  //Start the eeprom with 512Bytes reserved
+    EEPROM.begin(512);
+
+  //Get the first four bytes as a float for low set
+    EEPROM.get(0,lowSet);
+
+  //Get the next four bytes as a float for high set
+    EEPROM.get(sizeof(lowSet),highSet);
+
+  //Get the stored WiFi password
+    EEPROM.get((sizeof(lowSet)+sizeof(highSet)),storedPassword);
+    if(strcmp(storedPassword,"ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ")){
+      strcpy(storedPassword, password);
+    }
+
+  //Start with the output Relay off  
+    outputRelayState="off";
+
+  //Start in automatic mode
+    automatic = "checked";
+
+  //Open the i2c path. This uses the TX pin as Data and RX pin as clock
+    Wire.begin(1,3);
+
+  //Set the DP Sensor to Triggered Read Mode
+    Wire.beginTransmission(i2cAddress);
+    Wire.write(0x36);
+    Wire.write(0x15);
+    Wire.endTransmission();
+
+  // Prepare the output LED
+    pinMode(outputLED, OUTPUT);
+    digitalWrite(outputLED, HIGH);
+
+  // Prepare the output relay
+    pinMode(outputRelay, OUTPUT);
+    digitalWrite(outputRelay, LOW);
+
+
+  // Start the WiFi Access point
+    WiFi.softAP(ssid, password);
+
+  // Setup the url handler
+    server.on("/", handleRootPath);
+
+  // Start the Web server
+    server.begin();
+  }
+
+// The page not found handler
+  void handleNotFound(){
+    String message = "File not Foundnn";
+    message += "URI: ";
+    message += server.uri();
+    message += "nMethod: ";
+    message += ( server.method() == HTTP_GET ) ? "GET" : "POST";
+    message += "nArguments: ";
+    message += server.args();
+    message += "n";
+    server.send(404,"text/plain",message);
+  }
+
+//The only valid page handler
+  void handleRootPath(){
+  //Check to see if values were posted from the form.
+    if (server.args()>0){
+      if(server.arg("high")){
+        highSet=server.arg("high").toFloat();
+        if (highSet > MaxSet){
+          highSet = MaxSet;
+        }
+        if (highSet < MinSet){
+          highSet = MinSet;
+        }
+        EEPROM.put(sizeof(float),highSet);
+        EEPROM.commit();
+      }
+      if(server.arg("low")){
+        lowSet=server.arg("low").toFloat();
+        if(lowSet > MaxSet || lowSet > highSet || lowSet<MinSet){
+          lowSet = highSet;
+        }
+        EEPROM.put(0,lowSet);
+        EEPROM.commit();
+      }
+      if(server.arg("automatic")){
+        if(server.arg("automatic")=="checked"){
+          automatic="checked";
+        } else {
+          automatic="unchecked";
+        }
+      }
+      if(server.arg("fan")){
+        if(server.arg("fan")=="on"){
+          outputRelayState="on";
+          digitalWrite(outputLED, LOW);
+          digitalWrite(outputRelay, HIGH);
+          automatic="unchecked";
+        } else {
+          if(server.arg("fan")=="off"){
+            outputRelayState="off";
+            digitalWrite(outputLED, HIGH);
+            digitalWrite(outputRelay, LOW);
+            automatic="unchecked";
+          }
+        } 
+      }
+    //Section to handle changing the password
+          if(server.arg("changepass")){
+//        if(server.arg("changepass")=="checked"){
+//          strcpy(errorMessage,"Old Password Fail");
+//        } else {
+//          strcpy(errorMessage, "");
+//        errorMessage=server.arg("changepass").toCharArray(charBuf,32);
+//        }
+//          if(server.arg("oldpass")==password){
+//            errorMessage="Old Password Match";
+//          } else {
+//        }
+//        }
+      }
+    }
+
+  //display on/off button depending on state.
+    if (strcmp(outputRelayState,"off")==0){
+      snprintf(fanButton,100,"<input type='submit' name='fan' value='on' />n");
+    } else {
+      snprintf(fanButton,100,"<input type='submit' name='fan' value='off' />n");
+    }
+
+    snprintf(html, 3000,
+      "<html>n"
+      "  <head>n"
+      "    <meta name='viewport' content='width=device-width, initial-scale=1'>n"
+      "    <link rel='icon' href='data:,'>n"
+      "    <style>html {font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}n"
+      "      .button { background-color: #4CAF50; border: none; color: white; padding: 16px 40px;n"
+      "        text-decoration: none; font-size: 30px; margin: 2px; cursor: pointer;}n"
+      "      .button2 {background-color: #FF3030;}n"
+      "      .on { background-color: #4CAF50;}n"
+      "      .off { background-color: #FF3030;}n"
+      "    </style>n"
+      "    <script>n"
+      "      function reveal() {n"
+      "        var checkBox=document.getElementById('changepass');n"
+      "        var passBox=document.getElementById('passwordBox');n"
+      "        if (checkBox.checked == true){n"
+      "          passBox.style.display='block';n"
+      "        } else {n"
+      "          passBox.style.display='none';n"
+      "        }n"
+      "      }n"
+      "    </script>n"
+      "  </head>n"
+      "  <body>n"
+      "    <h1>HAWK-EYE Technical Services</h1>n"
+      "    <h2>Differential Barametric Pressure Control System</h2>n"
+      "    <form method='post' action='http://192.168.4.1/'>n"
+      "    <table border=0 align=center>n"
+      "      <tr>n"
+      "        <td align=left>Current Temp</td>n"
+      "        <td><textbox> %03.2f </textbox></td>n"
+      "      </tr>n"
+      "      <tr>n"
+      "        <td align=left>Current DP</td>n"
+      "        <td><textbox> %03.2f </textbox></td>n"
+      "      </tr>n"
+      "      <tr>n"
+      "        <td align=left>Low Setpoint</td>n"
+      "        <td><input type='text' name='low' width=8 value=' %03.2f '/></td>n"
+      "      </tr>n"
+      "      <tr>n"
+      "        <td align=left>High Setpoint</td>n"
+      "        <td><input type='text' name='high' width=8 value=' %03.2f '/></td>n"
+      "      </tr>n"
+      "    </table>n"
+      "    Automatic: <input type='checkbox' name='automatic' value='checked' %s/><br/>n"
+      "    <input type='checkbox' name='changepass' id='changepass' value='unchecked' onclick='reveal()'/> Change Password<br/>n"
+      "    <table border=0 id='passwordBox' style='display:none'>n"
+      "      <tr>n"
+      "        <td>Old Password</td>n"
+      "        <td><input type='password' name='oldpass' width=8 /></td>n"
+      "      </tr>n"
+      "      <tr>n"
+      "        <td>New Password</td>n"
+      "        <td><input type='password' name='newpass1' width=8 /></td>n"
+      "      </tr>n"
+      "      <tr>n"
+      "        <td>New Password</td>n"
+      "        <td><input type='password' name='newpass2' width=8 /></td>n"
+      "      </tr>n"
+      "      <tr>n"
+      "        <td colspan=2>%s</td>n"
+      "      </tr>n"
+      "    </table>n"
+      "    <br/>n"
+      "    <input type='submit' name='fan' value='Set' />n"
+      "    <h1 class='%s'>FAN - State %s </h1>n"
+      "    %s"
+      "    </form>n"
+      "%s %s"
+      "  </body>n"
+      "</html>",i2cTemp,i2cValue,lowSet,highSet,automatic,errorMessage,outputRelayState,outputRelayState,fanButton,storedPassword,errorMessage);
+    server.send(200, "text/html",html);
+
+  }
+  void loop() {
+  //Start the EEPROM handler so we can write to the EEPROM
+    EEPROM.begin(512);
+
+  //Call the client handler
+    server.handleClient();
+
+  //Code to read the value from the ADC
+    Wire.requestFrom(i2cAddress,5,1);
+    if(Wire.available()==5){
+      i2cValue = Wire.read();
+      i2cValue = i2cValue *256;
+      i2cValue = i2cValue+Wire.read();
+      i2cCRC = Wire.read();
+  

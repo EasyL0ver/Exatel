@@ -1,0 +1,15 @@
+if count == True:
+
+            if result >= 0 and result < 10:
+              winsound.PlaySound('result.wav')
+              winsound.PlaySound(num[result],winsound.SND_FILENAME)
+              print(result)
+
+            elif result > 9 and result < 100:
+              d0 = (result // 10)
+              d1 = (result % 10)
+              winsound.PlaySound("result.wav",winsound.SND_FILENAME)
+                                       ^error aqui(ayuda pls)
+              winsound.PlaySound(num[d0],winsound.SND_FILENAME)
+              winsound.PlaySound(num[d1],winsound.SND_FILENAME)
+              print(result)

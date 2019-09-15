@@ -1,0 +1,18 @@
+
+    /*tablica slow */
+    char** String_array;
+        String_array = (char*) malloc( sizeof(char*)*n );
+
+    /*alokowanie pamieci dla poszczegolnych slow  */
+    for(i=0; i<n; i++)
+    {
+        printf("Podaj string nr %d \n", i);
+
+        String_array[i] = (char) malloc( sizeof(char)*255  );
+
+        scanf( "%s", String_array[i] );
+
+        printf("%s", String_array[i] );
+
+
+    }

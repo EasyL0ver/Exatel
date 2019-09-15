@@ -1,0 +1,133 @@
+{
+  "THGM": {
+    "author_img": "https://i.imgur.com/2Mfjv7B.jpg",
+    "questions": [
+        {
+        "question": "Jedna antjena możje da priczini kakto usiłwanje, taka i zatichwanje na RF signała...",
+        "choices": [
+          "kojto tja izłczwa iłi prijema",
+          "kojto tja izłczwa",
+          "kojto tja prijema",
+          "Nito jedno ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Usiłwanjeto iłi zatichwanjeto prjedizwikano ot antjenata je?",
+        "choices": [
+          "pasiwno",
+          "aktiwno",
+          "pasiwno i aktiwno",
+          "Nito jedno ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Antjenata możje da usiłi signała...",
+        "choices": [
+          "kato go fokusira iłi koncjentrira w oprjedjełjena posoka",
+          "kato go razfokusira iłi razkoncjentrira w oprjedjełjena posoka",
+          "pasiwno i aktiwno",
+          "Nito jedno ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Antjenata możje da namałi jefjektwnija radio signał...",
+        "choices": [
+          "kato sje razfokusira",
+          "kato sje djekriptira",
+          "kato sje fokusira",
+          "Wsjako ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Njenasoczjenitje antjeni prjedawat i połuczawat RF signałi w...",
+        "choices": [
+          "wsiczki posoki - 360 gradusa",
+          "pribłizitjełno 180 gradusa",
+          "mjeżdu 4 i 25 gradusa",
+          "Nito jedno ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Połunasoczjenitje  antjeni prjedawat i połuczawat RF signałi w...",
+        "choices": [
+          "pribłizitjełno 180 gradusa",
+          "wsiczki posoki - 360 gradusa",
+          "mjeżdu 4 i 25 gradusa",
+          "Nito jedno ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Nasoczjenitje antjeni ssrjedotoczawat izłczwanitje radiowłni w",
+        "choices": [
+          "toczno oprjedjełjena posoka mjeżdu 4 i 25 gradusa",
+          "wsiczki posoki - 360 gradusa",
+          "pribłizitjełno 180 gradusa",
+          "Wsjako ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Koi sa naj-prostitje, naj-jewtinitje i naj-razprostranjenitje antjeni?",
+        "choices": [
+          "Njenasoczjenitje antjeni",
+          "Nasoczjenitje antjeni",
+          "Połunasoczjenitje antjeni",
+          "Nito jedno ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Koi antjeni naj-czjesto możjem da srjeszcznjem pri bjezżicznija chardujer izpołzwan kakto ot kłijentitje, taka i w infrastrukturnata srjeda?",
+        "choices": [
+          "Njenasoczjenitje antjeni",
+          "Nasoczjenitje antjeni",
+          "Połunasoczjenitje antjeni ",
+          "Nito jedno ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Koi antjeni obiknowjeno osigurjawat wisok kojeficijent na usiłwanje na signała?",
+        "choices": [
+          "Nasoczjenitje antjeni",
+          "Njenasoczjenitje antjeni",
+          "Połunasoczjenitje antjeni",
+          "Nito jedno ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Njenasoczjenitje antjeni sje izpołzwat naj-czjesto w...",
+        "choices": [
+          "zakriti pomjeszczjenija, kato sa naj-podchodjaszczi za razpołaganje w cjentra na stajata",
+          "na otkrito, sa podchodjaszczi za prjedawanje i prijemanje na małki i srjedni razstojanija",
+          "na mjesta, kdjeto imamje dirjektna widimost mjeżdu izłczwaszczata i prijemaszczata antjena",
+          "Wsjako ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Połunasoczjenitje antjeni sje izpołzwat naj-czjesto w...",
+        "choices": [
+          "na otkrito, sa podchodjaszczi za prjedawanje i prijemanje na małki i srjedni razstojanija",
+          "zakriti pomjeszczjenija, kato sa naj-podchodjaszczi za razpołaganje w cjentra na stajata",
+          "na mjesta, kdjeto imamje dirjektna widimost mjeżdu izłczwaszczata i prijemaszczata antjena",
+          "nito jedno ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Nasoczjenitje antjeni sje izpołzwat naj-czjesto w...",
+        "choices": [
+          "na mjesta, kdjeto imamje dirjektna widimost mjeżdu izłczwaszczata i prijemaszczata antjena",
+          "na otkrito, sa podchodjaszczi za prjedawanje i prijemanje na małki i srjedni razstojanija",
+          "zakriti pomjeszczjenija, kato sa naj-podchodjaszczi za razpołaganje w cjentra na stajata",
+          "Wsjako ot izbrojenitje"
+        ]
+      },
+      {
+        "question": "Sziroczinata na łcza na antjenata (kojto sje izmjerwa w gradusi) je mjarka za?",
+        "choices": [
+          "Chorizontałnija i wjertikałjen obsjeg na RF signała izłczwan ot antjenata",
+          "Chorizontałnija obsjeg na RF signała izłczwan ot antjenata",
+          "Wjertikałjenija obsjeg na RF signała izłczwan ot antjenata",
+          "Nito jedno ot izbrojenitje"
+        ]
+      }
+    ]
+  }
+}

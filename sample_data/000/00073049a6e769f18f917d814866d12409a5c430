@@ -1,0 +1,289 @@
+<?php
+/** last modified 22032012 */
+
+define ("DB_ADDRESS", "localhost");
+define ("DB_USERNAME", "kalaPuikko_user");
+define ("DB_PASSWORD", "12345");
+define ("DB_NAME", "kalaPuikko");
+
+class databaseInterface {
+
+	private $echo = false; 						// a boolean for printi$query = "SELECT * FROM users WHERE username='$user' && password='$pass'";
+	private $db_link = null;						// the sql database link 
+	private $db_username = null;					// username for sql connection
+	private $db_password = null;					// password for sql connection
+	private $db_name = null;						// name of the selected database
+	private $db_address = null;					// address of the database i.e. localhost or 127.0.0.1
+	private $query = null;							// the sql query to be performed i.e. "show tables" or "select * from <tbl_name>"
+	private $result = null;						// results of the sql query
+	private $transaction_active = null; 			// a boolean which indicates whether a transaction has already been started or not
+
+   	/**
+	Constructor opens a sql connection to the specified location with the given username and password.
+	It also selects the given sql database.
+		
+       	@db_address			is the address (url) of the database
+        	@db_username			is the name of the user for the database connection
+        	@db_password			is the password for the database connection
+        	@db_name			is the name of the database to be selected		
+    	*/
+   	public function __construct($db_address = DB_ADDRESS, $db_username = DB_USERNAME, $db_password = DB_PASSWORD, $db_name = DB_NAME)
+   	{  
+       	$this->db_address = $db_address;
+       	$this->db_username = $db_username;
+       	$this->db_password = $db_password;
+		$this->db_name = $db_name;
+		$this->db_link = mysql_connect($this->db_address,$this->db_username,$this->db_password) or die('Could not connect: ' . mysql_error());
+ 		mysql_select_db($db_name) or die('Could not select database');
+   	}
+
+	
+   	/**
+        Destructor closes the sql connection automatically.
+		PHP does this efficiently all by itself.
+    	*/
+   	public function __destruct()
+   	{
+	//		mysql_close($this->db_link);
+   	}
+   
+   
+   	/**
+   	setEchoOn function sets the $echo variable as true and then messages for debugging purposes are printed out  
+   	*/
+   	public function setEchoOn()
+   	{
+   		$echo = true;
+   	}
+
+	
+  	/**
+        connectoToDatabase function opens a sql connection to the specified location with the given username and password.
+        	
+        	@db_address			is the address (url) of the database
+        	@db_username			is the name of the user for the database connection
+        	@db_password			is the password for the database connection
+    	*/
+   	public function connectToDatabase($db_address, $db_username, $db_password)
+   	{
+       		$this->db_address = $db_address;
+       		$this->db_username = $db_username;
+       		$this->db_password = $db_password;
+       		$this->db_link = mysql_connect($this->db_address,$this->db_username,$this->db_password) or die('Could not connect: ' . mysql_error());
+       		if ($this->echo) print("connected to database succesfully<BR>");
+   	}
+
+   	/**
+        selectDatabase function selects the given sql database.
+        
+        @db_name			is the name of the database to be selected
+    	*/
+   	public function selectDatabase($db_name)
+   	{
+		$this->$db_name = $db_name;
+		mysql_select_db($db_name) or die('Could not select database');
+		if ($this->echo) print("selected database ".$db_name." succesfully<BR>");
+  	 }
+
+	 
+   	/*
+	performSelectQuery function performs a select type query.
+
+		@fields				string contains the fields names of the table e.g. 'username' or 'id, username, password' or '*' 
+ 		@tbl_name 			name of the table that fields are selected from
+		@condition 			string contains any further instruction e.g. 'ORDER BY username' or WHERE id = "'1'".
+    	*/
+   	public function performSelectQuery($fields, $tbl_name, $condition)
+   	{
+		$this->query = 'SELECT '.$fields.' FROM '.$tbl_name.' '.$condition;
+		$this->result = mysql_query($this->query) or die('Query failed: ' . mysql_error());	 
+		if ($this->echo) print("sql query completed succesfully<BR>");
+		return $this->result;   
+   	}
+
+	
+   	/*
+	performGetContent function gets single field from desired content.
+
+		@fields				string contains the fields names of the table e.g. 'username' or 'id, username, password' or '*' 
+ 		@tbl_name 			name of the table that fields are selected from
+		@condition 			string contains any further instruction e.g. 'ORDER BY username' or WHERE id = "'1'".
+		@data				name of the data you want to get from selected field e.g. 'password'
+    	*/
+	public function performGetContent($fields, $tbl_name, $condition, $data)
+	{
+		$this->query = 'SELECT '.$fields.' FROM '.$tbl_name.' '.$condition;
+		$this->result = mysql_query($this->query) or die ('Query failed: ' . mysql_error());
+		$this->data = mysql_fetch_object($this->result);
+		$this->result = ($this->data->$data);
+		if ($this->echo) print($this->result);
+		return $this->result;
+	}
+
+	
+   	/*
+	performInsertQuery function performs a insert type query.
+
+		@tbl_name			name of the table(s), where new information will be stored to
+		@fields				string contains the fields names of the table where information will be stored to i.e. 'username, password'
+		@values				string contains the values to be stored to the specified fields e.g. '"newuser" ,"newpassword"'
+    	*/
+   	public function performInsertQuery($tbl_name, $fields, $values)
+   	{
+		$this->query = 'INSERT INTO '.$tbl_name.' ('.$fields.') values ('.$values.')';
+		if ($this->echo) print($this->query."<BR>");
+		$this->result = mysql_query($this->query) or die('Query failed: ' . mysql_error());	
+		if ($this->echo) print("sql query completed succesfully<BR>");   
+   	}
+   
+   
+   	/**
+  	perfornUpdateQuery function performs a update type query.
+  		
+  		@tbl_name			name of the table(s) whose fields will be updated
+  		@fields				an array which contains the fields names that will be updated
+  		@values				an array which contains the values to the specified fields
+  		@condition 			string contains any further instruction e.g. 'ORDER BY username' or WHERE id = "'1'". 
+   	*/
+   	public function performUpdateQuery($tbl_name, $fields, $values, $condition)
+   	{
+   		$this->query = 'UPDATE '.$tbl_name.' SET ';
+   		for ($i=0; $i<count($fields); $i++)
+   		{
+   			$this->query = $this->query.$fields[$i]." = \"".$values[$i]."\" ";
+   			if ($i < (count($fields) -1)) 
+   			{
+   				$this->query = $this->query.", ";
+   			}
+   		}
+   		$this->query = $this->query.$condition;
+		$this->result = mysql_query($this->query) or die('Query failed: ' . mysql_error());
+		if ($this->echo) print("sql query completed succesfully<BR>");   	
+	}
+   
+   
+   	/**
+  	perfornDeleteQuery function performs a delete type query.
+  		
+  		@tbl_name			name of the table(s) whose row(s) will be deleted
+  		@condition 			string contains the condition on which the rows will be deleted from the table e.g. WHERE id = "'1'". 
+   	*/
+	public function performDeleteQuery($tbl_name, $condition)
+	{
+		$this->query = 'DELETE '.$tbl_name.' FROM '.$tbl_name.' '.$condition;
+		$this->result = mysql_query($this->query) or die('Query failed: ' . mysql_error());
+		if ($this->echo) print("sql query completed succesfully<BR>"); 
+	}
+
+	
+	/**
+	performs any the given string as a MYSQL query.
+		
+		$query						is the MYSQL query 
+		
+		returns FALSE, if query failed
+		returns TRUE, if query was succesful
+	*/
+	public function query($query)
+	{
+		$this->query = $query;
+		$this->result = mysql_query($this->query);
+// echo $query;
+// print_r($this->result);
+		if ($this->result === FALSE) die(mysql_error());
+// if (!$this->result) return  array(FALSE,mysql_error());
+		else return $this->result;
+	}
+	
+	
+	/**
+	begins a new transaction, which is a series of queries. the queries will be permanent after commit function is called and before that changes can be cancelled by calling rollback 		 function. 
+	*/
+	public function startTransaction()
+	{
+		$this->result = mysql_query("START TRANSACTION") or die('Query failed: ' . mysql_error());
+		$this->transaction_active = TRUE;
+	}
+	
+	
+	/**
+	ends a transction and makes the changes permanent
+	*/
+	public function commit()
+	{
+		$this->result = mysql_query("COMMIT") or die('Query failed: ' . mysql_error());
+		$this->transaction_active = FALSE;
+	}
+
+	
+	/**
+	ends a transction and cancels the changes
+	*/
+	public function rollback()
+	{
+		$this->result = mysql_query("ROLLBACK") or die('Query failed: ' . mysql_error());
+		$this->transaction_active = FALSE;
+	}
+
+	
+	/**
+	returns a true if transaction is active and false if not
+	*/
+   	function isTransactionActive() 
+   	{
+   		return $this->transaction_active;
+   	}
+
+	
+	/** 
+	returns the MYSQL query's next row as an array by mysql association
+	*/
+	public function getLinesAssoc()
+	{
+		return mysql_fetch_array($this->result, MYSQL_ASSOC);
+	}
+	
+	public function getLinesAssocArray()
+	{
+		$array=array();
+		$resultRows=mysql_num_rows($this->result);
+		for ($i=0;$i<$resultRows;$i++){
+		$array[]=mysql_fetch_array($this->result, MYSQL_ASSOC);
+		
+		}
+		return $array;
+	}
+
+	
+	/** 
+	returns the MYSQL query's next row as an array in indexed format
+	*/
+	public function getLinesIndexed()
+	{
+		return mysql_fetch_array($this->result, MYSQL_NUM);
+	}
+
+	
+	/*
+	getLastId() fucntion returns the id value of last insert query performed.
+		
+		@id				the value of the id field
+	*/
+	public function getLastId()
+	{
+		$id = mysql_insert_id();
+		return $id;
+	}
+
+	
+	/*
+	isResultEmpty function returns true if the result set is empty, otherwise it will return false.
+	*/
+	public function isResultEmpty()
+	{
+		if (mysql_num_rows($this->result) === 0)
+		{
+			return true;
+		}
+		else
+		{

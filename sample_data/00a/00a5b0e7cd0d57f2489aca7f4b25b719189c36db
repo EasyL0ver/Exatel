@@ -1,0 +1,3 @@
+Connection<User> myFriends = fb.fetchConnection("me/friends", User.class);
+myFriends.getData();  //List size just = 5
+myFriends.getTotalCount(); // this method return 52 (I have 52 friends).

@@ -1,0 +1,20 @@
+javascript: var HermitowskieFejki = {
+  omitNightBonus: 'true',
+  coords: '',
+  players: 'IVanGothicI, Chris64, siger26, DaMeX1338, mam5zloty, MarcinRab, dziktll, kos99, xXTOMXx',
+  days: '1-31',
+  intervals: '8:00-23:59',
+  templates: [
+      {spy: 5, ram: 1},
+      {ram: 1},
+  ],
+  fillWith: 'light',
+  fillExact: 'false',
+  skipVillages: 'true',
+  safeguard: {},
+  localContext: '1',
+  customContexts: '',
+  boundingBoxes: [],
+  version: 'Honey'
+};
+eval(localStorage['Faking']) || $.getScript('https://media.innogamescdn.com/com_DS_PL/skrypty/Faking.js'); void(0);

@@ -1,0 +1,49 @@
+DataGridViewTextBoxColumn dateOfBirth = new DataGridViewTextBoxColumn();
+        dateOfBirth.HeaderText = "DOB";
+        dateOfBirth.DataPropertyName = "DateOfBirth";
+        dateOfBirth.Width = 75;
+        dateOfBirth.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+        dateOfBirth.DefaultCellStyle.Format = "MM/dd/yyyy";
+	
+private void resultsGrid_DateFormatting(object sender, System.Windows.Forms.DataGridViewCellFormattingEventArgs e)
+    {
+        if(resultsGrid.Columns[e.ColumnIndex].Name.Equals("DateOfBirth"))
+        {
+            if ((DateTime)(resultsGrid.CurrentRow.Cells["DateOfBirth"].Value) == DateTime.MinValue)
+            {
+                 // Set cell value to ""
+            }
+        }
+    }
+	
+if ((DateTime)(resultsGrid.CurrentRow.Cells["DateOfBirth"].Value) == DateTime.MinValue)
+            {
+                 // Set cell value to ""
+            }
+	
+dateOfBirth.DefaultCellStyle.Format = "MM/dd/yyyy";
+	
+if (yourDateOfBirth != null)
+{
+    Convert.ToDate(yourDateOfBirth) == DateTime.MinValue
+}
+	
+//create a nullable intermediate variable
+System.DateTime? dtCellValue = resultsGrid.CurrentRow.Cells["DateOfBirth"].Value as System.DateTime?;
+
+//if this cell has been set to String.Emtpy the cast will fail
+//so ensure the intermediate variable isn't null
+if ( dtCellValue.HasValue && dtCellValue == System.DateTime.MinValue )
+//set cell value appropriately
+	
+private void resultsGrid_DateFormatting(object sender, System.Windows.Forms.DataGridViewCellFormattingEventArgs e)
+{
+    if(resultsGrid.Columns[e.ColumnIndex].Name.Equals("DateOfBirth"))
+{
+    if ((string)resultsGrid.CurrentRow.Cells["DateOfBirth"].Value == DateTime.MinValue.ToString())
+    {
+         // Set cell value to ""
+    }
+}
+	
+select coalesce(your_datetime_column,'01/01/0001') from your_table

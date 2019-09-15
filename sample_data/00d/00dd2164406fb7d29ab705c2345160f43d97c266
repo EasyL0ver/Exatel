@@ -1,0 +1,17 @@
+<!--in component-->
+<lightning:workspaceAPI aura:id="workspace"/>
+
+//in controller
+var workspaceAPI = component.find("workspace");
+workspaceAPI.isConsoleNavigation().then(function(response) {
+   if(response){
+      var focusedTabId = response.tabId;
+      workspaceAPI.closeTab({tabId: focusedTabId});
+   }
+});
+var createAcountContactEvent = $A.get("e.force:createRecord");
+createAcountContactEvent.setParams({
+   "entityApiName": "Account",
+   "recordTypeId": component.get("v.TypeOfRecord")
+});
+createAcountContactEvent.fire();

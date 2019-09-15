@@ -1,0 +1,20 @@
+{
+	"default": [
+		{"name": "minecraft:stone"},
+	    {"name": "minecraft:andesite"},
+		{"name": "minecraft:diorite"},
+		{"name": "minecraft:granite"},
+		{"name": "minecraft:netherrack"},
+		{"name": "minecraft:end_stone"}
+	],
+	"dirt": [
+		{
+			"name": "minecraft:dirt",
+			"state": "variant=dirt"
+		},
+		{
+			"name": "minecraft:dirt",
+			"state": "variant=coarse_dirt"
+		}
+	]
+}

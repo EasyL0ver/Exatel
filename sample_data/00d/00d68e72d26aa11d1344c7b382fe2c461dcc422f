@@ -1,0 +1,121 @@
+<style>#headerimage{display:none;} </style>
+ 
+<STYLE>
+ 
+td[bgcolor] > center > img[width][src="newtophead.jpg"], td[bgcolor] > center > img[width][src="newheader.jpg"], td[bgcolor] > center > img[width][src="top.jpg"], td[bgcolor] > center > img[src="newtophead2.jpg"] {display:none;} div#menutabs::before {display:block;width:750;height:1;content:url("";);}
+link[href="robstylesheet2.css"] + center > img[src="/images/gameheaderoldstyle.jpg"] {display:none;} #background::before {display:block;width:750;height:1;content:url("";);}
+td, table, tr, span, li, p, div, textarea, DIV {
+font-size: 14pt;
+color:#edd5b4;
+font-weight:normal;
+font-decoration:font-style:italic; font-family "Brush Script MT";
+font-style:font-style:italic; font-family: "Brush Script MT";
+background-color:transparent;
+}
+td, table, tr, span, li, p, div, textarea, DIV {
+font-size: 10pt;
+color:#ffffff;
+font-weight:normal;
+font-decoration:font-style:italic; font-family:Times New Roman,arial,verdana,sans-serif;
+font-style:font-style:italic; font-family:Times New Roman,arial,verdana,sans-serif;
+background-color:transparent;
+}
+ 
+body, .bodyContent {
+background-color:#000000;
+padding-top: 300px;
+background-image:url(https://i.imgur.com/GpsBA7E.png), url(https://i.imgur.com/Wrh7D3T.png);
+background-position:top;
+background-attachment: scroll;
+background-repeat:no-repeat, repeat;
+border-width:0px;
+border-style: Solid;
+padding-top: 1005px;
+padding-left: 10px;
+padding-right: 10px;}
+.border1 {border:0px solid transparent; }
+table table table { width:100%; max-width:800px; }
+td, table, tr, span, li, p, div, textarea, DIV {
+color:grey;
+font-weight:normal;
+font-style:normal;
+font-family: "Brush Script MT"
+background-color:transparent;
+}
+center center:first-child img {
+display:;
+}
+div#desc {
+disply:ex (document.getElementsByTagName("img";)[0].style.width="0px";);
+text-align:ex (document.getElementsByTagName("img";)[0].src="";);
+}
+table, tr, td, table.link2, table.link2 tr, table.link2 tr td:first-child, table.link2 td, .border1, .border3 {
+background:url() transparent;
+border:0px solid #000000;
+}
+#desc {
+display:none;
+}
+table table table {
+max-width:680px;
+}
+.menutab,
+.menutab:hover{
+border:0px solid #000000; margin:0px;
+padding:0px 4px;
+background:transparent url();
+}
+.pborder {
+border:2px solid transparent;
+padding:0px;
+background-color: transparent;
+color: transparent;
+font-family: arial;
+font-size: 10px;
+}
+.border1 {
+border:2px solid transparent;
+}
+.border3 {
+border:0px solid #000000;
+padding:0px;
+}
+.tops {color:#430081;
+font-size:10pt;
+font-weight:normal;
+text-decoration:none;
+font-family:normal;
+}
+.tops2 {color:#c184fa;
+font-size:11pt;
+font-weight:normal;
+text-decoration:none;
+font-family:normal;
+}
+a:link {color: grey;
+font-size: 9pt;
+font-weight: normal;
+text-shadow: 2px 2px 2px black;
+text-shadow: -1px 0 #000000, 0 1px #000000,
+1px 0 #000000, 0 -1px #000000
+}
+a:visited {color: grey;
+font-size: 9pt;
+font-weight: normal;
+text-shadow: 2px 2px 2px black;
+text-shadow: -1px 0 #000000, 0 1px #000000,
+1px 0 #000000, 0 -1px #000000
+}
+a:hover {color: #000000;
+font-size: 9pt;
+font-weight: none;
+text-decoration: none;
+text-shadow: 0px 0px 4px #8400ff, 0px 0px 8px #8400ff, 0px 0px 12px #8400ff, 0px 0px 16px #8400ff, 0px 0px 20px #8400ff, 0px 0px 24px #8400ff, 0px 0px 28px #8400ff, 0px 0px 32px #8400ff;
+}
+a:active {color: #000000;
+font-size: 9pt;
+font-weight: normal;
+}
+}
+ 
+</style>

@@ -1,0 +1,38 @@
+extern crate serde_json;
+extern crate serde; 
+extern crate serde_derive;
+
+use serde_json::Value as JsonValue;
+
+pub fn json_config(data: &str) {
+    let mut fname: JsonValue; 
+    let p = serde_json::from_str(data);
+    let v: JsonValue = p.unwrap(); 
+
+    fname = v["map"]["name"]; 
+    println!("{:?}", fname);
+}
+	
+warning: variable does not need to be mutable
+ --> src/lib.rs:8:9
+  |
+8 |     let mut fname: JsonValue; 
+  |         ----^^^^^
+  |         |
+  |         help: remove this `mut`
+  |
+  = note: #[warn(unused_mut)] on by default
+
+error[E0507]: cannot move out of borrowed content
+  --> src/lib.rs:12:13
+   |
+12 |     fname = v["map"]["name"]; 
+   |             ^^^^^^^^^^^^^^^^ cannot move out of borrowed content
+
+error[E0507]: cannot move out of data in a `&` reference
+  --> src/lib.rs:12:13
+   |
+12 |     fname = v["map"]["name"]; 
+   |             ^^^^^^^^^^^^^^^^
+   |             |
+   |             cannot move out of data in a `&` reference

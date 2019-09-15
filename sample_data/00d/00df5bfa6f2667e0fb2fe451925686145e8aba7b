@@ -1,0 +1,115 @@
+protected void MyButton2_Click(object sender, EventArgs e)
+{
+    Table CreateTable2 = new Table();
+    CreateTable2.ID = "CreateTable2";
+    TableRow rw1 = new TableRow();
+    CreateTable2.Rows.Add(rw1);
+
+    TableCell cell1 = new TableCell();
+    Label HelpLabel = new Label();
+    HelpLabel.ID = "HelpLabel2";
+    HelpLabel.Text = "Upload an Image";
+    HelpLabel.Visible = true;
+    cell1.Controls.Add(HelpLabel);
+    rw1.Cells.Add(cell1);
+
+    TableCell cell2 = new TableCell();
+    Label myThrobber = new Label();
+    myThrobber.ID = "myThrobber2";
+    myThrobber.CssClass = "Throbbers";
+
+    //fileupload
+
+    **AsyncFileUpload afuUploadEvents = new AsyncFileUpload();
+    afuUploadEvents.ID = "afuUploadEvents2";
+    afuUploadEvents.ClientIDMode = System.Web.UI.ClientIDMode.AutoID;
+    //afuUploadEvents.OnClientUploadError = "uploadError";
+    afuUploadEvents.UploadedComplete += new EventHandler<AsyncFileUploadEventArgs>(this.afuUpload2_UploadedComplete2);
+    afuUploadEvents.UploaderStyle = AsyncFileUpload.UploaderStyleEnum.Traditional;
+    afuUploadEvents.UploadingBackColor = System.Drawing.Color.FromName("#CCFFFF");
+    afuUploadEvents.ThrobberID = "myThrobber2";
+    afuUploadEvents.EnableViewState = false;
+    afuUploadEvents.PersistFile = true;
+
+    **string fileName1 = afuUploadEvents.PostedFile.FileName;**
+
+    cell2.Controls.Add(afuUploadEvents);
+    cell2.Controls.Add(myThrobber);
+    rw1.Cells.Add(cell2);**
+	
+protected void afuUpload2_UploadedComplete2(object sender, AsyncFileUploadEventArgs e)
+{
+    // store the file name into the string variable
+    **string fileName = ((AsyncFileUpload)sender).PostedFile.FileName;**
+    // extarct and store the file extension into another variable
+    string fileExtension = System.IO.Path.GetExtension(fileName).Replace(".", string.Empty).ToLower();
+    // string type array having list of allowed file type extensions
+    string[] validFileExtensions = new string[] { "gif", "png", "jpg", "jpeg", "bmp" };
+    bool flag = false;
+
+    // loop over the array of valid file extensions to compare them with uploaded file
+    foreach (string extension in validFileExtensions)
+    {
+        if (fileExtension == extension)
+            flag = true;
+    }
+    // display the message based on the flag value
+    if (flag == false)
+    {
+        return;
+
+    }
+    else
+    {
+        // lblStatus.Text = "File has valid extension.";
+        // write your code to save the uploaded file here.
+        string savePath = MapPath("~/myfolder/" + Profile.UserName + Path.GetFileName(e.filename));
+        Guid PostConvoID = Guid.Parse(((AsyncFileUpload)sender).FindControl("lblGuid2").ToString());
+        string PostUserName = Profile.UserName;
+        string saveVirtualPath = "~/myfolder/" + Profile.UserName + Path.GetFileName(e.filename);
+        string PostPicPath = saveVirtualPath;
+
+        int rowsAffected = myclass.InsertPic(PostConvoID, PostPicPath, PostUserName);
+        ((AsyncFileUpload)sender).SaveAs(savePath);
+    }
+}
+	
+protected void afuUploadEvents_UploadedComplete(object sender, AsyncFileUploadEventArgs e)
+{
+    // store the file name into the string variable
+    **string fileName = Dragger1.FindControl("FileName1").ToString();**
+    // extarct and store the file extension into another variable
+    string fileExtension = System.IO.Path.GetExtension(fileName).Replace(".", string.Empty).ToLower();
+    // string type array having list of allowed file type extensions
+    string[] validFileExtensions = new string[] { "gif", "png", "jpg", "jpeg", "bmp" };
+    bool flag = false;
+
+    // loop over the array of valid file extensions to compare them with uploaded file
+    foreach (string extension in validFileExtensions)
+    {
+        if (fileExtension == extension)
+            flag = true;
+    }
+    // display the message based on the flag value
+    if (flag == false)
+    {
+        return;
+
+    }
+    else
+    {
+        // lblStatus.Text = "File has valid extension.";
+        // write your code to save the uploaded file here.
+        string savePath = MapPath("~/myfolder/" + Profile.UserName + Path.GetFileName(e.filename));
+        //string lblGuid = ((AsyncFileUpload)sender).FindControl("lblGuid")Label.Text;
+        //((Label)(AsyncFileUpload)sender).FindControl("lblGuid").Text;
+        //Guid PostConvoID = Guid.Parse(((AsyncFileUpload)sender).FindControl("lblGuid1").ToString());
+        Guid PostConvoID = Guid.Parse(MyButton1.FindControl("lblGuid1").ToString());
+        string PostUserName = Profile.UserName;
+        string saveVirtualPath = "~/myfolder/" + Profile.UserName + Path.GetFileName(e.filename);
+        string PostPicPath = saveVirtualPath;
+
+        int rowsAffected = myclass.InsertPic(PostConvoID, PostPicPath, PostUserName);
+        //MyButton1.FindControl("afuUploadEvents1").SaveAs(savePath));
+    }
+}

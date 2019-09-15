@@ -1,0 +1,21 @@
+RewriteCond %{REQUEST_URI} !^/client/ [NC]
+    RewriteCond %{REQUEST_URI} !^/customer/ [NC]
+    RewriteCond %{REQUEST_URI} !^/rest/ [NC]
+    RewriteCond %{REQUEST_URI} !^/index.php
+    RewriteCond %{REQUEST_URI} .html$ [NC,OR]
+    RewriteCond %{REQUEST_URI} ^/login [OR]
+    RewriteCond %{REQUEST_URI} ^/register [OR]
+    RewriteCond %{REQUEST_URI} ^/cart [OR]
+    RewriteCond %{REQUEST_URI} ^/search [OR]
+    RewriteRule ^(.*)$ client/index.html [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+
+    RewriteCond %{REQUEST_URI} !^/client/
+    RewriteCond %{REQUEST_URI} !^/login
+    RewriteCond %{REQUEST_URI} !^/register
+    RewriteCond %{REQUEST_URI} !^/cart
+    RewriteCond %{REQUEST_URI} !^/search
+    RewriteRule .* index.php [L]

@@ -1,0 +1,18 @@
+if(!empty($_POST['pseudo']) && !empty($_POST['pass']) && !empty($_POST['confirm'])){
+    require "config.php";
+    $t = array();
+    extract($_POST);
+    
+    $pseudo = htmlspecialchars($pseudo);
+    $pass = htmlspecialchars(sha1($pass));
+    $confirm = htmlspecialchars(sha1($confirm));
+    
+    if($pass != $confirm){
+        $t['erreur'] = 'Les deux mots de passe ne concordent pas.';
+    }
+    else{
+        $sql = "INSERT INTO users(pseudo,pass,date_creation,rang,banni) VALUES('$pseudo', '$pass', ".time().", '0', '0')";
+        mysql_query($sql) or die(mysql_error());
+        $t['erreur'] = 'ok';
+    }
+}

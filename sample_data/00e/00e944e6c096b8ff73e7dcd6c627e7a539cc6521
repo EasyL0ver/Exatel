@@ -1,0 +1,78 @@
+{
+  "clients": [
+    {
+      "birthDate": "string",
+      "businessIncome": {
+        "costAccountingType": "string",
+        "costPercentageRate": 0,
+        "naceCode": 0,
+        "taxAmountLatest": 0,
+        "taxBaseLatest": 0,
+        "taxBasePenultimate": 0,
+        "turnoverLatest": 0,
+        "turnoverPenultimate": 0
+      },
+      "clientId": 0,
+      "contactCountryId": 0,
+      "employeeIncome": {
+        "grossIncome": 0,
+        "netIncome": 0
+      },
+      "expenditures": [
+        {
+          "autoCorrection": "string",
+          "correction": "string",
+          "creditRestriction": 0,
+          "debt": 0,
+          "id": 0,
+          "instalmentAmount": 0,
+          "liabilityType": "string",
+          "locked": false,
+          "type": "string"
+        }
+      ],
+      "firstName": "string",
+      "householdId": 0,
+      "insured": false,
+      "lastName": "string",
+      "martialStatus": "string",
+      "mate": false,
+      "nationalityId": 0,
+      "orderNumber": 0,
+      "otherIncomes": [
+        {
+          "amount": 0,
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "creditData": {
+    "estates": [
+      {
+        "contractRelation": "string",
+        "estateType": "string",
+        "value": 0
+      }
+    ],
+    "fixation": 0,
+    "insuranceType": "string",
+    "loanAmount": 0,
+    "maturity": 0,
+    "product": 0,
+    "productVariant": "string",
+    "purposes": [
+      0
+    ],
+    "services": [
+      0
+    ]
+  },
+  "households": [
+    {
+      "id": 0,
+      "personsWithIncome": 0,
+      "personsWithoutIncome": 0
+    }
+  ]
+}

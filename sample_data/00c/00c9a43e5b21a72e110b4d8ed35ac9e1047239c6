@@ -1,0 +1,6 @@
+[BsonIgnoreExtraElements]
+public class ParticipantSurvey : BaseSurvey
+{
+  public List<ParticipantSurveySection> Sections { get; set; }
+
+  public List<ParticipantSurveyQuestion> G

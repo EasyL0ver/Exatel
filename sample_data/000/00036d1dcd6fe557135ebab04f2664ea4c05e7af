@@ -1,0 +1,63 @@
+Trouble understanding Quicksort C# [closed]
+private void btnGenNo_Click(object sender, RoutedEventArgs e)
+    {
+
+        numberList.Clear();
+        tbxNum1.Text = "";
+        for (int i = 0; i < 9; i++)
+        {
+            rndNum = rnd.Next(1, 9);
+            tbxNum1.Text += rndNum;
+            numberList.Add(rndNum);
+        }
+    }
+
+    private void btnSerial_QuickSort_Click(object sender, RoutedEventArgs e)
+    {
+        List<int> quickSortNums = new List<int>();
+        tbxSerialResult.Text = "";
+        quickSortNums = QuickSort(numberList);
+        foreach (int m in quickSortNums)
+        {
+            tbxSerialResult.Text += m.ToString();
+        }
+    }
+
+    public static List<int> QuickSort(List<int> arr)
+    {
+        Random random = new Random();
+        int i, pivot;
+
+        List<int> leftList = new List<int>();
+        List<int> rightList = new List<int>();
+        List<int> tempList = new List<int>();
+
+        if (arr.Count > 1)
+        {
+            pivot = random.Next(arr.Min(),arr.Max());
+            //for (i = 0; i < arr.Count; i++)
+            //{
+                foreach(int j in arr)
+                {
+                    if (j == pivot) continue;
+                    if (j <= pivot)
+                        leftList.Add(j);
+                    else
+                        rightList.Add(j);
+                }
+            //}
+
+            QuickSort(leftList);
+            QuickSort(rightList);
+
+            for (i = 1; i <= leftList.Count; i++)
+                tempList.Add(leftList[i - 1]);
+            tempList.Add(pivot);
+            for (i = 1; i <= rightList.Count; i++)
+                tempList.Add(rightList[i - 1]);
+
+
+            return tempList;
+        }
+        return arr;
+    }

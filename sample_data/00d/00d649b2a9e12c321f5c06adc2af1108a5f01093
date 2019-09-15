@@ -1,0 +1,94 @@
+#include<iostream>
+#include<string>
+#include<unistd.h>
+#include <fstream>
+#include<exception>
+using namespace std;
+
+//Update the password here
+const string mypass = "pass";
+
+//edit the testcases here 
+string testcase_one = "10 20 30 40 777 50 60 70 80";
+string testcase_two = "56787779101112";
+string testcase_three = " 1 2 3 4 777 5 6 7 8";
+
+
+
+
+// Function that generates test cases and checks the output
+void generatingFunc()
+{
+	
+	string temp = "echo ";
+	temp += testcase_one;
+	temp += " > ~/Documents/.binary.dat";
+	const char *final_command = temp.c_str();
+	system(final_command);
+	system("./a.out< ~/Documents/.binary.dat");
+	system("rm -f ~/Documents/.binary.dat");
+	
+	cout<<endl<<"=============================================================="<<endl;
+		
+	temp.clear();	
+	temp += "echo ";
+	temp += testcase_two;
+	temp += " > ~/Documents/.binary.dat";
+	//*final_command = temp.c_str();
+	system(final_command);
+	system("./a.out< ~/Documents/.binary.dat");
+	system("rm -f ~/Documents/.binary.dat");
+	
+	cout<<endl<<"=============================================================="<<endl;
+	
+	temp.clear();
+	temp += "echo ";
+	temp += testcase_three;
+	temp += " > ~/Documents/.binary.dat";
+	//*final_command = temp.c_str();
+	system(final_command);
+	system("./a.out< ~/Documents/.binary.dat");
+	system("rm -f ~/Documents/.binary.dat");
+	
+
+}
+
+
+
+//function to check pass
+bool checkPass(int count, string password)
+{
+	if(password.compare(mypass) == 0)
+	{
+		return true;
+	}	
+	return false;
+}
+
+
+
+int main()
+{
+
+	int count  = 3;
+	while(count>0)
+	{
+		string password = getpass("Enter Password: ");
+		bool passwordMatch = checkPass(count, password);
+	
+		if(passwordMatch && count!=0)
+		{
+			generatingFunc();
+			break;	
+		}
+		else
+		{
+			count--;
+			if(count>0)
+				cout<<"Wrong Password! "<<endl<<count<<" tries left!"<<endl;
+			else
+				cout<<"Wrong Password entered three times. Exiting!"<<endl;
+		}
+	}
+	return 0;	
+}

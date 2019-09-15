@@ -1,0 +1,19 @@
+#include <stdio.h>
+ 
+int sum(int n, ...)
+{
+    int result = 0;
+    
+    for(int *ptr = &n;n>0; n--)
+    {
+        result+= *(++ptr);
+    }
+    return result;
+}
+ 
+int main(void)
+{   
+    printf("%d \n", sum(4, 1, 2, 3, 4));
+    printf("%d \n", sum(5, 12, 21, 13, 4, 5));
+    return 0;
+}

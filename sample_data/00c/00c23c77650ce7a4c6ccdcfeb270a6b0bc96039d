@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<script>
+  <header>
+    <map>@1462515</map>
+    <shaman>true</shaman>
+    <vanish moving="3"/>
+  </header>
+  <objects>
+    <object name="orangeportal1" id="27" x="400" y="170 " vx="0" vy="0" angle="0" solid="true"/>
+    <object name="blueportal1" id="26" x="400" y="80 " vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon1" id="19" x="400" y="120" vx="0" vy="0" angle="180" solid="true"/>
+    <object name="cannon2" id="18" x="400" y="120" vx="0" vy="0" angle="99999999999999999999999999999999" solid="true"/>
+    <object name="cannon3" id="20" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon4" id="20" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon5" id="18" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon6" id="19" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon7" id="20" x="400" y="120" vx="0" vy="0" angle="180" solid="true"/>
+    <object name="cannon8" id="19" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon9" id="18" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon10" id="19" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon11" id="18" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon12" id="20" x="400" y="120" vx="0" vy="0" angle="45" solid="true"/>
+    <object name="cannon13" id="18" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon14" id="20" x="400" y="120" vx="0" vy="0" angle="180" solid="true"/>
+    <object name="cannon15" id="19" x="400" y="120" vx="0" vy="0" angle="45" solid="true"/>
+    <object name="cannon16" id="18" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon17" id="20" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon18" id="20" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon19" id="18" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon20" id="19" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon21" id="20" x="400" y="120" vx="0" vy="0" angle="90" solid="true"/>
+    <object name="cannon22" id="19" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon23" id="18" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon24" id="19" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon25" id="18" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon26" id="20" x="400" y="120" vx="0" vy="0" angle="45" solid="true"/>
+    <object name="cannon27" id="18" x="400" y="120" vx="0" vy="0" angle="0" solid="true"/>
+    <object name="cannon28" id="20" x="400" y="120" vx="0" vy="0" angle="90" solid="true"/>
+  </objects>
+  <stuff>
+    <stuffmovecreator name="creator1" status="online" object="orangeportal1" loop="true" interval="200" delay="1"/>
+    <stuffmovecreator name="creator1" status="online" object="blueportal1" loop="true" interval="200" delay="1"/>
+    <stuffmovecreator name="creator1b" status="online" object="cannon1" loop="true" interval="100" delay="3"/>
+    <stuffmovecreator name="creator2b" status="online" object="cannon2" loop="true" interval="100" delay="6"/>
+    <stuffmovecreator name="creator3b" status="online" object="cannon3" loop="true" interval="100" delay="9"/>
+    <stuffmovecreator name="creator4b" status="online" object="cannon4" loop="true" interval="100" delay="12"/>
+    <stuffmovecreator name="creator5b" status="online" object="cannon5" loop="true" interval="100" delay="15"/>
+    <stuffmovecreator name="creator6b" status="online" object="cannon4" loop="true" interval="100" delay="18"/>
+    <stuffmovecreator name="creator7b" status="online" object="cannon5" loop="true" interval="100" delay="21"/>
+    <stuffmovecreator name="creator8b" status="online" object="cannon1" loop="true" interval="100" delay="24"/>
+    <stuffmovecreator name="creator9b" status="online" object="cannon2" loop="true" interval="100" delay="27"/>
+    <stuffmovecreator name="creator10b" status="online" object="cannon3" loop="true" interval="100" delay="30"/>
+    <stuffmovecreator name="creator11b" status="online" object="cannon4" loop="true" interval="100" delay="33"/>
+    <stuffmovecreator name="creator12b" status="online" object="cannon5" loop="true" interval="100" delay="36"/>
+    <stuffmovecreator name="creator13b" status="online" object="cannon4" loop="true" interval="100" delay="39"/>
+    <stuffmovecreator name="creator14b" status="online" object="cannon5" loop="true" interval="100" delay="42"/>
+    <stuffmovecreator name="creator15b" status="online" object="cannon1" loop="true" interval="100" delay="45"/>
+    <stuffmovecreator name="creator16b" status="online" object="cannon2" loop="true" interval="100" delay="48"/>
+    <stuffmovecreator name="creator17b" status="online" object="cannon3" loop="true" interval="100" delay="51"/>
+    <stuffmovecreator name="creator18b" status="online" object="cannon4" loop="true" interval="100" delay="54"/>
+    <stuffmovecreator name="creator19b" status="online" object="cannon5" loop="true" interval="100" delay="57"/>
+    <stuffmovecreator name="creator20b" status="online" object="cannon4" loop="true" interval="100" delay="60"/>
+    <stuffmovecreator name="creator22b" status="online" object="cannon1" loop="true" interval="100" delay="63"/>
+    <stuffmovecreator name="creator23b" status="online" object="cannon2" loop="true" interval="100" delay="66"/>
+    <stuffmovecreator name="creator24b" status="online" object="cannon3" loop="true" interval="100" delay="69"/>
+    <stuffmovecreator name="creator25b" status="online" object="cannon4" loop="true" interval="100" delay="72"/>
+    <stuffmovecreator name="creator26b" status="online" object="cannon5" loop="true" interval="100" delay="75"/>
+    <stuffmovecreator name="creator27b" status="online" object="cannon4" loop="true" interval="100" delay="78"/>
+    <stuffmovecreator name="creator28b" status="online" object="cannon5" loop="true" interval="100" delay="81"/>
+  </stuff>
+</script>

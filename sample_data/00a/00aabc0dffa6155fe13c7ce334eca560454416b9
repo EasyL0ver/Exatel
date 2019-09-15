@@ -1,0 +1,152 @@
+<cfscript>
+    // Build a fake query object.
+	HospitalVisits2 = queryNew(
+		"patientID, Reason_For_Visit",
+		"integer, varchar",
+		[
+		      { patientID: 1, Reason_For_Visit: "Broken leg" }
+		    , { patientID: 1, Reason_For_Visit: "Concussion" }
+		    , { patientID: 1, Reason_For_Visit: "" } // Empty value
+		    , { patientID: 1, Reason_For_Visit: "Severe bleeding" }
+		    , { patientID: 1, Reason_For_Visit: "BROKEN LEG" } // Duped value in different case.
+		    , { patientID: 1, Reason_For_Visit: "Aches,pain" } // Comma in value
+		    , { patientID: 1, Reason_For_Visit: "" } // Empty value
+		    , { patientID: 1, Reason_For_Visit: "" } // Empty value
+		]
+	);
+	writeDump(HospitalVisits2); // What's in our query?
+</cfscript>
+
+<br><br>
+
+<!--- create the struct --->
+<cfset newReasonStruct = StructNew() />
+
+<!--- CF Structs will overwrite duplicate keys. ---> 
+<cfloop query="HospitalVisits2">
+    <cfif len(trim(Reason_For_Visit))> <!--- Don't add empties. --->
+      <cfset newReasonStruct[Reason_For_Visit] = "" > 
+    </cfif>
+</cfloop>
+     
+<!--- Set a variable for our new list. --->
+<cfset newReasonList = StructKeyList(newReasonStruct,", ") >
+This is our main query (with query loop): 
+<cfoutput>#newReasonList#</cfoutput>
+
+
+<br><br>
+
+
+<!--- create the struct --->
+<cfset newReasonStruct = StructNew() />
+
+<!--- CF Structs will overwrite duplicate keys. ---> 
+<!--- NOTE: I can't remember if delimiters were valid arguments for valuelist() in CFMX --->
+<cfloop index="VisitReason" list="#valuelist(HospitalVisits2.Reason_For_Visit, "|")#" delimiters="|">
+    <cfset newReasonStruct[VisitReason] = "" > 
+</cfloop>
+     
+<!--- Set a variable for our new list. --->
+<cfset newReasonList = StructKeyList(newReasonStruct,", ") >
+
+This is our main query (with valuelist()): <cfoutput>#newReasonList#</cfoutput>
+
+
+
+
+<br><br><br><br>
+
+What if we have an empty query? 
+<br>
+
+<cfscript>
+	// Build a fake empty query.
+	HospitalVisits_Empty = queryNew(
+		"patientID, Reason_For_Visit",
+		"integer, varchar"
+	);
+	writeDump(HospitalVisits_Empty); // What's in our query?
+</cfscript>
+
+<!--- create the struct --->
+<cfset newEmptyReasonStruct = StructNew() />
+
+<!--- CF Structs will overwrite duplicate keys. ---> 
+<!--- NOTE: I can't remember if delimiters were valid arguments for valuelist() in CFMX --->
+<cfloop index="emptyVisitReason" list="#valuelist(HospitalVisits_Empty.Reason_For_Visit, "|")#" delimiters="|">
+    <cfset newEmptyReasonStruct[emptyVisitReason] = "" > 
+</cfloop>
+     
+<!--- Set a variable for our new list. --->
+<cfset emptyQueryReasonList = StructKeyList(newEmptyReasonStruct) >
+
+This is our empty de-duped list: <cfoutput>#emptyQueryReasonList#</cfoutput>
+
+
+
+<br><br><br><br>
+
+What if we have only one row in our query? 
+<br>
+
+<cfscript>
+	// Build a fake empty query.
+	HospitalVisits_JustOne = queryNew(
+		"patientID, Reason_For_Visit",
+		"integer, varchar",
+		[
+		      { patientID: 1, Reason_For_Visit: "Broken leg" }
+
+		]
+	);
+	writeDump(HospitalVisits_JustOne); // What's in our query?
+</cfscript>
+
+<!--- create the struct --->
+<cfset justoneQueryReasonStruct = StructNew() />
+
+<!--- CF Structs will overwrite duplicate keys. ---> 
+<!--- NOTE: I can't remember if delimiters were valid arguments for valuelist() in CFMX --->
+<cfloop index="justoneVisitReason" list="#valuelist(HospitalVisits_JustOne.Reason_For_Visit, "|")#" delimiters="|">
+    <cfset justoneQueryReasonStruct[justoneVisitReason] = "" > 
+</cfloop>
+     
+<!--- Set a variable for our new list. --->
+<cfset justoneQueryReasonList = StructKeyList(justoneQueryReasonStruct) >
+
+This is our single value list: <cfoutput>#justoneQueryReasonList#</cfoutput>
+
+
+<br><br><br><br>
+
+What if we have only one row in our query with an empty element? 
+<br>
+
+<cfscript>
+	// Build a fake empty query.
+	HospitalVisits_JustOneEmpty = queryNew(
+		"patientID, Reason_For_Visit",
+		"integer, varchar",
+		[
+		      { patientID: 1, Reason_For_Visit: "" }
+
+		]
+	);
+	writeDump(HospitalVisits_JustOneEmpty); // What's in our query?
+</cfscript>
+
+<!--- create the struct --->
+<cfset justoneemptyQueryReasonStruct = StructNew() />
+
+<!--- CF Structs will overwrite duplicate keys. ---> 
+<!--- NOTE: I can't remember if delimiters were valid arguments for valuelist() in CFMX --->
+<cfloop index="justoneemptyVisitReason" list="#valuelist(HospitalVisits_JustOneEmpty.Reason_For_Visit, "|")#" delimiters="|">
+    <cfset justoneemptyQueryReasonStruct[justoneemptyVisitReason] = "" > 
+</cfloop>
+     
+<!--- Set a variable for our new list. --->
+<cfset justoneemptyQueryReasonList = StructKeyList(justoneemptyQueryReasonStruct) >
+
+
+This is our single value list: <cfoutput>#justoneemptyQueryReasonList#</cfoutput>

@@ -1,0 +1,184 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <set>
+
+using namespace std;
+
+struct Answer
+{
+	int cost;
+	int weight;
+};
+
+struct Backpack
+{
+public:
+	std::vector<int> Weights;
+	std::vector<int> Costs;
+	int Backpack_Capacity;
+
+	Backpack()
+	{
+		Weights = {};
+		Costs = {};
+		Backpack_Capacity = {};
+	}
+
+	~Backpack()
+	{
+
+	}
+
+	void show_vector(std::vector<int> & my_vector)
+	{
+		for (vector<int>::iterator it = my_vector.begin(); it != my_vector.end(); ++it)
+		{
+			cout << *it << "\n";
+		}
+	}
+
+	void push_values_in_backpack() //функция, через которую будет осуществляться ввод векторов с весами и стоимостями соотв
+	{
+
+	}
+
+	Answer algorithm(const std::vector<int>& wts, const std::vector<int>& cost, int W)
+	{
+		size_t n = wts.size();
+		std::vector<std::vector<int> > dp(W + 1, std::vector<int>(n + 1, 0));
+		for (size_t j = 1; j <= n; j++)
+		{
+			for (int w = 1; w <= W; w++)
+			{
+				if (wts[j - 1] <= w)
+				{
+					dp[w][j] = std::max(dp[w][j - 1], dp[w - wts[j - 1]][j - 1] + cost[j - 1]);
+				}
+				else
+				{
+					dp[w][j] = dp[w][j - 1];
+				}
+			}
+		}
+		return Answer{ dp[W][n] };
+	}
+
+	/*Answer algorithm(std::vector<int> & weights, std::vector<int> & costs, int backpack_capacity)
+	{
+	size_t n = weights.size();
+	std::vector<std::vector<int>>arr(backpack_capacity + 1);
+	for (int i = 0; i <= backpack_capacity; ++i)
+	{
+	arr[i].resize(n + 1);
+	arr[i][0] = 0;
+	}
+	for (size_t i = 0; i <= n; ++i)
+	{
+	arr[0][i] = 0;
+	}
+	for (size_t j = 1; j <= n; ++j)
+	{
+	for (int w = 1; w <= backpack_capacity; ++w)
+	{
+	if (weights[j - 1] <= w)
+	{
+	arr[w][j] = std::max(arr[w][j - 1], arr[w - weights[j - 1]][j - 1] + costs[j - 1]);
+	}
+	else
+	{
+	arr[w][j] = arr[w][j - 1];
+	}
+	}
+	}
+	return Answer{ arr[backpack_capacity][n] };
+	}*/
+	//weigts - массив весов, costs - массив стоимостей предметов, capacity - вместимость рюкзака
+	//функция возвращает максимальную стоимость, которую можно набрать
+	//массив dp собственно реализует динамическое программированиe
+};
+
+int main()
+{
+	Backpack My_Backpack;
+	std::vector<int> My_Weights;
+	My_Weights.push_back(123);
+	My_Weights.push_back(56);
+	My_Weights.push_back(54);
+	My_Weights.push_back(43);
+	My_Weights.push_back(32);
+	std::string input_string;
+	std::vector<int> My_Costs;
+	My_Costs.push_back(134);
+	My_Costs.push_back(70);
+	My_Costs.push_back(100);
+	My_Costs.push_back(2);
+	My_Costs.push_back(32);
+	int My_Capacity;
+	cin >> My_Capacity;
+	cout << "\nWeights:\n";
+	My_Backpack.show_vector(My_Weights);
+	cout << "\nCosts:\n";
+	My_Backpack.show_vector(My_Costs);
+	cout << "\nFinal cost:\n";
+	cout << My_Backpack.algorithm(My_Weights, My_Costs, My_Capacity).cost << "\n";
+
+	system("pause");
+	return 0;
+
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <iostream>
+#include <algorithm>
+#include <vector>
+ 
+using namespace std;
+ 
+int w,n(0),f,s,max_c(0),max_w(0);
+ 
+int main()
+{	
+	cin >> w;
+	//cin >> n;
+	vector<int>weight,cost;
+	while(cin >> f >> s){
+		++n;
+		weight.push_back(f);
+		cost.push_back(s);
+	}
+	//for(int i = 0;i<n;++i){       
+	//	cin >> f >> s;
+	//	weight.push_back(f);
+	//	cost.push_back(s);
+	//}
+	int matrix[n+1][w+1];
+	for(int i = 0;i<=w;++i)matrix[0][i] = 0;
+	for(int i = 0;i<=n;++i)matrix[i][0] = 0;
+	for(int i = 1;i<=n;++i){
+		for(int j = 1;j<=w;++j)if(weight[i-1] <= j){
+			matrix[i][j] = max(matrix[i-1][j],matrix[i-1][j-weight[i-1]] + cost[i-1]);
+		} else matrix[i][j] = matrix[i-1][j];
+	}
+	vector<int>answer;
+	for(int i = n;;){
+		for(int j = w;;){
+			if(!matrix[i][j])break;
+			if(matrix[i][j] != matrix[i-1][j]){
+				answer.push_back(i);
+				max_c += cost[i-1];
+				max_w += weight[i-1];
+				j -= weight[i-1];
+			} 
+			--i;
+		}
+		break;
+	}
+	sort(answer.begin(),answer.end());
+	cout << max_w << ' ' << max_c << '\n';
+	for(int i = 0;i<answer.size();++i)cout << answer[i] << ' ';
+ 
+	return 0;
+}

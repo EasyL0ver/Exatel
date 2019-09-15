@@ -1,0 +1,47 @@
+on rightclick on sign:
+	line 1 of event-block is "&5=========="
+	line 2 of event-block is "&aゲームに参加"
+	line 3 of event-block is "&eJoin the game"
+	line 4 of event-block is "&5=========="
+	player do not have permission "joingame.mini":
+		message "&c既にゲームに参加しています"
+	else:
+		make console execute "/pex user %player% add joingame.mini"
+		message "&aゲームに参加しました"
+	
+command /tntrun:
+	trigger:
+		broadcast "&e今回のミニゲームは&f&l T &4&lN &f&lT &4&lR &f&lU &4&lN &eに決まりました"
+		wait 3 seconds
+		broadcast "&eあと10秒でゲームを開始します......"
+		wait 2 seconds
+		broadcast "&eゲーム開始まで残り10秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds
+		broadcast "&eゲーム開始まで残り9秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds
+		broadcast "&eゲーム開始まで残り8秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds
+		broadcast "&eゲーム開始まで残り7秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds
+		broadcast "&eゲーム開始まで残り6秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds
+		broadcast "&eゲーム開始まで残り5秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds
+		broadcast "&eゲーム開始まで残り4秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds
+		broadcast "&eゲーム開始まで残り3秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds
+		broadcast "&eゲーム開始まで残り2秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds
+		broadcast "&eゲーム開始まで残り1秒"
+		command "/playsound ui.button.click master @a ~ ~ ~ 2.0 1 0.5"
+		wait 1 seconds

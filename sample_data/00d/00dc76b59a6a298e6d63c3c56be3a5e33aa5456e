@@ -1,0 +1,24 @@
+<?php
+
+$age = null ;
+$age = $_GET['age'];
+
+if ($age > 59){
+    echo "You are retired";
+    if ($age < 59 && $age >= 18 ){
+        echo "You can work";
+        if ($age <=17 && $age >=0){
+            echo "You are too young";
+        } else {
+            echo "Not correct age";
+        }
+    }
+}
+
+
+?>
+
+<form>
+    Enter your age:  <input name="age" placeholder="Your Age" /><br>
+    <input type="submit" />
+</form>

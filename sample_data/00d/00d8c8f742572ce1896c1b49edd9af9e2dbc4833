@@ -1,0 +1,118 @@
+=====================================================================
+== C:\Program Files (x86)\Steam\steamapps\common\Arma 3\Arma3_x64.exe
+== "C:\Program Files (x86)\Steam\steamapps\common\Arma 3\Arma3_x64.exe" -password= -beservice "-mod=C:\Program Files (x86)\Steam\steamapps\common\Arma 3\@Paradise Island;C:\Program Files (x86)\Steam\steamapps\common\Arma 3\@Paradise Island" -connect=54.36.124.94 -port=2302 -beservice
+
+Original output filename: Arma3Retail_DX11_x64
+Exe timestamp: 2018/12/05 13:31:38
+Current time:  2018/12/12 19:22:02
+
+Type: Public
+Build: Stable
+Version: 1.88.145263
+
+Allocator: C:\Program Files (x86)\Steam\steamapps\common\Arma 3\Dll\tbb4malloc_bi_x64.dll [2017.0.0.0] [2017.0.0.0]
+PhysMem: 12 GiB, VirtMem : 131072 GiB, AvailPhys : 9.2 GiB, AvailVirt : 131068 GiB, AvailPage : 15 GiB
+=====================================================================
+
+19:22:02 Detected number of DLCs: 20
+19:22:02 DLC index:3 - unable to get DLC data
+19:22:02 ----------------------------------------- Dlcs -----------------------------------------
+19:22:02                                 name      appId   owned  installed  available   isDlc
+19:22:02                               Arma 3     107410     yes        yes        yes      no
+19:22:02                              Unknown         -1      no         no         no     yes
+19:22:02                          Arma 3 Zeus     275700     yes        yes        yes     yes
+19:22:02                   Arma 3 Helicopters     304380     yes        yes        yes     yes
+19:22:02                   Arma 3 Laws of War     571710      no         no        yes     yes
+19:22:02                  Arma 3 DLC Bundle 2     612480      no         no        yes     yes
+19:22:02                        Arma 3 Malden     639600     yes        yes        yes     yes
+19:22:02                         Arma 3 Tanks     798390      no         no        yes     yes
+19:22:02      Arma 3 Alpha Lite - expires now     228800      no         no         no     yes
+19:22:02                        Arma 3 Server     233780     yes        yes         no     yes
+19:22:02                    Arma 3 Soundtrack     249860      no         no         no     yes
+19:22:02                  Arma 3 DLC Bundle 1     304400     yes        yes        yes     yes
+19:22:02                       Arma 3 Samples     390500     yes        yes         no     yes
+19:22:02                          Arma 3 Apex     395180     yes        yes        yes     yes
+19:22:02                          Arma 3 Jets     601670      no         no        yes     yes
+19:22:02          Arma 3 Tac-Ops Mission Pack     744950      no         no        yes     yes
+19:22:02                          Arma 3 Maps     249861      no         no         no     yes
+19:22:02                Arma 3 Tactical Guide     249862      no         no         no     yes
+19:22:02                         Arma 3 Tools     233800     yes        yes         no     yes
+19:22:02                         Arma 3 Karts     288520     yes        yes        yes     yes
+19:22:02                      Arma 3 Marksmen     332350     yes        yes        yes     yes
+19:22:02 ----------------------------------------------------------------------------------------
+19:22:03 Cannot register unknown string STR_3DEN_CAMERA_NAME
+19:22:03 Cannot register unknown string STR_DIFF_SCENE_ONLY
+19:22:03 Cannot register unknown string STR_DIFF_SCENE_AND_MAP
+19:22:04 Initializing stats manager.
+19:22:04 sessionID: c3a48f06be6b61881dd793b4d6e5546dee9aef06
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unexpected stringtable format inside <Text ID="STR_fumer_off"><Spanish>
+19:22:11 Item STR_fumer_off listed twice
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:11 Unsupported language French in stringtable
+19:22:12 Item str_a3_to_c01_m02_036_ta_mechanized_briefing_SOLDIERC_0 listed twice
+19:22:15 Conflicting addon AMF_weapon_F in 'amf_614_short\', previous definition in 'amf_614_long\'
+19:22:15 Conflicting addon AMF_weapon_F in 'amf_samas_f1\', previous definition in 'amf_614_long\'
+19:22:15 Conflicting addon asdg_jointrails in 'x\cba\addons\jr\asdg_jointrails\', previous definition in 'asdg_jointrails\'
+19:22:15 Conflicting addon asdg_jointmuzzles in 'x\cba\addons\jr\asdg_jointmuzzles\', previous definition in 'asdg_jointrails\'
+19:22:15 Conflicting addon cba_jr_prep in 'x\cba\addons\jr_prep\', previous definition in 'x\cba\addons\jr\jr_prep\'
+19:22:15 Conflicting addon cba_ui_helper in 'x\cba\addons\ui_helper\', previous definition in 'x\cba\addons\ui\ui_helper\'
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 162: '/CfgVehicles/EGolfGN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 164: '/CfgVehicles/EGolfGN.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 180: '/CfgVehicles/CLA45GN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 182: '/CfgVehicles/CLA45GN.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 196: '/CfgVehicles/SciroccoGN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 198: '/CfgVehicles/SciroccoGN.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 214: '/CfgVehicles/CLA45GAOS.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 216: '/CfgVehicles/CLA45GAOS.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 230: '/CfgVehicles/CLA45GN_cap.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 232: '/CfgVehicles/CLA45GN_cap.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 248: '/CfgVehicles/escalade_medic.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 250: '/CfgVehicles/escalade_medic.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 264: '/CfgVehicles/X6GN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 266: '/CfgVehicles/X6GN.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 282: '/CfgVehicles/RangeroverGN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 284: '/CfgVehicles/RangeroverGN.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 300: '/CfgVehicles/WRXGN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 302: '/CfgVehicles/WRXGN.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 316: '/CfgVehicles/t3carshop.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 318: '/CfgVehicles/t3carshop.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 332: '/CfgVehicles/Volvocarshop.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 334: '/CfgVehicles/Volvocarshop.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 348: '/CfgVehicles/RTcarshop.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 350: '/CfgVehicles/RTcarshop.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 364: '/CfgVehicles/h1carshop.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 366: '/CfgVehicles/h1carshop.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 380: '/CfgVehicles/SRT8GN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 382: '/CfgVehicles/SRT8GN.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 396: '/CfgVehicles/SLK55GN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 398: '/CfgVehicles/SLK55GN.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 414: '/CfgVehicles/X5GN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 416: '/CfgVehicles/X5GN.faction': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 432: '/CfgVehicles/Model_SGN.crew': Missing ';' at the end of line
+19:22:17 File LesSkinsDeJacky_PI\config.cpp, line 434: '/CfgVehicles/Model_SGN.faction': Missing ';' at the end of line
+19:22:17 File

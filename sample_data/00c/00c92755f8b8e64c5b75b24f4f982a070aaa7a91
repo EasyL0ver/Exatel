@@ -1,0 +1,75 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+long long n, INF = 100000;
+vector <vector <pair<long long, long long> > > g;
+vector <long long> d, p;
+vector <long long> ans;
+bool flag = true;
+
+
+void print(){
+    if (flag){
+        cout << "YES" << endl;
+        cout << ans.size() - 1 << endl;
+        for (int i = 1; i < ans.size(); i++) {
+                cout << ans[i] + 1 << " ";
+        }
+    } else {
+        cout << "NO" << endl;
+    }
+}
+
+
+void findNegCycle(){
+    long long buf;
+    for (int i = 0; i < n; i++){
+        buf = -1;
+        for (int j = 0; j < g.size(); j++){
+            for (int k = 0; k < g[j].size(); k++){
+                long long to = g[j][k].first; long long length = g[j][k].second;
+                if (d[to] > d[j] + length){
+                    d[to] = max (-LLONG_MAX/2, d[j] + length);
+                    p[to] = j; buf = to;
+                }
+            }
+        }
+    }
+    if (buf == -1) flag = false; else
+    {
+        flag = true;
+    long long y = buf;
+    for (int i = 0; i < n; i++) {
+        y = p[y];
+    }
+    for (int tmp = y;;tmp = p[tmp]) {
+        ans.push_back(tmp);
+        if (tmp == y && ans.size() > 1) {
+            break;
+        }
+    }
+    reverse(ans.begin(), ans.end());
+    }
+}
+
+int main()
+{
+    cin >> n;
+    g.resize(n);
+    d.resize(n,0);
+    p.resize(n);
+    fill(p.begin(), p.end(), -1);
+
+    for (int i = 0; i < n; i++){
+        for (int j = 0; j < n; j++){
+            long long w;
+            cin >> w;
+            if (w != INF){
+                g[i].push_back({j,w});
+            }
+        }
+    }
+    findNegCycle();
+    print();
+
+}

@@ -1,0 +1,16 @@
+class Map extends EventEmitter {
+    //other code..
+    enter(player) {
+        this.addListener('chat', handlePlayerChat.bind(player))
+        this.addListener('move', handlePlayerMove.bind(player))
+        this.addListener('attack', handlePlayerAttack.bind(player))
+        //and so on..
+    }
+
+    exit(player) {
+        //player is going to another map
+        //here i want to remove player's all subscriptions to 'this' map so 
+        //it can listen to events from the new map
+        this.removeListener('chat', handlePlayerChat.bind(player)); //this doesn't work..
+    }
+}

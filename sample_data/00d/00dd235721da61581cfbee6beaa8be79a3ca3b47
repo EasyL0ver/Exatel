@@ -1,0 +1,311 @@
+const bigQueryData = [];
+const fillerData = [];
+const genFillerDataForYears = [2000, 2001];
+
+//Function for getting a default value when it isn't defined
+const getDefault = cellType => {
+  let defaultVal;
+  if (cellType === "PlantingDate") defaultVal = "2000-01-01";
+  if (cellType === "CropName") defaultVal = "Grass";
+  if (cellType === "NApplicationMethod")
+    defaultVal = "Surface Band / Sidedress"; //todo be able to get null
+  if (cellType === "NApplicationAmount") defaultVal = 17.8; //todo be able to get null
+  if (cellType === "NApplicationType") defaultVal = "UAN"; //todo be able to get null
+  if (cellType === "NApplicationDate") defaultVal = "01-01-2000"; //todo get year/null
+  if (cellType === "StrawStoverHayRemoval") defaultVal = false; //todo be able to get null
+  if (cellType === "Yield") defaultVal = false; //todo be able to get null
+  if (cellType === "Grain") defaultVal = false; //todo be able to get null
+  if (cellType === "HarvestDate") defaultVal = "01-01-2000"; //todo get year/null
+  if (cellType === "ContinueFromPreviousYear") defaultVal = "No";
+  if (cellType === "TillageType") defaultVal = false; //todo be able to get null
+  if (cellType === "TillageDate") defaultVal = "01-01-2000"; //todo get year/null
+  if (cellType === "CropYear") defaultVal = 2000; // todo increment year based on previous val
+  if (cellType === "CropNumber") defaultVal = 1; //todo be able to get null/number increment
+  if (cellType === "EEP") defaultVal = "None"; //todo be able to get null
+  return defaultVal;
+};
+
+//generate filler data for a range of years for when thedata doesnt exist
+const generateYearData = range => {
+  range.forEach((year, i) => {
+    const cropYear = year;
+    const cropNumber = getDefault("CropNumber");
+    const cropName = getDefault("CropName");
+    const plantingDate = `01-01-${year}`;
+    const continueFromPreviousYear = getDefault("ContinueFromPreviousYear");
+    const harvestDate = `12-31-${year}`;
+    const grain = getDefault("Grain");
+    const _yield = getDefault("Yield");
+    const strawStoverHayRemoval = getDefault("StrawStoverHayRemoval");
+    const tillageDate = `01-02-${year}`;
+    const tillageType = getDefault("TillageType");
+    const nApplicationDate = `01-02-${year}`;
+    const nApplicationType = getDefault("NApplicationType");
+    const nApplicationAmount = getDefault("NApplicationAmount");
+    const nApplicationMethod = getDefault("NApplicationMethod");
+    const eep = getDefault("EEP");
+    fillerData.push([
+      cropYear,
+      cropNumber,
+      cropName,
+      plantingDate,
+      continueFromPreviousYear,
+      harvestDate,
+      grain,
+      _yield,
+      strawStoverHayRemoval,
+      tillageDate,
+      tillageType,
+      nApplicationDate,
+      nApplicationType,
+      nApplicationAmount,
+      nApplicationMethod,
+      eep
+    ]);
+  });
+};
+generateYearData(genFillerDataForYears);
+
+//this is the data that would otherwise be taken from a row/column table like handsontable
+const data = [
+  [
+    "CropYear",
+    "CropNumber",
+    "CropName",
+    "PlantingDate",
+    "ContinueFromPreviousYear",
+    "HarvestDate",
+    "Grain",
+    "Yield",
+    "StrawStoverHayRemoval",
+    "TillageDate",
+    "TillageType",
+    "NApplicationDate",
+    "NApplicationType",
+    "NApplicationAmount",
+    "NApplicationMethod",
+    "EEP"
+  ],
+  ...fillerData,
+  [
+    "2016",
+    1, //todo 1-2 array requirement
+    "Corn",
+    "10-10-2016",
+    "Yes",
+    "10-10-2016", //todo make always later than plant date
+    "Yes",
+    200.3,
+    0,
+    "10-10-2016", //todo date
+    "Intensive Tillage",
+    "10-10-2016",
+    "UAN",
+    17.8,
+    "Surface Band / Sidedress",
+    "None"
+  ],
+  [
+    "2017",
+    1, //todo 1-2 array
+    "Corn",
+    "10-10-2017",
+    "Yes",
+    "10-10-2017", //todo make always later than plant date
+    "Yes",
+    200.3,
+    0,
+    "10-10-2017", //todo date
+    "Intensive Tillage",
+    "10-10-2017",
+    "UAN",
+    17.8,
+    "Surface Band / Sidedress",
+    "None"
+  ],
+  [
+    "2018",
+    1, //todo 1-2 array
+    "Corn",
+    "10-10-2018",
+    "Yes",
+    "10-10-2018", //todo make always later than plant date
+    "Yes",
+    200.3,
+    0,
+    "10-10-2018", //todo date
+    "Intensive Tillage",
+    "10-10-2018",
+    "UAN",
+    17.8,
+    "Surface Band / Sidedress",
+    "None"
+  ],
+  [
+    "2019",
+    1, //todo 1-2 array
+    "Corn",
+    "10-10-2019",
+    "Yes",
+    "10-10-2019", //todo make always later than plant date
+    "Yes",
+    200.3,
+    0,
+    "10-10-2019", //todo date
+    "Intensive Tillage",
+    "10-10-2019",
+    "UAN",
+    17.8,
+    "Surface Band / Sidedress",
+    "None"
+  ]
+];
+
+const [headers, ...rows] = data;
+
+//The model of the API input data (everything except the preface-- meaning, everything from Crop Scenario on is deifned here)
+const model = {
+  setCrop: function({
+    cropName,
+    cropYear,
+    cropNumber,
+    plantingDate,
+    continueFromPreviousYear,
+    harvestDate,
+    grain,
+    _yield,
+    strawStoverHayRemoval,
+    tillageDate,
+    tillageType,
+    nApplicationDate,
+    nApplicationType,
+    nApplicationAmount,
+    nApplicationMethod,
+    eep
+  }) {
+    this._ = {
+      CropYear: cropYear || getDefault("CropYear"),
+      _: {
+        CropNumber: cropNumber || getDefault("CropNumber"),
+        _: {
+          //todo increment auto
+          CropName: cropName || getDefault("CropName"),
+          PlantingDate: plantingDate || getDefault("PlantingDate"),
+          ContinueFromPreviousYear:
+            continueFromPreviousYear || getDefault("ContinueFromPreviousYear"),
+          HarvestList: {
+            HarvestEvent: {
+              HarvestDate: harvestDate || getDefault("HarvestDate"),
+              Grain: grain || getDefault("Grain"),
+              Yield: _yield || getDefault("Yield"),
+              StrawStoverHayRemoval:
+                strawStoverHayRemoval || getDefault("StrawStoverHayRemoval")
+            }
+          },
+          GrazingList: {},
+          TillageList: {
+            TillageEvent: {
+              TillageDate: tillageDate || getDefault("TillageDate"),
+              TillageType: tillageType || getDefault("TillageType")
+            }
+          },
+          NApplicationList: {
+            NApplicationEvent: {
+              NApplicationDate:
+                nApplicationDate || getDefault("NApplicationDate"),
+              NApplicationType:
+                nApplicationType || getDefault("NApplicationType"),
+              NApplicationAmount:
+                nApplicationAmount || getDefault("NApplicationAmount"),
+              NApplicationMethod:
+                nApplicationMethod || getDefault("NApplicationMethod"),
+              EEP: eep || getDefault("EEP")
+            }
+          },
+          OMADApplicationList: {},
+          IrrigationList: {}
+        }
+      }
+    };
+  }
+};
+
+//check if cells contain errors in format
+const cellContainsError = (type, val) => {
+  let err;
+  const validCrops = ["", "Corn", "Soybean", "Grass"]; //todo: real crop possibilities
+  const validYears = ["", 2000, 2001, "2016", "2017", "2018", "2019"]; /// todo: 2000-2026?
+  const validCropNumbers = ["", 1, 2];
+  const validIrrigation = ["", true, false]; //todo: real irrigation possibilities
+  const validTillage = ["", true, false]; //todo: real tillage possibilities
+
+  if (type === "CropName" && !validCrops.includes(val)) err = true;
+  if (type === "CropNumber" && !validCropNumbers.includes(val)) err = true;
+  if (type === "CropYear" && !validYears.includes(val)) err = true;
+  if (
+    type === "PlantingDate" &&
+    !(typeof Date.parse(val) !== "number" || val !== "")
+  )
+    err = true; //todo: in the same year as crop year
+  if (type === "Irrigation" && !validIrrigation.includes(val)) err = true;
+  if (type === "Tillage" && !validTillage.includes(val)) err = true;
+
+  return err;
+};
+
+console.log("\n==========\n");
+
+rows.forEach((row, i) => {
+  const [
+    cropYear,
+    cropNumber,
+    cropName,
+    plantingDate,
+    continueFromPreviousYear,
+    harvestDate,
+    grain,
+    _yield,
+    strawStoverHayRemoval,
+    irrigation,
+    tillageDate,
+    tillageType,
+    nApplicationDate,
+    nApplicationType,
+    nApplicationAmount,
+    nApplicationMethod,
+    eep
+  ] = row;
+  row.forEach((cell, j) => {
+    if (cellContainsError(headers[j], cell)) {
+      throw new Error(
+        `Invalid ${headers[j]} in row ${i} cell ${j}, unexpected value: ${cell}`
+      );
+    }
+  });
+  const entry = Object.create(model);
+  entry.setCrop({
+    cropName,
+    cropNumber,
+    cropYear,
+    continueFromPreviousYear,
+    plantingDate,
+    harvestDate,
+    grain,
+    _yield,
+    strawStoverHayRemoval,
+    tillageDate,
+    tillageType,
+    nApplicationDate,
+    nApplicationType,
+    nApplicationAmount,
+    nApplicationMethod,
+    eep
+  });
+  //console.log(JSON.stringify(entry));
+  bigQueryData.push(entry);
+});
+
+//console.log(bigQueryData);
+console.log(JSON.stringify(bigQueryData));
+
+console.log("\n==========\n");

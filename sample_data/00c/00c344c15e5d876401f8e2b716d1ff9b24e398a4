@@ -1,0 +1,281 @@
+local char = owner
+for i,v in pairs(char:children()) do
+    if v:IsA("Accessory") then
+        v:Destroy()
+    end
+end
+local aura = Instance.new("ParticleEmitter",owner)
+aura.Size = NumberSequence.new(0)
+aura.Lifetime = NumberRange.new(0)
+aura.LightEmission = 0
+local jun = owner
+local Player= owner
+repeat wait()
+until Player
+local Char=Player.Character
+repeat wait()
+until Char
+local CurrentEffects={}
+local CurrentDamages={}
+local Human=Char.Humanoid
+local LArm=Char["Left Arm"]
+local RArm=Char["Right Arm"]
+local LLeg=Char["Left Leg"]
+local RLeg=Char["Right Leg"]
+local Torso=Char.Torso
+local RS=Torso["Right Shoulder"]
+local LS=Torso["Left Shoulder"]
+local RH=Torso["Right Hip"]
+local LH=Torso["Left Hip"]
+local Head=Char.Head
+local Neck=Torso.Neck
+local RootPart=Char.HumanoidRootPart
+local RootJoint=RootPart.RootJoint
+local equipped=false
+local Debounce=false
+local Anim="Idle"
+local chat = game:GetService("Chat")
+local Mouse=Player:GetMouse()
+local Lighting=game.Lighting
+local cf=CFrame.new
+local v3=Vector3.new
+local c3=Color3.new
+local it=Instance.new
+local angles=CFrame.Angles
+local rad=math.rad
+local ran=math.random
+local huge=math.huge
+local attacking=false
+local attacktype=1
+local Portalling=false
+local p = owner
+local char = p.Character
+local mouse = p:GetMouse()
+local larm = char["Left Arm"]
+local rarm = char["Right Arm"]
+local lleg = char["Left Leg"]
+local rleg = char["Right Leg"]
+local hed = char.Head
+-- This script has been converted to FE by Gaminhyena
+
+
+if game:GetService("RunService"):IsClient() then error("Script must be server-side in order to work; use h/ and not hl/") end
+local Player,Mouse,mouse,UserInputService,ContextActionService = owner
+do
+	print("FE Compatibility code by Gaminhyena | Made into FE also by Gaminhyna")
+	script.Parent = Player.Character
+
+	--RemoteEvent for communicating
+	local Event = Instance.new("RemoteEvent")
+	Event.Name = "UserInput_Event"
+
+	--Fake event to make stuff like Mouse.KeyDown work
+	local function fakeEvent()
+		local t = {_fakeEvent=true,Connect=function(self,f)self.Function=f end}
+		t.connect = t.Connect
+		return t
+	end
+
+	--Creating fake input objects with fake variables
+    local m = {Target=nil,Hit=CFrame.new(),KeyUp=fakeEvent(),KeyDown=fakeEvent(),Button1Up=fakeEvent(),Button1Down=fakeEvent()}
+	local UIS = {InputBegan=fakeEvent(),InputEnded=fakeEvent()}
+	local CAS = {Actions={},BindAction=function(self,name,fun,touch,...)
+		CAS.Actions[name] = fun and {Name=name,Function=fun,Keys={...}} or nil
+	end}
+	--Merged 2 functions into one by checking amount of arguments
+	CAS.UnbindAction = CAS.BindAction
+
+	--This function will trigger the events that have been :Connect()'ed
+	local function te(self,ev,...)
+		local t = m[ev]
+		if t and t._fakeEvent and t.Function then
+			t.Function(...)
+		end
+	end
+	m.TrigEvent = te
+	UIS.TrigEvent = te
+
+	Event.OnServerEvent:Connect(function(plr,io)
+	    if plr~=Player then return end
+		if io.isMouse then
+			m.Target = io.Target
+			m.Hit = io.Hit
+		else
+			local b = io.UserInputState == Enum.UserInputState.Begin
+			if io.UserInputType == Enum.UserInputType.MouseButton1 then
+				return m:TrigEvent(b and "Button1Down" or "Button1Up")
+			end
+			for _,t in pairs(CAS.Actions) do
+				for _,k in pairs(t.Keys) do
+					if k==io.KeyCode then
+						t.Function(t.Name,io.UserInputState,io)
+					end
+				end
+			end
+			m:TrigEvent(b and "KeyDown" or "KeyUp",io.KeyCode.Name:lower())
+			UIS:TrigEvent(b and "InputBegan" or "InputEnded",io,false)
+	    end
+	end)
+	Event.Parent = NLS([==[
+	local Player = game:GetService("Players").LocalPlayer
+	local Event = script:WaitForChild("UserInput_Event")
+
+	local UIS = game:GetService("UserInputService")
+	local input = function(io,a)
+		if a then return end
+		--Since InputObject is a client-side instance, we create and pass table instead
+		Event:FireServer({KeyCode=io.KeyCode,UserInputType=io.UserInputType,UserInputState=io.UserInputState})
+	end
+	UIS.InputBegan:Connect(input)
+	UIS.InputEnded:Connect(input)
+
+	local Mouse = Player:GetMouse()
+	local h,t
+	--Give the server mouse data 30 times every second, but only if the values changed
+	--If player is not moving their mouse, client won't fire events
+	while wait(1/30) do
+		if h~=Mouse.Hit or t~=Mouse.Target then
+			h,t=Mouse.Hit,Mouse.Target
+			Event:FireServer({isMouse=true,Target=t,Hit=h})
+		end
+	end]==],Player.Character)
+	Mouse,mouse,UserInputService,ContextActionService = m,m,UIS,CAS
+end
+local symbolimg = "rbxassetid://349165228"
+local torso = char.Torso
+local hum = char.Humanoid
+local cam = game.Workspace.CurrentCamera
+local root = char.HumanoidRootPart
+local deb = false
+local shot = 0
+local debris=game:service"Debris"
+local l = game:GetService("Lighting")
+local rs = game:GetService("RunService").RenderStepped
+local eColors = {"Royal purple", "Really black"}
+necko=cf(0, 1, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+LHC0=cf(-1,-1,0,-0,-0,-1,0,1,0,1,0,0)
+LSC0=cf(-1, 0.5, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+RHC0=cf(1,-1,0,0,0,1,0,1,0,-1,-0,-0)
+RSC0=cf(1, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+ROOTC0 = cf(0, 0, 0, -1, -0, -0, 0, 0, 1, 0, 1, 0)
+--------------------------------------------------------------------
+
+
+
+local Transforming = true
+Human.WalkSpeed = 0
+
+
+Player:ClearCharacterAppearance()
+wait(0.1)
+Player.Character.Head.BrickColor = BrickColor.new("Really black")
+Player.Character.Torso.BrickColor = BrickColor.new("Really black")
+Player.Character["Right Arm"].BrickColor = BrickColor.new("Really black")
+Player.Character["Right Leg"].BrickColor = BrickColor.new("Really black")
+Player.Character["Left Leg"].BrickColor = BrickColor.new("Really black")
+Player.Character["Left Arm"].BrickColor = BrickColor.new("Really black")
+Player.Character.Head.face:Destroy()
+
+
+
+
+
+
+
+local selectionBoxOfTorso = Instance.new("SelectionBox",Torso)
+selectionBoxOfTorso.Adornee = Torso
+selectionBoxOfTorso.Color = BrickColor.new("Lime green")
+selectionBoxOfTorso.LineThickness = 0.01
+selectionBoxOfTorso.Transparency = 0
+	
+local selectionBoxOfRightArm = Instance.new("SelectionBox",Char["Right Arm"])
+selectionBoxOfRightArm.Adornee = Char["Right Arm"]
+selectionBoxOfRightArm.Color = BrickColor.new("Lime green")
+selectionBoxOfRightArm.LineThickness = 0.01
+selectionBoxOfRightArm.Transparency = 0
+	
+local selectionBoxOfRightLeg = Instance.new("SelectionBox",Char["Right Leg"])
+selectionBoxOfRightLeg.Adornee = Char["Right Leg"]
+selectionBoxOfRightLeg.Color = BrickColor.new("Lime green")
+selectionBoxOfRightLeg.LineThickness = 0.01
+selectionBoxOfRightLeg.Transparency = 0
+
+local selectionBoxOfLeftArm = Instance.new("SelectionBox",Char["Left Arm"])
+selectionBoxOfLeftArm.Adornee = Char["Left Arm"]
+selectionBoxOfLeftArm.Color = BrickColor.new("Lime green")
+selectionBoxOfLeftArm.LineThickness = 0.01
+selectionBoxOfLeftArm.Transparency = 0
+
+local selectionBoxOfLeftLeg = Instance.new("SelectionBox",Char["Left Leg"])
+selectionBoxOfLeftLeg.Adornee = Char["Left Leg"]
+selectionBoxOfLeftLeg.Color = BrickColor.new("Lime green")
+selectionBoxOfLeftLeg.LineThickness = 0.01
+selectionBoxOfLeftLeg.Transparency = 0
+
+
+LightOnBody = Instance.new("PointLight", Head)
+LightOnBody.Brightness = 3000
+LightOnBody.Range = 20
+LightOnBody.Color = Color3.new(0, 225, 0)
+
+
+
+local p = owner
+local char = p.Character
+GodOfDestruction = Instance.new("Model",owner)
+GodOfDestruction.Name = "GodOfDestruction"
+humanoid = Instance.new("Humanoid",owner.Character.Torso.GodOfDestruction)
+shirt = Instance.new("Shirt",owner.Character.Torso.GodOfDestruction)
+shirt.Name = "Shirt"
+pants = Instance.new("Pants",owner.Character.Torso.GodOfDestruction)
+pants.Name = "Pants"
+torso = Instance.new("Part",owner.Character.Torso.GodOfDestruction)
+torso.Size = Vector3.new(2,2,1)
+torso.Rotation = Vector3.new(0,180,0)
+torso.Position = Vector3.new(0,4,0)
+torso.BrickColor = BrickColor.new("Really black")
+torso.Name = "Torso"
+head = Instance.new("Part",owner.Character.Torso.GodOfDestruction)
+head.Size = Vector3.new(1.25,1.25,1.25)
+head.BrickColor = BrickColor.new("Really black")
+head.Name = "Head"
+head.Position = Vector3.new(0,6,0)
+headmesh = Instance.new("SpecialMesh",head)
+headmesh.MeshType = "Head"
+larm = Instance.new("Part",owner.Character.Torso.GodOfDestruction)
+larm.Size = Vector3.new(1,2,1)
+larm.BrickColor = BrickColor.new("Really black")
+larm.Name = "Left Arm"
+larm.Position = Vector3.new(-2,4,0)
+rarm = Instance.new("Part",owner.Character.Torso.GodOfDestruction)
+rarm.Size = Vector3.new(1,2,1)
+rarm.BrickColor = BrickColor.new("Really black")
+rarm.Name = "Right Arm"
+rarm.Position = Vector3.new(2,4,0)
+lleg = Instance.new("Part",owner.Character.Torso.GodOfDestruction)
+lleg.Size = Vector3.new(1,2,1)
+lleg.Name = "Left Leg"
+lleg.Position = Vector3.new(1,2,0)
+lleg.BrickColor = BrickColor.new("Really black")
+rleg = Instance.new("Part",owner.Character.Torso.GodOfDestruction)
+rleg.Size = Vector3.new(1,2,1)
+rleg.Name = "Right Leg"
+rleg.Position = Vector3.new(-1,2,0)
+rleg.BrickColor = BrickColor.new("Really black")
+headweld = Instance.new("Weld",owner.Character.Torso.GodOfDestruction.Head)
+headweld.Part0 = owner.Character.Torso.GodOfDestruction.Head
+headweld.Part1 = torso
+headweld.C0 = CFrame.new(0, -1.5, 0)
+larmweld = Instance.new("Weld",owner.Character.Torso.GodOfDestruction.Torso)
+larmweld.Part0 = owner.Character.Torso.GodOfDestruction.Torso
+larmweld.Part1 = larm
+larmweld.C0 = CFrame.new(1.5, 0, 0)
+rarmweld = Instance.new("Weld",owner.Character.Torso.GodOfDestruction.Torso)
+rarmweld.Part0 = owner.Character.Torso.GodOfDestruction.Torso
+rarmweld.Part1 = rarm
+rarmweld.C0 = CFrame.new(-1.5, 0, 0)
+rlegweld = Instance.new("Weld",owner.Character.Torso.GodOfDestruction.Torso)
+rlegweld.Part0 = owner.Character.Torso.GodOfDestruction.Torso
+rlegweld.Part1 = rleg
+rlegweld.C0 = CFrame.new(-0.5, -2, 0)
+llegweld =

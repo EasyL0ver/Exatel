@@ -1,0 +1,122 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+/******************************************************************************/         
+void genAdd (int pocet) {
+  int ran;
+  for(int i = 0 ; i < pocet;i++) {
+          ran = rand() % 3;
+          cout <<"b1.Add(\"";
+          switch(ran) {
+                     case 0: cout<<"Tom\", \"";break;
+                     case 1: cout<<"Franta\", \"";break;
+                     case 2: cout<<"Cenda\", \"";break;
+          }
+          
+          
+          ran = rand() % 7;
+          switch(ran) {
+                     case 0: cout<<"Praha\",\"";break;
+                     case 1: cout<<"Brno\",\"";break;
+                     case 2: cout<<"Liberec\",\"";break;
+                     case 3: cout<<"Domazlice\",\"";break;
+                     case 4: cout<<"Blizejov\",\"";break;
+                     case 5: cout<<"Blizejov\",\"";break;
+                     case 6: cout<<"Blizejov\",\"";break;
+                                                               
+          }
+          ran = rand() % 10;
+          switch(ran) {
+                     case 0: cout<<"1\");";break;
+                     case 1: cout<<"2\");";break;
+                     case 2: cout<<"3\");";break;
+                     case 3: cout<<"4\");";break;
+                     case 4: cout<<"5\");";break;
+                     case 5: cout<<"6\");";break;
+                     case 6: cout<<"7\");";break;
+                     case 7: cout<<"8\");";break;
+                     case 8: cout<<"9\");";break;
+                     case 9: cout<<"10\");";break;
+          }
+          cout << endl;
+  }     
+}
+
+/******************************************************************************/     
+void genDel (int pocet) {
+  int ran;
+  for(int i = 0 ; i < pocet;i++) {
+          ran = rand() % 5;
+          cout <<"b1.Del(\"";
+          switch(ran) {
+                     case 0: cout<<"Fos";break;
+                     case 1: cout<<"Voj";break;
+                     case 2: cout<<"Tom";break;
+                     case 3: cout<<"Franta";break;
+                     case 4: cout<<"Cenda";break;
+          }
+          ran = rand() % 6;
+          switch(ran) {
+                     case 0: cout<<"ef\",\"";break;
+                     case 1: cout<<"tech\",\"";break;
+                     case 2: cout<<"mas\",\"";break;
+                     case 3: cout<<"efda\",\"";break;
+                     case 4: cout<<"dfs\",\"";break;
+                     case 5: cout<<"afd\",\"";break;
+          }
+          ran = rand() % 5;
+          switch(ran) {
+                     case 0: cout<<"Praha\" );";break;
+                     case 1: cout<<"Brno\" );";break;
+                     case 2: cout<<"Liberec\" );";break;
+                     case 3: cout<<"Domazlice\" );";break;
+                     case 4: cout<<"Blizejov\" );";break;
+          }
+          cout << endl;
+  }     
+}
+    
+/******************************************************************************/
+void genSearch (int pocet) {
+  int ran;
+  for(int i = 0 ; i < pocet;i++) {
+          ran = rand() % 5;
+          cout <<"b1.Search(\"";
+          switch(ran) {
+                     case 0: cout<<"Fos";break;
+                     case 1: cout<<"Voj";break;
+                     case 2: cout<<"Tom";break;
+                     case 3: cout<<"Franta";break;
+                     case 4: cout<<"Cenda";break;
+          }
+          ran = rand() % 6;
+          switch(ran) {
+                     case 0: cout<<"ef\",\"";break;
+                     case 1: cout<<"tech\",\"";break;
+                     case 2: cout<<"mas\",\"";break;
+                     case 3: cout<<"efda\",\"";break;
+                     case 4: cout<<"dfs\",\"";break;
+                     case 5: cout<<"afd\",\"";break;
+          }
+          ran = rand() % 5;
+          switch(ran) {
+                     case 0: cout<<"Praha\", ";break;
+                     case 1: cout<<"Brno\", ";break;
+                     case 2: cout<<"Liberec\", ";break;
+                     case 3: cout<<"Domazlice\", ";break;
+                     case 4: cout<<"Blizejov\", ";break;
+          }
+
+          cout << "phone );" << endl;
+  }     
+}    
+
+/******************************************************************************/     
+int main (int argc, char const* argv[]) {
+            
+  genAdd(10);
+  
+            
+  return 0;
+}

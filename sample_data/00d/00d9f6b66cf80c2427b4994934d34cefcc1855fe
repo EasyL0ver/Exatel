@@ -1,0 +1,3 @@
+-parent_id_i:0 AND type_s:Category
+
+(-parent_id_i:0) AND (type_s:Category)

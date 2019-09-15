@@ -1,0 +1,72 @@
+class Photo:
+    def __init__(self, data):
+        data = data.split(" ")
+        self.data = data
+        self.orientation = data[0]
+        self.no_tags = data[1]
+        self.tags = data[2:]
+
+    def get_tags(self):
+        return self.tags
+
+    def __str__(self):
+        return str(self.data)
+
+
+class Slide:
+    def __init__(self, photo1, photo2=None):
+        self.photo1 = photo1
+        self.photo2 = photo2
+        if photo2:
+            self.tags = photo1.get_tags() + photo2.get_tags()
+            self.photos = [photo1, photo2]
+        else:
+            self.tags = photo1.get_tags()
+            self.photos = [photo1]
+        self.no_tags = len(self.tags)
+
+    def get_tags(self):
+        return self.tags
+
+    def __str__(self):
+        return str(self.tags)
+
+    def __cmp__(self, other):
+        return self.photo1 in other.photos or self.photo2 in other.photos
+
+
+def get_slideshow(p):
+    s = []
+    n = len(p)
+    for i in range(n):
+        for j in range(i + 1, n):
+            s.append(Slide(p[i], p[j]))  # All combinations of slides
+
+    # Removes duplicates
+    s = set(s)
+    slide_show = []
+    while len(s) > 1:
+        mn = min(s, key=lambda x: x.no_tags)
+
+        mx = max(s, key=lambda x: x.no_tags)
+
+        slide_show.extend([s.remove(mn), s.remove(mx)])
+
+    return slide_show
+
+
+photos = []
+vert_photos = []
+horz_photos = []
+lines = open("c_memorable_moments.txt", "r").readlines()
+no_photos = lines.pop(0)
+for line in lines:
+    line = line.replace("\n", "")
+    p = Photo(line)
+    photos.append(p)
+    if p.orientation == "V":
+        vert_photos.append(p)
+    elif p.orientation == "H":
+        horz_photos.append(p)
+
+perm = get_slideshow(vert_photos)

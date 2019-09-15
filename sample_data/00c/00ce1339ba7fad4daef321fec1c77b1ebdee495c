@@ -1,0 +1,46 @@
+Empty XElement in Descendants loop
+Private Async Function GetMovies() As Task
+    Dim client As New WebClient
+    Dim address = (New Uri(New Uri(APIROOT), "movieschedule/movies")).ToString
+
+    Dim resulttxt = Await client.DownloadStringTaskAsync(address)
+
+    Dim resultdoc = XDocument.Parse(resulttxt)
+    Dim resultlist As New Collections.ObjectModel.ObservableCollection(Of Movies)
+    For Each movie In resultdoc.Descendants("movie")
+
+        ' **the variable 'movie' contains nothing**
+
+        Dim m As New Movies With {
+            .Cast = movie.Attribute("cast").Value,
+            ...
+            .Title = movie.Attribute("title").Value
+        }
+        resultlist.Add(m)
+    Next
+
+    Movies = resultlist
+End Function
+	
+<movies>
+  <movie code="MOV1299" title="Age of Heroes" is3D="0" genre="THRILLER" rating="D" cast="Sean Bean, Danny Dyer, Izabella Miko, James D'Arcy, Sebastian Street, William Houston" director="Adrian Vitoria" language="ENGLISH" subtitle="BAHASA INDONESIA" />
+  <movie code="MOV1325" title="Fast and Furious 5" is3D="0" genre="ACTION" rating="D" cast="Vin Diesel, Paul Walker, Dwayne Johnson, Jordana Brewster, Tyrese Gibson, Elsa Pataky" director="Justin Lin" language="ENGLISH" subtitle="BAHASA INDONESIA" />
+</movies>
+	
+System.NullReferenceException was unhandled
+  Message=NullReferenceException
+  StackTrace:
+       at MyApp.MainPageVM.VB$StateMachine_2_GetMovies.MoveNext()
+       at System.Runtime.CompilerServices.TaskAwaiter.<>c__DisplayClass5.<OnCompletedInternal>b__1(Object state)
+       at System.Reflection.RuntimeMethodInfo.InternalInvoke(RuntimeMethodInfo rtmi, Object obj, BindingFlags invokeAttr, Binder binder, Object parameters, CultureInfo culture, Boolean isBinderDefault, Assembly caller, Boolean verifyAccess, StackCrawlMark& stackMark)
+       at System.Reflection.RuntimeMethodInfo.InternalInvoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture, StackCrawlMark& stackMark)
+       at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)
+       at System.Delegate.DynamicInvokeOne(Object[] args)
+       at System.MulticastDelegate.DynamicInvokeImpl(Object[] args)
+       at System.Delegate.DynamicInvoke(Object[] args)
+       at System.Windows.Threading.DispatcherOperation.Invoke()
+       at System.Windows.Threading.Dispatcher.Dispatch(DispatcherPriority priority)
+       at System.Windows.Threading.Dispatcher.OnInvoke(Object context)
+       at System.Windows.Hosting.CallbackCookie.Invoke(Object[] args)
+       at System.Windows.Hosting.DelegateWrapper.InternalInvoke(Object[] args)
+       at System.Windows.RuntimeHost.ManagedHost.InvokeDelegate(IntPtr pHandle, Int32 nParamCount, ScriptParam[] pParams, ScriptParam& pResult)

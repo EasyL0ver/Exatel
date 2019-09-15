@@ -1,0 +1,103 @@
+// Travis Parks, CS 272 - Dynamic Version
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    int SIZE;
+    cout << "How many candidates are there? " << endl;
+    cin >> SIZE;
+
+    string *name;
+    name = new string[SIZE];
+    string *tempPtrN;
+    tempPtrN = name;
+
+    int *votes;
+    votes = new int[SIZE];
+    int *tempPtrV;
+    tempPtrV = votes;
+
+    double *percent;
+    percent = new double[SIZE];
+    double *tempPtrP;
+    tempPtrP = percent;
+
+    double total;
+    double largest = 0;
+    int number;
+    int tie = 0;
+
+
+    for (int i = 0; i<SIZE; i++)
+    {
+        cout << "Enter the name of candidate number " << i + 1 << endl;
+        cin >> name[i];
+    }
+    for (int i = 0; i<SIZE; i++)
+    {
+        cout << "How many votes did candidate " << name[i] << " receive? " << endl;
+        cin >> votes[i];
+    }
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        total = total + votes[i];
+    }
+
+    for (int i = 0; i<SIZE; i++)
+    {
+        percent[i] = votes[i] / total * 100;
+
+
+    }
+
+    for (int i = 0; i<SIZE; i++)
+    {
+        if (votes[i] > largest)
+        {
+            largest = votes[i];
+            number = i;
+        }
+
+    }
+    for (int i = 0; i<SIZE; i++)
+    {
+        if (largest == votes[i])
+            tie++;
+    }
+
+    cout << "============================================================================" << endl;
+    cout << "    Candidate                Votes Received                       % of votes " << endl;
+    cout << "============================================================================" << endl;
+
+    for (int i = 0; i < SIZE; i++)
+    {
+        cout << endl << setw(25) << left << name[i] << "            " << votes[i] << "                           " << percent[i] << endl;
+    }
+
+    cout << endl << "Total: " << total << endl;
+
+
+    if ( tie > 1)
+        cout << endl << "There has been a tie, all candidates with " << largest << " votes have tied." << endl;
+    else
+        cout << endl << "The winner of the election is " << name[number] << " With a total of " << votes[number] << " votes out of a total " << total << " votes. " << endl;
+
+        name = tempPtrN;
+        votes = tempPtrV;
+        percent = tempPtrP;
+
+        delete tempPtrN;
+        delete tempPtrV;
+        delete tempPtrP;
+        delete name;
+        delete votes;
+        delete percent;
+
+        return 0;
+
+}

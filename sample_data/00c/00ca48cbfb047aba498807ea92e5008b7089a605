@@ -1,0 +1,50 @@
+use std::marker::PhantomData;
+
+#[derive(Debug)]
+pub struct Polygonist<'a> {
+    a: u32,
+    phantom: PhantomData<&'a u8>,
+}
+
+impl<'a> Polygonist<'a> {
+    pub fn init() -> Self {
+        Self {
+            a: 32,
+            phantom: PhantomData
+        }
+    }
+    
+    #[inline]
+    pub fn create_window(&'a self) -> WindowBuilder<'a> {
+        WindowBuilder {
+            polygonist: self,
+        }
+    }
+}
+
+#[derive(Debug)]
+pub struct Window<'a> {
+    polygonist: &'a Polygonist<'a>,
+}
+
+#[derive(Debug)]
+pub struct WindowBuilder<'a> {
+    polygonist: &'a Polygonist<'a>,
+}
+
+impl<'a> WindowBuilder<'a> {
+    #[inline]
+    pub fn build(self) -> Window<'a> {
+        Window {
+            polygonist: self.polygonist,
+        }
+    }
+}
+
+fn main() {
+    let polygonist = Polygonist::init();
+    // let window1 = Window { polygonist: &polygonist };
+    let window1 = polygonist.create_window().build();
+    
+    println!("{:?}", window1);
+}

@@ -1,0 +1,19 @@
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+    # java: /usr/bin/java
+    java: e:/outils/Java/jre6-64/bin/java.exe
+    sass: e:/outils/Ruby193/bin/sass.bat
+    filters:
+        cssrewrite: ~
+        sass: ~
+        compass:
+            bin: e:/outils/Ruby193/bin/compass.bat
+##### template
+<link rel="stylesheet" href="{{ asset('bundles/lndbim/css/jquery-ui-1.8.18.custom.css') }}" type="text/css" media="all" />
+        {% stylesheets filter='compass' output='css/*.css'
+            '@LndBimBundle/Resources/public/css/main.scss'
+        %}
+            <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+        {% endstylesheets %}

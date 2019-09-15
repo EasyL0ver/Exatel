@@ -1,0 +1,32 @@
+class bacula::fd {
+	$password = generate("bacula-pass");
+	
+	# client fd config
+	file {
+		"/etc/bacula/bacula-fd.conf":
+			content => template("bacula/fd.conf")
+	}
+
+	# bacula dir config
+	@@file {
+		"/etc/bacula/bacula-${fqdn}.conf":
+			content => template("bacula/master.conf"),
+			tag => "bacula-master"
+	}
+}
+
+class bacula::director {
+	File <<| tag == "bacula-master" |>>
+}
+
+### then in your node definition
+
+node master {
+	include bacula::director
+}
+
+### and all other nodes
+
+node othernode {
+	include bacula::fd
+}

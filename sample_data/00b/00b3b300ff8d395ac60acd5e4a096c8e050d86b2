@@ -1,0 +1,124 @@
+import Subject from './Subject';
+import Teacher from './Teacher';
+
+export default class Course {
+  constructor(level, number, subjectContraction, teacher) {
+    if (!['LK', 'L', 'GK', 'G'].includes(level)) {
+      throw Error('level is invalid.');
+    }
+    // normalize
+    if (level === 'L') level = 'LK';
+    if (level === 'G') level = 'GK';
+
+    if (!Number.isInteger(number) || number < 1) {
+      throw new RangeError('`number` must be a integer greater or equal one.');
+    }
+
+    if (!Subject.isValidSubjectContraction(subjectContraction)) {
+      throw Error('`subjectContraction` is invalid.');
+    }
+
+    if (!(teacher instanceof Teacher)) {
+      throw Error('`teacher` must be an instance of Teacher.');
+    }
+
+    this._level = level;
+    this._number = number;
+    this._subject = subjectContraction;
+    this._teacher = teacher;
+  }
+
+  get level() {
+    return this._level;
+  }
+
+  get number() {
+    return this._number;
+  }
+
+  get subject() {
+    return this._subject;
+  }
+
+  get teacher() {
+    return this._teacher;
+  }
+
+  toJSON() {
+    return {
+      level: this.level,
+      number: this.number,
+      subject: this.subject.toString(),
+      teacher: this.teacher.toString(),
+    };
+  }
+
+  toString() {
+    return `${this.level}${this.subject}`;
+  }
+
+  isEqualTo(anotherCourse) {
+    if (!(anotherCourse instanceof Course)) {
+      throw Error('anotherCourse must be an instance of Course.');
+    }
+    const a = this.toJSON();
+    const b = anotherCourse.toJSON();
+    return (a.level === b.level && a.number === b.number &&
+        a.subject.toString() === b.subject.toString());
+  }
+
+  /**
+   * Checks whether `interval` is a valid interval or not.
+   * @param interval
+   * @param maxPeriods
+   */
+  static isValidPeriodInterval(interval, maxPeriods) {
+    return (Array.isArray(interval) &&
+        interval.length === 2) &&
+        interval[0] <= interval[1] &&
+        interval.every(
+            (period) => {
+              return period > 0 &&
+                  period <= maxPeriods &&
+                  Number.isInteger(period);
+            });
+  }
+
+  /**
+   * Parses the interval represented out of `intervalString`
+   * @param {string} intervalString - the string to parse
+   * @return {Array.<int>} - the parsed interval string (tuple)
+   */
+  static parsePeriodInterval(intervalString, maxPeriods) {
+    if (maxPeriods == null) maxPeriods = 12;
+
+    if (intervalString.trim().length === 0 || intervalString ==
+        null) return null;
+
+    if (typeof intervalString !== 'string') {
+      throw new TypeError('Invalid `intervalString` given.');
+    }
+
+    let interval = intervalString.replace(/\./g, '').
+        // 'x./y.' => 'x/y'
+        split('/').
+        // 'x/y' => ['x', 'y']
+        map((periodString) => {
+          // ['x', 'y'] => [x, y]
+          // parseInt produces NaN's which we will checkout below
+          return parseInt(periodString);
+        });
+
+    if (interval[1] === undefined) interval = [interval[0], interval[0]];
+
+    if (interval.some((period) => isNaN(period))) {
+      throw new TypeError('Invalid `intervalString` given.');
+    }
+
+    if (this.isValidPeriodInterval(interval, maxPeriods)) {
+      return interval;
+    } else {
+      throw new SyntaxError('Invalid `intervalString` given.');
+    }
+  }
+};

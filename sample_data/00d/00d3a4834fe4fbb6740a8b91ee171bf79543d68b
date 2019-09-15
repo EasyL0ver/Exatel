@@ -1,0 +1,39 @@
+
+alias e_scout "disguise 1 -1; play vo\scout_yes01"
+alias e_sniper "disguise 2 -1; play vo\sniper_yes03"
+alias e_soldier "disguise 3 -1; play vo\soldier_yes04"
+alias e_demoman "disguise 4 -1; play vo\demoman_yes01"
+alias e_medic "disguise 5 -1; play vo\medic_yes03"
+alias e_hwguy "disguise 6 -1; play vo\heavy_yes03"
+alias e_pyro "disguise 7 -1; play vo\pyro_moveup01"
+alias e_spy "disguise 8 -1; play vo\spy_yes02"
+alias e_engineer "disguise 9 -1; play vo\engineer_yes03"
+
+alias a_scout "disguise 1 -2; play vo\scout_no02"
+alias a_sniper "disguise 2 -2; play vo\sniper_no01"
+alias a_soldier "disguise 3 -2; play vo\soldier_no02"
+alias a_demoman "disguise 4 -2; play vo\demoman_no03"
+alias a_medic "disguise 5 -2; play vo\medic_no01"
+alias a_hwguy "disguise 6 -2; play vo\heavy_no03"
+alias a_pyro "disguise 7 -2; play vo\pyro_no01"
+alias a_spy "disguise 8 -2; play vo\spy_no03"
+alias a_engineer "disguise 9 -2; play vo\engineer_no01"
+
+bind f1 e_scout
+bind f2 e_soldier
+bind f3 e_pyro
+bind f4 e_demoman
+bind f5 e_hwguy
+bind f6 e_engineer
+bind f7 e_medic
+bind f8 e_sniper
+bind f9 e_spy
+bind f10 drop_disg
+alias drop_disg "disguise 8 -2" // instantly removes disguise
+
+
+
+alias +f_disg "bind f1 a_scout; bind f2 a_soldier; bind f3 a_pyro; bind f4 a_demoman; bind f5 a_hwguy; bind f6 a_engineer; bind f7 a_medic; bind f8 a_sniper; bind f9 a_spy"
+alias -f_disg "bind f1 e_scout; bind f2 e_soldier; bind f3 e_pyro; bind f4 e_demoman; bind f5 e_hwguy; bind f6 e_engineer; bind f7 e_medic; bind f8 e_sniper; bind f9 e_spy"
+
+bind mouse5 "+f_disg"

@@ -1,0 +1,339 @@
+package ztp4;
+
+import java.awt.event.*;
+import java.util.ArrayList;
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
+
+// dane przechowywane w bazie
+interface Data {
+
+    public int get(int idx);
+
+    public void set(int idx, int value);
+
+    public int size();
+}
+
+class RealData implements Data {
+
+    protected int[] t = null;
+
+    public RealData(int i) {
+        t = new int[i];
+    }
+    
+    public RealData()
+    {
+    }
+
+    public int get(int idx) {
+        return t[idx];
+    }
+
+    public void set(int idx, int value) {
+        t[idx] = value;
+    }
+
+    public int size() {
+        return t.length;
+    }
+
+}
+
+class ProxyData implements Data
+{
+private int i;
+private Data t = null;
+
+    public ProxyData(int liczba) {
+        i = liczba;
+    }
+    
+    public ProxyData()
+    {
+    }
+
+    public int get(int idx) {
+        if(t==null)
+            return 0;
+        else
+        return t.get(idx);
+    }
+
+    public void set(int idx, int value) {
+        if(t==null)
+        {t= new RealData(i);
+        t.set(idx, value);}
+        else
+            t.set(idx, value);
+    }
+
+    public int size() {
+        if(t==null)
+            return i;
+        return t.size();
+    }
+
+};
+
+class CopyData implements Data
+{
+private int i;
+public ArrayList<Data> kopie = new ArrayList<Data>();
+private Data t = null;
+private Data kopia = null;
+
+    public CopyData(int liczba) {
+        i = liczba;
+    }
+    
+    public CopyData()
+    {
+    
+    }
+    
+    public CopyData(Data p)
+    {
+    kopia = p;
+    i = kopia.size();
+    }
+
+    public Data kopiuj(){
+    if (kopia==null)
+        return null;
+    else
+    {
+    kopie.add(this);
+    t = new RealData(kopia.size());
+        for (int j = 0; j < i; j++) {
+            t.set(j, kopia.get(j));
+        }
+    kopia = null;
+    return t;
+    }
+    
+    };
+    
+    public int get(int idx) {
+        if(t==null && kopia==null)
+            return 0;
+        else if(t==null && kopia!=null)
+            return kopia.get(idx);
+        else
+        return t.get(idx);
+    }
+
+    public void set(int idx, int value) {
+        if(t==null && kopia==null)
+        {t= new RealData(i);
+        t.set(idx, value);}
+        else if(t==null && kopia!=null)
+        {this.kopiuj();
+        t.set(idx, value);
+        }
+        else
+            t.set(idx, value);
+    }
+
+    public int size() {
+        if(t==null)
+            return i;
+        return t.size();
+    } };
+
+
+
+// baza danych - kolekcja Data
+class Baza extends AbstractListModel {
+
+    private ArrayList<Data> ar = new ArrayList<Data>();
+
+    public void add(Data tab) {
+        ar.add(tab);
+        fireIntervalAdded(this,  0,  getSize()   );
+    }
+
+    public void remove(int idx) {
+        ar.remove(idx);
+        fireIntervalRemoved(this,  0,  getSize()   );
+    }
+
+    public int getSize() {
+        return ar.size();
+    }
+
+    public Object getElementAt(int index) {
+        return ar.get(index);
+
+    }
+}
+
+
+class adapter extends AbstractTableModel {
+
+    //tu pomodzone
+   Data r = null;
+            
+    
+   adapter(){}; 
+   
+    adapter (Data a)
+    {
+    r = a;
+    fireTableStructureChanged();
+    }
+    
+    void zmien( Data a)
+    {
+    r = a;
+    fireTableStructureChanged();
+    }
+    
+    @Override
+
+    public int getRowCount() {
+        if(  r == null)
+            return 0;
+        else
+    return r.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+    if(r == null || r.size()==0)
+        return 0;
+    else
+    return 2;
+    }
+
+    @Override
+    public String getColumnName(int columnIndex) {
+    if(columnIndex ==0)
+        return "Nr";
+    else
+        return "Wartość";
+    }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+    return Integer.class;
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+    if(columnIndex == 0)
+            return false;
+    else
+       return true;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+      //  RealData z = (RealData)r.getElementAt(rowIndex);
+      if(columnIndex==0)
+          return rowIndex;
+    return r.get(rowIndex);
+    }
+
+    @Override
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+    r.set(rowIndex, (int)aValue);
+    fireTableStructureChanged();
+    }
+
+}
+
+public class ztp4 {
+
+    public static void main(String[] args) {
+
+        final Baza dane = new Baza();
+         adapter a = new adapter();
+        
+        final JFrame frame = new JFrame("Zadanie 4");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JSplitPane splitPane = new JSplitPane();
+
+        final JList list = new JList(dane);
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane scrollPane = new JScrollPane(list);
+        scrollPane.setBorder(BorderFactory.createTitledBorder(" Tablice: "));
+        splitPane.setLeftComponent(scrollPane);
+
+        JTable table = new JTable(a);
+        scrollPane = new JScrollPane(table);
+        scrollPane.setBorder(BorderFactory.createTitledBorder(" Zawartość: "));
+        splitPane.setRightComponent(scrollPane);
+
+        frame.getContentPane().add(splitPane);
+
+        JMenuBar bar = new JMenuBar();
+        JButton add = new JButton("Dodaj tablicę");
+        JButton cpy = new JButton("Kopiuj tablicę");
+        JButton del = new JButton("Usuń tablicę");
+        bar.add(add);
+        bar.add(cpy);
+        bar.add(del);
+
+        frame.setJMenuBar(bar);
+
+        frame.setSize(600, 450);
+        frame.setVisible(true);
+
+        splitPane.setDividerLocation(0.5);
+
+        add.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                String value = JOptionPane.showInputDialog(frame,
+                        "Podaj rozmiar tablicy",
+                        "Dodaj",
+                        JOptionPane.INFORMATION_MESSAGE);
+                try {
+                    int size = Integer.parseInt(value);
+                    dane.add(new ProxyData(size));
+                } catch (Exception ex) {
+                };
+            }
+        });
+        
+        cpy.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                int idx = list.getSelectedIndex();
+                try {
+                    dane.add( new CopyData((Data)dane.getElementAt(idx)));
+                } catch (Exception ex) {
+                };
+            }
+        });
+        
+        del.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                int idx = list.getSelectedIndex();
+                try {
+                    dane.remove(idx);
+                } catch (Exception ex) {
+                };
+            }
+        });
+
+        // zmiana wyboru na liście powoduje odświeżenie tabeli
+        list.addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                int idx = list.getSelectedIndex();
+                if (idx >= 0) {
+                 Data tmp = ((Data)dane.getElementAt(idx));
+       a.zmien(tmp);
+                    
+                }
+            }
+        });
+    }
+}

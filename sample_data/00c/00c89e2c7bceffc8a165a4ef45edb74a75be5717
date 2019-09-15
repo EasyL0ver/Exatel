@@ -1,0 +1,5 @@
+import ProgressBar from '@/components/common/ProgressBar';
+
+const sample = (
+  <ProgressBar value="Значение от нуля до ста" />
+);

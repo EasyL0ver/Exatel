@@ -1,0 +1,148 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+
+typedef struct Papiezak {
+    char *pole1;
+    char *pole2;
+    char *pole3;
+    char *pole4;
+    int liczba5;
+    char *pole6;
+    char *pole7;
+} Papiezak;
+
+Papiezak *NowyPapiezak(){
+    Papiezak *papiezak = malloc(sizeof(Papiezak));
+    papiezak->pole1 = malloc(sizeof(char) * 51);
+    papiezak->pole2 = malloc(sizeof(char) * 51);
+    papiezak->pole3 = malloc(sizeof(char) * 51);
+    papiezak->pole4 = malloc(sizeof(char) * 51);
+    papiezak->pole6 = malloc(sizeof(char) * 51);
+    papiezak->pole7 = malloc(sizeof(char) * 51);
+
+    return papiezak;
+}
+
+Papiezak **WczytajPapiezaki(char *nazwaPliku, int *outIloscPapiezakow) {
+    FILE *plik;
+
+    plik = fopen(nazwaPliku, "r");
+
+    if (plik == NULL){
+        perror("NIe ma pliku takiego");
+        return NULL;
+    }
+
+    int iloscWpisow = 0;
+    char linia[100];
+    while(fscanf(plik, "%[^\n]%*c", linia) != EOF) {
+        iloscWpisow++;
+        //printf("%s\n", linia);
+    }
+    *outIloscPapiezakow = iloscWpisow;
+    rewind(plik);
+
+    Papiezak **papiezaki = malloc(sizeof(Papiezak*) * iloscWpisow);
+
+    for(int i = 0; fscanf(plik, "%[^;]%*c", linia) != EOF; i++) {
+        Papiezak *papiezak = NowyPapiezak();
+        strcpy(papiezak->pole1, linia);
+
+        fscanf(plik, "%[^;]%*c", papiezak->pole2);
+        fscanf(plik, "%[^;]%*c", papiezak->pole3);
+        fscanf(plik, "%[^;]%*c", papiezak->pole4);
+
+        char tmpPole5[10];
+        fscanf(plik, "%[^;]%*c", tmpPole5);
+        papiezak->liczba5 = atoi(tmpPole5);
+
+        fscanf(plik, "%[^;]%*c", papiezak->pole6);
+        fscanf(plik, "%[^\n]%*c", papiezak->pole7);
+
+        papiezaki[i] = papiezak;
+    }
+    fclose(plik);
+    return papiezaki;
+}
+
+bool CompByLiczba5ASC(Papiezak *rabin1, Papiezak *rabin2){
+    if (rabin1->liczba5 > rabin2->liczba5)
+        return true;
+    return false;
+}
+
+bool CompByLiczba5DSC(Papiezak *rabin1, Papiezak *rabin2){
+    if (rabin1->liczba5 < rabin2->liczba5)
+        return true;
+    return false;
+}
+
+bool CompByName(Papiezak *rabin1, Papiezak *rabin2){
+    if (strcmp(rabin1->pole7, rabin2->pole7) > 0)
+        return true;
+    return false;
+}
+
+void BubbleSort(Papiezak **papiezaki, int iloscPapiezakow, bool (*comparisonFunc)(Papiezak *p1, Papiezak *p2))
+{
+    int i, j;
+    for (i = 0; i < iloscPapiezakow-1; i++)
+        for (j = 0; j < iloscPapiezakow-i-1; j++)
+            if (comparisonFunc(papiezaki[j], papiezaki[j + 1])) {
+                Papiezak *tmpPapiezak = papiezaki[j];
+                papiezaki[j] = papiezaki[j + 1];
+                papiezaki[j + 1] = tmpPapiezak;
+            }
+}
+
+void SaveToFile(Papiezak **papiezaki, int iloscPapiezakow, char *nazwaPliku){
+    FILE *plik;
+
+    plik = fopen(nazwaPliku, "w");
+
+    for (int i = 0; i < iloscPapiezakow; ++i) {
+        fprintf(plik, "%s;", papiezaki[i]->pole1);
+        fprintf(plik, "%s;", papiezaki[i]->pole2);
+        fprintf(plik, "%s;", papiezaki[i]->pole3);
+        fprintf(plik, "%s;", papiezaki[i]->pole4);
+        fprintf(plik, "%d;", papiezaki[i]->liczba5);
+        fprintf(plik, "%s;", papiezaki[i]->pole6);
+        fprintf(plik, "%s\n", papiezaki[i]->pole7);
+    }
+    fclose(plik);
+   // fprintf(plik, )
+}
+
+int main() {
+    int iloscPapiezakow = 0;
+    Papiezak **papiezaki = WczytajPapiezaki("D:\\Users\\Oskar\\Documents\\CLion\\Janpaweldrugi\\test.2137", &iloscPapiezakow);
+
+   /* for (int i = 0; i < iloscPapiezakow; ++i) {
+        printf("Papiezak nr: %d\n",i );
+        printf("%s\t", papiezaki[i]->pole1);
+        printf("%s\t", papiezaki[i]->pole2);
+        printf("%s\t", papiezaki[i]->pole3);
+        printf("%s\t", papiezaki[i]->pole4);
+        printf("%d\t", papiezaki[i]->liczba5);
+        printf("%s\t", papiezaki[i]->pole6);
+        printf("%s\n", papiezaki[i]->pole7);
+    }*/
+
+    BubbleSort(papiezaki, iloscPapiezakow, &CompByName);
+
+    for (int i = 0; i < iloscPapiezakow; ++i) {
+        printf("Papiezak nr: %d\n",i );
+        printf("%s\t", papiezaki[i]->pole1);
+        printf("%s\t", papiezaki[i]->pole2);
+        printf("%s\t", papiezaki[i]->pole3);
+        printf("%s\t", papiezaki[i]->pole4);
+        printf("%d\t", papiezaki[i]->liczba5);
+        printf("%s\t", papiezaki[i]->pole6);
+        printf("%s\n", papiezaki[i]->pole7);
+    }
+    SaveToFile(papiezaki, iloscPapiezakow, "C:/users/oskar/desktop/nowepapiezaki.txt");
+
+    return 0;
+}

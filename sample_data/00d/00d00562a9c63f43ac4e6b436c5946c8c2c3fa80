@@ -1,0 +1,11 @@
+class Book
+  def read
+     # something
+  end
+end
+	
+class Magazine
+  def read
+     # something
+  end
+end

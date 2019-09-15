@@ -1,0 +1,93 @@
+$("#slideRight").click(function() {
+$("#slider").animate({right:700});
+});
+
+$("#slideLeft").click(function() {
+$("#slider").animate({left:700});
+});
+	
+<div id="slideButtons">
+<input type="button" value="next L" id="slideLeft" />
+<input type="button" value="next R" id="slideRight" />
+</div>
+
+<div id="slider">
+<img src="slideTest.jpg" alt="" />
+<img src="slideTest2.jpg" alt="" />
+<img src="slideTest3.jpg" alt="" />
+</div>
+	
+#slider {
+height: auto;
+width: 700px;
+position: relative;
+background-color: blue; 
+}
+	
+// First make the first image visible 
+$(".slide-content img:first-child").show();
+
+// Bind the click handler 
+$("#slideRight").click(function() {
+
+// if there is only one image in the slider then return false 
+if($(".slide-content > img").length == 1)
+{
+    return false;
+
+}
+
+// Set current to the visible element 
+var current = $(".slide-content > img:visible").attr('id');
+
+// hide the visible element 
+$('#'+current).hide();
+
+
+if(current == $(".slide-content > img").length ) 
+{
+    current = 1;    
+}
+else
+{
+    current = parseInt(current)+1;  
+}
+
+$('#'+current).show();
+
+
+});
+
+$("#slideLeft").click(function() {
+if($(".slide-content > img").length == 1)
+{
+    return false;
+
+}
+
+var current = $(".slide-content  > img:visible").attr('id');
+$('#'+current).hide();
+if(current == 1) 
+{
+    current = $(".slide-content > img").length; 
+}
+else
+{
+    current = parseInt(current)-1;  
+}
+
+$('#'+current).show();
+
+
+});
+
+<div id="slideButtons">
+<input type="button" value="next L" id="slideLeft" />
+<input type="button" value="next R" id="slideRight" />
+</div>
+
+<div class="slide-content">
+<img id = '1' src="slideTest.jpg" alt="" />
+<img id = '2' src="slideTest2.jpg" alt="" />
+<img id = '3' src="slideTest3.jpg" alt="" />
+</div>

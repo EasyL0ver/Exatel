@@ -1,0 +1,187 @@
+# SimC Addon 1.10.10
+warrior="Mcmuffan"
+level=120
+race=night_elf
+region=us
+server=sargeras
+role=attack
+professions=alchemy=150/enchanting=1
+talents=2122123
+spec=fury
+
+head=,id=155866,bonus_id=5062/1557/4786/4775,context=35,azerite_powers=119/30/85/13
+neck=,id=158075,bonus_id=4936/4929/4930/1540,context=11,azerite_level=35
+shoulder=,id=159423,bonus_id=4819/1542/4786/5412,context=23,azerite_powers=176/157/22
+back=,id=166759,bonus_id=5125/1517/4786,context=11
+chest=,id=159448,bonus_id=5061/1557/4786/4775,context=35,azerite_powers=193/31/44/13
+shirt=,id=151116,context=14
+tabard=,id=52252,context=11
+wrist=,id=159433,bonus_id=5010/1577/4783,context=16
+hands=,id=165549,bonus_id=4799/1532/4783,context=5
+waist=,id=159450,gem_id=154127,bonus_id=5010/4802/1552/4786,context=35
+legs=,id=160718,bonus_id=4800/1517/4783,context=6
+feet=,id=160640,bonus_id=4800/1512/4783,context=6
+finger1=,id=160645,enchant_id=5943,bonus_id=4800/1507/4786,context=6
+finger2=,id=159461,enchant_id=5943,bonus_id=5010/1557/4786,context=16
+trinket1=,id=160655,gem_id=154127,bonus_id=4799/1808/1502/4783,context=5
+trinket2=,id=165665,gem_id=154127,bonus_id=4803/4802/1577/4786,context=28
+main_hand=,id=160679,enchant_id=5964,bonus_id=4800/1507/4786,context=6
+off_hand=,id=158095,enchant_id=5963,bonus_id=4803/42/1577/4786,context=28
+
+### Gear from Bags
+#
+# Gridrunner Galea (375)
+# head=,id=160634,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=483/31/15/13
+#
+# Glaciercrest Helm (385)
+# head=,id=165823,bonus_id=4822/1507/4786/5414,context=3,azerite_powers=
+#
+# Gridrunner Galea (390)
+# head=,id=160634,bonus_id=4824/1507/4786/5402/4775,context=6,azerite_powers=434/21/83/13
+#
+# Gridrunner Galea (375)
+# head=,id=160634,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=438/31/15/13
+#
+# Wardenguard's Greathelm (355)
+# head=,id=165459,bonus_id=5124/1472/4785/5465,context=3,azerite_powers=
+#
+# 7th Legionnaire's Shoulderplates (375)
+# shoulder=,id=163405,bonus_id=5125/1562/5140/5382/4775,context=28,azerite_powers=434/459/85/13
+#
+# Bleakweald Pauldrons (375)
+# shoulder=,id=158028,bonus_id=1562/5140/5382/4775,context=28,azerite_powers=121/30/477/13
+#
+# 7th Legionnaire's Shoulderplates (375)
+# shoulder=,id=163405,bonus_id=5126/1562/4786/4775,context=6,azerite_powers=438/459/83/13
+#
+# Bleakweald Pauldrons (375)
+# shoulder=,id=158028,bonus_id=1562/5140/5382/4775,context=28,azerite_powers=176/30/477/13
+#
+# Pauldrons of the Horned Horror (390)
+# shoulder=,id=159455,bonus_id=5063/1557/4786/4775,context=35,azerite_powers=226/21/84/13
+#
+# Chitinspine Pauldrons (375)
+# shoulder=,id=160641,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=437/30/476/13
+#
+# Harbormaster Pauldrons (375)
+# shoulder=,id=157996,bonus_id=1562/5140/5382/4775,context=28,azerite_powers=118/18/85/13
+#
+# Parrotfeather Cloak (375)
+# back=,id=155884,gem_id=154127,bonus_id=5009/4802/1547/4783,context=35
+#
+# Shoalbreach Breastplate (375)
+# chest=,id=158054,bonus_id=1562/4786/5398/4775,context=28,azerite_powers=237/462/14/13
+#
+# Polished Shieldbearer's Breastplate (375)
+# chest=,id=161470,bonus_id=5120/1492/4786/5398/4775,context=3,azerite_powers=176/20/476/13
+#
+# Chestguard of Virulent Mutagens (375)
+# chest=,id=160636,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=435/31/15/13
+#
+# Bleakweald Chestguard (375)
+# chest=,id=158022,bonus_id=1562/5138/5383/4775,context=28,azerite_powers=433/22/44/13
+#
+# 7th Legionnaire's Chestguard (375)
+# chest=,id=163418,bonus_id=5126/1562/4786/4775,context=6,azerite_powers=121/31/554/13
+#
+# Stonefury Vambraces (395)
+# wrist=,id=158359,bonus_id=5010/1567/4784,context=16
+#
+# Decontaminator's Greatbelt (385)
+# waist=,id=160638,bonus_id=4800/1507/4786,context=6
+#
+# Greaves of Unending Vigil (385)
+# legs=,id=160639,bonus_id=4800/1507/4786,context=6
+#
+# Coinage Stampers (385)
+# feet=,id=165561,bonus_id=4798/1507/4786,context=3
+#
+# Charged Sandstone Band (380)
+# finger1=,id=158366,bonus_id=5010/1552/4783,context=35
+#
+# Ring of the Infinite Void (370)
+# finger1=,id=160647,enchant_id=5939,bonus_id=4799/1492/4786,context=5
+#
+# Band of the Ancient Dredger (370)
+# finger1=,id=159461,enchant_id=5942,bonus_id=5008/1542/4783,context=16
+#
+# Seal of the Regal Loa (385)
+# finger1=,id=159458,enchant_id=5943,bonus_id=5009/1557/4786,context=16
+#
+# Jade Ophidian Band (375)
+# finger1=,id=162544,bonus_id=5010/1547/4783,context=16
+#
+# Loop of Pulsing Veins (370)
+# finger1=,id=159463,enchant_id=5943,bonus_id=5010/41/1542/4786,context=16
+#
+# Band of Certain Annihilation (370)
+# finger1=,id=160646,enchant_id=5943,bonus_id=4799/1492/4786,context=5
+#
+# Disc of Systematic Regression (370)
+# trinket1=,id=160650,bonus_id=4799/1492/4786,context=5
+#
+# Vial of Animated Blood (380)
+# trinket1=,id=159625,bonus_id=5010/1552/4786,context=35
+#
+# Sinister Gladiator's Safeguard (370)
+# trinket1=,id=165807,bonus_id=5366/42/5141/1482/4786,context=8
+#
+# Rezan's Gleaming Eye (370)
+# trinket1=,id=158712,bonus_id=5010/1542/4786,context=16
+#
+# Jes' Howler (385)
+# trinket1=,id=159627,gem_id=154127,bonus_id=5010/4802/1557/4784,context=35
+#
+# Briny Barnacle (410)
+# trinket1=,id=159619,bonus_id=5010/1582/4783,context=35
+#
+# Knot of Ancient Fury (385)
+# trinket1=,id=161413,bonus_id=5479/1502/4786,context=3
+#
+# Darkmoon Deck: Blockades (355)
+# trinket1=,id=159128,context=13
+#
+# Darkmoon Deck: Fathoms (355)
+# trinket1=,id=159125,context=13
+#
+# Briny Barnacle (385)
+# trinket1=,id=159619,bonus_id=5010/1557/4784,context=35
+#
+# Xalzaix's Veiled Eye (370)
+# trinket1=,id=160653,bonus_id=4799/1492/4786,context=5
+#
+# Gore-Crusted Butcher's Block (375)
+# trinket1=,id=159616,bonus_id=5010/1547/4783,context=16
+#
+# Grong's Primal Rage (385)
+# trinket1=,id=165574,bonus_id=4798/1507/4786,context=3
+#
+# Cudgel of Correctional Oversight (370)
+# main_hand=,id=159658,enchant_id=5964,bonus_id=5010/1542/4786,context=16
+#
+# Dismembered Submersible Claw (380)
+# main_hand=,id=159650,bonus_id=5010/1552/4786,context=35
+#
+# Khor, Hammer of the Corrupted (385)
+# main_hand=,id=160679,enchant_id=5963,bonus_id=4800/1507/4786,context=6
+#
+# Blockade Bulwark (385)
+# off_hand=,id=165585,bonus_id=4798/1507/4786,context=3
+#
+# Vector Deflector (375)
+# off_hand=,id=160698,bonus_id=4799/1497/4783,context=5
+#
+# Rivermarsh Defender of the Harmonious (266)
+# off_hand=,id=159809,bonus_id=4796/1713,drop_level=120
+#
+# Cudgel of Correctional Oversight (370)
+# off_hand=,id=159658,enchant_id=5964,bonus_id=5010/1542/4786,context=16
+#
+# Dismembered Submersible Claw (380)
+# off_hand=,id=159650,bonus_id=5010/1552/4786,context=35
+#
+# Khor, Hammer of the Corrupted (385)
+# off_hand=,id=160679,enchant_id=5963,bonus_id=4800/1507/4786,context=6
+
+# Stacks of reorigination array based on hidden quest completion
+# bfa.reorigination_array_stacks=10

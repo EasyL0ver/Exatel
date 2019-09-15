@@ -1,0 +1,133 @@
+using NSpeex;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Threading;
+
+namespace Palringo.Api
+{
+    internal class Class21 : BackgroundWorker
+    {
+        private Queue<KeyValuePair<bool, byte[]>> queue_0 = new Queue<KeyValuePair<bool, byte[]>>();
+
+        private byte[] byte_0 = new byte[0];
+
+        private Class21.Delegate0 delegate0_0;
+
+        private SpeexEncoder speexEncoder_0;
+
+        private short[] short_0;
+
+        public Class21()
+        {
+        }
+
+        public void method_0(Class21.Delegate0 delegate0_1)
+        {
+            Class21.Delegate0 delegate0;
+            Class21.Delegate0 delegate00 = this.delegate0_0;
+            do
+            {
+                delegate0 = delegate00;
+                Class21.Delegate0 delegate01 = (Class21.Delegate0)Delegate.Combine(delegate0, delegate0_1);
+                delegate00 = Interlocked.CompareExchange<Class21.Delegate0>(ref this.delegate0_0, delegate01, delegate0);
+            }
+            while ((object)delegate00 != (object)delegate0);
+        }
+
+        public void method_1(Class21.Delegate0 delegate0_1)
+        {
+            Class21.Delegate0 delegate0;
+            Class21.Delegate0 delegate00 = this.delegate0_0;
+            do
+            {
+                delegate0 = delegate00;
+                Class21.Delegate0 delegate01 = (Class21.Delegate0)Delegate.Remove(delegate0, delegate0_1);
+                delegate00 = Interlocked.CompareExchange<Class21.Delegate0>(ref this.delegate0_0, delegate01, delegate0);
+            }
+            while ((object)delegate00 != (object)delegate0);
+        }
+
+        public int method_2()
+        {
+            return (int)this.byte_0.Length;
+        }
+
+        public void method_3(int int_0)
+        {
+            this.byte_0 = new byte[int_0];
+        }
+
+        public void method_4(byte[] byte_1, int int_0, bool bool_0)
+        {
+            byte[] numArray = new byte[int_0];
+            Array.Copy(byte_1, 0, numArray, 0, int_0);
+            lock (this.queue_0)
+            {
+                this.queue_0.Enqueue(new KeyValuePair<bool, byte[]>(bool_0, numArray));
+                if (!base.get_IsBusy())
+                {
+                    base.RunWorkerAsync();
+                }
+            }
+        }
+
+        private byte[] method_5(byte[] byte_1, out int int_0)
+        {
+            if (this.speexEncoder_0 == null)
+            {
+                this.speexEncoder_0 = new SpeexEncoder(BandMode.Wide)
+                {
+                    VBR = true,
+                    Quality = 1
+                };
+                this.short_0 = new short[this.speexEncoder_0.FrameSize];
+            }
+            int frameSize = this.speexEncoder_0.FrameSize;
+            int num = 0;
+            for (int i = 0; i < (int)byte_1.Length; i = i + frameSize * 2)
+            {
+                int num1 = 0;
+                int num2 = i + frameSize * 2;
+                int num3 = i;
+                while (num3 < num2)
+                {
+                    this.short_0[num1] = BitConverter.ToInt16(byte_1, num3);
+                    num3 += 2;
+                    num1++;
+                }
+                int num4 = this.speexEncoder_0.Encode(this.short_0, 0, frameSize, this.byte_0, num + 2, (int)this.byte_0.Length - (num + 2));
+                this.byte_0[num] = (byte)(num4 & 65535);
+                this.byte_0[num + 1] = (byte)(num4 >> 8);
+                num = num + num4 + 2;
+            }
+            int_0 = num;
+            return this.byte_0;
+        }
+
+        protected override void OnDoWork(DoWorkEventArgs doWorkEventArgs_0)
+        {
+            int num;
+            base.OnDoWork(doWorkEventArgs_0);
+            KeyValuePair<bool, byte[]> keyValuePair = new KeyValuePair<bool, byte[]>(false, null);
+            lock (this.queue_0)
+            {
+                keyValuePair = this.queue_0.Dequeue();
+            }
+            while (keyValuePair.get_Value() != null)
+            {
+                byte[] numArray = this.method_5(keyValuePair.get_Value(), out num);
+                if (this.delegate0_0 != null)
+                {
+                    this.delegate0_0(numArray, num, keyValuePair.get_Key());
+                }
+                lock (this.queue_0)
+                {
+                    keyValuePair = (this.queue_0.get_Count() <= 0 ? new KeyValuePair<bool, byte[]>(false, null) : this.queue_0.Dequeue());
+                }
+            }
+        }
+
+        public delegate void Delegate0(byte[] byte_0, int int_0, bool bool_0);
+    }
+}

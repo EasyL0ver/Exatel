@@ -1,0 +1,27 @@
+var foo = (function()
+{
+    var a, b, c, d;
+    return function()
+    {
+        return a;
+    }
+})();
+	
+var foo = (function()
+{
+    var a, b, c, d;
+    return function()
+    {
+        a.getB = function()
+        {
+            return b;
+        }
+        a.getSelf = function()
+        {
+            return a;//or return this;
+        }
+        return a;
+    }
+})();
+//some code
+foo = new Date();//

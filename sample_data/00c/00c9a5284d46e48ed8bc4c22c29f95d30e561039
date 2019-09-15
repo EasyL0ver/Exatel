@@ -1,0 +1,96 @@
+documentclass{IEEEtran}
+
+
+usepackage{multirow}
+usepackage{caption}
+usepackage{ragged2e}
+usepackage{tabularx}
+newcolumntype{C}{ >{ arraybackslash Centering } X }
+newcommand{multcolhsize}[1]{dimexpr #1hsize + #1tabcolsep + tabcolsep relax}
+
+usepackage{booktabs}
+usepackage{makecell}
+usepackage[defaultmathsizes, subdued, italic, LGRgreek, symbolre, symbolmisc]{mathastext}
+
+
+
+usepackage{adjustbox}
+
+
+
+begin{document}
+
+
+newcommand{RERInteractionSumm}{sum_{j in mathnormalbold{R}, thinspace j neq i} P_{R, thinspace j}^{adjustbox{raise=0.1baselineskip}{*}} thinspace w_{ij}}
+
+begin{table*}[htb]
+
+    % Table options
+
+        % Caption
+        caption{Comparison of SDSCR obtained by [ref] (full) and [ref] (approximate) for bus 27}
+        label{table:SDSCR_full_v_app_27}
+
+        % Center the table
+        centering
+
+
+    begin{tabularx}{textwidth}{>{hsize=0.9hsize}C |>{hsize=0.9hsize}C |>{hsize=0.9hsize}C |>{hsize=1.35hsize}C |>{hsize=1.35hsize}C |>{hsize=0.9hsize}C |>{hsize=0.9hsize}C |>{hsize=0.9hsize}C |>{hsize=0.9hsize}C}
+
+        toprule
+
+
+        $left| V_{R, thinspace i} right|^{2}$ &  $left| Z_{RR, thinspace ii} right|$& $P_{R, thinspace i}^{adjustbox{raise=0.05baselineskip}{*}}$
+        & multicolumn{2}{>{hsize=multcolhsize{2}}C|}{
+                        $ displaystyle RERInteractionSumm$
+                                                    }
+        & multicolumn{2}{>{hsize=multcolhsize{2}}C|}{
+                        $left| S_{eq, thinspace i}^{adjustbox{raise=0.05baselineskip}{*}} right|$
+                                                        }
+        & multicolumn{2}{>{hsize=multcolhsize{2}}C}{$SDSCR_{i}$}
+        \
+        Xhline{0.2mm}
+
+
+        $0.992$ & $0.0941$ & $3$ & $-1.05-0.095j$ & $-0.95-0.513j$ & $1.95$ & $2.11$ & $5.41$ & $4.99$
+        \
+
+
+        $0.995$ & $0.0921$ & $3$ & $-1.08-0.108j$ & $-0.97-0.529j$ & $1.92$ & $2.10$ & $5.62$ & $5.16$
+        \
+
+
+        $0.997$ & $0.0910$ & $3$ & $-1.09-0.115j$ & $-0.98-0.537j$ & $1.91$ & $2.09$ & $5.73$ & $5.25$
+        \
+
+        $0.999$ & $0.0900$ & $3$ & $-1.11-0.124j$ & $-1.00-0.547j$ & $1.90$ & $2.08$ & $5.86$ & $5.35$
+        \
+
+
+        $1.001$ & $0.0886$ & $3$ & $-1.12-0.132j$ & $-1.01-0.557j$ & $1.88$ & $2.07$ & $6.01$ & $5.46$
+        \
+
+        $1.003$ & $0.0872$ & $3$ & $-1.14-0.143j$ & $-1.02-0.569j$ & $1.86$ & $2.06$ & $6.16$ & $5.58$
+        \
+
+        $1.005$ & $0.0858$ & $3$ & $-1.16-0.154j$ & $-1.04-0.582j$ & $1.85$ & $2.05$ & $6.34$ & $5.72$
+        \
+
+        $1.007$ & $0.0843$ & $3$ & $-1.18-0.166j$ & $-1.06-0.596j$ & $1.83$ & $2.04$ & $6.54$ & $5.87$
+        \
+
+        $1.009$ & $0.0827$ & $3$ & $-1.21-0.180j$ & $-1.07-0.612j$ & $1.80$ & $2.02$ & $6.77$ & $6.04$
+        \
+
+        $1.011$ & $0.0809$ & $3$ & $-1.23-0.196j$ & $-1.09-0.630j$ & $1.78$ & $2.01$ & $7.02$ & $6.23$
+        \
+
+        bottomrule
+
+
+
+    end{tabularx}
+
+end{table*}
+
+end{document}

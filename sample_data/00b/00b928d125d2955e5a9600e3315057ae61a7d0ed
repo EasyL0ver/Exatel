@@ -1,0 +1,10 @@
+public static TValue SetDefault<TKey, TValue>(
+            IDictionary<TKey, TValue> dictionary,
+            TKey key,
+            TValue defaultItem)
+        {
+            TValue result;
+            if (!dictionary.TryGetValue(key, out result))
+                return dictionary[key] = defaultItem;
+            return result;
+        }

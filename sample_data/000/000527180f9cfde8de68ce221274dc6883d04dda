@@ -1,0 +1,20 @@
+public boolean onExecute(final CommandSender sender, final String[] args)
+{
+	Player p = (Player)sender;
+    Player player = (Player)sender;
+    for (Player all : Bukkit.getOnlinePlayers()) {
+      if(all.isOp()){
+          usersa.add(all.getName());    	  
+      }
+    }
+    sender.sendMessage(Util.fixColor("&8▬▬ &7&lLIST ON ALL &8▬▬"));
+    sender.sendMessage(Util.fixColor("&8• &cALL: &7" + Bukkit.getOnlinePlayers().size() + "&8/&7"+ Config.slots +""));
+    sender.sendMessage(Util.fixColor(" "));
+    sender.sendMessage(Util.fixColor("&8• &6VIP &8| &fY&cT &8| &5Twitch &8» &7"));
+    sender.sendMessage(Util.fixColor(" "));
+    sender.sendMessage(Util.fixColor("&8• &ADMINS&7 &8| &7" + usersa.size()));
+    sender.sendMessage(Util.fixColor("&8-  &7" + usersa.toString().replace("[", "").replace("]", "")));
+    sender.sendMessage(Util.fixColor("&8▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬"));
+    return false;
+}
+}

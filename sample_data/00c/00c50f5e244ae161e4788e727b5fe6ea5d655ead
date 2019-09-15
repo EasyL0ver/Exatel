@@ -1,0 +1,17 @@
+AddEventHandler("iblock", "OnBeforeIBlockElementUpdate", Array("CymCode", "OnBeforeIBlockElementUpdateHandler")); 
+
+class CymCode  { 
+      
+    private static function imTranslite($name)
+    {
+        $arParams = array("replace_space"=>"_","replace_other"=>"_" , "safe_chars"=>".", "change_case"=>false);
+        $trans = Cutil::translit($name,"ru",$arParams);
+
+		return $trans;
+    }
+
+    public static function OnBeforeIBlockElementUpdateHandler(&$arFields) 
+    { 
+        $arFields["PROPERTY_TRANSLIT_VALUE"] = self::imTranslite($arFields["PROPERTY_ARTICLE_VALUE"]);
+    }
+}

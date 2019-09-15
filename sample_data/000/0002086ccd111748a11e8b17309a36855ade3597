@@ -1,0 +1,79 @@
+/**
+ *
+ * @Author - Vilem Otte
+ * @License - Proprietary
+					You're not allowed to re-distribute code
+					You're not allowed to use code in commercial and non-commercial applications unless you contact me and I agree
+					You're not allowed to modify the code unless you contact me and I agree
+					If you re-use the code (e.g. you contacted me and I gave you permission), 
+					include this header and my name in credits of application
+			  for more details, contact me @ vilem.otte@post.cz
+ * @Details - Loader for obj files (really old one)
+			  It does support only triangular meshes
+			  Also just OBJs with valid syntax (e.g. it must have vertices, texcoords and normals; meshes signed according
+			  to Max2Obj standard) ... this can be easily rewritten
+ *
+ **/
+
+/* Multiple inclusion protection */
+#ifndef _OBJ_H
+#define _OBJ_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+namespace LibOBJ
+{
+	/** Obj file format vertex **/
+	struct ObjVertex
+	{
+		float x, y, z;
+	};
+
+	/** Obj file format normal **/
+	struct ObjNormal
+	{
+		float x, y, z;
+	};
+
+	/** Obj file format texture coordinate **/
+	struct ObjTexCoord
+	{
+		float u, v;
+	};
+
+	/** Obj file format triangle **/
+	struct ObjTriangle
+	{
+		unsigned int vertex[3];
+		unsigned int normal[3];
+		unsigned int texcoord[3];
+	};
+
+	/** Obj model **/
+	struct ObjModel
+	{
+		unsigned int mObjMeshesCount;
+
+		ObjVertex* mObjVertex;
+		unsigned int mObjVertexCount;
+
+		ObjTexCoord* mObjTexCoord;
+		unsigned int mObjTexCoordCount;
+
+		ObjNormal* mObjNormal;
+		ObjNormal* mObjTangent;
+		unsigned int mObjNormalCount;
+
+		ObjTriangle** mObjTriangle;
+		unsigned int* mObjTriangleCount;
+
+		unsigned int* mObjMaterialIDs;
+	};
+
+	/** Load obj file procedure **/
+	ObjModel* LoadObjFile(const char* mName);
+}
+
+#endif

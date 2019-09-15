@@ -1,0 +1,78 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace _04Santa_sNewList
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, int> kidsCount = new Dictionary<string, int>();
+            Dictionary<string, int> presentsCount = new Dictionary<string, int>();
+
+            while (true)
+            {
+                string command = Console.ReadLine();
+
+                if (command == "END")
+                {
+                    break;
+                }
+
+                string[] tokens = command.Split("->");
+
+                string name = tokens[0];
+
+                if (name!="Remove")
+                {
+                    string typeOfToy = tokens[1];
+                    int amount =int.Parse(tokens[2]);
+
+                    if (!kidsCount.ContainsKey(name))
+                    {
+                        kidsCount[name] = amount;
+                    }
+                    else
+                    {
+                        kidsCount[name] += amount;
+                    }
+
+                    if (!presentsCount.ContainsKey(typeOfToy))
+                    {
+                        presentsCount[typeOfToy] = amount;
+                    }
+                    else
+                    {
+                        presentsCount[typeOfToy] += amount;
+                    }
+                }
+                else
+                {
+                    string childName = tokens[1];
+
+                    kidsCount.Remove(childName);
+                }
+            }
+
+            Console.WriteLine("Children:");
+
+            foreach (var kvp in kidsCount.OrderByDescending(x => x.Value).ThenBy(x => x.Key))
+            {
+                string name = kvp.Key;
+                int count = kvp.Value;
+
+                Console.WriteLine($"{name} -> {count}");
+            }
+
+            Console.WriteLine("Presents:");
+
+            foreach (var kvp in presentsCount)
+            {
+                string present = kvp.Key;
+                int amount = kvp.Value;
+                Console.WriteLine($"{present} -> {amount}");
+            }
+        }
+    }
+}

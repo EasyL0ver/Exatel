@@ -1,0 +1,28 @@
+0000000000400711 <foo>:
+  400711:   55                      push   rbp
+  400712:   48 89 e5                mov    rbp,rsp
+  400715:   48 89 7d e8             mov    QWORD PTR [rbp-0x18],rdi
+  400719:   48 c7 45 f8 00 00 00    mov    QWORD PTR [rbp-0x8],0x0
+  400720:   00
+  400721:   eb 10                   jmp    400733 <foo+0x22>
+  400723:   48 8b 45 e8             mov    rax,QWORD PTR [rbp-0x18]
+  400727:   48 8d 50 ff             lea    rdx,[rax-0x1]
+  40072b:   48 89 55 e8             mov    QWORD PTR [rbp-0x18],rdx
+  40072f:   48 01 45 f8             add    QWORD PTR [rbp-0x8],rax
+  400733:   48 83 7d e8 00          cmp    QWORD PTR [rbp-0x18],0x0
+  400738:   75 e9                   jne    400723 <foo+0x12>
+  40073a:   48 8b 45 f8             mov    rax,QWORD PTR [rbp-0x8]
+  40073e:   5d                      pop    rbp
+  40073f:   c3                      ret
+	
+#include <stdio.h>
+int foo(int, int);
+
+int main()
+{
+   // printf() displays the string inside quotation
+   printf("%d", foo(2,2));
+   return 0;
+}
+	
+gcc -g -Og -no-pie -fno-pie -m32 main.c file.S

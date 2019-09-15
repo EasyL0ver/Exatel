@@ -1,0 +1,181 @@
+use std::thread;
+use std::thread::sleep;
+use std::io;
+use std::write;
+use std::{time};
+
+fn main() {
+  let mut day: u8 = 11;
+  let mut year: u16 = 2015;
+
+  let mut sidelay = String::new();
+  let mut idelay: u64 = 100;
+
+  io::stdin().read_line(&mut sidelay)
+      .expect("Input an integer value not whatever the fuck that thing was u effing stupid boi");
+
+  let mut idelay: u64 = sidelay.trim().parse()
+      .expect("Dude, fuck off with your non-integer values you human scum");
+
+  let mut delay = time::Duration::from_millis(idelay);
+let mut waitabit = time::Duration::from_millis(5000);
+thread::sleep(waitabit);
+
+ while year<2016{
+     
+     for day in 1..32 {
+    println!("\n\n\t\t Jan, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..29 {
+    println!("\n\n\t\t Feb, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t Mar, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n\n\t\t Apr, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t May, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n\n\t\t June, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t July, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t Aug, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n\n\t\t Sept, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t Oct, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n\n\t\t Nov, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t Dec, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+year = year + 1;
+  }
+
+
+     for day in 1..32 {
+    println!("\n\n\t\t Jan, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..30 {
+    println!("\n\n\t\t Feb, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t Mar, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n\n\t\t Apr, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t May, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n\n\t\t June, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t July, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t Aug, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n\n\t\t Sept, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t Oct, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n\n\t\t Nov, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n\n\t\t Dec, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+
+year = year + 1;
+
+while year<2018{
+     
+     for day in 1..32 {
+    println!("\n \n \t \t Jan, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..29 {
+    println!("\n \n \t \t Feb, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t Mar, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n \n \t \t Apr, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t May, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n \n \t \t June, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t July, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t Aug, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n \n \t \t Sept, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t Oct, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n \n \t \t Nov, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t Dec,{}. {}\n\n",day,year);
+    thread::sleep(delay);}
+
+year = year + 1;
+    }
+
+     for day in 1..32 {
+    println!("\n \n \t \t Jan, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..29 {
+    println!("\n \n \t \t Feb, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t Mar, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n \n \t \t Apr, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t May, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n \n \t \t June, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t July, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t Aug, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..31 {
+    println!("\n \n \t \t Sept, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..32 {
+    println!("\n \n \t \t Oct, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+     for day in 1..25 {
+    println!("\n \n \t \t Nov, {}, {}\n\n",day,year);
+    thread::sleep(delay);}
+
+}

@@ -1,0 +1,3 @@
+(defun external-shell-in-dir ()
+  (interactive)
+  (start-process "st" nil "st"))

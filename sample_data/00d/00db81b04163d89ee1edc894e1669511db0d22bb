@@ -1,0 +1,19 @@
+pub trait Creator<S> {
+    fn create(&self, out: u32, rt: u32) -> S;
+}
+
+impl<S, F> Creator<S> for F where F: Fn(u32) -> S {
+    fn create(&self, out: u32, _: u32) -> S {
+        (self)(out)
+    }
+}
+
+impl<S, F> Creator<S> for F where F: Fn(u32, u32) -> S {
+    fn create(&self, out: u32, rt: u32) -> S {
+        (self)(out, rt)
+    }
+}
+
+
+fn main() {
+}

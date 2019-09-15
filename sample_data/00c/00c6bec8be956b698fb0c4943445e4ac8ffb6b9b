@@ -1,0 +1,46 @@
+#include <fstream>
+#define MAX 60000
+#define ULL unsigned long long int
+using namespace std;
+ifstream f("factori.in");
+ofstream g("factori.out");
+int Prime[MAX];
+ULL N;
+
+void TabelPrime() /// Ciurul lui Eratostene
+{
+	Prime[0]=Prime[1]=1;
+	for(int i=2;i*i<MAX;++i)
+		if(Prime[i]==0)
+			for(int j=2;i*j<MAX;++j)
+				Prime[i*j]=1;
+}
+
+ULL Descompune(ULL N,ULL d)
+{
+    ULL s=0; /// initializez contorul cu 0
+    while(N>=d) /// cat timp d mai poate sa apara
+        s+=N/d,N/=d;
+    return s;
+}
+
+void Rezolvare(ULL N)
+{
+    ULL i=2; /// plec de la 2
+    while(Prime[i]) /// determin primul numar prim
+        ++i;
+    g<<Descompune(N,i); /// determin de cate ori apare acesta in factorial
+    for(i=i+1;i<=N;++i) /// determin pe rand celelalte numere prime<=N
+        if(!Prime[i])
+            g<<' '<<Descompune(N,i); /// afisez un spatiu apoi numarul de aparitii a acestuia in factorial
+    g<<'\n';
+}
+
+int main()
+{
+    TabelPrime();
+    f>>N;
+    while(N)
+        Rezolvare(N),f>>N;
+    return 0;
+}

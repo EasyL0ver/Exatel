@@ -1,0 +1,22 @@
+diff --git a/lib/upipe-framers/upipe_h264_framer.c b/lib/upipe-framers/upipe_h264_framer.c
+index 9c5a1735..aaba33a3 100644
+--- a/lib/upipe-framers/upipe_h264_framer.c
++++ b/lib/upipe-framers/upipe_h264_framer.c
+@@ -2051,7 +2051,7 @@ static struct uref *upipe_h264f_prepare_annexb(struct upipe *upipe)
+         upipe_h264f->dpb_output_delay = UINT64_MAX;
+         return NULL;
+     }
+-    if (upipe_h264f->au_slice_nal == UINT8_MAX ||
++    if (/*upipe_h264f->au_slice_nal == UINT8_MAX ||*/
+         upipe_h264f->active_sps == -1 || upipe_h264f->active_pps == -1) {
+         upipe_warn(upipe, "discarding data without SPS/PPS");
+         upipe_h264f_consume_uref_stream(upipe, upipe_h264f->au_size);
+@@ -2255,7 +2255,7 @@ static bool upipe_h264f_begin_annexb(struct upipe *upipe,
+     struct upipe_h264f *upipe_h264f = upipe_h264f_from_upipe(upipe);
+     /* detection of a new access unit - ISO/IEC 14496-10 7.4.1.2.4 */
+     uint8_t nal_type = h264nalst_get_type(upipe_h264f->au_last_nal);
+-    switch (nal_type) {
++    if (0) switch (nal_type) {
+         case H264NAL_TYPE_NONIDR:
+         case H264NAL_TYPE_PARTA:
+         case H264NAL_TYPE_PARTB:

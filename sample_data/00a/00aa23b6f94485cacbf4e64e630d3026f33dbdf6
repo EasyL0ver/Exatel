@@ -1,0 +1,74 @@
+<body>
+	<style>
+		body{
+			background: url("https://i.imgur.com/sYxwggU.jpg") #293a4a no-repeat center center fixed;
+			font-family: "Iceberg";
+			background-size: cover;
+		}
+    	pre{
+    		opacity: 0.8;filter: alpha(opacity=50);
+    	}
+    	pre:hover {
+    		color:lime;opacity: 1.0;filter: alpha(opacity=100); 
+    	}
+    </style>
+    <style type="text/css">
+html {
+}
+#os{
+    margin: 10px auto;
+    font-family: "Courier New", cursive;
+    }
+.ascii{
+    -webkit-animation-name: blinker;
+-webkit-animation-duration: 4s;
+-webkit-animation-timing-function: linear;
+-webkit-animation-iteration-count: infinite;
+ 
+-moz-animation-name: blinker;
+-moz-animation-duration: 3s;
+-moz-animation-timing-function: linear;
+-moz-animation-iteration-count: infinite;
+ 
+ animation-name: blinker;
+ animation-duration: 2s;
+ animation-timing-function: linear;
+ animation-iteration-count: infinite;
+ 
+ color: lime;
+}
+@-moz-keyframes blinker {  
+ 0% { opacity: 1.0; }
+ 50% { opacity: 0.0; }
+ 100% { opacity: 1.0; }
+ }
+ 
+@-webkit-keyframes blinker {  
+ 0% { opacity: 1.0; }
+ 50% { opacity: 0.0; }
+ 100% { opacity: 1.0; }
+ }
+ 
+@keyframes blinker {  
+ 0% { opacity: 1.0; }
+ 50% { opacity: 0.0; }
+ 100% { opacity: 1.0; }
+ }
+ </style>
+    <table width="100%" height="100%">
+    	<td align="center">   		
+    <pre class="ascii">
+   _____         .__             .___        ____  __.         .___                     .__               
+  /     \   ____ |  |   ____   __| _/__.__. |    |/ _|____   __| _/____    _____ _____  |__|____    ____  
+ /  \ /  \_/ __ \|  |  /  _ \ / __ <   |  | |      <_/ __ \ / __ |\__  \  /     \\__  \ |  \__  \  /    \ 
+/    Y    \  ___/|  |_(  <_> ) /_/ |\___  | |    |  \  ___// /_/ | / __ \|  Y Y  \/ __ \|  |/ __ \|   |  \
+\____|__  /\___  >____/\____/\____ |/ ____| |____|__ \___  >____ |(____  /__|_|  (____  /__(____  /___|  /
+        \/     \/                 \/\/              \/   \/     \/     \/      \/     \/        \/     \/ 
+            </pre>
+        </style>
+           </header>
+            <font size="7" style="color:#ff0000;font-family:Pirata One; text-shadow: 0 0 3px black, 0px 0px 5px black;">
+            	<b>hacked by Astra - </font>
+            		<font size="7" color="white" style="font-family:Pirata One; text-shadow: 0 0 3px black, 0px 0px 5px black;">Dark Pinus Squad</b>
+<br>
+            		<font face="Iceland" size="6" color="white" style="text-shadow: 0 0 3px red, 0px 0px 5px red;">Just Silent, Kids Slepp :p<br>

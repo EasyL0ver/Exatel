@@ -1,0 +1,71 @@
+import { Select, SelectItem } from 'carbon-components-react';
+import React from 'react';
+import { translate } from 'react-i18next';
+import PropTypes from 'prop-types';
+import { uniqBy } from 'lodash';
+import GetShipmentsAddresses from './containers/GetShipmentsAddresses';
+
+const AddressesSelect = ({ t, handleAddresses, value }) => (
+  <GetShipmentsAddresses>
+    {({ data }) => {
+      const unique = uniqBy(data, 'originationAddress.description');
+      const renderAddresses = unique.map(addresses => (
+        <SelectItem
+          value={
+            addresses.originationAddress
+              ? addresses.originationAddress.description
+              : ''
+          }
+          key={addresses.id}
+          text={
+            addresses.originationAddress
+              ? addresses.originationAddress.description
+              : ''
+          }
+        />
+      ));
+      return (
+        <Select
+          id="select-3"
+          defaultValue="Shipped From"
+          labelText={t('shipments.shippedFrom')}
+          onChange={handleAddresses}
+        >
+          <SelectItem
+            disabled
+            hidden
+            value=""
+            text={t('shipments.selectLocation')}
+          />
+          <SelectItem value="" text={t('shipments.allLocations')} />
+          {renderAddresses}
+        </Select>
+      );
+    }}
+  </GetShipmentsAddresses>
+);
+
+AddressesSelect.propTypes = {
+  t: PropTypes.func.isRequired,
+  handleAddresses: PropTypes.func.isRequired,
+};
+
+export default translate()(AddressesSelect);
+	
+const ParentComp = () => (
+
+          <AddressesSelect
+            handleAddresses={this.handleChange('shippedFrom')}
+            value="originationAddress"
+            title={t('shipments.shippedFrom')}
+          />
+
+          <br />
+
+          <AddressesSelect
+            handleAddresses={this.handleChange('shippedTo')}
+            value="destinationAddress"
+            title={t('shipments.shippedFrom')}
+          />
+
+)

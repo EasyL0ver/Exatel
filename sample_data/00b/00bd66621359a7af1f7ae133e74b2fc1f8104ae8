@@ -1,0 +1,44 @@
+/********************************************************
+  tabs with rounded corners
+   https://www.reddit.com/r/firefox/comments/72y8fa/how_to_modify_tab_style_in_firefox_57/
+*********************************************************/
+.tab-background {
+  border-radius: 3px 3px 0px 0px !important;
+  border-image: none !important;
+}
+
+.tab-line {
+  display: none;
+}
+
+/********************************************************
+  multiple rows of tabs
+  https://www.reddit.com/r/firefox/comments/6wiu9k/is_there_a_webextension_for_multiple_rows_of_tabs/
+*********************************************************/
+#TabsToolbar .tabbrowser-arrowscrollbox,
+#TabsToolbar .arrowscrollbox-scrollbox,
+#TabsToolbar .scrollbox-innerbox {
+  display: block !important;
+}
+
+.scrollbutton-up,
+.arrowscrollbox-overflow-start-indicator,
+.scrollbutton-down,
+.arrowscrollbox-overflow-end-indicator {
+  display: none !important;
+}
+
+.tabbrowser-tab {
+  min-height: var(--tab-min-height) !important;
+  vertical-align: bottom !important;
+}
+
+/********************************************************
+  hide tab close button
+   https://support.mozilla.org/en-US/questions/1177825
+*********************************************************/
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* only needed once */
+
+#tabbrowser-tabs .tabbrowser-tab .tab-close-button {
+  display:none!important;
+}

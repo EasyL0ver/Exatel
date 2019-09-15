@@ -1,0 +1,37 @@
+<?php
+
+class Cameronjonesweb_Jetpack_Cookie_Notice {
+	
+	public $widget;
+	
+	public function __construct() {
+		add_action( 'widgets_init', [ $this, 'initialise_cookie_notice' ] );
+		add_action( 'wp_footer', [ $this, 'display_cookie_notice' ] );
+	}
+	
+	/**
+	 * Sets up Jetpack's cookie notice
+	 */
+	public function initialise_cookie_notice() {
+		if ( class_exists( 'Jetpack_EU_Cookie_Law_Widget' ) ) {
+			$this->widget = new Jetpack_EU_Cookie_Law_Widget();
+			add_action( 'wp_enqueue_scripts', [ $this->widget, 'enqueue_frontend_scripts' ] );
+		}
+	}
+
+	/**
+	 * Displays the widget on the front end
+	 */
+	public function display_cookie_notice() {
+		if ( class_exists( 'Jetpack_EU_Cookie_Law_Widget' ) ) {
+			$args     = [
+				'before_widget' => '<div class="widget_eu_cookie_law_widget">',
+				'after_widget'  => '</div>',
+			];
+			$instance = [];
+			$this->widget->widget( $args, $instance );
+		}
+	}
+}
+
+new Cameronjonesweb_Jetpack_Cookie_Notice();

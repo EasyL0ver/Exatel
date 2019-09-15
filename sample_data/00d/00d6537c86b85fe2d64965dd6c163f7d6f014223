@@ -1,0 +1,46 @@
+var selectClick = new ol.interaction.Select({
+    condition: ol.events.condition.click,
+    style: selectedMarkerStyle,
+    addCondition: function(mapBrowserEvent){
+        var features = null;
+        map.forEachFeatureAtPixel(mapBrowserEvent.pixel, function (feature_, layer) {
+            features = feature_.values_.features;
+        });
+        if(features !== null && features.length > 1){
+            return false;
+        }
+        return true;
+    }
+});
+map.addInteraction(selectClick);
+	
+// create the select interaction
+var select = new ol.interaction.Select({
+    style: styleClick,
+    condition: function (mapBrowserEvent) {
+        // check if it is a click event
+        if (!ol.events.condition.singleClick(mapBrowserEvent))
+            return false;
+
+        // collect all the features at the click event
+        var features = [];
+        self.map.forEachFeatureAtPixel(mapBrowserEvent.pixel, function (feature_, layer) {
+            var features_ = feature_.get('features');
+            // get all the features in that place
+            for (let i = 0; i < features_.length; i++)
+                features.push(features_[i]);
+        });
+        // check if one or more featres on this place (a cluster always contains multiple features!)
+        if (features !== null && features.length > 1) {
+            return false;
+        } else if (features.length === 1) {
+            // trigger the callback for the selected feature (best place I found, since the  ol.interaction.Select doesn't seem to have a change event)
+            // YOURCALLBACK FKT (e.g. callback(features[0])
+            return true;
+        }
+
+        // default exit rout
+        return false;
+    }
+});
+this.map.addInteraction(select);

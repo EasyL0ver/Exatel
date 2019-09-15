@@ -1,0 +1,20 @@
+int globalMapping(TriElement &E, int localNodeID){
+	if(localNodeID == 1) return E.localNode[localNodeID - 1].ID;
+	else
+		if(localNodeID == 2) return E.localNode[localNodeID - 1].ID;
+	else
+		if(localNodeID == 3) return E.localNode[localNodeID - 1].ID;
+};
+
+/* and in the main() */
+
+Matrix GlobalK(16, 16);
+for(int i = 0; i < numberElements; i++){
+	for(int j = 1; j <= elements[i].k.rows; j++){
+		for(int k = 1; k <= elements[i].k.columns; k++){
+			int KG_j = globalMapping(elements[i], j);
+			int KG_k = globalMapping(elements[i], k);
+			GlobalK.data[KG_j - 1][KG_k - 1] += elements[i].k.data[j - 1][k - 1];
+		}
+	}
+}

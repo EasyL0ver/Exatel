@@ -1,0 +1,10 @@
+Inventory_Control:
+         main:
+        Limit: 1
+        Message_Exceeded: "メイン武器は1本までが限界です！"
+        Sounds_Exceeded: WOLF_BARK-1-1.5-0
+Inventory_Control:
+　　　　 sub:
+        Limit: 1
+        Message_Exceeded: "サブ武器は1本までが限界です！"
+        Sounds_Exceeded: WOLF_BARK-1-1.5-0

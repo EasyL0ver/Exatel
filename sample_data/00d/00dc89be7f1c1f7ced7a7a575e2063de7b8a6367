@@ -1,0 +1,136 @@
+#include<msp430x14x.h>
+#include "lcd.h"
+#include "portyLcd.h"
+
+
+//---------------- zmienne globalne -------------
+unsigned int i=0;
+unsigned int sekundy=55;
+unsigned int minuty=59;
+unsigned int godziny=22;
+unsigned int licznik=0;
+char tab[10];
+char extra_tab[10];
+
+int budzik_start[3]={23,0,5};
+int budzik_end[3]={23,1,5};
+
+int dzwonki=0;
+
+void Clock(void);
+
+
+//----------------- main program -------------------
+void main( void )
+{
+P2DIR |= BIT1 ;                   // STATUS LED
+P4DIR |= BIT2;
+P4DIR |= BIT3;
+
+P4OUT &=~BIT3;
+P4DIR &=~BIT5;
+
+P1DIR |= BIT5;
+P1OUT &= ~BIT5;
+P1DIR |= BIT6;
+P1OUT &= ~BIT6;
+
+WDTCTL=WDTPW + WDTHOLD;           // Wyłączenie WDT
+
+InitPortsLcd();                   // inicjalizacja portów LCD
+InitLCD();                        // inicjalizacja LCD
+clearDisplay();                   // czyszczenie wyświetlacza      
+
+// Basic Clock Module ustawiamy na ACLK(zegar 8 MHz ) i dzielimy częstotliwość przez 2 (4 MHz)
+BCSCTL1 |= XTS;                       // ACLK = LFXT1 = HF XTAL 8MHz
+
+do 
+  {
+  IFG1 &= ~OFIFG;                     // Czyszczenie flgi OSCFault
+  for (i = 0xFF; i > 0; i--);         // odczekanie
+  }
+  while ((IFG1 & OFIFG) == OFIFG);    // dopóki OSCFault jest ciągle ustawiona   
+
+BCSCTL1 |= DIVA_1;                    // ACLK=8 MHz/2=4 MHz
+BCSCTL2 |= SELM0 | SELM1;             // MCLK= LFTX1 =ACLK
+
+// Timer_A  ustawiamy na 500 kHz
+// a przerwanie generujemy co 100 ms
+TACTL = TASSEL_1 + MC_1 +ID_3;        // Wybieram ACLK, ACLK/8=500kHz,tryb Up
+CCTL0 = CCIE;                         // włączenie przerwań od CCR0
+CCR0=50000;                           // podzielnik 50000: przerwanie co 100 ms
+
+_EINT();                              // włączenie przerwań
+
+
+
+for (;;)                              
+ {
+
+     if(budzik_start[0]==godziny)
+       if(budzik_start[1]==minuty)
+         if(budzik_start[2]==sekundy){
+           dzwonki=1;
+           P1OUT|=BIT5;
+           P1OUT|=BIT6;
+         }
+    if(dzwonki==1){
+      P4OUT^=BIT2;
+      if(budzik_end[0]==godziny)
+       if(budzik_end[1]==minuty)
+         if(budzik_end[2]==sekundy){
+          dzwonki=0;
+          P1OUT&=~BIT5;
+          P1OUT&=~BIT6;
+         }
+    }
+   
+ _BIS_SR(LPM3_bits);                  // przejscie do trybu LPM3
+ Clock();
+  }
+}
+
+
+void Clock(void)
+{
+  
+if (licznik %10 ==0)                    // gdy mineła sekunda (10 * 100 milisekund)
+{
+licznik=0;
+P2OUT ^=BIT1;                           //zapal diodę
+   ++sekundy;
+   if(sekundy%60==0){
+      sekundy=0;
+      minuty++;
+      if(minuty%60==0){
+        minuty=0;
+        godziny++;
+        if(godziny%24==0)
+          godziny=0;
+      }
+      
+   }
+   
+   printDecDigit(godziny/10);  
+   printDecDigit(godziny%10);
+   SEND_CHAR(':');
+   printDecDigit(minuty/10);
+   printDecDigit(minuty%10);
+   SEND_CHAR(':');
+   printDecDigit(sekundy/10);
+   printDecDigit(sekundy%10);
+   for(int i=0;i<8;i++){
+      SEND_CMD(CUR_SHIFT_LEFT );
+   }
+
+}
+}
+
+// procedura obsługi przerwania od TimerA
+
+#pragma vector=TIMERA0_VECTOR
+__interrupt void Timer_A (void)
+{
+++licznik;
+ _BIC_SR_IRQ(LPM3_bits);             // wyjście z trybu LPM3
+}

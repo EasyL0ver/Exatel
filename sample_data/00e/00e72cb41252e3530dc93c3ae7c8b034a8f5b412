@@ -1,0 +1,349 @@
+#include "ScriptMgr.h"
+#include "vault_of_the_wardens.h"
+#include "AreaTrigger.h"
+#include "AreaTriggerAI.h"
+
+enum SpellsBoss
+{
+    // FEL_MORTAL
+    CAST_SPELL_FEL_MORTAL   = 202913,
+    FEL_MORTAL_VOID         = 202920,
+    FEL_MORTAL_DAMAGE       = 202919,
+
+    // Darkstrike
+    CAST_SPELL_DARKSTRIKE   = 191941,
+    DAMAGE_RIGHT            = 191948,
+    DAMAGE_LEFT             = 191949,
+
+    // Hatred
+    CAST_SPELL_HATRED       = 190830, // КАСТУЕТСЯ
+    HATRED_DAMAGE           = 190836,
+    HATRED_TARGET           = 190833,
+
+    // Jump
+    CAST_JUMP               = 191765,
+    SPELL_JUMP              = 191766,
+    CAST_FURIOS_BLAST       = 191823,
+
+    // DPS Morph
+    CAST_MORPH_DPS          = 192504,
+    AURA_DPS_MORPH          = 192504,
+    IMMOLATION_AURA         = 192502,
+
+    // Save Morph
+    CAST_MORPH_SAVE         = 202740,
+
+    AURA_DARKSTRIKES        = 191941
+};
+
+enum YellsBoss
+{
+    SAY_ENTER_COMBAT            = 0,
+    SAY_BLOOD                   = 1,
+    SAY_DEAD                    = 3,
+
+    ABBYLITY_DARKSTRIKES_BUFF   = 2
+};
+
+enum EventBoss
+{
+    EVENT_DPS_MORPH     = 1,
+    EVENT_SAVE_MORPH    = 2,
+
+    EVENT_JUMPING       = 3,
+    EVENT_DARKSTRIKE    = 4,
+    EVENT_FEL_MORTAL    = 5,
+
+    EVENT_HATRED        = 6
+};
+
+class boss_tirathon_saltheril : public CreatureScript
+{
+    public:
+        boss_tirathon_saltheril() : CreatureScript("boss_tirathon_saltheril") { }
+
+    CreatureAI * GetAI(Creature* creature) const
+    {
+        return new boss_tirathon_saltherilAI(creature);
+    }
+
+    struct boss_tirathon_saltherilAI : public ScriptedAI
+    {
+        boss_tirathon_saltherilAI(Creature* creature) : ScriptedAI(creature)
+        {
+            Reset();
+        }
+
+        void JustDied(Unit* killer) override
+        {
+            Reset();
+            Talk(SAY_DEAD);
+        }
+
+        void EnterEvadeMode(EvadeReason why) override
+        {
+            ScriptedAI::EnterEvadeMode();
+            Reset();
+        }
+
+        void Reset() override
+        {
+            events.Reset();
+            me->RemoveAllAuras();
+            morphEnter = false;
+            rollMorph = 0;
+            summons.DespawnAll();
+        }
+
+        void EnterCombat(Unit* who) override
+        {
+            Reset();
+            Talk(SAY_ENTER_COMBAT);
+            EventsStart();
+        }
+ 
+        void EventsStart()
+        {
+            events.ScheduleEvent(EVENT_FEL_MORTAL, randtime(Seconds(10), Seconds(13)));
+            events.ScheduleEvent(EVENT_DARKSTRIKE, randtime(Seconds(16), Seconds(19)));
+            events.ScheduleEvent(EVENT_JUMPING, randtime(Seconds(24), Seconds(30)));
+
+            rollMorph = 0 + rand() % 100;
+            if (rollMorph > 50)
+                morph = true;
+            else
+                if ((rollMorph == 50) || (rollMorph < 50))
+                    morph = false;
+        }
+
+        void UpdateAI(uint32 diff) override
+        {
+            if (!UpdateVictim())
+                return;
+
+            events.Update(diff);
+
+            if (HealthBelowPct(70))
+                if (!morphEnter)
+                {
+                    morphEnter = true;
+                    if (morph)
+                        events.ScheduleEvent(EVENT_DPS_MORPH, 500);
+                    else
+                        events.ScheduleEvent(EVENT_SAVE_MORPH, 500);
+                }
+
+            while (uint32 eventId = events.ExecuteEvent())
+            {
+                switch (eventId)
+                {
+                    case EVENT_FEL_MORTAL:
+                    {
+                        DoCast(CAST_SPELL_FEL_MORTAL);
+                        events.ScheduleEvent(EVENT_FEL_MORTAL, randtime(Seconds(10), Seconds(13)));
+                        break;
+                    }
+
+                    case EVENT_DARKSTRIKE:
+                    {
+                        DoCast(CAST_SPELL_DARKSTRIKE);
+                        events.ScheduleEvent(EVENT_DARKSTRIKE, randtime(Seconds(16), Seconds(19)));
+                        break;
+                    }
+
+                    case EVENT_JUMPING:
+                    {
+                        DoCast(CAST_JUMP);
+                        events.ScheduleEvent(EVENT_JUMPING, randtime(Seconds(24), Seconds(30)));
+                        break;
+                    }
+
+                    case EVENT_DPS_MORPH:
+                    {
+                        events.Reset();
+                        DoCast(CAST_MORPH_DPS);
+                        events.ScheduleEvent(EVENT_FEL_MORTAL, Seconds(7));
+                        events.ScheduleEvent(EVENT_JUMPING, Seconds(11));
+                        events.ScheduleEvent(EVENT_HATRED, Seconds(16));
+                        events.ScheduleEvent(EVENT_DARKSTRIKE, Seconds(23));
+                        break;
+                    }
+
+                    case EVENT_SAVE_MORPH:
+                    {
+                        events.Reset();
+                        DoCast(CAST_MORPH_SAVE);
+                        events.ScheduleEvent(EVENT_FEL_MORTAL, Seconds(7));
+                        events.ScheduleEvent(EVENT_DPS_MORPH, Seconds(30));
+                        break;
+                    }
+
+                    case EVENT_HATRED:
+                    {
+                        UnitList targetList;
+                        events.DelayEvents(Seconds(7));
+                        SelectTargetList(targetList, 5, SELECT_TARGET_RANDOM, 200.0f, true);
+                        for (Unit* target : targetList)
+                        {
+                            if (target->ToPlayer())
+                            {
+                                target->SummonCreature(3000000, target->GetPosition());
+                                break;
+                            }
+                        }
+                        DoCastVictim(CAST_SPELL_HATRED, true);
+                        events.ScheduleEvent(EVENT_HATRED, Seconds(20));
+                        break;
+                    }
+                }
+            }
+
+            DoMeleeAttackIfReady();
+        }
+
+        private:
+            bool morph;
+            bool morphEnter = false;
+            uint32 rollMorph;
+    };
+};
+
+// 3000000
+struct target_hatred : public ScriptedAI
+{
+    target_hatred(Creature* creature) : ScriptedAI(creature)
+    {
+        me->DespawnOrUnsummon(Seconds(10));
+        damageTime = 2000;
+    }
+
+    void UpdateAI(uint32 diff)
+    {
+        if (damageTime <= diff)
+        {
+            DoCast(HATRED_DAMAGE);
+            me->GetMotionMaster()->MovePoint(0.1f, 0, 0, 0);
+        }
+        else
+            damageTime -= diff;
+    }
+    private:
+        uint32 damageTime = 2000;
+};
+
+// 190833
+class spell_hatred : public SpellScript
+{
+    PrepareSpellScript(spell_hatred);
+
+    void HandleDummy(SpellEffIndex /*index*/)
+    {
+        UnitList targetList;
+
+        for (Unit* target : targetList)
+        {
+            if (target->GetEntry() == 3000000)
+            {
+                if (Unit* caster = GetCaster())
+                {
+                    caster->CastSpell(target, CAST_SPELL_HATRED, true);
+                }
+                break;
+            }
+        }
+
+    }
+
+    void Register() override
+    {
+        OnEffectHitTarget += SpellEffectFn(spell_hatred::HandleDummy, EFFECT_0, SPELL_EFFECT_DUMMY);
+    }
+};
+
+// 202913
+class spell_fel_mortal : public SpellScript
+{
+    PrepareSpellScript(spell_fel_mortal);
+
+    void HandleDummy(SpellEffIndex /*effIndex*/)
+    {
+        Unit* target = GetHitUnit();
+        if (!target)
+            return;
+
+        if (target->ToPlayer())
+        {
+            if (Unit* caster = GetCaster())
+                caster->CastSpell(target, FEL_MORTAL_VOID, true);
+        } 
+    }
+
+    void Register() override
+    {
+        OnEffectHitTarget += SpellEffectFn(spell_fel_mortal::HandleDummy, EFFECT_0, SPELL_EFFECT_DUMMY);
+    }
+};
+
+// 202919
+// AT 4854
+struct at_fel_mortal : AreaTriggerAI
+{
+    at_fel_mortal(AreaTrigger* areatrigger) : AreaTriggerAI(areatrigger) { }
+
+    void OnInitialize() override
+    {
+        at->SetPeriodicProcTimer(1000);
+    }
+
+    void OnPeriodicProc() override
+    {
+        if (Unit* caster = at->GetCaster())
+        {
+            GuidUnorderedSet const& insideUnits = at->GetInsideUnits();
+
+            for (ObjectGuid guid : insideUnits)
+                if (Player* player = ObjectAccessor::GetPlayer(*caster, guid))
+                    player->CastSpell(player, FEL_MORTAL_DAMAGE, true);
+        }
+    }
+};
+
+// 191765
+class spell_jump : public SpellScript
+{
+    PrepareSpellScript(spell_jump);
+
+    void HandleDummy(SpellEffIndex /*spell*/)
+    {
+        Unit* target = GetHitUnit();
+        if (!target)
+            return;
+
+        if (target->ToPlayer())
+        {
+            if (Unit* caster = GetCaster())
+            {
+                caster->CastSpell(target, SPELL_JUMP, true);
+                caster->CastSpell(target, CAST_FURIOS_BLAST, false);
+            }
+        }
+    }
+
+    void Register() override
+    {
+        OnEffectHitTarget += SpellEffectFn(spell_jump::HandleDummy, EFFECT_0, SPELL_EFFECT_DUMMY);
+    }
+};
+
+void AddSC_boss_tirathon_saltheril()
+{
+    new boss_tirathon_saltheril();
+    RegisterCreatureAI(target_hatred);
+
+    // Spells
+    RegisterSpellScript(spell_fel_mortal);
+    RegisterSpellScript(spell_jump);
+
+    // AT
+    RegisterAreaTriggerAI(at_fel_mortal);
+}

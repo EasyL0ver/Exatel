@@ -1,0 +1,4 @@
+on *:open:?:*: {
+  msg $nick Ställ bara din fråga direkt i ditt meddelande! Skippa "Hej" "Där?" "Här?" och allt onödigt.
+}
+}

@@ -1,0 +1,1 @@
+gdalwarp -of GTiff -s_srs epsg:2392 -t_srs epsg:4326 source.ecw target.tif

@@ -1,0 +1,16 @@
+1. Instalacja Dockera
+https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-docker-ce
+2. Instalacja Docker Compose
+https://docs.docker.com/compose/install/ 
+https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-docker-ce
+
+3. Instalacja środowiska:
+https://gorails.com/setup/ubuntu/16.04
+
+*Uwaga: wybrać opcję rvm*
+Do punktu *Installing Rails*, bez instalacji baz danych
+
+
+https://docs.docker.com/engine/installation/linux/linux-postinstall/#manage-docker-as-a-non-root-user
+
+`sudo service docker start` - raz, potem się powinno włączać samo

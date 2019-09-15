@@ -1,0 +1,8 @@
+
+var miParametro = "Walter";
+lib.confirm({
+	message: "Esta acci\u00f3n ignorar\u00e1 los datos ingresados.\nDesea continuar?",
+	acceptCallback: function (p) {
+		alert(p); //Debería mostrar "Walter"
+	}
+}, miParametro);

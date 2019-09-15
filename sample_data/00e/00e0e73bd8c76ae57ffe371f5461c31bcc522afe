@@ -1,0 +1,109 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+/*
+ * crossing sequences
+ * https://csharp-book.softuni.bg/Content/Chapter-9-1-problems-for-champions/crossing-sequences/crossing-sequences.html
+ * and also in the forum
+ * https://softuni.bg/forum/22036/zadacha-presichashti-se-redici
+ * */
+
+namespace Tribonachi
+{
+    class MatchSequences
+    {
+        static void Main(string[] args)
+        {
+            // ****************** //
+            // *** USER INPUT 
+            // ****************** //
+            int tribonachiOne = int.Parse(Console.ReadLine());
+            int tribonachiTwo = int.Parse(Console.ReadLine());
+            int tribonachiThree = int.Parse(Console.ReadLine());
+            int tribonachiNumber = 0;
+
+            int spiralOne = int.Parse(Console.ReadLine());
+            int spiralTwo = int.Parse(Console.ReadLine());
+
+            // ****************** //
+            // *** COMPARE SEQUENCES
+            // ****************** //
+
+            // define new variables for loop and compare
+            int i = 1;
+            int spiralNumber = spiralOne;
+            int tribonachiCompare = 0;
+
+            // ****************** //
+            // *** TRIBONACHI SEQUENCE 
+            // ****************** //
+
+            // declare an array for tribonachi numbers
+            ArrayList tribonachi = new ArrayList() { tribonachiOne, tribonachiTwo, tribonachiThree };
+
+            while (tribonachiNumber < 1000000)
+            {
+                tribonachiNumber = tribonachiOne + tribonachiTwo + tribonachiThree;
+
+                tribonachiOne = tribonachiTwo;
+                tribonachiTwo = tribonachiThree;
+                tribonachiThree = tribonachiNumber;
+
+                // add result into the array
+                tribonachi.Add(tribonachiNumber);
+
+            }
+
+            // ****************** //
+            // *** SPIRAL SEQUENCE 
+            // ****************** //
+
+            // declare an ArrayList with spiral numbers 
+            ArrayList spiral = new ArrayList();
+
+            while (spiralNumber < 1000000)
+            {
+                for(int z = 0; z < 2; z++)
+                {
+                    for (int y = 0; y < i; y++)
+                    {
+                        spiralNumber = spiralNumber + spiralTwo;
+                    }
+
+                    // add result in the array
+                    spiral.Add(spiralNumber);
+                }
+
+                i++;
+            }
+
+            // ****************** //
+            // *** COMPARE BOTH ARRAYS
+            // ****************** //
+            int t = tribonachi.Count;
+            int s = spiral.Count;
+
+            int ts = t > s ? t : s;
+
+            for (int x = 0; x < ts; x++)
+            {
+                int var1 = (int) tribonachi[x];
+                int var2 = (int)spiral[x];
+
+                if (var1 == var2)
+                {
+                    Console.WriteLine(spiral[x]);
+                }
+                else
+                {
+                    // Console.WriteLine("No");
+                }
+            }
+
+        }
+    }
+}

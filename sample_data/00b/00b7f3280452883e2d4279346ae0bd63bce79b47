@@ -1,0 +1,28 @@
+<!-- This Is A CopyRight Code.It Is Free To Use But With HTML Design Code. If AnyOne Found To Be Changing This Code Should Be Under Legal Action Via DMCA. --><br /><style type="text/css">
+/***********************************************
+* CSS POP-UP With Light Box Effect- © EXEIdeas (www.exeideas.com)
+* This notice must stay intact for use.
+* Visit http://www.exeideas.com/ for full source code.
+***********************************************/
+* html #exestylepopupdiv {position:absolute;}
+#exestylepopupdiv {display:block; top:0px; left:0px; width:100%; height:100%; position:fixed; background-image:url('http://www.lpl.arizona.edu/~lemmon/rac/black.jpg');margin:0; overflow-y:auto;z-index:999999;}
+#exestylepopup {background-color: #ffffff; overflow:none;z-index:999999;}
+.exestylepopup {width:400px; height:420px; position:fixed; top:45%; left:50%; margin-top:-210px; margin-left:-200px; border: 10px solid #999; padding: 20px;z-index:999999;}
+.exe-title {background:#000;color: #fff;font-size: 20px !important;font-weight:bold;margin:5px 0;border:20px solid #ddd;padding:10px;line-height:25px; font-family:arial !important;}
+</style><br /><!--[if lte IE 6]>
+<style type="text/css">
+/*<![CDATA[*/ html {overflow-x:auto; overflow-y:hidden;} /*]]>*/
+</style>
+<![endif]--><br /><div id="exestylepopupdiv"><br /><div class="exestylepopup" id="exestylepopup"><br /><center><h3 class="exe-title">Klikom na sliku ispod zatvarate PROZOR!</h3></center><center><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Reklama 2 -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Kocka -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:336px;height:280px"
+     data-ad-client="ca-pub-3688605315902826"
+     data-ad-slot="3749508095"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br /><p class="MsoNormal"><span style="color: green; font-size: 16.0pt; line-height: 115%;">Kliknite na sliku<o:p></o:p></span></p></center></div></div>

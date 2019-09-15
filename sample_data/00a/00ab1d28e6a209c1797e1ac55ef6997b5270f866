@@ -1,0 +1,69 @@
+function calculate() {
+    var z = 1;
+    $('.items').each(function(){
+		if( $(this).closest('tr').find('.volume').length == 1 ) {
+			if($(this).closest('tr').find('.volume').val() == "") {
+	            $(this).closest('tr').find('.volume').val(1)
+        	}
+       
+	        if($(this).closest('tr').find('.hps_satuan').val() == "") {
+    	        $(this).closest('tr').find('.hps_satuan').val(1)
+        	}
+       
+	        if($(this).closest('tr').find('.durasi').val() == "") {
+    	        $(this).closest('tr').find('.durasi').val(1)
+        	}
+       
+	        if($(this).closest('tr').find('.hps_total').val() == "") {
+    	        $(this).closest('tr').find('.hps_total').val(1)
+        	}
+ 			
+			var str11 = $(this).closest('tr').find('.volume').val();
+	        var result11 = str11.replace(/,/g,'');
+      
+	        var str22 = $(this).closest('tr').find('.hps_satuan').val();
+    	    var result22 = str22.replace(/,/g,'');
+       
+	        var str33 = $(this).closest('tr').find('.durasi').val();
+    	    var result33 = str33.replace(/,/g,'');
+       
+	        var str44 = $(this).closest('tr').find('.hps_total').val();
+    	    var result44 = str44.replace(/,/g,'');
+       
+	        if(result11 == "" || result11 == 0){
+    	        result11 = 1;
+        	}
+       
+	        if(result22 == "" || result22 == 0){
+    	        result22 = 1;
+        	}
+       
+	        if(result33 == "" || result33 == 0){
+    	        result33 = 1;
+        	}
+       
+	        if(result44 == "" || result44 == 0){
+    	        result44 = 1;
+        	}
+       
+ 
+	        var volume11 = parseFloat(result11);
+    	    var harga11  = parseFloat(result22);
+        	var durasi11  = parseFloat(result33);
+       
+	        var total11 = 0
+    	    var total11 = (volume11 * harga11) * durasi11 ;
+            $(this).closest('tr').find('.hps_total').val(total11);
+
+            $('.money').mask('99,999,999,999', {reverse: true});
+		}
+    });  
+   
+    var total = 0
+    $('.hps_total').each(function(){
+        total += parseFloat($(this).val());
+        $('.money').mask('99,999,999,999', {reverse: true});
+    });
+    $('#value_project').val(total);
+    $('#value_project').mask("#,##0", {reverse: true});
+}

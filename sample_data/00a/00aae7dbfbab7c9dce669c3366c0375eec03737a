@@ -1,0 +1,3 @@
+[eventlistener:memmon]
+command=memmon -g process_group_name=150MB
+events=TICK_60

@@ -1,0 +1,5 @@
+from multiprocessing import Process, Queue
+
+@pytest.fixture(scope='session')
+def listener_setup():
+   event_queue = Queue()

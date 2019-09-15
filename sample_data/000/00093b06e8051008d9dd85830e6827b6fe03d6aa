@@ -1,0 +1,28 @@
+def insert_row(conn, row)
+    attendee = map_row_to_struct(row)
+
+    conn.execute(
+      <<-SQL
+        INSERT INTO tmp_attendee_import (email, first_name, last_name)
+        VALUES("#{attendee.email}", "#{attendee.first_name}", "#{attendee.last_name}");
+      SQL
+    )
+  end
+	
+INSERT INTO tmp_attendee_import (email, first_name, last_name)
+VALUES("myemail@yahoo.com", "Gigel", "Ion");
+	
+Failure/Error:
+               conn.execute(
+                 <<-SQL
+                   INSERT INTO tmp_attendee_import (email, first_name, last_name)
+                   VALUES("#{attendee.email}", "#{attendee.first_name}", "#{attendee.last_name}");
+                 SQL
+               )
+
+     ActiveRecord::StatementInvalid:
+       PG::UndefinedColumn: ERROR:  column "myemail@yahoo.com" does not exist
+       LINE 2:             VALUES("myemail@yahoo.com", "Gigel", "Ion");
+                                  ^
+       :             INSERT INTO tmp_attendee_import (email, first_name, last_name)
+                   VALUES("myemail@yahoo.com", "Gigel", "Ion");

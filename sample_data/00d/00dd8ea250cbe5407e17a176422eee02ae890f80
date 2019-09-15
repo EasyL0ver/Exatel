@@ -1,0 +1,14 @@
+r0 = [-1.78908;1.78908;.47260];
+r30 = [-2.01818;1.54925;0.47118];
+r60 = [-2.21629;1.28565;0.46253];
+orbitfrom3pos(r0,r30,r60)
+function [energy, E, f, i, Omega, w, p, a] = orbitfrom3pos(r1,r2,r3)
+N = norm(r3)*cross(r1,r2) + norm(r1)*cross(r2,r3) + norm(r2)*cross(r3,r1);
+D = cross(r1,r2) + cross(r2,r3) + cross(r3,r1);
+S = (norm(r2)-norm(r3))*r1 + (norm(r3)-norm(r1))*r2 + (norm(r1)-norm(r2))*r3;
+r = r3;
+B = cross(D,r);
+L = sqrt( 1.327e11/(norm(D)*norm(N)) );
+v = L/r*B+L*S;
+[energy, E, f, i, Omega, w, p, a] = RVtoOM(r,v, 1.327e11, 0);
+end

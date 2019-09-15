@@ -1,0 +1,42 @@
+package com.epam.junior;
+
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import org.apache.log4j.Logger;
+
+public class LunchTime {
+	static org.apache.log4j.Logger logger = Logger.getLogger(LunchTime.class);
+	static java.util.logging.Logger julLogger = java.util.logging.Logger
+			.getLogger(LunchTime.class.getName());
+	static final long MINUTES_IN_MILLIS = 60000;
+
+	public static void main(String[] args) {
+		String msg = System.getProperty("lunch.msg", "you are late by: ");
+		String type = System.getProperty("lunch.type", " after ");
+		try {
+			while (true) {
+				// org.slf4j.bridge.SLF4JBridgeHandler.removeHandlersForRootLogger();
+				// org.slf4j.bridge.SLF4JBridgeHandler.install();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+				Date now = new Date();
+				Date lunch = sdf.parse(System.getProperty("lunch.date",
+						"2012-07-17 09:30"));
+				// logger.info("[API:log4j] time:" + lunch);
+				// julLogger.info("[API:jul] time:" + lunch);
+
+				// logger.debug("[API:log4j]caculating from milliseconds by dividing with: "
+				// + MINUTES_IN_MILLIS);
+				Long minutes = (lunch.getTime() - now.getTime())
+						/ MINUTES_IN_MILLIS;
+				System.out.println(msg + (-minutes) + type + lunch);
+
+				System.out.println("press any key ...");
+				System.in.read();
+			}
+
+		} catch (Exception e) {
+			logger.error(e);
+		}
+	}
+}

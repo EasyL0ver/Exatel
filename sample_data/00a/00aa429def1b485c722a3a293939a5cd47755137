@@ -1,0 +1,13 @@
+grpc:
+  port: 0
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+  application:
+    name: grpc-service
+  instance:
+    securePortEnabled: false
+    nonSecurePort: ${grpc.port}
+    instance_id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

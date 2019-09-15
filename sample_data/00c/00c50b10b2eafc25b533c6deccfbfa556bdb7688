@@ -1,0 +1,14 @@
+def validate
+return true if age_in_years > 0
+
+# Return if invalid date. No point in checking for it.
+return false if self.dob.blank?
+return false if parse_date(self.dob).nil?
+
+# Continue to calculate and check.
+date = parse_date(self.dob)
+new_time = date.to_time.months_since(5)
+today_time = Date.today.to_time
+if new_time > today_time
+  errors.add(:dob, "Insured must be atleast 5 months old.")
+end

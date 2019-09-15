@@ -1,0 +1,39 @@
+#!/bin/bash
+
+command1() {
+  echo "executing commnad1"
+  sleep 3
+}
+
+command2() {
+  echo "executing commnad2"
+  sleep 3
+  exit 1
+}
+
+
+echo "start"
+
+command1 &
+pid1=$!
+
+command2 &
+pid2=$!
+
+wait $pid1
+if [ $? != 0 ]; then
+  echo "command1 error"
+  exit $?
+else
+  echo "commnad1 success"
+fi
+
+wait $pid2
+if [ $? != 0 ]; then
+  echo "command2 error"
+  exit $?
+else
+  echo "command2 success"
+fi
+
+echo "end"

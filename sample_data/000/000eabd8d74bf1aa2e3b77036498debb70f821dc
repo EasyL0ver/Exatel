@@ -1,0 +1,25 @@
+// Include ExpressJS
+var express = require('express');
+var app = express();
+
+// The list of files
+var files = [ 'doc.pdf', 'someimage.img', 'webpage.html' ];
+
+// The request handler
+app.get('/get_resource/:file', function(req, res){
+    var uid = req.params.uid
+      , file = req.params.file;
+
+    // Check that the file the user is requesting is one we want to send them
+    if ( files.indexOf(file) === -1 ) {
+        // The user requested a file we don't want to send or don't have
+        res.send(404);
+        return;
+    }
+
+    // Send the users' file
+    res.sendfile('/tmp/node/file');
+});
+
+// Tell the app to listen on port 80
+app.listen(80);

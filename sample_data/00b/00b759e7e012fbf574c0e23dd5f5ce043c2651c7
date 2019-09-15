@@ -1,0 +1,30 @@
+#include <vector>
+#include <utility>
+#include <math.h>
+#include <type_traits>
+
+class Dioph
+{
+  public:
+  static std::vector<std::pair <long, long>> solEquaStr(long long n);
+};
+
+
+std::vector<std::pair<long,long>> Dioph::solEquaStr(long long n)
+{
+  std::cout<<"\n\nTEST: n is:" << n << "\n"; 
+  std::vector<std::pair<long,long>> res;
+  double y;
+  for(long x = round(n/4)*2+1; x >= 0; x--)
+  {
+    y = sqrt((pow(x,2)-n)/4);
+    if(y == floor(y) && y >= 0)
+    {
+      res.push_back(std::make_pair(x,y));
+      std::cout<<"x: "<<x<<" y: "<< y << "\n"; 
+      x = floor(y);
+      continue;
+    }
+  }
+  return res;
+}

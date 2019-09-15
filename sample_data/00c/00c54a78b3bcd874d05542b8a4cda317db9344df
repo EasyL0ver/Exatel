@@ -1,0 +1,84 @@
+local c = require("component")
+local s = require("serialization")
+local sh = require("shell")
+local t = require("term")
+local fs = require("filesystem")
+
+local cfg = "/cfg/nodes.cfg"
+
+local coms = {off=1, on=0}
+
+local function init()
+  local cl = c.list("redstone")
+  if not next(cl) then
+    error("Редстоун контроллеров нет в сети")
+  end
+  local at = {}
+  for a, _ in pairs(cl) do
+    c.proxy(a).setOutput(1,0)
+  end
+  for a, _ in pairs(cl) do
+    t.write("Введите номер ВЫКЛЮЧИВШЕЙСЯ ноды: ", true)
+    c.proxy(a).setOutput(1,1)
+    local n = tonumber(t.read())
+    c.proxy(a).setOutput(1,0)
+    at[n] = a
+  end
+  local f, str = fs.open(cfg, "w")
+  if(f==nil)then
+    error(str)
+  end
+  f:write(s.serialize(at))
+  f:close()
+end
+
+local function load()
+  local f, str = fs.open(cfg, "r")
+  if(f==nil)then
+    error(str)
+  end
+  local ts = f:read(math.huge)
+  f:close()
+  local at = s.unserialize(ts)
+  if not (at==nil) then
+    return at
+  else
+    error("Файл конфигурации поврежден или отсутствует. Запустите программу с ключом -i")
+  end
+end
+
+local function turn(naddr, value, t)
+  if naddr == 0 then
+    for i,a in ipairs(t) do
+      c.proxy(a).setOutput(1, value)
+    end
+  else
+    c.proxy(naddr).setOutput(1, value)
+  end
+end
+
+local _, options = sh.parse(...)
+for key, value in pairs(options) do
+  if key=="i" then
+    init()
+  end
+end
+
+local at = load()
+
+while true do
+  t.write("> ", true)
+  local tcom = t.read()
+  if not tcom then os.exit() end
+  local com = nil
+  local arg = nil
+  for k, v in string.gmatch(tcom, "(%w+)%s(%w+)") do
+    com = k
+    arg = v
+  end
+  if(arg=="all")then
+    turn(0, coms[com], at)
+  else
+    turn(at[tonumber(arg)], coms[com])
+  end
+end

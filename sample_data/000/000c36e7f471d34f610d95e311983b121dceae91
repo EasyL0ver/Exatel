@@ -1,0 +1,188 @@
+Convert a 2d array to a organizing table look
+public static void main(String[] args) throws Exception{
+    File file = new File("test.txt");
+    BufferedReader br = new BufferedReader(new FileReader(file));
+    int width = 0, height = 0;
+    String line = "";
+
+    /*Find number of row and column of the file.*/
+    while ((line = br.readLine()) != null)
+    {
+                if (width == 0)
+                {
+                  /*Find the number of row using split method(",")*/
+                    String[] str = line.split(",");
+                    width = str.length;
+                }
+        height++;
+    }
+    System.out.println("Row : " + height);
+    System.out.println("Column : " + width);
+
+    /*Adding values to the 2D Array.*/
+    String[][] data = new String[height][width];
+    br = new BufferedReader(new FileReader(file));
+
+    for (int i = 0; i < height; i++)
+    {
+        if ((line = br.readLine()) != null)
+        {
+            for (int j = 0; j < width; j++)
+            {                                   
+                String[] str = line.split(",");     
+                data[i][j] = str[j];
+
+                System.out.print( data[i][j] + " ");
+            }
+
+        }
+
+       System.out.println("");
+
+    }
+}
+	
+public static void main(String[] args) throws Exception{
+    File file = new File("test.txt");
+    BufferedReader br = new BufferedReader(new FileReader(file));
+    int width = 0, height = 0;
+    String line = "";
+
+    /*Find number of row and column of the file.*/
+    while ((line = br.readLine()) != null)
+    {
+                if (width == 0)
+                {
+                  /*Find the number of row using split method(",")*/
+                    String[] str = line.split(",");
+                    width = str.length;
+                }
+        height++;
+    }
+    System.out.println("Row : " + height);
+    System.out.println("Column : " + width);
+
+    /*Adding values to the 2D Array.*/
+    String[][] data = new String[height][width];
+    br = new BufferedReader(new FileReader(file));
+
+    for (int i = 0; i < height; i++)
+    {
+        if ((line = br.readLine()) != null)
+        {
+            for (int j = 0; j < width; j++)
+            {                                   
+                String[] str = line.split(",");     
+                data[i][j] = str[j];
+
+                System.out.print( data[i][j] + " ");
+            }
+
+        }
+
+       System.out.println("");
+
+    }
+}
+	
+public static void main(String[] args) throws Exception{
+    File file = new File("test.txt");
+    BufferedReader br = new BufferedReader(new FileReader(file));
+    int width = 0, height = 0;
+    String line = "";
+
+    /*Find number of row and column of the file.*/
+    while ((line = br.readLine()) != null)
+    {
+                if (width == 0)
+                {
+                  /*Find the number of row using split method(",")*/
+                    String[] str = line.split(",");
+                    width = str.length;
+                }
+        height++;
+    }
+    System.out.println("Row : " + height);
+    System.out.println("Column : " + width);
+
+    /*Adding values to the 2D Array.*/
+    String[][] data = new String[height][width];
+    br = new BufferedReader(new FileReader(file));
+
+    for (int i = 0; i < height; i++)
+    {
+        if ((line = br.readLine()) != null)
+        {
+            for (int j = 0; j < width; j++)
+            {                                   
+                String[] str = line.split(",");     
+                data[i][j] = str[j];
+
+                System.out.print( data[i][j] + " ");
+            }
+
+        }
+
+       System.out.println("");
+
+    }
+}
+	
+public static void main(String[] args) throws Exception {
+
+    /* Adding values to the 2D Array. */
+
+    String[][] data = { { "John", "99", "88", "89" },
+            { "May", "99", "100", "100" } };
+
+    int wideRowWidth = 0;
+    int curRowWidth;
+
+    // WALK DATA ONCE TO FIND THE WIDEST ROW
+    for (int i = 0; i < data.length; i++) {
+        curRowWidth = 0;
+        for (int j = 0; j < data[i].length; j++) {
+            curRowWidth += data[i][j].length();
+        }
+        if (curRowWidth > wideRowWidth) {
+            wideRowWidth =  curRowWidth;
+        }
+
+    }
+
+    // BUILD YOUR DASHED LINE
+    for (int i = 0; i < wideRowWidth + data[0].length -1; i++) {
+            System.out.print("-");
+    }
+    System.out.print("n");
+
+    // USE YOUR DATA
+    for (int i = 0; i < data.length; i++) {
+        for (int j = 0; j < data[i].length; j++) {
+            System.out.print(data[i][j] + " ");
+        }
+        System.out.print("n");
+    }
+}
+	
+// To Store and Show Values on the screen.
+    int columnWidth = 15;
+
+    for (int i = 0; i < height; i++)
+    {
+        if ((line = br.readLine()) != null)
+        {
+            // After reading, we are seperating them.
+            String[] str = line.split(", ");
+            for (int j = 0; j < width; j++)
+            {                                                           
+                data[i][j] = str[j];
+                // Here we are making the word length of each String equal, 
+                // i.e. equal to column width. So that each String value comes 
+                // below each other. Increase the value of columnWidth variable 
+                // if you want to increase the width of a column or vice versa.
+                System.out.format("%-" + columnWidth + "s", data[i][j]);
+            }
+        }
+        System.out.print("n");
+    }

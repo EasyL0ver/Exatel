@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+template<typename t, typename return_type, typename... xs>
+using memfun_ptr = return_type(t::*)(xs...);
+
+template<typename t, typename u>
+void whatever(t datum, memfun_ptr<t, u> ptr)
+{
+    (datum.*ptr)();
+}
+
+struct dupa
+{
+    void call()
+    {
+        printf("dupa\n");
+    }
+};
+
+int main(void)
+{
+    dupa x{};
+    whatever<dupa, void>(x, &dupa::call);
+}

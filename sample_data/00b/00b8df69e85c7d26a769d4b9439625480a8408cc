@@ -1,0 +1,230 @@
+if game:GetService("RunService"):IsClient() then error("Script must be server-side in order to work; use h/ and not hl/") end
+local Player,Mouse,mouse,UserInputService,ContextActionService = owner
+do
+	print("FE Compatibility code by Mokiros")
+	script.Parent = Player.Character
+
+	--RemoteEvent for communicating
+	local Event = Instance.new("RemoteEvent")
+	Event.Name = "UserInput_Event"
+
+	--Fake event to make stuff like Mouse.KeyDown work
+	local function fakeEvent()
+		local t = {_fakeEvent=true,Connect=function(self,f)self.Function=f end}
+		t.connect = t.Connect
+		return t
+	end
+
+	--Creating fake input objects with fake variables
+    local m = {Target=nil,Hit=CFrame.new(),KeyUp=fakeEvent(),KeyDown=fakeEvent(),Button1Up=fakeEvent(),Button1Down=fakeEvent()}
+	local UIS = {InputBegan=fakeEvent(),InputEnded=fakeEvent()}
+	local CAS = {Actions={},BindAction=function(self,name,fun,touch,...)
+		CAS.Actions[name] = fun and {Name=name,Function=fun,Keys={...}} or nil
+	end}
+	--Merged 2 functions into one by checking amount of arguments
+	CAS.UnbindAction = CAS.BindAction
+
+	--This function will trigger the events that have been :Connect()'ed
+	local function te(self,ev,...)
+		local t = m[ev]
+		if t and t._fakeEvent and t.Function then
+			t.Function(...)
+		end
+	end
+	m.TrigEvent = te
+	UIS.TrigEvent = te
+
+	Event.OnServerEvent:Connect(function(plr,io)
+	    if plr~=Player then return end
+		if io.isMouse then
+			m.Target = io.Target
+			m.Hit = io.Hit
+		else
+			local b = io.UserInputState == Enum.UserInputState.Begin
+			if io.UserInputType == Enum.UserInputType.MouseButton1 then
+				return m:TrigEvent(b and "Button1Down" or "Button1Up")
+			end
+			for _,t in pairs(CAS.Actions) do
+				for _,k in pairs(t.Keys) do
+					if k==io.KeyCode then
+						t.Function(t.Name,io.UserInputState,io)
+					end
+				end
+			end
+			m:TrigEvent(b and "KeyDown" or "KeyUp",io.KeyCode.Name:lower())
+			UIS:TrigEvent(b and "InputBegan" or "InputEnded",io,false)
+	    end
+	end)
+	Event.Parent = NLS([==[
+	local Player = game:GetService("Players").LocalPlayer
+	local Event = script:WaitForChild("UserInput_Event")
+
+	local UIS = game:GetService("UserInputService")
+	local input = function(io,a)
+		if a then return end
+		--Since InputObject is a client-side instance, we create and pass table instead
+		Event:FireServer({KeyCode=io.KeyCode,UserInputType=io.UserInputType,UserInputState=io.UserInputState})
+	end
+	UIS.InputBegan:Connect(input)
+	UIS.InputEnded:Connect(input)
+
+	local Mouse = Player:GetMouse()
+	local h,t
+	--Give the server mouse data 30 times every second, but only if the values changed
+	--If player is not moving their mouse, client won't fire events
+	while wait(1/30) do
+		if h~=Mouse.Hit or t~=Mouse.Target then
+			h,t=Mouse.Hit,Mouse.Target
+			Event:FireServer({isMouse=true,Target=t,Hit=h})
+		end
+	end]==],Player.Character)
+	Mouse,mouse,UserInputService,ContextActionService = m,m,UIS,CAS
+end
+asset = "http://www.roblox.com/asset/?id="
+meshes = {["blast"] = 20329976,["ring"] = 3270017,["spike"] = 1033714,["cone"] = 1082802,["crown"] = 20329976,["cloud"] = 1095708,["diamond"] = 9756362}
+sounds = {["explode"] = 130792180;}
+torsomesh = "rbxasset://fonts/torso.mesh"
+colours = {"Tr. Red","Black","Tr. Blue","Black","Phosph. White","Royal purple"}
+function rand(a)return (math.random()-.5)*2*a end
+function q(f,arg)return coroutine.resume(coroutine.create(f),unpack(arg or {}))end
+function fade(p,s,inc)q(function(part,start,increment)increment = increment or .05 for i=start,1,increment do part.Transparency = part.Transparency+increment wait(1/30)end end,{p,s,inc})end
+function appear(p,s,inc)q(function(part,start,increment)increment = increment or .05 for i=start,0,-increment do part.Transparency = part.Transparency-increment wait(1/30)end end,{p,s,inc})end
+function Part(Name,Parent,Size,CFrame,Color,Trans,Anch,Can,Mat,Ref)
+        local p = Instance.new("Part",Parent)p.Name = Name
+        p.FormFactor = "Custom"p.Size = Size
+        p.Anchored = Anch p.CFrame = CFrame
+        p.BrickColor = BrickColor.new(Color)p.Transparency = Trans
+        p.TopSurface = 0 p.CanCollide = Can
+        p.BottomSurface = 0 p.Material = Mat
+        p.Reflectance = Ref or 0;p:BreakJoints()
+        p.Locked = true;return p
+end
+function WedgePart(Name,Parent,Size,CFrame,Color,Trans,Anch,Can,Mat,Ref)
+        local p = Instance.new("WedgePart",Parent)p.Name = Name
+        p.FormFactor = "Custom"p.Size = Size
+        p.Anchored = Anch p.CFrame = CFrame
+        p.BrickColor = BrickColor.new(Color)p.Transparency = Trans
+        p.TopSurface = 0 p.CanCollide = Can
+        p.BottomSurface = 0 p.Material = Mat
+        p.Reflectance = Ref or 0;p:BreakJoints()
+        p.Locked = true;return p
+end
+function CornerWedgePart(Name,Parent,Size,CFrame,Color,Trans,Anch,Can,Mat,Ref)
+        local p = Instance.new("CornerWedgePart",Parent)p.Name = Name;p.Size = Size
+        p.Anchored = Anch p.CFrame = CFrame
+        p.BrickColor = BrickColor.new(Color)p.Transparency = Trans
+        p.TopSurface = 0 p.CanCollide = Can
+        p.BottomSurface = 0 p.Material = Mat
+        p.Reflectance = Ref or 0;p:BreakJoints()
+        p.Locked = true;return p
+end
+function Mesh(Parent,Type,Scale,ID,TID)
+        local m = Instance.new("SpecialMesh",Parent)m.MeshType = Type
+        m.Scale = Scale or Vector3.new(1,1,1)
+        if ID then m.MeshId = ID end if TID then m.TextureId = TID end
+        return m
+end
+function Weld(p1,p2,c0,c1)
+        local w = Instance.new("Weld",p1)w.Part0 = p1;w.Part1 = p2
+        w.C0,w.C1 = c0 or CFrame.new(),c1 or CFrame.new()
+        return w
+end
+function cslerp(start,destination,increment)
+        local function s(a,b,c)return (1-c)*a+(c*b)end
+        local c1 = {start.X,start.Y,start.Z,start:toEulerAnglesXYZ()}
+        local c2 = {destination.X,destination.Y,destination.Z,destination:toEulerAnglesXYZ()}
+        for i,v in pairs(c1)do c1[i] = s(v,c2[i],increment)end
+        return CFrame.new(c1[1],c1[2],c1[3])*CFrame.Angles(c1[4],c1[5],c1[6])
+end
+local char
+function rayCast(pos,dir,collidedlist,startpos,endpos,distleft)
+        collidedlist = collidedlist
+        startpos = startpos or pos
+        distleft = distleft or dir.unit * dir.magnitude
+        endpos = endpos or pos + distleft
+        local ray = Ray.new(pos,distleft)
+        local hitz,enz = workspace:FindPartOnRayWithIgnoreList(ray,collidedlist)
+        if hitz~=nil then
+                if hitz.CanCollide==false then
+                        table.insert(collidedlist,hitz)
+                        local newpos = enz
+                        local newdistleft = distleft-(dir.unit*(pos-newpos).magnitude)
+                        if newdistleft~=Vector3.new()then
+                                return rayCast(newpos-(dir*0.01),dir,collidedlist,startpos,endpos,newdistleft+(dir*0.01))
+                        end
+                end
+        end
+        return hitz,enz,ray
+end
+function findSurface(part,position)
+        local obj = part.CFrame:pointToObjectSpace(position)
+        local siz = part.Size/2
+        for i,v in pairs(Enum.NormalId:GetEnumItems()) do
+                local vec = Vector3.FromNormalId(v)
+                local wvec = part.CFrame:vectorToWorldSpace(vec)
+                local vz = (obj)/(siz*vec)
+                if (math.abs(vz.X-1)<0.01 or math.abs(vz.Y-1)<0.01 or math.abs(vz.Z-1)<0.01) then
+                        return wvec,vec
+                end
+        end
+end
+function Smoke(origin,color)
+        local p = Part("Effect",workspace,Vector3.new(2,2,2),origin*CFrame.new(rand(5),-1,rand(5)),color or "Black",.1,false,false,"SmoothPlastic")
+        local m = Mesh(p,"Sphere",Vector3.new(1.25,1.25,1.25))
+        local bp = Instance.new("BodyPosition",p)bp.D = 100 bp.P = 100 bp.position = p.Position+Vector3.new(0,7,0)
+        q(function(pa,me)
+                fade(pa,.1)
+                for i=25,100 do
+                        me.Scale = me.Scale+Vector3.new(0.15,0.1,0.15)
+                        wait(1/30)
+                end
+                pa:Destroy()
+        end,{p,m})
+end
+function brickMagic(origin,color,size)
+        local p = Part("Effect",workspace,Vector3.new(size,size,size),origin*CFrame.Angles(rand(5),rand(5),rand(5)),color,.2,true,false,"SmoothPlastic")
+        local m = Mesh(p,"Brick")
+        q(function(pa,me)
+                fade(pa,.2)
+                for i=20,100 do
+                        me.Scale = me.Scale-Vector3.new(0.05,0.05,0.05)
+                        wait(1/30)
+                end
+                pa:Destroy()
+        end,{p,m})
+end
+function spikeMagic(origin,size,color)
+        local p = Part("Effect",workspace,Vector3.new(1,1,1),origin*CFrame.new(0,-size,0),color,1,true,false,"SmoothPlastic")
+        local m = Mesh(p,"FileMesh",Vector3.new(size/2,size*2,size/2),asset..meshes["spike"])
+        q(function(pa,me)
+        appear(pa,1)
+        for i=1,size,.5 do
+                wait(1/30)
+                pa.CFrame = pa.CFrame*CFrame.new(0,.5,0)
+        end
+        wait(math.random(2,3))fade(pa,0)
+        Delay(3,function()pa:Destroy()end)
+        end,{p,m})
+end
+function placePart(origin,size,color,material)
+        local p = Part("Effect",workspace,Vector3.new(size,size,size),origin*CFrame.Angles(rand(5),rand(5),rand(5)),color,0,true,true,material)
+        local m = Mesh(p,"Brick")
+        q(function(pa,me)
+                wait(5)
+                fade(pa,0)
+                Delay(1.25,function()pa:Destroy()end)
+        end,{p,m})
+end
+function placePartRandSize(origin,min,max,color,material)
+        local p = Part("Effect",workspace,Vector3.new(math.random(min,max),math.random(min,max),math.random(min,max)),origin*CFrame.Angles(rand(5),rand(5),rand(5)),color,0,true,true,material)
+        local m = Mesh(p,"Brick")
+        q(function(pa,me)
+                wait(5)
+                fade(pa,0)
+                Delay(1.25,function()pa:Destroy()end)
+        end,{p,m})
+end
+function crater(origin,dist)
+        local b = workspace.Base
+        local bc = b and tostring(b.BrickColor) or "Bright green"
+        local m = b and

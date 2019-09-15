@@ -1,0 +1,16 @@
+int rest(char *str1, char *str2)
+{
+    int i = 0;
+    int rest = 0;
+    str1 = my_get_nbr(str1);
+    str2 = my_get_nbr(str2);
+    char *result = malloc(sizeoff(char) * strlen_max);
+
+    result[i] = str1[i] + str2[i];
+    if(result[i] > 9)
+        rest = 1;
+    if(result[i] < 9)
+        rest = 0
+    i++;
+    return (rest);
+}

@@ -1,0 +1,116 @@
+#!/bin/bash
+# chkconfig: 345 71 29
+# description: McMyAdmin Server
+#
+
+. /etc/rc.conf
+. /etc/rc.d/functions
+
+NAME='McMyAdmin'        # Server handle for the screen session
+USER='minecraft'        # User that this will be running under.
+DIR='/home/minecraft'
+HDDWORLD="$DIR/Minecraft/hddworlds/world"
+WORLD="$DIR/Minecraft/world"
+MCPID="$DIR/minecraft_server.pid"
+PWD=`pwd`
+CMD="/usr/bin/screen -S $NAME -A -d -m ./mcma"
+RETVAL=0
+
+
+resize() {
+	BUFFER=`du -bs "$WORLD" | cut -f 1`
+	BUFFER=$(($RAMDISKSIZE-$BUFFER))
+	if [ $BUFFER -lt 52428800 ]; then
+		RAMDISKSIZE=$(($RAMDISKSIZE/1048576))"M"
+		mount -t tmpfs -o remount -o size=$RAMDISKSIZE tmpfs $WORLD
+	fi
+}
+
+service_start() {
+	stat_busy "Starting McMyAdmin"
+	#Check if ramdisk mounted
+	
+	if [ -f /var/run/$NAME.pid ]; then
+		if [ "$(ps -p `cat /var/run/$NAME.pid` | wc -l)" -gt 1 ]; then
+			stat_busy "Cannot start $NAME.  Server is already running."
+			stat_fail
+		else
+			rm -rf /var/run/$NAME.pid
+			service_start
+		fi
+	else
+		#check if ramdisk mounted
+		RAMDISKSIZE=`du -bs "$HDDWORLD" | cut -f 1`
+		RAMDISKSIZE=$(($RAMDISKSIZE+100000000))
+		if [ "$(mount | grep $WORLD | wc -l)" -gt 1 ]; then
+			#ramdisk is mounted.  Check if resize necessary
+			resize
+		else
+			#mount ramdisk and copy files
+			RAMDISKSIZE=$(($RAMDISKSIZE/1048576))"M"
+			mount -t tmpfs -o size=$RAMDISKSIZE tmpfs $WORLD
+			su $USER -c "cp -r $HDDWORLD/* $WORLD"
+		fi
+		cd $DIR
+		su $USER -c "$CMD"
+		cd $PWD
+		sleep 1
+		ps -ef | grep SCREEN | grep "$NAME" | grep -v grep | awk '{ print $2}' > /var/run/$NAME.pid
+		stat_done
+	fi
+}
+
+service_stop() {
+	if [ -f $MCPID ]; then
+		stat_busy "Stopping Minecraft server."
+		kill `cat $MCPID`
+		rm -rf $MCPID
+		stat_done
+	else
+		stat_busy "Minecraft server not running."
+		stat_fail
+	fi
+	if [ -f /var/run/$NAME.pid ]; then
+		stat_busy "Stopping $NAME."
+		kill `cat /var/run/$NAME.pid`
+		rm -rf /var/run/$NAME.pid
+		stat_done
+
+	else
+		stat_busy "Cannot stop $NAME.  Server is not running."
+		stat_fail
+	fi
+	if [ "$(mount | grep $WORLD | wc -l)" -gt 1 ]; then
+		su $USER - c "cp -R $WORLD/* $HDDWORLD/"
+		umount $WORLD
+	fi
+}
+
+save_disk(){
+	resize
+	rm -rf $HDDWORLD/*
+	su $USER - c "screen -p 0 -S $NAME -X eval 'stuff \"save-off\"\015'"
+    su $USER - c "screen -p 0 -S $NAME -X eval 'stuff \"save-all\"\015'" 
+    su $USER - c "cp -R $WORLD/* $HDDWORLD/"
+    su $USER - c "screen -p 0 -S $NAME -X eval 'stuff \"save-on\"\015'"
+}
+
+
+case "$1" in
+'start')
+service_start
+;;
+'stop')
+service_stop
+;;
+'restart')
+service_stop
+sleep 5
+service_start
+;;
+'save')
+save_disk
+;;
+*)
+echo "Usage $0 start|stop|restart|save"
+esac

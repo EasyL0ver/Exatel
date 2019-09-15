@@ -1,0 +1,124 @@
+# SimC Addon 1.10.10
+hunter="Palmtop"
+level=120
+race=blood_elf
+region=us
+server=dathremar
+role=attack
+professions=mining=150/jewelcrafting=150
+talents=1123231
+spec=marksmanship
+
+head=,id=165543,bonus_id=4822/1507/4786/5414/4775,context=3,azerite_powers=366/562/22/543/13
+neck=,id=158075,bonus_id=4936/4929/4930/1552,context=11,azerite_level=41
+shoulder=,id=165921,bonus_id=4823/1522/4786/5418,context=5,azerite_powers=367/562/30/203
+back=,id=155884,bonus_id=5010/1577/4783,context=16
+chest=,id=159362,bonus_id=5448/1587/4786/5419,context=35,azerite_powers=367/161/30
+wrist=,id=163308,gem_id=154129,bonus_id=5125/4802/1562/4786,context=29
+hands=,id=165531,bonus_id=4799/1522/4786,context=5
+waist=,id=165538,bonus_id=4799/1522/4786,context=5
+legs=,id=165484,gem_id=154127,bonus_id=5126/4802/1507/4783,context=6
+feet=,id=165481,bonus_id=5126/1517/4786,context=6
+finger1=,id=165678,enchant_id=5942,gem_id=154129,bonus_id=4803/4802/1577/4786,context=28
+finger2=,id=158314,enchant_id=5943,bonus_id=5010/1582/4783,context=35
+trinket1=,id=159617,bonus_id=5010/1577/4783,context=16
+trinket2=,id=165568,gem_id=154129,bonus_id=4799/1808/1527/4783,context=5
+main_hand=,id=159643,enchant_id=5957,bonus_id=5010/1572/4786,context=16
+
+### Gear from Bags
+#
+# Electrified Crown of Rahu'ai (400)
+# head=,id=165820,bonus_id=4823/1522/4786/5417,context=5,azerite_powers=366/367/31/543
+#
+# Electrified Crown of Rahu'ai (390)
+# head=,id=165820,bonus_id=4822/1507/4786/5414/4775,context=3,azerite_powers=371/373/31/543/13
+#
+# Bilewing Helmet (390)
+# head=,id=157953,bonus_id=1577/4786/5414/4775,context=28,azerite_powers=372/371/30/543/13
+#
+# Vicious Gladiator's Chain Helm (108)
+# head=,id=60425,context=14
+#
+# Amalgamated Abomination Spaulders (415)
+# shoulder=,id=159385,bonus_id=5448/1587/4786/5421,context=35,azerite_powers=163/372/30
+#
+# Spaulders of Prime Emperor (375)
+# shoulder=,id=159368,bonus_id=4819/1542/4786/5412/4775,context=23,azerite_powers=371/213/22/44/13
+#
+# High Tinker's Cape (400)
+# back=,id=165924,bonus_id=4799/1522/4786,context=5
+#
+# Cloak of Coordination (58)
+# back=,id=65274,context=14
+#
+# Silverback Cloak (400)
+# back=,id=165513,bonus_id=4799/1522/4786,context=5
+#
+# Vicious Gladiator's Chain Armor (108)
+# chest=,id=60423,context=14
+#
+# Mistfire Raiment (390)
+# chest=,id=165540,bonus_id=4822/1507/4786/5413/4775,context=3,azerite_powers=213/372/31/85/13
+#
+# Renowned Guild Tabard (1)
+# tabard=,id=69210,context=14
+#
+# Honorbound Vanguard's Bindings (385)
+# wrist=,id=163308,bonus_id=5125/1577/4786,context=28
+#
+# Rubywrought Sparkguards (370)
+# wrist=,id=160629,bonus_id=4799/1492/4786,context=5
+#
+# Honorbound Vanguard's Clasp (390)
+# waist=,id=163451,bonus_id=5125/1582/4784,context=29
+#
+# Gaoler's Chainmail Gaiters (395)
+# legs=,id=159392,bonus_id=5006/1567/4783,context=16
+#
+# Vicious Gladiator's Chain Leggings (108)
+# legs=,id=60426,context=14
+#
+# Thornwoven Band (410)
+# finger1=,id=162548,bonus_id=5010/40/1582/4783,context=35
+#
+# Band of the Ancient Dredger (410)
+# finger1=,id=159461,enchant_id=5943,bonus_id=5010/1582/4783,context=35
+#
+# Band of Multi-Sided Strikes (385)
+# finger1=,id=165565,bonus_id=4798/1507/4786,context=3
+#
+# Commander's Signet of Battle (395)
+# finger1=,id=166559,enchant_id=5942,context=14
+#
+# Lord Waycrest's Signet (410)
+# finger1=,id=158362,enchant_id=5942,bonus_id=5010/1582/4783,context=35
+#
+# Jade Ophidian Band (400)
+# finger1=,id=162544,bonus_id=5010/40/1572/4786,context=16
+#
+# Kimbul's Razor Claw (400)
+# trinket1=,id=165579,bonus_id=4799/1522/4786,context=5
+#
+# Azerokk's Resonating Heart (400)
+# trinket1=,id=159612,bonus_id=5010/1572/4786,context=16
+#
+# Forest Lord's Razorleaf (400)
+# trinket1=,id=166794,bonus_id=5479/1517/4786,context=3
+#
+# Blightreaper (385)
+# main_hand=,id=159662,enchant_id=5963,bonus_id=5006/1557/4786,context=16
+#
+# P.A.C.I.F.I.S.T. Mk7 (400)
+# main_hand=,id=159639,enchant_id=5957,bonus_id=5010/1572/4786,context=16
+#
+# Zandalari Warstaff (385)
+# main_hand=,id=158129,enchant_id=5963,gem_id=154127,bonus_id=4803/4802/1577/4786,context=28
+#
+# Pterrorwing Longbow (400)
+# main_hand=,id=165599,bonus_id=4799/1522/4786,context=5
+#
+# Hornridged Crusher (400)
+# main_hand=,id=165589,enchant_id=5963,gem_id=154127,bonus_id=4799/1808/1522/4786,context=5
+
+# Stacks of reorigination array based on hidden quest completion
+# bfa.reorigination_array_stacks=9

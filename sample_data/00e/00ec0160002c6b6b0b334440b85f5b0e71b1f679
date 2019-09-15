@@ -1,0 +1,17 @@
+@PrimaryKey
+@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+private Key key;
+
+    @Persistent
+private List<Key> childs; 
+
+    //
+	
+@PrimaryKey
+@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
+private Key key;
+
+    @Persistent
+private List<Child> childs; 
+
+    //

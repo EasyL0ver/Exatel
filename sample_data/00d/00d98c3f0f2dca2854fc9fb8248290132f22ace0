@@ -1,0 +1,42 @@
+#[derive(Debug)]
+enum List {
+    Cons(String, Option<Box<List>>),
+}
+
+fn vec_to_list(vec: Vec<String>) -> Option<List> {
+    let mut list = None;
+    for elem in vec.into_iter() {
+        match list {
+            None => {
+                list = Some(List::Cons(elem, None));
+            },
+            
+            Some(prev) => {
+                list = Some(List::Cons(elem, Some(Box::new(prev))));
+            },
+        }
+    }
+    list
+}
+
+fn list_to_vec(mut list: Option<List>) -> Vec<String> {
+    let mut vec = Vec::new();
+    while let Some(inside) = list {
+        let List::Cons(elem, next) = inside;
+        vec.push(elem);
+        list = next.and_then(|boxed| Some(*boxed));
+    }
+    vec
+}
+
+fn main() {
+    let vec = vec![
+        String::from("lorem"),
+        String::from("ipsum"),
+        String::from("dolor"),
+        String::from("sit"),
+        String::from("amet"),
+    ];
+    
+    println!("vec: {}", vec);
+}

@@ -1,0 +1,29 @@
+text = {:user=>{:first_name=>["must be filled"], :email_address=>["Wrong email format"], :phone_number=>["Wrong phone number format. Use only digits with + on begining"], :address_attributes=>{:street=>["must be filled"], :city=>["must be filled"], :zip_code=>["Wrong zip code format. Use 00-000 format insted"], :country=>["Is not a correct country name"]}, :company_attributes=>{:address_attributes=>{:zip_code=>["Wrong zip code format. Use 00-000 format insted"], :country=>["Is not a correct country name"]}}}}
+
+
+
+# def parse v
+#   if v.is_a?(Hash)
+#     v.each do |k, v|
+#       parse v
+#       p "#{k v}"
+#     end
+#   else
+#    v
+#   end
+# end
+
+
+def parse(k, v)
+  unless v.is_a?(Hash)
+    p "#{k} -> #{v}"
+  else
+    p k
+    p "-----"
+    v.each do |k, v|
+      parse(k, v)
+    end
+  end
+end
+
+text.each { |k, v| parse(k,v) }

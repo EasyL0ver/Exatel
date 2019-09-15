@@ -1,0 +1,6 @@
+asm volatile (
+		"wait: \n\t"
+		"in	r24, 0x09 \n\t"
+         	"cpi	r24,0 \n\t"
+		"breq wait"
+);

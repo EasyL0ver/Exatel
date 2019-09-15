@@ -1,0 +1,20 @@
+def goto_next_page(driver, _next_btn_id):
+"""
+This method handles going to next page, if the url changes after clicking  next, continue otherwise exit with 1.
+:param driver : web- driver instance
+:param _next_btn_id: element id/ xpath of the next button
+:return:
+"""
+    this_url = driver.current_url
+    print("url before change {}".format(this_url))
+    # call Webdriver wait in the method.      
+    wait_until_clickable(driver, 30, _next_btn_id)
+    # Click on the next button to go to the next form
+    click_button(driver, _next_btn_id)
+    # Changed url
+    changed_url = driver.current_url
+    print(this_url, changed_url)
+    # If the url does not change means the next page is not accessible, quit the script
+    if this_url == changed_url:
+        print("url did not change")
+        sys.exit(1)

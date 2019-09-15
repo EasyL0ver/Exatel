@@ -1,0 +1,24 @@
+Match start time (UTC): 26.02.2019 11:17:05
+Table 15
+
+Frame 1 (Heikki Niva) (1-0)
+Heikki Niva          		19			17	6			26	|	68
+Pierfrancesco Garzia 	6		5	F6			1	13		|	31
+Frame time: 28:04
+
+Frame 2 (Heikki Niva) (2-0)
+Heikki Niva          	1	5	F6	1		54		50	|	117
+Pierfrancesco Garzia 					7		1		|	8
+Frame time: 25:13
+
+Frame 3 (Heikki Niva) (3-0)
+Heikki Niva          		93	|	93
+Pierfrancesco Garzia 	6		|	6
+Frame time: 13:57
+
+Frame 4 (Heikki Niva) (4-0)
+Heikki Niva          	1	7		1		1	F4	F4	38	|	56
+Pierfrancesco Garzia 			1		1					|	2
+Frame time: 20:36
+
+Match end time (UTC): 26.02.2019 12:54:09

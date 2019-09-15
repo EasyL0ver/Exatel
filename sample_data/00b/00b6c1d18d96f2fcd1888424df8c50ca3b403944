@@ -1,0 +1,40 @@
+/**
+     * batch operation records, maybe occur oom
+     * auto schedule task operation
+     *
+     * @param lastUpdateTime
+     */
+    public void autoTackOpe(Date lastUpdateTime) {
+        Date startTime = new Date();
+        AtomicInteger counter = new AtomicInteger(0);
+        List<PersonInfo> updateInfos = oracleMapper.getUpdateInfos(lastUpdateTime);
+        updateInfos.parallelStream().forEach(personInfo -> {
+            CustomerInfo customerQuery = new CustomerInfo();
+            String stuNo = personInfo.getStuNo();
+            String jobNo = personInfo.getJobNo();
+            if (CollectionUtil.isNotEmpty(stuNo)) {
+                customerQuery.setStuNo(stuNo);
+            } else if (CollectionUtil.isNotEmpty(jobNo)) {
+                customerQuery.setJobNo(jobNo);
+            } else {
+                LOG.info("lack stu_no or job_no ");
+                return;
+            }
+
+            //compare every field between personInfo and customerInfo
+            CustomerInfo customerUpdate = infoService.convertPersonToCustomer(personInfo);
+            mysqlMapper.updateCustomerInfo(customerUpdate);
+            counter.addAndGet(1);
+
+        });
+
+        Date endTime = new Date();
+        OpeTrace opeTrace = new OpeTrace();
+        opeTrace.setOpeType(1);
+        opeTrace.setOpeCount(counter.get());
+        opeTrace.setStartTime(startTime);
+        opeTrace.setEndTime(endTime);
+
+        //create log when the entire operation of create is complete
+        opeTraceMapper.insertOpeTrace(opeTrace);
+    }

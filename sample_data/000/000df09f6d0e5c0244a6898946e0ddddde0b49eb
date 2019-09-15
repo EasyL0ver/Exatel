@@ -1,0 +1,17 @@
+--GAME THREAD 
+mainThread = MOAIThread.new()
+
+mainThread:run(
+  function()
+
+    while not game_over do
+      coroutine.yield()
+
+      --[[ PUT GAME LOOP STUFF HERE 
+	]]
+  
+    end
+
+    os.exit()    
+  end 
+  )

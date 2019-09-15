@@ -1,0 +1,61 @@
+#include <algorithm>
+#include <iostream>
+#include <iterator>
+#include <list>
+#include <ostream>
+#include <vector>
+
+class fibonacci_generator
+{
+public:
+	using type = unsigned long long;
+private:
+	type a = 0;
+	type b = 1;
+public:
+	type operator()()
+	{
+		const auto c = a + b;
+		const auto result = a;
+
+		a = b;
+		b = c;
+
+		return result;
+	}
+};
+
+int main()
+{
+	fibonacci_generator::type m[10];
+
+	std::generate(
+		std::begin(m),
+		std::end(m),
+		fibonacci_generator());
+
+	std::list<fibonacci_generator::type> l;
+
+	std::copy(
+		std::begin(m),
+		std::end(m),
+		std::back_inserter(l));
+
+	std::ostream_iterator<fibonacci_generator::type> it(std::cout, ", ");
+
+	std::copy(
+		std::begin(m),
+		std::end(m),
+		it);
+
+	std::cout << std::endl;
+
+	std::ostream_iterator<char> it2(std::cout);
+	const auto& message = "Hello World";
+	std::copy(
+		std::begin(message),
+		std::end(message),
+		it2);
+
+	return 0;
+}

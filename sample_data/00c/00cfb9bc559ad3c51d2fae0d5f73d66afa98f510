@@ -1,0 +1,31 @@
+begin{table}[H]
+begin{tabu}{cX[m]}
+$mathbf{C}=begin{pmatrix}
+a_{11}&a_{12}&cdots&a_{1n}\
+a_{21}&a_{22}&cdots&a_{2n}\
+vdots&vdots&ddots&vdots\
+a_{n1}&a_{n2}&cdots&a_{nn}\
+end{pmatrix}$&La dimensión de una matriz cuadrada es, por tanto, $ntimes n$. 
+Sin embargo, es mucho más usual decir que una matriz cuadrada textbf{es de orden $n$}.
+Por ejemplo, la matriz $bf C$ es de orden $n$ (${bf C}inmathbb{M}_{,ntimes n,}$)
+y la matriz $bf D$ es de orden $4$ (${bf D}inmathbb{M}_{,4times 4,}$).
+Dentro de este tipo de matrices cabe destacar dos elementos
+underline{exclusivos de las matrices cuadradas}: las textbf{diagonales}.\
+end{tabu}
+end{table}
+	
+begin{table}[H]
+begin{tabular}{cm{linewidth}}
+$mathbf{C}=begin{pmatrix}
+a_{11}&a_{12}&cdots&a_{1n}\
+a_{21}&a_{22}&cdots&a_{2n}\
+vdots&vdots&ddots&vdots\
+a_{n1}&a_{n2}&cdots&a_{nn}\
+end{pmatrix}$&La dimensión de una matriz cuadrada es, por tanto, $ntimes n$. 
+Sin embargo, es mucho más usual decir que una matriz cuadrada textbf{es de orden $n$}.
+Por ejemplo, la matriz $bf C$ es de orden $n$ (${bf C}inmathbb{M}_{,ntimes n,}$)
+y la matriz $bf D$ es de orden $4$ (${bf D}inmathbb{M}_{,4times 4,}$).
+Dentro de este tipo de matrices cabe destacar dos elementos
+underline{exclusivos de las matrices cuadradas}: las textbf{diagonales}.\
+end{tabular}
+end{table}

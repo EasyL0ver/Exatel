@@ -1,0 +1,58 @@
+➜  ~ tail -f /opt/cloudplow/cloudplow.log -n 100
+2019-01-05 00:25:57,103 - INFO       - process              - execute                        - *     TV/The West Wing/Sea… Deo WEBDL-1080p.mkv: 83% /1.692G, 9.238M/s, 30s
+2019-01-05 00:25:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea… L.A WEBDL-1080p.mkv:  2% /1.517G, 10.372M/s, 2m25s
+2019-01-05 00:25:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…List WEBDL-1080p.mkv: 92% /1.650G, 9.134M/s, 14s
+2019-01-05 00:25:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…Time WEBDL-1080p.mkv: 33% /1.563G, 10.140M/s, 1m45s
+2019-01-05 00:25:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…bury WEBDL-1080p.mkv: 39% /1.500G, 10.088M/s, 1m31s
+2019-01-05 00:25:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…tion WEBDL-1080p.mkv:  6% /1.593G, 7.094M/s, 3m35s
+2019-01-05 00:26:12,426 - INFO       - process              - execute                        - 2019/01/05 00:26:12 INFO  : TV/The West Wing/Season 1/The West Wing - S01E09 - The Short List WEBDL-1080p.mkv: Copied (new)
+2019-01-05 00:26:12,990 - INFO       - process              - execute                        - 2019/01/05 00:26:12 INFO  : TV/The West Wing/Season 1/The West Wing - S01E09 - The Short List WEBDL-1080p.mkv: Deleted
+2019-01-05 00:26:25,781 - INFO       - process              - execute                        - 2019/01/05 00:26:25 INFO  : TV/The West Wing/Season 1/The West Wing - S01E10 - In Excelsis Deo WEBDL-1080p.mkv: Copied (new)
+2019-01-05 00:26:27,623 - INFO       - process              - execute                        - 2019/01/05 00:26:27 INFO  : TV/The West Wing/Season 1/The West Wing - S01E10 - In Excelsis Deo WEBDL-1080p.mkv: Deleted
+2019-01-05 00:26:57,102 - INFO       - process              - execute                        - 2019/01/05 00:26:57 INFO  :
+2019-01-05 00:26:57,103 - INFO       - process              - execute                        - Transferred:   	   60.851G / 2.606 TBytes, 2%, 74.135 MBytes/s, ETA 10h0m18s
+2019-01-05 00:26:57,103 - INFO       - process              - execute                        - Errors:                 0
+2019-01-05 00:26:57,103 - INFO       - process              - execute                        - Checks:                56 / 56, 100%
+2019-01-05 00:26:57,103 - INFO       - process              - execute                        - Transferred:           54 / 1228, 4%
+2019-01-05 00:26:57,103 - INFO       - process              - execute                        - Elapsed time:     14m0.5s
+2019-01-05 00:26:57,103 - INFO       - process              - execute                        - Transferring:
+2019-01-05 00:26:57,103 - INFO       - process              - execute                        - *     TV/The West Wing/Sea… Day WEBDL-1080p.mkv: 64% /1.570G, 10.977M/s, 52s
+2019-01-05 00:26:57,103 - INFO       - process              - execute                        - *     TV/The West Wing/Sea… Day WEBDL-1080p.mkv: 72% /1.565G, 10.305M/s, 42s
+2019-01-05 00:26:57,103 - INFO       - process              - execute                        - *     TV/The West Wing/Sea… L.A WEBDL-1080p.mkv: 44% /1.517G, 9.879M/s, 1m27s
+2019-01-05 00:26:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…Time WEBDL-1080p.mkv: 73% /1.563G, 10.068M/s, 42s
+2019-01-05 00:26:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…bury WEBDL-1080p.mkv: 80% /1.500G, 9.710M/s, 31s
+2019-01-05 00:26:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…o-Am WEBDL-1080p.mkv: 30% /1.571G, 11.011M/s, 1m42s
+2019-01-05 00:26:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…tion WEBDL-1080p.mkv: 43% /1.593G, 10.601M/s, 1m26s
+2019-01-05 00:26:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…unch WEBDL-1080p.mkv: 17% /1.644G, 9.889M/s, 2m21s
+2019-01-05 00:27:37,317 - INFO       - process              - execute                        - 2019/01/05 00:27:37 INFO  : TV/The West Wing/Season 1/The West Wing - S01E11 - Lord John Marbury WEBDL-1080p.mkv: Copied (new)
+2019-01-05 00:27:39,160 - INFO       - process              - execute                        - 2019/01/05 00:27:39 INFO  : TV/The West Wing/Season 1/The West Wing - S01E11 - Lord John Marbury WEBDL-1080p.mkv: Deleted
+2019-01-05 00:27:44,255 - INFO       - process              - execute                        - 2019/01/05 00:27:44 INFO  : TV/The West Wing/Season 1/The West Wing - S01E13 - Take Out the Trash Day WEBDL-1080p.mkv: Copied (new)
+2019-01-05 00:27:44,898 - INFO       - process              - execute                        - 2019/01/05 00:27:44 INFO  : TV/The West Wing/Season 1/The West Wing - S01E12 - He Shall, from Time to Time WEBDL-1080p.mkv: Copied (new)
+2019-01-05 00:27:48,929 - INFO       - process              - execute                        - 2019/01/05 00:27:48 INFO  : TV/The West Wing/Season 1/The West Wing - S01E13 - Take Out the Trash Day WEBDL-1080p.mkv: Deleted
+2019-01-05 00:27:49,163 - INFO       - process              - execute                        - 2019/01/05 00:27:49 INFO  : TV/The West Wing/Season 1/The West Wing - S01E12 - He Shall, from Time to Time WEBDL-1080p.mkv: Deleted
+2019-01-05 00:27:57,102 - INFO       - process              - execute                        - 2019/01/05 00:27:57 INFO  :
+2019-01-05 00:27:57,103 - INFO       - process              - execute                        - Transferred:   	   64.963G / 2.606 TBytes, 2%, 73.871 MBytes/s, ETA 10h1m30s
+2019-01-05 00:27:57,103 - INFO       - process              - execute                        - Errors:                 0
+2019-01-05 00:27:57,103 - INFO       - process              - execute                        - Checks:                59 / 59, 100%
+2019-01-05 00:27:57,103 - INFO       - process              - execute                        - Transferred:           57 / 1228, 5%
+2019-01-05 00:27:57,103 - INFO       - process              - execute                        - Elapsed time:     15m0.5s
+2019-01-05 00:27:57,103 - INFO       - process              - execute                        - Transferring:
+2019-01-05 00:27:57,103 - INFO       - process              - execute                        - *     TV/The West Wing/Sea… Day WEBDL-1080p.mkv: 95% /1.570G, 9.683M/s, 7s
+2019-01-05 00:27:57,103 - INFO       - process              - execute                        - *     TV/The West Wing/Sea… L.A WEBDL-1080p.mkv: 80% /1.517G, 10.318M/s, 29s
+2019-01-05 00:27:57,103 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…mums WEBDL-1080p.mkv:  4% /1.574G, 8.854M/s, 2m53s
+2019-01-05 00:27:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…o-Am WEBDL-1080p.mkv: 62% /1.571G, 10.056M/s, 1m0s
+2019-01-05 00:27:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…tics WEBDL-1080p.mkv:  4% /1.636G, 9.963M/s, 2m40s
+2019-01-05 00:27:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…tion WEBDL-1080p.mkv: 78% /1.593G, 10.481M/s, 33s
+2019-01-05 00:27:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…tlet WEBDL-1080p.mkv:  9% /1.604G, 8.854M/s, 2m47s
+2019-01-05 00:27:57,104 - INFO       - process              - execute                        - *     TV/The West Wing/Sea…unch WEBDL-1080p.mkv: 52% /1.644G, 9.933M/s, 1m21s
+2019-01-05 00:28:03,907 - INFO       - process              - execute                        - 2019/01/05 00:28:03 INFO  : TV/The West Wing/Season 1/The West Wing - S01E14 - Take This Sabbath Day WEBDL-1080p.mkv: Copied (new)
+2019-01-05 00:28:04,101 - INFO       - process              - execute                        - 2019/01/05 00:28:04 INFO  : TV/The West Wing/Season 1/The West Wing - S01E14 - Take This Sabbath Day WEBDL-1080p.mkv: Deleted
+2019-01-05 00:28:28,950 - INFO       - process              - execute                        - 2019/01/05 00:28:28 INFO  : TV/The West Wing/Season 1/The West Wing - S01E16 - 20 Hours in L.A WEBDL-1080p.mkv: Copied (new)
+2019-01-05 00:28:31,433 - INFO       - process              - execute                        - 2019/01/05 00:28:31 INFO  : TV/The West Wing/Season 1/The West Wing - S01E16 - 20 Hours in L.A WEBDL-1080p.mkv: Deleted
+2019-01-05 00:28:34,350 - INFO       - process              - execute                        - 2019/01/05 00:28:34 INFO  : TV/The West Wing/Season 1/The West Wing - S01E15 - Celestial Navigation WEBDL-1080p.mkv: Copied (new)
+2019-01-05 00:28:34,765 - INFO       - process              - execute                        - 2019/01/05 00:28:34 INFO  : TV/The West Wing/Season 1/The West Wing - S01E15 - Celestial Navigation WEBDL-1080p.mkv: Deleted
+2019-01-05 00:28:56,880 - INFO       - process              - execute                        - 2019/01/05 00:28:56 INFO  : TV/The West Wing/Season 1/The West Wing - S01E17 - The White House Pro-Am WEBDL-1080p.mkv: Copied (new)
+2019-01-05 00:28:57,102 - INFO       - process              - execute                        - 2019/01/05 00:28:57 INFO  :
+2019-01-05 00:28:57,103 - INFO       - process              - execute                        - Transferred:   	   69.588G / 2.606 TBytes, 3%, 74.188 MBytes/s, ETA 9h57m52s
+2019-01-05 00:28:57,103 - INFO       - process              - execute                        - Errors:                 0
+2019-01-05 00:28:57,103 - INFO       - process              - execute                      

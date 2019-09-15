@@ -1,0 +1,186 @@
+[Configuration]
+BasedOn=..\Engine\Config\BaseInput.ini
+  
+[ProjectX.UISceneManager_X]
+CursorSensitivity=1.0
+NativeResolution=(X=1920,Y=1080)
+
+[ProjectX.UICursor_X]
+DragPressTime=0.15
+
+[Engine.Console]
+ConsoleKey=F1
+TypeKey=Tilde
++ManualAutoCompleteList=(Command="BugReport",Desc="BugReport [description] (Generate and submit bug report)")
++ManualAutoCompleteList=(Command="Graph Perf",Desc="Graph Perf (Draw performance history graphs)")
++ManualAutoCompleteList=(Command="Graph Net",Desc="Graph Net (Draw network history graphs)")
++ManualAutoCompleteList=(Command="Graph IBuf",Desc="Graph IBuf (Draw input buffer history graphs)")
++ManualAutoCompleteList=(Command="ClockRate",Desc="ClockRate [rate] (Scale CPU clock rate to simulate a CPU running fast or slow)")
++ManualAutoCompleteList=(Command="NetworkNextDebug",Desc="NetworkNextDebug (Enable extra NetworkNext debug logs)")
++ManualAutoCompleteList=(Command="NetworkNextInit",Desc="NetworkNextInit (Reinitializes NetworkNext)")
++ManualAutoCompleteList=(Command="NetworkNextDriver",Desc="NetworkNextDriver (Toggles usage of NetworkNext driver)")
++ManualAutoCompleteList=(Command="NetworkNextRoute",Desc="NetworkNextRoute (Toggle NetworkNext routing (direct vs routed))")
++ManualAutoCompleteList=(Command="SpinSleep", Desc="SpinSleep [true/false] (Toggle SpinSleep frame sleep method)")
+
+[Engine.PlayerInput]
+bEnableMouseSmoothing=false
+
+[TAGame.PlayerInput_TA]
+MouseSensitivity=10
+TapTime=0.5
+DoubleTapTime=0.25
+GamepadDeadzone=0.3
+GamepadLookScale=20
+KeyboardAxisBlendTime=0
+bAllowMouseSwivel=true
+bMouseCameraControls=true
+
++GamepadDeadzones=( Type=IPT_360, Key=XboxTypeS_RightTriggerAxis, DeadZone=0.1 )
++GamepadDeadzones=( Type=IPT_360, Key=XboxTypeS_LeftTriggerAxis, DeadZone=0.1 )
++GamepadDeadzones=( Type=IPT_PS4, Key=XboxTypeS_RightTriggerAxis, DeadZone=0.1 )
++GamepadDeadzones=( Type=IPT_PS4, Key=XboxTypeS_LeftTriggerAxis, DeadZone=0.1 )
++GamepadDeadzones=( Type=IPT_XBOX_ONE, Key=XboxTypeS_RightTriggerAxis, DeadZone=0.1 )
++GamepadDeadzones=( Type=IPT_XBOX_ONE, Key=XboxTypeS_LeftTriggerAxis, DeadZone=0.1 )
+
+[ProjectX.ControlPreset_X]
+;--------------------------------------------------
+; PC
+;--------------------------------------------------
++PCBindings=( Action="ThrottleForward",		Key="W" )
++PCBindings=( Action="ThrottleReverse",		Key="S" )
+
++PCBindings=( Action="SteerRight",			Key="D" )
++PCBindings=( Action="SteerLeft",			Key="A" )
+
++PCBindings=( Action="LookUp",				Key="MouseY",	AxisSign=AxisSign_Positive )
++PCBindings=( Action="LookDown",			Key="MouseY",	AxisSign=AxisSign_Negative )
++PCBindings=( Action="LookRight",			Key="MouseX",	AxisSign=AxisSign_Positive )
++PCBindings=( Action="LookLeft",			Key="MouseX",	AxisSign=AxisSign_Negative )
+
++PCBindings=( Action="YawRight",			Key="D" )
++PCBindings=( Action="YawLeft",				Key="A" )
++PCBindings=( Action="PitchUp",				Key="S" )
++PCBindings=( Action="PitchDown",			Key="W" )
++PCBindings=( Action="RollRight",			Key="E" )
++PCBindings=( Action="RollLeft",			Key="Q" )
+
++PCBindings=( Action="Boost",				Key="LeftMouseButton" )
++PCBindings=( Action="Jump",				Key="RightMouseButton" )
++PCBindings=( Action="Handbrake",			Key="LeftShift" )
++PCBindings=( Action="SecondaryCamera",		Key="Spacebar"  )
++PCBindings=( Action="ToggleRoll",			Key="LeftShift" )
++PCBindings=( Action="ReadyUp",				Key="RightMouseButton" )
++PCBindings=( Action="RearCamera",			Key="MiddleMouseButton" )
++PCBindings=( Action="UsePickup",			Key="R" )
+
++PCBindings=( Action="ToggleMidGameMenu",	Key="Escape" )
++PCBindings=( Action="ToggleScoreboard",	Key="Tab" )
++PCBindings=( Action="PushToTalk",			Key="F" )
++PCBindings=( Action="Chat",				Key="T" )
++PCBindings=( Action="TeamChat",			Key="Y" )
++PCBindings=( Action="PartyChat",			Key="U" )
+
++PCBindings=( Action="ReplayMoveForward",		Key="W" )
++PCBindings=( Action="ReplayMoveBackward",		Key="S" )
++PCBindings=( Action="ReplayMoveRight",			Key="D" )
++PCBindings=( Action="ReplayMoveLeft",			Key="A" )
++PCBindings=( Action="ReplayRollRight",			Key="E", Speed=100 )
++PCBindings=( Action="ReplayRollLeft",			Key="Q", Speed=100 )
++PCBindings=( Action="ReplayMoveUp",			Key="Spacebar" )
++PCBindings=( Action="ReplayMoveDown",			Key="LeftControl" )
+
++PCBindings=( Action="ReplayZoomIn",			Key="MouseScrollUp" )
++PCBindings=( Action="ReplayZoomOut",			Key="MouseScrollDown" )
+
++PCBindings=( Action="ReplayAddKeyframe",		Key="Up",				PressType=BPT_Hold )
++PCBindings=( Action="ReplayRemoveKeyframe",	Key="Down",				PressType=BPT_Hold )
++PCBindings=( Action="ReplayPrevKeyframe",		Key="Left",				PressType=BPT_Hold )
++PCBindings=( Action="ReplayNextKeyframe",		Key="Right",				PressType=BPT_Hold )
++PCBindings=( Action="ReplayScrubBackward",		Key="Left",				PressType=BPT_Tap )
++PCBindings=( Action="ReplayScrubForward",		Key="Right",			PressType=BPT_Tap )
+
++PCBindings=( Action="ReplayCycleNameplate",	Key="J" )
++PCBindings=( Action="ReplayCycleHUD",			Key="H",				PressType=BPT_Tap )
+;+PCBindings=( Action="ReplayHUDMenu",			Key="H",				PressType=BPT_Hold )
+
++PCBindings=( Action="ReplayPause",				Key="LeftShift",		PressType=BPT_Tap )
++PCBindings=( Action="ReplaySpeedMenu",			Key="LeftShift",		PressType=BPT_Hold )
+
++PCBindings=( Action="ReplayCycleFocus",		Key="LeftMouseButton",	PressType=BPT_Tap )
++PCBindings=( Action="ReplayFocusMenu",			Key="LeftMouseButton",	PressType=BPT_Hold )
+
++PCBindings=( Action="ReplayCycleCamera",		Key="RightMouseButton",	PressType=BPT_Tap )
++PCBindings=( Action="ReplayCameraMenu",		Key="RightMouseButton",	PressType=BPT_Hold )
+
++PCBindings=( Action="ReplayResetView",			Key="R",				PressType=BPT_Tap )
++PCBindings=( Action="ReplayToggleRoll",		Key="R",				PressType=BPT_Hold )
+
++PCBindings=( Action="ChatPreset1",				Key="One" )
++PCBindings=( Action="ChatPreset2",				Key="Two" )
++PCBindings=( Action="ChatPreset3",				Key="Three" )
++PCBindings=( Action="ChatPreset4",				Key="Four" )
+
++PCBindings=( Action="ResetTraining",			Key="Backspace" )
++PCBindings=( Action="ResetPlayerCheckpoint",		Key="Backspace", PressType=BPT_Tap)
++PCBindings=( Action="ResetPlayerRun",			Key="Backspace", PressType=BPT_Hold)
++PCBindings=( Action="SkipTutorial",			Key="Tab" )
++PCBindings=( Action="TutorialHelper",			Key="One" )
+
++PCBindings=( Action="MusicNextTrack",			Key="N", PressType=BPT_Tap )
++PCBindings=( Action="MusicTogglePlaylistSelection", Key="N", PressType=BPT_Hold )
+
++PCBindings=( Action="AutoSaveReplay",			Key="Backspace", PressType=BPT_Hold )
+
++PCBindings=( Action="ReplayViewT0P0",			Key="One" )
++PCBindings=( Action="ReplayViewT0P1",			Key="Two" )
++PCBindings=( Action="ReplayViewT0P2",			Key="Three" )
++PCBindings=( Action="ReplayViewT0P3",			Key="Four" )
++PCBindings=( Action="ReplayViewT1P0",			Key="Five" )
++PCBindings=( Action="ReplayViewT1P1",			Key="Six" )
++PCBindings=( Action="ReplayViewT1P2",			Key="Seven" )
++PCBindings=( Action="ReplayViewT1P3",			Key="Eight" )
++PCBindings=( Action="ReplayViewBall",			Key="Nine" )
++PCBindings=( Action="ReplayViewNone",			Key="Zero" )
+
++PCBindings=( Action="EditorPreviewTrajectory",	Key="T" )
++PCBindings=( Action="EditorCycleActor",		Key="LeftMouseButton" )
++PCBindings=( Action="EditorReleaseActor",		Key="RightMouseButton" )
++PCBindings=( Action="EditorIncreaseTime",		Key="Up" )
++PCBindings=( Action="EditorDecreaseTime",		Key="Down" )
++PCBindings=( Action="EditorUndo",				Key="Z" )
++PCBindings=( Action="EditorRedo",				Key="X" )
+
++PCBindings=( Action="EditorIncreasePower",		Key="MouseScrollUp" )
++PCBindings=( Action="EditorDecreasePower",		Key="MouseScrollDown" )
+
++PCBindings=( Action="EditorTestShot",			Key="Tab", PressType=BPT_Tap )
++PCBindings=( Action="EditorToggleCamera",		Key="MiddleMouseButton" )
+
++PCBindings=( Action="StopEditing",				Key="LeftShift" ) 
+
++PCBindings=( Action="EditorShowControls",		Key="C" )
+
++PCBindings=( Action="ToggleStatGraphs",		Key="F10" )
+
+;--------------------------------------------------
+; Gamepad
+;--------------------------------------------------
++GamepadBindings=( Action="ThrottleForward",		Key="XboxTypeS_RightTriggerAxis",	AxisSign=AxisSign_Positive, bRequired=true, Remappable=Remappable_KeyTriggerAxis )
++GamepadBindings=( Action="ThrottleReverse",		Key="XboxTypeS_LeftTriggerAxis",	AxisSign=AxisSign_Positive, bRequired=true, Remappable=Remappable_KeyTriggerAxis )
+
++GamepadBindings=( Action="SteerRight",				Key="XboxTypeS_LeftX",				AxisSign=AxisSign_Positive, Remappable=Remappable_None )
++GamepadBindings=( Action="SteerLeft",				Key="XboxTypeS_LeftX",				AxisSign=AxisSign_Negative, Remappable=Remappable_None )
+
++GamepadBindings=( Action="LookUp",					Key="XboxTypeS_RightY",				AxisSign=AxisSign_Positive, Remappable=Remappable_None )
++GamepadBindings=( Action="LookDown",				Key="XboxTypeS_RightY",				AxisSign=AxisSign_Negative, Remappable=Remappable_None )
++GamepadBindings=( Action="LookRight",				Key="XboxTypeS_RightX",				AxisSign=AxisSign_Positive, Remappable=Remappable_None )
++GamepadBindings=( Action="LookLeft",				Key="XboxTypeS_RightX",				AxisSign=AxisSign_Negative, Remappable=Remappable_None )
+
++GamepadBindings=( Action="SwivelUp",				Key="XboxTypeS_RightY",				AxisSign=AxisSign_Positive, Remappable=Remappable_None )
++GamepadBindings=( Action="SwivelDown",				Key="XboxTypeS_RightY",				AxisSign=AxisSign_Negative, Remappable=Remappable_None )
++GamepadBindings=( Action="SwivelRight",			Key="XboxTypeS_RightX",				AxisSign=AxisSign_Positive, Remappable=Remappable_None )
++GamepadBindings=( Action="SwivelLeft",				Key="XboxTypeS_RightX",				AxisSign=AxisSign_Negative, Remappable=Remappable_None )
+
++GamepadBindings=( Action="YawRight",				Key="XboxTypeS_LeftX",				AxisSign=AxisSign_Positive, Remappable=Remappable_None )
++GamepadBindings=( Action="YawLeft",				Key="XboxTypeS_LeftX",				AxisSign=AxisSign_Negative, Remappable=Remappable_None )
++GamepadBindings=( Action="PitchUp",			

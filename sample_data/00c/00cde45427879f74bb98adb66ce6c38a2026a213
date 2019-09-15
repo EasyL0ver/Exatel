@@ -1,0 +1,380 @@
+//1-22-2019
+//This program will display a Calendar
+//Assignment 1
+//AsciiArt Works
+import java.util.*;
+import java.util.Scanner;
+
+public class Calendar {
+ //class constant
+ public static final int SUB_HEIGHT = 5;
+ public static final int TREE = 6;
+ public static final int WEEK_DAYS = 7;
+ public static final int MONTH_DAYS = 31;
+
+ //main string
+ public static void main(String[] args) {
+  Ascii();
+  System.out.println();
+  displayDate();
+  drawMonth();
+  /*was going to use System.out.println("Month: " + chosen_month);, but doesn't work
+  so I wasn't sure how to input the month/day after the calendar.
+  */
+  System.out.println("Month: ");
+  System.out.println("Day: ");
+  System.out.println();
+  System.out.println("This Month: ");
+  System.out.println("                            2");
+  drawMonth();
+  System.out.println("Month: 2");
+  System.out.println("Day: 5");
+ }
+
+ //draws week 1
+ public static void drawWeek1() {
+  drawRow();
+  Num1();
+  full();
+ }
+ //draws week 2
+ public static void drawWeek2() {
+  drawRow();
+  Num2();
+  full();
+ }
+ //draws week 3
+ public static void drawWeek3() {
+  drawRow();
+  Num3();
+  full();
+ }
+ //draws week 4
+ public static void drawWeek4() {
+  drawRow();
+  Num4();
+  full();
+ }
+ //draws week 5
+ public static void drawWeek5() {
+  drawRow();
+  Num5();
+  full();
+ }
+ public static void drawMonth() {
+  drawWeek1();
+  drawWeek2();
+  drawWeek3();
+  drawWeek4();
+  drawWeek5();
+  drawRow();
+ }
+ //asks for user input and displays it
+ public static void displayDate() {
+
+  Scanner user_input = new Scanner(System.in);
+
+  String chosen_month;
+  System.out.print("What month would you like to look at? (MM)");
+  chosen_month = user_input.next();
+
+  String chosen_day;
+  System.out.print("What day would you like to look at? (DD)");
+  chosen_day = user_input.next();
+
+  String date;
+  date = chosen_month + "/" + chosen_day;
+
+  System.out.println(date);
+  System.out.println();
+  System.out.println("                " + chosen_month);
+ }
+ //This doesn't work... :(
+ //   public static void monthFromDate() {
+ //	System.out.println("Month: " + chosen_month);
+ //	System.out.println("Day: " + chosen_day);
+ //   }
+
+ //draws a line
+ public static void drawRow() {
+  for (int row = 1; row <= 1; row++) {
+   for (int equal = 1; equal <= 7 * SUB_HEIGHT; equal++) {
+    System.out.print("=");
+   }
+   System.out.println();
+  }
+ }
+ //gets todays date
+
+
+ //draws a single row of a single day       
+ public static void singular() {
+  for (int pipe = 1; pipe <= 1; pipe++) {
+   System.out.print("|");
+  }
+  for (int space = 1; space <= .9 * SUB_HEIGHT; space++) {
+   System.out.print(" ");
+  }
+ }
+ //draws pipes with no numbers
+ public static void full() {
+  for (int row = 1; row <= SUB_HEIGHT * .3; row++) {
+   singular();
+   singular();
+   singular();
+   singular();
+   singular();
+   singular();
+   singular();
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   System.out.println();
+  }
+  for (int row = 1; row <= SUB_HEIGHT * .1; row++) {
+   singular();
+   singular();
+   singular();
+   singular();
+   singular();
+   singular();
+   singular();
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   System.out.println();
+  }
+
+ }
+ //makes first row of week 1
+ public static void Num1() {
+  for (int row = 1; row <= 1; row++) {
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num1 = 1; num1 <= 1; num1++) {
+    System.out.print("1");
+   }
+   for (int space = 1; space <= .7 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num2 = 1; num2 <= 1; num2++) {
+    System.out.print("2");
+   }
+   for (int space = 1; space <= .7 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num3 = 1; num3 <= 1; num3++) {
+    System.out.print("3");
+   }
+   for (int space = 1; space <= .7 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num4 = 1; num4 <= 1; num4++) {
+    System.out.print("4");
+   }
+   for (int space = 1; space <= .7 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num5 = 1; num5 <= 1; num5++) {
+    System.out.print("5");
+   }
+   for (int space = 1; space <= .7 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num6 = 1; num6 <= 1; num6++) {
+    System.out.print("6");
+   }
+   for (int space = 1; space <= .7 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num7 = 1; num7 <= 1; num7++) {
+    System.out.print("7");
+   }
+   for (int space = 1; space <= .7 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   System.out.println();
+  }
+ }
+ //makes first row of week 2
+ public static void Num2() {
+  for (int row = 1; row <= 1; row++) {
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num1 = 1; num1 <= 1; num1++) {
+    System.out.print("8");
+   }
+   for (int space = 1; space <= .7 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num2 = 1; num2 <= 1; num2++) {
+    System.out.print("9");
+   }
+   for (int space = 1; space <= .7 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num3 = 1; num3 <= 1; num3++) {
+    System.out.print("10");
+   }
+   for (int space = 1; space <= .5 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num4 = 1; num4 <= 1; num4++) {
+    System.out.print("11");
+   }
+   for (int space = 1; space <= .5 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num5 = 1; num5 <= 1; num5++) {
+    System.out.print("12");
+   }
+   for (int space = 1; space <= .5 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num6 = 1; num6 <= 1; num6++) {
+    System.out.print("13");
+   }
+   for (int space = 1; space <= .5 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num7 = 1; num7 <= 1; num7++) {
+    System.out.print("14");
+   }
+   for (int space = 1; space <= .5 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   System.out.println();
+  }
+ }
+ //makes first row of week 3
+ public static void Num3() {
+  for (int row = 1; row <= 1; row++) {
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num1 = 1; num1 <= 1; num1++) {
+    System.out.print("15");
+   }
+   for (int space = 1; space <= .5 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int pipe = 1; pipe <= 1; pipe++) {
+    System.out.print("|");
+   }
+   for (int num2 = 1; num2 <= 1; num2++) {
+    System.out.print("16");
+   }
+   for (int space = 1; space <= .5 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+   for (int space = 1; space <= .1 * SUB_HEIGHT; space++) {
+    System.out.print(" ");
+   }
+  

@@ -1,0 +1,29 @@
+ private function calcPrice($width /*ширина*/, $height/*высота*/, $status_clock, $wallpaper_status = false) {
+        $el1 = $width/100;
+        $el2 = $height/100;
+        $square_meter = $this->prices->square_meter; //квадратный метр
+        $running_meter = $this->prices->running_meter; //погонный метр
+        $for_the_picture = $this->prices->for_the_picture; //Цена за одну картину
+        $shipping_and_packaging = $this->prices->shipping_and_packaging; //Цена за упаковку и даставку
+
+        if ($status_clock) {
+            //если с часами
+            $square_meter = $this->prices->clock_square_meter; // Цена за квадратный метр (С часами)
+            $running_meter = $this->prices->clock_running_meter; // Цена за погонный метр (С часами)
+            $for_the_picture = $this->prices->clock_for_the_picture; // Цена за одну картину (С часами)
+        }
+
+        $op_math_1 = ($el1 * $el2) * $square_meter;
+        $op_math_2 = ((($el1*2)+($el2 * 2))*$running_meter);
+
+        if ($wallpaper_status) {
+            //если это обои
+            return $this->intRound5($op_math_1 + $op_math_2 + $shipping_and_packaging);
+            //intRound5 откругляем до большего 201 = 205 , 200 = 200, 206 = 210
+            //200 - это я для примера чтобы показать как работает округление
+        }
+        else {
+            //если это картина
+            return $this->intRound5($op_math_1 + $op_math_2 + $for_the_picture);
+        }
+    }

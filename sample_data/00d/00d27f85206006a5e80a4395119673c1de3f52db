@@ -1,0 +1,63 @@
+```javascript
+import AWS from 'aws-sdk';
+
+class DynamoDbService {
+    constructor(apiVersion) {
+        if (!apiVersion)
+            throw new Error("api version is missing.");
+
+        this.docClient = new AWS.DynamoDB.DocumentClient({
+            apiVersion: apiVersion
+        });
+    }
+    
+    getTable(table) {
+        var params = {
+            TableName: table,
+            // FilterExpression: "#user_id = :user_id_val",
+            // ExpressionAttributeNames: {
+            //     "#user_id": "UserId",
+            // },
+            // ExpressionAttributeValues: { ":user_id_val": 'SYMOHLG8UBGPKFQU' }
+
+        };
+        return this.ScanTable(params)
+    }
+
+    QueryTable(params) {
+        if (!params)
+            throw new Error("scan parameters is required.");
+        return new Promise((res, rej) => {
+            this.docClient.query(params, (err, data) => {
+                if (err)
+                    rej(err);
+                res(data);
+            })
+        })
+    }
+
+    // var params = {
+    //     TableName:"Logins",
+    //     ProjectionExpression: "email",
+    //     FilterExpression: "#timestamp < :from",
+    //     ExpressionAttributeNames: {
+    //         "#timestamp": "timestamp",
+    //     },
+    //     ExpressionAttributeValues: {
+    //          ":from": date.getTime()
+    //     }
+    // };
+
+    ScanTable(params) {
+        return new Promise((res, rej) => {
+            this.docClient.scan(params, (err, data) => {
+                if (err)
+                    rej(err);
+                res(data);
+            })
+        })
+    }
+}
+
+export default DynamoDbService;
+```

@@ -1,0 +1,37 @@
+request.request_body(
+  customer_data: {
+    customer_type: 'MERCHANT',
+    person_details: {
+      email_address: 'test@email.com',
+      name: {
+        given_name: 'Developer',
+        surname: 'Example'
+      }
+    }
+  },
+  requested_capabilities: [
+    {
+      capability: 'API_INTEGRATION',
+      api_integration_preference: {
+        partner_id: ENV['PAYPAL_MP_PARTNER_ID'],
+        rest_api_integration: {
+          integration_method: 'PAYPAL',
+          integration_type: 'THIRD_PARTY'
+        },
+        rest_third_party_details: {
+          partner_client_id: ENV['PAYPAL_MP_CLIENT_ID'],
+          feature_list: ['PAYMENT', 'REFUND', 'PARTNER_FEE', 'DELAY_FUNDS_DISBURSEMENT']
+        }
+      }
+    }
+  ],
+  web_experience_preference: {
+    partner_logo_url: static_url('email/zumbini_logo.png'),
+    return_url: 'return_url'
+  },
+  collected_consents: [{
+    type: 'SHARE_DATA_CONSENT',
+    granted: true
+  }],
+  products: ['EXPRESS_CHECKOUT']
+)

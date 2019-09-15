@@ -1,0 +1,299 @@
+const Discord = require("discord.js");
+const bot = new Discord.Client({ disableEveryone: true });
+const settings = require("./settings.json");
+const gamename = settings.game;
+const ownerID = settings.owner;
+const botstatus = settings.status;
+const botID = settings.botID;
+const fs = require("fs");
+const prefix = settings.prefix;
+const password = settings.password;
+const ytSearch = require("yt-search");
+const urban = require("relevant-urban");
+const DBL = require("dblapi.js");
+const dbr = require("dbrlib");
+let talkedRecently = new Set();
+let ratedrec = new Set();
+
+// send the stats every hour to DBL
+const dbl = new DBL(
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUyMjc3MTUxNzM2NTQyMDAzMiIsImJvdCI6dHJ1ZSwiaWF0IjoxNTQ4MTY4NTU2fQ.ZxKgX15Wvt9MfxM00cFkgHvbqQZA7DLSq9T-4HZXTgQ",
+  { statsInterval: 3600000 },
+  bot
+);
+dbl.on("error", e => {
+  console.log(`DBL Error! ${e}`);
+});
+// Optional events
+dbl.on("posted", () => {
+  console.log("Server count posted!");
+});
+bot.on("ready", () => {
+const dbrbot = new dbr.dbrbot()
+dbrbot.post("522771517365420032", ".dOpFSa4oy9VkCvT37Zk3CaiJUy8ivyXKqZJKStj6gsREX9mO8Ub.h4dkhPAc7XfUkctPMrt-uAO9GOa", bot.guilds.size)
+});
+
+
+
+//---------------------------------------------------------------------------------------------------
+bot.on("ready", async () => {
+  var text = gamename;
+  var values = {
+    servers: bot.guilds.size,
+    users: bot.users.size
+  };
+  var games = text.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+    return values[match];
+  });
+  var datetoday = new Date();
+  var days = datetoday.getDate();
+  var month = datetoday.getMonth() + 1;
+  var year = datetoday.getFullYear();
+  var time1 = datetoday.getSeconds();
+  var time2 = datetoday.getHours();
+  var time3 = datetoday.getMinutes();
+  fs.writeFile(
+    "./botstart.txt",
+    days + "." + month + "." + year + " \n" + time2 + ":" + time3 + ":" + time1,
+    function(err) {
+      console.log(
+        "Logged in as  " +
+          bot.user.username +
+          "#" +
+          bot.user.discriminator +
+          "\n" +
+          "\n"
+      );
+      console.log("Server Count: " + bot.guilds.size + "\n" + "\n");
+      console.log("Prefix: " + settings.prefix + "\n" + "\n");
+      console.log(
+        "<<<<<<<<<<|| Moddest will now log commands below this line ||>>>>>>>>>>"
+      );
+      bot.user.setPresence({
+        game: { name: ">>help || moddest.xyz", type: "WATCHING" }
+      });
+      const snek = require("snekfetch");
+      muscii(bot);
+    }
+  );
+});
+
+//---------------------------------------------------------------------------------------------------
+
+bot.on("guildCreate", guild => {
+  const channelToSend =
+    guild.systemChannel ||
+    guild.channels
+      .filter(guildChannel => guildChannel.type === "text")
+      .filter(guildChannel =>
+        guildChannel.permissionsFor(bot.user).has("SEND_MESSAGES")
+      )
+      .first();
+  const serveradd = new Discord.RichEmbed()
+    .setColor("00ae86")
+    .setDescription(
+      "<:yes:534711053511163914> Thank you for adding me to " +
+        guild.name +
+        "! \n Use `>>help` to see what I can do!"
+    );
+  channelToSend.send(serveradd).catch(err => {
+    console.log(err);
+  });
+  log(`I have been added to: ` + guild.name + "(" + guild.id + ")");
+});
+
+bot.on("message", async message => {
+  if (message.author.bot) return;
+  if (message.channel.type === "dm") return;
+  let messageArray = message.content.split(" ");
+  let command = messageArray[0];
+  let args = messageArray.slice(1);
+  const mentionprefix = message.guild.member(botID).toString();
+  fs.readFile(`./blacklisted/${message.author.id}/black.txt`, function(
+    err,
+    data
+  ) {
+    if (data === "true") return;
+    if (err) {
+      if (message.content.startsWith(prefix)) {
+        var dir = `./usagelogs/${message.guild.id}`;
+
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir);
+        }
+        const nd = new Date();
+        const nowdate = nd.getDate();
+        const nowdate2 = nd.getMonth() + 1;
+        const nowdate3 = nd.getFullYear();
+        const minute1 = nd.getHours();
+        const minute2 = nd.getMinutes();
+        const minute3 = nd.getSeconds();
+        fs.appendFile(
+          `./usagelogs/${message.guild.id}/logs.txt`,
+          "\n" +
+            nowdate +
+            "." +
+            nowdate2 +
+            "." +
+            nowdate3 +
+            " " +
+            minute1 +
+            ":" +
+            minute2 +
+            ":" +
+            minute3 +
+            " " +
+            message.author.id +
+            " " +
+            message.author.username +
+            "#" +
+            message.author.discriminator +
+            ":: " +
+            message.content,
+          function(err) {}
+        );
+      }
+      // console.log('');
+      global.log = require("./util/logger");
+      if (message.content.startsWith(prefix)) {
+        log(
+          message.author.tag +
+            " (" +
+            message.author.id +
+            ")" +
+            " used command " +
+            message.content +
+            " in " +
+            message.guild.name +
+            " (" +
+            message.guild.id +
+            ")"
+        );
+      }
+      //   dbl
+      //   .hasVoted(message.author.id)
+      //   .then(voted => {
+      //     if (voted) {
+      //         fs.writeFile('./votelock/' + author.id + ".txt", "DATA TO WRITE", function(err) {
+      //         if(err) return message.channel.send(" ")
+      //     });
+      //     }
+      // });
+
+      //---------------------------------------------------------------------------------------------------
+
+      if (
+        command === `${prefix}blacklist` ||
+        command === `${mentionprefix}blacklist`
+      ) {
+        const blacklister = new Discord.RichEmbed()
+          .setColor("FF3131")
+          .setDescription(
+            "<:no:534824114767265823> Only the bot owner can use this command!"
+          );
+        if (message.author.id !== ownerID)
+          return message.channel.send(blacklister);
+        const who = args[0];
+        const who2 = args.slice(1).join(" ");
+        var dir = `./blacklisted/${who}`;
+
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir);
+        }
+        fs.writeFile(`./blacklisted/${who}/black.txt`, "true", function(err) {
+          fs.writeFile(`./blacklisted/${who}/reason.txt`, who2, function(err) {
+            let se = bot.users
+              .get(who)
+              .send(
+                "`" +
+                  "Hello, You have been added to " +
+                  bot.user.username +
+                  "'s blacklist for the following reason: " +
+                  who2 +
+                  " / This means you are no longer permitted to use the bot. If you think this was unfair/wish to get un-blacklisted, please join the support server." +
+                  "`"
+              );
+            if (!se) return;
+            message.channel.send(
+              "`" +
+                "User was blacklisted and was sent a message saying they were blacklisted for: " +
+                who2 +
+                "`"
+            );
+            setTimeout(function() {
+              let lol = bot.guilds.filter(r => r.owner.id === who);
+              lol.forEach(async (guild, id) => {
+                guild.leave();
+              });
+            }, 1000);
+          });
+        });
+      }
+
+      if (
+        command === `${mentionprefix}unblacklist` ||
+        command === `${prefix}unblacklist`
+      ) {
+        const unblacklister = new Discord.RichEmbed()
+          .setColor("FF3131")
+          .setDescription(
+            "<:no:534824114767265823> Only the bot owner can use this command!"
+          );
+        if (message.author.id !== ownerID)
+          return message.channel.send(unblacklister);
+        var dir = `./blacklisted/${message.author.id}`;
+
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir);
+        }
+        const who = args[0];
+        const who2 = args.slice(1).join(" ");
+        fs.unlink(`./blacklisted/${who}/black.txt`, function(err) {
+          fs.unlink(`./blacklisted/${who}/reason.txt`, function(err) {
+            let se = bot.users
+              .get(who)
+              .send(
+                "`" +
+                  "You have been removed from " +
+                  bot.user.username +
+                  "'s blacklist, you can now use the bot again!" +
+                  "`"
+              );
+            if (!se) return;
+            message.channel.send(
+              "`" + "User was successfully unblacklisted." + "`"
+            );
+          });
+        });
+      }
+      if (
+        command === `${mentionprefix}setgame` ||
+        command === `${prefix}setgame`
+      ) {
+        const setgamer = new Discord.RichEmbed()
+          .setColor("FF3131")
+          .setDescription(
+            "<:no:534824114767265823> Only the bot owner can use this command!"
+          );
+        if (message.author.id !== ownerID)
+          return message.channel.send(setgamer);
+        const what = args.join(" ");
+        var text = gamename;
+        var values = {
+          servers: bot.guilds.size
+        };
+        var games = text.replace(/\{\{([^}]+)\}\}/g, function(i, match) {
+          return values[match];
+        });
+        bot.user.setPresence({ game: { name: what, type: 0 } });
+        message.channel.send("`" + "Game set!" + "`");
+      }
+      if (command === `${prefix}eval` || command === `${mentionprefix}eval`) {
+        const evaler = new Discord.RichEmbed()
+          .setColor("FF3131")
+          .setDescription(
+            "<:no:534824114767265823> Only the bot owner can use this command!"
+          );
+        if (message.author.id !== ownerID) return message.channel.send(evaler);
+
+  

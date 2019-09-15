@@ -1,0 +1,9 @@
+var type = info.PropertyType;
+if (type == typeof(string))
+{
+   field.Read((string)xmlData.Tellimuse_info.GetType().GetProperty(field.Dto.Name).GetValue(xmlData.Tellimuse_info, new object[0]));
+}
+else
+{
+   field.Read((int)xmlData.Tellimuse_info.GetType().GetProperty(field.Dto.Name).GetValue(xmlData.Tellimuse_info, new object[0]));
+}

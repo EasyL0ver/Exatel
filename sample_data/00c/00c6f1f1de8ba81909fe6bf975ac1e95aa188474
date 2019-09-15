@@ -1,0 +1,21 @@
+It’s a nvidia thing lol I had the same issue and never even noticed it until one day I gave the free noveau drivers a try and everything looked way better and smaller. For some reason nvidia sets/forces my DPI to I believe 120, anyways it’s really easy to solve.
+
+Open the nvidia.conf file in your text editor
+
+sudoedit /etc/X11/mhwd.d/nvidia.conf
+
+Then edit or add the option DPI under the screen display sub section and disable UseEdidDpi.
+
+To make things easier here is what I have under my “Screen” section which now forces the use of 96 for dpi scaling.
+
+Section "Screen"
+    Identifier     "Screen0"
+    Device         "Device0"
+    Monitor        "Monitor0"
+    DefaultDepth    24
+    SubSection     "Display"
+        Depth       24
+        Option "UseEdidDpi" "False"
+        Option "DPI" "96x96"
+    EndSubSection
+EndSection

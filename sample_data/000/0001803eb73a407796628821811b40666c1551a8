@@ -1,0 +1,80 @@
+diff -ruN gcc-8-20190118/libgo/go/syscall/libcall_linux.go gcc-8-20190118_b/libgo/go/syscall/libcall_linux.go
+--- gcc-8-20190118/libgo/go/syscall/libcall_linux.go    2017-07-21 13:25:13.000000000 -0700
++++ gcc-8-20190118_b/libgo/go/syscall/libcall_linux.go  2019-01-20 05:23:26.090120737 -0800
+@@ -334,19 +334,19 @@
+ //sys  Setxattr(path string, attr string, data []byte, flags int) (err error)
+ //setxattr(path *byte, name *byte, value *byte, size Size_t, flags _C_int) _C_int
+ 
+-//sys  splice(rfd int, roff *_loff_t, wfd int, woff *_loff_t, len int, flags int) (n int64, err error)
+-//splice(rfd _C_int, roff *_loff_t, wfd _C_int, woff *_loff_t, len Size_t, flags _C_uint) Ssize_t
++//sys  splice(rfd int, roff *_off_t, wfd int, woff *_off_t, len int, flags int) (n int64, err error)
++//splice(rfd _C_int, roff *_off_t, wfd _C_int, woff *_off_t, len Size_t, flags _C_uint) Ssize_t
+ func Splice(rfd int, roff *int64, wfd int, woff *int64, len int, flags int) (n int64, err error) {
+-   var lroff _loff_t
+-   var plroff *_loff_t
++   var lroff _off_t
++   var plroff *_off_t
+    if roff != nil {
+-       lroff = _loff_t(*roff)
++       lroff = _off_t(*roff)
+        plroff = &lroff
+    }
+-   var lwoff _loff_t
+-   var plwoff *_loff_t
++   var lwoff _off_t
++   var plwoff *_off_t
+    if woff != nil {
+-       lwoff = _loff_t(*woff)
++       lwoff = _off_t(*woff)
+        plwoff = &lwoff
+    }
+    n, err = splice(rfd, plroff, wfd, plwoff, len, flags)
+diff -ruN gcc-8-20190118/libgo/mksigtab.sh gcc-8-20190118_b/libgo/mksigtab.sh
+--- gcc-8-20190118/libgo/mksigtab.sh    2017-11-21 16:27:29.000000000 -0800
++++ gcc-8-20190118_b/libgo/mksigtab.sh  2019-01-20 05:03:36.287994560 -0800
+@@ -82,7 +82,6 @@
+ checksig _SIGEMT     '{_SigThrow, "SIGEMT: emulate instruction executed"}'
+ checksig _SIGINFO    '{_SigNotify, "SIGINFO: status request from keyboard"}'
+ checksig _SIGTHR     '{_SigNotify, "SIGTHR: reserved"}'
+-checksig _SIGPOLL    '{_SigNotify, "SIGPOLL: pollable event occurred"}'
+ checksig _SIGWAITING '{_SigNotify, "SIGWAITING: reserved signal no longer used by"}'
+ checksig _SIGLWP     '{_SigNotify, "SIGLWP: reserved signal no longer used by"}'
+ checksig _SIGFREEZE  '{_SigNotify, "SIGFREEZE: special signal used by CPR"}'
+diff -ruN gcc-8-20190118/libgo/mksysinfo.sh gcc-8-20190118_b/libgo/mksysinfo.sh
+--- gcc-8-20190118/libgo/mksysinfo.sh   2018-11-09 07:29:52.000000000 -0800
++++ gcc-8-20190118_b/libgo/mksysinfo.sh 2019-01-20 05:51:43.081806722 -0800
+@@ -345,7 +345,7 @@
+ echo 'type Size_t _size_t' >> ${OUT}
+ echo "type Ssize_t _ssize_t" >> ${OUT}
+ if grep '^const _HAVE_OFF64_T = ' gen-sysinfo.go > /dev/null 2>&1; then
+-  echo "type Offset_t _off64_t" >> ${OUT}
++  echo "type Offset_t _off_t" >> ${OUT}
+ else
+   echo "type Offset_t _off_t" >> ${OUT}
+ fi
+diff -ruN gcc-8-20190118/libgo/runtime/proc.c gcc-8-20190118_b/libgo/runtime/proc.c
+--- gcc-8-20190118/libgo/runtime/proc.c 2018-02-01 16:16:43.000000000 -0800
++++ gcc-8-20190118_b/libgo/runtime/proc.c   2019-01-20 06:10:34.088820091 -0800
+@@ -166,10 +166,6 @@
+        asm ("std 13, %0" : "=m"(c->uc_mcontext.jmp_context.gpr[13]));
+ }
+ 
+-# else
+-
+-#  error unknown case for SETCONTEXT_CLOBBERS_TLS
+-
+ # endif
+ 
+ #endif
+diff -ruN gcc-8-20190118/libgo/sysinfo.c gcc-8-20190118_b/libgo/sysinfo.c
+--- gcc-8-20190118/libgo/sysinfo.c  2018-06-22 07:25:34.000000000 -0700
++++ gcc-8-20190118_b/libgo/sysinfo.c    2019-01-20 04:24:16.485860995 -0800
+@@ -7,6 +7,8 @@
+ /* This file is passed to GCC with the -fdump-go-spec option to
+    generate a Go version of the system information.  */
+ 
++#define _LINUX_SYSINFO_H
++
+ #include "config.h"
+ 
+ #include <stddef.h>

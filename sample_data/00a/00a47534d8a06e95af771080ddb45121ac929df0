@@ -1,0 +1,14 @@
+TokenManager tokenManager = new TokenManager();
+var requestW = new HttpRequestWrapper(HttpContext.Current.Request);
+var sp = new ServiceProvider(Constants.SelfDescription, tokenManager, new NonceStore());
+try
+{
+     var auth = sp.ReadProtectedResourceAuthorization(requestW);
+     if (auth != null)
+     {
+            //verfy etc etc
+     }
+ catch(Exception)
+ { //return UnAuthorized response }
+ return base.SendAsync(request, cancellationToken);
+}

@@ -1,0 +1,17 @@
+import time
+import multiprocessing
+import random
+
+
+def timer():
+	definer = ["1","2","3"]
+	del definer[random.randrange(0, len(definer))]
+	
+	tme = 20
+	while tme >= 0:
+		print(tme,end='\r')
+		time.sleep(1)
+		tme -= 1
+	print("times up!")
+
+timer()

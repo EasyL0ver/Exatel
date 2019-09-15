@@ -1,0 +1,602 @@
+{
+	"towns": {
+		"101": {
+			"id": 101,
+			"name": "Каркамер ๏̯͡๏",
+			"account": {
+				"id": 101,
+				"name": "Могучий Матвей",
+				"sex": 1,
+				"race": {
+					"id": 1
+				},
+				"country": {
+					"id": 406,
+					"name": "Казантип",
+					"flag": "f8caaloloadaiaaagaa"
+				}
+			}
+		},
+		"123": {
+			"id": 123,
+			"name": "Катарсис[Л]",
+			"account": {
+				"id": 123,
+				"name": "Azcat",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": {
+					"id": 15,
+					"name": "Триарии",
+					"flag": "d0aanloloapaaaaaaao"
+				}
+			}
+		},
+		"226": {
+			"id": 226,
+			"name": "ШТАНИШНИК",
+			"account": {
+				"id": 226,
+				"name": "Vureg",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": false
+			}
+		},
+		"240": {
+			"id": 240,
+			"name": "✯I✯",
+			"account": {
+				"id": 237,
+				"name": "дядюшка Шнапс",
+				"sex": 1,
+				"race": {
+					"id": 3
+				},
+				"country": {
+					"id": 428,
+					"name": "Legio I Iovia",
+					"flag": "d0aanloloapaaaaaaan"
+				}
+			}
+		},
+		"443": {
+			"id": 443,
+			"name": "Порт Бредовый",
+			"account": {
+				"id": 359,
+				"name": "Разгильдяй",
+				"sex": 1,
+				"race": {
+					"id": 1
+				},
+				"country": {
+					"id": 179,
+					"name": "Родина Слонов [КС]",
+					"flag": "g2bbwloloagaiaaamae"
+				}
+			}
+		},
+		"455": {
+			"id": 455,
+			"name": "Одна спинка",
+			"account": {
+				"id": 365,
+				"name": "Таинственный табурет",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": {
+					"id": 86,
+					"name": "Уха с дымком [КС]",
+					"flag": "g2aajloloagamaaaaaa"
+				}
+			}
+		},
+		"726": {
+			"id": 726,
+			"name": "ПесДюлька",
+			"account": {
+				"id": 481,
+				"name": "Мирный нарень",
+				"sex": 1,
+				"race": {
+					"id": 1
+				},
+				"country": {
+					"id": 252,
+					"name": "Legio XX Valeria Victrix",
+					"flag": "h2aewjbmnapagaaaaag"
+				}
+			}
+		},
+		"814": {
+			"id": 814,
+			"name": "Красный",
+			"account": {
+				"id": 509,
+				"name": "Ироничный генерал",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": {
+					"id": 107,
+					"name": "Ауксилия",
+					"flag": "d0abqloloaraaaaaaae"
+				}
+			}
+		},
+		"939": {
+			"id": 939,
+			"name": "TownHall",
+			"account": {
+				"id": 571,
+				"name": "Chicatillo",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": {
+					"id": 17,
+					"name": "Невервинтер",
+					"flag": "g2abqloloaraeaaaaaa"
+				}
+			}
+		},
+		"941": {
+			"id": 941,
+			"name": "public",
+			"account": {
+				"id": 572,
+				"name": "Розенберг",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": {
+					"id": 1298,
+					"name": "Alter Valeria",
+					"flag": "f4aanloloaiauaaaaap"
+				}
+			}
+		},
+		"1279": {
+			"id": 1279,
+			"name": "1. Митридат",
+			"account": {
+				"id": 728,
+				"name": "Великий Пекарь",
+				"sex": 1,
+				"race": {
+					"id": 1
+				},
+				"country": {
+					"id": 107,
+					"name": "Ауксилия",
+					"flag": "d0abqloloaraaaaaaae"
+				}
+			}
+		},
+		"1431": {
+			"id": 1431,
+			"name": "Нормандия 1 [Л]",
+			"account": {
+				"id": 808,
+				"name": "Dark",
+				"sex": 1,
+				"race": {
+					"id": 3
+				},
+				"country": {
+					"id": 15,
+					"name": "Триарии",
+					"flag": "d0aanloloapaaaaaaao"
+				}
+			}
+		},
+		"1662": {
+			"id": 1662,
+			"name": "1- ням-ням",
+			"account": {
+				"id": 931,
+				"name": "zhuk",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": {
+					"id": 107,
+					"name": "Ауксилия",
+					"flag": "d0abqloloaraaaaaaae"
+				}
+			}
+		},
+		"1679": {
+			"id": 1679,
+			"name": "1. Яблоки",
+			"account": {
+				"id": 942,
+				"name": "v1ktor_V",
+				"sex": 1,
+				"race": {
+					"id": 3
+				},
+				"country": {
+					"id": 1298,
+					"name": "Alter Valeria",
+					"flag": "f4aanloloaiauaaaaap"
+				}
+			}
+		},
+		"1718": {
+			"id": 1718,
+			"name": "Потеряный рай",
+			"account": {
+				"id": 967,
+				"name": "Ария",
+				"sex": 0,
+				"race": {
+					"id": 3
+				},
+				"country": {
+					"id": 252,
+					"name": "Legio XX Valeria Victrix",
+					"flag": "h2aewjbmnapagaaaaag"
+				}
+			}
+		},
+		"1813": {
+			"id": 1813,
+			"name": "Дубабрь ๏̯͡๏",
+			"account": {
+				"id": 1014,
+				"name": "Алярм",
+				"sex": 1,
+				"race": {
+					"id": 3
+				},
+				"country": {
+					"id": 1298,
+					"name": "Alter Valeria",
+					"flag": "f4aanloloaiauaaaaap"
+				}
+			}
+		},
+		"1964": {
+			"id": 1964,
+			"name": "БАДЕН-БАДЕН",
+			"account": {
+				"id": 0,
+				"name": "Варвары",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": false
+			}
+		},
+		"4542": {
+			"id": 4542,
+			"name": "1.",
+			"account": {
+				"id": 2462,
+				"name": "Беспечный идеолог",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": {
+					"id": 1298,
+					"name": "Alter Valeria",
+					"flag": "f4aanloloaiauaaaaap"
+				}
+			}
+		},
+		"4563": {
+			"id": 4563,
+			"name": "1.",
+			"account": {
+				"id": 2473,
+				"name": "Сказочный деятель",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": {
+					"id": 107,
+					"name": "Ауксилия",
+					"flag": "d0abqloloaraaaaaaae"
+				}
+			}
+		},
+		"4965": {
+			"id": 4965,
+			"name": "-1-",
+			"account": {
+				"id": 2647,
+				"name": "ocbminog",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": false
+			}
+		},
+		"5762": {
+			"id": 5762,
+			"name": "Тамга",
+			"account": {
+				"id": 0,
+				"name": "Варвары",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": false
+			}
+		},
+		"6109": {
+			"id": 6109,
+			"name": "Москва",
+			"account": {
+				"id": 2997,
+				"name": "Смелый Димка",
+				"sex": 1,
+				"race": {
+					"id": 3
+				},
+				"country": {
+					"id": 17,
+					"name": "Невервинтер",
+					"flag": "g2abqloloaraeaaaaaa"
+				}
+			}
+		},
+		"6306": {
+			"id": 6306,
+			"name": "Маленький мерзкий городишко",
+			"account": {
+				"id": 0,
+				"name": "Варвары",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": false
+			}
+		},
+		"6720": {
+			"id": 6720,
+			"name": "импабукамбатумба",
+			"account": {
+				"id": 3131,
+				"name": "Необычайный эконом",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": {
+					"id": 17,
+					"name": "Невервинтер",
+					"flag": "g2abqloloaraeaaaaaa"
+				}
+			}
+		},
+		"7041": {
+			"id": 7041,
+			"name": "Altenberg [Л]",
+			"account": {
+				"id": 3205,
+				"name": "блондин мужчина",
+				"sex": 1,
+				"race": {
+					"id": 1
+				},
+				"country": {
+					"id": 17,
+					"name": "Невервинтер",
+					"flag": "g2abqloloaraeaaaaaa"
+				}
+			}
+		},
+		"12554": {
+			"id": 12554,
+			"name": "Столярка",
+			"account": {
+				"id": 0,
+				"name": "Варвары",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": false
+			}
+		},
+		"13278": {
+			"id": 13278,
+			"name": "Д-2 [๏̯͡๏]",
+			"account": {
+				"id": 2332,
+				"name": "Джедак",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": false
+			}
+		},
+		"13292": {
+			"id": 13292,
+			"name": "Комета",
+			"account": {
+				"id": 724,
+				"name": "Крокодилов",
+				"sex": 1,
+				"race": {
+					"id": 1
+				},
+				"country": {
+					"id": 428,
+					"name": "Legio I Iovia",
+					"flag": "d0aanloloapaaaaaaan"
+				}
+			}
+		},
+		"13431": {
+			"id": 13431,
+			"name": "Cavern",
+			"account": {
+				"id": 571,
+				"name": "Chicatillo",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": {
+					"id": 17,
+					"name": "Невервинтер",
+					"flag": "g2abqloloaraeaaaaaa"
+				}
+			}
+		},
+		"13640": {
+			"id": 13640,
+			"name": "2.",
+			"account": {
+				"id": 2462,
+				"name": "Беспечный идеолог",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": {
+					"id": 1298,
+					"name": "Alter Valeria",
+					"flag": "f4aanloloaiauaaaaap"
+				}
+			}
+		},
+		"13750": {
+			"id": 13750,
+			"name": "Оранжевый",
+			"account": {
+				"id": 509,
+				"name": "Ироничный генерал",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": {
+					"id": 107,
+					"name": "Ауксилия",
+					"flag": "d0abqloloaraaaaaaae"
+				}
+			}
+		},
+		"13757": {
+			"id": 13757,
+			"name": "Нормандия 2 [Л]",
+			"account": {
+				"id": 808,
+				"name": "Dark",
+				"sex": 1,
+				"race": {
+					"id": 3
+				},
+				"country": {
+					"id": 15,
+					"name": "Триарии",
+					"flag": "d0aanloloapaaaaaaao"
+				}
+			}
+		},
+		"13784": {
+			"id": 13784,
+			"name": "Новый город",
+			"account": {
+				"id": 481,
+				"name": "Мирный нарень",
+				"sex": 1,
+				"race": {
+					"id": 1
+				},
+				"country": {
+					"id": 252,
+					"name": "Legio XX Valeria Victrix",
+					"flag": "h2aewjbmnapagaaaaag"
+				}
+			}
+		},
+		"13897": {
+			"id": 13897,
+			"name": "Янвабрь",
+			"account": {
+				"id": 1014,
+				"name": "Алярм",
+				"sex": 1,
+				"race": {
+					"id": 3
+				},
+				"country": {
+					"id": 1298,
+					"name": "Alter Valeria",
+					"flag": "f4aanloloaiauaaaaap"
+				}
+			}
+		},
+		"14139": {
+			"id": 14139,
+			"name": "Совхоз имени Сталина[Л]",
+			"account": {
+				"id": 123,
+				"name": "Azcat",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": {
+					"id": 15,
+					"name": "Триарии",
+					"flag": "d0aanloloapaaaaaaao"
+				}
+			}
+		},
+		"14332": {
+			"id": 14332,
+			"name": "2. Абе",
+			"account": {
+				"id": 0,
+				"name": "Варвары",
+				"sex": 1,
+				"race": {
+					"id": 0
+				},
+				"country": false
+			}
+		},
+		"14467": {
+			"id": 14467,
+			"name": "Айсленд",
+			"account": {
+				"id": 4223,
+				"name": "Alifer",
+				"sex": 1,
+				"race": {
+					"id": 2
+				},
+				"country": {
+					"id": 1298,
+					"name": "Alter Valeria",
+					"flag": "f4aanloloaiauaaaaap"
+				}
+			}
+		},
+		"14564": {
+			"id": 14564,
+			"name": "Два

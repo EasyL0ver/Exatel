@@ -1,0 +1,104 @@
+function stripeSourceHandler(source) {
+  // Insert the source ID into the form so it gets submitted to the server
+  var form = document.getElementById('payment-form');
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeSource');
+  hiddenInput.setAttribute('value', source.id);
+  form.appendChild(hiddenInput);
+
+  // Submit the form
+  form.submit();
+}
+
+function stripeTokenHandlerX(token) {
+  // Insert the token ID into the form so it gets submitted to the server
+  var form = document.getElementById('payment-form');
+  var hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+  
+
+  form.appendChild(hiddenInput);
+
+  // Submit the form
+  form.submit();
+}
+jQuery(document).ready(function($){
+
+	// Create a Stripe client.
+	var stripe = Stripe('pk_test_XXXXXXXXXXX');
+	var elements = stripe.elements();
+	
+	// Custom styling can be passed to options when creating an Element.
+	var style = {
+	  base: {
+	    // Add your base input styles here. For example:
+	    fontSize: '16px',
+	    color: "#32325d",
+	  }
+	};
+
+	// Create an instance of the card Element
+	var card = elements.create('card', {style: style,hidePostalCode:true,currency:'GBP'});
+	
+	// Add an instance of the card Element into the `card-element` <div>
+	card.mount('#card-element');
+	
+	// Create a token or display an error when the form is submitted.
+	var form = document.getElementById('payment-form');
+	form.addEventListener('submit', function(event) {
+		event.preventDefault();
+		jQuery('#payment-form').children('.btn').attr('disabled','disabled');
+
+		/*
+		var cardData = {
+	        'name': jQuery('#billing_first_name').val()+' '+jQuery('#billing_last_name').val(),
+	        'address_line1': jQuery('#billing_address1').val(),
+	        'address_line2': jQuery('#billing_address2').val(),
+	        'address_city': jQuery('#billing_town').val(),
+	        'address_state': jQuery('#billing_county').val(),
+	        'address_zip': jQuery('#billing_post_code').val(),
+	        'address_country': jQuery('#billing_country').find(":selected").attr("data-two")
+	        
+	    };
+	    
+	    
+		stripe.createToken(card,cardData).then(function(result) {
+	    	if (result.error) {
+				// Inform the customer that there was an error
+				var errorElement = document.getElementById('card-errors');
+				errorElement.textContent = result.error.message;
+	    	} else {
+				// Send the token to your server
+				stripeTokenHandlerX(result.token);
+	    	}
+		});
+		*/
+
+		var ownerInfo = {
+			owner: {
+				name: 'Jenny Rosen',
+				address: {
+					line1: jQuery('#billing_address1').val(),
+					city: jQuery('#billing_town').val(),
+					postal_code: jQuery('#billing_post_code').val(),
+					country: jQuery('#billing_country').find(":selected").attr("data-two"),
+				},
+				email: jQuery('#email_address')
+			}
+		};
+	
+		
+		  stripe.createSource(card, ownerInfo).then(function(result) {
+		    if (result.error) {
+		      // Inform the user if there was an error
+		      var errorElement = document.getElementById('card-errors');
+		      errorElement.textContent = result.error.message;
+		    } else {
+		      // Send the source to your server
+		      stripeSourceHandler(result.source);
+		    }
+		  });
+});

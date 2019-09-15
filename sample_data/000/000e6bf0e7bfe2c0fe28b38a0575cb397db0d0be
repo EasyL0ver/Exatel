@@ -1,0 +1,22 @@
+Python SMTPD library override version
+import smtpd
+import asyncore
+
+class FakeSMTPServer(smtpd.SMTPServer):
+    __version__ = 'TEST EMAIL SERVER'
+
+    def process_message(self, peer, mailfrom, rcpttos, data):
+        print 'Receiving message from:', peer
+        print 'Message addressed from:', mailfrom
+        print 'Message addressed to  :', rcpttos
+        print 'Message length        :', len(data)
+        return
+
+if __name__ == "__main__":
+    smtp_server = FakeSMTPServer(('localhost', 25), None)
+    try:
+        asyncore.loop()
+    except KeyboardInterrupt:
+        smtp_server.close()
+	
+220 Win7-PC Python SMTP proxy version 0.2

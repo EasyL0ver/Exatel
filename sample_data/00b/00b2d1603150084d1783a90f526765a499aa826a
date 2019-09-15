@@ -1,0 +1,53 @@
+Initialising tasks: 100% |#########################################################################################################################################################| Time: 0:00:13
+NOTE: Executing SetScene Tasks
+NOTE: Executing RunQueue Tasks
+ERROR: qtbase-native-5.6.3+gitAUTOINC+e6f8b072d2-r0 do_compile: oe_runmake failed
+ERROR: qtbase-native-5.6.3+gitAUTOINC+e6f8b072d2-r0 do_compile: Function failed: do_compile (log file is located at /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/temp/log.do_compile.40612)
+ERROR: Logfile of failure stored in: /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/temp/log.do_compile.40612
+Log data follows:
+| DEBUG: Executing shell function do_compile
+| NOTE: make -j 4 MAKEFLAGS=-j 4 OE_QMAKE_COMPILER=gcc  OE_QMAKE_CC=gcc  OE_QMAKE_CXX=g++  OE_QMAKE_CFLAGS=-isystem/home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/usr/include -O2 -pipe OE_QMAKE_CXXFLAGS=-isystem/home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/usr/include -O2 -pipe -D_GLIBCXX_USE_CXX11_ABI=0 OE_QMAKE_LINK=g++  OE_QMAKE_LDFLAGS=-L/home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/usr/lib -L/home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/lib -Wl,-rpath-link,/home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/usr/lib -Wl,-rpath-link,/home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/lib -Wl,-rpath,/home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/usr/lib -Wl,-rpath,/home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/lib -Wl,-O1 OE_QMAKE_AR=ar OE_QMAKE_STRIP=echo OE_QMAKE_WAYLAND_SCANNER=/home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/usr/bin/wayland-scanner OE_QMAKE_INCDIR_QT=//home/telechips/telechips-bsp/build/tmp/sysroots/x86_64-linux/usr/include/qt5
+| cd qmake/ && ( test -e Makefile.qmake-aux || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/qmake/qmake-aux.pro -o Makefile.qmake-aux ) && make -f Makefile.qmake-aux
+| cd doc/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/doc/doc.pro -o Makefile ) && make -f Makefile
+| cd src/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/src.pro -o Makefile ) && make -f Makefile
+| make[1]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/doc'
+| make[1]: Nothing to be done for 'first'.
+| make[1]: Leaving directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/doc'
+| make[1]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/qmake'
+| make[1]: Nothing to be done for 'first'.
+| make[1]: Leaving directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/qmake'
+| make[1]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src'
+| cd tools/bootstrap/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/tools/bootstrap/bootstrap.pro -o Makefile ) && make -f Makefile
+| make[2]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/tools/bootstrap'
+| make[2]: Nothing to be done for 'first'.
+| make[2]: Leaving directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/tools/bootstrap'
+| cd tools/rcc/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/tools/rcc/rcc.pro -o Makefile ) && make -f Makefile
+| cd tools/moc/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/tools/moc/moc.pro -o Makefile ) && make -f Makefile
+| make[2]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/tools/rcc'
+| make[2]: Nothing to be done for 'first'.
+| make[2]: Leaving directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/tools/rcc'
+| make[2]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/tools/moc'
+| make[2]: Nothing to be done for 'first'.
+| make[2]: Leaving directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/tools/moc'
+| cd corelib/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/corelib/corelib.pro -o Makefile ) && make -f Makefile
+| make[2]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/corelib'
+| make[2]: Nothing to be done for 'first'.
+| make[2]: Leaving directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/corelib'
+| cd tools/qlalr/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/tools/qlalr/qlalr.pro -o Makefile ) && make -f Makefile
+| cd network/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/network/network.pro -o Makefile ) && make -f Makefile
+| cd xml/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/xml/xml.pro -o Makefile ) && make -f Makefile
+| cd sql/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/sql/sql.pro -o Makefile ) && make -f Makefile
+| make[2]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/tools/qlalr'
+| make[2]: Nothing to be done for 'first'.
+| make[2]: Leaving directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/tools/qlalr'
+| cd testlib/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/testlib/testlib.pro -o Makefile ) && make -f Makefile
+| make[2]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/xml'
+| make[2]: Nothing to be done for 'first'.
+| make[2]: Leaving directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/xml'
+| cd dbus/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/dbus/dbus.pro -o Makefile ) && make -f Makefile
+| make[2]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/sql'
+| make[2]: Nothing to be done for 'first'.
+| make[2]: Leaving directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/sql'
+| cd concurrent/ && ( test -e Makefile || /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/bin/qmake /home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/git/src/concurrent/concurrent.pro -o Makefile ) && make -f Makefile
+| make[2]: Entering directory '/home/telechips/telechips-bsp/build/tmp/work/x86_64-linux/qtbase-native/5.6.3+gitAUTOINC+e6f8b072d2-r0/build/src/testlib'
+| make[2]: Entering directory

@@ -1,0 +1,51 @@
+<html>
+<head>
+<script language="javascript">
+
+function eg(fg1,fg2)
+{
+if(fg1>=96.5  || fg2>=96.5){return "1.0"}
+if(fg1>=93.50 || fg2>=93.50){return  "1.25"}
+if(fg1>=90.50 || fg2>=90.50){return  "1.50"}
+if(fg1>=87.50 || fg2>=87.50){return  "1.75"}
+if(fg1>=84.50 || fg2>=84.50){return  "2.0"}
+if(fg1>=81.50 || fg2>=81.50){return  "2.25"}
+if(fg1>=79.50 || fg2>=79.50){return  "2.50"}
+if(fg1>=77.50 || fg2>=77.50){return  "2.75"}
+if(fg1>=74.50 || fg2>=74.50){return  "3.00"}
+if(fg1>=69.50 || fg2>=69.50){return  "Conditional 4.00"}
+}
+
+
+function r(fg1,fg2) 
+{
+if(fg1>=74.5 || fg2>=74.5) { return "Passed"};
+else { return "Failed" }
+
+
+}
+window.status="Function with Parameters";
+		
+</script>
+</head>
+<body>
+<script language="javascript">
+var n = prompt("Enter your name").toUpperCase();
+var fg1 = Number(prompt("Enter final grade"));
+document.write("<h1>Name: "+n+"<br/>");
+document.write("Final Grade: "+fg1+"<br/>");
+document.write("Remarks: "+r(fg1)+"<br/>");
+document.write("Equiv. No. Grade: "+eg(fg1));
+
+document.write("<hr>");
+
+var n1 = prompt("Enter another name").toUpperCase();
+var fg2 = Number(prompt("Enter final grade"));
+document.write("<h1>Name: "+n1+"<br/>");
+document.write("Final Grade: "+fg2+"<br/>");
+document.write("Remarks: "+r(fg2)+"<br/>");
+document.write("Equiv. No. Grade: "+eg(fg2));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+struct Object {
+    width: u32,
+    height: u32,
+}
+
+fn area(obj: &Object) -> u32 {
+    obj.height * obj.width
+}
+
+impl Object {
+    fn new(height: u32, width: u32) -> Object {
+        Object {
+            width,
+            height,
+        }
+    }
+
+    fn perimiter(&self) -> u32 {
+        self.width * 2 + self.height * 2
+    }
+}
+
+fn main(){
+    
+    let o = Object::new(123, 345);
+    println!("area : {} perimiter : {}", area(&o), o.perimiter());
+}

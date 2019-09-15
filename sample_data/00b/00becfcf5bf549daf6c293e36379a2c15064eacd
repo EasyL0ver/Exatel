@@ -1,0 +1,27 @@
+#include <iostream>
+//nr 1 problema 3
+
+using namespace std;
+int dublu(int &n,int v[100])
+{
+    int i=0;
+    for(i=0;i<n;i++){
+        cin>>v[i];
+        if(v[i]>0){
+            n++;
+            v[i+1]=v[i];
+            i++;
+        }
+    }
+    cout<<n;
+    for(i=0;i<n;i++)
+        cout<<v[i]<<" ";
+
+}
+
+int main()
+{   int n,v[100];
+    cin>>n;
+    dublu(n,v);
+
+}

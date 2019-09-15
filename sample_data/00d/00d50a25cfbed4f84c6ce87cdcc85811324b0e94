@@ -1,0 +1,19 @@
+function search(query, startsWith, within) {
+	within = within || document.body;
+	startsWith = startsWith || false;
+	query = query || false;
+	var matches = [];
+	if(!query) return matches;
+	[...within.querySelectorAll('*')].forEach((elm) => { 
+		var nodes = elm.childNodes;
+		nodes.forEach((value) => {
+			if(value.nodeType === Node.TEXT_NODE) {
+				var startIndex = value.textContent.toLowerCase().indexOf(query);
+				if((!startsWith && startIndex != -1) || (startsWith && startIndex == 0)) {
+					matches.push({ element: elm, start: startIndex, length: query.length });
+				}
+			}
+		});
+	});
+	return matches;
+}

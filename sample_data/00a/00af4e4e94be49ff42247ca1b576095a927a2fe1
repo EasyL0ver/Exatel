@@ -1,0 +1,109 @@
+//Map Exported with Texture Studio By: [uL]Pottus////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////and Crayder////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Map Information////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+	Exported on "2018-10-25 20:39:49" by "NexaAa"
+	Created by "NexaAa"
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Remove Buildings///////////////////////////////////////////////////////////////////////////////////////////////
+RemoveBuildingForPlayer(playerid, 4024, 1479.867, -1790.398, 56.023, 0.250);
+RemoveBuildingForPlayer(playerid, 4044, 1481.187, -1785.070, 22.382, 0.250);
+RemoveBuildingForPlayer(playerid, 4045, 1479.335, -1802.289, 12.546, 0.250);
+RemoveBuildingForPlayer(playerid, 1527, 1448.234, -1755.898, 14.523, 0.250);
+RemoveBuildingForPlayer(playerid, 713, 1407.195, -1749.312, 13.093, 0.250);
+RemoveBuildingForPlayer(playerid, 713, 1405.234, -1821.117, 13.101, 0.250);
+RemoveBuildingForPlayer(playerid, 620, 1417.976, -1832.531, 11.984, 0.250);
+RemoveBuildingForPlayer(playerid, 673, 1405.578, -1831.695, 12.398, 0.250);
+RemoveBuildingForPlayer(playerid, 620, 1456.398, -1832.531, 11.984, 0.250);
+RemoveBuildingForPlayer(playerid, 673, 1464.093, -1831.882, 12.398, 0.250);
+RemoveBuildingForPlayer(playerid, 3997, 1479.335, -1802.289, 12.546, 0.250);
+RemoveBuildingForPlayer(playerid, 620, 1504.843, -1832.531, 11.984, 0.250);
+RemoveBuildingForPlayer(playerid, 673, 1499.046, -1832.273, 12.882, 0.250);
+RemoveBuildingForPlayer(playerid, 673, 1415.312, -1748.562, 12.398, 0.250);
+RemoveBuildingForPlayer(playerid, 620, 1429.531, -1748.421, 12.906, 0.250);
+RemoveBuildingForPlayer(playerid, 700, 1438.031, -1747.937, 13.445, 0.250);
+RemoveBuildingForPlayer(playerid, 620, 1447.906, -1748.226, 12.906, 0.250);
+RemoveBuildingForPlayer(playerid, 4002, 1479.867, -1790.398, 56.023, 0.250);
+RemoveBuildingForPlayer(playerid, 3980, 1481.187, -1785.070, 22.382, 0.250);
+RemoveBuildingForPlayer(playerid, 4003, 1481.078, -1747.031, 33.523, 0.250);
+RemoveBuildingForPlayer(playerid, 620, 1516.000, -1748.601, 13.007, 0.250);
+RemoveBuildingForPlayer(playerid, 620, 1549.531, -1832.312, 12.882, 0.250);
+RemoveBuildingForPlayer(playerid, 673, 1555.664, -1830.593, 13.023, 0.250);
+RemoveBuildingForPlayer(playerid, 673, 1553.257, -1764.812, 12.796, 0.250);
+RemoveBuildingForPlayer(playerid, 620, 1533.265, -1749.023, 12.804, 0.250);
+RemoveBuildingForPlayer(playerid, 673, 1522.164, -1748.570, 13.023, 0.250);
+
+//Objects////////////////////////////////////////////////////////////////////////////////////////////////////////
+new tmpobjid;
+tmpobjid = CreateDynamicObject(6863, 1475.575195, -1802.669433, 35.878780, 0.000000, 0.000000, 270.120086, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 1, 18996, "mattextures", "sampblack", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 2, 18996, "mattextures", "sampblack", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 3, 18996, "mattextures", "sampblack", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 4, 18996, "mattextures", "sampwhite", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 6, 18996, "mattextures", "sampblack", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 7, 18996, "mattextures", "sampwhite", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 8, 18996, "mattextures", "sampwhite", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 9, 18996, "mattextures", "sampwhite", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 10, 18996, "mattextures", "sampwhite", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 11, 18996, "mattextures", "sampwhite", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 12, 18996, "mattextures", "sampwhite", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 13, 18996, "mattextures", "sampwhite", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 14, 18996, "mattextures", "sampwhite", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 15, 18996, "mattextures", "sampwhite", 0x00000000);
+tmpobjid = CreateDynamicObject(19089, 1510.475830, -1778.268066, 19.314399, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19089, 1506.595581, -1778.296875, 19.314399, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19089, 1502.654541, -1778.292602, 19.314399, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19089, 1498.828613, -1778.315429, 19.314399, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1479.368530, -1779.869384, 12.967949, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1479.368530, -1779.869384, 16.039659, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1471.589111, -1779.921997, 16.039659, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1471.589111, -1779.921997, 12.678009, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1477.824707, -1778.392578, 16.039659, 0.000000, 0.000000, 90.120002, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18646, "matcolours", "grey-70-percent", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1474.782470, -1778.419799, 16.039659, 0.000000, 0.000000, 90.120002, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18646, "matcolours", "grey-70-percent", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1473.142089, -1778.456909, 16.039659, 0.000000, 0.000000, 90.120002, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18646, "matcolours", "grey-70-percent", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1473.142089, -1778.456909, 12.601320, 0.000000, 0.000000, 90.120002, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18646, "matcolours", "grey-70-percent", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1474.782470, -1778.419799, 12.579549, 0.000000, 0.000000, 90.120002, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18646, "matcolours", "grey-70-percent", 0x00000000);
+tmpobjid = CreateDynamicObject(19089, 1475.458984, -1778.287353, 19.314399, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(3997, 1479.335937, -1802.289062, 12.546899, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 1, 10101, "2notherbuildsfe", "Bow_church_grass_alt", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 2, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 3, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 4, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 5, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 6, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 7, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 8, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 9, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 10, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 11, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 12, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 13, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 14, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+SetDynamicObjectMaterial(tmpobjid, 15, 10939, "silicon_sfse", "pavementhexagon", 0x00000000);
+tmpobjid = CreateDynamicObject(19353, 1477.824707, -1778.392578, 12.616539, 0.000000, 0.000000, 90.120002, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18646, "matcolours", "grey-70-percent", 0x00000000);
+tmpobjid = CreateDynamicObject(19089, 1494.907470, -1778.321899, 19.314399, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19089, 1491.035034, -1778.330078, 19.314399, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19089, 1487.135375, -1778.289062, 19.314399, 0.000000, 0.000000, 0.000000, -1, -1, -1, 300.00, 300.00); 
+SetDynamicObjectMaterial(tmpobjid, 0, 18996, "mattextures", "sampblack", 0x00000000);
+tmpobjid = CreateDynamicObject(19089, 1483.270996, -1778.353027, 19.314399, 0.000000, 0.000000,

@@ -1,0 +1,12 @@
+USER-GIVEN INFO:
+i was changing the resolution
+
+ERROR STACK TRACE:
+java.lang.RuntimeException: No OpenGL context found in the current thread.
+	at org.lwjgl.opengl.GLContext.getCapabilities(GLContext.java:124)
+	at org.lwjgl.opengl.GL11.glClear(GL11.java:585)
+	at com.badlogic.gdx.backends.lwjgl.LwjglGL20.glClear(LwjglGL20.java:151)
+	at org.destinationsol.SolApplication.draw(SolApplication.java:141)
+	at org.destinationsol.SolApplication.render(SolApplication.java:95)
+	at com.badlogic.gdx.backends.lwjgl.LwjglApplication.mainLoop(LwjglApplication.java:215)
+	at com.badlogic.gdx.backends.lwjgl.LwjglApplication$1.run(LwjglApplication.java:120)

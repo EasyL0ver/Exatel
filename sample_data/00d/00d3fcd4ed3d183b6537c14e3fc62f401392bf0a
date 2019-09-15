@@ -1,0 +1,6 @@
+1353 #Added by Gabe!! For Nagios Graph!!!!!*!*!*
+1354 define service {
+1355        name graphed-service
+1356        action_url /nagiosgraph/cgi-bin/show.cgi?host=$HOSTNAME$&service=$     SERVICEDESC$' onMouseOver='showGraphPopup(this)' onMouseOut='hideGraphPop     up()' rel='/nagiosgraph/cgi-bin/showgraph.cgi?host=$HOSTNAME$&service=$SE     RVICEDESC$&period=week&rrdopts=-w+450+-j
+1357        register 0
+1358      }

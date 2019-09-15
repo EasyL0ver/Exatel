@@ -1,0 +1,123 @@
+#// <>==<>==<> ItemJoin's Custom Items On Join, by RockinChaos <>==<>==<> //#
+#// See the Documentations page for a more in-depth tutorial; https://www.spigotmc.org/wiki/itemjoin/ //#
+#// For per-world support this best works with Multiverse-Inventories! http://dev.bukkit.org/bukkit-plugins/multiverse-inventories //#
+#//
+#//
+#// E X A M P L E    I T E M //#
+#//
+#// For every world listed in the world-list, you need to make a section for it. //#
+#// NOTE: It is only required to have the ID and Slot listed under each item to receive it. //#
+#//world: #// This is the first section, This is the name of the world you want to receive the items in. If Global-Items was enabled this would be named global. //#
+#//  items: #// This is just an identifier to list out the items. This must always be here //#
+#//    example-item: #// This is the name of the first item we have created, you can name it what ever you want! Just put the NAME and then a colon. Such as New-Name: //#
+#//      id: DIAMOND_AXE #// This is the Material name OR item ID of the item you want to get //#
+#//      slot: 0 #// This is the slot number you want to receive the item in. Available slots are 0-35, Helmet, Chestplate, Leggings, Boots, Offhand, or Arbitrary. //#
+#//      name: '&bUltra Sword' #// This is the custom name of the item. Supports color codes as well as placeholders from PlaceholderAPI! //#
+#//      data-value: 0 #// This is the data-value that is after the items ID. Usually it is left as 0, but in cases of items like Stained Glass it would need to be set to a number. It is default 0 if a data-value is not specified. //#
+#//      count: 1 #// This is the amount of each item that will be given. You will be given 1 Diamond Sword. //#
+#//      durability: 5 #// This is the amount of durability the item has taken, such as if it has 32 durablity, it will now have 27 since it took 5 durability damage. //#
+#//      lore: #// This is the custom lore of the item. This is just the identifier which is required to start the lore. //#
+#//        - '&7Useless sword, cannot do much' #// This is the first line of custom lore. You can add multiple lines by copying and pasting it how it is shown below. //#
+#//        - '&7Only useful for commands...'
+#//        - '&7Maybe you should try removing the'
+#//        - '&7Left click and physical actions from the command actions.'
+#//        - '&7Maybe remove the cancel-events from itemflags as well...'
+#//      enchantment: #// This is the custom enchantments. Just an identifier again that is required to start the enchantment list. //#
+#//        - 'FIRE_ASPECT:3' #// The enchantments can be setup the exact same as the lore. Multiple lines can be added. The syntax for enchantments are the ENCHANTMENT_NAME:LEVEL. //#
+#//        - 'KNOCKBACK:8' #// This is another line of enchantment. Supports unsafe enchants! //#
+#//      commands: #// These are custom commands that can be bound to items. So once you click the item these commands will execute. These also support placeholders. //#
+#//        - 'message: &eYou can send yourself custom messages!' #// This is a custom message that can be sent to the player who right-clicked it. //#
+#//        - 'console: say You can even execute more than one command!' #// This is a command that can be executed by console. //#
+#//        - 'player: say This is item slot 2' #// This is a command that is executed by the player. //#
+#//        - 'say I like pancakes!' #// If no executer is defined such as message, console, or player. Then it will be executed by player by default. This is a player command. //#
+#//      commands-action: RIGHT_CLICK_AIR, RIGHT_CLICK_BLOCK, LEFT_CLICK_AIR, LEFT_CLICK_BLOCK, PHYSICAL #// These are command actions. These are all self-explanatory. If you need more help see the documentations page. //#
+#//      commands-cost: 25 #// This is the amount of in game money it will cost to run all the commands. You must have vault enabled and installed to use this. //#
+#//      commands-cooldown: 5 #// This is the amount of time in seconds that the player has to wait before executing the commands again. //#
+#//      cooldown-message: '&7[&eItemJoin&7] &a[%item%&a] &cis on cooldown for &a%timeleft% &cseconds..' #// If a player attempts to execute the commands while they're is on cooldown, this cooldown message will be sent to the player. //#
+#//      itemflags: #// These are custom itemflags! These allow huge modifications to the items. All itemflags with description are listed below. //#
+#//        - 'unbreakable' #// Makes this item INDESTRUCTABLE! //#
+#//        - 'hide-attributes' #// Hides ALL attributes, such as firework color, damage the item does, enchantments. (Hides everything from lore except the custom lore). //#
+#//        - 'first-join' #// If FirstJoin-Mode-Enabled is set to true then this item will ONLY be given on first-join and first-world-changed. //#
+#//        - 'placement' #// Prevents this item from being placed if it is a BLOCK, This item obviously can't be since it is a sword. //#
+#//        - 'inventory-modify' #// Prevents this item from being moved, stored, or switched to offhand in the players inventory. //#
+#//        - 'cancel-events' #// Prevents player from opening a chest while this item is in hand or any openable items. Useful for canceling the event of opening a book to set custom book items. //#
+#//        - 'count-lock' #// Prevents the player from using all of the item. If the item is set to count: 32 then each time the player places the block item the stack will be refreshed back to 32. //#
+#//        - 'death-drops' #// Clears this item if it is dropped on the ground when the player dies //#
+#//        - 'self-drops' #// Prevents the player from dropping this item, either clicking it out of inventory or using the drop key, usually (q). //#
+#//        - 'respawn' #// This item will be given on respawn if a player dies. //#
+#//        - 'disposable' #// The item if a command is bound to it will now remove x1 itself from your inventory upon running the command. //#
+#//        - 'world-changed' #// This item will be given on world changed, Meaning when you enter the world this item is allowed in it will be given. //#
+#//        - 'clear-on-join' #// Removes this item on join from your inventory before giving it back. //#
+#//        - 'clear-on-world-change' #// Removes this item when leaving the world. //#
+#//        - 'hide-durability' #// Hide the durability bar from your item. //#
+#//        - 'AllowOpBypass' #// This would allow the user IF THEIR OP to bypass most of these itemflags. It will work on ALL non item modifying flags. This would NOT work on unbreakable, hide-attributes, stuff like that. //#
+#//        - 'CreativeBypass' #// This would allow the user IF THEIR IN CREATIVE MODE to bypass most of these itemflags. It will work on ALL non item modifying flags. This would NOT work on unbreakable, hide-attributes, stuff like that. //#
+#//      permission-node: 'itemjoin.ultra' #// Each items permission node by default is itemjoin.WORLDNAME.ITEMNAME. You can change this though by putting ANY permission in the permission-node section! Permission to get this item is now itemjoin.ultra! //#
+
+items-Version: 5
+
+#// Global Settings, for each world listed under world-list. These information will take effect in them. //#
+Global-Settings:
+  Prevention:
+    prevent-pickups: false 
+    AllowOPBypass: false
+    CreativeBypass: false
+  Clear-On:
+    clear-on-join: false
+    clear-on-world-change: false
+    clear-only-itemjoin-on-join: false
+    clear-only-itemjoin-on-world-change: false
+    AllowOPBypass: false
+  First-Join:
+    FirstJoin-Mode-Enabled: false
+  Get-Items:
+    ItemJoin-Specific-Items: true
+    Global-Items: true
+    Delay: 2
+
+#// This is the list of worlds that have custom items on join. //#
+#// ItemJoin will only function in the worlds listed here //#
+world-list:
+  - world
+
+#// For every world listed in the world-list, you need to make a section for it. //#
+#// NOTE: It is only required to have the id and slot listed under each item to receive it. //#
+#// This is the first section, This is the name of the world you want to receive the items in. //#
+world:
+  items:
+    item0:
+      id: 355
+      slot: 0
+      count: 1
+    item1:
+      id: 6676
+      slot: 1
+      count: 1
+    item2:
+      id: 6677
+      slot: 2
+      count: 16
+    item3:
+      id: 263
+      slot: 3
+      count: 64
+    item4:
+      id: 320
+      slot: 4
+      count: 16
+    item5:
+      id: 2131
+      slot: 5
+      count: 1
+    item6:
+      id: 2132
+      slot: 6
+      count: 1
+    item7:
+      id: 2135
+      slot: 7
+      count: 1
+    item8:
+      id: 2136
+      slot: 8
+      count: 1

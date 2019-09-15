@@ -1,0 +1,24 @@
+var
+  m, l, r, i,s: integer;  
+  summa: real;
+
+function func(x, n: integer): integer;
+var
+  i: integer;//PASCAL_IS_DEAD
+begin
+  s := 1;
+  for i := 1 to n do 
+    s := s * x;
+  func := s;
+end;
+
+begin
+  summa := 0;
+  readln(m,l);
+  for i := 2 to l*2 do
+  begin
+  if i mod 2 = 0 then
+    summa := summa + i  / func(m, i);
+  end;
+  write(summa:0:3);
+end.

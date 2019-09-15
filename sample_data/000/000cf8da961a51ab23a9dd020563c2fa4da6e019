@@ -1,0 +1,38 @@
+sudo parted /dev/sda mklabel gpt
+
+sudo parted -a opt /dev/sda mkpart primary ext4 0% 100%
+	
+Device     Start         End     Sectors  Size Type
+/dev/sda1  65535 15628000379 15627934845  7.3T Linux filesystem
+
+Partition 1 does not start on physical sector boundary.
+	
+root@odroidxu4:~# cat /sys/block/sda/queue/optimal_io_size 33553920
+root@odroidxu4:~# cat /sys/block/sda/queue/minimum_io_size 4096
+root@odroidxu4:~# cat /sys/block/sda/alignment_offset 0
+root@odroidxu4:~# cat /sys/block/sda/queue/physical_block_size 4096
+root@odroidxu4:~# hdparm -I /dev/sda
+
+ATA device, with non-removable media
+    Model Number:       ST8000VN0022-2EL112
+    Serial Number:      ZA1CH2SF
+    Firmware Revision:  SC61
+    Transport:          Serial, ATA8-AST, SATA 1.0a, SATA II Extensions, SAT                                                                                        A Rev 2.5, SATA Rev 2.6, SATA Rev 3.0
+
+Configuration:
+    Logical         max     current
+    cylinders       16383   16383
+    heads           16      16
+    sectors/track   63      63
+    --
+    CHS current addressable sectors:    16514064
+    LBA    user addressable sectors:   268435455
+    LBA48  user addressable sectors: 15628053168
+    Logical  Sector size:                   512 bytes
+    Physical Sector size:                  4096 bytes
+    Logical Sector-0 offset:                  0 bytes
+    device size with M = 1024*1024:     7630885 MBytes
+    device size with M = 1000*1000:     8001563 MBytes (8001 GB)
+    cache/buffer size  = unknown
+    Form Factor: 3.5 inch
+    Nominal Media Rotation Rate: 7200

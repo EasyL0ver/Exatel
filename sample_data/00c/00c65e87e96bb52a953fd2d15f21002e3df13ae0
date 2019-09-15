@@ -1,0 +1,18 @@
+^[[0;32minfo: /Stage[main]/Cpanel-common/Yum::Repo[hosting-custom-x86_64]/File[/etc/yum.repos.d/hosting-custom-x86_64.repo]: Filebucketed /etc/yum.repos.d/hosting-custom-x86_64.repo to puppet with sum f641148cf29c9a81dc4ceccae6c6b60e^[[0m
+^[[0;36mnotice: /Stage[main]/Cpanel-common/Yum::Repo[hosting-custom-x86_64]/File[/etc/yum.repos.d/hosting-custom-x86_64.repo]/content: content changed '{md5}f641148cf29c9a81dc4ceccae6c6b60e' to '{md5}738ef2c69cefa28b671c508d932b9ccb'^[[0m
+^[[1;35merr: /Stage[main]/Mcollective::Server/Package[mcollective]/ensure: change from absent to latest failed: Could not update: Execution of '/usr/bin/yum -d 0 -e 0 -y install mcollective' returned 1: mcollective-1.2.0-5.el5.noarch from sysad-x86_64 has depsolving problems
+  --> Missing Dependency: rubygems is needed by package mcollective-1.2.0-5.el5.noarch (sysad-x86_64)
+mcollective-1.2.0-5.el5.noarch from sysad-x86_64 has depsolving problems
+  --> Missing Dependency: rubygem-stomp is needed by package mcollective-1.2.0-5.el5.noarch (sysad-x86_64)
+mcollective-common-1.2.0-5.el5.noarch from sysad-x86_64 has depsolving problems
+  --> Missing Dependency: rubygems is needed by package mcollective-common-1.2.0-5.el5.noarch (sysad-x86_64)
+mcollective-common-1.2.0-5.el5.noarch from sysad-x86_64 has depsolving problems
+  --> Missing Dependency: rubygem-stomp is needed by package mcollective-common-1.2.0-5.el5.noarch (sysad-x86_64)
+Error: Missing Dependency: rubygem-stomp is needed by package mcollective-common-1.2.0-5.el5.noarch (sysad-x86_64)
+Error: Missing Dependency: rubygems is needed by package mcollective-common-1.2.0-5.el5.noarch (sysad-x86_64)
+Error: Missing Dependency: rubygems is needed by package mcollective-1.2.0-5.el5.noarch (sysad-x86_64)
+Error: Missing Dependency: rubygem-stomp is needed by package mcollective-1.2.0-5.el5.noarch (sysad-x86_64)
+ You could try using --skip-broken to work around the problem
+ You could try running: package-cleanup --problems
+                        package-cleanup --dupes
+                        rpm -Va --nofiles --nodigest

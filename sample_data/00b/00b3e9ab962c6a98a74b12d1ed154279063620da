@@ -1,0 +1,21 @@
+#!/bin/bash
+
+g++ -lm -lcrypt -O2 -std=c++11 -DONLINE_JUDGE main.cpp -o ac
+g++ -lm -lcrypt -O2 -std=c++11 -DONLINE_JUDGE main1.cpp -o wa
+g++ -lm -lcrypt -O2 -std=c++11 -DONLINE_JUDGE random.cpp -o rig
+
+x=1
+while true
+do
+  ./rig > input.txt
+  ./ac <input.txt > ac.txt
+  ./wa <input.txt > wa.txt
+  diff ac.txt wa.txt
+  if [ $? -eq 1 ]
+    then
+      echo "test $x failed"
+      break
+  fi
+  echo "test $x successfully passed"
+  ((x++))
+done

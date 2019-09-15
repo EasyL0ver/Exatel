@@ -1,0 +1,22 @@
+def flatten(inputArray):
+    """Takes a nested array as an input an returns a flattened array                                                                          
+                                                                                                                                              
+    Accepts a nested array and returns a flattened version. For example the input:                                                            
+    [1,2,[3,4],5] would return [1,2,3,4,5].                                                                                                   
+                                                                                                                                              
+    :param inputArray: a nested array of integers                                                                                             
+    :returns: flattened array in the same order as the nested array                                                                           
+    """
+    if inputArray == None:
+        return []
+    result = []
+    for subArray in inputArray:
+			if type(subArray) is list:
+      	newArray = flatten(subArray)
+        	for value in newArray:
+	        	result.append(value)
+			elif not type(subArray) is int:
+	    	raise TypeError
+			else:
+      	result.append(subArray)
+		return result

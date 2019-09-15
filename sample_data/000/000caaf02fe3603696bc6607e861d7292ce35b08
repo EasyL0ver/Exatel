@@ -1,0 +1,11 @@
+def count_words(string)
+	hash = Hash.new
+	string.scan(/\b\w+\b/).each |word| do
+		if hash.has_key(word)
+			hash[word]++
+		else
+			hash[word] = 0
+		end
+	end
+	hash
+end

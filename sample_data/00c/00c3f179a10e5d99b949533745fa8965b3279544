@@ -1,0 +1,72 @@
+KDE 5.12
+
+It seems that Qt5 from KDE 5.12 requires Linux kernel >= *3.17*.
+
+```
+$ flatpak run --command=file org.kde.Sdk//5.11 -L /usr/lib/libQt5Core.so.5
+/usr/lib/libQt5Core.so.5: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-x86-64.so.2, for GNU/Linux 2.6.28, BuildID[sha1]=55f0af0db424e36d4747078c3983937f41761d75, stripped
+$ flatpak run --command=file org.kde.Sdk//5.12 -L /usr/lib/x86_64-linux-gnu/libQt5Core.so.5
+/usr/lib/x86_64-linux-gnu/libQt5Core.so.5: ELF 64-bit LSB pie executable x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=343152921fe7eb79af20efb2f735659b0982991b, for GNU/Linux 3.17.0, stripped
+```
+
+This is because Qt started using the `getrandom` syscall which was introduced in Linux *3.17*.
+https://code.qt.io/cgit/qt/qtbase.git/tree/src/corelib/global/minimum-linux_p.h#n77
+It is possible build Qt without the `getentropy` feature and that would lower the required kernel version to *3.16*. Disabling `renameat2` will further reduce the requirements to *2.6.28*.
+
+See also:
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=895718#51
+https://forum.critterandguitari.com/t/problems-with-qt/2246/9
+
+Anyway, this means that on systems with the older kernel, you can't neither build nor run Qt5-based applications. We're still talking about the KDE 5.12 runtime, of course.
+
+Examples of build failures:
+```
+/cfgtest_QtCore: error while loading shared libraries: libQt5Core.so.5: cannot open shared object file: No such file or directory
+```
+
+```
+/usr/bin/lrelease: error while loading shared libraries: libQt5Core.so.5: cannot open shared object file: No such file or directory
+```
+
+Examples of run failures:
+```
+$ flatpak run org.pencil2d.Pencil2D
+bwrap: Can't mkdir /usr/lib/sdk: Read-only file system
+error: ldconfig failed, exit status 256
+```
+
+```
+$ flatpak run org.olivevideoeditor.Olive
+bwrap: Can't mkdir /usr/lib/sdk: Read-only file system
+error: ldconfig failed, exit status 256
+```
+
+```
+$ flatpak run org.bunkus.mkvtoolnix-gui
+bwrap: Can't mkdir /usr/lib/sdk: Read-only file system
+error: ldconfig failed, exit status 256
+```
+
+List of affected systems:
+* EL 7 (Red Hat Enterprise Linux 7, CentOS 7, Scientific Linux 7, Oracle Linux 7 with the Red Hat compatible kernel) - End Of Life: 2024-06
+* Debian 8 (oldstable) - End Of Life: 2020-05
+* Ubuntu 14.04 LTS - End Of Life: 2019-04
+
+We should honestly ask ourselves if it is good idea to recommending KDE 5.12 runtime at the moment. In my opinion, we should stick to KDE 5.9 and/or 5.11 whenever possible.
+
+Please keep in mind that Freedesktop 18.08 (on which KDE 5.12 is based) contains glibc 2.27, so it requires at least Linux 3.2, but it shouldn't be a problem.
+
+https://www.sourceware.org/ml/libc-alpha/2016-08/msg00212.html
+> The GNU C Library version 2.24 is now available
+(...)
+The minimum Linux kernel version that this version of the GNU C Library can be used with is 3.2, except on i[4567]86 and x86_64, where Linux kernel version 2.6.32 or later suffices (on architectures that already required kernel versions more recent than 3.2, those requirements remain unchanged).
+
+https://sourceware.org/ml/libc-alpha/2017-08/msg00010.html
+> The GNU C Library version 2.26 is now available
+(...)
+Linux kernel 3.2 or later is required at runtime, on all architectures supported by that kernel. (This is a change from version 2.25 only for x86-32 and x86-64.)
+
+See also:
+https://github.com/flathub/net.ankiweb.Anki/pull/19#issuecomment-451034931
+https://github.com/flathub/net.ankiweb.Anki/pull/19#issuecomment-452248896
+https://github.com/KDE/flatpak-kde-runtime/pull/5

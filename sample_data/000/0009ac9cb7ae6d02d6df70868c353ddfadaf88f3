@@ -1,0 +1,7 @@
+(function(d, out){
+    g.loadQueue.push({
+        fun: function() {
+            d.querySelector("#hero").style.backgroundImage = `url(${out})`;
+        }
+    });
+})(document, "https://i.imgur.com/t4QcXcQ.gif")

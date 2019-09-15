@@ -1,0 +1,34 @@
+export async function magnoGetPublic(path) {
+  var method = 'GET';
+
+  try {
+    let response = await axios({
+      method: method,
+      url: URL+path,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      timeout: 30000
+    });
+    return response
+  } catch(error) {
+    if(error.response) {
+      console.log(`ERROR API response ${path}`, error.response)
+      showMessage({
+        message: `Error get ${path}, ${error.response.data.error.message} (code ${error.response.data.error.code})`,
+        type: "danger",
+        icon: { icon: "danger", position: "left" },
+      })
+    } else if(error.request) {
+      console.log(`ERROR API request ${path}`, error.request)
+      showMessage({
+        message: `${error.message}`,
+        type: "danger",
+        icon: { icon: "danger", position: "left" },
+      })
+    } else {
+      console.log(`ERROR API ${path}`, error)
+    }
+    console.log(`ERROR MESSAGE ${path}`, error.message)
+  }
+};

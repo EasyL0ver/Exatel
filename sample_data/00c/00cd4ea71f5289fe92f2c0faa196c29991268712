@@ -1,0 +1,33 @@
+def get_nodes():
+	row_size = iter((3, 4, 4, 5, 5, 6, 6, 5, 5, 4, 4, 3))
+	return (f'{depth}{place}' for depth in 'abcdefghijkl'
+							  for place in range(next(row_size)))
+
+
+def gen_paths(nodes):
+	for node in nodes:
+		depth, place = node
+		child_node = f'{deeper(depth)}{place}'
+		if child_node in nodes:
+			yield (node, child_node)
+		if is_binary_root(depth):
+			child_place = int(place) + get_second_child_place(depth)
+			child_node = f'{deeper(depth)}{child_place}'
+			if child_node in nodes:
+				yield (node, child_node)
+
+
+def deeper(node_depth):
+	return chr(ord(node_depth)+1)
+
+
+def is_binary_root(node_depth):
+	return node_depth in 'acegik'
+
+
+def get_second_child_place(node_depth):
+	return node_depth in 'ace' or -1
+
+
+print(tuple(get_nodes()))
+print(tuple(gen_paths(tuple(get_nodes()))))

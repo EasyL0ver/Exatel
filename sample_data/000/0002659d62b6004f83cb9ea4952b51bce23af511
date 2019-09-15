@@ -1,0 +1,591 @@
+//
+// Function: load()
+// Called by HTML body element's onload event when the web application is ready to start
+//
+function load()
+{
+    dashcode.setupParts();
+	
+	try {
+		canvas=document.getElementById("canvas");
+		ctx=canvas.getContext("2d");
+	}
+	catch(err)
+	{
+		if(g.sandbox==true)
+		{
+			g.log({"content":"ctx init failed","type":"error"});
+		}
+	}
+	
+	g.requestAnimationFrame({});
+	setInterval("g.middleline.animate()",100);
+	setInterval("g.requestAnimationFrame({})",10);
+	
+	
+}
+var canvas,ctx;
+
+
+
+var g=new Object();
+g.sandbox=true;
+
+g.border=new Object();
+g.border.draw=function(options) {
+	try {
+	/*
+	Pr√ºfen ob das Canvas geleert werden muss
+	*/
+	reTmp_cl={};
+	if(options.clearCtx&&options.clearCtx==true)
+	{
+		reTmp_cl.used=true;
+		g.clearCtx({});
+	}else{
+		reTmp_cl.used=false;
+	}
+	
+	
+	/********
+		
+		Koordinaten festlegen
+		
+	********/
+	if(options.startX)
+	{
+		startX=options.startX;
+	}else{
+		startX=0;
+	}
+	
+	
+	if(options.startY)
+	{
+		startY=options.startY;
+	}else{
+		startY=0;
+	}
+	
+	
+	if(options.width)
+	{
+		width=options.width;
+	}else{
+		width=800;
+	}
+	
+	
+	if(options.height)
+	{
+		height=options.height;
+	}else{
+		height=400;
+	}
+	
+	/*
+		Zustand sichern
+	*/
+	ctx.save();
+	
+	/*
+		Stroke Color ?
+	*/
+	reTmp_sc={};
+	if(options.strokeColor)
+	{
+		reTmp_sc.used=true;
+		reTmp_sc.color=options.strokeColor;
+		ctx.strokeStyle=options.strokeColor
+	}else{
+		reTmp_sc.used=false;
+		reTmp_sc.color="red";
+		ctx.strokeStyle="red";
+	}
+	
+	/*
+		backgroundColor ?
+	*/
+	
+	reTmp_bg={};
+	if(options.backgroundColor)
+	{	
+		reTmp_bg.used=true;
+		reTmp_bg.color=options.backgroundColor;
+		ctx.fillStyle=options.backgroundColor;
+		ctx.fillRect(startX,startY,width,height)
+	}else{	
+		reTmp_bg.used=false;
+		ctx.strokeRect(startX,startY,width,height);
+	}
+
+	ctx.restore();
+	
+	var reObj={};
+	reObj.given=options;
+	reObj.end={};
+	reObj.end.startX=startX;
+	reObj.end.startY=startY;
+	reObj.end.width=width;
+	reObj.end.height=height;
+	reObj.end.backgroundColor=reTmp_bg;
+	reObj.end.strokeColor=reTmp_sc;
+	reObj.end.clearCtx=reTmp_cl;
+	}
+	catch(err)
+	{
+		if(options.sandbox==true)
+		{
+			g.log({"content":err,"type":"error"});
+		}
+	}
+	return reObj;
+};
+
+g.window=new Object();
+g.window.size=function (op) {var i = 0};
+
+
+g.clearCtx=function (options) {
+	ctx.clearRect(0,0,canvas.width,canvas.height);
+}
+
+
+/****
+
+	Charakter Zeichnen
+	
+****/
+
+g.char=new Object();
+g.char.playerA="%50";
+g.char.playerB="%50";
+g.char.defaultY="p100";
+
+
+g.char.draw = function (options) {
+	reTmp_cl={};
+	if(options.clearCtx&&options.clearCtx==true)
+	{
+		reTmp_cl.used=true;
+		g.clearCtx({});
+	}else{
+		reTmp_cl.used=false;
+	}
+	
+	
+	if(options.Y)
+	{
+		Y=options.Y
+	}else{
+		Y=g.char.defaultY;
+	}
+	
+	if(options.playerA)
+	{
+		playerA=options.playerA;
+	}else{
+		playerA=g.char.playerA;
+	}
+	
+	if(options.playerB)
+	{
+		playerB=options.playerB;
+	}else{
+		playerB=g.char.playerB;
+	}
+	Y=g.helper.relative2absolute({"toWhat":"width","data":Y});
+	playerA=g.helper.relative2absolute({"toWhat":"height","data":playerA})
+	playerB=g.helper.relative2absolute({"toWhat":"height","data":playerB})
+	//alert(playerA+"+"+playerB+"+"+Y);     //****DEBUG****/
+	
+	ctx.beginPath();
+	ctx.moveTo(Y,(playerA-(g.char.hgt/2)));
+	ctx.lineTo(Y,(playerA+(g.char.hgt/2)));
+	ctx.closePath();
+	ctx.stroke();
+	
+	ctx.beginPath();
+	ctx.moveTo(canvas.width-Y,(playerB-(g.char.hgt/2)));
+	ctx.lineTo(canvas.width-Y,(playerB+(g.char.hgt/2)));
+	ctx.closePath();
+	ctx.stroke();
+	
+	
+}
+g.char.hgt=80;
+
+g.helper=new Object();
+g.helper.relative2absolute=function (options){
+	if(options.data)
+	{
+		if(typeof options.data==typeof "string")
+		{
+			if(options.data.charAt(0)=="%")
+			{
+				if(options.toWhat)
+				{
+					switch(options.toWhat)
+					{
+						case "height":
+							return (canvas.height*(parseInt(options.data.replace("%",""))/100));
+							break;
+						case "width":
+							return (canvas.width*(parseInt(options.data.replace("%",""))/100));
+							break;
+					}
+				}
+			}
+			if(options.data.charAt(0)=="p")
+			{
+				return parseInt(options.data.replace("p",""));
+			}
+		}
+	}
+}
+//g.helper.relative2absolute({"toWhat":"height","data":"%50"})
+
+g.requestAnimationFrame = function (options) {
+	g.clearCtx({});
+	g.border.draw({"sandbox":g.sandbox});
+	g.middleline.draw({});
+	g.char.draw({});
+	g.dot.draw({})
+	g.preview.draw({});
+}
+
+
+
+
+
+g.log=function (options){
+	if(options.content)
+	{
+		if(!options.type)
+		{
+			options.type="info";
+		}
+		switch(options.type)
+		{
+			case "error":
+				console.error(options.content);
+				break;
+			case "warning":
+				console.warn(options.content);
+				break;
+			case "info":
+			case "log":
+			default:
+				console.log(options.content);
+				break;
+		}
+	}
+}
+
+
+
+
+g.char.move= function (options){
+	if(options.how)
+	{
+		if(options.how=="down")
+		{
+			if(options.player)
+			{
+				if(options.player=="A")
+				{
+					if(g.char.playerA!="%100")
+					{
+						g.char.playerA="%"+(parseInt(g.char.playerA.replace("%",""))+10);
+					}
+				}
+				if(options.player=="B")
+				{
+					if(g.char.playerB!="%100")
+					{
+						g.char.playerB="%"+(parseInt(g.char.playerB.replace("%",""))+10);
+					}
+				}
+			}
+		}
+		if(options.how=="up")
+		{
+			if(options.player)
+			{
+				if(options.player=="A")
+				{
+					if(g.char.playerA!="%0")
+					{
+						g.char.playerA="%"+(parseInt(g.char.playerA.replace("%",""))-10);
+					}
+				}
+				if(options.player=="B")
+				{
+					if(g.char.playerB!="%0")
+					{
+						g.char.playerB="%"+(parseInt(g.char.playerB.replace("%",""))-10);
+					}
+				}
+			}
+		}
+	}
+	
+}
+
+function keyDown(event)
+{
+
+	//i=73 k=75 w=87 k=83
+    switch(event.keyCode)
+	{
+		case 73:
+			g.char.move({"player":"B","how":"up"});
+			break;
+		case 75:
+			g.char.move({"player":"B","how":"down"});
+			break;
+		case 87:
+			g.char.move({"player":"A","how":"up"});
+			break;
+		case 83:
+			g.char.move({"player":"A","how":"down"});
+			break;
+		
+	}
+	g.requestAnimationFrame({});
+}
+
+
+
+g.dot=new Object();
+g.dot.x=300;
+g.dot.y=200;
+
+g.dot.size="p5";
+
+g.dot.draw=function(options) {
+	
+	if(options.size)
+	{
+		var size=options.size;
+	}else{
+		var size=g.dot.size;
+	}
+	
+	if(options.x)
+	{
+		var x=options.x;
+	}else{
+		var x=g.dot.x;
+	}
+	
+	if(options.y)
+	{
+		var y=options.y;
+	}else{
+		var y=g.dot.y;
+	}
+	
+	
+	
+	size=g.helper.relative2absolute({"data":size});
+	
+	ctx.save();
+	ctx.fillStyle="red";
+	ctx.fillRect(x,y,size,size);
+	ctx.restore();
+}
+
+
+g.dot.deg=10;
+g.dot.move = function (options)
+{
+	var tmp=g.dot.logic({"basespeed":2,"degree":g.dot.deg,"x":g.dot.x,"y":g.dot.y});
+	g.dot.x=g.dot.x+tmp.x;
+	g.dot.y=tmp.y;
+	
+	//&& g.dot.x < canvas.width-g.helper.relative2absolute({"data":g.char.defaultY})
+	
+	var abstandA=g.helper.relative2absolute({"data":g.char.defaultY});
+	var abstandB=canvas.width-abstandA;
+	var dotx=g.dot.x;
+	var doty=g.dot.y;
+	var startA=g.helper.relative2absolute({"toWhat":"height","data":g.char.playerA})-(g.char.hgt/2);
+	var startB=g.helper.relative2absolute({"toWhat":"height","data":g.char.playerB})-(g.char.hgt/2);
+	
+	var endA=g.helper.relative2absolute({"toWhat":"height","data":g.char.playerA})+(g.char.hgt/2);
+	var endB=g.helper.relative2absolute({"toWhat":"height","data":g.char.playerB})+(g.char.hgt/2);
+	
+	
+	if(dotx < abstandA+1.6 && dotx > abstandA-1.6)
+	{
+		//alert(doty+"-"+startA+"-"+endA);
+		if(doty > startA && doty < endA)
+		{
+			g.dot.deg=g.logic.borderbounce({"degree":g.dot.deg,"where":"left"}).degree;
+		}	
+	}
+	
+	if(dotx < abstandB+1.6 && dotx > abstandB-1.6)
+	{
+		//alert(doty+"-"+startA+"-"+endA);
+		if(doty > startB && doty < endB)
+		{
+			g.dot.deg=g.logic.borderbounce({"degree":g.dot.deg,"where":"right"}).degree;
+		}	
+	}
+	
+	
+		
+	/*
+	if(g.dot.x < (g.helper.relative2absolute({"data":g.char.defaultY})+10) || g.dot.x > canvas.width-(g.helper.relative2absolute({"data":g.char.defaultY})-10) )
+	{
+		if(g.dot.x < g.helper.relative2absolute({"data":g.char.defaultY}))
+		{
+			alert("lost left");
+		}
+		if(g.dot.x > canvas.width-g.helper.relative2absolute({"data":g.char.defaultY}))
+		{
+			alert("lost right");
+		}
+		
+		
+	}else{*/
+		//setTimeout("g.dot.move()",5)
+	//}
+	
+	if(g.dot.x<0||g.dot.x>canvas.width||g.dot.y<0||g.dot.y>canvas.height-5)
+	{
+		//alert();
+		if(g.dot.x>canvas.width)
+		{
+			//alert("Right Lost");
+			lost({"player":"right"});
+			//g.dot.deg=g.logic.borderbounce({"degree":g.dot.deg,"where":"right"}).degree;
+		}
+		if(g.dot.y>canvas.height-6)
+		{
+			//alert("bottum");
+			g.dot.deg=g.logic.borderbounce({"degree":g.dot.deg,"where":"bottum"}).degree;
+			setTimeout("g.dot.move()",5)
+		}
+		if(g.dot.y<0)
+		{
+			//alert("top");
+			g.dot.deg=g.logic.borderbounce({"degree":g.dot.deg,"where":"top"}).degree;
+			setTimeout("g.dot.move()",5)
+		}
+		if(g.dot.x<0)
+		{
+			lost({"player":"left"});
+			//g.dot.deg=g.logic.borderbounce({"degree":g.dot.deg,"where":"left"}).degree;
+		}
+		
+	}else{
+		setTimeout("g.dot.move()",5)
+	}
+}
+
+
+
+
+
+g.middleline=new Object();
+g.middleline.cnt=0;
+g.middleline.draw=function(options) {
+	
+	for(var i=0;i<canvas.height/10+1;i++)
+	{
+		if(g.middleline.cnt==0)
+		{
+			ctx.beginPath();
+			ctx.moveTo(canvas.width/2,i*10);
+			ctx.lineTo(canvas.width/2,i*10+5);
+			ctx.closePath();
+			ctx.stroke();
+		}else{
+			ctx.beginPath();
+			ctx.moveTo(canvas.width/2,i*10-5);
+			ctx.lineTo(canvas.width/2,i*10);
+			ctx.closePath();
+			ctx.stroke();
+		}
+	}
+	
+}
+
+g.middleline.animate=function(options) {
+	if(g.middleline.cnt==1)
+	{
+		g.middleline.cnt=0;
+	}else{
+		g.middleline.cnt=1;
+	}
+	g.requestAnimationFrame();
+}
+
+
+
+
+g.dot.logic=function(options) {
+	if(options.degree)
+	{
+		var degree=options.degree;
+	}else{
+		var degree=0;
+	}
+	if(options.basespeed)
+	{
+		var bs=options.basespeed;
+	}else{
+		var bs=1;
+	}
+	if(options.x)
+	{
+		var ox=options.x;
+	}else{
+		return {"error":"no x value"};
+	}
+	if(options.y)
+	{
+		var oy=options.y;
+	}else{
+		return {"error":"no y value"};
+	}
+	//alert(oy);
+	
+	
+	
+	var deg=degree;
+	var lng=bs;
+	var bx =ox;
+	var by =oy;
+	var rad = deg * Math.PI/180;
+	var x=Math.cos(rad)*lng;
+	
+	var m=Math.tan(rad);
+	//var b=by;
+
+	var ny=m*x
+	ny=oy+ny;
+	
+	
+	return {"x":x,"y":ny};
+}
+
+
+
+
+
+
+
+
+
+
+g.logic=new Object();
+
+
+g.logic.borderbounce=function (options){
+	if(options.degree)
+	{
+		var deg=options.degree;

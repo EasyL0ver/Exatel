@@ -1,0 +1,2 @@
+PendingIntent pending = PendingIntent.getBroadcast(context, 0, i,
+            PendingIntent.FLAG_CANCEL_CURRENT);

@@ -1,0 +1,160 @@
+Monotouch error crash log
+Date/Time:       2012-07-03 17:50:40.890 +0300
+OS Version:      iPhone OS 5.1.1 (9B206)
+Report Version:  104
+
+Exception Type:  EXC_BAD_ACCESS (SIGABRT)
+Exception Codes: KERN_INVALID_ADDRESS at 0x00000000
+Crashed Thread:  0
+
+Thread 0 name:  Dispatch queue: com.apple.main-thread
+Thread 0 Crashed:
+0   libsystem_kernel.dylib          0x37f4c32c __pthread_kill + 8
+1   libsystem_c.dylib               0x33ddf208 pthread_kill + 48
+2   libsystem_c.dylib               0x33dd8298 abort + 88
+3   PrintStand                      0x01276ec6 0x1000 + 19357382
+4   PrintStand                      0x0128f9a2 0x1000 + 19458466
+5   libsystem_c.dylib               0x33de97e6 _sigtramp + 42
+6   libsystem_c.dylib               0x33ddf208 pthread_kill + 48
+7   libsystem_c.dylib               0x33dd8298 abort + 88
+8   PrintStand                      0x01317eda 0x1000 + 20016858
+9   PrintStand                      0x01317efc 0x1000 + 20016892
+10  PrintStand                      0x012627ea 0x1000 + 19273706
+11  PrintStand                      0x01276a54 0x1000 + 19356244
+12  PrintStand                      0x01276b22 0x1000 + 19356450
+13  PrintStand                      0x0128e6c6 0x1000 + 19453638
+14  PrintStand                      0x00ff5f54 0x1000 + 16731988
+15  PrintStand                      0x00ff5f54 0x1000 + 16731988
+16  PrintStand                      0x011b6578 0x1000 + 18568568
+17  PrintStand                      0x01264cd4 0x1000 + 19283156
+18  PrintStand                      0x012dff58 0x1000 + 19787608
+19  PrintStand                      0x0132d170 0x1000 + 20103536
+20  CoreFoundation                  0x3152e3f6 -[NSObject performSelector:withObject:withObject:] + 46
+21  UIKit                           0x3181ce00 -[UIApplication sendAction:to:from:forEvent:] + 56
+22  UIKit                           0x3181cdbc -[UIApplication sendAction:toTarget:fromSender:forEvent:] + 24
+23  UIKit                           0x3181cd9a -[UIControl sendAction:to:forEvent:] + 38
+24  UIKit                           0x3181cb0a -[UIControl(Internal) _sendActionsForEvents:withEvent:] + 486
+25  UIKit                           0x3181d442 -[UIControl touchesEnded:withEvent:] + 470
+26  UIKit                           0x3180fb80 _UIGestureRecognizerUpdate + 5216
+27  CoreFoundation                  0x315a8b14 __CFRUNLOOP_IS_CALLING_OUT_TO_AN_OBSERVER_CALLBACK_FUNCTION__ + 12
+28  CoreFoundation                  0x315a6d50 __CFRunLoopDoObservers + 252
+29  CoreFoundation                  0x315a70aa __CFRunLoopRun + 754
+30  CoreFoundation                  0x3152a49e CFRunLoopRunSpecific + 294
+31  CoreFoundation                  0x3152a366 CFRunLoopRunInMode + 98
+32  GraphicsServices                0x32a03432 GSEventRunModal + 130
+33  UIKit                           0x3182fcce UIApplicationMain + 1074
+34  PrintStand                      0x01020a1c 0x1000 + 16906780
+35  PrintStand                      0x00bc30a0 0x1000 + 12329120
+36  PrintStand                      0x011b6578 0x1000 + 18568568
+37  PrintStand                      0x01264cd4 0x1000 + 19283156
+38  PrintStand                      0x012dff58 0x1000 + 19787608
+39  PrintStand                      0x012e2c38 0x1000 + 19799096
+40  PrintStand                      0x012e6588 0x1000 + 19813768
+41  PrintStand                      0x01269728 0x1000 + 19302184
+42  PrintStand                      0x012618d6 0x1000 + 19269846
+43  PrintStand                      0x00bb3104 0x1000 + 12263684
+
+Thread 1 name:  Dispatch queue: com.apple.libdispatch-manager
+Thread 1:
+0   libsystem_kernel.dylib          0x37f3c3a8 kevent + 24
+1   libdispatch.dylib               0x3477af04 _dispatch_mgr_invoke + 708
+2   libdispatch.dylib               0x3477ac22 _dispatch_mgr_thread + 30
+
+Thread 2 name:  WebThread
+Thread 2:
+0   libsystem_kernel.dylib          0x37f3c004 mach_msg_trap + 20
+1   libsystem_kernel.dylib          0x37f3c1fa mach_msg + 50
+2   CoreFoundation                  0x315a83ec __CFRunLoopServiceMachPort + 120
+3   CoreFoundation                  0x315a7124 __CFRunLoopRun + 876
+4   CoreFoundation                  0x3152a49e CFRunLoopRunSpecific + 294
+5   CoreFoundation                  0x3152a366 CFRunLoopRunInMode + 98
+6   WebCore                         0x31d4ac9c _ZL12RunWebThreadPv + 396
+7   libsystem_c.dylib               0x33da072e _pthread_start + 314
+8   libsystem_c.dylib               0x33da05e8 thread_start + 0
+
+Thread 3:
+0   libsystem_kernel.dylib          0x37f4c628 __semwait_signal + 24
+1   libsystem_c.dylib               0x33da4b1a nanosleep + 138
+2   PrintStand                      0x0130cf60 0x1000 + 19971936
+3   PrintStand                      0x012f38ba 0x1000 + 19867834
+4   PrintStand                      0x012f9cee 0x1000 + 19893486
+5   PrintStand                      0x0130da2a 0x1000 + 19974698
+6   PrintStand                      0x01326a64 0x1000 + 20077156
+7   libsystem_c.dylib               0x33da072e _pthread_start + 314
+8   libsystem_c.dylib               0x33da05e8 thread_start + 0
+
+Thread 4:
+0   libsystem_kernel.dylib          0x37f3c06c semaphore_timedwait_trap + 8
+1   PrintStand                      0x01312ff6 0x1000 + 19996662
+2   PrintStand                      0x012f5724 0x1000 + 19875620
+3   PrintStand                      0x012f9cee 0x1000 + 19893486
+4   PrintStand                      0x0130da2a 0x1000 + 19974698
+5   PrintStand                      0x01326a64 0x1000 + 20077156
+6   libsystem_c.dylib               0x33da072e _pthread_start + 314
+7   libsystem_c.dylib               0x33da05e8 thread_start + 0
+
+Thread 5:
+0   libsystem_kernel.dylib          0x37f3c3a8 kevent + 24
+1   PrintStand                      0x012f438a 0x1000 + 19870602
+2   PrintStand                      0x012f9cee 0x1000 + 19893486
+3   PrintStand                      0x0130da2a 0x1000 + 19974698
+4   PrintStand                      0x01326a64 0x1000 + 20077156
+5   libsystem_c.dylib               0x33da072e _pthread_start + 314
+6   libsystem_c.dylib               0x33da05e8 thread_start + 0
+
+Thread 6:
+0   libsystem_kernel.dylib          0x37f3c06c semaphore_timedwait_trap + 8
+1   PrintStand                      0x01312ff6 0x1000 + 19996662
+2   PrintStand                      0x012f5724 0x1000 + 19875620
+3   PrintStand                      0x012f9cee 0x1000 + 19893486
+4   PrintStand                      0x0130da2a 0x1000 + 19974698
+5   PrintStand                      0x01326a64 0x1000 + 20077156
+6   libsystem_c.dylib               0x33da072e _pthread_start + 314
+7   libsystem_c.dylib               0x33da05e8 thread_start + 0
+
+Thread 7:
+0   libsystem_kernel.dylib          0x37f3c054 semaphore_wait_trap + 8
+1   PrintStand                      0x01313054 0x1000 + 19996756
+2   PrintStand                      0x012ada72 0x1000 + 19581554
+3   PrintStand                      0x012f9cee 0x1000 + 19893486
+4   PrintStand                      0x0130da2a 0x1000 + 19974698
+5   PrintStand                      0x01326a64 0x1000 + 20077156
+6   libsystem_c.dylib               0x33da072e _pthread_start + 314
+7   libsystem_c.dylib               0x33da05e8 thread_start + 0
+
+Thread 8:
+0   libsystem_kernel.dylib          0x37f4ccd4 __workq_kernreturn + 8
+1   libsystem_c.dylib               0x33d9af36 _pthread_wqthread + 610
+2   libsystem_c.dylib               0x33d9acc8 start_wqthread + 0
+
+Thread 9:
+0   libsystem_kernel.dylib          0x37f4ccd4 __workq_kernreturn + 8
+1   libsystem_c.dylib               0x33d9af36 _pthread_wqthread + 610
+2   libsystem_c.dylib               0x33d9acc8 start_wqthread + 0
+
+Thread 10:
+0   libsystem_kernel.dylib          0x37f4ccd4 __workq_kernreturn + 8
+1   libsystem_c.dylib               0x33d9af36 _pthread_wqthread + 610
+2   libsystem_c.dylib               0x33d9acc8 start_wqthread + 0
+
+Thread 0 crashed with ARM Thread State:
+    r0: 0x00000000    r1: 0x00000000      r2: 0x00000001      r3: 0x00000000
+    r4: 0x00000006    r5: 0x3ed7ed98      r6: 0x01412612      r7: 0x2fdfd38c
+    r8: 0x00000000    r9: 0x00000000     r10: 0x01412630     r11: 0x029da2a4
+    ip: 0x00000148    sp: 0x2fdfd380      lr: 0x33ddf20f      pc: 0x37f4c32c
+  cpsr: 0x00000010
+
+Binary Images:
+    0x1000 -  0x14e8fff +PrintStand armv7  <c1610e88f63f34988be9ffac81e9bdbb> /var/mobile/Applications/669F0F9A-8464-489C-BCFB-A66343F011B7/MediawirePrintStandMobilePresentation.app/PrintStand
+ 0x5906000 -  0x5916fff  Riven armv7  <46e4d9c7b88d3afca369efb40e3ff4d5> /System/Library/TextInput/Riven.bundle/Riven
+0x2fedf000 - 0x2ff00fff  dyld armv7  <77eddfd654df393ba9c95ff01715fd08> /usr/lib/dyld
+0x30372000 - 0x30381fff  SpringBoardServices armv7  <a2363f8ed49932dba415d2d4cd32fb74> /System/Library/PrivateFrameworks/SpringBoardServices.framework/SpringBoardServices
+0x30382000 - 0x30384fff  libCoreVMClient.dylib armv7  <d4d4aa3090c83e87bcb15ed00b93fd5c> /System/Library/Frameworks/OpenGLES.framework/libCoreVMClient.dylib
+0x30404000 - 0x30413fff  OpenGLES armv7  <e80acc691001301e96101bb89d940033> /System/Library/Frameworks/OpenGLES.framework/OpenGLES
+0x30414000 - 0x30414fff  libkeymgr.dylib armv7  <ebd2dddf55d83cf48a18913968775960> /usr/lib/system/libkeymgr.dylib
+0x30419000 - 0x30463fff  libvDSP.dylib armv7  <441b42aca07b3da39feab25f8349918f> /System/Library/Frameworks/Accelerate.framework/Frameworks/vecLib.framework/libvDSP.dylib
+0x30561000 - 0x305a5fff  MobileCoreServices armv7  <757226927a873d5492be721908077b48> /System/Library/Frameworks/MobileCoreServices.framework/MobileCoreServices
+0x305a6000 - 0x305aefff  MobileWiFi armv7  <b76c3e9fb78234c392058250d4620e72> /System/Library/PrivateFrameworks/MobileWiFi.framework/MobileWiFi
+0x305b9000 - 0x305bcfff  CoreTime armv7  <a398de5ba1e43a11b7008e9bb5a7f6fe> /System/Library/PrivateFrameworks/CoreTime.framework/CoreTime
+0x30629000 - 0x30642fff  libRIP.A.dylib armv7  <1828cddc5dd93c61afbefb59587d7f8a> /System/Library/Frameworks/CoreGraphics.framework/Resources/libRIP.A.dylib
+0x30643000 - 0x30650fff  libbsm.0.dylib armv7  <750a0de73a733019a77144b805d4d2f8> /usr/lib/libbsm.0.dylib

@@ -1,0 +1,3 @@
+new_text = 'How many species of animals are there in Russia and in the US, and where are the biggest oceans?'
+tokens = [stemmer.stem(token) for token in tokenizer.tokenize(new_text.lower()) if token not in stopwords_fr]
+lda_model[dictionary_LDA.doc2bow(tokens)]

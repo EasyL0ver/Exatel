@@ -1,0 +1,144 @@
+import com.rarebot.event.listeners.PaintListener;
+import com.rarebot.script.Script;
+import com.rarebot.script.ScriptManifest;
+import com.rarebot.script.wrappers.*;
+import java.awt.Color;
+import java.awt.Graphics;
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ *
+ * @author rexis
+ */
+@ScriptManifest(authors="DutchGp", name="DutchHorn")
+public class DutchHorn extends Script implements PaintListener{
+
+        private String Goathorn = "Desert goat horn";
+        private long startTime;
+	private int goatDust = 9736;
+        private boolean useSearch;
+    
+        private void getGoatHorns()
+        {
+           
+            RSNPC banker = npcs.getNearest("Banker");
+            
+            if(banker.isOnScreen())
+            {
+                mouse.move(banker.getPoint());
+                banker.interact("Bank "+ banker.getName());
+            }
+            sleep(50);
+            openWindows();
+            if(bank.isOpen())
+            {
+               bank.depositAll();
+               
+     
+               if(bank.searchItem(Goathorn))
+               {
+                   if(bank.getItem(Goathorn) != null)
+                   {
+                       bank.withdraw(Goathorn, 28);
+                   }
+                   
+                   
+               } 
+              
+               if(bank.getItem(Goathorn) != null)
+               {
+                   
+                   bank.withdraw(Goathorn, 28);
+               }
+               else
+                   stopScript(true);
+               
+               sleep(50);
+               
+              bank.close();
+            }
+            
+        }
+       private void Crush()
+       {
+           RSItem Goat = inventory.getItem(Goathorn);
+           int rand = random(0,1);
+           if(!getMyPlayer().isIdle())
+               return;
+           
+           if(Goat != null)
+           {
+               Goat.doClick(true);
+               sleep(100);
+               if(interfaces.get(905).getComponent(14).isValid())
+               {
+                   if(rand == 0){
+                   mouse.move(interfaces.get(905).getComponent(14).getCenter());                
+                   interfaces.get(905).getComponent(14).interact("Make all");
+                   
+                   }
+                   else
+                         mouse.click(interfaces.get(905).getComponent(14).getCenter(), true);                
+                    
+                   sleep(10000);                   
+               }
+               
+               
+           }
+           else
+               getGoatHorns();
+           
+       }
+    @Override
+    public boolean onStart() {
+        startTime = System.currentTimeMillis();
+        return true;
+    }
+
+    private void openWindows()
+    {
+        if(interfaces.get(109).isValid())
+        {
+            mouse.click(interfaces.get(109).getComponent(9).getCenter(), true);
+        }
+        if(grandExchange.isOpen())
+            grandExchange.closeGe();
+        
+    }
+    @Override
+    public int loop() {
+       
+        Crush();
+        return 900;
+    }
+    @Override
+    public void onRepaint(Graphics g) {
+    
+        long currTime = System.currentTimeMillis();
+        long runTime = currTime - startTime;
+        int seconds =0;
+        int minutes =0;
+        int hours =0;
+        
+        seconds = (int)runTime / 1000;
+        
+        if(seconds >59)
+        {
+            minutes++;
+            seconds = 0;
+        }
+        if(minutes > 59)
+        {
+            hours++;
+            minutes =0;
+        }
+        g.setColor(Color.red);
+         g.drawString("Running "+hours+":"+minutes+":"+seconds, 0, 50);
+        
+    }
+    
+}

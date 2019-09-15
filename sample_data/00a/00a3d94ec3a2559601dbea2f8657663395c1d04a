@@ -1,0 +1,229 @@
+local SxreGui = Instance.new("ScreenGui")
+local SxreFrame = Instance.new("Frame")
+local Main = Instance.new("Frame")
+local SxreVersion = Instance.new("TextLabel")
+local Packs = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local FarmPack = Instance.new("TextButton")
+local FarmPack_2 = Instance.new("TextButton")
+local Customize = Instance.new("Frame")
+local TextLabel_2 = Instance.new("TextLabel")
+local _4Slot = Instance.new("TextButton")
+local Elements = Instance.new("TextButton")
+local KGInv = Instance.new("TextButton")
+local Farm = Instance.new("Frame")
+local TextLabel_3 = Instance.new("TextLabel")
+local Exp = Instance.new("TextButton")
+local Kunai = Instance.new("TextButton")
+local Jutsu = Instance.new("Frame")
+local TextLabel_4 = Instance.new("TextLabel")
+local SubJutsuv1 = Instance.new("TextButton")
+local SubJutsuv2 = Instance.new("TextButton")
+local NinJutsu = Instance.new("TextButton")
+local KenJutsu = Instance.new("TextButton")
+local Combos = Instance.new("TextButton")
+local Companions = Instance.new("TextButton")
+local Customize_2 = Instance.new("TextButton")
+local Farm_2 = Instance.new("TextButton")
+local Jutsu_2 = Instance.new("TextButton")
+local Packs_2 = Instance.new("TextButton")
+local CloseMenu = Instance.new("TextButton")
+local MinimezeMenu = Instance.new("TextButton")
+local SxreName = Instance.new("TextLabel")
+-- Properties:
+SxreGui.Name = "SxreGui"
+SxreGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ 
+SxreFrame.Name = "SxreFrame"
+SxreFrame.Parent = SxreGui
+SxreFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+SxreFrame.BackgroundTransparency = 1
+SxreFrame.Position = UDim2.new(0.656314433, 0, 0.309541732, 0)
+SxreFrame.Size = UDim2.new(0, 100, 0, 100)
+ 
+Main.Name = "Main"
+Main.Parent = SxreFrame
+Main.BackgroundColor3 = Color3.new(0.333333, 0.333333, 0.333333)
+Main.BackgroundTransparency = 1
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.739201486, 0, 0.415775031, 0)
+Main.Size = UDim2.new(0, 142, 0, 180)
+ 
+SxreVersion.Name = "SxreVersion"
+SxreVersion.Parent = Main
+SxreVersion.BackgroundColor3 = Color3.new(0.294118, 0.294118, 0.294118)
+SxreVersion.BackgroundTransparency = 0.30000001192093
+SxreVersion.BorderColor3 = Color3.new(0.207843, 0.207843, 0.207843)
+SxreVersion.BorderSizePixel = 0
+SxreVersion.Position = UDim2.new(0, 0, -0.144444451, 0)
+SxreVersion.Size = UDim2.new(0, 142, 0, 24)
+SxreVersion.Font = Enum.Font.SciFi
+SxreVersion.Text = "v2.11 | By Mapaen"
+SxreVersion.TextColor3 = Color3.new(1, 1, 1)
+SxreVersion.TextSize = 16
+SxreVersion.TextWrapped = true
+ 
+Packs.Name = "Packs"
+Packs.Parent = Main
+Packs.BackgroundColor3 = Color3.new(0.333333, 0.333333, 0.333333)
+Packs.BackgroundTransparency = 1
+Packs.BorderSizePixel = 0
+Packs.Position = UDim2.new(-1.85211265, 0, 0.322222233, 0)
+Packs.Size = UDim2.new(0, 119, 0, 102)
+Packs.Visible = false
+ 
+TextLabel.Parent = Packs
+TextLabel.BackgroundColor3 = Color3.new(0.235294, 0.235294, 0.235294)
+TextLabel.BackgroundTransparency = 0.30000001192093
+TextLabel.BorderColor3 = Color3.new(0.207843, 0.207843, 0.207843)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.00840336177, 0, 0, 0)
+TextLabel.Size = UDim2.new(0, 118, 0, 27)
+TextLabel.Font = Enum.Font.SciFi
+TextLabel.Text = "Packs"
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+TextLabel.TextSize = 16
+ 
+FarmPack.Name = "FarmPack"
+FarmPack.Parent = Packs
+FarmPack.BackgroundColor3 = Color3.new(0.294118, 0.294118, 0.294118)
+FarmPack.BackgroundTransparency = 0.30000001192093
+FarmPack.BorderSizePixel = 0
+FarmPack.Position = UDim2.new(0.00911927223, 0, 0.268583417, 0)
+FarmPack.Size = UDim2.new(0, 118, 0, 25)
+FarmPack.Font = Enum.Font.SciFi
+FarmPack.Text = "Farm Pack"
+FarmPack.TextColor3 = Color3.new(1, 1, 1)
+FarmPack.TextSize = 14
+FarmPack.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "r", "rinnegan")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "t", "rinnegana")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "y", "rinneganc")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "f", "rinneganc")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "g", "rinnegana")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "h", "rinneganb")
+game.Players.LocalPlayer.keyinput:FireServer("equipwep", "1", "rinneganb")
+game.Players.LocalPlayer.keyinput:FireServer("equipwep", "2", "rinnegan")
+end)
+ 
+FarmPack_2.Name = "FarmPack"
+FarmPack_2.Parent = Packs
+FarmPack_2.BackgroundColor3 = Color3.new(0.294118, 0.294118, 0.294118)
+FarmPack_2.BackgroundTransparency = 0.30000001192093
+FarmPack_2.BorderSizePixel = 0
+FarmPack_2.Position = UDim2.new(0.00911927223, 0, 0.513681531, 0)
+FarmPack_2.Size = UDim2.new(0, 118, 0, 25)
+FarmPack_2.Font = Enum.Font.SciFi
+FarmPack_2.Text = "Gladiko228"
+FarmPack_2.TextColor3 = Color3.new(1, 1, 1)
+FarmPack_2.TextSize = 14
+FarmPack_2.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "r", "rinneganc")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "t", "rinneganb")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "y", "rinneganc")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "f", "rinnegana")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "g", "rinneganb")
+game.Players.LocalPlayer.keyinput:FireServer("equippowerz", "h", "rinneganc")
+end)
+ 
+Customize.Name = "Customize"
+Customize.Parent = Main
+Customize.BackgroundColor3 = Color3.new(0.333333, 0.333333, 0.333333)
+Customize.BackgroundTransparency = 1
+Customize.BorderSizePixel = 0
+Customize.Position = UDim2.new(-0.943039, 0, 0.440647006, 0)
+Customize.Size = UDim2.new(0, 118, 0, 131)
+Customize.Visible = false
+ 
+TextLabel_2.Parent = Customize
+TextLabel_2.BackgroundColor3 = Color3.new(0.235294, 0.235294, 0.235294)
+TextLabel_2.BackgroundTransparency = 0.30000001192093
+TextLabel_2.BorderColor3 = Color3.new(0.207843, 0.207843, 0.207843)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Size = UDim2.new(0, 118, 0, 27)
+TextLabel_2.Font = Enum.Font.SciFi
+TextLabel_2.Text = "Customize"
+TextLabel_2.TextColor3 = Color3.new(1, 1, 1)
+TextLabel_2.TextSize = 16
+ 
+_4Slot.Name = "4Slot"
+_4Slot.Parent = Customize
+_4Slot.BackgroundColor3 = Color3.new(0.294118, 0.294118, 0.294118)
+_4Slot.BackgroundTransparency = 0.30000001192093
+_4Slot.BorderSizePixel = 0
+_4Slot.Position = UDim2.new(-0.00129628181, 0, 0.202917144, 0)
+_4Slot.Size = UDim2.new(0, 118, 0, 25)
+_4Slot.Font = Enum.Font.SciFi
+_4Slot.Text = "Unlock 4 KG"
+_4Slot.TextColor3 = Color3.new(1, 1, 1)
+_4Slot.TextSize = 14
+_4Slot.MouseButton1Click:connect(function()
+game:GetService("Players").LocalPlayer.keyinput:FireServer("respin", 4)
+end)
+ 
+Elements.Name = "Elements"
+Elements.Parent = Customize
+Elements.BackgroundColor3 = Color3.new(0.294118, 0.294118, 0.294118)
+Elements.BackgroundTransparency = 0.30000001192093
+Elements.BorderSizePixel = 0
+Elements.Position = UDim2.new(-0.00129628181, 0, 0.393756837, 0)
+Elements.Size = UDim2.new(0, 118, 0, 25)
+Elements.Font = Enum.Font.SciFi
+Elements.Text = "All Elements"
+Elements.TextColor3 = Color3.new(1, 1, 1)
+Elements.TextSize = 14
+Elements.MouseButton1Click:connect(function()
+local Element = "earth"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.main[Element].select.Visible = true
+local Element = "fire"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.main[Element].select.Visible = true
+local Element = "lightning"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.main[Element].select.Visible = true
+local Element = "water"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.main[Element].select.Visible = true
+local Element = "wind"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.main[Element].select.Visible = true
+end)
+ 
+KGInv.Name = "KGInv"
+KGInv.Parent = Customize
+KGInv.BackgroundColor3 = Color3.new(0.294118, 0.294118, 0.294118)
+KGInv.BackgroundTransparency = 0.30000001192093
+KGInv.BorderSizePixel = 0
+KGInv.Position = UDim2.new(-0.00129628181, 0, 0.584596515, 0)
+KGInv.Size = UDim2.new(0, 118, 0, 25)
+KGInv.Font = Enum.Font.SciFi
+KGInv.Text = "KG Bag (Not Work)"
+KGInv.TextColor3 = Color3.new(1, 1, 1)
+KGInv.TextSize = 14
+KGInv.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.Visible = true
+local KG = "sharingan"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "wood"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "rinnegan"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "byakugan"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "sand"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "akimichi"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "ice"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "tenseigan"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "shadow"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "lava"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "storm"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "momo"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "sasrinnegan"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "Shikotsumyaku"
+game.Players.LocalPlayer.PlayerGui.MainGui.Menu4.bag.frame[KG].locked.Visible = false
+local KG = "aburame"

@@ -1,0 +1,8 @@
+htaccess restrict sub dir to my IP not working
+Order deny,allow
+deny from all
+allow from xx.xx.x.xx  
+RewriteRule . - [F]
+	
+RewriteCond %{REMOTE_ADDR} !^xx.xx.x.xx$
+RewriteRule . - [F]

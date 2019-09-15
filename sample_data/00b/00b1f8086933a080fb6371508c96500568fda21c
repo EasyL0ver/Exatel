@@ -1,0 +1,6 @@
+$app = JFactory::getApplication();
+$templateDir = JURI::base() . 'templates/' . $app->getTemplate();
+	
+$templateDir = $mainframe->getBasePath() . "templates/" . $mainframe->getTemplate();
+	
+$templateDir = JPATH_THEMES.DS.JFactory::getApplication()->getTemplate().DS;

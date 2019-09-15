@@ -1,0 +1,180 @@
+<?php
+require(__DIR__.'/wp-blog-header.php'); // appel des fonctions WP
+require_once(__DIR__.'/wp-admin/includes/media.php');
+require_once(__DIR__.'/wp-admin/includes/file.php');
+require_once(__DIR__.'/wp-admin/includes/image.php');
+require_once(__DIR__.'/wp-includes/post.php');
+require_once(__DIR__.'/wp-admin/includes/taxonomy.php');
+
+function pn_get_attachment_id_from_url( $attachment_url = '' ) {
+   global $wpdb;
+   $attachment_id = false;
+    // If there is no url, return.
+    if ( '' == $attachment_url )
+       return;
+    // Get the upload directory paths
+    $upload_dir_paths = wp_upload_dir();
+    // Make sure the upload path base directory exists in the attachment URL, to verify that we're working with a media library image
+    if ( false !== strpos( $attachment_url, $upload_dir_paths['baseurl'] ) ) {
+        // If this is the URL of an auto-generated thumbnail, get the URL of the original image
+        $attachment_url = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $attachment_url );
+        // Remove the upload path base directory from the attachment URL
+        $attachment_url = str_replace( $upload_dir_paths['baseurl'] . '/', '', $attachment_url );
+        // Finally, run a custom database query to get the attachment ID from the modified attachment URL
+        $attachment_id = $wpdb->get_var( $wpdb->prepare( "SELECT wposts.ID FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND wpostmeta.meta_value = '%s' AND wposts.post_type = 'attachment'", $attachment_url ) );
+    }
+return $attachment_id;
+}
+
+function Generate_Featured_Image( $image_url, $post_id  ){
+    $upload_dir = wp_upload_dir();
+    $image_data = file_get_contents($image_url);
+    $filename = basename($image_url);
+    if(wp_mkdir_p($upload_dir['path']))     $file = $upload_dir['path'] . '/' . $filename;
+    else                                    $file = $upload_dir['basedir'] . '/' . $filename;
+    file_put_contents($file, $image_data);
+
+    $wp_filetype = wp_check_filetype($filename, null );
+    $attachment = array(
+        'post_mime_type' => $wp_filetype['type'],
+        'post_title' => sanitize_file_name($filename),
+        'post_content' => '',
+        'post_status' => 'inherit'
+    );
+    $attach_id = wp_insert_attachment( $attachment, $file, $post_id );
+    require_once(ABSPATH . 'wp-admin/includes/image.php');
+    $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+    $res1= wp_update_attachment_metadata( $attach_id, $attach_data );
+    $res2= set_post_thumbnail( $post_id, $attach_id );
+}
+
+// if(isset($_POST["listeArticles"]) && isset($_POST["quantite"]) && isset($_POST["depart"])){
+
+//on doit check si le départ est au delà de l'ID max, sinon on fait pas
+
+if($_POST["action"] == "lastId"){
+        $arrayLastPostId = get_posts("numberposts=1&fields=ids");
+        $lastPostId = $arrayLastPostId[0];
+        echo $lastPostId;
+}
+
+if($_POST["action"] == "nextId"){
+        //par défaut la position id 0 renvoi le dernier article
+        $positionId = $_POST["positionId"];
+        $check = true;
+        $arrayLastPostId = get_posts("numberposts=1&fields=ids");
+        $lastPostId = $arrayLastPostId[0];
+        while($check){
+                $infos = get_post($positionId);
+                if($infos->post_status == "publish" && $infos->post_type == "post"){
+                        echo $positionId;
+                        $check = false;
+                        $content = $infos->post_content;
+                        break;
+                }
+                $positionId = $positionId+1;
+                if($lastPostId < $positionId) {
+                        echo "code 777"; // 777 veut dire derniere position atteinte
+                        break;
+                }
+        }
+
+}
+
+if($_POST["action"] == "postInfos"){
+        //par défaut la position id 0 renvoi le dernier article
+        $positionId = $_POST["positionId"];
+        $infos = get_post($positionId);
+        echo $infos->post_title."[TITRE]";
+        echo $infos->post_content;
+}
+
+if($_POST["action"] == "url"){
+        $url = get_permalink($_POST["positionId"]);
+        echo $url;
+}
+
+if($_POST["action"] == "categorie"){
+        $aCategory = get_the_category($_POST["positionId"]);
+        $categorie = $aCategory[0]->name;
+        echo $categorie;
+}
+
+if($_POST["action"] == "title"){
+        $title = get_post_field('post_title', $_POST["positionId"]);
+        echo $title;
+}
+
+if($_POST["action"] == "contenu"){
+        $content = get_post_field('post_content', $_POST["positionId"]);
+        echo $content;
+}
+
+if($_POST["action"] == "new_category"){
+        $category = $_POST["category"];
+        $idCategory = wp_create_category($category);
+        echo trim($idCategory);
+}
+
+if($_POST["action"] == "newpost"){
+        $title = $_POST["title"];
+        $content = $_POST["content"];
+        $idCategory = $_POST["idcategory"];
+        $author = $_POST["idauthor"];
+        $date = $_POST["date"];
+        $type = $_POST["type"];
+        $menu_order = $_POST["menu_order"];
+
+        $article_a = array(
+          'post_title' => $title,
+          'post_author' => $author,
+          'post_content' => $content,
+          'post_status' => 'publish',
+          'post_category' => array( $idCategory, ),
+          'post_date' => $date,
+          'post_type' => $type,
+          'menu_order' => $menu_order
+        );
+        remove_all_filters("content_save_pre"); //enlever les filtres de securité de wordpress qui enlève des balises du contenus etc.
+        $id_article = wp_insert_post($article_a);
+        if( !is_wp_error($id_article) && $id_article > 0 ) {
+        //   add_post_meta($id_article, '_aioseop_description', $title);
+          add_post_meta($id_article, '_yoast_wpseo_title', $title);
+          echo $id_article;
+  } else {
+          echo "erreur";
+  }
+}
+
+if($_POST["action"] == "up_image"){
+        $alt = "";
+        $urlImage = $_POST["url_image"];
+        $image = media_sideload_image($urlImage, '0', $alt, "src");
+        if(!is_wp_error($image)){
+                echo $image;
+        } else {
+                echo "erreur";
+        }
+}
+
+if($_POST["action"] == "set_image_une"){
+        $urlImage = $_POST["url_image"];
+        $id_article = $_POST["id_post"];
+        Generate_Featured_Image( $urlImage, $id_article);
+}
+
+if($_POST["action"] == "set_post_format"){
+        $id_article = $_POST["id_post"];
+        $format = $_POST["post_format"];
+        set_post_format($id_article, $format);
+}
+
+if($_POST["action"] == "get_cat_slug_by_id"){
+        $cat_id = $_POST["id_category"];
+        $cat_id = (int) $cat_id;
+	$category = &get_category($cat_id);
+	echo $category->slug;
+}
+
+
+?>

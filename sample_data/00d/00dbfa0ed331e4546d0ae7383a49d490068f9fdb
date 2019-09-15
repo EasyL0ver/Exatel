@@ -1,0 +1,6 @@
+Enable-WindowsOptionalFeature : The referenced assembly could not be found.
+At line:1 char:1
++ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows- ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ CategoryInfo          : NotSpecified: (:) [Enable-WindowsOptionalFeature], COMException
++ FullyQualifiedErrorId : Microsoft.Dism.Commands.EnableWindowsOptionalFeatureCommand

@@ -1,0 +1,12 @@
+$VAR = 9;
+$RESULT = FALSE;
+$DIV =  floor($VAR/2);  // Оптимизация, чтобы быстрее выполнялся скрипт, а то комментаторам нашим не нравится
+for ($i = 1; $i <= $DIV; $i++) { 
+    for ($j = 1; $j <= $DIV; $j++) { 
+        if (($i**3)+($j**3) == $VAR) {
+            $RESULT = TRUE;
+            break; //?
+        }
+    }
+}
+var_dump($RESULT);

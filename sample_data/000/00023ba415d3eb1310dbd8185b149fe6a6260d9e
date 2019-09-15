@@ -1,0 +1,73 @@
+<?php
+	public function indexAction(Request $request, $type)
+	{
+		if($type !== 0)
+		{
+			if($type == 100 || $type == 200 || $type == 300)
+			{
+				if($type == 100)
+				{
+					$items = \ShopQuery::create()
+							 ->filterByType(array('min' => 1, 'max' => 6))
+							 ->find();
+					$items_list = array(
+						'100' => array(
+							'1' => array(),
+							'2' => array(),
+							'3' => array(),
+							'4' => array(),
+							'5' => array(),
+							'6' => array(),
+						),
+					);
+					foreach($items as $item)
+					{
+						switch($item->getType())
+						{
+							case 1:
+								$items_list[100][1][] = $item;
+							break;
+							case 2:
+								$items_list[100][2][] = $item;
+							break;
+							case 3:
+								$items_list[100][3][] = $item;
+							break;
+							case 4:
+								$items_list[100][4][] = $item;
+							break;
+							case 5:
+								$items_list[100][5][] = $item;
+							break;
+							case 6:
+								$items_list[100][6][] = $item;
+							break;
+						}
+					}
+				}
+				elseif($type == 200)
+				{
+
+				}
+				elseif($type == 300)
+				{
+
+				}
+			}
+			else
+			{
+				$this->response->setContent($this->twig->render('Shop/items.html.twig', array(
+					'cat' => 0,
+				)));
+			}
+		}
+		else
+		{
+			$this->response->setContent($this->twig->render('Shop/items.html.twig', array(
+				'cat' => 0,
+			)));
+		}
+		return $this->response;
+	}
+
+?>

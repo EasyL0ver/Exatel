@@ -1,0 +1,11 @@
+How can I traverse a linked list that can not only include loops, but also multiple links from a single node? (VB6)
+N------N---------N-------N
+      /         |        
+     /          N---N-----N
+    /           |        |  
+   N-------N-----N     N---N
+	
+NOODE_1 -> NODELINK_1 -> NODELINK_2 -> NODELINK_3 -> NULL
+               |             |             |
+               V             V             V
+             NODE2_        NODE3_        NODE4_

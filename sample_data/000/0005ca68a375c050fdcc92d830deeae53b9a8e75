@@ -1,0 +1,22 @@
+{
+    "xData": [6.377931,6.388519,6.397159],
+    "datasets": [{
+        "name": "Speed",
+        "data": [13.833,12.524,11.441],
+        "unit": "km/h",
+        "type": "line",
+        "valueDecimals": 1
+    }, {
+        "name": "Elevation",
+        "data": [26.857,27],
+        "unit": "m",
+        "type": "area",
+        "valueDecimals": 0
+    }, {
+        "name": "Heart rate",
+        "data": [101,98,103],
+        "unit": "bpm",
+        "type": "area",
+        "valueDecimals": 0
+    }]
+}

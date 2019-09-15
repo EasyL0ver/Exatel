@@ -1,0 +1,126 @@
+Date: 01/04/2019 09:52:58
+CorpseReborn Version: 2.12.0
+
+Server Version: git-Spigot-7754231-unknown (MC: 1.12.2)
+Server Type: SPIGOT
+Folder Version: v1_12_R1
+
+Exception: 
+java.util.NoSuchElementException: packet_handler
+	at io.netty.channel.DefaultChannelPipeline.getContextOrDie(DefaultChannelPipeline.java:1089)
+	at io.netty.channel.DefaultChannelPipeline.addBefore(DefaultChannelPipeline.java:260)
+	at io.netty.channel.DefaultChannelPipeline.addBefore(DefaultChannelPipeline.java:249)
+	at com.comphenix.protocol.injector.netty.PipelineProxy.addBefore(PipelineProxy.java:66)
+	at com.comphenix.protocol.injector.netty.ChannelInjector$5$1.addBefore(ChannelInjector.java:287)
+	at org.golde.bukkit.corpsereborn.nms.nmsclasses.packetlisteners.PcktIn_v1_12_R1.registerListener(PcktIn_v1_12_R1.java:80)
+	at org.golde.bukkit.corpsereborn.nms.nmsclasses.NMSCorpses_v1_12_R1.registerPacketListener(NMSCorpses_v1_12_R1.java:724)
+	at org.golde.bukkit.corpsereborn.listeners.PlayerJoin.onPlayerJoin(PlayerJoin.java:95)
+	at sun.reflect.GeneratedMethodAccessor367.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:302)
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62)
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:499)
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:484)
+	at net.minecraft.server.v1_12_R1.PlayerList.onPlayerJoin(PlayerList.java:346)
+	at net.minecraft.server.v1_12_R1.PlayerList.a(PlayerList.java:166)
+	at protocolsupport.zplatform.impl.spigot.network.handler.SpigotLoginListenerPlay.joinGame(SpigotLoginListenerPlay.java:124)
+	at protocolsupport.protocol.packet.handler.AbstractLoginListenerPlay.tryJoin(AbstractLoginListenerPlay.java:132)
+	at protocolsupport.protocol.packet.handler.AbstractLoginListenerPlay.tick(AbstractLoginListenerPlay.java:94)
+	at protocolsupport.zplatform.impl.spigot.network.handler.SpigotLoginListenerPlay.e(SpigotLoginListenerPlay.java:70)
+	at net.minecraft.server.v1_12_R1.NetworkManager.a(NetworkManager.java:233)
+	at net.minecraft.server.v1_12_R1.ServerConnection.c(ServerConnection.java:140)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.D(MinecraftServer.java:855)
+	at net.minecraft.server.v1_12_R1.DedicatedServer.D(DedicatedServer.java:507)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.C(MinecraftServer.java:689)
+	at net.minecraft.server.v1_12_R1.MinecraftServer.run(MinecraftServer.java:587)
+	at java.lang.Thread.run(Thread.java:748)
+
+
+Plugins: 
+PrePrefix - 2018
+RewardCommand - 1.0
+Hangok - 1.1
+PermissionsCheck - 0.1
+MMCPotionStacker - 0.1
+EnderChestPlus - MMC
+MacroMMC - 1.12
+AllowPiston - 0.1
+MesterMCItems - 1.4
+CrownAPI - 0.1
+DuplicatedKicker - 1.0
+Spawn - 1.0
+ProtectAnvils - 1.0
+OldCombatMechanics - 1.6.6
+SignLogger - 1.0
+VodorBlokk - 0.1
+Market - 0.2
+UniquePrefix - 1.0
+MesterMCUdvozlo - 1.0
+SupplyCrates - 1.0
+McChatPlugin - 1.1.1
+PvPMester - 0.1
+TimeLock - 0.5
+HideStream - 3.6.1
+PotionStacker - 1.0
+BanManagerMMC - 0.1
+WorldEdit - 6.1.8-SNAPSHOT;cd4729f
+TrollUdvozlo - 1.0
+SimpleTrading - 1.4
+CombatLog - 2.3.0
+MMCHirdeto - 0.1
+MMCBlockEnchant - 0.1
+Commands - 1.0
+TrollGun - 1.0
+MMCBackpack - 2.0
+ActionBarAPI - 1.5.3
+MagusFelho - 1.0
+Kits - 0.1
+FidgetSpinner - 1.0
+Multiverse-Core - 2.5.0-b727
+ProtocolLib - 4.3.0
+SpawnGuard - 1.0
+MisteryBox - 0.2
+BoosterAPI - 1.0
+PlayerCounter - 1.0
+React - 6.58
+PermissionsEx - 1.23.3
+NoWeather - 2.0
+ServerName - 1.0
+TrollPlus - 1.6
+Lathatatlansag - 0.1
+Vault - 1.5.6-b49
+ProtocolSupport - 4.29-dev
+HolographicDisplays - 2.2.7-SNAPSHOT
+MMCFejpenz - 1.0
+HideAndCustomPlugins - 1.7.2
+WorldGuard - 6.2.1;84bc322
+AAC - 3.4.2
+MessageFilter - 0.3.3
+Essentials - 2.0.1-b553
+CorpseReborn - 2.12.0
+Citizens - 2.0.22-SNAPSHOT (build 1496)
+TOPKills - 1.0
+WGRegionEvents - 1.1
+MesterMcSkyPVP - 1.5.0
+OxiPerm - 1.0
+Smileychat - 3.1
+MesterNames - 1.9
+
+Config: 
+enable-update-checker: false
+corpse-time: 30
+on-death: true
+looting-inventory: false
+despawn-after-looted: false
+show-tags: true
+world: all
+gui-title: %corpse%'s Items
+username-format: %corpse%
+finish-looting-message: *bYou have finished looting %corpse%'s corpse.
+new-hitboxes: false
+render-armor: falsesave-corpses: falsesend-data: false
+
+Corpses:
+VERSION: v1_12_R1
+amount-of-corpses: 0

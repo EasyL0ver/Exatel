@@ -1,0 +1,18 @@
+#include "messgH.h"
+#include "messg.nsmap"
+
+struct Namespace *namespaces;
+
+int main(int p_argc,char *argv[]) {
+	struct ns__noResponse out;
+	struct soap v_soap;
+	soap_init( &v_soap );
+	soap_set_namespaces( &v_soap, messg_namespaces );
+	// Appel de la méthode ns__test1 distante avec la fonction
+	// int soap_call_ns__test1(struct soap *soap, const char *soap_endpoint, const char
+	// *soap_action, int code, char *message, struct ns__noResponse *out);
+	// A compléter
+	if (v_soap.error) { soap_print_fault(&v_soap, stderr); }
+	soap_end( &v_soap );
+	return(0);
+}

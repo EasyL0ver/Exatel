@@ -1,0 +1,207 @@
+/*
+* Server code for Assignment 2
+*/
+
+
+#include <arpa/inet.h>
+#include <stdio.h> 
+#include <stdlib.h> 
+#include <errno.h> 
+#include <string.h> 
+#include <sys/types.h> 
+#include <netinet/in.h> 
+#include <sys/socket.h> 
+#include <sys/wait.h> 
+#include <unistd.h>
+#include <signal.h>
+
+#define MYPORT 54321    /* the port users will be connecting to */
+
+
+#define BACKLOG 10     /* how many pending connections queue will hold */
+
+#define MAXDATASIZE 100 /* max number of bytes we can get at once */
+
+#define BUFFER_SIZE 1024
+
+//typedef struct calories *csvInfo;
+
+struct calories {
+	char* col1;
+	char* col2;
+	char* col3;
+	char* col4;
+	char* col5;
+	char* col6;
+	char* col7;
+	char* col8;
+	char* col9;
+	char* col10;
+	char* col11;
+} csvInfo;
+
+void searchFile(char *input);
+
+char result[BUFFER_SIZE];
+
+void catch_int(int sig_num)
+{
+	signal(SIGINT, catch_int);
+	pthread_exit();
+	//printf("Don't do that");
+	//fflush(stdout);
+}
+
+
+int main(int argc, char *argv[])
+{
+	int sockfd, new_fd, numbytes;		/* Listen on sock_fd, new connection on new_fd */
+	struct sockaddr_in my_addr;	/* My address information */
+	struct sockaddr_in their_addr;	/* Connector's address information */
+	socklen_t sin_size;
+	char buf[MAXDATASIZE];
+
+	/* Generate the socket */
+	if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+		perror("socket");
+		exit(1);
+	}
+
+	/* Generate the end point */
+	my_addr.sin_family = AF_INET;		/* Host byte order */
+	my_addr.sin_port = htons(MYPORT);	/* Short, network byte order */
+	my_addr.sin_addr.s_addr = INADDR_ANY;	/* Auto-fill with my IP */
+	
+	/* Bind the socket to the end point */
+	if (bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr)) \
+	== -1) {
+		perror("bind");
+		exit(1);
+	}
+
+	/* Start Listening */
+	if (listen(sockfd, BACKLOG) == -1) {
+		perror("listen");
+		exit(1);
+	}
+
+	printf("server starts listening ...\n");
+	signal(SIGINT, catch_int);
+
+	/* repeat: accept, send, close the connection */
+	/* For every accepted connection, use a separate process or thread to serve it */
+	while(1) {	/* Main accept() loop */
+		sin_size = sizeof(struct sockaddr_in);
+		if ((new_fd = accept(sockfd, (struct sockaddr *)&their_addr, \
+		&sin_size)) == -1) {
+			perror("accept");
+			continue;
+		}
+		printf("server: got connection from %s\n", \
+			inet_ntoa(their_addr.sin_addr));
+
+		if ((numbytes=recv(new_fd, buf, MAXDATASIZE, 0)) == -1) {
+			perror("recv");
+			exit(1);
+		}
+
+		buf[numbytes] = '\0';
+
+		//printf("%s",buf);
+		searchFile(buf);
+
+		if (!fork()) {	/* This is the child process */
+			if (send(new_fd, result, strlen(result), 0) == -1)
+				perror("send");
+
+			close(new_fd);
+			exit(0);
+		}
+		close(new_fd);	/* parent doesn't need this */
+
+		while(waitpid(-1,NULL,WNOHANG) > 0);	/* clean up child process */
+	}
+}
+
+
+
+
+
+void searchFile(char *input)
+{
+	//printf("%s", input);
+
+	result[0] = '\0';
+	char filename;	
+	FILE *pInput;
+	char buf[BUFFER_SIZE];
+	//char result[BUFFER_SIZE];
+
+	pInput = fopen("calories.csv", "r");
+	
+	while (fgets( buf, sizeof(buf), pInput) != NULL) {
+
+
+		//fgets(buf, sizeof(buf), pInput);
+		//printf("%s\n", buf);
+		char* values[11];
+		values[0] = strtok(buf, ",");
+		for (int i = 1; i < 11; i++) {
+			values[i] = strtok(NULL, ",");
+		}
+		char* firstCsvValue = values[0];
+		char* firstWord = strtok(firstCsvValue, " ");
+		//printf("values[0]=%s\n", values[0]);
+		//printf("firstCsvValue=%s\n", firstCsvValue);
+		
+		int number;
+		if (!strcasecmp(firstWord, input)) {
+			//printf("%s\n", values[0]);
+			//printf("%s\n", firstWord);
+			//printf("%s\n", input);
+			for (int i = 0; i < 11; i++) {
+				if (values[i] == NULL || values[i] == ""){
+					number = i-7;
+					break;
+				}
+				
+			}
+			//printf("Food: %s", values[0]);
+			strcpy(result, "Food: ");
+			strcat(result, values[0]);
+			//printf("%s", result);
+			for (int i = 1; i < number; i++){
+				//printf(", %s", values[i]);
+				strcat(result, ", ");
+				strcat(result, values[i]);
+			}
+			//printf("\nMeasure: %s", values[0+number]);
+			//printf("\nWeight (g): %s", values[1+number]);
+			//printf("\nkCal: %s", values[2+number]);
+			//printf("\nFat (g): %s", values[3+number]);
+			//printf("\nCarbo (g): %s", values[4+number]);
+			//printf("\nProtein (g): %s", values[5+number]);
+			//printf("\n%u\n\n", number);
+
+			strcat(result, "\nMeasure: ");
+			strcat(result, values[0+number]);
+			strcat(result, "\nWeight (g): ");
+			strcat(result, values[1+number]);
+			strcat(result, "\nkCal: ");
+			strcat(result, values[2+number]);
+			strcat(result, "\nFat (g): ");
+			strcat(result, values[3+number]);
+			strcat(result, "\nCarbo (g): ");
+			strcat(result, values[4+number]);
+			strcat(result, "\nProtein (g): ");
+			strcat(result, values[5+number]);
+			strcat(result, "\n\n");
+
+			printf("%s", result);
+		}
+		if (result[0] == '\0') {
+			strcpy(result, "No food item found.");
+		}
+	}
+	//return result;
+}

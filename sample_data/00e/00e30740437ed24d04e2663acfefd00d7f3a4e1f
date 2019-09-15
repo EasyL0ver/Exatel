@@ -1,0 +1,4 @@
+list = [1, 2, 3, 4]
+new_list = [i**3 if i%2 == 0 else i**2 for i in list]
+
+print(new_list) # Output: [1, 8, 9, 64]

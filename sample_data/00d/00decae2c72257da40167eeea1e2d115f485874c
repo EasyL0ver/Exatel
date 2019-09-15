@@ -1,0 +1,58 @@
+#include<iostream>
+#define rep(a,b) for(int a=0; a<b; a++)
+using namespace std;
+const int MX=100;
+int T[MX],t;
+int T1[MX];//0 uninitialized 1 taken 2 deleted
+int  h(int k){
+    return k % t;
+}
+
+
+int insert(int k){
+    int index = h(k);
+    int i=0;
+    while(i<t){
+        
+        if(T1[index]==0 || T1[index]==2) {
+            T[index] = k;
+            return index;
+        }
+        index=(index+1)%t;
+        i++;
+    }
+}
+
+
+void deleteNode(int k){
+    int index = h(k);
+    if(T1[index]=0)
+    int i=0;
+    
+}
+
+
+bool contains(int k){
+    int index =h(k);
+    int i=0;
+    while(T1[i]==0){
+        if(T[index]==k) return true; 
+        i++;
+        index = (index + 1) % t;
+    }
+    return false;
+}
+
+int getvalue(){}
+
+
+void displayValue(){
+    rep(i,t) cout<<T[i]<<endl;
+}
+
+int main(){
+    cin>>t;
+
+
+    return 0;
+}

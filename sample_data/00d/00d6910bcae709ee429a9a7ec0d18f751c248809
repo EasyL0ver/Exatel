@@ -1,0 +1,10 @@
+import { Web, sp, SearchQuery, SearchResults, SearchQueryBuilder, Search } from '@pnp/sp';
+sp.search("test").then((resultSet: SearchResults) => {
+    console.log(resultSet)
+});
+	
+let spweb: Web = new Web(this.props.wpContext.pageContext.web.absoluteUrl);
+
+spweb.currentUser.get().then(user=>{
+    console.log(user);
+});

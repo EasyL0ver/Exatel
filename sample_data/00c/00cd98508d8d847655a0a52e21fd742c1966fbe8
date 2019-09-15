@@ -1,0 +1,11 @@
+for i,v in pairs(game.Players:GetChildren()) do
+
+	local All = v.Character.Humanoid
+	local Dmg = 100
+	
+	local Remote = game.Workspace.Remotes.SetHealth
+	
+	
+	Remote:FireServer("Damage", Dmg, All)
+
+end

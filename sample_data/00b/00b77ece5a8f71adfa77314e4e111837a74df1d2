@@ -1,0 +1,57 @@
+sqlCon.Open();
+
+using (SqlCommand sqlComm = new SqlCommand("Select QuaInMagazine from tbl_Parts2 where Name = '" + Name_txt.Text + "' and Number='" + Number_txt.Text + "'", sqlCon))
+{
+    using (SqlDataReader reader = sqlComm.ExecuteReader())
+    {
+        qua = (int)reader["QuaInMagazine"];
+    }
+}
+
+qua = qua + Convert.ToInt32(Qua_txt.Text);
+
+sqlCon.Close();
+	
+qua = (int)reader["QuaInMagazine"];
+	
+using (connection)
+{
+    SqlCommand command = new SqlCommand(
+      "SELECT CategoryID, CategoryName FROM Categories;",
+      connection);
+    connection.Open();
+
+    SqlDataReader reader = command.ExecuteReader();
+
+    if (reader.HasRows)
+    {
+        while (reader.Read())
+        {
+            Console.WriteLine("{0}t{1}", reader.GetInt32(0),
+                reader.GetString(1));
+        }
+    }
+    else
+    {
+        Console.WriteLine("No rows found.");
+    }
+    reader.Close();
+}
+	
+while(reader.Read()) 
+{
+    // data read logic
+}
+	
+while(reader.Read()) 
+{
+    if(reader["QuaInMagazine"] != DBNull.Value)
+    {
+        int quaInMagazineOrdinal = reader.GetOrdinal("QuaInMagazine"); 
+        qua = reader.GetInt32(quaInMagazineOrdinal);
+    }
+}
+	
+reader.GetInt32(3);
+	
+reader.GetInt32(reader.GetOrdinal(columnName))

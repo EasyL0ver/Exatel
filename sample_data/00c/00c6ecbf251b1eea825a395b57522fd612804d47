@@ -1,0 +1,61 @@
+from math import cos, sin, pi
+
+"""
+Created by Matan Golan
+"""
+
+
+def _twiddle_factor(N, s):
+    return Complex(
+        cos(s * 2.0 * pi / N),
+        -sin(s * 2.0 * pi / N)
+    )
+
+
+def fft_radix4(array, N):
+    N1 = 4
+    N2 = N / 4
+
+    # Butterfly group has size of 4
+    butterfly = [Complex(0), Complex(0), Complex(0), Complex(0)]
+
+    # Start to calculate each group butterfly matrix:
+    for n2 in xrange(0, N2):
+
+        # According to the math simplification shown in the presentation:
+        butterfly[0].r = (array[n2].r + array[N2 + n2].r + array[2 * N2 + n2].r + array[3 * N2 + n2].r)
+        butterfly[0].i = (array[n2].i + array[N2 + n2].i + array[2 * N2 + n2].i + array[3 * N2 + n2].i)
+
+        butterfly[1].r = (array[n2].r + array[N2 + n2].i - array[2 * N2 + n2].r - array[3 * N2 + n2].i)
+        butterfly[1].i = (array[n2].i - array[N2 + n2].r - array[2 * N2 + n2].i + array[3 * N2 + n2].r)
+
+        butterfly[2].r = (array[n2].r - array[N2 + n2].r + array[2 * N2 + n2].r - array[3 * N2 + n2].r)
+        butterfly[2].i = (array[n2].i - array[N2 + n2].i + array[2 * N2 + n2].i - array[3 * N2 + n2].i)
+
+        butterfly[3].r = (array[n2].r - array[N2 + n2].i - array[2 * N2 + n2].r + array[3 * N2 + n2].i)
+        butterfly[3].i = (array[n2].i + array[N2 + n2].r - array[2 * N2 + n2].i - array[3 * N2 + n2].r)
+
+        # Assign the transformed values to the first group:
+        for k1 in xrange(0, N1):
+            wn = _twiddle_factor(N, k1 * n2)
+            array[n2 + N2 * k1].r = butterfly[k1].r * wn.r - butterfly[k1].i * wn.i
+            array[n2 + N2 * k1].i = butterfly[k1].i * wn.r + butterfly[k1].r * wn.i
+
+    # We don't want to continue the recursion
+    # if we don't have any more groups
+    if N2 != 1:
+        # Recurse on the next group
+        for k1 in xrange(0, N1):
+            fft_radix4(array[N2 * k1:], N2)
+
+            
+class Complex(object):
+    def __init__(self, real, img=0.0):
+        self.r = real
+        self.i = img
+
+    def __str__(self):
+        return '(%g + i%g)' % (self.r, self.i)
+
+    def __repr__(self):
+        return '' + str(self)

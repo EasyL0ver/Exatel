@@ -1,0 +1,27 @@
+diff --git a/camlp4/Camlp4Parsers/Camlp4OCamlRevisedParser.ml b/camlp4/Camlp4Parsers/Camlp4OCamlRevisedParser.ml
+index edd5fe0..d211599 100644
+--- a/camlp4/Camlp4Parsers/Camlp4OCamlRevisedParser.ml
++++ b/camlp4/Camlp4Parsers/Camlp4OCamlRevisedParser.ml
+@@ -697,7 +697,7 @@ New syntax:\
+         | s = a_CHAR -> <:expr< $chr:s$ >>
+         | i = TRY module_longident_dot_lparen; e = sequence; ")" ->
+             <:expr< let open $i$ in $e$ >>
+-        | i = TRY val_longident -> <:expr< $id:i$ >>
++        | i = TRY ident_without_antiquot -> <:expr< $id:i$ >>
+         | "`"; s = a_ident -> <:expr< ` $s$ >>
+         | "["; "]" -> <:expr< [] >>
+         | "["; mk_list = sem_expr_for_list; "::"; last = expr; "]" ->
+@@ -1198,6 +1198,13 @@ New syntax:\
+             <:ident< $anti:mk_anti ~c:"ident" n s$.$i$ >>
+         | i = a_UIDENT; "."; j = SELF -> <:ident< $uid:i$.$j$ >> ] ]
+     ;
++    ident_without_antiquot:
++      [ [
++        i = a_UIDENT -> <:ident< $uid:i$ >>
++        | i = a_LIDENT -> <:ident< $lid:i$ >>
++        | i = a_UIDENT; "."; j = SELF -> <:ident< $uid:i$.$j$ >> ] ]
++    ;
++
+     module_longident:
+       [ [ `ANTIQUOT (""|"id"|"anti"|"list" as n) s ->
+             <:ident< $anti:mk_anti ~c:"ident" n s$ >>

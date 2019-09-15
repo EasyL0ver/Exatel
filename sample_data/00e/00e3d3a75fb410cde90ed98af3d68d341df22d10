@@ -1,0 +1,39 @@
+httpPost(url: string, params: Object): Promise<any> {
+    const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'token': `${this.token}`
+        })
+    };
+
+    const str = [];
+    for (const p in params) {
+        if (params.hasOwnProperty(p)) {
+            str.push(encodeURIComponent(p) + '=' + encodeURIComponent(params[p]));
+        }
+    }
+
+    return this.http.post(this.getAppUrl(url), str.join('&'), httpOptions).toPromise();
+}
+	
+this.dataSource = new MatTableDataSource();
+	
+this.global.httpPost('address', { userId: this.userInfo.userId }).then((data) => {
+        data.result.map((address) => {
+            this.ELEMENT_DATA.push({
+                id: parseInt(address.id, 10),
+                personName: address.name,
+                phone: address.mobile,
+                address: address.address,
+                lat: address.lat,
+                lng: address.lon,
+                tools: true,
+                isAddress: true
+            });
+        });
+        this.dataSource.data = this.ELEMENT_DATA;
+    }).catch((error) => {
+        this.global.showError(error);
+    });
+	
+this.dataSource.paginator = this.paginator;

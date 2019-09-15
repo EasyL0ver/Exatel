@@ -1,0 +1,27 @@
+// Her importerer vi komponentene som komponenten skal bruke
+import Menypunkt from './Menypunkt'
+
+// Her starter komponenten
+class Meny extends React.Component {
+
+  // Her er komponentens egne states
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+      menypunkter: ["Forsiden", "Side 1", "Side 2"]
+    }
+  }
+  
+  render() {
+    return(
+      <div>
+        Dette er Meny-komponenten. Den inneholder flere komponenter:
+        
+        {menypunkter.map(menypunkt => <Menypunkt navn={menypunkt} />)
+      </div>
+    )
+  }
+}
+
+export default Meny

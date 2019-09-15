@@ -1,0 +1,40 @@
+.touringEscorted {
+    height:125px;
+    width: 214px;
+    background-image: url('/Images/Travel2New/ToursImages/ToursBanners.jpg');
+    background-position: 0 0;
+}
+
+.touringNew {
+    height:125px;
+    width: 214px;
+    background-image: url('/Images/Travel2New/ToursImages/ToursBanners.jpg');
+    background-position: -10px 0;
+}
+	
+<a href="#"><div class="touringEscorted"></a>
+	
+<a href="#" class="touringEscorted">&nbsp;</a>
+	
+<a class="sprite sprite1" href="javascript:;">Link Text</a>
+	
+sprite {
+  display: block;
+  background: url(path/to/image/file.ext);
+  text-indent: -9999px;
+}
+sprite1 {
+  width: WWpx;
+  height: HHpx;
+  background-position: -NNpx - MMpx;
+}
+	
+<a href="#" class="touringEscorted"></a>
+	
+.touringEscorted {
+    height:125px;
+    width: 214px;
+    background-image: url('/Images/Travel2New/ToursImages/ToursBanners.jpg');
+    background-position: 0 0;
+    display:block;
+}

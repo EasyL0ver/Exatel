@@ -1,0 +1,37 @@
+Last login: Thu Jun 21 10:21:41 on ttys000
+BIGHOUSE:~ reheartsu$ /Users/reheartsu/adisplash-app/version/26f719a8-8e28-4add-b792-cb1f52f3d450/AdiSplash ; exit;
+Exception in thread "main" java.lang.ExceptionInInitializerError
+	at com.teamdev.jxbrowser.chromium.internal.ipc.IPC$a.a(Unknown Source)
+	at com.teamdev.jxbrowser.chromium.internal.ipc.IPC.getDefault(Unknown Source)
+	at com.teamdev.jxbrowser.chromium.BrowserCore.initialize(Unknown Source)
+	at com.kicksforus.backdoor.BackdoorIO.main(Unknown Source)
+Caused by: com.teamdev.jxbrowser.chromium.internal.ChromiumExtractorException: Failed to extract Chromium binaries into /var/folders/kb/f884blms2g56m8xscqnsg9jh0000gn/T/jxbrowser-chromium-60.0.3112.113.6.16
+	at com.teamdev.jxbrowser.chromium.internal.ChromiumExtractor.extractChromiumBinariesIfNecessary(Unknown Source)
+	at com.teamdev.jxbrowser.chromium.internal.ipc.IPC.<init>(Unknown Source)
+	at com.teamdev.jxbrowser.chromium.internal.ipc.IPC.create(Unknown Source)
+	at com.teamdev.jxbrowser.chromium.internal.ipc.IPC$a.<clinit>(Unknown Source)
+	... 4 more
+Caused by: java.lang.RuntimeException: java.io.IOException: Cannot run program "/var/folders/kb/f884blms2g56m8xscqnsg9jh0000gn/T/jxbrowser-chromium-60.0.3112.113.6.16/7zr-mac": error=13, Permission denied
+	at com.teamdev.jxbrowser.chromium.internal.XZExtractor.extract(Unknown Source)
+	at com.teamdev.jxbrowser.chromium.internal.b.run(Unknown Source)
+	at java.security.AccessController.<unknown>(Unknown Source)
+	... 8 more
+Caused by: java.io.IOException: Cannot run program "/var/folders/kb/f884blms2g56m8xscqnsg9jh0000gn/T/jxbrowser-chromium-60.0.3112.113.6.16/7zr-mac": error=13, Permission denied
+	at java.lang.ProcessBuilder.start(Unknown Source)
+	at java.lang.Runtime.exec(Unknown Source)
+	at java.lang.Runtime.exec(Unknown Source)
+	at com.teamdev.jxbrowser.chromium.internal.xz.XZ.decompress(Unknown Source)
+	... 11 more
+Caused by: java.io.IOException: error=13, Permission denied
+	at java.lang.UNIXProcess.forkAndExec(Native Method)
+	at java.lang.UNIXProcess.<init>(Unknown Source)
+	at java.lang.ProcessImpl.start(Unknown Source)
+	... 15 more
+logout
+Saving session...
+...copying shared history...
+...saving history...truncating history files...
+...completed.
+Deleting expired sessions...40 completed.
+
+[Process completed]

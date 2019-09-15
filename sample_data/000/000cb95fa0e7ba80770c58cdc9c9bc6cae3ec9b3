@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main
+{
+      public static void main(String[ ] args) {
+      
+      double testScore = 0.0;
+      System.out.println("Please enter your score: ");
+      
+      Scanner input = new Scanner(System.in);
+      testScore = input.nextInt();
+      
+      if(testScore < 65) {
+          System.out.println("You have recieved a: D");
+      }
+      
+      else if(testScore < 75) {
+          System.out.println("You have recieved a: C");
+      }  
+      else if(testScore < 85) {
+          System.out.println("You have recieved a: B");
+      }
+      else if(testScore < 100) {
+          System.out.println("You have recieved a: A");  
+      }
+    
+      
+      }    
+}

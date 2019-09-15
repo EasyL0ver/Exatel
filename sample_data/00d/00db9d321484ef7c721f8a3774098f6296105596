@@ -1,0 +1,42 @@
+Sozdanije bazy dannych w SUBD OpenOffice Base
+Cjeł raboty: nauczitsja sozdawat tabłicznyje bazy dannych w SUBD OpenOffice Base.
+Zadacza: W SUBD OpenOffice Base sozdat tabłicznuju bazu dannych «Gurnal».
+Chod wypołnjenija.
+1.	Zapustit SUBD OpenOffice Base 
+2.	W pojawiwszjemsja diałogowom oknje Mastjer bazy dannych (szag 1) wybrat s pomoszczju pjerjekłjuczatjełja punkt Sozdat nowuju bazu dannych. Szczjełknut po knopkje Dałjeje >>(ris. 1.1). 
+ 
+Ris. 1.1.
+3.	W pojawiwszjemsja diałogowom oknje Mastjer bazy dannych (szag 2) ustanowit fłażok Otkryt bazu dannych dłja rjedaktirowanija. Szczjełknut po knopkje Gotowo (ris. 1.2).
+ 
+Ris. 1.2.
+4.	W otkrywszjemsja diałogowom oknje Sochranit kak wybrat mjesto sochranjenija i imja bazy dannych «Gurnal».
+5.	W łjewoj czasti pojawiwszjegosja diałogowogo okna Gurnal w razdjełje Bazy dannych wybrat punkt Tabłicy, w srjednjej czasti okna w razdjełje Zadaczi wybrat punkt Sozdat tabłicu w rjeżimje dizajna…(ris. 1.3)
+ 
+Ris. 1.3
+6.	W pojawiwszjemsja oknje Tabłica 1 w stołbcje Imja połja wwjesti imjena połjej bazy dannych «Gurnal». W stołbcje Tip połja s pomoszczju raskrywajuszczjegosja spiska wybrat dłja każdogo połja jego tip (ris. 1.4).
+ 
+Ris. 1.4
+Dłja połja ID_uch njeobchodimo postawit Tip połja - Cjełoje [Integer] i w niżnjem czasti okna w razdjełje Swojstwa połja wybrat punkt Awtoznaczjenije Da. Posłje etogo awtomaticzjeski połju budjet priswojeno znaczjenije Pjerwicznyj kłjucz. Takżje połje możno sdjełat kłjuczjewym, jesłi na połje nażat prawoj knopkoj, w pojawiwszjemsja kontjekstnom mjenju wybrat Pjerwicznyj kłjucz.
+Dłja połja Data_r nużno wybrat Tip połja – Data [ DATE], a w razdjełje Swojstwa połja wybrat punkt Primjer formata nażat na knopku   i w pojawiwszjemsja diałogowom oknje Format połja wybrat Format – 1999-12-31 i nażat knopku OK (ris. .1.5).
+ 
+Ris. 1.5
+Posłje zawjerszjenija wwoda wsjech połjej njeobchodimo sochranit tabłicu pod imjenjem Uchenik.
+Zadanije 1. Sozdat tabłicy Klass, Predmet, Urok, Ocenka so słjedujuszczimi połjami i tipami połjej (ris. 1.6 – ris. 1.9):
+  
+Ris. 1.6 Tabłica «Klass»
+ 
+Ris. 1.7.Tabłica «Predmet»
+ 
+Ris. 1.8. Tabłica «Urok»
+ 
+Ris. 1.9. Tabłica «Ocenka»
+Zadanije 2. Tjepjer njeobchodimo swjazat tabłicy, dłja etogo wybirajem punkt gławnogo mjenju [Sjerwis – Swjazi]. W otkrywszjemsja oknje Konstruktor swjazjej njeobchodimo dobawit wsje tabłicy. Posłje etogo iz tabłicy Klass pjerjenjesjom kłjuczjewoje połje ID_kl na sootwjetstwujuszczjeje połje tabłicy Uchenik. Obrazujetsja swjaz tipa Odin-ko-mnogim. Zatjem iz tabłicy Uchenik pjerjenjesjom połje ID_uch na sootwjetstwujuszczjeje połje tabłicy Ocenka. Takżje obrazowałas swjaz Odin-ko-mnogim. Dłja izmjenjenija tipa swjazi, nużno wydjełit swjaz, wyzwat kontjekstnoje mjenju, wybrat iz njego punkt Prawka. Otkrojetsja diałogowoje okno Swjazi. W etom oknje wy możjetje pomjenjat swjazywajemyje połja, a takżje ustanowit paramjetry obnowłjenija i udałjenija. Obyczno dłja wsjech swjazjej stawitsja Obnowłjenije kaskada i Udałit kaskad, dłja togo cztoby pri izmjenjenii (udałjenii) dannych w odnoj tabłicje izmjenjałis (udałjałis) sootwjetstwujuszczije dannyje w drugoj tabłicje. Dłja wsjech swjazjej mjeżdu tabłicami w bazje dannych Gurnal njeobchodimo ustanowit Obnowłjenije kaskada i Udałit kaskad (ris. 1.10).
+ 
+Ris. 1.10.
+Anałogicznym obrazom nużno sozdat ostawszijesja swjazi mjeżdu tabłicami.
+Dołżno połuczitsja słjedujuszczjeje (ris. 1.11):
+ 
+Ris. 1.11.
+Zadanije 3. Njeobchodimo zapołnit 10 zapisjami każduju tabłicu bazy dannych. Dłja etogo dważdy nażimajem na sootwjetstwujuszczjej tabłicje, pojawłjajetsja okno Dannyje widje tabłicy i wwodim nużnyje dannyje (ris. 1.12).
+ 
+Ris. 1.12.

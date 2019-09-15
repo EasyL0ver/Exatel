@@ -1,0 +1,15 @@
+SELECT DISTINCT (1) as list_id,
+(1) as created_by_id,
+(sHost) as site,
+('2010-01-14 02:50:22') as created_at,
+(dbdmozcopy.textlinks.sTitle) as title,
+(dbdmozcopy.thost.sHost) as site,
+(dbdmozcopy.thost.sHost) as domain,
+FROM dbdmozcopy.thosts
+INNER JOIN (dbdmozcopy.textlinks INNER JOIN (dbdmozcopy.ttopiclinks LEFT JOIN dbdmozcopy.ttopics ON dbdmozcopy.ttopiclinks.idTopic = dbdmozcopy.ttopics.id)
+ON dbdmozcopy.textlinks.id = dbdmozcopy.ttopiclinks.idExtLink)
+ON dbdmozcopy.thosts.id = dbdmozcopy.textlinks.idHost
+WHERE (sPath LIKE 'Top/Arts%' OR sPath LIKE 'Top/Games%' OR sPath LIKE 'Top/Games%' OR sPath LIKE 'Top/Reference%'
+OR sPath LIKE 'Top/Shopping%' OR sPath LIKE 'Top/World%' OR sPath LIKE 'Top/Business%' OR sPath LIKE 'Top/Health%' OR sPath LIKE 'Top/Regional%' OR sPath LIKE 'Top/Society%'
+OR sPath LIKE 'Top/Computers%' OR sPath LIKE 'Top/Home%' OR sPath LIKE 'Top/Recreation%' OR sPath LIKE 'Top/Science%' OR sPath LIKE 'Top/Sports%' OR sPath LIKE 'Top/News%')
+AND ((dbdmozcopy.thosts.idProtocol = 1) OR (dbdmozcopy.thosts.idProtocol = 2));

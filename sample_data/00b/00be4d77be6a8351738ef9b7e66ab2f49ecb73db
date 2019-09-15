@@ -1,0 +1,17 @@
+02.12 17:04:31 [Server] INFO [JoinEventsPlus] By Dyn4micUniverse
+02.12 17:04:31 [Server] ERROR Error occurred while enabling JoinEventsPlus v2.7.5 (Is it up to date?)
+02.12 17:04:31 [Server] INFO java.lang.IllegalArgumentException: The embedded resource 'joinbook.yml' cannot be found in plugins/JoinEventsPlus.jar
+02.12 17:04:31 [Server] INFO at org.bukkit.plugin.java.JavaPlugin.saveResource(JavaPlugin.java:195) ~[spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at me.jep.utils.BookManager.setupFiles(BookManager.java:32) ~[?:?]
+02.12 17:04:31 [Server] INFO at me.dyn4micuniverse.JEP.onEnable(JEP.java:89) ~[?:?]
+02.12 17:04:31 [Server] INFO at org.bukkit.plugin.java.JavaPlugin.setEnabled(JavaPlugin.java:264) ~[spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at org.bukkit.plugin.java.JavaPluginLoader.enablePlugin(JavaPluginLoader.java:339) [spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at org.bukkit.plugin.SimplePluginManager.enablePlugin(SimplePluginManager.java:403) [spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at org.bukkit.craftbukkit.v1_13_R2.CraftServer.enablePlugin(CraftServer.java:431) [spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at org.bukkit.craftbukkit.v1_13_R2.CraftServer.enablePlugins(CraftServer.java:345) [spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at net.minecraft.server.v1_13_R2.MinecraftServer.l(MinecraftServer.java:584) [spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at net.minecraft.server.v1_13_R2.MinecraftServer.a(MinecraftServer.java:546) [spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at net.minecraft.server.v1_13_R2.MinecraftServer.a(MinecraftServer.java:424) [spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at net.minecraft.server.v1_13_R2.DedicatedServer.init(DedicatedServer.java:294) [spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at net.minecraft.server.v1_13_R2.MinecraftServer.run(MinecraftServer.java:702) [spigot-1.13.2.jar:git-Spigot-e4d0c66-f3f2fe5]
+02.12 17:04:31 [Server] INFO at java.lang.Thread.run(Thread.java:748) [?:1.8.0_171]

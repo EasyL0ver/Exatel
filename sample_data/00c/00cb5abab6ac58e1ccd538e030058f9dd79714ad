@@ -1,0 +1,64 @@
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    # Change this to your Laravel app location
+    # Make sure to add the /public directory at the end of your directory, since
+    # this folder is the entry point used by Laravel apps
+    root /var/www/html/myapp/public;
+    index index.php index.html index.htm index.nginx-debian.html;
+
+    server_name example.com;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ [^/].php(/|$) {
+
+        fastcgi_split_path_info ^(.+?.php)(/.*)$;
+
+        if (!-f $document_root$fastcgi_script_name) {
+            return 404;
+        }
+
+    # Mitigate https://httpoxy.org/ vulnerabilities
+    fastcgi_param HTTP_PROXY "";
+
+    fastcgi_pass 127.0.0.1:8080;
+    fastcgi_index index.php;
+
+    # include the fastcgi_param setting
+    include fastcgi_params;
+
+    # SCRIPT_FILENAME parameter is used for PHP FPM determining
+    #  the script name. If it is not set in fastcgi_params file,
+    # i.e. /etc/nginx/fastcgi_params or in the parent contexts,
+    # please comment off following line:
+    fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+}
+
+location ~ /.ht {
+    deny all;
+}
+
+
+ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; # managed by Certbot
+ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
+include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = "example.com") {
+         return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    listen [::]:80;
+
+    server_name example.com;
+    return 404; # managed by Certbot
+
+
+}

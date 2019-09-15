@@ -1,0 +1,99 @@
+/*
+ * Exercise 4 — Password Generator
+
+This exercise is based on the PasswordGenerator program in the chapter.
+
+To improve the password, edit the string of characters choices so that it 
+contains more digits, increasing the chances that digits will be picked.
+Do this by appending "1234567890" several more times on to the end of choices. 
+There is no need for choices to contain only one of each character. 
+If you want punctuation your passwords, append those characters to the string, as well.
+
+Another improvement is to require that a password have at least one digit. 
+There are several ways in which this can be done. Don't assume that the required digit in a password will be in a fixed location.
+
+A further improvement is the rule that every consonant must be followed by a vowel
+of the same case. This will make passwords easier to memorize. Of course, it also
+makes them easier to guess, especially if a cracker knows that this rule is being used. */
+
+import java.util.*;
+
+class PasswordGeneratorConsonantsWithVowels
+{
+  public static void main ( String[] args )
+  {
+    Scanner scan = new Scanner( System.in );
+    Random rand = new Random();    
+    int digits = 0;
+    
+    while ( digits < 5 )
+    {
+      System.out.println("Your password must have at least 5 characters.");
+      System.out.print("How many characters do you want in your password? ");
+      digits = scan.nextInt();
+    }
+
+    String choices = "abcdefghijklmnopqrstuvwxyz" ;
+    choices = choices + choices.toUpperCase() ;
+    choices = choices + "1234567890" ;
+    choices = choices + "1234567890" ;
+    choices = choices + "1234567890" ;
+    String upperConsonants = "BCDFGHJKLMNPQRSTVWXYZ";
+    String lowerConsonants = "bcdfghjklmnpqrstvwxyz";
+    Boolean lowercaseConsonant = false;
+    Boolean uppercaseConsonant = false;
+      String upperVowels = "AEIOU";
+      String lowerVowels = "aeiou";
+      
+
+    String password = "";
+    password = password + choices.charAt( rand.nextInt( choices.length() ) );
+    System.out.println(password + " At line 51");
+    int j = 0;
+    int k = 0;
+  while(j<(digits-1))
+  {
+      
+    while (k<lowerConsonants.length()&& lowercaseConsonant == false)
+        {
+       
+       if (password.charAt(j) == lowerConsonants.charAt(k))
+           {
+               password = password + lowerVowels.charAt(rand.nextInt(lowerVowels.length()));
+               System.out.println(password + " At line 65");
+               lowercaseConsonant = true;
+               
+           }
+      
+           k++;
+    
+    }
+    k = 0;
+   
+    
+        while (k<upperConsonants.length()&& lowercaseConsonant == false)
+        {
+            if (password.charAt(j) == upperConsonants.charAt(k))
+            {
+                password = password + upperVowels.charAt(rand.nextInt(upperVowels.length()));
+                System.out.println(password + " At line 82");
+                uppercaseConsonant = true;
+                
+             }
+            
+             k++;
+           
+        }
+        if (!(lowercaseConsonant || uppercaseConsonant))
+        {
+            password = password + choices.charAt(rand.nextInt(choices.length()));
+            System.out.println(password + " At line 93");
+        }
+    j++;
+    lowercaseConsonant = false;
+    uppercaseConsonant = false;
+    k=0;
+  }
+    System.out.println("Here is your password: " + password );
+  }
+}

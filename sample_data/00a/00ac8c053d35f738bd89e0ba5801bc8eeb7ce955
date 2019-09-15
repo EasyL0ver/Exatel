@@ -1,0 +1,97 @@
+[01-08-2018 02:17:07.139] (CheckManager) Enabled check combat.Hitbox
+[01-08-2018 02:17:07.147] (CheckManager) Enabled check combat.Fastbow
+[01-08-2018 02:17:07.154] (CheckManager) Enabled check combat.FightSpeed
+[01-08-2018 02:17:07.160] (CheckManager) Enabled check combat.Regen
+[01-08-2018 02:17:07.163] (CheckManager) Enabled check combat.FastUse
+[01-08-2018 02:17:07.170] (CheckManager) Enabled check combat.Killaura
+[01-08-2018 02:17:07.192] (CheckManager) Enabled check combat.Heuristics
+[01-08-2018 02:17:07.212] (CheckManager) Enabled check movement.Speed
+[01-08-2018 02:17:07.217] (CheckManager) Enabled check movement.Phase
+[01-08-2018 02:17:07.225] (CheckManager) Enabled check movement.Fly
+[01-08-2018 02:17:07.230] (CheckManager) Enabled check movement.Vehicles
+[01-08-2018 02:17:07.235] (CheckManager) Enabled check movement.Elytra
+[01-08-2018 02:17:07.240] (CheckManager) Enabled check movement.NoFall
+[01-08-2018 02:17:07.243] (CheckManager) Enabled check movement.Jesus
+[01-08-2018 02:17:07.245] (CheckManager) Enabled check movement.Derp
+[01-08-2018 02:17:07.248] (CheckManager) Enabled check combat.Criticals
+[01-08-2018 02:17:07.257] (CheckManager) Enabled check world.FastBreak
+[01-08-2018 02:17:07.261] (CheckManager) Enabled check world.FastPlace
+[01-08-2018 02:17:07.265] (CheckManager) Enabled check world.Nuker
+[01-08-2018 02:17:07.273] (CheckManager) Enabled check world.Interact
+[01-08-2018 02:17:07.282] (CheckManager) Enabled check world.Velocity
+[01-08-2018 02:17:07.291] (CheckManager) Enabled check MovementManager
+[01-08-2018 02:17:07.303] AAC has been enabled
+[01-08-2018 02:18:31.261] ewtetwet failed Fly: moved unexpectedly: 0.0000 (2.5000->2.3716 / --30) [ping:0 tps:19.81] VL:5
+[01-08-2018 02:18:31.337] ewtetwet failed Fly: moved unexpectedly: -0.0980 (0.0000->-0.0784 / --30) [ping:0 tps:19.12] VL:15
+[01-08-2018 02:18:31.338] ewtetwet failed Fly: moved unexpectedly: -0.1744 (0.0000->-0.0784 / --30) [ping:0 tps:19.12] VL:20
+[01-08-2018 02:18:31.413] ewtetwet failed Fly: moved unexpectedly: -0.2494 (0.0000->-0.0784 / --30) [ping:0 tps:18.9] VL:25
+[01-08-2018 02:18:31.417] ewtetwet failed Fly: moved unexpectedly: -0.3228 (0.0000->-0.0784 / --30) [ping:0 tps:18.9] VL:30
+[01-08-2018 02:18:31.501] ewtetwet failed Fly: moved unexpectedly: -0.3947 (0.0000->-0.0784 / --30) [ping:0 tps:18.76] VL:35
+[01-08-2018 02:18:31.502] ewtetwet failed Fly: moved unexpectedly: -0.4652 (0.0000->-0.0784 / -+25) [ping:0 tps:18.76] VL:40
+[01-08-2018 02:18:31.562] ewtetwet failed Fly: moved unexpectedly: -0.2955 (0.0000->0.4200 / ++17) [ping:0 tps:18.52] VL:50
+[01-08-2018 02:18:32.286] (TPSManager) TPS dropped to 18.181818181818183
+[01-08-2018 02:18:32.972] ewtetwet failed Speed: moved too quickly: 0.327 blocks/tick (0.297/0.420) g:-- [ping:0 tps:18.52] VL:14
+[01-08-2018 02:18:32.972] ewtetwet failed Fly: moved unexpectedly: 0.4200 (0.4200->0.3332 / --27) [ping:0 tps:18.52] VL:44
+[01-08-2018 02:18:32.973] ewtetwet failed Fly: moved unexpectedly: 0.3332 (0.0000->-0.0784 / --30) [ping:0 tps:18.52] VL:54
+[01-08-2018 02:18:33.036] ewtetwet failed Fly: moved unexpectedly: 0.2481 (0.0000->-0.0784 / --30) [ping:0 tps:18.39] VL:64
+[01-08-2018 02:18:33.066] ewtetwet failed Fly: moved unexpectedly: 0.1648 (0.0000->-0.0784 / --30) [ping:0 tps:18.56] VL:74
+[01-08-2018 02:18:33.128] ewtetwet failed Fly: moved unexpectedly: 0.0831 (0.0000->-0.0784 / --30) [ping:0 tps:18.89] VL:84
+[01-08-2018 02:18:33.197] ewtetwet failed Fly: moved unexpectedly: 0.0030 (0.0000->-0.0784 / --30) [ping:0 tps:18.73] VL:94
+[01-08-2018 02:18:33.762] ewtetwet failed Fly: moved unexpectedly: 0.0000 (-0.5797->-0.6465 / --30) [ping:0 tps:19.54] VL:98
+[01-08-2018 02:18:33.836] ewtetwet failed Fly: moved unexpectedly: -0.0980 (0.0000->-0.0784 / --30) [ping:0 tps:19.34] VL:108
+[01-08-2018 02:18:35.773] (TPSManager) TPS dropped to 18.0099054479964
+[01-08-2018 02:18:35.877] ewtetwet failed Fly: moved unexpectedly: 0.0000 (-0.1216->-0.1976 / --30) [ping:0 tps:18.92] VL:108
+[01-08-2018 02:18:35.984] ewtetwet failed Fly: moved unexpectedly: -0.0980 (0.0000->-0.0784 / --30) [ping:0 tps:18.0] VL:118
+[01-08-2018 02:18:35.985] ewtetwet failed Fly: moved unexpectedly: -0.1744 (0.0000->-0.0784 / --30) [ping:0 tps:18.0] VL:123
+[01-08-2018 02:18:36.136] ewtetwet failed Fly: moved unexpectedly: -0.2494 (0.0000->-0.0784 / --30) [ping:0 tps:17.39] VL:128
+[01-08-2018 02:18:36.136] ewtetwet failed Fly: moved unexpectedly: -0.3228 (0.0000->-0.0784 / --30) [ping:0 tps:17.39] VL:133
+[01-08-2018 02:18:36.138] ewtetwet failed Fly: moved unexpectedly: -0.3947 (0.0000->-0.0784 / --30) [ping:0 tps:17.39] VL:138
+[01-08-2018 02:18:36.229] ewtetwet failed Fly: moved unexpectedly: -0.4652 (0.0000->-0.0784 / -+25) [ping:0 tps:17.4] VL:143
+[01-08-2018 02:18:36.230] ewtetwet failed Fly: moved unexpectedly: -0.2955 (0.0000->0.4200 / ++17) [ping:0 tps:17.4] VL:153
+[01-08-2018 02:18:36.607] (TPSManager) TPS dropped to 16.771488469601678
+[01-08-2018 02:18:36.608] (CheckManager) Disabled check combat.FightSpeed
+[01-08-2018 02:18:36.608] (CheckManager) Disabled check combat.Hitbox
+[01-08-2018 02:18:37.226] (TPSManager) TPS dropped to 17.28608470181504
+[01-08-2018 02:18:37.967] (CheckManager) Enabled check combat.FightSpeed
+[01-08-2018 02:18:37.968] (CheckManager) Enabled check combat.Hitbox
+[01-08-2018 02:18:37.969] ewtetwet failed Fly: moved unexpectedly: 0.0000 (-0.2277->-0.3015 / --30) [ping:0 tps:17.91] VL:137
+[01-08-2018 02:18:37.970] ewtetwet failed Fly: moved unexpectedly: -0.0980 (0.0000->-0.0784 / --30) [ping:0 tps:17.91] VL:147
+[01-08-2018 02:18:37.971] ewtetwet failed Fly: moved unexpectedly: -0.1744 (0.0000->-0.0784 / --30) [ping:0 tps:17.91] VL:152
+[01-08-2018 02:18:37.972] ewtetwet failed Fly: moved unexpectedly: -0.2494 (0.0000->-0.0784 / --30) [ping:0 tps:17.91] VL:157
+[01-08-2018 02:18:38.027] ewtetwet failed Fly: moved unexpectedly: -0.3228 (0.0000->-0.0784 / --30) [ping:0 tps:17.75] VL:162
+[01-08-2018 02:18:38.124] ewtetwet failed Fly: moved unexpectedly: -0.3947 (0.0000->-0.0784 / --30) [ping:0 tps:17.35] VL:167
+[01-08-2018 02:18:38.126] ewtetwet failed Fly: moved unexpectedly: -0.4652 (0.0000->-0.0784 / -+25) [ping:0 tps:17.35] VL:172
+[01-08-2018 02:18:38.177] ewtetwet failed Fly: moved unexpectedly: -0.2955 (0.0000->0.4200 / ++17) [ping:0 tps:17.34] VL:182
+[01-08-2018 02:18:38.877] (TPSManager) TPS dropped to 17.47487986020096
+[01-08-2018 02:18:38.878] (CheckManager) Disabled check combat.FightSpeed
+[01-08-2018 02:18:39.034] ewtetwet failed Fly: moved unexpectedly: 0.0000 (0.4200->0.3332 / --30) [ping:0 tps:17.35] VL:183
+[01-08-2018 02:18:39.034] ewtetwet failed Fly: moved unexpectedly: -0.0980 (0.0000->-0.0784 / --30) [ping:0 tps:17.35] VL:193
+[01-08-2018 02:18:39.034] ewtetwet failed Fly: moved unexpectedly: -0.1744 (0.0000->-0.0784 / --30) [ping:0 tps:17.35] VL:198
+[01-08-2018 02:18:39.104] ewtetwet failed Fly: moved unexpectedly: -0.2494 (0.0000->-0.0784 / --30) [ping:0 tps:16.38] VL:203
+[01-08-2018 02:18:39.151] ewtetwet failed Fly: moved unexpectedly: -0.3228 (0.0000->-0.0784 / --30) [ping:0 tps:16.45] VL:208
+[01-08-2018 02:18:39.151] ewtetwet failed Fly: moved unexpectedly: -0.3947 (0.0000->-0.0784 / --30) [ping:0 tps:16.45] VL:213
+[01-08-2018 02:18:39.305] ewtetwet failed Fly: moved unexpectedly: -0.4652 (0.0000->-0.0784 / -+25) [ping:0 tps:15.84] VL:218
+[01-08-2018 02:18:39.318] ewtetwet failed Fly: moved unexpectedly: -0.2955 (0.0000->0.4200 / ++17) [ping:0 tps:15.84] VL:228
+[01-08-2018 02:18:39.599] (Punisher) ->movement.Fly: Dispatching command aacstaffnotify ewtetwet in world might be trying to fly (ping = 0, tps = 15.51)
+[01-08-2018 02:18:39.750] (TPSManager) TPS dropped to 15.479876160990713
+[01-08-2018 02:18:39.751] (CheckManager) Disabled check combat.Hitbox
+[01-08-2018 02:18:40.401] (TPSManager) TPS dropped to 15.378700499807765
+[01-08-2018 02:18:41.335] (TPSManager) TPS dropped to 15.698587127158556
+[01-08-2018 02:18:41.354] ewtetwet failed Fly: moved unexpectedly: 0.0000 (0.4200->0.3332 / --30) [ping:0 tps:15.66] VL:210
+[01-08-2018 02:18:41.412] ewtetwet failed Fly: moved unexpectedly: -0.0980 (0.0000->-0.0784 / --30) [ping:0 tps:15.81] VL:220
+[01-08-2018 02:18:41.424] ewtetwet failed Fly: moved unexpectedly: -0.1744 (0.0000->-0.0784 / --30) [ping:0 tps:15.81] VL:225
+[01-08-2018 02:18:41.501] ewtetwet failed Fly: moved unexpectedly: -0.2494 (0.0000->-0.0784 / --30) [ping:0 tps:15.47] VL:230
+[01-08-2018 02:18:41.502] ewtetwet failed Fly: moved unexpectedly: -0.3228 (0.0000->-0.0784 / --30) [ping:0 tps:15.47] VL:235
+[01-08-2018 02:18:41.601] ewtetwet failed Fly: moved unexpectedly: -0.3947 (0.0000->-0.0784 / --30) [ping:0 tps:16.33] VL:240
+[01-08-2018 02:18:41.634] ewtetwet failed Fly: moved unexpectedly: -0.4652 (0.0000->-0.0784 / -+25) [ping:0 tps:17.21] VL:245
+[01-08-2018 02:18:41.721] ewtetwet failed Fly: moved unexpectedly: -0.2955 (0.0000->0.4200 / ++17) [ping:0 tps:16.69] VL:255
+[01-08-2018 02:18:42.114] (TPSManager) TPS dropped to 16.33986928104575
+[01-08-2018 02:18:42.960] (TPSManager) TPS dropped to 15.308075009567546
+[01-08-2018 02:18:43.158] ewtetwet failed Fly: moved unexpectedly: 0.0000 (-0.1213->-0.1973 / --30) [ping:0 tps:16.88] VL:257
+[01-08-2018 02:18:43.159] ewtetwet failed Fly: moved unexpectedly: -0.0980 (0.0000->-0.0784 / --30) [ping:0 tps:16.88] VL:267
+[01-08-2018 02:18:43.160] ewtetwet failed Fly: moved unexpectedly: -0.1744 (0.0000->-0.0784 / --30) [ping:0 tps:16.88] VL:272
+[01-08-2018 02:18:43.160] ewtetwet failed Fly: moved unexpectedly: -0.2494 (0.0000->-0.0784 / --30) [ping:0 tps:16.88] VL:277
+[01-08-2018 02:18:43.170] (CheckManager) Enabled check combat.FightSpeed
+[01-08-2018 02:18:43.170] (CheckManager) Enabled check combat.Hitbox
+[01-08-2018 02:18:43.194] ewtetwet failed Fly: moved unexpectedly: -0.3228 (0.0000->-0.0784 / --30) [ping:0 tps:20.0] VL:282
+[01-08-2018 02:18:43.310] ewtetwet failed Fly: moved unexpectedly: -0.3947 (0.0000->-0.0784

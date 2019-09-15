@@ -1,0 +1,117 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
+
+public class Player__Tiles : NetworkBehaviour {
+
+	public Player__GameJoin playerGameJoin;
+	public Server__Tiles serverTiles;
+
+	public Transform[] tilePositions;
+
+	public int playerTile;
+	public int rightTile;
+
+	public bool tileSet;
+
+	void Start () {
+		serverTiles = GameObject.Find ("Server").GetComponent<Server__Tiles> ();
+	}
+
+	void Update () {
+
+		if (!isLocalPlayer) {
+			return;
+		}
+
+		if (playerGameJoin.playerID == 1 && tileSet == false) {
+			TileSet1 ();
+			tileSet = true;
+		}
+		if (playerGameJoin.playerID == 2 && tileSet == false) {
+			TileSet2 ();
+			tileSet = true;
+		}
+			
+		transform.position = tilePositions [playerTile].position;
+
+		PlayerMove();
+
+		if (playerGameJoin.playerID == 1) {
+			CmdTileSync1 ();
+		}
+		if (playerGameJoin.playerID == 2) {
+			CmdTileSync2 ();
+		}
+	}
+
+	[Command]
+	void CmdTileSync1(){
+		serverTiles.player1Tile = playerTile;
+	}
+	[Command]
+	void CmdTileSync2(){
+		serverTiles.player2Tile = playerTile;
+	}
+		
+	void PlayerMove(){
+		if (playerTile != 15 && playerTile != 16 && playerTile != 17) {
+			rightTile = playerTile + 3;
+		}
+		if (Input.GetKeyDown (KeyCode.UpArrow) && playerTile != 0 && playerTile != 3 && playerTile != 6 && playerTile != 9 && playerTile != 12 && playerTile != 15) {
+			playerTile -= 1;
+		}
+		if (Input.GetKeyDown (KeyCode.DownArrow) && playerTile != 2 && playerTile != 5 && playerTile != 8 && playerTile != 11 && playerTile != 14 && playerTile != 17) {
+			playerTile += 1;
+		}
+		if (Input.GetKeyDown (KeyCode.LeftArrow) && playerTile != 0 && playerTile != 1 && playerTile != 2) {
+			playerTile -= 3;
+		}
+		if (Input.GetKeyDown (KeyCode.RightArrow) && tilePositions[rightTile].GetComponent<Tiles>().blueTile == true && playerTile != 15 && playerTile != 16 && playerTile != 17) {
+			playerTile += 3;
+		}
+	}
+	#region TileSet
+	void TileSet1(){
+		tilePositions[0] = GameObject.Find("Tile").GetComponent<Transform>();
+		tilePositions[1] = GameObject.Find("Tile1").GetComponent<Transform>();
+		tilePositions[2] = GameObject.Find("Tile2").GetComponent<Transform>();
+		tilePositions[3] = GameObject.Find("Tile3").GetComponent<Transform>();
+		tilePositions[4] = GameObject.Find("Tile4").GetComponent<Transform>();
+		tilePositions[5] = GameObject.Find("Tile5").GetComponent<Transform>();
+		tilePositions[6] = GameObject.Find("Tile6").GetComponent<Transform>();
+		tilePositions[7] = GameObject.Find("Tile7").GetComponent<Transform>();
+		tilePositions[8] = GameObject.Find("Tile8").GetComponent<Transform>();
+		tilePositions[9] = GameObject.Find("Tile9").GetComponent<Transform>();
+		tilePositions[10] = GameObject.Find("Tile10").GetComponent<Transform>();
+		tilePositions[11] = GameObject.Find("Tile11").GetComponent<Transform>();
+		tilePositions[12] = GameObject.Find("Tile12").GetComponent<Transform>();
+		tilePositions[13] = GameObject.Find("Tile13").GetComponent<Transform>();
+		tilePositions[14] = GameObject.Find("Tile14").GetComponent<Transform>();
+		tilePositions[15] = GameObject.Find("Tile15").GetComponent<Transform>();
+		tilePositions[16] = GameObject.Find("Tile16").GetComponent<Transform>();
+		tilePositions[17] = GameObject.Find("Tile17").GetComponent<Transform>();
+	}
+	void TileSet2(){
+		tilePositions[0] = GameObject.Find("2Tile").GetComponent<Transform>();
+		tilePositions[1] = GameObject.Find("2Tile1").GetComponent<Transform>();
+		tilePositions[2] = GameObject.Find("2Tile2").GetComponent<Transform>();
+		tilePositions[3] = GameObject.Find("2Tile3").GetComponent<Transform>();
+		tilePositions[4] = GameObject.Find("2Tile4").GetComponent<Transform>();
+		tilePositions[5] = GameObject.Find("2Tile5").GetComponent<Transform>();
+		tilePositions[6] = GameObject.Find("2Tile6").GetComponent<Transform>();
+		tilePositions[7] = GameObject.Find("2Tile7").GetComponent<Transform>();
+		tilePositions[8] = GameObject.Find("2Tile8").GetComponent<Transform>();
+		tilePositions[9] = GameObject.Find("2Tile9").GetComponent<Transform>();
+		tilePositions[10] = GameObject.Find("2Tile10").GetComponent<Transform>();
+		tilePositions[11] = GameObject.Find("2Tile11").GetComponent<Transform>();
+		tilePositions[12] = GameObject.Find("2Tile12").GetComponent<Transform>();
+		tilePositions[13] = GameObject.Find("2Tile13").GetComponent<Transform>();
+		tilePositions[14] = GameObject.Find("2Tile14").GetComponent<Transform>();
+		tilePositions[15] = GameObject.Find("2Tile15").GetComponent<Transform>();
+		tilePositions[16] = GameObject.Find("2Tile16").GetComponent<Transform>();
+		tilePositions[17] = GameObject.Find("2Tile17").GetComponent<Transform>();
+	}
+	#endregion
+}

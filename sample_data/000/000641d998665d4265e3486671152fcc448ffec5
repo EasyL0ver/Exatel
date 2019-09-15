@@ -1,0 +1,23 @@
+#!/bin/bash
+# This code generates a launchAgent that will unhide the Library
+declare -xr cat="/bin/cat"
+declare -xr defaults="/usr/bin/defaults"
+declare -xr chown="/usr/sbin/chown"
+declare -xr chmod="/bin/chmod"
+declare -xr plutil="/usr/bin/plutil"
+
+declare -x IDENT_KEY="com.github.acidprime.showLibrary"
+declare -x LAUNCH_AGENT="/Library/LaunchAgents/$IDENT_KEY.plist"
+declare -xa PROGRAM_ARGS=(/bin/bash -c '/usr/bin/chflags nohidden /Users/$USER/Library')
+
+$defaults write "${LAUNCH_AGENT%%.plist}" Label "${IDENT_KEY:?}"
+$defaults write "${LAUNCH_AGENT%%.plist}" ProgramArguments -array "${PROGRAM_ARGS[@]}"
+$defaults write "${LAUNCH_AGENT%%.plist}" RunAtLoad -bool YES
+
+$plutil -convert xml1 "${LAUNCH_AGENT:?}"
+
+$chown 0:0 "${LAUNCH_AGENT:?}"
+$chmod 744 "${LAUNCH_AGENT:?}"
+
+$cat "${LAUNCH_AGENT:?}"
+$plutil "${LAUNCH_AGENT:?}"

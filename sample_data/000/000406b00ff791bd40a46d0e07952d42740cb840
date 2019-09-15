@@ -1,0 +1,81 @@
+FilteredList<Person> filteredData = new FilteredList<>(
+    data,
+    person -> data.indexOf(person) < 3
+);
+	
+import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.*;
+import javafx.collections.transformation.*;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+
+public class TableViewSample extends Application {
+
+    private static final int MAX_ITEMS = 3;
+
+    private final TableView<Person> table = new TableView<>();
+    private final ObservableList<Person> data =
+        FXCollections.observableArrayList(
+            new Person("Jacob", "Smith"),
+            new Person("Isabella", "Johnson"),
+            new Person("Ethan", "Williams"),
+            new Person("Emma", "Jones"),
+            new Person("Michael", "Brown")
+        );
+    FilteredList<Person> filteredData = new FilteredList<>(
+            data,
+            person -> data.indexOf(person) < MAX_ITEMS
+    );
+    SortedList<Person> sortedData = new SortedList<>(filteredData);
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) {
+        TableColumn<Person, String> firstNameCol = new TableColumn<>("First Name");
+        firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        table.getColumns().add(firstNameCol);
+
+        TableColumn<Person, String> lastNameCol = new TableColumn<>("Last Name");
+        lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        table.getColumns().add(lastNameCol);
+
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+
+        table.setItems(sortedData);
+
+        stage.setScene(new Scene(table));
+        stage.show();
+    }
+
+    public static class Person {
+        private final SimpleStringProperty firstName;
+        private final SimpleStringProperty lastName;
+
+        private Person(String firstName, String lastName) {
+            this.firstName = new SimpleStringProperty(firstName);
+            this.lastName = new SimpleStringProperty(lastName);
+        }
+
+        public String getFirstName() {
+            return firstName.get();
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName.set(firstName);
+        }
+
+        public String getLastName() {
+            return lastName.get();
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName.set(lastName);
+        }
+    }
+}

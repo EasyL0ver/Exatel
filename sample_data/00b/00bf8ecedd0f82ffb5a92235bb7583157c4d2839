@@ -1,0 +1,9 @@
+Execute this first, this gives you 30k texts per click (Under This Message)
+
+game:GetService("ReplicatedStorage").Events.EmojiEquip:FireServer(24)
+
+Second, use this 
+
+for i = 1, 2500 do ---feel free to change 2500 to any amount
+game:GetService("ReplicatedStorage").ToolEvents.CashEvent:FireServer()
+end

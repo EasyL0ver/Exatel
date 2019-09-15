@@ -1,0 +1,84 @@
+[19:56:11] [main/INFO] [LaunchWrapper]: Loading tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[19:56:11] [main/INFO] [LaunchWrapper]: Using primary tweak class name cpw.mods.fml.common.launcher.FMLServerTweaker
+[19:56:11] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.common.launcher.FMLServerTweaker
+[19:56:11] [main/INFO] [FML]: Forge Mod Loader version 7.99.40.1614 for Minecraft 1.7.10 loading
+[19:56:11] [main/INFO] [FML]: Java is Java HotSpot(TM) 64-Bit Server VM, version 1.8.0_171, running on Windows 10:amd64:10.0, installed at C:\Program Files (x86)\Java\jre minecraft
+[19:56:11] [main/WARN] [FML]: The coremod am2.preloader.AM2PreloaderContainer does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/INFO] [ArsMagica2]: Core initializing...stand back!  I'm going to try MAGIC!
+[19:56:12] [main/WARN] [FML]: The coremod cofh.asm.LoadingPlugin does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/WARN] [FML]: The coremod codechicken.core.launch.DepLoader does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/WARN] [FML]: The coremod invtweaks.forge.asm.FMLPlugin does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/WARN] [FML]: The coremod mekanism.common.asm.LoadingHook does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/WARN] [FML]: The coremod micdoodle8.mods.miccore.MicdoodlePlugin does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/INFO] [STDOUT]: [micdoodle8.mods.miccore.DepLoader$DepLoadInst:<init>:333]: MicdoodleCore searching for dependencies in mods file: C:\Users\Fernando Rivera\Desktop\1.7.10 Server\.\mods
+[19:56:12] [main/WARN] [FML]: The coremod openmods.core.OpenModsCorePlugin does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/WARN] [FML]: The coremod thaumcraft.codechicken.core.launch.DepLoader does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/WARN] [FML]: The coremod codechicken.core.launch.DepLoader does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/WARN] [FML]: The coremod thaumic.tinkerer.preloader.ThaumicTLoaderContainer does not have a MCVersion annotation, it may cause issues with this version of Minecraft
+[19:56:12] [main/INFO] [LaunchWrapper]: Loading tweak class name cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[19:56:12] [main/INFO] [LaunchWrapper]: Loading tweak class name cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[19:56:12] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[19:56:12] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.common.launcher.FMLInjectionAndSortingTweaker
+[19:56:12] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:13] [main/WARN] [FML]: Patcher expecting empty class data file for net.minecraft.client.gui.inventory.GuiContainer, but received non-empty
+[19:56:13] [main/INFO] [FML]: Found valid fingerprint for Minecraft Forge. Certificate fingerprint e3c3d50c7c986df74c645c0ac54639741c90a557
+[19:56:13] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:13] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:13] [main/ERROR] [LaunchWrapper]: A critical problem occurred registering the ASM transformer class am2.preloader.AccessTransformers
+java.lang.IllegalArgumentException: resource AM2_at.cfg not found.
+        at com.google.common.base.Preconditions.checkArgument(Preconditions.java:148) ~[guava-17.0.jar:?]
+        at com.google.common.io.Resources.getResource(Resources.java:229) ~[guava-17.0.jar:?]
+        at cpw.mods.fml.common.asm.transformers.AccessTransformer.readMapFile(AccessTransformer.java:118) ~[minecraft_server.jar:?]
+        at cpw.mods.fml.common.asm.transformers.AccessTransformer.<init>(AccessTransformer.java:101) ~[minecraft_server.jar:?]
+        at am2.preloader.AccessTransformers.<init>(AccessTransformers.java:10) ~[AccessTransformers.class:?]
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_171]
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source) ~[?:1.8.0_171]
+        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source) ~[?:1.8.0_171]
+        at java.lang.reflect.Constructor.newInstance(Unknown Source) ~[?:1.8.0_171]
+        at java.lang.Class.newInstance(Unknown Source) ~[?:1.8.0_171]
+        at net.minecraft.launchwrapper.LaunchClassLoader.registerTransformer(LaunchClassLoader.java:88) [launchwrapper-1.12.jar:?]
+        at cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper.injectIntoClassLoader(CoreModManager.java:108) [minecraft_server.jar:?]
+        at net.minecraft.launchwrapper.Launch.launch(Launch.java:115) [launchwrapper-1.12.jar:?]
+        at net.minecraft.launchwrapper.Launch.main(Launch.java:28) [launchwrapper-1.12.jar:?]
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_171]
+        at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_171]
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[?:1.8.0_171]
+        at java.lang.reflect.Method.invoke(Unknown Source) ~[?:1.8.0_171]
+        at cpw.mods.fml.relauncher.ServerLaunchWrapper.run(ServerLaunchWrapper.java:43) [minecraft_server.jar:?]
+        at cpw.mods.fml.relauncher.ServerLaunchWrapper.main(ServerLaunchWrapper.java:12) [minecraft_server.jar:?]
+[19:56:13] [main/INFO] [ArsMagica2]: Core: Located Thaumcraft in Thaumcraft-1.7.10-4.2.3.5.jar
+[19:56:13] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:13] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:13] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:13] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:13] [main/INFO] [STDOUT]: [micdoodle8.mods.miccore.MicdoodlePlugin:getASMTransformerClass:102]: Successfully Registered Transformer
+[19:56:14] [main/INFO] [STDOUT]: [micdoodle8.mods.miccore.MicdoodlePlugin:injectData:295]: [Micdoodle8Core]: Patching game...
+[19:56:14] [main/INFO] [STDOUT]: [micdoodle8.mods.miccore.MicdoodlePlugin:injectData:295]: [Micdoodle8Core]: Patching game...
+[19:56:14] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:14] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:14] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:14] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:14] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:14] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.common.launcher.FMLDeobfTweaker
+[19:56:14] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.relauncher.CoreModManager$FMLPluginWrapper
+[19:56:14] [main/INFO] [LaunchWrapper]: Loading tweak class name cpw.mods.fml.common.launcher.TerminalTweaker
+[19:56:14] [main/INFO] [LaunchWrapper]: Calling tweak class cpw.mods.fml.common.launcher.TerminalTweaker
+[19:56:14] [main/INFO] [ArsMagica2]: Core: Altering definition of net.minecraft.world.World,  (obfuscated)
+[19:56:14] [main/INFO] [STDOUT]: [micdoodle8.mods.miccore.MicdoodleTransformer:printLog:1992]: Galacticraft successfully injected bytecode into: ahb (1 / 1)
+[19:56:14] [main/INFO] [STDOUT]: [micdoodle8.mods.miccore.MicdoodleTransformer:printLog:1992]: Galacticraft successfully injected bytecode into: oi (4 / 4)
+[19:56:14] [main/INFO] [STDOUT]: [micdoodle8.mods.miccore.MicdoodleTransformer:printLog:1992]: Galacticraft successfully injected bytecode into: sv (1 / 1)
+[19:56:14] [main/INFO] [LaunchWrapper]: Launching wrapped minecraft {net.minecraft.server.MinecraftServer}
+[19:56:14] [main/INFO] [STDOUT]: [micdoodle8.mods.miccore.MicdoodleTransformer:printLog:1992]: Galacticraft successfully injected bytecode into: xk (1 / 1)
+[19:56:15] [main/INFO] [STDOUT]: [micdoodle8.mods.miccore.MicdoodleTransformer:printLog:1992]: Galacticraft successfully injected bytecode into: zc (1 / 1)
+[19:56:16] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[19:56:16] [Server thread/INFO] [MinecraftForge]: Attempting early MinecraftForge initialization
+[19:56:16] [Server thread/INFO] [FML]: MinecraftForge v10.13.4.1614 Initialized
+[19:56:16] [Server thread/INFO] [FML]: Replaced 183 ore recipies
+[19:56:16] [Server thread/INFO] [MinecraftForge]: Completed early MinecraftForge initialization
+[19:56:16] [Server thread/INFO] [ArsMagica2]: Core initializing...stand back!  I'm going to try MAGIC!
+[19:56:16] [Server thread/ERROR] [FML]: Unable to determine registrant mod for TooManyItems. This is a critical error and should be impossible
+java.lang.Throwable
+        at cpw.mods.fml.common.eventhandler.EventBus.register(EventBus.java:55) [EventBus.class:?]
+        at TMIForgeContainer.<init>(TMIForgeContainer.java:35) [TMIForgeContainer.class:?]
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) [?:1.8.0_171]
+        at

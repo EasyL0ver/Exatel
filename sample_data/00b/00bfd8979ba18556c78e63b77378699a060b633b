@@ -1,0 +1,128 @@
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_09vein_solid.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_10vein_shadow.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+D/droid/jni/v8helper.h( 3370): (69)js: ERROR!! Dragon Egg Hatch Timer returns NaN!!!
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_08vein_base.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_09vein_solid.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_10vein_shadow.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+D/jni/NgAndroidApp.cpp( 3370): (48)Finished v8 Garbage Collection (0.009s)
+D/droid/jni/v8helper.h( 3370): (69)js: ERROR!! Dragon Egg Hatch Timer returns NaN!!!
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_08vein_base.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_09vein_solid.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_10vein_shadow.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+D/droid/jni/v8helper.h( 3370): (69)js: ERROR!! Dragon Egg Hatch Timer returns NaN!!!
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_08vein_base.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_09vein_solid.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_10vein_shadow.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+D/droid/jni/v8helper.h( 3370): (69)js: ERROR!! Dragon Egg Hatch Timer returns NaN!!!
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_08vein_base.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_09vein_solid.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_10vein_shadow.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+D/droid/jni/v8helper.h( 3370): (69)js: ERROR!! Dragon Egg Hatch Timer returns NaN!!!
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_08vein_base.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_09vein_solid.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_10vein_shadow.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+D/droid/jni/v8helper.h( 3370): (69)js: ERROR!! Dragon Egg Hatch Timer returns NaN!!!
+D/jni/NgAndroidApp.cpp( 3370): (48)Finished v8 Garbage Collection (0.009s)
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_08vein_base.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_09vein_solid.png to GL
+D/GUtil/NGFileUtil.cpp( 3370): (528)Bit depth is 8 and color_type is 6
+D/GUtil/NGFileUtil.cpp( 3370): (560)update png info
+D/GUtil/NGFileUtil.cpp( 3370): (564)retrieve update png info
+D/GUtil/NGFileUtil.cpp( 3370): (572)Read png with w: 128 and h: 128
+W/Render/NGTexture.cpp( 3370): (64)s_uniqueIDs[0] = 0
+I/GUtil/NGFileUtil.cpp( 3370): (252)Loading file /mnt/sdcard/.ngmoco/9c95b5e76b5015ea41daae913477366c/./Content/lowres/manifest1/eggs/egg_10vein_shadow.png to

@@ -1,0 +1,4 @@
+<cfscript>
+    var a = 1;
+ writedump(valuelist(a));
+</cfscript>

@@ -1,0 +1,6 @@
+len(L,X):-len(L,X,0).
+len([],X,X):-!.
+len([_|T],X,A):-
+	L \== A,
+	A1 is A+1,
+	len(T,X,A1).

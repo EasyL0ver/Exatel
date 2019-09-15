@@ -1,0 +1,11 @@
+function buildUI(){
+    
+    // create new button and add it to the div.
+    let button = document.createElement('input');
+    button.type = "submit";
+    button.innerHTML= "submit"
+
+    button.addEventListener("click", logButton);
+
+    demoDiv.appendChild(button)
+}

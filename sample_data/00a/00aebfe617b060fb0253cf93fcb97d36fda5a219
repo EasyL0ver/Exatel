@@ -1,0 +1,4 @@
+compressQTree n t = anaQTree f (((depthQTree t) - n),t) where
+  f (0,(Block a b c d)) = i1 (nextC (Block a b c d),sizeQTree (Block a b c d))
+  f (n,(Block a b c d)) = i2 ((n-1,a),((n-1,b),((n-1,c),(n-1,d))))
+  f (_,(Cell a x y)) = i1 (a,(x,y))

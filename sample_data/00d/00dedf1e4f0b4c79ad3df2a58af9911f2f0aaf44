@@ -1,0 +1,32 @@
+Update table1 
+Set Tgt_col ='2'
+where col1 in (
+SELECT  ls.col1
+ FROM table1 ls 
+WHERE ls. Col2 ||ls. col3||ls.col22||To_Char(ls.time_col,'YYYYMMDD') IN (
+  SELECT  o1. Col2||o1. col3||o1. col22||To_Char(o1. time_col,'YYYYMMDD')
+  FROM table1 o1
+  INNER JOIN table1 o2 ON o1. Col2 = o2. Col2
+  WHERE o1. col3<> o2. col3
+  AND  Nvl(o1. col22, 'XX') = Nvl(o2. col22, 'XX')
+  AND To_Char(o1. time_col,'YYYYMMDD') = To_Char(o2. time_col,'YYYYMMDD')
+  AND o1.date_col = :A
+  AND o2. date_col = :A
+  AND o1.col10 = o2.col10
+  AND o1.col4 IN ('A','B','C')
+  AND o1.is_root=0 AND o1.is_leaf=1
+  AND o2. col4 IN ('A','B','C')
+  AND o2.is_root=0 AND o2.is_leaf=1
+  AND o1.col5 IN ('US','CA')
+  AND o2.col5 IN ('US','CA')
+GROUP BY o1. Col2||o1. col3||o1. col22||To_Char(o1. time_col,'YYYYMMDD')
+)
+AND ls. col4 IN ('A','B','C')
+AND ls.tgt_col IS NULL
+AND ls. date_col = :A
+AND ls.col5 IN ('US','CA')
+AND ls.ID1 IN (SELECT ID1 FROM table2 F
+                                          WHERE F.col6 IN (SELECT col6  FROM table3
+                                                               WHERE date_col =:A AND col7 = 1 )
+                                                                                                                AND F.col8 = '1')
+);

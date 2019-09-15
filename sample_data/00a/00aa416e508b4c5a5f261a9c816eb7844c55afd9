@@ -1,0 +1,412 @@
+/*
+    Napravite klasu Student s atributima koji označavaju godinu i razinu studija 
+	(npr. P za preddiplomski i D za diplomski).
+    U glavnom programu omogućiti korisniku unos godine i razine studija za dva objekta 
+	(npr. s1 i s2) te se ispisuje poruka koji je student na višoj godini studija.
+    Unos se ponavlja dok god korisnik ne odluči prekinuti 
+	(pitanje i odgovor implementirati po želji).
+*/
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class Student{
+
+    int god;
+    char razina;
+public:
+	Student(){}
+    void setGod(int god){
+		this->god=god;
+	}
+    int getGod(){
+		return this->god;
+	}
+    void setRazina(char razina){
+		this->razina=razina;
+	}
+    char getRazina(){
+		return this->razina;
+	}
+	~Student(){}
+};
+
+int main()
+{
+    Student *s1=new Student;
+    Student *s2=new Student;
+    int g;
+    char r;
+    char odg;
+
+    while(1){
+        cout<<"Unesite godinu i razinu (P-preddiplomski/D-diplomski) studija 1. studenta: \n";
+        cin>>g>>r;
+        s1->setGod(g);
+        r = toupper(r);
+        s1->setRazina(r);
+        cout<<"Unesite godinu i razinu studija 2. studenta: \n";
+        cin>>g>>r;
+        r = toupper(r);
+        s2->setGod(g);
+        s2->setRazina(r);
+        if(((s1->getRazina()=='D')&&(s2->getRazina()=='D'))||((s1->getRazina()=='P')&&(s2->getRazina()=='P'))){
+            if(s1->getGod()<s2->getGod()){
+                cout<<"Drugi student je na visoj godini.\n";
+            }
+            else if(s1->getGod()==s2->getGod()){
+                cout<<"Studenti su na istoj godini.\n";
+            }
+            else{
+                cout<<"Prvi student je na visoj godini.\n";
+            }
+        }
+        else if((s1->getRazina()=='D')&&(s2->getRazina()=='P')){
+            cout<<"Prvi student je na visoj godini.\n";
+        }
+        else if((s1->getRazina()=='P')&&(s2->getRazina()=='D')){
+            cout<<"Drugi student je na visoj godiin.\n";
+        }
+
+        cout<<"\nNovi unos? (d/n)\n";
+        cin>>odg;
+        if(odg=='n'||odg=='N') break;
+    }
+
+    delete s1;
+    delete s2;
+
+    return 0;
+}
+
+***************************************************************
+
+/*
+    Definirajte klasu Zaposlenik s atributima ID , pozicija te javnim atributom placa. 
+	Pretpostavljene vrijednosti atributa su redom 0, „pozicija“ i 3000,00.
+    Klasa sadrži virtualnu metodu povisica() koja postavlja placu na 3000,00. 
+	Klasu nasljeđuje podklasa Menadzer u kojoj metoda povisica() postavlja vrijednost 
+	atributa placa na 9000,00.
+    U glavnoj funkciji dinamički se definira niz Menadzera s pokazivačem na nadklasu.  
+	Podaci o zaposlenicima učitavaju se iz datoteke popis.txt 
+	(veličina niza = broj redaka u datoteci).
+    Prilikom učitavanja sadržaja datoteke provjerava pozicija zaposlenika i za poziciju 
+	„menadzer“ se postavlja placa kako je zadano u klasi Menadzer. 
+	Ispisati podatke o svim zaposlenicima.
+*/
+
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+class Zaposlenik
+{
+private:
+    int ID;
+    string pozicija;
+public:
+    double placa;
+        Zaposlenik()
+    {
+        ID=0;
+        pozicija="pozicija";
+        placa=3000.00;
+    }
+    void setID(int id){
+        ID=id;
+        }
+    int getID(){
+        return ID;
+        }
+    void setPozicija(string poz){
+        pozicija=poz;
+        }
+    string getPozicija(){
+        return pozicija;
+        }
+    virtual void povisica()    {
+        placa=3000.00;
+    }
+    ~Zaposlenik(){};
+};
+
+class Menadzer:public Zaposlenik{
+    void povisica()    {
+        placa=9000.00;
+    }
+};
+
+int main(){
+
+    const int vel=7;
+    Zaposlenik *m=new Menadzer[vel];
+
+    ifstream ulaz;
+    ulaz.open("popis.txt");
+    for(int i=0; i<vel; i++)
+    {
+        int id;
+        string poz;
+        ulaz>>id>>poz>>(m+i)->placa;
+        (m+i)->setID(id);
+        (m+i)->setPozicija(poz);
+
+        if((m+i)->getPozicija()=="menadzer")
+        {
+            (m+i)->povisica();
+        }
+    }
+    ulaz.close();
+
+    cout<<"ISPIS PODATAKA O ZAPOSLENICIMA: \n"<<endl;
+    for(int i=0; i<vel; i++)
+    {
+        cout<<i+1<<". ZAPOSLENIK: "<<endl;
+        cout<<"ID: "<<(m+i)->getID()<<endl;
+        cout<<"Pozicija: "<<(m+i)->getPozicija()<<endl;
+        cout<<"Placa: "<<(m+i)->placa<<endl;
+        cout<<"--------------------\n"<<endl;
+    }
+
+    delete []m;
+    m=NULL;
+
+    return 0;
+}
+
+
+***************************************************************
+
+/*
+    Definirati klasu Let s atributima brLeta i polazak 
+	(vrijeme polaska, javni atribut) gdje je brLeta pretpostavljen na 100, 
+	a polazak na 0.
+    Let ima metodu odgoda() koja ispisuje „Avion polijece prema rasporedu.“. 
+	Let nasljeđuju podklase Domaci i Inozemni. Domaci ima javni atribut 
+	prognoza koji poprima vrijednosti '+' i '-'.
+    U metodi odgoda() provjerava se stanje prognoze i ukoliko je '-' let se 
+	odgađa za sat vremena. Inozemni u metodi odgoda() traži korisnika da unese 
+	broj sati i polazak se odgađa toliki broj sati.
+    Objekti klasa su dinamički definirani. U glavnoj funkciji korisnik unosi 
+	broj domaćih i zatim broj inozemnih letova. Nakon toga unose se podaci 
+	o jednim i drugim letovima.
+    Na kraju se ispisuju podaci o letovima s ažuriranim satnicama polaska.
+*/
+
+#include <iostream>
+using namespace std;
+
+class Let{
+private:
+    int brLeta;
+public:
+    double polazak;
+    Let(){
+        polazak = 0.0;
+        brLeta = 100;
+    }
+    ~Let(){}
+
+    void odgoda(){
+        cout<<"Avion polijece prema rasporedu."<<endl;
+    }
+    void setBrLeta(double br){
+        brLeta = br;;
+    }
+    int getBrLeta(){
+        return brLeta;
+    }
+    void sati24(int od){
+        polazak += od;
+        if(polazak > 24.0)
+            polazak -= 24.0;
+    }
+};
+
+class Domaci : public Let{
+public:
+    char prognoza;
+    void odgoda(){
+        if (prognoza == '-'){
+            sati24(1);
+        }
+    }
+};
+
+class Inozemni : public Let{
+public:
+    void odgoda(){
+        double s;
+        cout<<"Unesi broj sati odgode: "<<endl;
+        cin>>s;
+        sati24(s);
+    }
+};
+
+int main(){
+    int br_d, br_i;
+    double b;
+
+    cout<<"Unesi broj domacih letova i zatim broj inozemnih: "<<endl;
+    cin>>br_d>>br_i;
+
+    Domaci *d = new Domaci[br_d];
+    Inozemni *in = new Inozemni[br_i];
+
+    cout<<"Domaci: "<<endl;
+    for(int i=0; i<br_d; i++){
+        cout<<"Broj domaceg leta: ";
+        cin>>b;
+        (d+i)->setBrLeta(b);
+        cout<<"Polazak domaceg leta: "<<endl;
+        cin>>(d+i)->polazak;
+        cout<<"Prognoza (+ ili -):"<<endl;
+        cin>>(d+i)->prognoza;
+    }
+
+    cout<<"Inozemni: "<<endl;
+    for(int i=0; i<br_i; i++){
+        cout<<"Broj leta: ";
+        cin>>b;
+        (in+i)->setBrLeta(b);
+        cout<<"Polazak leta: "<<endl;
+        cin>>(in+i)->polazak;
+        (in+i)->odgoda();
+    }
+
+    cout<<"\nPodaci - domaci letovi: "<<endl;
+    for(int i=0; i<br_d; i++){
+        cout<<"Broj leta: "<<(d+i)->getBrLeta()<<endl;
+        cout<<"Planirani polazak leta: "<<(d+i)->polazak<<endl;
+        cout<<"Prognoza:"<<(d+i)->prognoza<<endl;
+        if((d+i)->prognoza == '-'){
+            (d+i)->odgoda();
+            cout<<"Ocekivani polazak leta: "<<(d+i)->polazak<<endl;
+        }
+    }
+
+    cout<<"\nPodaci - inozemni letovi: "<<endl;
+    for(int i=0; i<br_i; i++){
+        cout<<"Broj leta: "<<(in+i)->getBrLeta()<<endl;
+        cout<<"Polazak leta: "<<(in+i)->polazak<<endl;
+
+    }
+
+    delete d, in;
+
+    return 0;
+
+}
+
+
+***************************************************************
+
+/*
+    Definirajte klasu Mreza s atributima pozivni i naziv. U glavnoj funkciji 
+	u dinamički niz objekata klase Mreza učitavaju se podaci iz datoteke mreze.txt.
+    Korisnik unosi svoj broj mobitela iz kojeg se iščitaju znamenke značajne 
+	za identifikaciju mreže te se na ekran ispisuje mreža za uneseni broj.
+*/
+
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <cstring>
+using namespace std;
+
+const int VEL = 8;
+
+class Mreza{
+public:
+    string naziv;
+    string pozivni;
+    Mreza(){}
+    ~Mreza(){}
+};
+
+int main(){
+
+    string p;
+    Mreza *m = new Mreza[VEL];
+
+    ifstream ulaz;
+    ulaz.open("mreze.txt");
+
+    if (!ulaz.is_open()){
+        cout<<"Greska : ne mogu otvoriti datoteku!"<<endl;
+        exit(1);
+    }
+
+    for (int i=0; i<VEL; i++){
+        ulaz>>(m+i)->pozivni;
+        ulaz>>(m+i)->naziv;
+    }
+
+    for (int i=0; i<VEL; i++){
+        cout<<(m+i)->pozivni<<" "<<(m+i)->naziv<<endl;
+    }
+
+    string br, poz;
+    cout<<"Unesite broj mobitela: "<<endl;
+    cin>>br;
+
+    for (int i=0; i<VEL; i++){
+        if((m+i)->pozivni == (br.substr(0,3))){
+            cout<<"Vasa mreza je: "<<(m+i)->naziv<<endl;
+            break;
+        }
+    }
+
+
+    return 0;
+}
+
+
+
+
+***************************************************************
+
+/* .....................................GRUPA A...................
+Definirati klasu Knjižica koja sadrži javni atribut broj knjižnice. 
+Definirati klasu Doktor koja sadrži privatni atribut ime, 
+te javne atribute oib i knjižica. 
+U glavnom porgramu korisnik unosi broj doktora za koje želi unositi podatke, 
+zatim popunjava podatke za sve doktore .
+
+#include<iostream>
+#include<string>
+using namespace std;
+class Knjizica{
+public:
+	int *gz;
+	Knjizica(){ gz = new int; }
+	~Knjizica(){ delete gz; }
+};
+class Doktor {
+private:
+	string *puno_ime;
+public:
+	void setime(){
+		cout << "ime doktora: ";
+		cin.sync(); cin.clear(); getline(cin,*puno_ime);
+	}
+	string getime(){
+		return *puno_ime;
+	}
+	int *oib;
+	Knjizica *radna;
+	Doktor(){
+		puno_ime = new string;
+		oib = new int;
+		radna = new Knjizica;
+	}
+	~Doktor(){
+		delete puno_ime;
+		delete oib;
+		delete radna;
+	}
+};
+int main(){
+	int *brd;
+	brd

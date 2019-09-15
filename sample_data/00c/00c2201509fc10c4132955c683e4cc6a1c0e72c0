@@ -1,0 +1,13 @@
+} else {
+                            if (s_logger.isDebugEnabled()) {
+                                s_logger.info("The guru did not like the answers so stopping " + vm);
+                            }
+                           
+                            StopCommand cmd = new StopCommand(vm.getInstanceName());
+                            StopAnswer answer = (StopAnswer) _agentMgr.easySend(destHostId, cmd);
+                            if (answer == null || !answer.getResult()) {
+                                s_logger.warn("Unable to stop " + vm + " due to " + (answer != null ? answer.getDetails() : "no answers")); 
+                                _haMgr.scheduleStop(vm, destHostId, WorkType.ForceStop);
+                                throw new ExecutionException("Unable to stop " + vm + " so we are unable to retry the start operation");
+                            }
+                            throw new ExecutionException("Unable to start " + vm + " due to error in finalizeStart, not retrying");

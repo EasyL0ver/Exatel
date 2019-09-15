@@ -1,0 +1,52 @@
+function playPause() { 
+
+mediaPlayer = document.getElementById('media-video');
+
+if (mediaPlayer.paused) 
+  mediaPlayer.play(); 
+$('.play-btn').hide();
+else 
+  mediaPlayer.pause(); 
+$('.pause-btn').hide();
+
+}
+	
+function playPause() {
+    var mediaPlayer = document.getElementById('media-video');
+    if (mediaPlayer.paused) {
+        mediaPlayer.play(); 
+        $('.pause-btn').show();
+        $('.play-btn').hide();
+    } else {
+        mediaPlayer.pause(); 
+        $('.play-btn').show();
+        $('.pause-btn').hide();
+    }
+}
+	
+function togglePlayPause() {
+// If the mediaPlayer is currently paused or has ended
+if (mediaPlayer.paused || mediaPlayer.ended) {
+    // Change the button to be a pause button
+    changeButtonType(playPauseBtn, 'pause');
+    // Play the media
+    mediaPlayer.play();
+}
+// Otherwise it must currently be playing
+else {
+    // Change the button to be a play button
+    changeButtonType(playPauseBtn, 'play');
+    // Pause the media
+    mediaPlayer.pause();
+}}
+	
+/* in Jquery*/
+
+$('#play-pause-button').click(function () { 
+   if ($("#media-video").get(0).paused) {
+        $("#media-video").get(0).play(); 
+     } 
+   else {
+        $("#media-video").get(0).pause(); 
+    }
+});

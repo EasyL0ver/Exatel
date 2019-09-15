@@ -1,0 +1,9 @@
+	//wywołanie animacji
+if (isServer) then { [[ZiomekKtóregoAnimujesz,"SIT2","ASIS"],BIS_fnc_ambientAnim ] remoteExec ["call"] };
+sleep 5;
+	//ustawienie tego czegoś w konkretnym miejscu, na te miejsce możesz dać jakiś niewidzialny przedmiot, który posłuży jako miejsce teleportu
+ZiomekKtóregoAnimujesz setPos (getPos NazwaSzmaty);
+sleep 5;
+	//ustawienie ziomka, by patrzył w konkretnym kierunku, jeżeli jest to gracz to drugą linikę można usunąć
+ZiomekKtóregoAnimujesz setDir 30;
+ZiomekKtóregoAnimujesz setFormDir 30;

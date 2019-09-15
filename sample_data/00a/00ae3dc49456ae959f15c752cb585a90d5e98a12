@@ -1,0 +1,58 @@
+
+<html>                                                                  
+<head>                                                                
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+<style type="text/css">
+#menu
+{
+border:1px solid black; 
+color:white;
+width:178px;
+padding:6px;
+margin:0px;
+background-color:#006064;
+font-size:1.1em;
+}
+#list
+{
+border-bottom:4px solid;
+width:192px;
+list-style-type:none;
+margin:0px;
+padding:0px;
+font-size:1.1em;
+}
+#list li
+{
+padding:6px;
+border-bottom-style:solid;
+border-bottom-color:white;
+border-width:1px;
+background-color:#ffd273;
+}
+#img
+{
+margin:0px;
+}
+</style>
+
+<script type="text/javascript">   
+$(document).ready(function(){
+
+  
+
+});                           
+</script>                                                      
+</head>
+<body>
+<p>Щелкните на заголовок "выбрать язык" для того, чтобы свернуть или развернуть меню.</p>
+<p id="menu">Выбрать язык  <img id="img" src="menuup.gif" width="7px" height="7px" />
+<ul id="list">
+<li>Английский язык</li>
+<li>Русский язык</li>
+<li>Франзузский язык</li>
+<li>Испанский язык</li>
+<li>Немецкий язык</li>
+</ul>
+</body>
+</html>

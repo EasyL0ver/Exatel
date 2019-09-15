@@ -1,0 +1,12 @@
+declare  
+     TYPE t_my_list is record(COL1 VARCHAR2(4000),COL2 VARCHAR2(4000));
+     TYPE list_3STR is table of t_my_list;
+     v_ret     list_3STR := list_3STR();
+ begin
+     null;
+ end;
+	
+create or replace type ListOfParam as table of 
+(COL1 VARCHAR2(4000),COL2 VARCHAR2(4000), COL3 VARCHAR2(4000));
+	
+Error(1,30): PLS-00103

@@ -1,0 +1,8 @@
+C# string to DateTime conversion [closed]
+20120104073010.221-0700
+	
+"yyyyMMddHHmmss.fffK"
+
+DateTime dt = DateTime.ParseExact("20120104073010.221-0700", 
+                                  "yyyyMMddHHmmss.fffK",
+                                  CultureInfo.InvariantCulture);

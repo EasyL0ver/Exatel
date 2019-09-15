@@ -1,0 +1,6 @@
+http://www.extradrm.com/?p=2673
+
+
+
+
+INSERT INTO `users` ( User , Password , Uid , Gid , Dir, Quotasize,ULBandwidth, DLBandwidth) VALUES ('sampleuser', MD5( 'viva_php' ) , '2001', '2001', "/var/ftp/users/sampleuser", "250", "0", "0")

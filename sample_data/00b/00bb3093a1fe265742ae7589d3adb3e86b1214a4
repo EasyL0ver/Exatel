@@ -1,0 +1,16 @@
+<v-card-title class="damage-item">
+        <div
+          v-for="(component, i) in components.filter(comp => comp.form.checkbox.some(i => i.value))"
+          :key="'component-' + i"
+          class="item"
+        >
+          <h3>{{ component.name }}</h3>
+          <img v-for="photo in component.form.photos.filter(i => i.url)" :src="photo.url" class="mx-2" style="max-width: 150px; height: auto;" />
+          <br>
+          <v-card v-for="checkbox in component.form.checkbox.filter(i => i.value)"
+                  :key="checkbox.name"
+                  class="elevation-1 my-3 mx-2 d-inline-block">
+              <v-card-text class="py-2">
+                {{ checkbox.name }}
+              </v-card-text>
+          </v-card>

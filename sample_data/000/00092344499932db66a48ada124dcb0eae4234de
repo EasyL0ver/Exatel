@@ -1,0 +1,2 @@
+command /timecowreport [<player>]:
+	server console command "/scoreboard players set %arg 1% report 1":

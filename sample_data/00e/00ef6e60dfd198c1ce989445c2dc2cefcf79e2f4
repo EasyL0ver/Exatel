@@ -1,0 +1,63 @@
+# file: __init__.py
+# -*- coding: utf-8 -*-
+import os, sys
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_bootstrap import Bootstrap
+
+# Flask SQLAlchemy
+db = SQLAlchemy()
+
+# Flask-Login
+login_manager = LoginManager()
+
+# Flask Bootstrap
+bootstrap = Bootstrap()
+
+def create_app(config=None):
+    # Flask Instance 
+    app = Flask(__name__)
+
+    # Load config file
+    app.config.from_object(config)
+    
+    # Initialize Flask Extensions
+    initialize_extensions(app)
+    
+    # Registers Blueprint
+    register_blueprints(app)
+
+    return app
+
+def initialize_extensions(app):
+    # Flask-SQLAlchemy
+    db.init_app(app)
+    
+    # Flask-Login
+    login_manager.init_app(app)
+
+    # Flask-Bootstrap
+    bootstrap.init_app(app)
+
+def register_blueprints(app):
+    # Auth Module
+    from app.auth.views import auth
+    app.register_blueprint(auth, url_prefix='/')
+
+
+# file: run.py
+from app import db, create_app
+
+app = create_app('config.DevelopmentConfig')
+app.app_context().push()
+
+# Drop Tables
+db.reflect()
+db.drop_all()
+
+if __name__ == '__main__':
+    app.run(
+        host = '127.0.0.1',
+        port = 5000
+    )

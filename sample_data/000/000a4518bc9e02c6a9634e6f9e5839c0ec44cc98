@@ -1,0 +1,6 @@
+Running Ubuntu 9.04
+
+jdunphy@jdunphy-dev ~/_git/sso_server(clean-up) ∆ $ host yppublicdc01.yppublic.local
+yppublicdc01.yppublic.local has address 10.1.34.33
+jdunphy@jdunphy-dev ~/_git/sso_server(clean-up) ∆ $ ping yppublicdc01.yppublic.local
+ping: unknown host yppublicdc01.yppublic.local

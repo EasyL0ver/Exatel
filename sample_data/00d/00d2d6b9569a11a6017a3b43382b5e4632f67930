@@ -1,0 +1,31 @@
+<?php
+class User {
+
+	protected $_data = array();
+	
+    public function __get($key) {
+        if (array_key_exists($key, $this->_data))
+        {
+            return $this->_data[$key];
+        }
+        else
+
+            return null;
+    }
+    public function __set($key, $value) {
+        $this->_data[$key] = $value;
+    }
+    public function __construct($name = '') {
+		$sql = $db->query( "SELECT * FROM " . PREFIX . "_users where name = '$name' LIMIT 1" );		
+		$this->_data = $db->get_row($sql);
+    }
+}
+
+// Это как использовать этот класс
+
+   $user = new User('tamerlan'); 
+   
+   $tpl->load_template( 'user.tpl' );
+   $tpl->set ( '{name}', $user->name);
+   $tpl->set ( '{icq}', $user->icq);
+   $tpl->compile( 'content' );

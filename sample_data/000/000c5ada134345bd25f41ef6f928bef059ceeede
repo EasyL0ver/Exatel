@@ -1,0 +1,53 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+#include <stdlib.h>
+ 
+int main ()
+{
+    int ran, n;
+    srand(time(NULL));
+    printf("\nPodaj rozmiar tablicy");
+    scanf("%d", &n);
+    int*T;
+    T=malloc(n* sizeof(*T));
+    
+    int x=2*n;
+    
+    
+    for(int j=0; j<n; j++)
+    {
+        T[j]=rand()%100;
+    }
+  
+    
+    
+    for(int i=0; i<n; i++)
+    {
+        printf(" %d", T[i]);
+    }
+   
+   
+   T=realloc(T,x*sizeof(*T));
+      
+     while(n<x)
+    {
+        T[n]=0;
+        n++;
+    }
+    
+    
+      for(int m=0; m<x; m++)
+    {
+        printf(" %d", T[m]);
+    }
+   
+    
+    return 0;
+}

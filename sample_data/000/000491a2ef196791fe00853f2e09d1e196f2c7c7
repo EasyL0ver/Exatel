@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ps aux | grep "[0-9] ssh -qTfNn -D 7070"

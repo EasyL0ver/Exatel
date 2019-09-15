@@ -1,0 +1,64 @@
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.classic.util.LevelToSyslogSeverity;
+import ch.qos.logback.core.AppenderBase;
+import ch.qos.logback.core.encoder.Encoder;
+import org.productivity.java.syslog4j.SyslogConfigIF;
+import org.productivity.java.syslog4j.SyslogIF;
+import org.productivity.java.syslog4j.SyslogRuntimeException;
+
+public class SyslogAppender<E extends ILoggingEvent> extends AppenderBase<E> {
+    private SyslogIF syslog;
+    private SyslogConfigIF syslogConfig;
+    private Encoder<E> encoder;
+
+    @Override
+    protected void append(E eventObject) {
+        syslog.log(LevelToSyslogSeverity.convert(eventObject), new String(encoder.encode(eventObject)));
+    }
+
+    @Override
+    public void start() {
+        super.start();
+
+        try {
+            syslog = (SyslogIF) syslogConfig.getSyslogClass().newInstance();
+
+            syslog.initialize(syslog.getClass().getSimpleName(), syslogConfig);
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new SyslogRuntimeException(e);
+        }
+    }
+
+    @Override
+    public void stop() {
+        super.stop();
+
+        if (syslog != null) {
+            syslog.shutdown();
+        }
+    }
+
+    public SyslogIF getSyslog() {
+        return syslog;
+    }
+
+    public void setSyslog(SyslogIF syslog) {
+        this.syslog = syslog;
+    }
+
+    public SyslogConfigIF getSyslogConfig() {
+        return syslogConfig;
+    }
+
+    public void setSyslogConfig(SyslogConfigIF syslogConfig) {
+        this.syslogConfig = syslogConfig;
+    }
+
+    public Encoder<E> getEncoder() {
+        return encoder;
+    }
+
+    public void setEncoder(Encoder<E> encoder) {
+        this.encoder = encoder;
+    }
+}

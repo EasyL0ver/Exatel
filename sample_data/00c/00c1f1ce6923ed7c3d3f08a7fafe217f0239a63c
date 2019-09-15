@@ -1,0 +1,90 @@
+## examples/config.ru [ruby]
+require File.join(File.dirname(__FILE__), 'example_app')
+
+map "/sinatra" do
+  run SinatraApp
+end
+
+map "/restroutes" do
+  run RestRoutesApp
+end
+
+## examples/example_app.rb [ruby]
+require 'rubygems'
+require File.join(File.dirname(__FILE__), '..', 'lego')
+
+module NiftyHelpers
+  def my_nifty_helper(string)
+    "My nifty helper called with: #{string}"
+  end
+end
+
+module Sinatra
+  def application_helpers(&block)
+    context.evaluate(&block)
+  end
+
+  def get(path, &block)
+    routes.add :get, path, &block
+  end
+end
+
+module RestRoutes
+  def application_helpers(&block)
+    context.evaluate(&block)
+  end
+
+  def index(&block)
+    routes.add :get, '/', &block
+  end
+
+  def show(&block)
+    routes.add :get, 'show/:id', &block
+  end
+end
+
+Lego::Pieces.register :helper,     NiftyHelpers
+Lego::Pieces.register :controller, Sinatra
+Lego::Pieces.register :controller, RestRoutes
+
+class MyStupidMiddleware
+  def initialize(app, options = {})
+    @app = app
+  end
+
+  def call(env)
+    status, headers, body = @app.call(env)
+    new_body = "Stupid... "
+    body.each { |str| new_body << str }
+    new_body << " ...Middleware"
+    
+    headers['Content-Length'] = new_body.length.to_s
+
+    [status, headers, new_body]
+  end
+end
+
+class SinatraApp < Lego::Application
+  controller  :sinatra
+  helpers     :nifty_helpers
+
+  use MyStupidMiddleware
+
+  application_helpers do
+    def escape_html(content)
+      Rack::Utils::escape_html(content)
+    end
+  end
+
+  get "/" do
+    my_nifty_helper "/ calling..."
+  end
+end
+
+class RestRoutesApp < Lego::Application
+  controller :rest_routes
+
+  index do
+    "this is the index calling"
+  end
+end

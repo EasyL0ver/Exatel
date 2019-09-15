@@ -1,0 +1,325 @@
+ Dungeon Crawl Stone Soup version 0.22-a0-757-gdba82d8 (webtiles) character file.
+
+Ultraviolent4 the Basher (Mummy Berserker)          Turns: 9056, Time: 00:47:51
+
+Health: 73/73      AC:  8    Str: 29    XL:     9   Next: 19%
+Magic:  9/9        EV: 12    Int:  7    God:    Trog [***...]
+Gold:   274        SH:  0    Dex: 11    Spells: 8/8 levels left
+
+rFire    x . .     SeeInvis .   a - +3 flail (protect)
+rCold    + . .     Gourm    .   (no shield)
+rNeg     + + +     Faith    .   n - +3 leather armour {rPois}
+rPois    ∞         Spirit   .   r - +0 hat
+rElec    .         Reflect  .   e - +0 cloak
+rCorr    .         Harm     .   c - +0 pair of gloves
+MR       +....                  (no boots)
+Stlth    +.........             (no amulet)
+HPRegen  0.22/turn              l - +6 ring of strength
+MPRegen  0.11/turn              (no ring)
+
+@: no status effects
+A: no food or potions, fire vulnerability, cold resistance 1, negative energy
+resistance 3, torment resistance, unbreathing
+a: Trog's Hand, Renounce Religion
+
+
+You are on level 7 of the Dungeon.
+You worship Trog.
+Trog is most pleased with you.
+You are not hungry.
+
+You have visited 2 branches of the dungeon, and seen 8 of its levels.
+
+You have collected 274 gold pieces.
+
+Inventory:
+
+Hand Weapons
+ a - a +3 flail of protection (weapon)
+   (You took it off an orc on level 3 of the Dungeon)
+ b - a +0 fustibalus
+   (You found it on level 6 of the Dungeon)
+ k - a +0 mace
+ o - a +0 lajatang
+   (You found it on level 5 of the Dungeon)
+ s - a +0 hunting sling
+   (You found it on level 4 of the Dungeon)
+ v - a +2 short sword of draining
+   (You found it on level 1 of the Dungeon)
+Missiles
+ g - 136 stones (quivered)
+ m - 16 sling bullets
+Armour
+ c - a +0 pair of gloves (worn)
+   (You found it on level 3 of the Dungeon)
+ e - a +0 cloak (worn)
+   (You found it on level 1 of the Dungeon)
+ n - a +3 leather armour of poison resistance (worn)
+   (You took it off an orc priest on level 4 of the Dungeon)
+ r - a +0 hat (worn)
+   (You found it on level 5 of the Dungeon)
+ M - a +0 chain mail
+   (You took it off an orc on level 3 of the Dungeon)
+Jewellery
+ l - a +6 ring of strength (left hand)
+   (You took it off an orc on level 3 of the Dungeon)
+Wands
+ d - a wand of iceblast (9)
+   (You found it on level 6 of the Dungeon)
+ t - a wand of flame (13)
+   (You found it on level 5 of the Dungeon)
+Scrolls
+ f - a scroll of fear
+ h - 4 scrolls of teleportation {@r4}
+ i - 6 scrolls of remove curse {@r2}
+ p - a scroll of enchant armour
+ q - a scroll of fog
+ u - a scroll of magic mapping
+ w - a scroll of enchant weapon
+
+
+   Skills:
+ + Level 7.7 Fighting
+ * Level 8.9 Maces & Flails
+ - Level 1.5 Armour
+ - Level 1.5 Dodging
+
+
+You have 8 spell levels left.
+You don't know any spells.
+Your spell library is empty.
+
+Dungeon Overview and Level Annotations
+
+Branches:
+Dungeon (7/15)             Temple (1/1) D:6         
+
+Altars:
+Ashenzari
+Cheibriados
+Dithmenos
+Elyvilon
+Fedhas
+Gozag
+Kikubaaqudgha
+Makhleb
+Nemelex Xobeh
+Okawaru
+Qazlal
+Ru
+Sif Muna
+Trog
+Uskayaw
+Vehumet
+Wu Jian
+Yredelemnul
+Zin
+The Shining One
+Beogh
+
+Shops:
+D:4 :
+
+Annotations:
+D:1 exclusion: downstairs
+D:2 exclusions: downstairs and goblin
+D:3 exclusion: downstairs
+
+
+Innate Abilities, Weirdness & Mutations
+
+You do not eat or drink.
+Your flesh is vulnerable to fire.
+You are immune to poison.
+Your flesh is cold resistant. (rC+)
+You are immune to negative energy. (rN+++)
+You are immune to unholy pain and torment.
+You can survive without breathing.
+
+
+Message History
+
+The puff of flame hits the ice beast. The ice beast misses you.
+Aim: an ice beast (lightly wounded)
+The puff of flame hits the ice beast. The ice beast melts!
+The ice beast closely misses you.
+Okay, then.
+You hit the ice beast.
+Your weapon exudes an aura of protection.
+The ice beast hits you but does no damage.
+You hit the ice beast but do no damage. The ice beast barely misses you.
+You sock the ice beast!
+You kill the ice beast!
+Trog accepts your kill.
+i - 6 scrolls of remove curse {@r2} (gained 1)
+Done exploring.
+There is a stone staircase leading down here.
+You climb downwards.
+Found an escape hatch in the ceiling. Found a stone staircase leading down.
+There is a stone staircase leading up here.
+There is an escape hatch in the ceiling here.
+Really go through this one-way escape hatch? 
+A mysterious force pulls you upwards. The hatch slams shut behind you.
+Unknown command.
+There is an escape hatch in the ceiling here.
+There is a stone staircase leading up here.
+You climb upwards.
+Level annotation: exclusion: downstairs
+There is a stone staircase leading down here.
+Done exploring.
+Done exploring.
+Done exploring.
+There is a stone staircase leading down here.
+You climb downwards.
+There is a stone staircase leading up here.
+Done exploring.
+Done exploring.
+There is a stone staircase leading down here.
+You climb downwards.
+A bullfrog comes into view.
+The bullfrog hits you.
+Found 7 gold pieces.
+There is a stone staircase leading up here.
+You closely miss the bullfrog. The bullfrog hits you.
+You sock the bullfrog!
+Your weapon exudes an aura of protection.
+The bullfrog closely misses you. The bullfrog misses you.
+You hit the bullfrog.
+You kill the bullfrog!
+Trog accepts your kill.
+You start resting.
+Saving game... please wait.
+
+......#.#
+......#.#
+.........
+.........
+...$....#
+  ......###
+    #..†..#
+    #..@#
+    #.#.#
+    # #.#
+      #..
+      ...
+      ....
+      ....
+     .#....
+
+
+There are no monsters in sight!
+
+Vanquished Creatures
+  The ghost of Thormy the Shield-Bearer, a novice GrFi of Qazlal (D:5)
+  Grinder (D:3)
+  3 sky beasts
+  An ice beast (D:6)
+  4 ogres
+  3 bullfrogs
+  A scorpion (D:5)
+  3 wights (D:5)
+  A crimson imp (D:5)
+  2 bullfrog zombies
+  2 centaur skeletons
+  A centaur zombie (D:4)
+  A hound (D:3)
+  3 orc priests
+  Jessica (D:2)
+  An iguana (D:3)
+  3 orc wizards
+  5 worker ants
+  A worker ant zombie (D:6)
+  11 adders
+  2 howler monkey skeletons
+  A shadow imp (D:6)
+  4 worms
+  2 dart slugs
+  3 leopard geckos
+  26 orcs
+  A ball python (D:2)
+  3 bats
+  6 giant cockroaches
+  6 hobgoblins
+  2 jackals (D:6)
+  5 quokkas
+  A ball python skeleton (D:5)
+  8 frilled lizards
+  9 goblins
+  6 kobolds
+  A leopard gecko skeleton (D:4)
+  A leopard gecko zombie (D:5)
+  A quokka zombie (D:3)
+  7 rats
+  A withered plant (D:6)
+145 creatures vanquished.
+
+Notes
+Turn   | Place    | Note
+-------+----------+-------------------------------------------
+     0 | D:1      | Ultraviolent4 the Mummy Berserker began the quest for the Orb.
+     0 | D:1      | Reached XP level 1. HP: 18/18 MP: 1/1
+   599 | D:1      | Reached XP level 2. HP: 24/24 MP: 2/2
+   932 | D:1      | Reached skill level 3 in Maces & Flails
+  1152 | D:2      | Noticed Jessica
+  1346 | D:2      | Reached ** piety under Trog
+  1520 | D:2      | Reached XP level 3. HP: 22/29 MP: 3/3
+  1903 | D:2      | Killed Jessica
+  2031 | D:2      | Reached XP level 4. HP: 37/37 MP: 4/4
+  3078 | D:3      | Noticed Grinder
+  3159 | D:3      | Reached skill level 4 in Maces & Flails
+  3606 | D:3      | Reached XP level 5. HP: 42/42 MP: 5/5
+  3756 | D:3      | Killed Grinder
+  3756 | D:3      | Reached skill level 5 in Maces & Flails
+  3756 | D:3      | Reached XP level 6. HP: 49/49 MP: 6/6
+  4577 | D:4      | Reached skill level 5 in Fighting
+  4677 | D:4      | Found Jeost's Book Shop.
+  4946 | D:4      | Reached XP level 7. HP: 51/56 MP: 7/7
+  5910 | D:5      | Entered Level 5 of the Dungeon
+  6063 | D:5      | Found an ornate altar of the Wu Jian Council.
+  6063 | D:5      | Found a blossoming altar of Fedhas.
+  6201 | D:5      | Reached skill level 6 in Maces & Flails
+  6704 | D:4      | Reached XP level 8. HP: 40/64 MP: 8/8
+  6985 | D:5      | Found a runed gate.
+  6986 | D:5      | Found a runed gate.
+  6988 | D:5      | Noticed Thormy's ghost (novice GrFi)
+  6997 | D:5      | Found a runed gate.
+  7085 | D:5      | Found a stormy altar of Qazlal.
+  7099 | D:5      | Reached skill level 7 in Maces & Flails
+  7164 | D:5      | Reached *** piety under Trog
+  7453 | D:5      | Found a roughly hewn altar of Beogh.
+  7534 | D:5      | Killed Thormy's ghost
+  7826 | D:6      | Reached skill level 8 in Maces & Flails
+  8298 | D:6      | Reached XP level 9. HP: 64/72 MP: 9/9
+  8335 | D:6      | Found an ancient bone altar of Kikubaaqudgha.
+  8541 | D:6      | Found a staircase to the Ecumenical Temple.
+  8556 | Temple   | Entered the Ecumenical Temple
+
+Skill      XL: |  1  2  3  4  5  6  7  8 |
+---------------+-------------------------+-----
+Maces & Flails |     3     4  5     6  8 |  8.9
+Fighting       |           4     5  6  7 |  7.7
+Armour         |                         |  1.5
+Dodging        |                         |  1.5
+
+Action                   |  1- 3 |  4- 6 |  7- 9 || total
+-------------------------+-------+-------+-------++-------
+Melee: Mace              |   100 |   162 |       ||   262
+       Flail             |       |    58 |   213 ||   271
+ Fire: Hunting sling     |       |     5 |    28 ||    33
+       Fustibalus        |       |       |    25 ||    25
+Throw: Stone             |    24 |     8 |       ||    32
+Invok: Trog's Hand       |       |     6 |     2 ||     8
+Evoke: Wand              |       |       |    24 ||    24
+  Use: Scroll            |       |     3 |     7 ||    10
+ Stab: Sleeping          |       |     1 |       ||     1
+Armor: Animal skin       |    22 |    11 |       ||    33
+       Chain mail        |       |    57 |       ||    57
+       Ring mail         |       |     9 |       ||     9
+       Leather armour    |       |     1 |    76 ||    77
+Dodge: Dodged            |    72 |   119 |   110 ||   301
+
+Table legend:
+ A = Spawn XP
+ B = Non-spawn XP
+ C = Spawn XP percentage of total XP
+ D = Spawn

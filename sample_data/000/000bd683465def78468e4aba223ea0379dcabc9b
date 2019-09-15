@@ -1,0 +1,25 @@
+Maven project design - sharing a common project
+<plugins>
+  ...
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <executions>
+      <execution>
+        <id>test-jar</id>
+        <goals>
+          <goal>test-jar</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+  ...
+</plugins>
+	
+<dependency>
+  <groupId>common.group.id</groupId>
+  <artifactId>Common</artifactId>
+  <version>1.0</version>
+  <classifier>tests</classifier>
+  <scope>test</scope>
+</dependency>

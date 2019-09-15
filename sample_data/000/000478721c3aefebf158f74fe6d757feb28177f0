@@ -1,0 +1,18 @@
+# Read in the input
+a,b,c = map(int, input().split())
+
+
+if ( a == b and a != c and b != c):
+    print("similar")
+elif(a == c and a != b and b != c):
+    print("similar")
+elif(a == b and a == c and b == c):
+    print("same")
+elif (b == c and a != c and a != b):
+    print("similar")
+else:
+    print("distinct")
+    
+
+
+# Solve the problem and output the result

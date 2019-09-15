@@ -1,0 +1,24 @@
+#!/bin/env python3
+
+def is_prime(val):
+	if val % 2 == 0 and val != 2:
+		return False
+	else:
+		i = 3
+		while i < val/2:
+			if val % i == 0:
+				return False
+			i+=2
+
+	return True
+
+with open("100000.txt", "r") as f:
+	pi = f.read()
+	done = False
+	i = 2
+	while not done:
+		cur = pi[i:i+4]
+		if is_prime(int(cur)):
+			print(cur, '@', i)
+			break
+		i += 1

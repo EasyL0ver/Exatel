@@ -1,0 +1,51 @@
+cl_crosshairalpha "255"
+cl_crosshaircolor "4"
+cl_crosshaircolor_b "0"
+cl_crosshaircolor_r "0"
+cl_crosshaircolor_g "255"
+cl_crosshairdot "0"
+cl_crosshairgap "-3"
+cl_crosshairsize "1.5"
+cl_crosshairstyle "4"
+cl_crosshairusealpha "1"
+cl_crosshairthickness "1"
+cl_fixedcrosshairgap "-2"
+cl_crosshair_outlinethickness "0"
+cl_crosshair_drawoutline "0"
+bind "v" "-attack"
+r_drawtracers_firstperson 0
+volume 0.1
+sensitivity 1
+zoom_sensitivity_ratio_mouse 1
+fps_max 300
+viewmodel_presetpos 3
+m_customaccel 0
+snd_mixahead "0.05"
+snd_musicvolume "0"
+snd_headphone_pan_exponent "2"
+snd_headphone_pan_radial_weight "2
+snd_pitchquality "1"
+dsp_enhance_stereo "0"
+cl_viewmodel_shift_left_amt "0"
+cl_viewmodel_shift_right_amt "0"
+m_mousespeed 0
+cl_cmdrate "128"
+cl_updaterate "128"
+rate "786432"
+snd_musicvolume 0.25
+bind p "exec autoexec"
+snd_front_headphone_position "90.0"
+bind ' toggleconsole
+net_graph 1
+hud_showtargetid 0
+r_dynamic 0
+cl_forcepreload 1
+bind mouse4 +voicerecord
+cl_teamid_overhead_always 1
+cl_radar_scale 0.5
+bind f "+lookatweapon;r_cleardecals"
+viewmodel_recoil 0
+safezonex 0.90
+echo ained
+
+host_writeconfig

@@ -1,0 +1,3 @@
+function escapeRE(t) {
+            return t.replace(/([.*+?|(){}[\]\\])/g, '\\$1');
+        }

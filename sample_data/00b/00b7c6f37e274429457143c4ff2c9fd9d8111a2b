@@ -1,0 +1,58 @@
+import skrf as rf
+import numpy as np
+
+from matplotlib import pyplot as plt
+rf.stylely()
+
+
+def bandpass(network, sparameter):
+    """Find bandpass regions of a filter.
+
+    Parameters
+    ----------
+    network : :class:`~skrf.network.Network` objects
+        Measured network.
+
+    sparameter : str
+        What s-parameter to evaluate.
+
+    """
+    param = getattr(network, sparameter)
+    data = np.where(param.s_db < (np.min(param.s_db) + 3))[0]
+
+    sequences = np.split(data, np.array(np.where(np.diff(data) > 1)[0]) + 1)
+    # sequences are clusters of points
+
+    ranges = []
+    for seq in sequences:
+        if len(seq) > 1:
+            ranges.append((network.f[np.min(seq)], network.f[np.max(seq)]))
+        else:
+            ranges.append(network.f[seq[0]])
+
+    # print(ranges)
+    # ranges are [(start stop),]
+
+    for range in ranges:  # should be
+        lower, upper = range[0], range[1]
+
+        print('{} MHz Lower'.format(lower / 1e6))
+        print('{} MHz Upper'.format(upper / 1e6))
+        print('{} MHz Bandwidth'.format((upper - lower) / 1e6))
+        print('{} MHz Center'.format(((upper - lower) / 2 + lower) / 1e6))
+
+        return lower, upper, (upper - lower), (upper - lower) / 2 + lower
+        # yield lower, upper, (upper - lower), ( upper - lower ) / 2 + lower
+        #       lower, uppper, bandwitdh, center in Hz
+
+
+net = rf.Network('Filters/New Filter BandPass 321.4e6/321.4e6 Filter close.s1p')
+
+lower, upper, bandwitdh, center = bandpass(net, 's11')
+net.plot_s_db()
+
+# is there a way to change part of a trace, or is it easier to add new trace
+passband = net['{}-{}Hz'.format(lower, upper)]
+passband.plot_s_db(linewidth=3)
+
+plt.title('Bandpass of filter centered at '+str(center / 1e6)+' MHz, '+str(band / 1e6)+' MHz bandwidth $S_{21}$')

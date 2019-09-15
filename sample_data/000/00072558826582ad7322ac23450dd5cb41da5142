@@ -1,0 +1,39 @@
+companion object {
+    const val EXTRA_ITEM = "EXTRA_ITEM"
+    const val TRANSITION_NAME_IMAGE = "TRANSITION_NAME_IMAGE"
+    const val TRANSITION_NAME_TEXT = "TRANSITION_NAME_TEXT"
+  }
+
+  override fun onItemClick(pos: Int, item: Item, imageView: ImageView, textView: TextView) {
+    val intent = Intent(context, YourActivity::class.java)
+    intent.putExtra(EXTRA_ITEM, item)
+    intent.putExtra(
+      TRANSITION_NAME_IMAGE,
+      ViewCompat.getTransitionName(imageView)
+    )
+    intent.putExtra(
+      TRANSITION_NAME_TEXT,
+      ViewCompat.getTransitionName(textView)
+    )
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+      val optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+        context as Activity,
+        androidx.core.util.Pair<View,String>(imageView, imageView.transitionName),
+        androidx.core.util.Pair<View,String>(textView, textView.transitionName)
+      )
+      startActivity(intent, optionsCompat.toBundle())
+    } else {
+      startActivity(intent)
+    }
+  }
+
+
+override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    val id = item.itemId
+    if (id == android.R.id.home) {
+      supportFinishAfterTransition()
+      return true
+    }
+    return super.onOptionsItemSelected(item)
+  }

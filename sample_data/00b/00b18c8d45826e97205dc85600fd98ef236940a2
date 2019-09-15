@@ -1,0 +1,15 @@
+[woodmood@caws ~/projects/reality (devel)]$ g push origin devel:ak-devel
+Total 0 (delta 0), reused 0 (delta 0)
+remote: Address 192.168.1.109 maps to vsechnyreality, but this does not map back to the address - POSSIBLE BREAK-IN ATTEMPT!
+remote: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+remote: @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+remote: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+remote: Permissions 0650 for '/home/reality/.ssh/id_rsa' are too open.
+remote: It is recommended that your private key files are NOT accessible by others.
+remote: This private key will be ignored.
+remote: bad permissions: ignore key: /home/reality/.ssh/id_rsa
+remote: Permission denied, please try again.
+remote: Permission denied, please try again.
+remote: Permission denied (publickey,gssapi-keyex,gssapi-with-mic,password).
+To ssh://reality@zumba-party.net/home/reality/reality
+ * [new branch]      devel -> ak-devel

@@ -1,0 +1,59 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FilesContentReader 
+{
+	private static final boolean RECURSIVE = true; // odwolanie sie do wyzszej instancji
+	public static void main(String[] args) throws IOException // utworzenie publicznej, statycznej klasy (dziedziczy bezposrednio po klasie Exception)
+	{
+		String dirPathname = ("/Znajdz"); // nalezy podac PathName przy pierwszym wywolaniu Dir funkcji
+		File directory = new File ("/Znajdz"); // wskazanie lokalizacji
+
+		if(!directory.isDirectory()) // warunek; jezeli lokalizacja jest:
+		{
+			System.out.println(dirPathname + " is not directory"); // przerwij program, gdy nie znajdzie sciezki
+		}
+		
+		printContentOfFilesInDirectory(directory); // wyswietla zawartosc plikow z danej lokalizacji	
+	}
+	
+	private static void printContentOfFilesInDirectory(File directory) throws IOException // klasa prywatna, statyczna zawierająca szczegóły okreslonej klasy
+	{
+		File[] files = directory.listFiles();
+		for (File file : files)
+		{
+			if(file.isFile())
+			{
+				printFile(file);
+			}
+			else if(file.isDirectory() && RECURSIVE)
+			{
+					printContentOfFilesInDirectory(file);
+			}
+		}
+	}
+
+	private static void printFile(File file) throws IOException
+	{
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		try
+		{
+			printReaderContent(reader);
+		}
+			finally
+			{
+				reader.close();
+			}
+	}
+
+	private static void printReaderContent(BufferedReader reader) throws IOException 
+	{
+		String line = null;
+		while( (line = reader.readLine()) != null )
+		{
+			System.out.println(line);
+		}
+	}
+}

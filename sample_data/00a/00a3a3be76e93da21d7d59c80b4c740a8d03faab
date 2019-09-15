@@ -1,0 +1,28 @@
+rep(i, n) k[s[i]]++;
+rep(i, 200) k[i+1] += k[i];
+rep(i, n) p[--k[s[i]]] = i;
+int cl = 1;
+for (int i = 1; i < n; i++)
+{
+    if (s[p[i]] != s[p[i-1]])
+        cl++;
+    c[0][p[i]] = cl - 1;
+}
+for (int h = 0; (1 << h) < n; h++)
+{
+    rep(i, n) pn[i] = (p[i] - (1 << h) + n) % n;
+    rep(i, cl) k[i] = 0;
+    rep(i, n) k[c[h][i]]++;
+    for (int i = 1; i < cl; i++) k[i] += k[i-1];
+    rrep(i, n) p[--k[c[h][pn[i]]]] = pn[i];
+    cl = 1;
+    c[h+1][p[0]] = 0;
+    for (int i = 1; i < n; i++)
+    {
+        int m1 = (p[i] + (1 << h)) % n;
+        int m2 = (p[i-1] + (1 << h)) % n;
+        if (c[h][p[i]] != c[h][p[i-1]] || c[h][m1] != c[h][m2])
+            cl++;
+        c[h+1][p[i]] = cl - 1;
+    }
+}

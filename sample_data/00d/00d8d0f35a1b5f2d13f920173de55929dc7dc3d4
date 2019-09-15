@@ -1,0 +1,16 @@
+############### Pythonista BF
+
+import contacts
+import clipboard
+
+
+n=4427791670
+
+
+for i in range(0,10):
+
+	p = contacts.Person()
+	p.first_name="t"+str(i)
+	p.phone=(n+i)
+	contacts.add_person(pers)
+	contacts.save()

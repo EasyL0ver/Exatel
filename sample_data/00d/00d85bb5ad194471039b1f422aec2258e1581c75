@@ -1,0 +1,20 @@
+WADder has encountered a fatal error. Please inform the author of the following traceback:
+
+Traceback (most recent call last):
+  File "./wadder.py", line 97, in doApp
+    doWADder(wad, titleid, title, sound, dol, nandloader, langs, exchange)
+  File "./wadder.py", line 115, in doWADder
+    wad = Wii.WAD.loadFile(wadfn)
+  File "/home/zc00gii/build/Wii.py/common.py", line 117, in loadFile
+    return cls.load(open(filename, "rb").read(), *args, **kwargs)
+  File "/home/zc00gii/build/Wii.py/common.py", line 112, in load
+    self._load(data, *args, **kwargs)
+  File "/home/zc00gii/build/Wii.py/title.py", line 282, in _load
+    self.tik = Ticket.load(rawtik)
+  File "/home/zc00gii/build/Wii.py/common.py", line 112, in load
+    self._load(data, *args, **kwargs)
+  File "/home/zc00gii/build/Wii.py/title.py", line 83, in _load
+    self.tik.unpack(data[:len(self.tik)])
+  File "/home/zc00gii/build/Wii.py/Struct.py", line 216, in unpack
+    values = struct.unpack(self.__endian__+sdef, data[pos:pos+size])
+error: unpack requires a string argument of length 4

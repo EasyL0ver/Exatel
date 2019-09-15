@@ -1,0 +1,132 @@
+partial@partial-portion ~ $ sudo dmesg
+[    0.000000] random: get_random_bytes called from start_kernel+0x42/0x507 with crng_init=0
+[    0.000000] Linux version 4.13.0-45-generic (buildd@lgw01-amd64-011) (gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.9)) #50~16.04.1-Ubuntu SMP Wed May 30 11:18:27 UTC 2018 (Ubuntu 4.13.0-45.50~16.04.1-generic 4.13.16)
+[    0.000000] Command line: BOOT_IMAGE=/boot/vmlinuz-4.13.0-45-generic root=UUID=188e4d13-b374-49bb-b434-9687d78fc58d ro quiet splash vt.handoff=7
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+[    0.000000]   Centaur CentaurHauls
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x008: 'MPX bounds registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x010: 'MPX CSR'
+[    0.000000] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+[    0.000000] x86/fpu: xstate_offset[3]:  832, xstate_sizes[3]:   64
+[    0.000000] x86/fpu: xstate_offset[4]:  896, xstate_sizes[4]:   64
+[    0.000000] x86/fpu: Enabled xstate features 0x1f, context size is 960 bytes, using 'compacted' format.
+[    0.000000] e820: BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x0000000000057fff] usable
+[    0.000000] BIOS-e820: [mem 0x0000000000058000-0x0000000000058fff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000059000-0x0000000000085fff] usable
+[    0.000000] BIOS-e820: [mem 0x0000000000086000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000006079bfff] usable
+[    0.000000] BIOS-e820: [mem 0x000000006079c000-0x000000006079cfff] ACPI NVS
+[    0.000000] BIOS-e820: [mem 0x000000006079d000-0x00000000607c6fff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000607c7000-0x0000000060877fff] usable
+[    0.000000] BIOS-e820: [mem 0x0000000060878000-0x0000000061178fff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000061179000-0x000000007738dfff] usable
+[    0.000000] BIOS-e820: [mem 0x000000007738e000-0x0000000077d7dfff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000077d7e000-0x0000000077f7dfff] ACPI NVS
+[    0.000000] BIOS-e820: [mem 0x0000000077f7e000-0x0000000077ffdfff] ACPI data
+[    0.000000] BIOS-e820: [mem 0x0000000077ffe000-0x0000000077ffefff] usable
+[    0.000000] BIOS-e820: [mem 0x0000000077fff000-0x00000000780fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000078800000-0x000000007d7fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000e0000000-0x00000000efffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fd000000-0x00000000fe7fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000feb00000-0x00000000feb03fff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fec00000-0x00000000fec00fff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fed00000-0x00000000fed00fff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fed10000-0x00000000fed19fff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fed84000-0x00000000fed84fff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000fee00000-0x00000000fee00fff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000ffa00000-0x00000000ffffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000100000000-0x00000002817fffff] usable
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] e820: update [mem 0x5f0d9018-0x5f0e9057] usable ==> usable
+[    0.000000] e820: update [mem 0x5f0d9018-0x5f0e9057] usable ==> usable
+[    0.000000] e820: update [mem 0x5f0bf018-0x5f0d8857] usable ==> usable
+[    0.000000] e820: update [mem 0x5f0bf018-0x5f0d8857] usable ==> usable
+[    0.000000] extended physical RAM map:
+[    0.000000] reserve setup_data: [mem 0x0000000000000000-0x0000000000057fff] usable
+[    0.000000] reserve setup_data: [mem 0x0000000000058000-0x0000000000058fff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000000059000-0x0000000000085fff] usable
+[    0.000000] reserve setup_data: [mem 0x0000000000086000-0x00000000000fffff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000000100000-0x000000005f0bf017] usable
+[    0.000000] reserve setup_data: [mem 0x000000005f0bf018-0x000000005f0d8857] usable
+[    0.000000] reserve setup_data: [mem 0x000000005f0d8858-0x000000005f0d9017] usable
+[    0.000000] reserve setup_data: [mem 0x000000005f0d9018-0x000000005f0e9057] usable
+[    0.000000] reserve setup_data: [mem 0x000000005f0e9058-0x000000006079bfff] usable
+[    0.000000] reserve setup_data: [mem 0x000000006079c000-0x000000006079cfff] ACPI NVS
+[    0.000000] reserve setup_data: [mem 0x000000006079d000-0x00000000607c6fff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000607c7000-0x0000000060877fff] usable
+[    0.000000] reserve setup_data: [mem 0x0000000060878000-0x0000000061178fff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000061179000-0x000000007738dfff] usable
+[    0.000000] reserve setup_data: [mem 0x000000007738e000-0x0000000077d7dfff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000077d7e000-0x0000000077f7dfff] ACPI NVS
+[    0.000000] reserve setup_data: [mem 0x0000000077f7e000-0x0000000077ffdfff] ACPI data
+[    0.000000] reserve setup_data: [mem 0x0000000077ffe000-0x0000000077ffefff] usable
+[    0.000000] reserve setup_data: [mem 0x0000000077fff000-0x00000000780fffff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000078800000-0x000000007d7fffff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000e0000000-0x00000000efffffff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000fd000000-0x00000000fe7fffff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000feb00000-0x00000000feb03fff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000fec00000-0x00000000fec00fff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000fed00000-0x00000000fed00fff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000fed10000-0x00000000fed19fff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000fed84000-0x00000000fed84fff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000fee00000-0x00000000fee00fff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000ffa00000-0x00000000ffffffff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000100000000-0x00000002817fffff] usable
+[    0.000000] efi: EFI v2.40 by INSYDE Corp.
+[    0.000000] efi:  SMBIOS=0x775ff000  SMBIOS 3.0=0x775fd000  ESRT=0x77600d18  ACPI 2.0=0x77ffd014 
+[    0.000000] random: fast init done
+[    0.000000] SMBIOS 3.0.0 present.
+[    0.000000] DMI: Acer Aspire E5-575G/Ironman_SK  , BIOS V1.03 03/21/2016
+[    0.000000] e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+[    0.000000] e820: remove [mem 0x000a0000-0x000fffff] usable
+[    0.000000] e820: last_pfn = 0x281800 max_arch_pfn = 0x400000000
+[    0.000000] MTRR default type: uncachable
+[    0.000000] MTRR fixed ranges enabled:
+[    0.000000]   00000-9FFFF write-back
+[    0.000000]   A0000-BFFFF uncachable
+[    0.000000]   C0000-FFFFF write-protect
+[    0.000000] MTRR variable ranges enabled:
+[    0.000000]   0 base 0000000000 mask 7C00000000 write-back
+[    0.000000]   1 base 0077FFF000 mask 7FFFFFF000 uncachable
+[    0.000000]   2 base 0078000000 mask 7FF8000000 uncachable
+[    0.000000]   3 base 0080000000 mask 7F80000000 uncachable
+[    0.000000]   4 disabled
+[    0.000000]   5 disabled
+[    0.000000]   6 disabled
+[    0.000000]   7 disabled
+[    0.000000]   8 disabled
+[    0.000000]   9 disabled
+[    0.000000] x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WC  UC- WT  
+[    0.000000] total RAM covered: 14207M
+[    0.000000]  gran_size: 64K 	chunk_size: 64K 	num_reg: 10  	lose cover RAM: 12583932K
+[    0.000000]  gran_size: 64K 	chunk_size: 128K 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 256K 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 512K 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 1M 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 2M 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 4M 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 8M 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 16M 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 32M 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 64M 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 128M 	num_reg: 7  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 256M 	num_reg: 5  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 512M 	num_reg: 5  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 1G 	num_reg: 5  	lose cover RAM: 60K
+[    0.000000]  gran_size: 64K 	chunk_size: 2G 	num_reg: 5  	lose cover RAM: 60K
+[    0.000000]  gran_size: 128K 	chunk_size: 128K 	num_reg: 10  	lose cover RAM: 12583932K
+[    0.000000]  gran_size: 128K 	chunk_size: 256K 	num_reg: 7  	lose cover RAM: 124K
+[    0.000000]  gran_size: 128K 	chunk_size: 512K 	num_reg: 7  	lose cover RAM: 124K
+[    0.000000]  gran_size: 128K 	chunk_size: 1M 	num_reg: 7  	lose cover RAM: 124K
+[    0.000000]  gran_size: 128K 	chunk_size: 2M 	num_reg: 7  	lose cover RAM: 124K
+[    0.000000]  gran_size: 128K 	chunk_size: 4M 	num_reg: 7  	lose cover RAM: 124K
+[    0.000000]  gran_size: 128K 	chunk_size: 8M 	num_reg: 7  	lose cover RAM: 124K
+[    0.000000]  gran_size: 128K 	chunk_size: 16M 	num_reg: 7  	lose cover RAM: 124K
+[    0.000000]  gran_size: 128K 	chunk_size: 32M 	num_reg: 7  	lose cover RAM: 124K
+[    0.000000]  gran_size: 128K 

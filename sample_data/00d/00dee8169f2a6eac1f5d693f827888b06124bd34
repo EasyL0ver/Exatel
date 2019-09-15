@@ -1,0 +1,193 @@
+SET QUOTED_IDENTIFIER ON;
+SET ANSI_NULLS ON;
+GO
+--Bản mandays
+--[sp_DMS_RPT_BLKPI] 3,'sysadmin','2018-10-01','2018-10-31', null, 'KPIT10', 'M'
+ALTER PROCEDURE [dbo].[sp_DMS_RPT_BLKPI]
+    @CompanyID INT = NULL,
+    @LoginID VARCHAR(50) = NULL,
+    @FromDate DATETIME = NULL,
+    @ToDate DATETIME = NULL,
+    @RefNbr VARCHAR(50) = NULL,
+    @KPIPeriodNbr VARCHAR(50) = NULL,
+    @Period VARCHAR(1) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SET FMTONLY OFF;
+    SET NO_BROWSETABLE OFF;
+
+    DECLARE @_CompanyID INT = NULLIF(@CompanyID, 0);
+    DECLARE @_LoginID VARCHAR(50) = @LoginID;
+    DECLARE @_FromDate DATETIME = @FromDate;
+    DECLARE @_ToDate DATETIME = @ToDate;
+    DECLARE @_RefNbr VARCHAR(50) = @RefNbr;
+    DECLARE @_KPIPeriodNbr VARCHAR(50) = @KPIPeriodNbr;
+    DECLARE @_Period CHAR(1) = @Period;
+    DECLARE @_ObjectType CHAR(1);
+    DECLARE @_TerritoryType CHAR(1);
+    DECLARE @_ChangeTime DATETIME = '2018-10-01';
+
+
+    ---- Lấy thông tin permission theo user đăng nhập
+    SELECT *
+      INTO #tmpPermission
+      FROM dbo.DMSBLSFPermission
+     WHERE CompanyID = @_CompanyID
+       AND LoginID   = @_LoginID;
+
+    ---- Lấy working position của user đăng nhập
+    SELECT @_TerritoryType = (SELECT TOP 1 TerritoryType FROM #tmpPermission);
+    IF @_TerritoryType IS NULL
+        SET @_TerritoryType = 'X';
+
+    ---- Group by các dữ liệu permission
+    SELECT CompanyID,
+           DistributorLocationID
+      INTO #tmpPrmDistributor
+      FROM #tmpPermission
+     GROUP BY CompanyID,
+              DistributorLocationID;
+
+    SELECT kpi.CompanyID,
+           kpi.KPIID,
+           kpi.KPICD,
+           kpi.KPIDescr,
+           kpi.ObjectID,
+           kpi.ObjectType,
+           kpi.ObjectAssignment,
+           kpi.FromDate,
+           kpi.ToDate,
+           kpi.KPIPeriodNbr,
+           kpi.RefNbr,
+           kpi.TargetsAssigned,
+           kpi.Actual1,
+           kpi.Actual2,
+           kpi.Actual3,
+           kpi.Actual4,
+           kpi.Actual
+      INTO #tmpKPI
+      FROM dbo.DMSBLKPI kpi WITH (NOLOCK)
+     WHERE kpi.CompanyID      = @_CompanyID
+       AND kpi.KPIPeriodNbr   = @_KPIPeriodNbr
+       AND (   (   @_Period   = 'D'
+             AND   kpi.Period = 'D'
+             AND   kpi.RefNbr = @_RefNbr)
+          OR   (   @_Period     != 'D'
+             AND   kpi.Period   != 'D'
+             AND   kpi.FromDate = @_FromDate
+             AND   kpi.ToDate   = @_ToDate))
+       AND kpi.TargetsAssigned IS NOT NULL;
+
+    -- Lấy ManDays
+
+    SELECT      DISTINCT o.UsrSalesReps AS UserName,
+                         c.CustomerCD,
+                         c.LocationCD,
+                         o.*
+      INTO      #OList
+      FROM      MRCDMS.dbo.SOOrder o
+     INNER JOIN MRCDMS..DMSViewCustomerLocation c
+        ON o.CustomerID = c.CustomerID
+       AND c.CompanyID  = o.CompanyID
+     WHERE      o.OrderDate BETWEEN @_FromDate AND @_ToDate
+       AND      o.OrderType NOT IN ( 'CM' )
+       AND      o.CompanyID = @CompanyID
+     ORDER BY o.UsrSalesReps;
+
+
+    UPDATE o
+       SET o.OrderType = 'CM'
+      FROM #OList o
+     WHERE EXISTS (   SELECT *
+                        FROM MRCDMS.dbo.SOOrder so
+                       WHERE so.OrderDate BETWEEN @_FromDate AND @_ToDate
+                         AND so.CompanyID    = @CompanyID
+                         AND so.OrderType    = 'CM'
+                         AND so.UsrOriginDoc = o.OrderNbr);
+
+    --Mandays
+
+    ---Start count mandays before October 2018
+
+    IF (@_ToDate < @_ChangeTime)
+    BEGIN
+
+
+        SELECT mandaysTable.CompanyID,
+               mandaysTable.SalespersonID,
+               mandaysTable.StartWorkingDate,
+               COUNT(mandaysTable.IsSatisfy) AS Mandays,
+               mandaysTable.TotalWorkingday
+          INTO #TmpManDays
+          FROM (   SELECT tableTotal.SalespersonID,
+                          tableTotal.CountAmount AS CountAmount,
+                          tableTotal.CompanyID,
+                          tableTotal.TotalAmount AS TotalAmount,
+                          tableTotal.OrderDate AS OrderDate,
+                          tableTotal.StartWorkingDate AS StartWorkingDate,
+                          CASE
+                               WHEN tableTotal.CountAmount >= 4 THEN 1
+                               ELSE 0 END AS IsSatisfy,
+                          tableTotal.TotalWorkingday
+                     FROM (   SELECT ht.SalespersonID,
+                                     COUNT(ht.OrderAmount) AS CountAmount,
+                                     SUM(ht.OrderAmount) AS TotalAmount,
+                                     ht.OrderDate AS OrderDate,
+                                     ht.StartWorkingDate,
+                                     ht.TotalWorkingday,
+                                     ht.CompanyID
+                                FROM (
+                                         --Test
+                                         SELECT      h.OrderAmount,
+                                                     h.OrderDate,
+                                                     StartWorkingDate.StartWorkingDate,
+                                                     u.SalespersonID,
+                                                     visitPlan.TotalWorkingday,
+                                                     h.CompanyID
+                                           FROM      (
+                                                         -------------------------------------Start Get History Order---------------------
+
+                                                         SELECT      o.UserName, -- UserName - nvarchar(50)
+                                                                     o.CustomerCD, -- CustomerCD - nvarchar(50)
+                                                                     o.LocationCD, -- LocationCD - nvarchar(50)
+                                                                     o.OrderNbr, -- OrderCode - nvarchar(50)
+                                                                     o.OrderDate, -- OrderDate - datetime
+                                                                     o.CompanyID, -- CompanyID - int
+                                                                     CASE
+                                                                          WHEN o.Status IN ( 'N', 'H', 'P' ) THEN 'N'
+                                                                          WHEN o.Status IN ( 'V', 'L' ) THEN 'L'
+                                                                          WHEN o.Status IN ( 'S', 'I' ) THEN 'S'
+                                                                          ELSE o.Status END OrderStatus, -- OrderStatus - nvarchar(2)
+                                                                     (o.OrderTotal + o.UsrDiscTot) OrderAmount, -- OrderAmount - float
+                                                                     o.OrderType,
+                                                                     o.UsrDiscTot,
+                                                                     o.OrderTotal,
+                                                                     o.OrderDesc,
+                                                                     CASE
+                                                                          WHEN (   o.CustomerOrderNbr IS NULL
+                                                                              OR   o.CustomerOrderNbr = '') THEN o.OrderNbr
+                                                                          ELSE o.CustomerOrderNbr END AS RefNBR,
+                                                                     CASE
+                                                                          WHEN o.UsrExclusiveOrder = 1
+                                                                           AND (   o.UsrShipComplete IS NULL
+                                                                              OR   o.UsrShipComplete = 0)
+                                                                           AND o.Status NOT IN ( 'V', 'L' ) THEN 1
+                                                                          ELSE 0 END AS NeedConfirm,
+                                                                     o.Completed,
+                                                                     ISNULL(p.ValidDate, 1) ValidDate,
+                                                                     ISNULL(p.ValidDistance, 1) ValidDistance
+                                                           FROM      #OList o
+                                                           LEFT JOIN MRCDMS.dbo.DMSPDAOrder p
+                                                             ON p.OrderNbr  = o.CustomerOrderNbr
+                                                            AND p.CompanyID = o.CompanyID
+                                                            AND p.BranchID  = o.BranchID
+                                                          WHERE      o.UsrSourceType = 'PDA'
+                                                            AND      o.Completed          = 1) h
+                                           -------------------------------------End Get History Order---------------------
+                                           LEFT JOIN (   SELECT SalespersonID,
+                                                                ISNULL(SUM(wrk.TotalWorkingday), 0) AS TotalWorkingday,
+                                                                ISNULL(SUM(wrk.MTDWorkingday), 0) AS MTDWorkingday
+                                                           FROM (   SELECT SalespersonID,
+                                                                           COUNT(DISTINCT VisitDate) AS TotalWorkingday,
+                                                            

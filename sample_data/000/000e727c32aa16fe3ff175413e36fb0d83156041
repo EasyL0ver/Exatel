@@ -1,0 +1,2 @@
+<h1 style="color: {{ include.color }}">{{ include.text }}</h1>
+<hr><br>

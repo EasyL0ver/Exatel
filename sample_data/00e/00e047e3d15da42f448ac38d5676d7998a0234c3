@@ -1,0 +1,41 @@
+package JavaCode.Graphics;
+
+import JavaCode.Core.MatrixElements;
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Graphics extends JPanel {
+    private MatrixElements matrix[][];
+
+    public Graphics(MatrixElements matrix[][]) {
+        this.matrix = matrix;
+    }
+
+    @Override
+    public void paint(java.awt.Graphics g) {
+        super.paint(g);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                switch (matrix[i][j]) {
+                    case WALL:
+                        g.setColor(Color.BLACK);
+                        g.fillRect(i * 25, j * 25, 25, 25);
+                        break;
+                    default:
+                        g.setColor(Color.WHITE);
+                        if (i == 1 && j == 1)
+                            g.setColor(Color.GREEN);
+                        else if (i == matrix.length - 2 && j == matrix[i].length - 2)
+                            g.setColor(Color.RED);
+                        else if (matrix[i][j] == MatrixElements.VISI)
+                            g.setColor(Color.BLUE);
+                        else if (matrix[i][j] == MatrixElements.BADROAD)
+                            g.setColor(Color.magenta);
+                        g.fillRect(i * 25, j * 25, 25, 25);
+                        break;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+(defrule path
+     (or
+        (edge ?X ?W)
+        (and
+            (path ?X ?Y)
+            (path ?Y ?Z)
+        ) 
+     )
+     (not (path ?X ?W))
+     =>
+     (printout t ?X " is connected with " ?W crlf)
+     (assert (path ?X ?W))
+)

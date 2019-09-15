@@ -1,0 +1,38 @@
+$("#f1").on("submit", function (event) {
+        event.preventDefault();
+        do_proses('f1','auth','home');
+      });
+$.ajax({
+        url: act_controller, 
+        type: 'POST',
+        data: new FormData($('#'+form_id)[0]),  // Form ID
+        processData: false,
+        contentType: false,
+        success: function(data) {
+          var data_trim = $.trim(data);
+          if(data_trim=="OK"){
+            swal({
+              title: 'Success',
+              type: 'success',
+              showCancelButton: false,
+              showLoaderOnConfirm: false,
+              }).then(function() {
+                 if(after_controller!=''){
+                  window.location = 'http://localhost:8089/volvo/auth.php';
+                 }
+                else {
+                  location.reload();
+                } 
+             });
+          } 
+          else {
+              swal({
+              title: 'Error',
+              text: "Username / Password Salah",
+              type: 'error',
+              showCancelButton: false,
+              showLoaderOnConfirm: false,
+              });
+          }
+        }
+      });

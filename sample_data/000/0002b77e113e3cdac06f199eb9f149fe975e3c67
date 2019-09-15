@@ -1,0 +1,63 @@
+#include "Reflect.h"
+
+namespace reflect
+{
+
+struct TypeDescriptor_Int : TypeDescriptor
+{
+    TypeDescriptor_Int()
+        : TypeDescriptor("int", sizeof(int))
+    {}
+
+    virtual void dump(const void *obj, int) const override
+    {
+        std::cout << "int{" << *static_cast<const int*>(obj) << "}";
+    }
+};
+
+template<>
+TypeDescriptor *getPrimitiveDescriptor<int>()
+{
+    static TypeDescriptor_Int typeDesc;
+    return &typeDesc;
+}
+
+struct TypeDescriptor_StdString : TypeDescriptor
+{
+    TypeDescriptor_StdString()
+        : TypeDescriptor("std::string", sizeof(std::string))
+    {}
+
+    virtual void dump(const void *obj, int) const override
+    {
+        std::cout << "std::string{\"" << *static_cast<const std::string*>(obj) << "\"}";
+    }
+};
+
+template<>
+TypeDescriptor *getPrimitiveDescriptor<std::string>()
+{
+    static TypeDescriptor_StdString typeDesc;
+    return &typeDesc;
+}
+
+struct TypeDescriptor_Double : TypeDescriptor
+{
+    TypeDescriptor_Double()
+        : TypeDescriptor("double", sizeof(double))
+    {}
+
+    virtual void dump(const void* obj, int) const override
+    {
+        std::cout << "double{\"" << *static_cast<const double*>(obj) << "\"}";
+    }
+};
+
+template<>
+TypeDescriptor *getPrimitiveDescriptor<double>()
+{
+    static TypeDescriptor_Double typeDesc;
+    return &typeDesc;
+}
+
+}

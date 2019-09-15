@@ -1,0 +1,64 @@
+1
+public DbSet<BookAuthor> BookAuthor { get; set; }
+2
+modelBuilder.Entity<BookAuthor>()
+         .HasOne(ma => ma.Book)
+         .WithMany(m => m.Authors)
+         .HasForeignKey(ma => ma.BookId);
+modelBuilder.Entity<BookAuthor>()
+         .HasOne(ma => ma.Author)
+         .WithMany(m => m.Books)
+         .HasForeignKey(ma => ma.AuthorId);
+3
+public class BookAuthor
+   {
+     public int BookId { get; set; }
+     public Book Book { get; set; }
+     public int AuthorId { get; set; }
+     public Author Author { get; set; }
+   }
+4
+public List<BookAuthor> Books { get; set; }
+6
+var authorsAndBooks = (from a in _context.Authors
+                              let a_books = 
+                                 (from a_b in _context.BookAuthor
+                                  from b in _context.Books
+                                  where a_b.AuthorId == a.Id && a_b.BookId == b.Id
+                                  select b).ToArray()
+                               select new AuthorBooks(){Author=a,Books=a_books}
+                              ).ToArray();
+7
+<div id="react-app">Loading...</div>
+8
+let res = await fetch(`/api/Library/GetAuthorsAndBooks/`, { method: 'get', credentials: 'include', headers: { 'content-type': 'application/json' } })
+9
+type SimpleLibraryComponentState = {
+   FilterAuthorString: string
+   FilterBookString: string
+   AuthorsAndBooks: "loading" | Models.AuthorBooks[] | "error";
+}
+10
+() =>
+         getAllAuthorsAndBooks()
+           .then(result => this.setState({ ...this.state, AuthorsAndBooks: result }))
+           .catch(e => {
+             console.error(e)
+             this.setState({ ...this.state, AuthorsAndBooks: "error" })
+           })
+11
+this.try_download_allAuthorsAndBooks()
+12
+.filter(b => this.state.FilterBookString != "" ? b.title.toLowerCase().includes(this.state.FilterBookString) : true)
+                  	 .map(b => <BookComponent Book={b} />)
+13
+constructor(props: BookComponentProps, context: any) {
+     super(props, context);
+     this.state = {}
+   }
+   public render() {
+     return <div>
+       {this.props.Book.title},
+       {this.props.Book.year},
+     </div>;
+   }

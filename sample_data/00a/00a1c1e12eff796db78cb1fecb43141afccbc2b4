@@ -1,0 +1,80 @@
+[16:50:15.600] [Info] Root: Preparing Root...
+[16:50:15.601] [Info] Root: Done preparing Root.
+[16:50:15.601] [Info] Client Version 1.3.4 (windows x86_64) Source ID: f468c99f113f3d44bb548367da9c9a1c6f4b031d Protocol: 745
+[16:50:15.601] [Info] Root: Scanning for asset sources in directory '..\assets\'
+[16:50:15.908] [Info] Root: Scanning for asset sources in directory '..\mods\'
+[16:50:15.908] [Warn] Root: Unrecognized file in asset directory 'mods_go_here', skipping
+[16:50:15.908] [Info] Root: Detected asset source named 'base' at '..\assets\packed.pak'
+[16:50:15.908] [Info] Root: Detected unnamed asset source at '..\assets\user'
+[16:50:15.908] [Info] Loading assets from: '..\assets\packed.pak'
+[16:50:16.309] [Info] Loading assets from: '..\assets\user'
+[16:50:16.928] [Info] Assets digest is 6a949558864d05afce77216fd570de46ca9cf144b0e57613b96908323324dfbc
+[16:50:16.928] [Info] Root: Loaded Assets in 1.32795 seconds
+[16:50:16.933] [Info] Application: Initializing SDL Video
+[16:50:16.943] [Info] Application: Initializing SDL Joystick
+[16:50:16.999] [Info] Application: Initializing SDL Sound
+[16:50:17.072] [Info] Initialized Steam platform services
+[16:50:17.075] [Info] Initialized Discord platform services
+[16:50:17.079] [Info] Application: Creating SDL Window
+[16:50:17.337] [Info] Application: Enabling VSync with late swap tearing
+[16:50:17.362] [Info] Application: Opened default audio device with 44.1khz / 16 bit stereo audio, 2048 sample size buffer
+[16:50:17.368] [Info] OpenGL version: '4.6.0 NVIDIA 417.35' vendor: 'NVIDIA Corporation' renderer: 'GeForce GTX 980/PCIe/SSE2' shader: '4.60 NVIDIA'
+[16:50:17.369] [Info] Application: initialization...
+[16:50:17.370] [Info] Root: Loaded Configuration in 0.000798982 seconds
+[16:50:17.475] [Info] Application: renderer initialization...
+[16:50:17.479] [Info] detected supported OpenGL texture size 16384, using atlasNumCells 128
+[16:50:17.480] [Info] detected supported OpenGL texture size 16384, using atlasNumCells 64
+[16:50:17.481] [Info] Root: Loaded ImageMetadataDatabase in 1.57545e-06 seconds
+[16:50:17.496] [Info] Application: main update loop...
+[16:50:17.509] [Info] Loading mods from user generated content with id '1185841314' from directory 'F:\Steam\steamapps\workshop\content\211820\1185841314'
+[16:50:17.509] [Info] Loading mods from user generated content with id '745076162' from directory 'F:\Steam\steamapps\workshop\content\211820\745076162'
+[16:50:17.509] [Warn] User generated content with id '774605423' is not available
+[16:50:17.510] [Info] Loading mods from user generated content with id '951697307' from directory 'F:\Steam\steamapps\workshop\content\211820\951697307'
+[16:50:17.510] [Info] Loading mods from user generated content with id '980569484' from directory 'F:\Steam\steamapps\workshop\content\211820\980569484'
+[16:50:17.510] [Info] Loading mods from user generated content with id '1102920510' from directory 'F:\Steam\steamapps\workshop\content\211820\1102920510'
+[16:50:17.510] [Info] Loading mods from user generated content with id '969539215' from directory 'F:\Steam\steamapps\workshop\content\211820\969539215'
+[16:50:17.510] [Info] Loading mods from user generated content with id '1068116979' from directory 'F:\Steam\steamapps\workshop\content\211820\1068116979'
+[16:50:17.510] [Info] Loading mods from user generated content with id '964803765' from directory 'F:\Steam\steamapps\workshop\content\211820\964803765'
+[16:50:17.510] [Info] Loading mods from user generated content with id '972085950' from directory 'F:\Steam\steamapps\workshop\content\211820\972085950'
+[16:50:17.510] [Info] Loading mods from user generated content with id '1131927758' from directory 'F:\Steam\steamapps\workshop\content\211820\1131927758'
+[16:50:17.510] [Info] Loading mods from user generated content with id '1117792278' from directory 'F:\Steam\steamapps\workshop\content\211820\1117792278'
+[16:50:17.510] [Info] Loading mods from user generated content with id '963705323' from directory 'F:\Steam\steamapps\workshop\content\211820\963705323'
+[16:50:17.510] [Info] Loading mods from user generated content with id '1111827118' from directory 'F:\Steam\steamapps\workshop\content\211820\1111827118'
+[16:50:17.510] [Info] Loading mods from user generated content with id '1114277962' from directory 'F:\Steam\steamapps\workshop\content\211820\1114277962'
+[16:50:17.510] [Info] Loading mods from user generated content with id '1089795660' from directory 'F:\Steam\steamapps\workshop\content\211820\1089795660'
+[16:50:17.511] [Info] Loading mods from user generated content with id '1083871617' from directory 'F:\Steam\steamapps\workshop\content\211820\1083871617'
+[16:50:17.511] [Info] Loading mods from user generated content with id '733794984' from directory 'F:\Steam\steamapps\workshop\content\211820\733794984'
+[16:50:17.511] [Info] Loading mods from user generated content with id '1117985463' from directory 'F:\Steam\steamapps\workshop\content\211820\1117985463'
+[16:50:17.511] [Info] Loading mods from user generated content with id '729726478' from directory 'F:\Steam\steamapps\workshop\content\211820\729726478'
+[16:50:17.511] [Info] Loading mods from user generated content with id '1155127359' from directory 'F:\Steam\steamapps\workshop\content\211820\1155127359'
+[16:50:17.511] [Info] Loading mods from user generated content with id '954063152' from directory 'F:\Steam\steamapps\workshop\content\211820\954063152'
+[16:50:17.511] [Info] Loading mods from user generated content with id '955900266' from directory 'F:\Steam\steamapps\workshop\content\211820\955900266'
+[16:50:17.511] [Info] Loading mods from user generated content with id '1179110268' from directory 'F:\Steam\steamapps\workshop\content\211820\1179110268'
+[16:50:17.511] [Info] Loading mods from user generated content with id '1181699750' from directory 'F:\Steam\steamapps\workshop\content\211820\1181699750'
+[16:50:17.511] [Info] Loading mods from user generated content with id '973286215' from directory 'F:\Steam\steamapps\workshop\content\211820\973286215'
+[16:50:17.511] [Info] Loading mods from user generated content with id '1135266743' from directory 'F:\Steam\steamapps\workshop\content\211820\1135266743'
+[16:50:17.511] [Info] Loading mods from user generated content with id '787976785' from directory 'F:\Steam\steamapps\workshop\content\211820\787976785'
+[16:50:17.511] [Warn] User generated content with id '1154045389' is not available
+[16:50:17.511] [Info] Loading mods from user generated content with id '1165233724' from directory 'F:\Steam\steamapps\workshop\content\211820\1165233724'
+[16:50:17.511] [Info] Loading mods from user generated content with id '744579443' from directory 'F:\Steam\steamapps\workshop\content\211820\744579443'
+[16:50:17.511] [Info] Loading mods from user generated content with id '736070964' from directory 'F:\Steam\steamapps\workshop\content\211820\736070964'
+[16:50:17.511] [Info] Loading mods from user generated content with id '748635826' from directory 'F:\Steam\steamapps\workshop\content\211820\748635826'
+[16:50:17.512] [Info] Loading mods from user generated content with id '729486269' from directory 'F:\Steam\steamapps\workshop\content\211820\729486269'
+[16:50:17.512] [Info] Loading mods from user generated content with id '1102394541' from directory 'F:\Steam\steamapps\workshop\content\211820\1102394541'
+[16:50:17.512] [Info] Loading mods from user generated content with id '730544933' from directory 'F:\Steam\steamapps\workshop\content\211820\730544933'
+[16:50:17.512] [Info] Loading mods from user generated content with id '730745660' from directory 'F:\Steam\steamapps\workshop\content\211820\730745660'
+[16:50:17.512] [Info] Loading mods from user generated content with id '764888606' from directory 'F:\Steam\steamapps\workshop\content\211820\764888606'
+[16:50:17.512] [Info] Loading mods from user generated content with id '764887546' from directory 'F:\Steam\steamapps\workshop\content\211820\764887546'
+[16:50:17.512] [Info] Loading mods from user generated content with id '729524482' from directory 'F:\Steam\steamapps\workshop\content\211820\729524482'
+[16:50:17.512] [Warn] User generated content with id '796877993' is not available
+[16:50:17.512] [Info] Loading mods from user generated content with id '821455287' from directory 'F:\Steam\steamapps\workshop\content\211820\821455287'
+[16:50:17.512] [Info] Loading mods from user generated content with id '729824320' from directory 'F:\Steam\steamapps\workshop\content\211820\729824320'
+[16:50:17.512] [Info] Loading mods from user generated content with id '1115920474' from directory 'F:\Steam\steamapps\workshop\content\211820\1115920474'
+[16:50:17.512] [Info] Loading mods from user generated content with id '1575620880' from directory 'F:\Steam\steamapps\workshop\content\211820\1575620880'
+[16:50:17.512] [Info] Loading mods from user generated content with id '1577226829' from directory 'F:\Steam\steamapps\workshop\content\211820\1577226829'
+[16:50:17.512] [Info] Loading mods from user generated content with id '1577249878' from directory 'F:\Steam\steamapps\workshop\content\211820\1577249878'
+[16:50:17.512] [Info] Loading mods from user generated content with id '1579529436' from directory 'F:\Steam\steamapps\workshop\content\211820\1579529436'
+[16:50:17.512] [Info] Loading mods from user generated content with id '1585852862' from directory 'F:\Steam\steamapps\workshop\content\211820\1585852862'
+[16:50:17.513] [Info] Loading mods from user generated content with id '1592105715' from directory 'F:\Steam\steamapps\workshop\content\211820\1592105715'
+[16:50:17.513] [Info] Loading mods from user generated content with id '1592102055' from directory 'F:\Steam\steamapps\workshop\content\211820\1592102055'
+[16:50:17.513] [Info] Loading mods from user generated content with id '1603607014' from directory

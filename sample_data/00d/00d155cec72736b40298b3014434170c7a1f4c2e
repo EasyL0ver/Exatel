@@ -1,0 +1,10 @@
+<table width="100%">
+        <thead style="background:#000;text-align:center;">
+            <tr>
+                <td colspan="4">
+                    <a class="btn_show" href="#!" style="color:#fff; font-size:12px"><strong>C.- Antecedentes</strong></a>
+                </td>
+            </tr>
+        </thead>
+
+</table>

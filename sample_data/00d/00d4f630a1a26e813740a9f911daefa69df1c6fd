@@ -1,0 +1,11 @@
+Start   End     Hours
+10:00   15:00   05:00
+11:00   14:00   03:00
+09:30   15:30   06:00
+
+Total
+14:00
+	
+=G2*10 // (G2 is the cell with the total hours 14:00)
+	
+=G2*24*10

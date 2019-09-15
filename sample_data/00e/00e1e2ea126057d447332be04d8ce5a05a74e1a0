@@ -1,0 +1,10 @@
+"Bad" line in the config (missing the 'address=' part):
+newServer({'127.0.0.1:5300', pool='auth'})
+
+With the patch:
+
+Fatal Lua error: Exception thrown by a callback function called by Lua
+Details: boost::bad_get: failed value get using boost::get
+
+Without the patch:
+Segmentation fault (core dumped)

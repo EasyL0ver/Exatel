@@ -1,0 +1,19 @@
+/*Shipping costs*/
+function koszt_wysylki() {
+    global $woocommerce;
+	global $product;
+    $kwota_do_darmowej_dostawy = 150;
+    $current = WC()->cart->subtotal;
+    $price= wc_get_product( $product_id );
+    $shipping = $current + $product->get_price();
+   if ( $shipping < $kwota_do_darmowej_dostawy ) {
+      echo '<span class="shipping-cost">' . 'Aktualny koszt wysyłki to: ' . wc_price(11).'<br /> Do darmowej dostawy brakuje Ci: ' . wc_price( $kwota_do_darmowej_dostawy - $current ) . '<br /><br />' . '</span>';
+   }
+   elseif ($shipping >= $kwota_do_darmowej_dostawy && $current >= $kwota_do_darmowej_dostawy) {
+	echo '<span class="shipping-cost">' . 'Darmowa wysyłka<br /><br />' . '</span>';
+   }
+   elseif ( $shipping >= $kwota_do_darmowej_dostawy && $current < $kwota_do_darmowej_dostawy) {
+      echo '<span class="shipping-cost">' . 'Aktualny koszt wysyłki to: ' . wc_price(11).'<br /> 'Z tym produktem otrzymasz darmową wysyłkę<br /><br />' . '</span>';
+   }
+}
+add_action( 'woocommerce_single_product_summary', 'koszt_wysylki',12,1 );

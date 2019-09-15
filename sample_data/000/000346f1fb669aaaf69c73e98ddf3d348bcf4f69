@@ -1,0 +1,2 @@
+What happened to the Dataflow LinkTo parameter discardMessages?
+linkBroadcaster.LinkTo(downloader, linkFilter, true);

@@ -1,0 +1,41 @@
+hit = Instance.new("Sound", game.Players.LocalPlayer.Character.Torso)
+hit.SoundId = "rbxassetid://260430060"
+hit.Volume = 5
+hit1 = Instance.new("Sound", game.Players.LocalPlayer.Character.Torso)
+hit1.SoundId = "rbxassetid://138087186"
+hit1.Volume = 5
+hit2 = Instance.new("Sound", game.Players.LocalPlayer.Character.Torso)
+hit2.SoundId = "rbxassetid://131237241"
+hit2.Volume = 5
+hit3 = Instance.new("Sound", game.Players.LocalPlayer.Character.Torso)
+hit3.SoundId = "rbxassetid://278062209"
+hit3.Volume = 5
+hit3.TimePosition = 0.33
+print("Press R to ragdollify")
+function respawn(key)
+	key = key:lower()
+	if key == "t" then
+		if ragdolling then
+			ragdolling = false
+			lshclone.Parent = game.Players.LocalPlayer.Character.Torso
+			glue:destroy()
+			rshclone.Parent = game.Players.LocalPlayer.Character.Torso
+			glue1:destroy()
+			lhclone.Parent = game.Players.LocalPlayer.Character.Torso
+			glue11:destroy()
+			rhclone.Parent = game.Players.LocalPlayer.Character.Torso
+			glue111:destroy()
+			collider:destroy()
+			collider1:destroy()
+			collider11:destroy()
+			collider111:destroy()
+			sensoring:destroy()
+			sensoring1:destroy()
+			game.Players.LocalPlayer.Character.Torso.SpotLight:destroy()
+			game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+		end
+	end
+end
+mouse.KeyDown:connect(respawn)
+function ragdoll(key)
+	key = key:lower()

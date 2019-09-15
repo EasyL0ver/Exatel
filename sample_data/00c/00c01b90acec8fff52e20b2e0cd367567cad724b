@@ -1,0 +1,9 @@
+checking for pkg-config... /usr/bin/pkg-config
+checking for gtk+-2.0 >= 2.10.0 gtk+-unix-print-2.0 glib-2.0 gobject-2.0 gdk-x11-2.0... Package gtk+-2.0 was not found in the pkg-config search path. Perhaps you should add the directory containing `gtk+-2.0.pc' to the PKG_CONFIG_PATH environment variable No package 'gtk+-2.0' found Package gtk+-unix-print-2.0 was not found in the pkg-config search path. Perhaps you should add the directory containing `gtk+-unix-print-2.0.pc' to the PKG_CONFIG_PATH environment variable No package 'gtk+-unix-print-2.0' found Package gdk-x11-2.0 was not found in the pkg-config search path. Perhaps you should add the directory containing `gdk-x11-2.0.pc' to the PKG_CONFIG_PATH environment variable No package 'gdk-x11-2.0' found
+configure: error: Library requirements (gtk+-2.0 >= 2.10.0 gtk+-unix-print-2.0 glib-2.0 gobject-2.0 gdk-x11-2.0) not met; consider adjusting the PKG_CONFIG_PATH environment variable if your libraries are in a nonstandard prefix so pkg-config can find them.
+*** Fix above errors and then restart with               "make -f client.mk build"
+make[2]: *** [configure] Error 1
+make[2]: Leaving directory `/home/bharath/mozilla'
+make[1]: *** [obj-i686-pc-linux-gnu/Makefile] Error 2
+make[1]: Leaving directory `/home/bharath/mozilla'
+make: *** [build] Error 2

@@ -1,0 +1,31 @@
+[
+  {
+    "name": "Demo Trailers",
+    "samples": [
+      {
+        "name": "Amaze (Matroska)",
+        "uri": "file:///mnt/sdcard/Demo Trailers/Amaze.mkv"
+      },
+      {
+        "name": "Dolby Digital Plus 5.1 Channel Check (Matroska)",
+        "uri": "file:///mnt/sdcard/Demo Trailers/Dolby Digital Plus 5.1 Channel Check.mkv"
+      },
+      {
+        "name": "Elements (Matroska)",
+        "uri": "file:///mnt/sdcard/Demo Trailers/Elements.mkv"
+      },
+      {
+        "name": "Horizon (Matroska)",
+        "uri": "file:///mnt/sdcard/Demo Trailers/Horizon.mkv"
+      },
+      {
+        "name": "Listen (Matroska)",
+        "uri": "file:///mnt/sdcard/Demo Trailers/Listen.mkv"
+      },
+      {
+        "name": "Out of the Box (Matroska)",
+        "uri": "file:///mnt/sdcard/Demo Trailers/Out of the Box.mkv"
+      }	  
+    ]
+  }
+]

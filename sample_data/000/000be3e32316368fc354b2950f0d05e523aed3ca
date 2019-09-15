@@ -1,0 +1,79 @@
+#include <stdio.h>
+
+int *scan_array(int *arr_size, FILE *fin);
+void print_array(int arr[], int arr_size);
+
+int main(int argc, char* argv[])
+{
+    int *a, *b;
+    int a_size, b_size;
+    FILE *fina, *finb, *fout;
+    if (argc == 4)
+    {
+        fina = fopen(argv[1], "r");
+        if (!fina)
+        {
+            printf("Error: file 1 not opened");
+            return -1;
+        }
+        finb = fopen(argv[2], "r");
+        if (!fina)
+        {
+            printf("Error: file 2 not opened");
+            return -1;
+        }
+        fout = fopen(argv[3], "r");
+        if (!fina)
+        {
+            printf("Error: output file not opened");
+            return -1;
+        }
+    }
+    else
+    {
+        printf("Error: Not correct arguments");
+        return -1;
+    }
+    a = scan_array(&a_size, fina);
+    b = scan_array(&b_size, finb);
+
+
+}
+
+int *scan_array(int *arr_size, FILE *fin)
+{
+    int *arr = (int*) malloc(sizeof(int));
+    int st, buf, i = 0;
+    while(1)
+    {
+        st = fscanf(fin, "%d", &buf);
+
+        if(st == 1)
+        {
+            arr[i] = buf;
+            i++;
+            arr = (int*)realloc(arr, i*(sizeof(int)));
+        }
+        if(st == 0)
+        {
+            *arr_size = -1;
+            *arr = -1;
+            return arr;
+        }
+        if(st == -1)
+        {
+            break;
+        }
+    }
+    *arr_size = i;
+    return (arr);
+}
+
+void print_array(int arr[], int arr_size)
+{
+    for (int i = 0; i < arr_size; i++)
+    {
+        printf("%d%s", arr[i], " ");
+    }
+    printf("\n");
+}

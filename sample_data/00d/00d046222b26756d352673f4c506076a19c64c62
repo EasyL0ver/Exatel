@@ -1,0 +1,38 @@
+package programmers.level03;
+
+import java.util.Arrays;
+
+public class FatigueOvertime {
+    public static long solution(int n, int[] works) {
+        int maxWork = Arrays.stream(works).max().getAsInt();
+        int[] workList = new int[maxWork+1];
+        for (int work : works) {
+            workList[work] += 1;
+        }
+
+        for (int i = 0; i < n; i++) {
+            if (maxWork == 0) return 0;
+            workList[maxWork] -= 1;
+            workList[maxWork - 1] += 1;
+
+            if (workList[maxWork] == 0) {
+                maxWork -= 1;
+            }
+        }
+
+        long answer = 0;
+        for (int i = maxWork; i > -1; i--) {
+            for (int j = 0; j < workList[i]; j++) {
+                answer += Math.pow(i, 2);
+            }
+        }
+
+        return answer;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(solution(4, new int[]{4, 3, 3}));
+        System.out.println(solution(1, new int[]{2, 1, 2}));
+        System.out.println(solution(3, new int[]{1, 1}));
+    }
+}

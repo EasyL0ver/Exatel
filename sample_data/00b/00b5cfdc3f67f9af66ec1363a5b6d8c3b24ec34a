@@ -1,0 +1,9 @@
+
+			$phpWord = new \PhpOffice\PhpWord\PhpWord();
+			$section = $phpWord->addSection();
+			$html = $document->content;
+			\PhpOffice\PhpWord\Shared\Html::addHtml($section, $html);
+
+			$objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
+			$objWriter->save('Appdividend.docx');
+			return response()->download(public_path('Appdividend.docx'));

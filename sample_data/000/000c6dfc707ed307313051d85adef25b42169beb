@@ -1,0 +1,30 @@
+
+cl-user> (load #P"~/src/public/test/dumped-stream")
+
+COMMON-LISP-USER[1]> (+ 1 2)
+
+ --> 3
+
+COMMON-LISP-USER[1]> (/ 3 4)
+
+ --> 3/4
+
+COMMON-LISP-USER[1]> (com.informatimago.common-lisp.interactive.interactive:repl-exit)
+
+#P"/home/pjb/src/public/test/dumped-stream.lisp"
+cl-user> (cat "/tmp/input.txt")
+(+ 1 2)
+(/ 3 4)
+(com.informatimago.common-lisp.interactive.interactive:repl-exit)
+; No value
+cl-user> (cat "/tmp/output.txt")
+
+COMMON-LISP-USER[1]> 
+ --> 3
+
+COMMON-LISP-USER[1]> 
+ --> 3/4
+
+COMMON-LISP-USER[1]> 
+; No value
+cl-user>

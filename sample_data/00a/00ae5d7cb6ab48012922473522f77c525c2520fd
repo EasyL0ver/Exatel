@@ -1,0 +1,9 @@
+karmaServer.start 
+     
+karmaServer.start
+        flags: ['--no-sandbox'] 
+     
+sed "/^ttkarmaServer.start/attttflags: ['--no-sandbox']" build/unit-test.coffee 
+     
+karmaServer.start
+t       flags: ['--no-sandbox']

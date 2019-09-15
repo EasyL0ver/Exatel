@@ -1,0 +1,351 @@
+
+<html>
+<head>
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.min.js"></script>
+<script src="https://roleplay.chat/jquery.tooltipster.js?v=8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<link href="https://roleplay.chat/tooltipster.css" rel="stylesheet" type="text/css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<script defer>
+window.onload = function() {
+
+};
+</script>
+<style>
+
+</style>
+</head>
+<body>
+<style type="text/css">
+
+ @import url(https://fonts.googleapis.com/css?family=Mr+Dafoe);
+
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+.pfor {display: none;} 
+#profile { background-color: transparent; border: 0px; }
+
+	body {
+
+	background-color: #fff;
+	background-image: url();
+	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: repeat;
+	color: #000;}
+
+
+.container { 
+ position: fixed; 
+top: 280px; 
+left: 0px; 
+height: 240px; 
+width: 2000px; 
+background-color: #000;
+border: 1px solid #000; 
+overflow: hidden; 
+z-index: 1000; 
+z-index: 1;
+box-shadow: 0px 2px 20px #000; 
+}
+
+.render { 
+position: fixed; 
+top: 0px; 
+left: 0px; 
+height: 776px; 
+width: 550px; 
+background-image: url("http://i.picpar.com/rnYc.png"); 
+background-size: 100% 100%; 
+overflow: hidden; 
+z-index: 2;}
+
+	
+	.box{ 
+	width: 550px; 
+	height: 220px; 
+	z-index: 155; 
+	padding: 3px; 
+	opacity: 100; 
+	color: #fff; 
+	font-size: 13px; 
+	line-height: 15px; 
+	font-weight: none; 
+font-family: 'Quicksand', sans-serif;
+	position: absolute; 
+	margin-top: 280px; 
+	margin-left: 500px; 
+	text-align: center; 
+	overflow-x: hidden; 
+	border: 4px solid #000; 
+	background-color: #000; 
+	} 
+	
+	.vani{ 
+	width: 550px; 
+	height: 220px; 
+	z-index: 155; 
+	padding: 3px; 
+	opacity: 0; 
+	color: #fff; 
+	font-size: 13px; 
+	line-height: 15px; 
+	font-weight: none; 
+font-family: 'Quicksand', sans-serif;
+	position: absolute; 
+	margin-top: 280px; 
+	margin-left: 500px; 
+	text-align: center; 
+	overflow-x: hidden; 
+	border: 4px solid #000; 
+	background-color: #000; 
+	-transition: 0.9s all ease-in-out; 
+	-o-transition: 0.9s all ease-in-out; 
+	-moz-transition: 0.9s all ease-in-out; 
+	-webkit-transition: 0.9s all ease-in-out; 
+	} 
+	
+	.vani:target{ 
+	margin-top: 280px; 
+	margin-left: 500px; 
+	opacity: 100; 
+	z-index: 200; 
+	-transition: 0.9s all ease-in-out; 
+	-o-transition: 0.9s all ease-in-out; 
+	-moz-transition: 0.9s all ease-in-out; 
+	-webkit-transition: 0.9s all ease-in-out; 
+	} 
+	
+
+
+
+
+	.menu{ 
+	width: 50px; 
+	height: 5px; 
+	top: 190px; 
+	left: 300px; 
+	position: absolute; 
+	background-color: #; 
+	border-top: 10px solid #; 
+	border-left: 4px solid #; 
+	border-right: 4px solid #; 
+	border-bottom: 10px solid #; 
+	} 
+	
+	.navi{ 
+	width: 700px; 
+	height: 10px; 
+	margin-top: 340px; 
+	margin-left: 290px; 
+	position: absolulte; 
+	} 
+	
+	
+	a.main:link, a.main:active, a.main:visited{ 
+	display: inline-block; 
+	margin: 5px; 
+	height: 15px; 
+	width: 45px; 
+	padding: 5px; 
+	color: #ffffff; 
+	font-size: 15px; 
+	line-height: 15px; 
+	text-align: center; 
+	font-family: candara; 
+	font-variant: small-caps; 
+	text-decoration: none; 
+	background-color: #000; 
+	border-left: 5px solid #000; 
+	border-right: 5px solid #000; 
+	box-shadow: 0px 2px 20px #000; 
+	-transition: 0.9s all ease-in-out; 
+	-o-transition: 0.9s all ease-in-out; 
+	-moz-transition: 0.9s all ease-in-out; 
+	-webkit-transition: 0.9s all ease-in-out; 
+	} 
+	
+	
+	a.main:hover{ 
+	color: #000; 
+	background-color: #fff; 
+	border-left: 5px solid #fff; 
+	border-right: 5px solid #fff; 
+	box-shadow: 0px 2px 20px #fff; 
+	transition: 0.9s all ease-in-out; 
+	-o-transition: 0.9s all ease-in-out; 
+	-moz-transition: 0.9s all ease-in-out; 
+	-webkit-transition: 0.9s all ease-in-out; 
+	} 
+
+
+
+
+a.best:link, a.best:active, a.best:visited{
+display: block;
+float: left;
+width: 90px;
+margin-top: 7px;
+margin-right: 50px;
+border-radius: 2px;
+border:1px solid #a79ebb;
+font-family: consolas;
+text-decoration: none;
+font-size: 10px!important;
+letter-spacing: 0px;
+background-color: f7ede3;
+color: #a79ebb;
+padding-top: 3px;
+padding-bottom: 3px;
+text-align: center!important;
+-webkit-transition: all 0.6s ease-out;
+-moz-transition: all 0.6s ease-out;
+}
+
+a.best:hover{
+background-color: c4e3e8; 
+text-decoration: none;}
+
+
+
+
+a, a:visited {
+text-decoration: none;
+font-weight: bold;
+font-family: 'Quicksand', sans-serif;
+letter-spacing: 0.8px;
+color: #a4a4a4;
+}
+
+a:hover {
+color: #fff;
+}
+
+b {
+color: #C7DCE1;
+font-weight:bold;
+font-size: 14px;
+}
+
+i{
+color: #C5CDD0; 
+font-weight: light; 
+letter-spacing: 0px;
+font-style: italic;
+font-weight: normal; 
+}
+
+u{
+color: #d9d9d9; 
+font-weight: light; 
+}
+
+
+
+h1{
+font-size: 15px; 
+width: 100%; 
+font-family: 'Oswald', sans-serif;
+font-weight: normal; 
+line-height: 14px; 
+text-transform: uppercase; 
+text-align: center; 
+}
+
+h1:first-letter{
+color: #87969B; 
+font-size: 17px;
+font-weight: bold; 
+}
+
+
+	big{ 
+	text-transform: uppercase; 
+	color: #75A8CC; 
+	font-size:12px; 
+	text-shadow:0px 0px 2px #823571; 
+	} 
+
+.Name { 
+position: fixed; 
+top: 235px; 
+left: 670px; 
+color: #A4A4A4; 
+font-size: 50px; 
+line-height: 50px; 
+font-family: 'Mr Dafoe', 
+cursive; z-index: 900; }
+
+
+::-webkit-scrollbar {width: 2px;}
+::-webkit-scrollbar-thumb:vertical {
+height: 10px;background-color: #fff;}
+::-webkit-scrollbar-thumb:horizontal {
+height: 10px;background-color: #fff;border: 0px ;width: 15px;}
+
+	#render { position:fixed; left: 58%; top: 20%; height: 1812px; width: 2272px;}
+
+</style>
+
+<div class="Name">Eiko the Esper</div>
+
+
+<div class="container"></div>
+<div class="render"></div>
+
+
+<div id="1" class="vani"> 
+	
+	<h1> History </h1> 
+<br>
+
+Throughout her life, Eiko became accustomed to isolating herself from those around her. She accidentally awakened her abilities as an esper at a young age, and as a result became the center of contempt and fear from her young peers. When her parents found out about the incident that'd occurred, they were unable to embrace their daughter's powers, and told her not to use them away from home. This made Eiko feel even more ashamed of her capabilities and deterred her from exploring them altogether.<br><br>
+
+As a result, she grew into a teenager with vast abilities she refused to train, let alone make others aware of. When she started middle school, "rumors" about Eiko's powers spread around the school, causing her to isolate herself further. The field of biokinesis is an expansive one, and while Eiko recognized that she'd have potential to be immeasurably strong if she just worked on training herself, fear of further judgement from those around her kept the teen from doing so. With no friends and few distant acquaintances, Eiko opted out of expanding her social life and instead focused on her studies and doodling in her notebooks during her free time.<br><br>
+
+Currently, she's able to comfortably complete her schoolwork with little to no difficulty and guidance. Still, Eiko finds herself longing for more, and can't help but feel that something in her life is missing. With the lingering curiousity regarding her abilities, she finds exploring them difficult to resist. Despite the thoughts that she could be more, and the desire to <i>be more</i>, she hasn't wavered from her firm stance on leaving her powers alone.<br><br>
+
+At least, not yet. 
+
+
+
+
+
+	
+	</div> 
+	
+	
+	
+	<div id="2" class="vani"> 
+	
+	
+<h1>Abilities</h1>
+
+<br>
+
+<u>Biokinesis - the supposed ability to mentally control the bodily functions of oneself or another.</u><br><br>
+
+<u>Healing:</u> Eiko can achieve this at a basic level. Basic healing entails her being able to heal cuts, light burns, and bruises, and, additionally, her being able to recover from minor to moderate blood loss. Doing any of the aforementioned tasks leaves her feeling notably fatigued, something she noticed from the one and only time she healed herself.<br><br>
+
+(A note: If, during Eiko's character development, she chooses to pursue a better understanding of her abilities, the list of her capabilities will expand in accordance with what she manages to learn through roleplay. All of the powers she can and will learn will either be a power or sub-power that corresponds with this <a target="_blank" href="http://powerlisting.wikia.com/wiki/Biological_Manipulation" target="_blank">page's list</a>, and won't transcend past that, since biokinesis is her area of skill. Until then, her list of abilities will remain small and unimpressive.)
+
+
+
+	</div> 
+	
+	
+	<div id="3" class="vani"> 
+	
+	<h1>Friends</h1>
+<br>
+
+<a target="_blank" href="https://roleplay.chat/profile.php?user=Shigeo+Kageyama" target="_blank">Mob</a> || <a target="_blank" href="https://roleplay.chat/profile.php?user=Batson" target="_blank">Billy</a> || <a target="_blank" href="https://roleplay.chat/profile.php?user=Himeko" target="_blank">Himeko</a> || <a target="_blank"

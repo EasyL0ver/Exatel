@@ -1,0 +1,128 @@
+01:44:18.130 T:4320  NOTICE: special://profile/ is mapped to: special://masterprofile/
+01:44:18.130 T:4320  NOTICE: -----------------------------------------------------------------------
+01:44:18.130 T:4320  NOTICE: Starting Kodi (17.6 Git:20171114-a9a7a20). Platform: Windows NT x86 32-bit
+01:44:18.130 T:4320  NOTICE: Using Release Kodi x32 build
+01:44:18.130 T:4320  NOTICE: Kodi compiled Dec 10 2017 by MSVC 190024215 for Windows NT x86 32-bit version 10.0 (0x0A000000)
+01:44:18.130 T:4320  NOTICE: Running on FUJITSU SIEMENS ESPRIMO Mobile V6555 with Windows 10, kernel: Windows NT x86 64-bit version 10.0
+01:44:18.132 T:4320  NOTICE: FFmpeg version/source: ffmpeg-3.1-kodi
+01:44:18.132 T:4320  NOTICE: Host CPU: Unknown, 2 cores available
+01:44:18.132 T:4320  NOTICE: Desktop Resolution: 1280x800 32Bit at 59Hz
+01:44:18.133 T:4320  NOTICE: Running with restricted rights
+01:44:18.140 T:4320  NOTICE: Aero is enabled
+01:44:18.140 T:4320  NOTICE: special://xbmc/ is mapped to: C:\Program Files (x86)\Kodi
+01:44:18.140 T:4320  NOTICE: special://xbmcbin/ is mapped to: C:\Program Files (x86)\Kodi
+01:44:18.140 T:4320  NOTICE: special://xbmcbinaddons/ is mapped to: C:\Program Files (x86)\Kodi/addons
+01:44:18.140 T:4320  NOTICE: special://masterprofile/ is mapped to: C:\Users\Turgut\AppData\Roaming\Kodi\userdata
+01:44:18.140 T:4320  NOTICE: special://home/ is mapped to: C:\Users\Turgut\AppData\Roaming\Kodi\
+01:44:18.140 T:4320  NOTICE: special://temp/ is mapped to: C:\Users\Turgut\AppData\Roaming\Kodi\cache
+01:44:18.140 T:4320  NOTICE: special://logpath/ is mapped to: C:\Users\Turgut\AppData\Roaming\Kodi\
+01:44:18.140 T:4320  NOTICE: The executable running is: C:\Program Files (x86)\Kodi\kodi.exe
+01:44:18.150 T:4320  NOTICE: Local hostname: Fujitsu
+01:44:18.150 T:4320  NOTICE: Log File is located: C:\Users\Turgut\AppData\Roaming\Kodi\/kodi.log
+01:44:18.150 T:4320  NOTICE: -----------------------------------------------------------------------
+01:44:18.164 T:4320  NOTICE: load settings...
+01:44:18.180 T:4320 WARNING: CSettingString: unknown options filler "timezonecountries" of "locale.timezonecountry"
+01:44:18.180 T:4320 WARNING: CSettingString: unknown options filler "timezones" of "locale.timezone"
+01:44:18.204 T:4320  NOTICE: No settings file to load (special://xbmc/system/advancedsettings.xml)
+01:44:18.205 T:4320  NOTICE: Loaded settings file from special://profile/advancedsettings.xml
+01:44:18.205 T:4320  NOTICE: Contents of special://profile/advancedsettings.xml are...
+                                            <advancedsettings>
+                                              <network>
+                                                <curlclienttimeout>10</curlclienttimeout>
+                                                <curllowspeedtime>20</curllowspeedtime>
+                                                <curlretries>2</curlretries>
+                                              </network>
+                                              <cache>
+                                                <memorysize>401604608</memorysize>
+                                                <buffermode>2</buffermode>
+                                                <readfactor>20</readfactor>
+                                              </cache>
+                                            </advancedsettings>
+01:44:18.205 T:4320  NOTICE: Default Video Player: VideoPlayer
+01:44:18.205 T:4320  NOTICE: Default Audio Player: paplayer
+01:44:18.205 T:4320  NOTICE: Disabled debug logging due to GUI setting. Level 0.
+01:44:18.205 T:4320  NOTICE: Log level changed to "LOG_LEVEL_NORMAL"
+01:44:18.206 T:4320  NOTICE: CMediaSourceSettings: loading media sources from special://masterprofile/sources.xml
+01:44:18.209 T:4320  NOTICE: Loading player core factory settings from special://xbmc/system/playercorefactory.xml.
+01:44:18.210 T:4320  NOTICE: Loaded playercorefactory configuration
+01:44:18.211 T:4320  NOTICE: Loading player core factory settings from special://masterprofile/playercorefactory.xml.
+01:44:18.211 T:4320  NOTICE: special://masterprofile/playercorefactory.xml does not exist. Skipping.
+01:44:18.270 T:4320  NOTICE: Running database version Addons27
+01:44:18.490 T:4320  NOTICE: ADDONS: Using repository repository.xbmc.org
+01:44:18.490 T:4320  NOTICE: ADDONS: Using repository repository.Absolut.Kodi
+01:44:18.490 T:4320  NOTICE: ADDONS: Using repository OTV_MEDIA.repo
+01:44:18.490 T:4320  NOTICE: ADDONS: Using repository repository.aenemapy
+01:44:18.490 T:4320  NOTICE: ADDONS: Using repository repository.mar33
+01:44:18.490 T:4320  NOTICE: ADDONS: Using repository repo.bg.plugins
+01:44:18.490 T:4320  NOTICE: ADDONS: Using repository repository.turkvod
+01:44:18.490 T:4320  NOTICE: ADDONS: Using repository repository.ukturk
+01:44:18.568 T:7648  NOTICE: Found 2 Lists of Devices
+01:44:18.568 T:7648  NOTICE: Enumerated DIRECTSOUND devices:
+01:44:18.568 T:7648  NOTICE:     Device 1
+01:44:18.568 T:7648  NOTICE:         m_deviceName      : {29C96B45-7A06-4B08-9F15-12E38BE154D7}
+01:44:18.568 T:7648  NOTICE:         m_displayName     : Speakers - Speakers (High Definition Audio Device)
+01:44:18.568 T:7648  NOTICE:         m_displayNameExtra: DIRECTSOUND: Speakers (High Definition Audio Device)
+01:44:18.568 T:7648  NOTICE:         m_deviceType      : AE_DEVTYPE_PCM
+01:44:18.568 T:7648  NOTICE:         m_channels        : FL,FR
+01:44:18.568 T:7648  NOTICE:         m_sampleRates     : 44100
+01:44:18.568 T:7648  NOTICE:         m_dataFormats     : AE_FMT_FLOAT
+01:44:18.568 T:7648  NOTICE:         m_streamTypes     : No passthrough capabilities
+01:44:18.568 T:7648  NOTICE:     Device 2
+01:44:18.568 T:7648  NOTICE:         m_deviceName      : default
+01:44:18.568 T:7648  NOTICE:         m_displayName     : default
+01:44:18.568 T:7648  NOTICE:         m_displayNameExtra:
+01:44:18.568 T:7648  NOTICE:         m_deviceType      : AE_DEVTYPE_PCM
+01:44:18.568 T:7648  NOTICE:         m_channels        : FL,FR
+01:44:18.568 T:7648  NOTICE:         m_sampleRates     : 44100
+01:44:18.568 T:7648  NOTICE:         m_dataFormats     : AE_FMT_FLOAT
+01:44:18.568 T:7648  NOTICE:         m_streamTypes     : No passthrough capabilities
+01:44:18.568 T:7648  NOTICE: Enumerated WASAPI devices:
+01:44:18.568 T:7648  NOTICE:     Device 1
+01:44:18.568 T:7648  NOTICE:         m_deviceName      : {29C96B45-7A06-4B08-9F15-12E38BE154D7}
+01:44:18.568 T:7648  NOTICE:         m_displayName     : Speakers - Speakers (High Definition Audio Device)
+01:44:18.568 T:7648  NOTICE:         m_displayNameExtra: WASAPI: Speakers (High Definition Audio Device)
+01:44:18.568 T:7648  NOTICE:         m_deviceType      : AE_DEVTYPE_PCM
+01:44:18.568 T:7648  NOTICE:         m_channels        : FL,FR
+01:44:18.568 T:7648  NOTICE:         m_sampleRates     : 192000,96000,48000,44100
+01:44:18.568 T:7648  NOTICE:         m_dataFormats     : AE_FMT_S24NE4MSB,AE_FMT_S16NE,AE_FMT_S16LE,AE_FMT_S16BE
+01:44:18.568 T:7648  NOTICE:         m_streamTypes     : No passthrough capabilities
+01:44:18.568 T:7648  NOTICE:     Device 2
+01:44:18.568 T:7648  NOTICE:         m_deviceName      : default
+01:44:18.568 T:7648  NOTICE:         m_displayName     : default
+01:44:18.568 T:7648  NOTICE:         m_displayNameExtra:
+01:44:18.568 T:7648  NOTICE:         m_deviceType      : AE_DEVTYPE_PCM
+01:44:18.568 T:7648  NOTICE:         m_channels        : FL,FR
+01:44:18.568 T:7648  NOTICE:         m_sampleRates     : 192000,96000,48000,44100
+01:44:18.568 T:7648  NOTICE:         m_dataFormats     : AE_FMT_S24NE4MSB,AE_FMT_S16NE,AE_FMT_S16LE,AE_FMT_S16BE
+01:44:18.568 T:7648  NOTICE:         m_streamTypes     : No passthrough capabilities
+01:44:18.628 T:4320  NOTICE: Found screen: Generic PnP Monitor on NVIDIA GeForce 8200M G, adapter 0.
+01:44:18.628 T:4320  NOTICE: Primary mode: 1280x800@ 59.94 - Full Screen
+01:44:18.629 T:4320  NOTICE: Additional mode: 640x480@ 59.94 - Full Screen
+01:44:18.629 T:4320  NOTICE: Additional mode: 640x480@ 60.00 - Full Screen
+01:44:18.629 T:4320  NOTICE: Additional mode: 640x480@ 59.94 - Full Screen
+01:44:18.630 T:4320  NOTICE: Additional mode: 640x480@ 60.00 - Full Screen
+01:44:18.630 T:4320  NOTICE: Additional mode: 640x480@ 59.94 - Full Screen
+01:44:18.630 T:4320  NOTICE: Additional mode: 640x480@ 60.00 - Full Screen
+01:44:18.630 T:4320  NOTICE: Additional mode: 800x600@ 59.94 - Full Screen
+01:44:18.631 T:4320  NOTICE: Additional mode: 800x600@ 60.00 - Full Screen
+01:44:18.631 T:4320  NOTICE: Additional mode: 800x600@ 59.94 - Full Screen
+01:44:18.631 T:4320  NOTICE: Additional mode: 800x600@ 60.00 - Full Screen
+01:44:18.631 T:4320  NOTICE: Additional mode: 800x600@ 59.94 - Full Screen
+01:44:18.632 T:4320  NOTICE: Additional mode: 800x600@ 60.00 - Full Screen
+01:44:18.632 T:4320  NOTICE: Additional mode: 1024x768@ 59.94 - Full Screen
+01:44:18.632 T:4320  NOTICE: Additional mode: 1024x768@ 60.00 - Full Screen
+01:44:18.632 T:4320  NOTICE: Additional mode: 1024x768@ 59.94 - Full Screen
+01:44:18.633 T:4320  NOTICE: Additional mode: 1024x768@ 60.00 - Full Screen
+01:44:18.633 T:4320  NOTICE: Additional mode: 1024x768@ 59.94 - Full Screen
+01:44:18.633 T:4320  NOTICE: Additional mode: 1024x768@ 60.00 - Full Screen
+01:44:18.633 T:4320  NOTICE: Additional mode: 1280x720@ 59.94 - Full Screen
+01:44:18.634 T:4320  NOTICE: Additional mode: 1280x720@ 60.00 - Full Screen
+01:44:18.634 T:4320  NOTICE: Additional mode: 1280x720@ 59.94 - Full Screen
+01:44:18.634 T:4320  NOTICE: Additional mode: 1280x720@ 60.00 - Full Screen
+01:44:18.634 T:4320  NOTICE: Additional mode: 1280x720@ 59.94 - Full Screen
+01:44:18.634 T:4320  NOTICE: Additional mode: 1280x720@ 60.00 - Full Screen
+01:44:18.635 T:4320  NOTICE: Additional mode: 1280x768@ 59.94 - Full Screen
+01:44:18.635 T:4320  NOTICE: Additional mode: 1280x768@ 60.00 - Full Screen
+01:44:18.635 T:4320  NOTICE: Additional mode: 1280x768@ 59.94 - Full Screen
+01:44:18.636 T:4320  NOTICE: Additional mode: 1280x768@ 60.00 - Full Screen
+01:44:18.636 T:4320  NOTICE: Additional mode: 1280x768@ 59.94

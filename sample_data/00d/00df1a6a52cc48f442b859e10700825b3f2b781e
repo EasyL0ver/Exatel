@@ -1,0 +1,242 @@
+[
+  {
+    "_index": "vue_storefront_catalog",
+    "_type": "category",
+    "_id": "2",
+    "_score": 1,
+    "_source": {
+      "id": 2,
+      "parent_id": 1,
+      "name": "Default Category",
+      "is_active": true,
+      "position": 1,
+      "level": 1,
+      "product_count": 1,
+      "children_data": [
+        {
+          "id": 21,
+          "parent_id": 2,
+          "name": "Schrauben",
+          "is_active": true,
+          "position": 1,
+          "level": 2,
+          "product_count": 1,
+          "children_data": [
+            {
+              "id": 210,
+              "parent_id": 21,
+              "name": "DIN930",
+              "is_active": true,
+              "position": 1,
+              "level": 3,
+              "product_count": 1,
+              "children_data": []
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "parent_id": 2,
+          "name": "Muttern",
+          "is_active": true,
+          "position": 2,
+          "level": 2,
+          "product_count": 1,
+          "children_data": []
+        },
+        {
+          "id": 23,
+          "parent_id": 2,
+          "name": "Scheiben",
+          "is_active": true,
+          "position": 3,
+          "level": 2,
+          "product_count": 1,
+          "children_data": []
+        },
+        {
+          "id": 24,
+          "parent_id": 2,
+          "name": "Gewindestangen",
+          "is_active": true,
+          "position": 4,
+          "level": 2,
+          "product_count": 1,
+          "children_data": []
+        }
+      ]
+    }
+  },
+  {
+    "_index": "vue_storefront_catalog",
+    "_type": "category",
+    "_id": "21",
+    "_score": 1,
+    "_source": {
+      "id": 21,
+      "parent_id": 2,
+      "name": "Schrauben",
+      "is_active": true,
+      "position": 1,
+      "level": 2,
+      "product_count": 1,
+      "children_data": [
+        {
+          "id": 210,
+          "parent_id": 21,
+          "name": "Schraube DIN930",
+          "is_active": true,
+          "position": 1,
+          "level": 3,
+          "product_count": 1,
+          "children_data": []
+        }
+      ]
+    }
+  },
+  {
+    "_index": "vue_storefront_catalog",
+    "_type": "category",
+    "_id": "210",
+    "_score": 1,
+    "_source": {
+      "id": 210,
+      "parent_id": 21,
+      "name": "Schraube DIN930",
+      "is_active": true,
+      "position": 1,
+      "level": 3,
+      "product_count": 1,
+      "children_data": []
+    }
+  },
+  {
+    "_index": "vue_storefront_catalog",
+    "_type": "category",
+    "_id": "22",
+    "_score": 1,
+    "_source": {
+      "id": 22,
+      "parent_id": 2,
+      "name": "Muttern",
+      "is_active": true,
+      "position": 2,
+      "level": 2,
+      "product_count": 1,
+      "children_data": [
+        {
+          "id": 220,
+          "parent_id": 22,
+          "name": "Mutter DIN200",
+          "is_active": true,
+          "position": 1,
+          "level": 3,
+          "product_count": 1,
+          "children_data": []
+        }
+      ]
+    }
+  },
+  {
+    "_index": "vue_storefront_catalog",
+    "_type": "category",
+    "_id": "220",
+    "_score": 1,
+    "_source": {
+      "id": 220,
+      "parent_id": 22,
+      "name": "Mutter DIN200",
+      "is_active": true,
+      "position": 1,
+      "level": 3,
+      "product_count": 1,
+      "children_data": []
+    }
+  },
+  {
+    "_index": "vue_storefront_catalog",
+    "_type": "category",
+    "_id": "23",
+    "_score": 1,
+    "_source": {
+      "id": 23,
+      "parent_id": 2,
+      "name": "Scheiben",
+      "is_active": true,
+      "position": 3,
+      "level": 2,
+      "product_count": 1,
+      "children_data": [
+        {
+          "id": 230,
+          "parent_id": 23,
+          "name": "Scheibe DIN300",
+          "is_active": true,
+          "position": 1,
+          "level": 3,
+          "product_count": 1,
+          "children_data": []
+        }
+      ]
+    }
+  },
+  {
+    "_index": "vue_storefront_catalog",
+    "_type": "category",
+    "_id": "230",
+    "_score": 1,
+    "_source": {
+      "id": 230,
+      "parent_id": 23,
+      "name": "Scheibe DIN300",
+      "is_active": true,
+      "position": 1,
+      "level": 3,
+      "product_count": 1,
+      "children_data": []
+    }
+  },
+  {
+    "_index": "vue_storefront_catalog",
+    "_type": "category",
+    "_id": "24",
+    "_score": 1,
+    "_source": {
+      "id": 24,
+      "parent_id": 2,
+      "name": "Gewindestangen",
+      "is_active": true,
+      "position": 4,
+      "level": 2,
+      "product_count": 1,
+      "children_data": [
+        {
+          "id": 240,
+          "parent_id": 24,
+          "name": "Gewindestange DIN400",
+          "is_active": true,
+          "position": 1,
+          "level": 3,
+          "product_count": 1,
+          "children_data": []
+        }
+      ]
+    }
+  },
+  {
+    "_index": "vue_storefront_catalog",
+    "_type": "category",
+    "_id": "240",
+    "_score": 1,
+    "_source": {
+      "id": 240,
+      "parent_id": 24,
+      "name": "Gewindestange DIN400",
+      "is_active": true,
+      "position": 1,
+      "level": 3,
+      "product_count": 1,
+      "children_data": []
+    }
+  }
+]

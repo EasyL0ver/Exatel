@@ -1,0 +1,47 @@
+k = 5 # number of trials
+ n = 2000 # total number of patients
+ p = rep(0.2,k) # proportion of each trial, sum must equal 1
+
+ # Which trial does each individual belong to ?
+
+   x <- runif( n )
+   z_trial <- as.integer( cut( x, breaks = c( 0, cumsum( p ) ) ) )
+   z_trial = sort(z_trial)
+
+ # Which arm does each individual belong to ?
+
+ z_arm = 0
+ for (j in 1:k)
+ {  
+   n_trial = sum(z_trial==j)
+   vec = rep(0, n_trial)
+   if (n_trial%%2 == 0)
+   {vec = c(rep(-0.5, n_trial/2), rep(0.5, n_trial/2)) }
+   else
+   {vec = c(rep(-0.5, n_trial/2), rep(0.5, n_trial/2+1))} 
+    z_arm = c(z_arm, vec)
+    }
+   z_arm = z_arm[-1]
+
+ # Generation of random and fixed effects
+
+ tau = 0.2 # random effect (random treatment effect)
+ mean_logHR = -2 # mean log Hazard Ratio ( for treatment effect) 
+ gamma = 0.5 # fixed effect ( for trial effect )
+
+ beta1 = rnorm(k, mean_logHR, tau^2) #  treatment effect
+ beta0 = c(0, rnorm (k-1, 0,  gamma^2)) # trial effect 
+
+ # Simulation of survival times
+
+surv1 = 0
+ for (j in 1:k)
+ {  
+   SURV1 = rweibull(sum(z_essai==j), shape = 1/2 , scale = exp(beta0[j]+beta1[j]*z_arm[z_essai==j]))   
+   surv1 = c(surv1, SURV1)
+ }
+
+ surv1 = surv1[-1]
+ cens  = rexp( n , 0.5 )
+ delta = ifelse ( surv1 > cens , 0 , 1) # event indicator function
+ time  = pmin ( surv1, cens)

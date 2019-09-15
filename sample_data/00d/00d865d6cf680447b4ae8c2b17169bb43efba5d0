@@ -1,0 +1,8 @@
+<?php
+add_action( 'init', function() {
+    global $wp_rewrite;
+    $wp_rewrite->set_permalink_structure( 
+      // you have to know the permalink rules on WordPress
+      '/%year%/%monthnum%/%postname%/'
+    );
+} );

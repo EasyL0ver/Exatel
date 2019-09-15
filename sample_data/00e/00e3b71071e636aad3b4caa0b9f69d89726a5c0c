@@ -1,0 +1,7 @@
+body { 
+    font-family: Verdana, Arial, sans-serif;
+}
+
+p { 
+    font-family: Helvetica, inherit;
+}

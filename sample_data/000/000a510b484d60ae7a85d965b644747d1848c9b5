@@ -1,0 +1,187 @@
+Sonarr debug log
+
+18-9-1 21:10:37.9|Debug|Api|[GET] /api/v3/tag: 200.OK (0 ms)
+
+18-9-1 21:10:37.9|Debug|Api|[GET] /api/v3/qualityprofile: 200.OK (5 ms)
+
+18-9-1 21:10:37.9|Debug|Api|[GET] /api/v3/config/ui: 200.OK (0 ms)
+
+18-9-1 21:10:37.9|Debug|Api|[GET] /api/v3/system/status: 200.OK (1 ms)
+
+18-9-1 21:10:37.9|Debug|Api|[GET] /api/v3/languageprofile: 200.OK (1 ms)
+
+18-9-1 21:10:37.9|Debug|Api|[GET] /api/v3/series: 200.OK (47 ms)
+
+18-9-1 21:10:38.1|Debug|Api|[GET] /api/v3/health: 200.OK (0 ms)
+
+18-9-1 21:10:38.1|Debug|Api|[GET] /api/v3/log/file: 200.OK (0 ms)
+
+18-9-1 21:10:38.2|Debug|Api|[GET] /api/v3/queue/status: 200.OK (84 ms)
+
+18-9-1 21:10:41.7|Debug|Api|[GET] /api/v3/config/host: 200.OK (7 ms)
+
+18-9-1 21:10:53.7|Debug|Api|[PUT] /api/v3/config/host: 202.Accepted (38 ms)
+
+18-9-1 21:10:53.8|Debug|Api|[GET] /api/v3/health: 200.OK (0 ms)
+
+18-9-1 21:10:53.8|Debug|Api|[GET] /api/v3/health: 200.OK (0 ms)
+
+18-9-1 21:10:59.8|Debug|Api|[GET] /api/v3/wanted/missing?page=1&pageSize=20&sortDirection=descending&sortKey=airDateUtc&monitored=true: 200.OK (74 ms)
+
+18-9-1 21:11:00.1|Debug|Api|[GET] /api/v3/queue/details?episodeIds=4558&episodeIds=4557&episodeIds=4556&episodeIds=4555&episodeIds=4554&episodeIds=4553&episodeIds=4552&episodeIds=4551&episodeIds=4550&episodeIds=4549&episodeIds=4548&episodeIds=4547&episodeIds=4546&episodeIds=4545&episodeIds=4544&episodeIds=4543&episodeIds=4542&episodeIds=4541&episodeIds=4540&episodeIds=4539: 200.OK (3 ms)
+
+18-9-1 21:11:08.0|Debug|Api|[GET] /api/v3/config/host: 200.OK (2 ms)
+
+18-9-1 21:11:14.1|Debug|Api|[GET] /api/v3/health: 200.OK (0 ms)
+
+18-9-1 21:11:14.1|Debug|Api|[GET] /api/v3/system/status: 200.OK (0 ms)
+
+18-9-1 21:11:14.2|Debug|Api|[GET] /api/v3/diskspace: 200.OK (77 ms)
+
+18-9-1 21:11:16.6|Debug|Api|[GET] /api/v3/log/file: 200.OK (1 ms)
+
+18-9-1 21:11:19.6|Debug|Api|[GET] /api/v3/series: 200.OK (28 ms)
+
+18-9-1 21:11:19.8|Warn|MediaCoverMapper|File C:\ProgramData\Sonarr\MediaCover\34\poster.jpg not found
+
+18-9-1 21:11:21.8|Debug|Api|[GET] /api/v3/queue/details?seriesId=35: 200.OK (7 ms)
+
+18-9-1 21:11:21.8|Debug|Api|[GET] /api/v3/episodeFile?seriesId=35: 200.OK (9 ms)
+
+18-9-1 21:11:21.8|Debug|Api|[GET] /api/v3/episode?seriesId=35: 200.OK (19 ms)
+
+18-9-1 21:11:44.1|Debug|Api|[GET] /api/v3/queue/details?seriesId=35: 200.OK (3 ms)
+
+18-9-1 21:11:46.4|Debug|Api|[POST] /api/v3/command: 201.Created (3 ms)
+
+18-9-1 21:11:46.4|Info|NzbSearchService|Searching 1 indexers for [Bleach : 343]
+
+18-9-1 21:11:46.4|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+343
+
+18-9-1 21:11:50.1|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 343] from 1 indexers
+
+18-9-1 21:11:50.1|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:11:50.2|Info|NzbSearchService|Searching 1 indexers for [Bleach : 344]
+
+18-9-1 21:11:50.2|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+344
+
+18-9-1 21:11:50.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 344] from 1 indexers
+
+18-9-1 21:11:50.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:11:50.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 345]
+
+18-9-1 21:11:51.0|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+345
+
+18-9-1 21:11:52.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 345] from 1 indexers
+
+18-9-1 21:11:52.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:11:52.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 346]
+
+18-9-1 21:11:52.9|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+346
+
+18-9-1 21:11:54.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 346] from 1 indexers
+
+18-9-1 21:11:54.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:11:54.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 347]
+
+18-9-1 21:11:55.0|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+347
+
+18-9-1 21:11:56.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 347] from 1 indexers
+
+18-9-1 21:11:56.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:11:56.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 348]
+
+18-9-1 21:11:56.9|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+348
+
+18-9-1 21:11:58.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 348] from 1 indexers
+
+18-9-1 21:11:58.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:11:58.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 349]
+
+18-9-1 21:11:58.9|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+349
+
+18-9-1 21:12:00.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 349] from 1 indexers
+
+18-9-1 21:12:00.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:00.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 350]
+
+18-9-1 21:12:00.9|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+350
+
+18-9-1 21:12:02.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 350] from 1 indexers
+
+18-9-1 21:12:02.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:02.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 351]
+
+18-9-1 21:12:02.9|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+351
+
+18-9-1 21:12:04.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 351] from 1 indexers
+
+18-9-1 21:12:04.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:04.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 352]
+
+18-9-1 21:12:05.0|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+352
+
+18-9-1 21:12:06.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 352] from 1 indexers
+
+18-9-1 21:12:06.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:06.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 353]
+
+18-9-1 21:12:06.9|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+353
+
+18-9-1 21:12:08.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 353] from 1 indexers
+
+18-9-1 21:12:08.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:08.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 354]
+
+18-9-1 21:12:09.0|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+354
+
+18-9-1 21:12:10.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 354] from 1 indexers
+
+18-9-1 21:12:10.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:10.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 355]
+
+18-9-1 21:12:11.0|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+355
+
+18-9-1 21:12:12.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 355] from 1 indexers
+
+18-9-1 21:12:12.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:13.0|Info|NzbSearchService|Searching 1 indexers for [Bleach : 356]
+
+18-9-1 21:12:13.0|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+356
+
+18-9-1 21:12:14.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 356] from 1 indexers
+
+18-9-1 21:12:14.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:14.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 357]
+
+18-9-1 21:12:14.9|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+357
+
+18-9-1 21:12:16.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 357] from 1 indexers
+
+18-9-1 21:12:16.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:17.0|Info|NzbSearchService|Searching 1 indexers for [Bleach : 358]
+
+18-9-1 21:12:17.0|Debug|Torznab|Downloading Feed http://127.0.0.1:9117/api/v2.0/indexers/animebytes/results/torznab/api?t=search&cat=5070&extended=1&apikey=(removed)&offset=0&limit=100&q=Bleach+358
+
+18-9-1 21:12:18.9|Debug|NzbSearchService|Total of 0 reports were found for [Bleach : 358] from 1 indexers
+
+18-9-1 21:12:18.9|Info|DownloadDecisionMaker|No results found
+
+18-9-1 21:12:18.9|Info|NzbSearchService|Searching 1 indexers for [Bleach : 359]
+
+18-9-1 21:12:19.0|Debug|Torznab|Downloading Feed

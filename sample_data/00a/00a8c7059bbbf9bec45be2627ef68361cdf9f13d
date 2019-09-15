@@ -1,0 +1,29 @@
+final String[] projeccion = new String[]{ContactsContract.CommonDataKinds.Phone._ID,ContactsContract.Data.DISPLAY_NAME,
+            ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.NORMALIZED_NUMBER};
+
+
+    String selectionClause = ContactsContract.Data.MIMETYPE + "='" +
+            ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE + "' AND "
+            + ContactsContract.CommonDataKinds.Phone.NUMBER + " IS NOT NULL";
+    String sortOrder = ContactsContract.Data.DISPLAY_NAME + " ASC";
+
+    final Cursor c = getActivity().getContentResolver().query(
+            ContactsContract.Data.CONTENT_URI,
+            projeccion,
+            selectionClause,
+            null,
+            sortOrder);
+
+    HashSet<String> normalizedNumbersAlreadyFound = new HashSet<>();
+    int indexOfNormalizedNumber = c.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NORMALIZED_NUMBER);
+
+    while(c.moveToNext()){
+        String email=c.getString(1).replace(" ","_");
+        String normalizedNumber = c.getString(indexOfNormalizedNumber);
+        if(normalizedNumbersAlreadyFound.add(normalizedNumber)){
+         contactosAtributos=.......
+
+            listaC.add(contactosAtributos);
+        }
+    }
+    c.close();

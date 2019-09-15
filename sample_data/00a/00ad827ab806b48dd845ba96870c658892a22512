@@ -1,0 +1,15 @@
+Category | Sept, 2012 | Aug, 2012| Jul, 2012 | Sept, 2011 | Average of Sept | Avg all Mo
+	
+'Burger'  '9/1/2012'   '500'
+'Fries'  '10/1/2012    '300'
+'Burger'  '6/1/2011'   '250'
+	
+SELECT 
+ Category
+,[Sep 2012]=SUM(CASE WHEN YEAR(TranDate)= YEAR(GETDATE()) AND MONTH(TranDate)= MONTH(GETDATE()) THEN Amount ELSE NULL END)
+,[Aug 2012]=SUM(CASE WHEN  YEAR(TranDate)= YEAR(DATEADD(month,-1,GETDATE())) AND MONTH(TranDate)= MONTH(DATEADD(month,-1,GETDATE()))  THEN Amount ELSE NULL END)
+,[Jul 2012]=SUM(CASE WHEN YEAR(TranDate)= YEAR(DATEADD(month,-2,GETDATE())) AND MONTH(TranDate)= MONTH(DATEADD(month,-2,GETDATE())) THEN Amount ELSE NULL END)
+,[AVG Sep 2012]=AVG(CASE WHEN YEAR(TranDate)= YEAR(GETDATE()) AND MONTH(TranDate)= MONTH(GETDATE()) THEN Amount ELSE NULL END)
+,[AVG 12 months]=AVG(CASE WHEN TranDatee > CAST(DATEADD(year,-1,GETDATE()) AS DATE) THEN Amount ELSE NULL END)/12
+FROM Table1
+GROUP BY Category,Amount

@@ -1,0 +1,70 @@
+class Host(object):
+    __slots__ = ['data', 'location']
+
+    def __init__(self, data, location=''):
+        self.data = data
+        self.location = location
+
+    @property
+    def location(self):
+        return self._location
+
+    @location.setter
+    def location(self, value):
+        self._location = value.lower()
+
+    def __repr__(self):
+        if self.location == '':
+            self.loc = 'Not Found'
+        else:
+            self.loc = self.location
+        return 'Host(name={}, location={})'.format(self.name, self.loc)
+	
+class Host(object):
+    __slots__ = ['data', '_location']
+	
+def __repr__(self):
+    loc = self.location or 'Not Found'
+    name = self.data['name']  # or some other expression
+    return 'Host(name={}, location={})'.format(name, loc)
+	
+#! /usr/bin/env python3
+def main():
+    print(Host('Hello, world!', 'Earth'))
+    print(Host('Hello, Xyz!'))
+
+
+class Host:
+
+    __slots__ = '__name', '__location'
+
+    def __init__(self, name, location=''):
+        self.name = name
+        self.location = location
+
+    def __repr__(self):
+        return '{!s}({!r}, {!r})'.format(
+            type(self).__name__,
+            self.name,
+            self.location
+        )
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
+
+    @property
+    def location(self):
+        return self.__location
+
+    @location.setter
+    def location(self, value):
+        self.__location = value.casefold() if value else 'Not Found'
+
+
+if __name__ == '__main__':
+    main()

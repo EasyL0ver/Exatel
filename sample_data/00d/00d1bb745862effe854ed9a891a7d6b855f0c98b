@@ -1,0 +1,14 @@
+I am fairly new to Linux and still learning.  I want to create a multiboot set up (from different drives, not different partitions) where each OS instance is effectively “air gaped” from the other.  I can then select which drive to boot from in BIOS at start up and whichever drive boots, that OS won’t be able to see the other drive.  
+I am using a laptop where it is not practical to physically swap drives (at least not often) and I want to run Win 10 Pro off my NVMe drive (with the SATA drive disabled in Device Manager) and tinker around with various Linux distros, running them off my SATA drive or a Live CD (with the NVMe drive invisible to them) - while keeping the data on my NVMe drive secure.
+	
+BIOS  
+    AMI Aptio 2.18.126  
+    Firmware Ver 1.05.03  
+Chipset  
+    Intel Z170  
+Processor Family  
+    Skylake  
+NVMe drive  
+    Samsung 950 Pro  
+SATA drive  
+    Samsung 850 Pro

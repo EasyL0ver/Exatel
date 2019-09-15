@@ -1,0 +1,117 @@
+    
+DIDMOUNT \\\\\\\
+
+  let that = this;
+      d3.selectAll('.size_posts_custom_selector span')
+        .on('click', setSelectorSizes);
+        
+      function setSelectorSizes(){
+          if(first_check == false){
+            d3.selectAll('.blog_post').style('height', '10vw');
+            d3.selectAll('.blog_post_date').style('font-size', '5vw');
+            d3.selectAll('.blog_post_title').style('line-height', '2vw')
+            d3.selectAll('.blog_post_title h2').style('font-size', '2vw');;
+            first_check = true;
+          }
+          let current_select = d3.select(this).attr('data-size');
+          let first_select = d3.select('.size_posts_custom_selector span').attr('data-size');
+          if(current_select != first_select){
+            d3.select(this)
+              .attr('data-size', first_select)
+              .node().innerHTML = first_select;
+            d3.select('.size_posts_custom_selector span')
+              .attr('data-size', current_select)
+              .node().innerHTML = current_select;
+              that.setPostSize(current_select);
+          }
+      }
+
+
+GLOBAL: \\\\\\\\
+
+
+setPostSize = (current_select) => {
+    if(current_select == 'resize'){
+      current_select = d3.select('.size_posts_custom_selector span').attr('data-size');
+    }
+    let t = d3.transition().duration(300).ease(d3.easeLinear);
+    switch(current_select){
+      case 'Близько':
+        d3.selectAll('.blog_post').transition(t).style('height', '10vw');
+        d3.selectAll('.blog_post_date').transition(t).style('font-size', '5vw');
+        d3.selectAll('.blog_post_title').transition(t).style('line-height', '2vw')
+        d3.selectAll('.blog_post_title h2').transition(t).style('font-size', '2vw');
+      break;
+      case 'Ще ближче':
+        d3.selectAll('.blog_post').transition(t).style('height', '15vw');
+        d3.selectAll('.blog_post_date').transition(t).style('font-size', '10vw');
+        d3.selectAll('.blog_post_title').transition(t).style('line-height', '3vw')
+        d3.selectAll('.blog_post_title h2').transition(t).style('font-size', '3vw');
+      break;
+      case 'Дуже близько':
+        d3.selectAll('.blog_post').transition(t).style('height', '20vw');
+        d3.selectAll('.blog_post_date').transition(t).style('font-size', '13vw');
+        d3.selectAll('.blog_post_title').transition(t).style('line-height', '3.5vw')
+        d3.selectAll('.blog_post_title h2').transition(t).style('font-size', '3.5vw');
+      break;
+    }
+  }
+
+
+  searchText = (e) => {
+    let word = document.getElementById('search_blog').value;
+    if(word === ''){
+      fetch('/api/posts')
+      .then(res => res.json())
+      .then(posts => this.setState({posts, notFound: false}))
+    } else {
+      fetch('/api/post-search/'+word)
+      .then(res => res.json())
+      .then(posts => {
+        if(posts.length > 0){
+          this.setState({posts, notFound: false});
+          this.setPostSize('resize');
+        } else {
+          this.setState({ notFound: true });
+
+          if(this.state.animation_flag == false){
+            this.state.animation_flag = true;
+            let that = this;
+            d3.select('.blog_post_not_found_box')
+            .style('visibility', 'visible')
+            .style('opacity', '1');
+          d3.select('.blog_post_not_found_wrap')
+            .style('left', '0vw')
+            .style('width', '0vw')
+            .transition()
+            .duration(300)
+            .ease(d3.easeLinear)
+            .style('width', '10vw')
+            .transition()
+            .duration(300)
+            .ease(d3.easeLinear)
+            .style('left', '10vw')
+            .style('width', '0vw');
+          d3.select('.blog_post_not_found_text')
+            .style('left', '-15vw')
+            .transition()
+            .duration(300)
+            .ease(d3.easeLinear)
+            .style('left', '0vw');
+          d3.timeout(function(){
+            d3.select('.blog_post_not_found_box')
+            .style('opacity', '1')
+            .transition()
+            .duration(300)
+            .ease(d3.easeLinear)
+            .style('opacity', '0')
+            .on('end', function(){
+              that.setState({animation_flag : false});
+              d3.select(this).style('visibility', 'hidden');
+              })
+            },1000);
+        }
+        }  
+      })
+    }
+  }

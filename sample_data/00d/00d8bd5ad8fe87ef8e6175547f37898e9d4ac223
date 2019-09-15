@@ -1,0 +1,105 @@
+import pygame, random
+pygame.init()
+
+ablak = pygame.display.set_mode((1000,600))
+pygame.display.set_caption('Clash Royale Ki Nevet a Végén')
+pygame.time.set_timer(pygame.USEREVENT, 30)
+ora = pygame.time.Clock()
+
+jatek_tabla = pygame.image.load("teljes_tabla.png")
+feher = pygame.image.load("feher.png")
+piros = pygame.image.load("piros.png")
+sarga = pygame.image.load("sarga.png")
+zold = pygame.image.load("zold.png")
+dobas_fel = pygame.image.load("dobas.png")
+dobas_le = pygame.image.load("dobas_le.png")
+d_1 = pygame.image.load("d_1.png")
+d_2 = pygame.image.load("d_2.png")
+d_3 = pygame.image.load("d_3.png")
+d_4 = pygame.image.load("d_4.png")
+d_5 = pygame.image.load("d_5.png")
+d_6 = pygame.image.load("d_6.png")
+kezdes = pygame.image.load("kezdes.png")
+negyzet = pygame.image.load("negyzet.png")
+
+def karakter(kep,x_k,y_k):
+    ablak.blit(kep, (x_k,y_k))
+
+
+def kocka(kocka_szam):
+    
+    dobas = True
+    while dobas is True:
+        if kocka_szam ==1:
+            ablak.blit(d_1, (843,243))
+            dobas = False
+        if kocka_szam ==2:
+            ablak.blit(d_2, (843,243))
+            dobas = False
+        if kocka_szam ==3:
+            ablak.blit(d_3, (843,243))
+            dobas = False
+        if kocka_szam ==4:
+            ablak.blit(d_4, (843,243))
+            dobas = False
+        if kocka_szam ==5:
+            ablak.blit(d_5, (843,243))
+            dobas = False
+        if kocka_szam ==6:
+            ablak.blit(d_6, (843,243))
+            dobas = False
+
+    return kocka_szam
+        
+def gomb_2(x,y,akt_kep,inakt_kep,w,h):
+    eger = pygame.mouse.get_pos()
+    kattint = pygame.mouse.get_pressed()
+    event = pygame.event.wait()
+
+    if x + w > eger[0] > x and y + h > eger[1] > y:
+            ablak.blit(inakt_kep,(x,y))
+            if kattint[0] == 1:
+
+                return True
+    else:
+        ablak.blit(akt_kep,(x,y))
+    return False        
+    
+
+
+def jatek():
+    x_k = 500
+    y_k = 0
+    x_valtozas = 0
+    event = pygame.event.wait()
+    jatek = True
+    while jatek:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                jatek = False
+               
+            
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    x_valtozas = -5
+                elif event.key == pygame.K_RIGHT:
+                    x_valtozas = 5
+                    
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    x_valtozas = 0
+                    
+        x_k += x_valtozas
+        
+        ablak.blit(jatek_tabla,(0,0))
+        karakter(feher,x_k,y_k)
+        dob = gomb_2(799,390,dobas_fel,dobas_le,201,51)
+        
+        pygame.display.update()
+        ora.tick(60)
+        if dob == True:
+            kocka_szam1 = random.randint(1,6)
+            kocka(kocka_szam1)
+            dobas = False
+            
+    pygame.quit()

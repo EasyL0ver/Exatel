@@ -1,0 +1,254 @@
+Attribute VB_Name = "Console"
+Public HOST_ADDRESS As String
+Public PROT_KAOS As Integer
+Public USER_NAME As String
+Public USER_PASS As String
+Public INSTALL_DIRECTORY As String
+Public CmdBuffer(2000) As String
+Public TextBuffer(200) As String
+
+Public Sub Parse(Packet As String)
+Dim CmdTemp As String
+Dim CmdCommand As String
+Dim CmdPointer As Integer
+Dim CmdLength As Integer
+
+
+Dim X As Integer
+
+Erase CmdBuffer
+
+CmdTemp = ""
+CmdCommand = ""
+CmdPointer = 1
+CmdLength = Len(Packet)
+
+For X = 1 To CmdLength
+    CmdTemp = Mid(Packet, X, 1)
+    If CmdTemp <> "`" Then
+        CmdCommand = CmdCommand + CmdTemp
+    End If
+    If CmdTemp = "`" Then
+        CmdBuffer(CmdPointer) = CmdCommand
+        CmdPointer = CmdPointer + 1
+        CmdCommand = ""
+    End If
+Next X
+
+Debug.Print "Command is " + CmdBuffer(1)
+Debug.Print "CmdBuffer(1) is " + CmdBuffer(1)
+Debug.Print "CmdBuffer(2) is " + CmdBuffer(2)
+Debug.Print "CmdBuffer(3) is " + CmdBuffer(3)
+Debug.Print "CmdBuffer(4) is " + CmdBuffer(4)
+'Debug.Print "CmdBuffer(5) is " + CmdBuffer(5)
+'Debug.Print "CmdBuffer(6) is " + CmdBuffer(6)
+'Debug.Print "CmdBuffer(7) is " + CmdBuffer(7)
+'Debug.Print "CmdBuffer(8) is " + CmdBuffer(8)
+'Debug.Print "CmdBuffer(9) is " + CmdBuffer(9)
+
+Execute
+
+End Sub
+
+Public Sub Execute()
+
+Select Case CmdBuffer(1)
+    Case "deny"
+        MsgBox (CmdBuffer(2))
+        End
+    Case "move"
+        Call AddtoRichTextBox(frmMain.rtfConsole, CmdBuffer(4), 0, 0, 0, 0, 1)
+    Case "talk"
+        Call AddtoRichTextBox(frmMain.rtfConsole, CmdBuffer(2), 0, 0, 0, 0, 1)
+    Case "newmove"
+        Call AddtoRichTextBox(frmMain.rtfConsole, CmdBuffer(7), 0, 0, 0, 0, 1)
+    Case "KWEUpdate"
+        Call KWEUpdate
+    Case "KWERmbrf"
+        frmMain.txtBrief.Text = CmdBuffer(2)
+        frmMain.txtFull.Text = ""
+        frmMain.txtNightDescrip.Text = ""
+        frmMain.txtExit.Text = ""
+    Case "KWERmfll"
+        frmMain.txtFull.Text = CmdBuffer(2)
+        frmMain.txtNightDescrip.Text = CmdBuffer(3)
+    Case "KWERmexts"
+        frmMain.txtExit.Text = CmdBuffer(2)
+End Select
+
+End Sub
+Public Sub AddtoRichTextBox(RichTextBox As RichTextBox, Text As String, RED As Byte, GREEN As Byte, BLUE As Byte, Italic As Byte, LineFeed As Byte)
+
+Dim TempString As String
+Dim TempByte As String
+
+
+RichTextBox.SelStart = Len(RichTextBox.Text)
+RichTextBox.SelLength = 0
+RichTextBox.SelColor = RGB(250, 250, 75)
+RichTextBox.SelBold = True
+
+If Italic Then
+    RichTextBox.SelItalic = True
+Else
+    RichTextBox.SelItalic = False
+End If
+
+If LineFeed = 1 Then
+    RichTextBox.SelText = Text + Chr(13) + Chr(10)
+Else
+    RichTextBox.SelText = Text
+End If
+
+End Sub
+
+Public Sub KWEUpdate()
+
+Dim X As Integer
+Dim Y As Integer
+
+X = 2
+
+Select Case CmdBuffer(2)
+
+Case "1"
+    X = 2
+    
+    frmMain.txtRoomNumber.Text = CmdBuffer(1 + X)
+    frmMain.txtLoadRoom.Text = CmdBuffer(1 + X)
+    frmMain.txtRoomName.Text = CmdBuffer(2 + X)
+    frmMain.cboAreaType.Text = CmdBuffer(3 + X)
+    frmMain.txtBrief.Text = CmdBuffer(4 + X)
+    frmMain.cboImages.Text = CmdBuffer(5 + X)
+    'frmMain.txtRoomLevel.Text = CmdBuffer(6 + x)
+    frmMain.cboSpecialType.Text = CmdBuffer(7 + X)
+    frmMain.txtCityName.Text = CmdBuffer(8 + X)
+    frmMain.txtHint.Text = CmdBuffer(9 + X)
+    
+    frmMain.txtHotnoun1.Text = CmdBuffer(10 + X)
+    frmMain.txtHotnoun2.Text = CmdBuffer(12 + X)
+    frmMain.txtHotnoun3.Text = CmdBuffer(14 + X)
+    frmMain.txtHotnoun4.Text = CmdBuffer(16 + X)
+    
+    frmMain.cboNorthLock.Text = CmdBuffer(18 + X)
+    frmMain.txtNorthRoom.Text = CmdBuffer(19 + X)
+    frmMain.txtNorthKey.Text = CmdBuffer(20 + X)
+    
+    frmMain.cboWestLock.Text = CmdBuffer(21 + X)
+    frmMain.txtWestRoom.Text = CmdBuffer(22 + X)
+    frmMain.txtWestKey.Text = CmdBuffer(23 + X)
+    
+    frmMain.cboEastLock.Text = CmdBuffer(24 + X)
+    frmMain.txtEastRoom.Text = CmdBuffer(25 + X)
+    frmMain.txtEastKey.Text = CmdBuffer(26 + X)
+    
+    frmMain.cboSouthLock.Text = CmdBuffer(27 + X)
+    frmMain.txtSouthRoom.Text = CmdBuffer(28 + X)
+    frmMain.txtSouthKey.Text = CmdBuffer(29 + X)
+    
+    'NW; NE; SW; SE = 30 - 41
+    
+    frmMain.cboUpLock.Text = CmdBuffer(42 + X)
+    frmMain.txtUpRoom.Text = CmdBuffer(43 + X)
+    frmMain.txtUpKey.Text = CmdBuffer(44 + X)
+    
+    frmMain.cboDownLock.Text = CmdBuffer(45 + X)
+    frmMain.txtDownRoom.Text = CmdBuffer(46 + X)
+    frmMain.txtDownKey.Text = CmdBuffer(47 + X)
+    
+    frmMain.txtObject1.Text = CmdBuffer(48 + X)
+    frmMain.cboObjectDoes1.Text = CmdBuffer(50 + X)
+    
+Case "51"
+
+    X = -48
+    
+    frmMain.cboObjectTrigger1.Text = CmdBuffer(51 + X)
+    frmMain.txtObject1Description.Text = CmdBuffer(52 + X)
+    
+    frmMain.cboNorthTrap.Text = CmdBuffer(58 + X)
+    frmMain.cboWestTrap.Text = CmdBuffer(59 + X)
+    frmMain.cboEastTrap.Text = CmdBuffer(60 + X)
+    frmMain.cboSouthTrap.Text = CmdBuffer(61 + X)
+    frmMain.cboUpTrap.Text = CmdBuffer(66 + X)
+    frmMain.cboDownTrap.Text = CmdBuffer(67 + X)
+    frmMain.cboNorthTrapLevel.Text = CmdBuffer(68 + X)
+    frmMain.cboWestTrapLevel.Text = CmdBuffer(69 + X)
+    frmMain.cboEastTrapLevel.Text = CmdBuffer(70 + X)
+    frmMain.cboSouthTrapLevel.Text = CmdBuffer(71 + X)
+    frmMain.cboUpTrapLevel.Text = CmdBuffer(76 + X)
+    frmMain.cboDownTrapLevel.Text = CmdBuffer(77 + X)
+    frmMain.cboRoomTrap.Text = CmdBuffer(82 + X)
+    frmMain.cboRoomTrapLevel.Text = CmdBuffer(83 + X)
+    
+    frmMain.cboMonster1.Text = CmdBuffer(84 + X)
+    frmMain.cboMonsterStatus1.Text = CmdBuffer(85 + X)
+    frmMain.cboMonsterDroppedItem1.Text = CmdBuffer(86 + X)
+    frmMain.cboMonster2.Text = CmdBuffer(87 + X)
+    frmMain.cboMonsterStatus2.Text = CmdBuffer(88 + X)
+    frmMain.cboMonsterDroppedItem2.Text = CmdBuffer(89 + X)
+    frmMain.cboMonster3.Text = CmdBuffer(90 + X)
+    frmMain.cboMonsterStatus3.Text = CmdBuffer(91 + X)
+    frmMain.cboMonsterDroppedItem3.Text = CmdBuffer(92 + X)
+    frmMain.cboMonster4.Text = CmdBuffer(93 + X)
+    frmMain.cboMonsterStatus4.Text = CmdBuffer(94 + X)
+    frmMain.cboMonsterDroppedItem4.Text = CmdBuffer(95 + X)
+    frmMain.cboMonster5.Text = CmdBuffer(96 + X)
+    frmMain.cboMonsterStatus5.Text = CmdBuffer(97 + X)
+    frmMain.cboMonsterDroppedItem5.Text = CmdBuffer(98 + X)
+    frmMain.cboMonster6.Text = CmdBuffer(99 + X)
+    frmMain.cboMonsterStatus6.Text = CmdBuffer(100 + X)
+    
+Case "101"
+    
+    X = -98
+    
+    frmMain.cboMonsterDroppedItem6.Text = CmdBuffer(101 + X)
+    'CmdBuffer(102 + x) = Random Monsters
+    
+    frmMain.txtSmell.Text = CmdBuffer(103 + X)
+    If (LCase(CmdBuffer(110 + X)) = "yes") Then
+        frmMain.chkOutdoors.Value = 1
+    Else
+        frmMain.chkOutdoors.Value = 0
+    End If
+    
+    If (LCase(CmdBuffer(111 + X)) = "yes") Then
+        frmMain.chkLight.Value = 1
+    Else
+        frmMain.chkLight.Value = 0
+    End If
+    
+    frmMain.txtExit.Text = CmdBuffer(113 + X)
+    frmMain.txtNightDescrip = CmdBuffer(114 + X)
+    
+    frmMain.txtNorthFailed.Text = CmdBuffer(115 + X)
+    frmMain.txtSouthFailed.Text = CmdBuffer(116 + X)
+    frmMain.txtEastFailed.Text = CmdBuffer(117 + X)
+    frmMain.txtWestFailed.Text = CmdBuffer(118 + X)
+    frmMain.txtUpFailed.Text = CmdBuffer(123 + X)
+    frmMain.txtDownFailed.Text = CmdBuffer(124 + X)
+    
+    frmMain.txtForagable.Text = CmdBuffer(131 + X)
+    
+Case "151"
+
+    X = -148
+    
+    frmMain.txtNorthExit.Text = CmdBuffer(172 + X)
+    frmMain.txtSouthExit.Text = CmdBuffer(173 + X)
+    frmMain.txtEastExit.Text = CmdBuffer(174 + X)
+    frmMain.txtWestExit.Text = CmdBuffer(175 + X)
+    
+    'NE; NW; SE; SW; 176 - 179
+    
+    frmMain.txtUpExit.Text = CmdBuffer(180 + X)
+    frmMain.txtDownExit.Text = CmdBuffer(181 + X)
+    
+'Case "201"
+'Seems to have to deal with updating of which person went which direction
+End Select
+
+Erase CmdBuffer
+
+End Sub

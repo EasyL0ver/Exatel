@@ -1,0 +1,25 @@
+protocol = "HobNet";
+hostName = "Master";
+port = "right";
+waitTime = 10
+serverId = 20
+
+rednet.open("right");
+
+while true do
+id, message, distance = rednet.receive(protocol)
+if(message == "Motor1 On") then
+		redstone.setOutput("left", true)
+end
+if(message == "Motor1 Off") then
+		redstone.setOutput("left", false)
+end
+if(message == "Motor2 On") then
+		redstone.setOutput("back", true)
+end
+if(message == "Motor2 Off") then
+		redstone.setOutput("back", false)
+end
+
+
+end

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<body bgcolor="#CD6155"> <font color="white"> <center>
+	<br> <br>
+    <h1 style="background-color:orange"><br><big> <big> general banner here <br> <br> </big> </big> </h1>
+    <br>
+    <table bgcolor="#C0392B" border="2" bordercolor="#A93226">
+    	<tr>
+        <td> HOME </td>
+        <td> HISTORY </td>
+        <td> TRADITION </td>
+        <td> CULTURE </td>
+        <td> RITUALS </td>
+        </tr>
+     </table>
+     <br> <br>
+     <h2 style="background-color:orange"><br>
+     <big><big>Acknowledgements</big></big><br><br></h2>
+     <br>
+     <div style="background-color:#EB983E">
+     <br> Naglagay po kami ng isang Webpage para may madagdag na 'credit' sa ibang tao para sa proyekto na ito. 
+     <br>
+     </div>
+     <div style="background-color:#EB983E">
+     <br>
+     Gusto namin pasalamatin ang ating mga magulang, mga guro at ang mga resources na nakita namin sa internet na ginamit namin sa proyekto na ito. Sana po, makatutulong ito sa pag-unawa ng impormasyon tungkol sa Sinaunang Kabihasnan Ng Tsina. <br>
+     <br>
+     </div>
+     <br>
+     <br>
+     <br>
+     <div style="background-color:#EB983E">
+      <br> Back to Home Page <br> <br> </div>
+
+</body>
+
+</html>

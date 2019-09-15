@@ -1,0 +1,84 @@
+package com.vaadin.directory.service.backend.controller;
+
+import com.vaadin.directory.backend.service.*;
+import com.vaadin.directory.entity.directory.Component;
+import com.vaadin.directory.entity.directory.LogEntryEventType;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.Pair;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+/**
+ * Special controller to handler the creation and update of web components via GitHub
+ */
+@Slf4j
+@RestController
+public class WebComponentRestController {
+	private final WebComponentService webComponentService;
+	private final AuditLogService auditLogService;
+
+	@Autowired
+	public WebComponentRestController(WebComponentService webComponentService,
+									  AuditLogService auditLogService) {
+		this.webComponentService = webComponentService;
+		this.auditLogService = auditLogService;
+	}
+
+	@RequestMapping(value = "/webcomponents", method = RequestMethod.POST)
+	@ResponseBody
+	@Deprecated
+	public ResponseEntity<?> createOrUpdateWebComponent(@RequestParam String owner,
+														@RequestParam String name,
+														UriComponentsBuilder uriComponentsBuilder) throws FileNotFoundException {
+
+		if(owner.isEmpty() || name.isEmpty()) {
+			throw new IllegalArgumentException("Given name or owner empty: '" + owner + "'/'" + name + "'.");
+		}
+
+		try {
+			Pair<WebComponentService.Result, Component> result = webComponentService.createOrUpdateComponent("https://github.com/" + owner + "/" + name);
+			UriComponents uriComponents = uriComponentsBuilder.path("/components/{id}").buildAndExpand(result.getValue().getId());
+			if(result.getKey() == WebComponentService.Result.CREATED) {
+				auditLogService.logAction(LogEntryEventType.COMPONENT_ADD, result.getValue(), "Imported via directory-service");
+				return ResponseEntity.created(uriComponents.toUri()).build();
+			} else {
+				auditLogService.logAction(LogEntryEventType.COMPONENT_EDIT, result.getValue(), "Updated via directory-service");
+				return ResponseEntity.ok(uriComponents.toUri());
+			}
+		} catch (LatestVersionNotFoundException | NotAWebComponentException | InvalidGitHubRepositoryUrlException | GitHubRepositoryNotFoundException | NotNpmException | NotBowerException e) {
+			throw new IllegalStateException(e);
+		} catch (IOException e) {
+			throw new FileNotFoundException(e.getClass() + ": " + e.getMessage());
+		}
+	}
+
+	@RequestMapping(value = "/webcomponentsnew", method = RequestMethod.POST)
+	@ResponseBody
+	public ResponseEntity<?> createOrUpdateWebComponentNew(@RequestParam String input, UriComponentsBuilder uriComponentsBuilder) throws FileNotFoundException {
+		if(input.isEmpty()) {
+			throw new IllegalArgumentException("Please input something.");
+		}
+
+		try {
+			Pair<WebComponentService.Result, Component> result = webComponentService.createOrUpdateComponent(input);
+			UriComponents uriComponents = uriComponentsBuilder.path("/components/{id}").buildAndExpand(result.getValue().getId());
+			if(result.getKey() == WebComponentService.Result.CREATED) {
+				auditLogService.logAction(LogEntryEventType.COMPONENT_ADD, result.getValue(), "Imported via directory-service");
+				return ResponseEntity.created(uriComponents.toUri()).build();
+			} else {
+				auditLogService.logAction(LogEntryEventType.COMPONENT_EDIT, result.getValue(), "Updated via directory-service");
+				return ResponseEntity.ok(uriComponents.toUri());
+			}
+		} catch (LatestVersionNotFoundException | NotAWebComponentException | InvalidGitHubRepositoryUrlException | GitHubRepositoryNotFoundException | NotNpmException | NotBowerException e) {
+			throw new IllegalStateException(e);
+		} catch (IOException e) {
+			throw new FileNotFoundException(e.getClass() + ": " + e.getMessage());
+		}
+	}
+}

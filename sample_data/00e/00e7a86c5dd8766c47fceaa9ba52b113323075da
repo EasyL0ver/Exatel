@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char* argv[])
+{
+	FILE* plik = NULL;
+	fopen_s(&plik, "plik.txt", "r");
+	if (plik == NULL)
+	{
+		printf("Nie odnaleziono pliku.\n");
+		getchar();
+		return -1;
+	}
+	fseek(plik, 0, SEEK_END);
+	int rozmiar = ftell(plik);
+	fseek(plik, 0, SEEK_SET);
+	char* tablica = (char*)malloc(rozmiar * sizeof(char));
+	fread(tablica, sizeof(char), rozmiar, plik);
+	tablica[rozmiar - 1] = '\0';
+	fclose(plik);
+	printf("%s", tablica);
+	getchar();
+	return 0;
+}

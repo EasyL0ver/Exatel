@@ -1,0 +1,128 @@
+#include "stdafx.h"
+#include "iostream"
+
+using namespace std;
+
+
+
+int obrabotka(int i, int j, int N, int M, int a[20][20])
+{
+	int I = i;
+	int J = j;
+	int R;
+	int max;
+	int min;
+	int m1 = 1;
+	int m2 = 1;
+	
+
+
+
+
+	for (J = j; J < M; J++)
+	{
+		if (m1 == 1)
+		{
+		   max = a[I][J];
+		    m1 = 2;
+	    }	
+		else if (a[I][J] > max)
+
+			max = a[I][J];
+	          
+		if (m2 == 1)
+		{
+			min = a[I][J];
+			m2 = 2;
+		}
+
+		else if (a[I][J] < min)
+			min = a[I][J];
+
+
+	}
+	I = i + 1;
+	J = j + 1;
+	while (I < N && J < M)
+	{
+		{
+			if (m1 == 1)
+			{
+				max = a[I][J];
+				m1 = 2;
+			}
+			else if (a[I][J] > max)
+
+				max = a[I][J];
+
+			if (m2 == 1)
+			{
+				min = a[I][J];
+				m2 = 2;
+			}
+
+			else if (a[I][J] < min)
+				min = a[I][J];
+		}
+		J++;
+
+
+	}
+	I = i - 1;
+	J = j + 1;
+	while (I >= 0 && J < M)
+	{
+		{
+			if (m1 == 1)
+			{
+				max = a[I][J];
+				m1 = 2;
+			}
+			else if (a[I][J] > max)
+
+				max = a[I][J];
+
+			if (m2 == 1)
+			{
+				min = a[I][J];
+				m2 = 2;
+			}
+
+			else if (a[I][J] < min)
+				min = a[I][J];
+		}
+		J++;
+
+
+	}
+	R = max - min;
+	return R;
+}
+int main()
+{
+	int i, j, N, M, a[20][20], n = 0, R;
+	printf("vvedite N and M\n");
+	scanf_s("%d %d", &N, &M);
+	printf("vvedite massive\n");
+	for (i = 0; i < N; i++)
+		for (j = 0; j < M; j++)
+			scanf_s("%d", &a[i][j]);
+	printf("-------------------------\n");
+	printf("|Nomer|  i  |  j  |  R  |\n");
+	printf("-------------------------\n");
+
+	for (i = 0; i < N; i++)
+	{
+		for (j = 0; j < M; j++)
+
+		{
+			n++;
+
+			R = obrabotka(i, j, N, M, a);
+			printf("|  %d  |  %d  |  %d  |  %d  |\n", n, i, j, R);
+			printf("-------------------------\n");
+
+		}
+	}
+	system("pause");
+}

@@ -1,0 +1,62 @@
+// Part 2
+// Load the data
+#load "two.fsx"
+
+let getGroupId (id, _) = id
+let getStudent (name, _, _) = name
+let getStudents (_, students) = students
+let getMark (_,_,mark) = (float) mark
+let getSubject (_,subj,_) = subj
+let getSubjCode (code, _) = code
+let getSubjName (_, name) = name
+let rec getGroups students = 
+  match students with 
+    | [] -> []
+    | s::rest -> getGroupId s :: getGroups rest
+
+let rec getStudentAverageMark student = 
+  List.averageBy getMark 
+    <| List.filter (fun x -> System.String.Compare(getStudent x, student) = 0) DataTwo.marks
+
+let getGroupStudents groupId = 
+  let l = List.filter (fun x -> getGroupId x = groupId) DataTwo.studs
+  getStudents l.Head
+
+let rec countAverageMarkInGroup students =
+  List.averageBy getStudentAverageMark students
+
+let printTable =
+  List.iter (fun x -> printfn "Group%i average grade %.2f" x (countAverageMarkInGroup(getGroupStudents x)))
+  <| getGroups DataTwo.studs
+
+
+let getFailedStudents subj =
+  List.map getStudent 
+  <| List.filter (fun x -> getMark x < 3. && System.String.Compare(getSubject x, subj) = 0) DataTwo.marks
+
+let printFailedStudents =
+  let z p = p |> List.fold (fun r s -> r + s + " ") ""
+  let f x = printfn "Students who failed %s:\n\t%s\n" (getSubjName x) (z (getFailedStudents (getSubjCode x)))
+  List.iter f DataTwo.subjs
+
+
+let studentFailedAnySubject student = 
+  let l = List.filter (fun x -> getMark x < 3. && System.String.Compare(getStudent x, student) = 0) DataTwo.marks
+  match l.Length with 
+  | 0 -> false
+  | _ -> true
+
+let countFailedStudentsInGroup students =
+  let l = List.filter studentFailedAnySubject students
+  l.Length
+
+let printNumberOfFailedStudentsInEachGroup =
+  List.iter (fun x -> printfn "Number of failed students in group%i = %i" x (countFailedStudentsInGroup (getGroupStudents x)))
+  <| getGroups DataTwo.studs
+
+//Print the table of groups and average grade for that group
+printTable
+//For each subject, print the list of students who failed the exam (grade=2)
+printFailedStudents
+//Find the number of failing students in each group
+printNumberOfFailedStudentsInEachGroup

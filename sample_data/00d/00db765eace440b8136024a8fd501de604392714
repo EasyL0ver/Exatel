@@ -1,0 +1,5 @@
+@echo off
+for /F "delims=*" %%F in ('xcopy /S /L \file1E$Data1*.jpg  ^| findstr /v File^(s^)')    do (
+    xcacls "%%F" /P "Authenticated Users:R" "domainAdministrator:F" "SYSTEM:F" "Photo    Admins:F" /Y
+    attrib -a "%%F"
+)

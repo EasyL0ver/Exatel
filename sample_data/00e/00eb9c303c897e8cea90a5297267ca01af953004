@@ -1,0 +1,59 @@
+module Whatsapp
+
+    def activated(number)
+        msg = "Olá, seja bem vindo ao *Alerta Digital*, a partir de agora o seu rastreador já está operante."
+        send_message(msg, number)
+    end
+
+    def ignition_on(number, name)
+        msg = "*#{name}* ligado! _Boa viagem_"
+        send_message(msg, number)
+    end
+
+    def ignition_off(number, name, lat, lng)
+        msg = "*#{name}* desligado! 
+_Fique tranquilo, estamos de olho._"
+
+        send_location(number, lat, lng)
+        send_message(msg, number)
+    end
+
+    def alert_movemnt(number, name, lat, lng)
+        msg = "❌❌❌   *#{name.upcase} ESTÁ MOVIMENTANDO COM IGNIÇÃO DESLIGADA*!   ❌❌❌ 
+⚠ _Verifique urgente_ ⚠"
+
+        send_location(number, lat, lng)
+        send_message(msg, number)
+    end
+
+    def geofence_in(number, name, fance_name, lat, lng)
+        msg = "⚠ #{name} entrou em *#{fance_name}*!"
+
+        send_location(number, lat, lng)
+        send_message(msg, number)
+    end
+
+    def geofence_out(number, name, fance_name, lat, lng)
+        msg = "⚠ #{name} saiu de *#{fance_name}*!"
+
+        send_location(number, lat, lng)
+        send_message(msg, number)
+    end
+
+    def send_location(number, lat, lng)
+        params = { 
+                    "phone": number, 
+                    lat: lat,
+                    lng: lng,
+                    address: 'Local de Estacionamento'
+                }
+        RestClient.post 'https://eu14.chat-api.com/instance20565/sendLocation?token=i4jb9h43yz4fvpfm', params 
+    end
+
+    def send_message(msg, number)
+        params ||= { "phone": number, "body": msg }
+
+        RestClient.post 'https://eu14.chat-api.com/instance20565/message?token=', params 
+    end
+
+end

@@ -1,0 +1,238 @@
+#https://pastebin.com/yS2B8zc3
+variables:
+     {story.%player%cooldown} = 0
+     {story.%player%a} = 0 #最初の老人
+ 
+on join:
+   set {story.%player%cooldown} to 0
+ 
+command /admin-story [<player>] [<number>]:
+   executable by: player
+   trigger:
+      if name of player is "syu_cat":
+         set {story.%arg 1%a} to arg 2
+         message "<light blue>Set Completed" to player
+ 
+on damage:
+   attacker is a player
+   victim is a villager
+   if {rpg.%attacker%admin} = 1:
+      set damage to 10000
+   else:
+      stop
+ 
+on rightclick on villager:
+    if display name of clicked entity is "<lime>老人":
+        cancel event
+        if {story.%player%cooldown} = 1:
+            stop
+        if {story.%player%a} = 0:
+            set {story.%player%cooldown} to 1
+            message "&a老人&f:ごきげんよう。きみはここの新人さんかのう？わしは老人じゃ。ここに来てもう20年経つのう。ここのルールを話そう。&n迷惑行為はBAN対象じゃぞ。&fとりあえずこれをきみに授けよう。" to player
+            wait 3 seconds
+            give diamond named "&eMENU" to player
+            message "&7初期アイテム（メニュー）を手に入れた。" to player
+            add 1 to {story.%player%a}
+            set {story.%player%cooldown} to 0
+            stop
+        if {story.%player%a} = 1:
+            set {story.%player%cooldown} to 1
+            message "&a老人&f:ごきげんよう。きみはさっきの新人さんかのう？さっき与えたアイテムはなくしたのか？しかたないのう。もう一回これをきみに授けよう。" to player
+            wait 3 seconds
+            give diamond named "&eMENU" to player
+            message "&7初期アイテム（メニュー）を再び手に入れた。" to player
+            add 1 to {story.%player%a}
+            set {story.%player%cooldown} to 0
+            stop
+        if {story.%player%a} >= 2:
+            set {story.%player%cooldown} to 1
+            message "&a老人&f:ごきげんよう。きみはさっきの新人さんかのう？さっき与えたアイテムはなくしたのか？何回もらえば気が済むんじゃい！！" to player
+            wait 1 seconds
+            message "&7老人が初期アイテムを投げてきた。" to player
+            wait 1 seconds
+            message "&7初期アイテムをキャッチすることができた。" to player
+            give diamond named "&eMENU" to player
+            message "&7初期アイテム（メニュー）を再び手に入れた。" to player
+            add 1 to {story.%player%a}
+        if {story.%player%a} >= 100:
+            message "&a老人&f:いいかげんにしてくれのう。なくす回数にも程があるじゃろう？" to player
+        set {story.%player%cooldown} to 0
+ 
+on rightclick on villager:
+   if display name of clicked entity is "<lime>アイテム換金商人":
+      cancel event
+      add 1 to {sell.%player%permission}
+      execute player command "sell"
+      wait 1 tick
+      set {sell.%player%permission} to 0
+ 
+variables:
+   {sell.%player%permission} = 0
+   {sell.%player%rottenflesh} = 0
+   {sell.%player%bone} = 0
+   {sell.%player%arrow} = 0
+   {sell.%player%potato} = 0
+   {sell.%player%carrot} = 0
+   {sell.%player%ironingot} = 0
+   {sell.%player%cooldown} = 0
+   {heal.%player%cooldown} = 0
+   {buy.%player%cooldown} = 0
+ 
+command /sell:
+   executable by: player
+   trigger:
+      if {sell.%player%permission} = 0:
+         stop
+      if {sell.%player%cooldown} = 1:
+         stop
+      else:
+         set {sell.%player%cooldown} to 1
+         set {sell.%player%gold} to 0
+         set {sell.%player%rottenflesh} to 0
+         set {sell.%player%bone} to 0
+         set {sell.%player%arrow} to 0
+         set {sell.%player%carrot} to 0
+         set {sell.%player%potato} to 0
+         set {sell.%player%ironingot} to 0
+         loop all items in the inventory of player:
+            loop 64 times:
+               loop 36 times:
+                  if player have 1 rotten flesh:
+                     remove 1 rotten flesh from player's inventory
+                     add 1 to {sell.%player%gold}
+                     add 1 to {sell.%player%rottenflesh}
+                  if player have 1 bone:
+                     remove 1 bone from player's inventory
+                     add 1 to {sell.%player%gold}
+                     add 1 to {sell.%player%bone}
+                  if player have 1 arrow:
+                     remove 1 arrow from player's inventory
+                     add 1 to {sell.%player%gold}
+                     add 1 to {sell.%player%arrow}
+                  if player have 1 carrot:
+                     remove 1 carrot from player's inventory
+                     add 10 to {sell.%player%gold}
+                     add 1 to {sell.%player%carrot}
+                  if player have 1 potato:
+                     remove 1 potato from player's inventory
+                     add 10 to {sell.%player%gold}
+                     add 1 to {sell.%player%potato}
+                  if player have 1 iron ingot:
+                     remove 1 iron ingot from player's inventory
+                     add 10 to {sell.%player%gold}
+                     add 1 to {sell.%player%ironingot}
+         message "&eYou have sold these of them." to player
+         if {sell.%player%rottenflesh} > 0:
+            message "&fRotten Flesh : %{sell.%player%rottenflesh}%" to player
+         if {sell.%player%bone} > 0:
+            message "&fBone : %{sell.%player%bone}%" to player
+         if {sell.%player%arrow} > 0:
+            message "&fArrow : %{sell.%player%arrow}%" to player
+         if {sell.%player%carrot} > 0:
+            message "&fCarrot : %{sell.%player%carrot}%" to player
+         if {sell.%player%potato} > 0:
+            message "&fPotato : %{sell.%player%potato}%" to player
+         if {sell.%player%ironingot} > 0:
+            message "&fIron Ingot : %{sell.%player%ironingot}%" to player
+         message "&eYou got %{sell.%player%gold}% Gold." to player
+         add {sell.%player%gold} to {rpg.%player%money}
+         execute player command "reload-sidebar"
+         set {sell.%player%cooldown} to 0
+ 
+variables:
+ {addpower1.%player%hannei} = 0 #+HP
+ {addpower2.%player%hannei} = 0 #+ATK
+ {addpower3-1.%player%hannei} = 0 #+1-ATK
+ {addpower3-2.%player%hannei} = 0 #+2-ATK
+ {addpower3-3.%player%hannei} = 0 #+3-ATK
+ {addpower3-4.%player%hannei} = 0 #+4-ATK
+ {addpower3-5.%player%hannei} = 0 #+5-ATK
+ {addpower4-1.%player%hannei} = 0 #+1-DEF
+ {addpower4-2.%player%hannei} = 0 #+2-DEF
+ {addpower4-3.%player%hannei} = 0 #+3-DEF
+ {addpower4-4.%player%hannei} = 0 #+4-DEF
+ {addpower4-5.%player%hannei} = 0 #+5-DEF
+ {addpower5-1.%player%hannei} = 0 #+1-DEF %
+ {addpower5-2.%player%hannei} = 0 #+2-DEF %
+ {addpower5-3.%player%hannei} = 0 #+3-DEF %
+ {addpower5-4.%player%hannei} = 0 #+4-DEF %
+ {addpower5-5.%player%hannei} = 0 #+5-DEF %
+ {addpower6.%player%hannei} = 0 #+HP Steal
+ {addpower7.%player%hannei} = 0 #+MP Steal
+ {addpower8.%player%hannei} = 0 #+ATK-Speed %
+ {addpower9.%player%hannei} = 0 #+HP%
+ {addpower10.%player%hannei} = 0 #+ATK%
+ {addpower11.%player%hannei} = 0 #-HP
+ {addpower12.%player%hannei} = 0 #-ATK
+ {addpower13-1.%player%hannei} = 0 #-1-ATK
+ {addpower13-2.%player%hannei} = 0 #-2-ATK
+ {addpower13-3.%player%hannei} = 0 #-3-ATK
+ {addpower13-4.%player%hannei} = 0 #-4-ATK
+ {addpower13-5.%player%hannei} = 0 #-5-ATK
+ {addpower14-1.%player%hannei} = 0 #-1-DEF
+ {addpower14-2.%player%hannei} = 0 #-2-DEF
+ {addpower14-3.%player%hannei} = 0 #-3-DEF
+ {addpower14-4.%player%hannei} = 0 #-4-DEF
+ {addpower14-5.%player%hannei} = 0 #-5-DEF
+ {addpower15-1.%player%hannei} = 0 #-1-DEF %
+ {addpower15-2.%player%hannei} = 0 #-2-DEF %
+ {addpower15-3.%player%hannei} = 0 #-3-DEF %
+ {addpower15-4.%player%hannei} = 0 #-4-DEF %
+ {addpower15-5.%player%hannei} = 0 #-5-DEF %
+ {addpower16.%player%hannei} = 0 #-HP Steal
+ {addpower17.%player%hannei} = 0 #-MP Steal
+ {addpower18.%player%hannei} = 0 #-ATK-Speed %
+ {addpower19.%player%hannei} = 0 #-HP%
+ {addpower20.%player%hannei} = 0 #-ATK%
+ {identify.%player%plus} = 0
+ {sell.%player%kussyonn} = 0
+ {urine1.%player%gold} = 0
+ {urine2.%player%gold} = 0
+ {urine3.%player%gold} = 0
+ {uru.%player%waittime} = 0
+ {sell.%player%talktime} = 0
+ 
+ 
+on rightclick on villager:
+   if display name of clicked entity is "<lime>装備買取屋":
+      add 1 to {sell.%player%kussyonn}
+      if {rpg.%player%class} >= 0:
+         if {sell.%player%kussyonn} = 1:
+            set {urine1.%player%gold} to 0
+            set {urine2.%player%gold} to 0
+            set {urine3.%player%gold} to 0
+            message "<lime>装備買取屋:&fこの武器を売りますか?" to player
+            set {selltoolname.%player%} to the name of the held item
+            set {selltoollore.%player%} to the lore of the held item
+            if name of held item contain "&e":
+               set {urine1.%player%gold} to 3
+            else if name of held item contain "&d":
+               set {urine1.%player%gold} to 5
+            else if name of held item contain "&b":
+               set {urine1.%player%gold} to 50
+            else if name of held item contain "&5":
+               set {urine1.%player%gold} to 100
+            if name of held item contain "&a[Lv. 1]":
+               set {urine2.%player%gold} to 1
+            else if name of held item contain "&a[Lv. 3]":
+               set {urine2.%player%gold} to 4
+            else if name of held item contain "&a[Lv. 4]":
+               set {urine2.%player%gold} to 6
+            else if name of held item contain "&a[Lv. 5]":
+               set {urine2.%player%gold} to 7
+            else if name of held item contain "&a[Lv. 7]":
+               set {urine2.%player%gold} to 10
+            else if name of held item contain "&a[Lv. 8]":
+               set {urine2.%player%gold} to 12
+            else if name of held item contain "&a[Lv. 9]":
+               set {urine2.%player%gold} to 14
+            else if name of held item contain "&a[Lv. 10]":
+               set {urine2.%player%gold} to 16
+            else if name of held item contain "&a[Lv. 12]":
+               set {urine2.%player%gold} to 20
+            else if name of held item contain "&a[Lv. 13]":
+               set {urine2.%player%gold} to 22
+            else if name of held item contain "&a[Lv. 14]":
+               set {urine2.%player%gold} to 24
+            else if name of held item contain "&a[Lv. 15]":
+               set

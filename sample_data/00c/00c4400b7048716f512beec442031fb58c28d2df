@@ -1,0 +1,33 @@
+use std::marker::PhantomData;
+
+struct FakeRef<'a, T: 'a> {
+    value: T,
+    _marker: PhantomData<&'a T>,
+}
+
+impl<'a, T: 'a> FakeRef<'a, T> {
+    fn new(value: T) -> Self {
+        FakeRef { value, _marker: PhantomData }
+    }
+}
+
+trait TraitA {}
+impl<'a> TraitA for &'a u32 {}
+
+trait TraitB {}
+impl<'a> TraitB for &'a i32 {}
+
+fn identity<'a, 'b>(
+    arg: (FakeRef<'a, impl TraitA + 'a>, FakeRef<'b, impl TraitB + 'b>)
+) -> (FakeRef<'a, impl TraitA + 'a>, FakeRef<'b, impl TraitB + 'b>) {
+    arg
+}
+
+fn identity2<'a, 'b>(
+    arg: (FakeRef<'a, impl TraitA + 'a>, FakeRef<'b, impl TraitB + 'b>)
+) -> (FakeRef<'a, impl TraitA + 'a>, FakeRef<'b, impl TraitB + 'b>) {
+    identity(arg)
+}
+
+fn main() {
+}

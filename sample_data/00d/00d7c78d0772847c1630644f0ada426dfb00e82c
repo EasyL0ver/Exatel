@@ -1,0 +1,46 @@
+class DBHelper extends SQLiteOpenHelper {
+
+    public DBHelper(Context context) {
+        // конструктор суперкласса
+        super(context, "myDB", null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        // создаем таблицу с полями
+        db.execSQL("create table 'week' ("
+                + "_ID integer primary key autoincrement,"
+                + "begin_hours text,"
+                + "end_hours text,"
+                + "day_of_week integer,"
+                + "number integer,"
+                + "name text" + ");");
+
+        db.execSQL("create table 'homeworks' ("
+                + "_ID integer primary key autoincrement,"
+                + "number integer,"
+                + "day integer,"
+                + "month integer,"
+                + "year integer,"
+                + "homework text" + ");");
+
+
+        //Устанавливаем пустые строки в бд недели
+        for(int dayOfWeek = 1; dayOfWeek <= 7; dayOfWeek++){
+            for(int number = 1; number <= 7; number++){
+               createWeek(dayOfWeek, number);
+            }
+        }
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+    public void test(){
+          SQLiteDatabase db = this.getWritableDatabase();
+          Cursor c = db.query("week", null, null, null, null, null, null);
+}
+
+}

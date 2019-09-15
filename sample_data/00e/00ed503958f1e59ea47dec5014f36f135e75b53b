@@ -1,0 +1,214 @@
+if game:GetService("RunService"):IsClient() then error("Please run as a server script. Use h/ instead of hl/.") end
+print("FE Compatibility: by WaverlyCole & Mokiros")
+InternalData = {}
+do
+    script.Parent = owner.Character
+    local Event = Instance.new("RemoteEvent")
+    Event.Name = "UserInput"
+    local function NewFakeEvent()
+        local Fake = {fakeEvent=true,Connect=function(self,Func)self.Function=Func end}Fake.connect = Fake.Connect
+        return Fake
+    end
+    local Mouse = {Target=nil,Hit=CFrame.new(),KeyUp=NewFakeEvent(),KeyDown=NewFakeEvent(),Button1Up=NewFakeEvent(),Button1Down=NewFakeEvent()}
+    local UserInputService = {InputBegan=NewFakeEvent(),InputEnded=NewFakeEvent()}
+    local ContextActionService = {Actions={},BindAction = function(self,actionName,Func,touch,...)
+        self.Actions[actionName] = Func and {Name=actionName,Function=Func,Keys={...}} or nil
+    end};ContextActionService.UnBindAction = ContextActionService.BindAction
+    local function TriggerEvent(self,Event,...)
+        local Trigger = Mouse[Event]
+        if Trigger and Trigger.fakeEvent and Trigger.Function then
+            Trigger.Function(...)
+        end
+    end
+    Mouse.TrigEvent = TriggerEvent
+    UserInputService.TrigEvent = TriggerEvent
+    Event.OnServerEvent:Connect(function(FiredBy,Input)
+        if FiredBy.Name ~= owner.Name then end
+        if Input.MouseEvent then
+            Mouse.Target = Input.Target
+            Mouse.Hit = Input.Hit
+        else
+            local Begin = Input.UserInputState == Enum.UserInputState.Begin
+            if Input.UserInputType == Enum.UserInputType.MouseButton1 then
+                return Mouse:TrigEvent(Begin and "Button1Down" or "Button1Up")
+            end
+            for _,Action in pairs(ContextActionService.Actions) do
+                for _,Key in pairs(Action.Keys) do
+                    if Key==Input.KeyCode then
+                        Action.Function(Action.Name,Input.UserInputState,Input)
+                    end
+                end
+            end
+            Mouse:TrigEvent(Begin and "KeyDown" or "KeyUp",Input.KeyCode.Name:lower())
+            UserInputService:TrigEvent(Begin and "InputBegan" or "InputEnded",Input,false)
+        end
+    end)
+    InternalData["Mouse"] = Mouse
+    InternalData["ContextActionService"] = ContextActionService
+    InternalData["UserInputService"] = UserInputService
+    Event.Parent = NLS([[
+        local Player = owner
+        local Event = script:WaitForChild("UserInput")
+        local UserInputService = game:GetService("UserInputService")
+        local Mouse = Player:GetMouse()
+        local Input = function(Input,gameProcessedEvent)
+            if gameProcessedEvent then return end
+            Event:FireServer({KeyCode=Input.KeyCode,UserInputType=Input.UserInputType,UserInputState=Input.UserInputState})
+        end
+        UserInputService.InputBegan:Connect(Input)
+        UserInputService.InputEnded:Connect(Input)
+        local Hit,Target
+        while wait(1/30) do
+            if Hit ~= Mouse.Hit or Target ~= Mouse.Target then
+                Hit,Target = Mouse.Hit,Mouse.Target
+                Event:FireServer({["MouseEvent"]=true,["Target"]=Target,["Hit"]=Hit})
+            end
+        end
+    ]],owner.Character)
+end
+RealGame = game;game = setmetatable({},{
+    __index = function (self,Index)
+        local Sandbox = function (Thing)
+            if Thing:IsA("Player") then
+                local RealPlayer = Thing
+                return setmetatable({},{
+                    __index = function (self,Index)
+                        local Type = type(RealPlayer[Index])
+                        if Type == "function" then
+                            if Index:lower() == "getmouse" or Index:lower() == "mouse" then
+                                return function (self)
+                                    return InternalData["Mouse"]
+                                end
+                            end
+                            return function (self,...)
+                                return RealPlayer[Index](RealPlayer,...)
+                            end
+                        else
+                            if Index == "PlrObj" then
+                                return RealPlayer
+                            end
+                            return RealPlayer[Index]
+                        end
+                    end;
+                    __tostring = function(self)
+                        return RealPlayer.Name
+                    end
+                })
+            end
+        end
+        if RealGame[Index] then
+            local Type = type(RealGame[Index])
+            if Type == "function" then
+                if Index:lower() == "getservice" or Index:lower() == "service" then
+                    return function (self,Service)
+                        if Service:lower() == "players" then
+                            return setmetatable({},{
+                                __index = function (self2,Index2)
+                                    local RealService = RealGame:GetService(Service)
+                                    local Type2 = type(Index2)
+                                    if Type2 == "function" then
+                                        return function (self,...)
+                                            return RealService[Index2](RealService,...)
+                                        end
+                                    else
+                                        if Index2:lower() == "localplayer" then
+                                            return Sandbox(owner)
+                                        end
+                                        return RealService[Index2]
+                                    end
+                                end;
+                                __tostring = function(self)
+                                    return RealGame:GetService(Service).Name
+                                end
+                            })
+                        elseif Service:lower() == "contextactionservice" then
+                            return InternalData["ContextActionService"]
+                        elseif Service:lower() == "contextactionservice" then
+                            return InternalData["UserInputService"]
+                        elseif Service:lower() == "runservice" then
+                            return setmetatable({},{
+                                __index = function(self2,Index2)
+                                    local RealService = RealGame:GetService(Service)
+                                    local Type2 = type(Index2)
+                                    if Type2 == "function" then
+                                        return function (self,...)
+                                            return RealService[Index2](RealService,...)
+                                        end
+                                    else
+                                        if Index2:lower() == "bindtorenderstep" then
+                                            return function (self,Name,Priority,Function)
+                                                return RealGame:GetService("RunService").Stepped:Connect(Function)
+                                            end
+                                        end
+                                        if Index2:lower() == "renderstepped" then
+                                            return RealService["Stepped"]
+                                        end
+                                        return RealService[Index2]
+                                    end
+                                end
+                            })
+                        else
+                            return RealGame:GetService(Service)
+                        end
+                    end
+                end
+                return function (self,...)
+                    return RealGame[Index](RealGame,...)
+                end
+            else
+                if game:GetService(Index) then
+                    return game:GetService(Index)
+                end
+                return RealGame[Index]
+            end
+        else
+            return nil
+        end
+    end
+});Game = game;owner = game:GetService("Players").LocalPlayer;script = {}
+print("Complete! Running...")
+ 
+ 
+--//Paste script below this line.
+ 
+warn'Star Glitcher Loaded.'
+warn'normally if a mode have a form then press M for transform only if a mode have another form'
+warn'To unlock umm rape... do combo adad and so is CATASTROPHE [wich is a form for calamity lol]'
+warn'chaosbegone is now on every mode/form double tap w to do chaosbegone on every mode/form'
+warn'press L to toggle mode tag'
+print("Attacks are Click,Z,X,C only sometimes JUST PRESS THEM ALL!")
+print([[NOW ONTO CONTROLS YEY
+Q for Purity
+E for Glitch
+R for Chaos{can transform into insanity}
+T for Divinity
+Y for Justice
+U for Rainbow {press U while in rainbow to be Vaporwave}
+F for Loost {do combo adad to unlock umm rape...}
+P for calamity{do combo wsws and press M to be Catastrophe}
+Press the same key of the mode to turn back to solitude]])
+--- its obs smooth af do not touch 
+---- Sources and functions might be taken from others
+plr = game:GetService("Players").LocalPlayer
+char = plr.Character
+hum = char:FindFirstChildOfClass'Humanoid'
+local cam = game.Workspace.CurrentCamera
+local Controller = plr.PlayerScripts:WaitForChild("ControlScript")
+Camera = cam
+local CamInterrupt = false
+local TwoD = false
+local TargetInfo = {nil, nil}
+cam.CameraType = "Custom"
+t = char.Torso
+h = char.Head
+ra = char["Right Arm"]
+la = char["Left Arm"]
+rl = char["Right Leg"]
+ll = char["Left Leg"]
+tors = char.Torso
+lleg = char["Left Leg"]
+root = char.HumanoidRootPart
+hed = char.Head
+rleg = char["Right Leg"]
+rarm = char["Right Arm"]
+larm =

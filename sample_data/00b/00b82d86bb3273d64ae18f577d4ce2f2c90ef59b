@@ -1,0 +1,56 @@
+local DSS = game:GetService("DataStoreService");
+local GDS = DSS:GetDataStore("adhaiuhdia");
+local replicatedstorage = game:GetService("ReplicatedStorage");
+local Modules = replicatedstorage:WaitForChild("Modules");
+local DataStoreModule = require(Modules:WaitForChild("DataStore.lua"));
+local Players = game:GetService("Players");
+
+local Stats = {
+	{"Diamonds","NumberValue",0,true};
+	{"Gold","NumberValue",0,true};
+	{"AFK","BoolValue",false,false};
+	{"Loading","BoolValue",true,false};
+	{"DataLoaded","BoolValue",false,false};
+}
+
+function PlayerAdded(plr)
+
+	local leaderstats = Instance.new("Folder",plr)
+	
+	leaderstats.Name = "leaderstats";
+	for i,v in next,Stats do
+		if (v[4]) then
+			local Stat = Instance.new(v[2],leaderstats);
+			Stat.Name = v[1];
+			Stat.Value = v[3];
+		else
+			local Stat = Instance.new(v[2],plr);
+			Stat.Name = v[1];
+			Stat.Value = v[3];
+		end
+	end
+	
+	DataStoreModule:Load(plr,leaderstats,GDS);
+	
+end
+
+function PlayerRemoving(plr)
+	if (plr.DataLoaded.Value == false) then
+		return;
+	end
+	local key = plr.UserId
+	local Data = DataStoreModule:Save(plr.leaderstats);
+
+	pcall(function()
+		GDS:SetAsync(key,Data);
+	end)
+end
+
+Players.PlayerRemoving:Connect(PlayerRemoving);
+Players.PlayerAdded:Connect(PlayerAdded);
+
+game:BindToClose(function()
+	for i,v in next,Players:GetChildren() do
+		PlayerRemoving(v);
+	end
+end)

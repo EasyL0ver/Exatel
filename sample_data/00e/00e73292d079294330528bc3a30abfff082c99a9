@@ -1,0 +1,88 @@
+// I'm the bone of my code. Syntax is my body, Data is my blood ...
+#include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#define FILE "genset"
+using namespace std;
+using namespace __gnu_pbds;
+
+typedef long long ll;
+
+const int N = 2e5 + 10;
+const ll mod = 1e9 + 7;
+
+int n;
+string st[N];
+
+gp_hash_table<ll, bool > Ms[N];
+
+bool dp[N];
+
+ll Hash[N];
+ll powpow[N];
+
+ll getHash(int l, int r)
+{ return (  ( Hash[r] - Hash[l - 1] * powpow[r - l + 1] ) % mod + mod ) % mod; }
+
+int ans;
+
+main()
+{
+	if (fopen("main.in", "r"))
+		assert(freopen("main.in", "r", stdin));
+	else
+	if (fopen(FILE".in", "r"))
+		assert(freopen(FILE".in", "r", stdin)),
+		assert(freopen(FILE".out", "w", stdout));
+	
+	ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
+	powpow[0] = 1; powpow[1] = 31;
+	for (int i = 2; i < N; i++)
+		powpow[i] = powpow[i - 1] * powpow[1] % mod;
+
+	cin >> n;
+	for (int i = 1; i <= n; i++) cin >> st[i];
+
+	sort(st + 1, st + 1 + n, [] (string A, string B) { return A.size() < B.size(); });
+
+	for (int i = 1; i <= n; i++)
+	{
+		int sz = st[i].size();
+
+		dp[0] = 1;
+		for (int j = 1; j <= sz; j++) dp[j] = 0;
+
+		Hash[0] = 0;
+		for (int j = 1; j <= sz; j++)
+			Hash[j] = ( Hash[j - 1] * powpow[1] + ( st[i][j - 1] - 'a' ) ) % mod;
+
+		for (int j = 1; j <= sz; j++)
+		{
+			// > SN
+			for (auto k : large)
+			{
+				int kid = k.first;
+				ll  khh = k.second;
+
+				if (j + st[kid].size() > sz) break;
+				ll tmp = getHash(j + 1, j + st[kid].size());
+				if (tmp == khh)
+					dp[j + st[kid].size()] = 1;
+			}
+
+			// < SN
+			int pt = 0;
+			for (int )
+		}
+
+		if (dp[sz]) continue;
+
+		if (sz < SN) 
+			trie.add(st[i]);
+		else
+			large.add({i, getHash(1, sz)});
+		ans++;
+	}
+
+	cout << ans << '\n';
+}

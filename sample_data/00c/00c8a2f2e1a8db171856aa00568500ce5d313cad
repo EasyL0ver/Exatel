@@ -1,0 +1,19 @@
+ 67 /* Set the soft and hard limits for RESOURCE to *RLIMITS.
+ 68    Only the super-user can increase hard limits.
+ 69    Return 0 if successful, -1 if not (and sets errno).  */
+ 70 #ifndef __USE_FILE_OFFSET64
+ 71 extern int setrlimit (__rlimit_resource_t __resource,
+ 72           __const struct rlimit *__rlimits) __THROW;
+ 73 #else
+ 74 # ifdef __REDIRECT
+ 75 extern int __REDIRECT (setrlimit, (__rlimit_resource_t __resource,
+ 76            __const struct rlimit *__rlimits) __THROW,
+ 77            setrlimit64);
+ 78 # else
+ 79 #  define setrlimit setrlimit64
+ 80 # endif
+ 81 #endif
+ 82 #ifdef __USE_LARGEFILE64
+ 83 extern int setrlimit64 (__rlimit_resource_t __resource,
+ 84       __const struct rlimit64 *__rlimits) __THROW;
+ 85 #endif

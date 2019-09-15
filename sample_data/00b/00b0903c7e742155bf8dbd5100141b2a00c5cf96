@@ -1,0 +1,177 @@
+local tOptions = {"Edit","Delete", "Run", "Pastebin", "Reboot", "Shutdown", "Exit"}
+local selection = 1
+
+function setMenuCenter()
+ local x,y = term.getSize()
+ y = (y - #tOptions) /2
+ term.setCursorPos(x,y)
+end
+
+function cPrint(value)
+ local x,y = term.getSize()
+ local xPos, yPos = term.getCursorPos()
+ x = (x-#value)/2
+ term.setCursorPos(x,yPos)
+ print(value)
+end
+
+function pasteMenu()
+ term.clear()
+ setMenuCenter()
+ for i = 1, #tOptions do
+  if selection == i then
+   cPrint(">> "..tOptions[i].." <<")
+  else
+   cPrint(tOptions[i])
+  end
+ end
+end
+
+function doTask(prgm)
+ if prgm == "Edit" then
+  setMenuCenter()
+  cPrint("+------------------+")
+  cPrint("| Edit:            |")
+  cPrint("|                   ")
+  cPrint("+------------------+")
+  x,y = term.getCursorPos()
+  y = y - 2
+  x, scrap = term.getSize()
+  x = (x - 20) / 2 + 2
+  --  write("X: "..x)
+  --  write("Y: "..y)
+  term.setCursorPos(x,y)
+  eProgram = read()
+  shell.run("rom/programs/edit", eProgram)
+ end
+ if prgm == "Delete" then
+  setMenuCenter()
+  cPrint("+------------------+")
+  cPrint("| Delete:          |")
+  cPrint("|                   ")
+  cPrint("+------------------+")
+  scrap, y = term.getCursorPos()
+  x, scrap = term.getSize()
+  y = y - 2
+  x = (x-20)/2 + 2
+  term.setCursorPos(x,y)
+  dProgram = read()
+  dPath = shell.resolve(dProgram)
+  if dPath ~= "" then
+   fs.delete(dPath)
+  end
+ end
+ if prgm == "Exit" then
+  term.clear()
+  term.setCursorPos(1,1)
+  print("ZoinkOS v0.1")
+  error()
+ end 
+ if prgm == "Reboot" then
+  os.reboot()
+ end
+ if prgm == "Shutdown" then
+  os.shutdown()
+ end
+ if prgm == "Run" then
+  setMenuCenter()
+  cPrint("+------------------+")
+  cPrint("| Run:             |")
+  cPrint("|                   ")
+  cPrint("+------------------+")
+  scrap,y = term.getCursorPos()
+  x,scrap = term.getSize()
+  y = y - 2
+  x = (x - 20) /2 + 2
+  term.setCursorPos(x,y)
+  rProgram = read()
+  y = y + 3
+  term.setCursorPos(x,y)
+  rProgram[1] = shell.resolveProgram(rProgram[1])
+  shell.run(rProgram)  
+  sleep(3)
+ end
+ if prgm == "Pastebin" then
+  setMenuCenter()
+  cPrint("+-----------------------+")
+  cPrint("| Pastebin:             |")
+  cPrint("| Action:               |")
+  cPrint("+-----------------------+")
+  pbActions = {"Put", "Get"}
+  pbSelection = 1
+  pbChosenAction = nil
+  x,y = term.getCursorPos()
+  y = y - 2
+  x = x + 21
+  term.setCursorPos(x,y)
+  while true do
+   term.setCursorPos(x,y)
+   for i = 1, #pbActions do
+    if pbSelection == i then
+     write("["..pbActions[i].."]")
+    else
+     write(" "..pbActions[i].." ")
+    end
+   end
+   event, key = os.pullEvent("key")
+   if key == 205 or key == 32 then
+    pbSelection = pbSelection + 1
+   end
+   if key == 203 or key == 30 then
+    pbSelection = pbSelection - 1
+   end
+   if pbSelection < 1 then
+    pbSelection = #pbActions
+   end
+   if pbSelection > #pbActions then
+    pbSelection = 1
+   end
+   if key == 28 or key == 156 then
+    pbChosenAction = pbActions[pbSelection]
+  end
+  setMenuCenter()
+  x,y = term.getCursorPos()
+  y = y + 2
+  term.setCursorPos(x,y)
+  if pbChosenAction == "Put" then
+   cPrint("| Program:             |")
+   cPrint("+----------------------+")
+   x, y = term.getCursorPos()
+   y = y - 2
+   x = x + 11
+   term.setCursorPos(x,y)
+   pbPutPrgm = read()
+   y = y + 2
+   x = 1
+   term.setCursorPos(x,y)
+   shell.run("pastebin", "put", pbPutPrgm)
+  end
+ end
+  sleep(2)
+end
+end
+function watchKeys()
+ event, key = os.pullEvent("key")
+ if key == 200 or key == 17 then
+  selection = selection - 1
+ end
+ if key == 208 or key == 31 then
+  selection = selection + 1
+ end
+ if key == 28 or key == 156 then
+  doTask(tOptions[selection])
+ end
+ if selection < 1 then
+  selection = #tOptions
+ end
+ if selection > #tOptions then
+  selection = 1
+ end
+ pasteMenu()
+end
+
+pasteMenu()
+
+while true do
+ watchKeys()
+end

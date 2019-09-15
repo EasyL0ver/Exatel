@@ -1,0 +1,75 @@
+public JsonResult GetEmployee()
+    {
+        using (CadDBEntities db = new CadDBEntities())
+        {
+            List<User> empList = db.User.ToList();
+            return Json(empList, JsonRequestBehavior.AllowGet);
+        }
+    }
+	
+var myapp;
+ (function () {
+      myapp = angular.module('my-employees', []);
+})();
+	
+myapp.service('employeeService', function ($http) {
+this.getAllEmployees = function () {
+    return $http.get("/User/GetEmployee");
+   }
+});
+	
+myapp.controller('employee-controller', function ($scope, employeeService) {
+
+//Loads all Employee records when page loads
+loadEmployees();
+
+function loadEmployees() {
+    var employeeRecords = employeeService.getAllEmployees();
+    employeeRecords.then(function (d) {    
+        $scope.Users = d.data;
+    },
+    function () {
+        alert("Error occured while fetching users list...");
+    });
+}
+)};
+	
+div class="container" ng-controller="employee-controller">
+    <div >
+        @*<div class="panel-heading">
+            Employee Details - Grid CRUD operations
+        </div>*@
+
+        @*Add New button*@
+        <div>
+            <button type="button" style="margin-top: 20px; margin-bottom: 20px;" class="btn btn-info"
+                    data-target="#AddNew" data-toggle="modal" id="btnAddEmployee">
+                Add Employee
+            </button>
+            <br />
+        </div>
+
+        @*Employee Records*@
+        <table class="table table-bordered">
+            <thead style="background-color:lightblue;">
+                <tr>
+                    <th>Nome</th>
+                    <th>Data de Nascimento</th>
+                    <th>CPF</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in Users">
+                    <td> {{emp.username}}</td>
+                    <td> {{emp.birthdate}}</td>
+                    <td>{{emp.cpf}}</td>
+                    <td style="width:200px;">
+                        <a href="#" class="btn btn-info">Update</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>

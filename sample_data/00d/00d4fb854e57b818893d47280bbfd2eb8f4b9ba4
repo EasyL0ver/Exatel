@@ -1,0 +1,45 @@
+version: '3'
+services:
+  server:
+    container_name: server
+    build: ./server
+    ports:
+      - '80:80'
+    links:
+      - app:app
+  app:
+    container_name: app
+    build:
+      context: ../retail
+      dockerfile: Dockerfile.dev
+    ports:
+      - '9000:9000'
+    volumes:
+      - ../retail:/usr/src/app/
+    environment:
+      - NODE_ENV=development
+      - NPM_CONFIG_PRODUCTION=false
+  db:
+    container_name: database
+    build: ./database
+    environment:
+      POSTGRES_PASSWORD: supersecretpasswordthatnobodyknows
+      POSTGRES_USER: devsuperuser
+      POSTGRES_DB: lending
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - /var/lib/postgresql/data
+	
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+COPY ./package.json ./.npmrc ./
+
+RUN npm install webpack webpack-cli webpack-server webpack-hot-client -g
+RUN npm link webpack webpack-dev-server && npm install
+
+EXPOSE 9000
+CMD ["npm", "run", "start:dev"]

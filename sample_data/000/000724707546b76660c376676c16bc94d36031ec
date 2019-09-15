@@ -1,0 +1,10 @@
+public boolean estPresent(E element) {
+        for(int i=0; i<this.taille;i++) {
+        	if(table[i]!=null) {
+        		if(table[i].equals(element)) {
+            		return true;
+            	}
+        	}
+        }
+        return false;
+    }

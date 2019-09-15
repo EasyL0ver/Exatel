@@ -1,0 +1,175 @@
+library(readxl)
+library(corrplot)
+library(car)
+
+censo_2005 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2005.xlsx")
+censo_2006 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2006.xlsx", 
+                         sheet = "Base de CE")
+censo_2007 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2007.xlsx")
+censo_2008 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2008.xlsx")
+censo_2009 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2009.xlsx")
+censo_2010 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2010.xlsx")
+censo_2011 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2011.xlsx")
+censo_2012 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2012.xlsx")
+censo_2013 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2013.xlsx")
+censo_2014 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2014.xlsx")
+censo_2015 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2015 _ Sistema Regular.xlsx")
+censo_2016 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2016.xlsx")
+censo_2017 <- read_excel("Documents/diplomado_proyecto/data_educacion/Censo Final 2017.xlsx")
+
+
+## Agrupoar por Departamento
+library(dplyr); library(reshape2)
+
+censo_2005$`CODIGO DE DEPARTAMENTO`
+departamento.2005 <- censo_2005 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2005
+
+departamento.2006 <- censo_2006 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2006
+
+departamento.2007 <- censo_2007 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2007
+
+departamento.2008 <- censo_2008 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2008
+
+departamento.2009 <- censo_2009 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2009
+
+departamento.2010 <- censo_2010 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2010
+
+departamento.2011 <- censo_2011 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2011
+
+departamento.2012 <- censo_2012 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2012
+
+departamento.2013 <- censo_2013 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2013
+
+censo_2014$DEPARTAMENTO
+censo_2014$`TOTAL DE  MATRICULA FINAL`
+censo_2014$`CÓDIGO DE DEPARTAMENTO`
+
+departamento.2014 <- censo_2014 %>%
+  group_by(`CÓDIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE  MATRICULA FINAL`))
+departamento.2014
+
+censo_2015$`NOMBRE DE DEPARTAMENTO`
+censo_2015$`TOTAL DE MATRICULA FINAL`
+
+departamento.2015 <- censo_2015 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`TOTAL DE MATRICULA FINAL`))
+departamento.2015
+
+censo_2016$`MATRÍCULA FINAL`
+departamento.2016 <- censo_2016 %>%
+  group_by(`CODIGO DE DEPARTAMENTO`) %>%
+  summarise(Net = sum(`MATRÍCULA FINAL`))
+departamento.2016
+
+head(censo_2017)
+censo_2017$`Código del Departamento`
+departamento.2017 <- censo_2017 %>%
+  group_by(`Código del Departamento`) %>%
+  summarise(Net = sum(`Total general`))
+departamento.2017<- departamento.2017[2:nrow(departamento.2017), ]
+library(stringr)
+departamento.2017$`CODIGO DE DEPARTAMENTO` = str_pad(departamento.2017$`CODIGO DE DEPARTAMENTO`, 2, side = "left", pad = "0")
+
+departamento.2006
+departamento.2005 <- data.frame(departamento.2005, row.names = 1)
+row.names(departamento.2005)
+row.names(departamento.2005)[1] <- 'AHUACHAPÁN'
+row.names(departamento.2005)[7] <- 'LA UNIÓN'
+
+
+departamentos_merged <- merge(departamento.2005, departamento.2006, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006')
+
+departamentos_merged <- merge(departamentos_merged, departamento.2007, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007')
+
+departamentos_merged <- merge(departamentos_merged, departamento.2008, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007', '2008')
+
+departamentos_merged <- merge(departamentos_merged, departamento.2009, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007', '2008', '2009')
+
+departamentos_merged <- merge(departamentos_merged, departamento.2010, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007', '2008', '2009', '2010')
+
+departamentos_merged <- merge(departamentos_merged, departamento.2011, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007', '2008', '2009', '2010', '2011')
+
+departamentos_merged <- merge(departamentos_merged, departamento.2012, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012')
+
+departamentos_merged <- merge(departamentos_merged, departamento.2013, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013')
+
+colnames(departamento.2014) <- c('CODIGO DE DEPARTAMENTO', 'Net')
+departamentos_merged <- merge(departamentos_merged, departamento.2014, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014')
+
+departamentos_merged <- merge(departamentos_merged, departamento.2015, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015')
+
+departamentos_merged <- merge(departamentos_merged, departamento.2016, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c('CODIGO DE DEPARTAMENTO', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', 
+                                    '2016')
+
+colnames(departamento.2017) <- c('CODIGO DE DEPARTAMENTO', 'Net')
+departamentos_merged <- merge(departamentos_merged, departamento.2017, by = "CODIGO DE DEPARTAMENTO", all=T)
+colnames(departamentos_merged) <- c("Departamento", "2005", "2006", "2007", "2008", "2009", "2010", "2011", 
+                                    "2012", "2013", "2014", "2015", "2016", "2017")
+
+departamentos = t(departamentos_merged)
+departamentos <- data.frame(departamentos)
+departamentos[1,]
+colnames(departamentos) <- c(departamentos[1, ])
+departamentos <- departamentos[-1, ]
+departamentos <- data.frame(departamentos)
+departamentos$NA. <- NULL
+
+ts.departamentos = ts(departamentos$X01, start = c(2005))
+plot(ts.departamentos, xlim = c (2005, 2017))
+
+departamentos$X01
+
+
+homicidios <- read_excel("Documents/diplomado_proyecto/Homicidios-departamento.xlsx")
+homicidios$`Santa Ana`[homicidios$Año > 2004]
+
+ts.santa.ana = ts(homicidios$`Santa Ana`[homicidios$Año > 2004], start = c(2004))
+summary(ts.santa.ana)
+plot(ts.santa.ana, xlim = c (2005, 2017))
+
+
+ts.departamentos = ts(depar, start = c(2005))
+base = data.frame(c(2005, 2005, 2007), c(142918, 143813, 142712))
+colnames(base) <- c('ano','data')
+ts.departamentos = ts(base$data, start = c(2005))
+plot(ts.departamentos)

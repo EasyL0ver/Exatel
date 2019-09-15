@@ -1,0 +1,49 @@
+sencha touch nested list
+//controller
+Ext.define('MyApp.controller.Application', {
+extend: 'Ext.app.Controller',
+
+config: {
+    refs: {
+        accodetail: 'accommodationsPanel'
+    },
+    control: {
+        'accommodationsPanel list': {
+            itemtap: 'showAccoDetail'
+        }
+    }
+},
+
+showAccoDetail: function(list, index, element, record) {
+    //console.log(record.get('name') + ' ' + record.get('desc'));
+    //console.log(record);
+    if (true == record.data.leaf) {
+        this.getAccodetail().setActiveItem({
+            xtype: 'accommodationsPanel',
+            data: record.data
+        });
+    }
+}
+
+});
+// view
+detailCard: {
+        xtype: 'tabpanel',
+        items: [
+            {
+                title: 'Home',
+                scrollable: true,
+                tpl: 'Test {name}'
+            },
+            {
+                title: 'Images',
+                scrollable: true,
+
+            },
+            {
+                title: 'Service',
+                scrollable: true,
+
+            }
+        ]
+    }

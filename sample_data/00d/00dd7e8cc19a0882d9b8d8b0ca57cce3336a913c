@@ -1,0 +1,27 @@
+#include "iostream"
+#include "ctime"
+#include "stdlib.h"
+using namespace std;
+const int SIZE = 10;
+typedef int Q[SIZE];		// массив из SIZE элементов
+int farm(Q arr, int N);
+int farm(Q arr, int i, int N, int S);
+
+int main() {
+	srand(time(NULL));
+	Q arr = {};
+	for (int i = 0; i < SIZE; i++) {
+		arr[i] = rand() % 101 - 50;
+		cout << arr[i] << endl;
+	}
+	cout << "Arithmetic mean of array = " << farm(arr, SIZE) << endl;
+	return 0;
+}
+
+int farm(Q arr, int N) {
+	return farm(arr, 0, N, 0);
+}
+int farm(Q arr, int i, int N, int S) {
+	if (i < N) { return farm(arr, i + 1, N, S += arr[i]); }
+	else return S / N;
+}

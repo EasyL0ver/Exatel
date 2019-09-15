@@ -1,0 +1,18 @@
+C:\Users\Bryce>clj
+Clojure 1.3.0
+user=> (unless (= 1 2) (println "woot"))
+CompilerException java.lang.RuntimeException: Unable to resolve symbol: unless i
+n this context, compiling:(NO_SOURCE_PATH:1)
+user=> (defmacro unless [expr & body] `(if ~expr nil (do ~@body)))
+#'user/unless
+user=> (unless (= 1 2) (println "woot"))
+woot
+nil
+user=> (unless (= 1 1) (println "woot"))
+nil
+user=> (if (= 1 2) (println "woot"))
+nil
+user=> (if (= 1 1) (println "woot"))
+woot
+nil
+user=>

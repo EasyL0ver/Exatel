@@ -1,0 +1,248 @@
+addpath(genpath('.'))
+filename = 'data_fibrosis.csv';
+data = readtable(filename);
+
+max_epochs = 50;
+n_runs = 100;
+n_boostrap = 10000;
+prctg = 10; % percentage for validation use
+top_x = [32,10];
+n_x = length(top_x);
+
+steroid_parameters = get_parameter_lists('steroids');
+histo = hist(data.label,unique(data.label))
+
+% do creatinine correction
+daily_perc = data.creatinine;% ./ creat_pred;
+data{:, steroid_parameters} = data{:, steroid_parameters}  ./ daily_perc;
+
+% % log transform steroid parameters & ALT, AST, HbA1c_mol
+data{:, steroid_parameters} = log10(data{:, steroid_parameters});
+data{:, {'ALT', 'AST', 'HbA1c_mol'}} = log10(data{:, {'ALT', 'AST', 'HbA1c_mol'}});
+
+clinical_parameters = get_parameter_lists('clinical');
+blood_parameters = get_parameter_lists('blood');
+%
+% which parameters to use
+%
+parameters = [clinical_parameters];
+
+deletable_parameters = steroid_parameters;
+n_del = length(deletable_parameters);
+
+all_parameters = [parameters, deletable_parameters];
+
+classification_problems = get_classification_problems();
+overall_problem = get_overall_problems('healthy vs. F0-F2 vs. F3-F4');
+
+n_cps = length(classification_problems); % number of classification problems
+
+n_classes = length(unique(data.label)); % number of classes
+nfv=size(data,1);                      % number of feature vectors
+numtrain = floor(nfv*(100-prctg)/100); % size of individual training sets
+numtest  = nfv-numtrain;               % size of individual test sets
+
+% variables to store results
+overall_result = cell(n_runs,n_x-1);
+iteration_results = cell(n_runs, n_x, n_cps);
+
+tprs_results = zeros(max_epochs,5001, n_x, n_cps);
+fprs_results = tprs_results;
+
+tprs_results_males = tprs_results;
+tprs_results_females = tprs_results;
+fprs_results_males = tprs_results;
+fprs_results_females = tprs_results;
+
+
+
+parfor_progress(n_runs);
+parfor krun=1:n_runs % loop for validation runs
+    
+    % validation splits
+    mix=0; attempts=1;
+    while(~mix && attempts<=100);
+        permu = randperm(nfv);    % random order of samples
+        data_train = data(permu(1:numtrain),:);   % training set feature vectors
+        data_val = data(permu((numtrain+1):end),:);    % corresponding labels
+        
+        % check if our data is well mixed:
+        t_m = [data_train.label, data_train.sex];
+        t_v = [data_val.label, data_val.sex];
+        t_m(t_m(:,1) == 3 | t_m(:,1) == 4,1) = 2;
+        t_v(t_v(:,1) == 3 | t_v(:,1) == 4,1) = 2;
+        
+        % all training samples should contain atleast one male and female
+        % for HC, F0-F2 and F4.
+        train_mix = ismember([1,0], t_m, 'rows') & ismember([1,1], t_m, 'rows') & ...   % HC mix
+            ismember([2,0], t_m, 'rows') & ismember([2,1], t_m, 'rows') & ...   % F0-F2 mix
+            ismember([6,0], t_m, 'rows') & ismember([6,1], t_m, 'rows');        % F4 mix
+        
+        % all validation samples should contain atleast one male and female
+        % for HC, F0-F2 and F4.
+        val_mix =   ismember([1,0], t_v, 'rows') & ismember([1,1], t_v, 'rows') & ...   % HC mix
+            ismember([2,0], t_v, 'rows') & ismember([2,1], t_v, 'rows') & ...   % F0-F2 mix
+            ismember([6,0], t_v, 'rows') & ismember([6,1], t_v, 'rows');        % F4 mix
+        
+        mix= train_mix & val_mix;
+        attempts=attempts+1;
+    end
+    if (attempts > 100);
+        msg =['test or training set did not contain all classes ', ...
+            'after 100 attempts ', ...
+            ' - increase or decrease test set size (prctg) accordingly'];
+        error(msg)
+    end;
+    
+    op = overall_problem;
+    
+    p = all_parameters;
+    dp = deletable_parameters;
+    
+    % apply mapping
+    overall_data_train = data_train(ismember(data_train.label, op.classes),:);
+    overall_data_val = data_val(ismember(data_val.label, op.classes),:);
+    
+    for i= 1:length(op.classes)
+        overall_data_train.label(overall_data_train.label==op.classes(i)) = op.mapping(i);
+        overall_data_val.label(overall_data_val.label==op.classes(i)) = op.mapping(i);
+    end
+    
+    % variables to store intermidiate roc curve results
+    tprs_results_i = zeros(max_epochs,5001, n_x, n_cps);
+    fprs_results_i = tprs_results_i;
+    
+    tprs_results_males_i = fprs_results_i;
+    tprs_results_females_i = fprs_results_i;
+    fprs_results_males_i = fprs_results_i;
+    fprs_results_females_i = fprs_results_i;
+    
+    for x = 1:n_x
+        if x > 1
+            % the overall classifier which determines the top n list.
+            [w,om,cftra,~,cwtra,~,cfval,~,cwval,~, ~, ~, ~, ~, ~, ~]= ...
+                do_lcurve(overall_data_train{:,dp},overall_data_train.label,overall_data_val{:,dp}, ...
+                overall_data_val.label,1:length(unique(overall_data_val.label)),50);
+            
+            iter_res = overall_iteration_result(top_x(x-1), p, dp, w, om, cftra, cfval, cwtra, cwval);
+            
+            overall_result(krun) = {iter_res};
+            
+            % find the deletable parameter indices
+            %dp_I = find(ismember(p,dp));
+            [V, I] = sort(diag(om), 'descend');
+            % keep the 10 best performing deletable parameters
+            dp(~ismember(1:length(I), I(1:top_x(x)))) = [];
+            
+            p = [parameters, dp];
+        end
+        
+        for c = 1:n_cps
+            curr_c = classification_problems(c);
+            
+            % select the samples and bin the labels for the current classification problem
+            curr_data_train = data_train(ismember(data_train.label, [curr_c.class1, curr_c.class2]),:);
+            curr_data_val = data_val(ismember(data_val.label, [curr_c.class1, curr_c.class2]),:);
+            
+            curr_data_train.label = ismember(curr_data_train.label, curr_c.class2) +1;
+            curr_data_val.label = ismember(curr_data_val.label, curr_c.class2) +1;
+            
+            % both genders
+            [~,~,~,~,~,~,~,~,~,~, ~, ~, ~, ~, w_all, om_all, mf,st]= ...
+                do_lcurve(curr_data_train(:,p).Variables,curr_data_train.label, ...
+                curr_data_val(:,p).Variables,curr_data_val.label,1:2, max_epochs);
+            
+            % apply z score to current data val
+            for i =1:size(curr_data_val,1)
+                curr_data_val{i,p} = (curr_data_val{i,p}-mf)./st;
+            end
+            
+            aucs = zeros(max_epochs,1);
+            tprs = zeros(max_epochs, 5001);
+            fprs = tprs;
+            
+            aucs_males = aucs;
+            aucs_females = aucs;
+            
+            tprs_females = fprs;
+            fprs_females = fprs;
+            tprs_males = fprs;
+            fprs_males = fprs;
+            
+            for e = 1:max_epochs
+                [~,~,~,score] = compute_costs(curr_data_val(:,p).Variables, ...
+                    curr_data_val.label,w_all(:,:,e),1:2,om_all(:,:,e),0);
+                [tpr,fpr,aucroc,~] = compute_roc(curr_data_val.label>1, score);
+                
+                tprs(e,:) = tpr;
+                fprs(e,:) = fpr;
+                aucs(e) = aucroc;
+                
+                % females ROC
+                data_female = curr_data_val(curr_data_val.sex == 0,:);
+                [~,~,~,score]    = compute_costs(data_female(:,p).Variables, ...
+                    data_female.label,w_all(:,:,end),1:2,om_all(:,:,e),0);
+                
+                [tpr,fpr,aucroc,~] = compute_roc(data_female.label>1, score);
+                tprs_females(e,:) = tpr;
+                fprs_females(e,:) = fpr;
+                aucs_females(e) = aucroc;
+                
+                % males ROC
+                data_male = curr_data_val(curr_data_val.sex == 1,:);
+                [~,~,~,score]    = compute_costs(data_male(:,p).Variables, ...
+                    data_male.label,w_all(:,:,end),1:2,om_all(:,:,e),0);
+                
+                [tpr,fpr,aucroc,~] = compute_roc(data_male.label>1, score);
+                tprs_males(e,:) = tpr;
+                fprs_males(e,:) = fpr;
+                aucs_males(e) = aucroc;
+            end
+            
+            iteration_results(krun, x, c) = {iteration_result(w_all, om_all, ...
+                aucs, aucs_males, aucs_females)};
+            
+            tprs_results_i(:,:,x,c) = 1/n_runs * tprs;
+            fprs_results_i(:,:,x,c) = 1/n_runs * fprs;
+            
+            tprs_results_males_i(:,:,x,c) = 1/n_runs * tprs_males;
+            fprs_results_males_i(:,:,x,c) = 1/n_runs * fprs_males;
+            
+            tprs_results_females_i(:,:,x,c) = 1/n_runs * tprs_females;
+            fprs_results_females_i(:,:,x,c) = 1/n_runs * fprs_females;
+        end
+    end
+    tprs_results = tprs_results + tprs_results_i;
+    fprs_results = fprs_results + fprs_results_i;
+    
+    tprs_results_males = tprs_results_males + tprs_results_males_i;
+    fprs_results_males = fprs_results_males + fprs_results_males_i;
+    
+    tprs_results_females = tprs_results_females + tprs_results_females_i;
+    fprs_results_females = fprs_results_females + fprs_results_females_i;
+    
+    parfor_progress;
+end
+parfor_progress(0);
+
+
+% flatten some stuff so we can store the results 
+classifier_results = [];
+for c = 1:n_cps
+    results = [];
+    for x = 1:length(top_x)
+        
+        aucs = zeros(n_runs, max_epochs);
+        aucs_males = zeros(n_runs, max_epochs);
+        aucs_females = zeros(n_runs, max_epochs);
+              
+        for i = 1:n_runs
+            aucs(i,:) = iteration_results{i, x, c}.aucs';
+            aucs_males(i,:) = iteration_results{i, x, c}.aucs_males';
+            aucs_females(i,:) = iteration_results{i, x, c}.aucs_females';
+        end
+        
+        [auc, best_epoch] = max(mean(aucs));
+        auc_males = mean(aucs_males(:,best_epoch));
+        auc_females = mean(aucs_females(:,best_epoch));
+        

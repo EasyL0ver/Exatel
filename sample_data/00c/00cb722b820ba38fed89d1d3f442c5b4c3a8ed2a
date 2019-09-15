@@ -1,0 +1,10 @@
+Current code does not display anything:
+
+  <div class="col-md-2 strong-text">[% l('Billing Location') %]</div>
+  <div class="col-md-2">{{xact.billing_location().shortname()}}</div>
+
+xact is the billable transaction (mbts in the fieldmapper), and I can get to the billing location ID # for both grocery and circ transactions with this:
+{{xact.grocery().billing_location()||xact.circulation().circ_lib()}}
+
+But if I add shortname I get nothing:
+{{xact.grocery().billing_location().shortname()||xact.circulation().circ_lib().shortname()}}

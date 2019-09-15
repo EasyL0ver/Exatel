@@ -1,0 +1,31 @@
+#include <iostream>
+
+int bin[8];
+
+void printBin(int a)
+{
+ int i = 0;
+ while (a > 0)
+ {
+  if (a % 2)
+  { 
+   bin[i] = 1;
+  }
+  else
+  {
+   bin[i] = 0;
+  }
+  i++;
+  a /= 2;
+ }
+ for (int j = 7; j >= 0; j--)
+ std::cout << bin[j];
+}
+
+int main()
+{
+ int a;
+ std::cin >> a;
+ printBin(a);
+ return 0;
+}

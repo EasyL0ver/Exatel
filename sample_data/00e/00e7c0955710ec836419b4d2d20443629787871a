@@ -1,0 +1,1 @@
+find . -name K01ssh | xargs -n1 rename "s/K01/S01/"

@@ -1,0 +1,57 @@
+kjetil@robin:~/dev/node-solid-server (develop)$  bin/solid-test start -v
+  solid:settings Server URI: https://robin.kjernsmo.net:8444 +0ms
+  solid:settings Auth method: oidc +1ms
+  solid:settings Db path: /home/kjetil/Projects/Solid/my-db +1ms
+  solid:settings Config path: /home/kjetil/Projects/Solid/my-config +0ms
+  solid:settings Suffix Acl: .acl +0ms
+  solid:settings Suffix Meta: .meta +0ms
+  solid:settings Filesystem Root: /home/kjetil/Projects/Solid/my-test-data/ +0ms
+  solid:settings Allow WebID authentication: true +0ms
+  solid:settings Live-updates: true +0ms
+  solid:settings Multi-user: false +0ms
+  solid:settings Suppress default data browser app: undefined +0ms
+  solid:settings Default data browser app file path: default +0ms
+  solid:settings CORS proxy listening at /proxy?uri={uri} +4ms
+  solid:settings Base URL (--mount): / +5ms
+  solid:settings SSL Private Key path: /home/kjetil/Projects/Solid/my-config/robin.kjernsmo.net.key +0ms
+  solid:settings SSL Certificate path: /home/kjetil/Projects/Solid/my-config/robin.kjernsmo.net.cert +0ms
+Solid server (v4.0.14-4-gacc456d) running on https://localhost:8444/
+Press <ctrl>+c to stop
+  solid:authentication Provider keys loaded from config +9ms
+  solid:authentication Provider keychain initialized +74ms
+  solid:authentication Not sleeping before client registration... +1ms
+  solid:authentication Client fetched for issuer https://robin.kjernsmo.net:8444 +18ms
+  solid:authentication Local RP client initialized +0ms
+  solid:ACL Using ACL https://robin.kjernsmo.net:8444/public/.acl for ./group-listing.ttl +20s
+  solid:ACL Permissions on https://robin.kjernsmo.net:8444/public/group-listing.ttl for (none): read +6ms
+  solid:ACL Permissions on https://robin.kjernsmo.net:8444/public/group-listing.ttl for public: read +0ms
+  solid:get /public/group-listing.ttl on robin.kjernsmo.net +1ms
+  solid:handlers GET -- Reading /home/kjetil/Projects/Solid/my-test-data/public/group-listing.ttl +0ms
+  solid:index Looking for index in /public/test%20for%20groups/ +12s
+  solid:ACL Using ACL https://robin.kjernsmo.net:8444/public/test%20for%20groups/.acl for ./ +4ms
+  solid:ACL Read access denied to (none) +2ms
+  solid:server Error page because of: { [HTTPError: Access to https://robin.kjernsmo.net:8444/public/test%20for%20groups/ requires authorization]
+  name: 'HTTPError',
+  message: 'Access to https://robin.kjernsmo.net:8444/public/test%20for%20groups/ requires authorization',
+  status: 401 } +0ms
+  solid:server Access to https://robin.kjernsmo.net:8444/public/test%20for%20groups/ requires authorization error: undefined desc: undefined +1ms
+  solid:server Redirecting to Select Provider: https://robin.kjernsmo.net:8444/api/auth/select-provider?returnToUrl=https%3A%2F%2Frobin.kjernsmo.net%3A8444%2Fpublic%2Ftest%2520for%2520groups%2F +1ms
+  solid:authentication Discovering provider for uri: https://solid.kjernsmo.net/profile/card#me +28s
+  solid:authentication Building /authorize url for provider: https://solid.kjernsmo.net +93ms
+  solid:authentication Client fetched for issuer https://solid.kjernsmo.net +9ms
+  solid:authentication Client fetched for issuer https://solid.kjernsmo.net +2m
+  Resuming workflow, redirecting to https://robin.kjernsmo.net:8444/public/test%20for%20groups/
+  solid:index Looking for index in /public/test%20for%20groups/ +98ms
+  solid:ACL Using ACL https://robin.kjernsmo.net:8444/public/test%20for%20groups/.acl for ./ +13ms
+  solid:ACL Read access denied to https://solid.kjernsmo.net/profile/card#me +14ms
+  solid:server Error page because of: { [HTTPError: Access to https://robin.kjernsmo.net:8444/public/test%20for%20groups/ denied for https://solid.kjernsmo.net/profile/card#me]
+  name: 'HTTPError',
+  message: 'Access to https://robin.kjernsmo.net:8444/public/test%20for%20groups/ denied for https://solid.kjernsmo.net/profile/card#me',
+  status: 403 } +0ms
+  solid:index Looking for index in /public/test%20for%20groups/ +47s
+  solid:ACL Using ACL https://robin.kjernsmo.net:8444/public/test%20for%20groups/.acl for ./ +8ms
+  solid:ACL Read access denied to https://solid.kjernsmo.net/profile/card#me +2ms
+  solid:server Error page because of: { [HTTPError: Access to https://robin.kjernsmo.net:8444/public/test%20for%20groups/ denied for https://solid.kjernsmo.net/profile/card#me]
+  name: 'HTTPError',
+  message: 'Access to https://robin.kjernsmo.net:8444/public/test%20for%20groups/ denied for https://solid.kjernsmo.net/profile/card#me',
+  status: 403 } +0ms

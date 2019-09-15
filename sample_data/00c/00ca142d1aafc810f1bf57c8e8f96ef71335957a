@@ -1,0 +1,6 @@
+[root@popd-geoworkers-02 ~]# docker ps -a
+CONTAINER ID        IMAGE                                                     COMMAND                  CREATED             STATUS              PORTS                      NAMES
+abf95ddf4fe2        mgmt-docker-registry-01.prod.egrn/management-api:4.10.0   "geoworkers_startup.s"   5 weeks ago         Up 5 weeks                                     popd-geoworkers
+7972211816b3        mgmt-docker-registry-01.prod.egrn/management-api:4.10.0   "monitor_startup.sh"     5 weeks ago         Up 5 weeks          0.0.0.0:5555->5555/tcp     popd-geoworkers-monitor
+6ed73f250b70        mgmt-docker-registry-01.prod.egrn/sdps/mongo:3.3.8        "/entrypoint.sh mongo"   5 weeks ago         Up 5 weeks          0.0.0.0:27017->27017/tcp   popd-geoworkers-broker
+0ba909d7a9b6        mgmt-docker-registry-01.prod.egrn/management-api:4.9.0    "/var/app/egis/env/bi"   5 months ago        Up 6 weeks                                     compose_egis_celery_1

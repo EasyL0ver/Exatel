@@ -1,0 +1,4 @@
+public function exists($item, $type)
+{
+    return (bool)$this->sqlite->querySingle('SELECT COUNT(*) FROM `items` WHERE `type` = ' . $type . ' AND `wareUrl` = '' . SQLite3::escapeString($item->wareUrl) . ''');
+}

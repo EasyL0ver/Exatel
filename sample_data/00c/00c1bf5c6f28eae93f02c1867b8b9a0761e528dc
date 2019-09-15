@@ -1,0 +1,23 @@
+class Technology:
+    def get_total_participants(self):
+        count = 0
+        for course, value in self.course_dict:
+            count += value
+        return count
+
+    def __init__(self, tech):
+        self.tech = tech
+        self.course_dict = {}
+        self.total_count = self.get_total_participants()
+
+    def print_tech(self):
+        print(f"{self.tech} ({self.total_count} participants)")
+        for course in self.course_dict:
+            print(f"--{course} -> {self.course_dict[course]}")
+
+
+def print_most_and_least_popular(tech_list):
+    sorted_tech_list = sorted(tech_list)
+    most_popular = sorted_course_dict[-1]
+    least_popular = sorted_course_dict[0]
+    print("Most popular: {most_popular[0]} ()")

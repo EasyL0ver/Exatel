@@ -1,0 +1,9 @@
+interface ApiRefreshToken {
+    companion object {
+        private const val REFRESH_TOKEN = "/refreshToken"
+    }
+
+    @FormUrlEncoded
+    @POST(REFRESH_TOKEN)
+    fun refreshToken(@Field("refreshToken") refreshToken: String?): Call<TokenModel>
+}

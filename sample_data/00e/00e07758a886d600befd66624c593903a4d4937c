@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Task12 {
+
+	/**
+	 * 
+	 * W pjerwyj djen sportsmjen probjeżał x kiłomjetrow, a zatjem on każdyj djen
+	 * uwjełicziwał probjeg na 10% ot prjedyduszczjego znaczjenija. Po czisłu ukazanomu s
+	 * kławiatury y oprjedjełitje nomjer dnja, na kotoryj probjeg sportsmjena sostawit nje
+	 * mjenjeje y kiłomjetrow.
+	 *
+	 */
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		double x = 7; // probjeg w 1j djen
+		int day = 1;
+
+		Scanner in = new Scanner(System.in);
+		System.out.print("Wwjeditje czisło kiłomjetrow : ");
+		int y = in.nextInt();
+		in.close();
+
+		System.out.println("Jesłi sportsmjen probjeżał w pjerwyj djen " + x
+				+ "km, i w każdyj posłjedujuszczij djen uwjełicziwał distanicju na 10%");
+
+		while (y > x) {
+			x *= 1.1;
+			day++;
+		}
+		System.out.println("to distanciju w " + y + "km pjerwyj raz on prjeodołjejet na " + day + "j djen");
+		System.out.print("W etot djen on probjeżit ");
+		System.out.printf("%.3f", x);
+		System.out.print("km");
+	}
+
+}

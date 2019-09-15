@@ -1,0 +1,23 @@
+javascript: var HermitowskieFejki = {
+  omitNightBonus: 'true',
+  coords: '229|576 229|577 235|580 236|581 226|583 228|583 236|583 235|584 229|596 233|597 223|599 232|599 222|601 226|601 230|601 231|601 219|602 220|602 229|602 218|603 226|603 228|603 229|603 230|603 231|603 217|604 221|604 222|604 223|604 229|604 231|604 232|604 215|605 221|605 226|605 233|605 219|606 222|606 227|606 233|606 244|606 220|607 230|607 221|608 222|609 215|610 220|610 243|611 220|612 221|612 222|612 219|613 220|613 221|613 222|613 222|614 217|615 219|615 212|616 218|616 220|616 209|617 213|617 214|617 216|618 212|619 216|619 221|619 217|620 218|620 215|621 216|621 212|622 213|622 216|622 217|622 218|622 212|623 213|623 211|624 213|624 216|624 220|625 220|627 218|629 219|630',
+  players: '',
+  days: '1-31',
+  intervals: '0:00-23:59',
+  templates: [
+      {spy: 50, ram: 1},
+      {spy: 50, catapult: 1},
+      {axe: 60, spy: 20, ram: 1},
+	  {spy: 50, ram: 1},
+	  {spy: 50, catapult: 1},
+      {catapult: 1}
+  ],
+  fillWith: 'spear,sword,axe,archer,spy,light,marcher,heavy,ram,catapult',
+  fillExact: 'false',
+  skipVillages: 'true',
+  safeguard: {},
+  localContext: '0',
+  customContexts: '',
+  boundingBoxes: []
+};
+eval(localStorage['Faking']) || $.getScript('https://media.innogamescdn.com/com_DS_PL/skrypty/Faking.js'); void(0);

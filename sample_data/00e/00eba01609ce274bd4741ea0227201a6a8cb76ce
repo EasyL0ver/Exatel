@@ -1,0 +1,27 @@
+client
+dev tun
+proto udp
+remote xxx.xxx.xxx.xxx 1912
+remote-cert-tls server
+auth SHA256
+key-direction 1
+setenv CLIENT_CERT 0
+auth-user-pass login.conf
+resolv-retry infinite
+nobind
+cipher AES-256-GCM
+compress
+ncp-disable
+route-nopull
+tun-mtu-extra 32
+ca ca.crt
+tls-auth ta.key 1
+	
+tun0: flags=4305<UP,POINTOPOINT,RUNNING,NOARP,MULTICAST>  mtu 1500
+        inet 10.35.0.10  netmask 255.255.255.255  destination 10.35.0.9
+        inet6 fe80::5f4d:27b6:b511:c829  prefixlen 64  scopeid 0x20<link>
+        unspec 00-00-00-00-00-00-00-00-00-00-00-00-00-00-00-00  txqueuelen 100  (UNSPEC)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 3  bytes 144 (144.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0

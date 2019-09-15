@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+#ifndef DEBUG
+#define DEBUG(...)printf(__VA_ARGS__)
+#endif
+
+void przeksztalcony(char cyfry2[8], int liczba) {
+  int z, licznik=7;
+  while (liczba>0) {
+    z=liczba%2;
+    liczba /=2;
+    if (z==0) {
+      cyfry2[licznik] = '0';
+    } else {
+      cyfry2[licznik] = '1';
+    }
+    licznik--;
+  }
+}
+int znajdz_bledy(char cyfry1[], int liczba){
+  int i, bledy=0;
+  char cyfry2[8]={'0','0','0','0','0','0','0','0'};
+  przeksztalcony(cyfry2, liczba);
+  for(i=0; i<8; ++i){
+    if (cyfry1[i]!=cyfry2[i]) {
+      ++bledy;
+    }
+  }
+  return bledy;
+}
+int main() {
+  int n, i, j, licznik=0;
+  char pole[100*8+100+1];
+  int pole2[n];
+  char liczba[8];
+  int bledy=0;
+  scanf("%d", &n);
+  for(i=0; i<n*8+n+1; ++i) {
+    scanf(" %c", &pole[i]);
+  }
+  for(i=0; i<n; ++i) {
+    scanf("%d", &pole2[i]);
+  }
+  for(i=0; i<n*8+n; ++i) {
+    if (pole[i] == '|') {
+      for (j=0; j<8; ++j) {
+        liczba[j] = pole[i+1+j];
+      }
+      bledy += znajdz_bledy(liczba, pole2[licznik]);
+      licznik++;
+    }
+  }
+  printf("%d", bledy);
+  return 0;
+}

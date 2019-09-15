@@ -1,0 +1,513 @@
+#include "stdafx.h"
+#include <winsock2.h>
+
+#pragma comment(lib, "wsock32.lib")
+
+
+#define STUDENT_NUMBER    "18018842"
+
+#define IP_ADDRESS_SERVER "127.0.0.1"
+
+#define PORT_SERVER 0x1984 // We define a port that we are going to use.
+#define PORT_CLIENT 0x1985 // We define a port that we are going to use.
+
+#define WORD  unsigned short
+#define DWORD unsigned long
+#define BYTE  unsigned char
+
+#define MAX_FILENAME_SIZE 500
+#define MAX_BUFFER_SIZE   500
+
+SOCKADDR_IN server_addr;
+SOCKADDR_IN client_addr;
+
+SOCKET sock;  // This is our socket, it is the handle to the IO address to read/write packets
+
+WSADATA data;
+
+char InputBuffer[MAX_BUFFER_SIZE];
+
+char hex_file[MAX_BUFFER_SIZE];
+char trc_file[MAX_BUFFER_SIZE];
+
+//////////////////////////
+//   Registers          //
+//////////////////////////
+
+#define FLAG_Z  0x80
+#define FLAG_I  0x20
+#define FLAG_N  0x08
+#define FLAG_C  0x01
+#define REGISTER_A	4
+#define REGISTER_H	3
+#define REGISTER_L	2
+#define REGISTER_C	1
+#define REGISTER_B	0
+#define REGISTER_X 0
+#define REGISTER_Y 1
+#define REGISTER_M  5
+BYTE Index_Registers[2];
+
+BYTE Registers[6];
+BYTE Flags;
+WORD ProgramCounter;
+WORD StackPointer;
+
+
+////////////
+// Memory //
+////////////
+
+#define MEMORY_SIZE	65536
+
+BYTE Memory[MEMORY_SIZE];
+
+#define TEST_ADDRESS_1  0x01FA
+#define TEST_ADDRESS_2  0x01FB
+#define TEST_ADDRESS_3  0x01FC
+#define TEST_ADDRESS_4  0x01FD
+#define TEST_ADDRESS_5  0x01FE
+#define TEST_ADDRESS_6  0x01FF
+#define TEST_ADDRESS_7  0x0200
+#define TEST_ADDRESS_8  0x0201
+#define TEST_ADDRESS_9  0x0202
+#define TEST_ADDRESS_10  0x0203
+#define TEST_ADDRESS_11  0x0204
+#define TEST_ADDRESS_12  0x0205
+
+
+///////////////////////
+// Control variables //
+///////////////////////
+
+bool memory_in_range = true;
+bool halt = false;
+
+
+///////////////////////
+// Disassembly table //
+///////////////////////
+
+char opcode_mneumonics[][14] =
+{
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"SWI impl     ",
+	"RTI impl     ",
+	"STO abs      ",
+	"STOX abs     ",
+	"STOY abs     ",
+	"JMPR abs     ",
+	"CCC abs      ",
+	"CCS abs      ",
+	"CNE abs      ",
+	"CEQ abs      ",
+	"CMI abs      ",
+	"CPL abs      ",
+	"ILLEGAL     ",
+	"STOS abs     ",
+
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"STO abs,X    ",
+	"STOX abs,X   ",
+	"STOY abs,X   ",
+	"NOP impl     ",
+	"WAI impl     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"ADI  #       ",
+	"CPI  #       ",
+	"ANI  #       ",
+	"STOS abs,X   ",
+
+	"LODS  #      ",
+	"LDX  #       ",
+	"LODY  #      ",
+	"RT impl      ",
+	"STO abs,Y    ",
+	"STOX abs,Y   ",
+	"STOY abs,Y   ",
+	"MVR  #,B     ",
+	"MVR  #,C     ",
+	"MVR  #,L     ",
+	"MVR  #,H     ",
+	"TAY impl     ",
+	"TYA impl     ",
+	"MSA impl     ",
+	"ILLEGAL     ",
+	"STOS abs,Y   ",
+
+	"LODS abs     ",
+	"LDX abs      ",
+	"LODY abs     ",
+	"ILLEGAL     ",
+	"STO abs,XY   ",
+	"STOX abs,XY  ",
+	"STOY abs,XY  ",
+	"ILLEGAL     ",
+	"JUMP abs     ",
+	"JCC abs      ",
+	"JCS abs      ",
+	"JNE abs      ",
+	"JEQ abs      ",
+	"JMI abs      ",
+	"JPL abs      ",
+	"STOS abs,XY  ",
+
+	"LODS abs,X   ",
+	"LDX abs,X    ",
+	"LODY abs,X   ",
+	"LD  #        ",
+	"STO zpg      ",
+	"STOX zpg     ",
+	"STOY zpg     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"DEX impl     ",
+	"INX impl     ",
+	"DEY impl     ",
+	"INY impl     ",
+	"ILLEGAL     ",
+	"STOS zpg     ",
+
+	"LODS abs,Y   ",
+	"LDX abs,Y    ",
+	"LODY abs,Y   ",
+	"LD abs       ",
+	"TEST abs     ",
+	"INC abs      ",
+	"DEC abs      ",
+	"RR abs       ",
+	"RCL abs      ",
+	"SAL abs      ",
+	"SHR abs      ",
+	"COM abs      ",
+	"NEG abs      ",
+	"RAL abs      ",
+	"ROR abs      ",
+	"CLR abs      ",
+
+	"LODS abs,XY  ",
+	"LDX abs,XY   ",
+	"LODY abs,XY  ",
+	"LD abs,X     ",
+	"TEST abs,X   ",
+	"INC abs,X    ",
+	"DEC abs,X    ",
+	"RR abs,X     ",
+	"RCL abs,X    ",
+	"SAL abs,X    ",
+	"SHR abs,X    ",
+	"COM abs,X    ",
+	"NEG abs,X    ",
+	"RAL abs,X    ",
+	"ROR abs,X    ",
+	"CLR abs,X    ",
+
+	"LODS zpg     ",
+	"LDX zpg      ",
+	"LODY zpg     ",
+	"LD abs,Y     ",
+	"TEST abs,Y   ",
+	"INC abs,Y    ",
+	"DEC abs,Y    ",
+	"RR abs,Y     ",
+	"RCL abs,Y    ",
+	"SAL abs,Y    ",
+	"SHR abs,Y    ",
+	"COM abs,Y    ",
+	"NEG abs,Y    ",
+	"RAL abs,Y    ",
+	"ROR abs,Y    ",
+	"CLR abs,Y    ",
+
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"LD abs,XY    ",
+	"TEST abs,XY  ",
+	"INC abs,XY   ",
+	"DEC abs,XY   ",
+	"RR abs,XY    ",
+	"RCL abs,XY   ",
+	"SAL abs,XY   ",
+	"SHR abs,XY   ",
+	"COM abs,XY   ",
+	"NEG abs,XY   ",
+	"RAL abs,XY   ",
+	"ROR abs,XY   ",
+	"CLR abs,XY   ",
+
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"LD zpg       ",
+	"TESTA A,A    ",
+	"INCA A,A     ",
+	"DECA A,A     ",
+	"RRA A,A      ",
+	"RCLA A,A     ",
+	"SALA A,A     ",
+	"SHRA A,A     ",
+	"COMA A,A     ",
+	"NEGA A,0     ",
+	"RALA A,A     ",
+	"RORA A,A     ",
+	"CLRA A,0     ",
+
+	"MV A,A       ",
+	"MV B,A       ",
+	"MV C,A       ",
+	"MV L,A       ",
+	"MV H,A       ",
+	"MV M,A       ",
+	"CLC impl     ",
+	"SEC impl     ",
+	"CLI impl     ",
+	"SEI impl     ",
+	"CMC impl     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"ILLEGAL     ",
+	"PUSH  ,A     ",
+	"POP A,       ",
+
+	"MV A,B       ",
+	"MV B,B       ",
+	"MV C,B       ",
+	"MV L,B       ",
+	"MV H,B       ",
+	"MV M,B       ",
+	"ADC A,B      ",
+	"SBC A,B      ",
+	"ADD A,B      ",
+	"SUB A,B      ",
+	"CMP A,B      ",
+	"OR A,B       ",
+	"AND A,B      ",
+	"XOR A,B      ",
+	"PUSH  ,s     ",
+	"POP s,       ",
+
+	"MV A,C       ",
+	"MV B,C       ",
+	"MV C,C       ",
+	"MV L,C       ",
+	"MV H,C       ",
+	"MV M,C       ",
+	"ADC A,C      ",
+	"SBC A,C      ",
+	"ADD A,C      ",
+	"SUB A,C      ",
+	"CMP A,C      ",
+	"OR A,C       ",
+	"AND A,C      ",
+	"XOR A,C      ",
+	"PUSH  ,B     ",
+	"POP B,       ",
+
+	"MV A,L       ",
+	"MV B,L       ",
+	"MV C,L       ",
+	"MV L,L       ",
+	"MV H,L       ",
+	"MV M,L       ",
+	"ADC A,L      ",
+	"SBC A,L      ",
+	"ADD A,L      ",
+	"SUB A,L      ",
+	"CMP A,L      ",
+	"OR A,L       ",
+	"AND A,L      ",
+	"XOR A,L      ",
+	"PUSH  ,C     ",
+	"POP C,       ",
+
+	"MV A,H       ",
+	"MV B,H       ",
+	"MV C,H       ",
+	"MV L,H       ",
+	"MV H,H       ",
+	"MV M,H       ",
+	"ADC A,H      ",
+	"SBC A,H      ",
+	"ADD A,H      ",
+	"SUB A,H      ",
+	"CMP A,H      ",
+	"OR A,H       ",
+	"AND A,H      ",
+	"XOR A,H      ",
+	"PUSH  ,L     ",
+	"POP L,       ",
+
+	"MV A,M       ",
+	"MV B,M       ",
+	"MV C,M       ",
+	"MV L,M       ",
+	"MV H,M       ",
+	"MV -,-       ",
+	"ADC A,M      ",
+	"SBC A,M      ",
+	"ADD A,M      ",
+	"SUB A,M      ",
+	"CMP A,M      ",
+	"OR A,M       ",
+	"AND A,M      ",
+	"XOR A,M      ",
+	"PUSH  ,H     ",
+	"POP H,       ",
+
+};
+
+////////////////////////////////////////////////////////////////////////////////
+//                           Simulator/Emulator (Start)                       //
+////////////////////////////////////////////////////////////////////////////////
+BYTE fetch()
+{
+	BYTE byte = 0;
+
+	if ((ProgramCounter >= 0) && (ProgramCounter <= MEMORY_SIZE))
+	{
+		memory_in_range = true;
+		byte = Memory[ProgramCounter];
+		ProgramCounter++;
+	}
+	else
+	{
+		memory_in_range = false;
+	}
+	return byte;
+}
+void set_flag_z(BYTE inReg) {
+	BYTE reg;
+	reg = inReg;
+
+	if ((reg & 0x80) != 0) // msbit set 
+	{
+		Flags = Flags | FLAG_N;
+	}
+	else
+	{
+		Flags = Flags & (0xFF - FLAG_N);
+	}
+}
+void set_flag_n(BYTE inReg)
+{
+	BYTE reg;
+	reg = inReg;
+	if ((reg & 0x80) != 0) // msbit set 
+	{
+		Flags = Flags | FLAG_N;
+	}
+	else
+	{
+		Flags = Flags & (0xFF - FLAG_N);
+	}
+
+}
+
+
+void Group_1(BYTE opcode) {
+	BYTE LB = 0;
+	BYTE HB = 0;
+	BYTE param1 = 0;
+	BYTE param2 = 0;
+	WORD temp_word = 0;
+	WORD address = 0;
+	WORD data = 0;
+	switch (opcode) {
+
+		//|LD
+	case 0x43:
+		data = fetch();
+		Registers[REGISTER_A] = data;
+		set_flag_n(data);
+		set_flag_z(data);
+		break;
+
+	case 0x53:
+		LB = fetch();
+		HB = fetch();
+		address += (WORD)((WORD)HB << 8) + LB;
+		if (address >= 0 && address < MEMORY_SIZE) {
+			Registers[REGISTER_A] = Memory[address];
+		}
+		set_flag_n(Registers[REGISTER_A]);
+		set_flag_z(Registers[REGISTER_A]);
+		break;
+
+	case 0x63:
+		address += Index_Registers[REGISTER_X];
+		LB = fetch();
+		HB = fetch();
+		address += (WORD)((WORD)HB << 8) + LB;
+
+		if (address >= 0 && address < MEMORY_SIZE) {
+			Registers[REGISTER_A] = Memory[address];
+		}
+		set_flag_n(Registers[REGISTER_A]);
+		set_flag_z(Registers[REGISTER_A]);
+		break;
+
+	case 0x73:
+		address += Index_Registers[REGISTER_Y];
+		LB = fetch();
+		HB = fetch();
+		address += (WORD)((WORD)HB << 8) + LB;
+
+		if (address >= 0 && address < MEMORY_SIZE) {
+			Registers[REGISTER_A] = Memory[address];
+		}
+		set_flag_n(Registers[REGISTER_A]);
+		set_flag_z(Registers[REGISTER_A]);
+		break;
+
+	case 0x83:
+		address += (WORD)((WORD)Index_Registers[REGISTER_Y] << 8)
+			+ Index_Registers[REGISTER_X];
+		LB = fetch();
+		HB = fetch();
+		address += (WORD)((WORD)HB << 8) + LB;
+
+		if (address >= 0 && address < MEMORY_SIZE) {
+			Registers[REGISTER_A] = Memory[address];
+		}
+		set_flag_n(Registers[REGISTER_A]);
+		set_flag_z(Registers[REGISTER_A]);
+		break;
+
+	case 0x93:
+		address += 0x0000 | (WORD)fetch();
+
+		if (address >= 0 && address < MEMORY_SIZE) {
+			Registers[REGISTER_A] = Memory[address];
+		}
+		set_flag_n(Registers[REGISTER_A]);
+		set_flag_z(Registers[REGISTER_A]);
+		break;
+		//--------------------------------------
+		//STO
+	case 0x04:
+		LB = fetch();
+		HB = fetch();
+		address += (WORD)((WORD)HB << 8) + LB;
+
+		if (address >= 0 && address < MEMORY_SIZE) {
+			Memory[address] = Registers[REGISTER_A];
+		}
+		set_flag_n(Memory[address]);
+		set_flag_z(Memory[address]);
+		break;
+
+	case 0x14:
+		address += Index_Registers[REGISTER_X];
+		LB = fetch();
+		HB = fetch();
+		address += (WORD)((WORD)HB << 8) + LB;
+
+		if (address >= 0 &&

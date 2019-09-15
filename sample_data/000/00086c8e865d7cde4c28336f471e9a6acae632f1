@@ -1,0 +1,90 @@
+INTRODUCTION
+Stemming is an operation that conflates morphologically similar terms into a single term or their stem. For example, when a user enters the query word घर (ghʌr), he most likely wants to retrieve documents containing the terms घरमा (ghʌrma) and घरबाट (ghʌrbatʌ) as well. Stemming is used in information retrieval systems to improve performance [2].
+Nepali is an Indo-Aryan Language written in Devanagari script. It follows a Subject + Object + Verb pattern in sentences [3]. Unlike English language, it consists of 11 vowels, 33 consonants along with some symbols and modifiers.
+Nepali morphology can be divided into two board categories:
+	1. Inflectional morphology
+	2. Derivational morphology
+
+Inflectional morphology is the study of the processes (like affixation and vowel change) that distinguish the forms of words in certain grammatical categories. For e.g.: अभिनेता (ʌbhineta) and अभिनेताको (ʌbhinetako) belong to the same category. Whereas Derivational morphology results in the creation of a new word with a new meaning. For e.g.: रोपनी (ropʌni:)is derived from the word रोप (ropʌ). In Nepali only suffixes are responsible for inflections for e.g.: राम (ram) and रामले (ramle); there is no inflectional prefix in Nepali while, both prefixes and suffixes are responsible for derivations. For e.g.: सफल (sʌfʌl) prefixed with अ (ʌ) to असफल (ʌsʌfʌl) and suffixed with ता (ta) to सफलता (sʌfʌlta).
+The proposed stemmer only deals with the inflections i.e. it removes the suffixes of the inflected word to get the stemmed word. It also tags the word by using a POS Tagger.The prerequisites of the proposed Stemmer Module are as follows:  
+	1. POS Tag set
+	2. Tokenizer
+	3. Set of the suffixes for nouns and verbs 
+	4. Set of root words for nouns, pronouns  and verbs
+
+	LITERATURE REVIEW
+The first published stemmer for English was Lovins Stemmer. It consists of 294 endings, 29 conditions and 35 transformation rules [4]. Natural Language Processing started just in the year 2005 with the release of the first Spell Checker for Nepali and the "Dobhase" English to Nepali machine translation project, respectively developed by Madan Puraskar Pustakalaya in collaboration with the Kathmandu University. In the same year, further works on language engineering like corpus building and annotation for Nepali, Text-To-Speech System for Nepali, digitized Nepali dictionary also got started under the NeLRaLEC (Nepali Language Resources and Localization for Education and Communication) Project, also known as the Bhasha Sanchar Project and currently being run at Madan Puraskar Pustakalaya, Nepal [5].
+Chiranjibi Sitaula proposed a hybrid stemmer, which uses traditional rule based system with string similarity approach. It is a context-free stemmer. The total accuracy of this hybrid algorithm is 70.10% [6]. An affix removal stemmer for natural language text in Nepali, is a Nepali stemmer developed by Abhijit Paul, Arindam Dey and Bipul Syam Purkayastha. It uses an affix lexicon along with a database of root words to find the root of the given word.  The reported accuracy of this stemmer is 90.48% [7]. A Morphological Analyzer and a Stemmer for Nepali by Bal Krishna Bal and Prajol Shrestha, presents a morphological analyzer and a stemmer for Nepali language. [8] A New Stemmer for Nepali Language by Ingroj Shrestha and Shreya Singh Dhakal proposed an algorithm based on the inflectional morphology of Nepali, which is a suffix removal algorithm. The proposed stemmer only considers noun and verb inflections.
+
+	PROPOSED SYSTEM
+The proposed stemmer only deals with inflectional morphology, so it can be seen as a suffix remover stemmer. The general methodology for the development of the proposed Nepali stemmer includes removal of the affixes from the inflected words and comparison of the resulted word with the stems stored in the database. The word to be stemmed is first compared with the lexicon to determine if it is a root. If it is the root, then it is directly displayed in output without any computation. But if it is not root, then affixes are stripped off from the morpheme as per the stripping rules defined by the person. Now, the stripped word is further analyzed if it is root or not. This process iterates until the root is obtained.
+There are 14 different tags in the tag set used by the POS tagger. However, we only need 4 major tags listed below for inflectional stemming in our algorithm. All other tags as displayed as they are in the final result. The used tags are Nouns (नाम), Pronouns (सर्वनाम), Adjectives (विशेषण) and Verbs (क्रिया). Other tags such as adverbs, numerals, conjunctions etc. have no or very new inflections in Nepali. So, we consider only above listed tags for stemming in this proposed algorithm. 
+Two text files are used each for the noun and verbs. The suffixes in these files are used by the rules in the program to strip the words of the corresponding suffixes to find the stem. Pronouns and nouns, in most cases, have same suffixes. So, no separate sets are required for them. Since, adjectives have a very few suffixes, it is not necessary to have a separate set of suffixes.
+Like the set of suffixes, different root words for nouns, pronouns and verbs are stored in different text files to be compared before and after each stem. Once the stemmed word matches the root word the algorithm can halt.
+
+
+Basic working of proposed stemmer can be summarized as follows:
+Step 1: Start
+Step 2: Input a few Nepali sentences.
+Step 3: Feed the input to the tokenizer in order to tokenize the sentences into individual sentences and eventually into words.
+Step 4: Use POS Tagging to generate tag for each word.
+Step 5: For each word check to see:
+	If the word is a noun, check if it a root, reading from the list of noun roots.
+	If it is not, strip suffixes recursively from the end, reading from the suffix list for nouns.
+	Else if the word is a pronoun, check if it a root, reading from the list of pronoun roots.
+	If it is not, strip suffixes recursively from the end, reading from the suffix list for nouns.
+	Else if the word is an adjective, strip suffixes recursively from the end as per the rules in the program.
+	Else if the word is a verb, check if it a root, reading from the list of verb roots
+	If it is not, strip the suffixes recursively from the end, reading from a list of verb suffixes.
+	Else don’t stem.
+Step 6: Display the words.
+Step 7: Stop
+
+
+
+
+
+	SYSTEM EVALUATION
+The different modules were implemented in Python and each unit was tested with a news article in the website “radiokantipur.ekantipur.com” titled “शीर्ष नेताहरुको कार्य व्यस्तताका कारण एकता प्रक्रिया अन्योलमा” dated May 1, 2018 and also with some other words especially for pronoun and adjectives that were scarcely present in the above article. Some of the words are shown in tables below. The accuracy of the Stemmer is calculated as a ratio of number of correctly stemmed words to the total number of words.
+Also, the black box testing was performed. For this the system was tested with a data set of 181 words (excluding the punctuation and quotation marks represented by tag ‘Y’) obtained from a corpus containing a story namely ‘भोलिको प्रतिक्षामा’ by Pushpa Rai published on May 17, 2007. 
+The accuracy of the Stemmer was calculated as a ratio of number of correctly stemmed words to the total number of words. The system’s accuracy was calculated in two ways:
+	Considering both stemmed and not stemmed words:
+Accuracy I =(Number of Correctly Stemmed Words)/(Total Number of Words) * 100
+            = (143/181)*100 = 79.01%
+
+
+	Considering only stemmed words:
+Accuracy II =(Number of Correctly Stemmed Words)/(Total Number of Stemmed Words) * 100
+              = (76/96)*100 = 79.17%
+
+
+Similarly, the accuracy of the POS tagger was calculated as a ratio of correctly tagged words to the total number of words. However, for this calculation, we increased the data set to a total of 1180 words (including postpositions with tag ‘I’ and punctuations and quotation marks with tag ‘Y’). The accuracy was calculated as:
+Accuracy of POS Tagger =(Number of Correctly Tagged Words)/(Total Number of Words) * 100
+                        = (1031/1180)*100 =	87.37%
+
+Some of the input words with their corresponding tags, correct tags, stemmed output and correct stem are shown in table that follows:
+
+S.N.	Words	Tokenized Words	Tags	Correct Tags	Stemmed Form	Correct Stem
+1	गन्तव्य-स्थान	गन्तव्य-स्थान	 Y	N	 गन्तव्य-स्थान	 गन्तव्य स्थान
+2	काठमाण्डु	काठमाण्डु	 N	N	 काठमाण्डु	 काठमाण्डु
+3	!	!	 Y	Y	 !	 !
+4	धरहरा	धरहरा	 N	N	 धरहरा	 धरहरा
+5	पुगेपछि	पुगे	 V	V	 पुग्	 पुग्
+6		पछि	 I	I	 पछि	 पछि
+7	बस	बस	 N	N	 बस	 बस
+8	रोकियो	रोकियो	 V	V	 रोक्	 रोक्
+9	।	।	 Y	Y	 ।	 ।
+10	बिहानको	बिहान	 N	N	 बिहान	 बिहान
+11		को	 I	I	 को	 को
+12	समय	समय	 N	N	 समय	 समय
+
+	CONCLUSION AND FUTURE WORKS
+The system proposed is a simplified stemmer for Nepali language. It uses a tokenizer, POS tagging and a suffix removal engine that uses a set of rules, suffixes and base words to effectively handle inflections in Nepali. The proposed system handles only noun, pronoun, verb and adjective inflections because there is only either a few or no other inflections such as adverb, conjunction, numerals, etc. Currently, the system does not handle derivations in Nepali.
+Tests have been performed by both team members as well as other users. Tests by team members included testing by a dataset of corpus containing articles from different online newspapers including E-kantipur, Kantipur Daily and Annapurna post. The accuracy of the system was then computed as the ratio of no. of correctly stemmed words to the number of words stemmed.
+
+ 
+REFERENCES
+
+[1] 	S. S. D. Ingroj Shrestha, "A New Stemmer For Nepali Language," Advances in Computing, Communication, & Automation (ICACCA)(Fall), International Conference on. IEEE, 2016. 
+[2] 	D. D. R. Ananthakrishnan Ramanathan, "A Lightweight Stemmer For Hindi," The Proceedings of EACL, 2003. 
+[3] 	B. PRASAIN, "A COMPUTATIONAL ANALYSIS OF NEPALI

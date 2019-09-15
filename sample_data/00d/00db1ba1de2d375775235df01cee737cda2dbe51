@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct numbers
+{
+    int a;
+    double b;
+    char c;
+    float d;
+
+}num;
+
+void rozmiar()
+{
+    printf("Rozmiar struktury: %u\n",sizeof(num));
+    printf("Wartoœæ pola a: %u\n",sizeof(num.a));
+    printf("Wartoœæ pola b: %u\n",sizeof(num.b));
+    printf("Wartoœæ pola c: %u\n",sizeof(num.c));
+    printf("Wartoœæ pola c: %u\n",sizeof(num.d));
+    printf("Suma wartosci pol: %u\n", sizeof(num.a)+sizeof(num.b)+sizeof(num.c)+sizeof(num.d));
+}
+
+int main()
+{
+    rozmiar();
+
+    return 0;
+}

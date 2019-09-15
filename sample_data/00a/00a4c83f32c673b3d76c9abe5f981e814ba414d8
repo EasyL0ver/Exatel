@@ -1,0 +1,152 @@
+
+-- доп параметры дома  (в самом доме колонки нет)
+DROP TABLE IF EXISTS tmp_house_params;
+CREATE TEMPORARY TABLE tmp_house_params AS
+SELECT gin.house_guid, MAX(val.value_integer) AS liv_numbr
+FROM hmsm.hm_house_general_infos gin
+JOIN hmsm.hm_house_general_info_params par ON par.house_general_info_guid = gin.guid AND par.actual AND last_version AND gin.status = 'APPROVED' AND gin.last_approved_version
+JOIN hmsm.hm_house_estate_objects obj ON obj.guid = par.house_estate_object_guid AND obj.status IN ('CREATED', 'MODIFIED') AND obj.param_code = '20140' -- 20140 Количество проживающих select * from nsism.nsi_housing_fund_attr_description_forms where name like '%прожив%'
+JOIN hmsm.hm_house_estate_object_values val ON val.estate_object_guid = obj.guid AND val.system_date_from <= now() AND val.system_date_to >= now()
+GROUP BY gin.house_guid;
+ANALYZE tmp_house_params;
+
+-- доп параметры квартиры (в самой квартире колонки нет)
+DROP TABLE IF EXISTS tmp_apartment_params ;
+CREATE TEMPORARY TABLE tmp_apartment_params  AS
+SELECT par.apartment_guid, MAX(val.value_integer) AS liv_numbr
+FROM hmsm.hm_apartment_params par
+JOIN hmsm.hm_apartment_estate_objects obj ON par.apartment_estate_object_guid = obj.guid AND obj.status IN ('CREATED', 'MODIFIED') AND obj.param_code IN ( '20130', '20125') AND par.actual --20125 Количество лиц, проживающих в квартире.   20130 Количество граждан, проживающих в комнате в коммунальной квартире select * from nsism.nsi_housing_fund_attr_description_forms where name like '%прожив%'
+JOIN hmsm.hm_apartment_estate_object_values val ON val.estate_object_guid = obj.guid AND now() BETWEEN val.system_date_from AND val.system_date_to
+GROUP BY par.apartment_guid;
+CREATE INDEX idx_tmp_apartment_params ON tmp_apartment_params (apartment_guid);
+ANALYZE tmp_apartment_params;
+
+-- доп параметры комнаты (в самой комнате колонка то же есть), UI вроде берет из самой комнаты
+DROP TABLE IF EXISTS tmp_room_params;
+CREATE TEMPORARY TABLE tmp_room_params AS
+SELECT house_guid, apartment_guid, SUM(value_integer) AS liv_numbr
+FROM (
+SELECT r.house_guid, r.guid, r.apartment_guid, MAX(val.value_integer) AS value_integer
+FROM hmsm.hm_rooms r
+JOIN hmsm.hm_room_params par ON par.room_guid = r.guid AND r.actual AND r.status = 'APPROVED' AND r.confirmed_by_supplier
+JOIN hmsm.hm_room_estate_objects obj ON obj.guid = par.room_estate_object_guid AND obj.status IN ('CREATED', 'MODIFIED') AND par.actual
+JOIN hmsm.hm_room_estate_object_values val ON val.estate_object_guid = obj.guid AND val.system_date_from <= now() AND val.system_date_to >= now()
+GROUP BY r.house_guid, r.guid, r.apartment_guid )t
+GROUP BY house_guid, apartment_guid;
+ANALYZE tmp_room_params;
+
+-- комнаты (в доп параметрах комнаты то же есть параметр), UI вроде берет из самой комнаты
+DROP TABLE IF EXISTS tmp_rooms;
+CREATE TEMPORARY TABLE tmp_rooms AS
+SELECT r.house_guid, r.apartment_guid, SUM(r.number_of_living::integer) AS liv_numbr
+FROM hmsm.hm_rooms r
+LEFT JOIN hmsm.hm_apartments ap ON ap.guid = r.apartment_guid AND ap.actual AND ap.status = 'APPROVED' AND ap.confirmed_by_supplier --комната может быть без квартиры, например сразу в жилом доме
+WHERE r.actual AND r.status = 'APPROVED' AND r.confirmed_by_supplier
+AND regexp_replace(r.number_of_living, '[^0-9]', '99999', 'g')::integer < 1000 --колво прож текстовое, поэтому фильтруем нечисловые значения заменяя их на 99999
+GROUP BY r.house_guid, r.apartment_guid;
+ANALYZE tmp_rooms;
+
+
+
+-- ЛС
+--колво проживающих из ЛС: по каждой комнате или квартире взят последний по дате изменения ЛС. Комнаты суммированы по квартире
+DROP TABLE IF EXISTS tmp_living_acc;
+CREATE TEMPORARY TABLE tmp_living_acc AS
+SELECT
+	house_guid,
+	apartment_guid,
+	MAX(living_cnt_hd_acc) AS living_cnt_hd_acc, --прож в ЖД
+	MAX(living_cnt_ap_acc) AS living_cnt_ap_acc, --прож в квартире
+	SUM(living_cnt_r_acc) AS living_cnt_r_acc --прож в комнате
+FROM
+	(
+	SELECT DISTINCT 
+		acc.house_guid, COALESCE(ap.guid, ap_r.guid) AS apartment_guid, r.guid,
+		-- ЛС ЖД
+		CASE WHEN ap.guid IS NULL AND r.guid IS NULL THEN FIRST_VALUE(acc.living_count) OVER(PARTITION BY ap_r.guid ORDER BY acc.last_editing_date DESC, acc.living_count DESC) ELSE 0 END AS living_cnt_hd_acc,
+		-- ЛС квартиры
+		CASE WHEN ap.guid IS NOT NULL THEN FIRST_VALUE(acc.living_count) OVER(PARTITION BY ap.guid ORDER BY acc.last_editing_date DESC, acc.living_count DESC) ELSE 0 END AS living_cnt_ap_acc,
+		--ЛС комнаты
+		CASE WHEN r.guid IS NOT NULL THEN FIRST_VALUE(acc.living_count) OVER(PARTITION BY r.guid ORDER BY acc.last_editing_date DESC, acc.living_count DESC) ELSE 0	END AS living_cnt_r_acc
+	FROM
+		hmsm.hm_calc_shares sh
+		JOIN hmsm.hm_accounts acc ON acc.guid = sh.account_guid AND acc.account_status = 'ACTUAL' AND acc.is_actual AND sh.annulled = false
+		-- квартиры без комнат
+		LEFT JOIN hmsm.hm_apartments ap ON ap.guid = sh.apartments_guid AND ap.actual AND ap.status = 'APPROVED' AND ap.confirmed_by_supplier
+		-- комнаты (и квартиры - если есть)
+		LEFT JOIN hmsm.hm_rooms r ON r.guid = sh.room_guid AND r.actual AND r.status = 'APPROVED' AND r.confirmed_by_supplier
+		LEFT JOIN hmsm.hm_apartments ap_r ON r.apartment_guid = ap_r.guid AND ap_r.actual AND ap_r.status = 'APPROVED' AND ap_r.confirmed_by_supplier
+	) t
+GROUP BY house_guid, apartment_guid;
+CREATE INDEX idx_tmp_living_acc ON tmp_living_acc (house_guid) WHERE apartment_guid IS NULL;
+CREATE INDEX idx_tmp_living_acc_h_ap ON tmp_living_acc (house_guid, apartment_guid) WHERE apartment_guid IS NOT NULL;
+ANALYZE tmp_living_acc;
+
+--select * from tmp_living_acc where living_cnt_hd_acc > 0
+
+ 
+--SELECT   * FROM  nsism.nsi_addrobj ad where ad.aolevel = 1  and ad.is_actual and offname like '%Камч%' --41
+--адрес дома	
+DROP TABLE IF EXISTS tmp_nsi_addr;
+CREATE TEMPORARY TABLE tmp_nsi_addr AS
+SELECT house_guid, postalcode, regioncode, adr 
+FROM DBLINK('hcsnsidb_d', '
+	SELECT house_guid, a.postalcode, ad.regioncode, nsism.func_get_address_by_attr(house_abbr,house_fullname,null, 		
+	region_fullname,area_abbr,area_fullname,city_abbr,city_fullname,settlement_abbr,settlement_fullname,street_abbr,
+	street_fullname,additional_territory_abbr,additional_territory_fullname,
+	additional_ter_street_abbr,additional_ter_street_fullname,ctar_abbr,ctar_fullname,planstruct_abbr,planstruct_fullname) adr
+	FROM nsism.nsi_addresses a
+	JOIN nsism.nsi_addrobj ad ON ad.aouid = a.region_guid AND ad.aolevel = 1 AND a.is_actual AND ad.is_actual 
+  WHERE ad.regioncode = ''41''
+	') AS (house_guid varchar(36), postalcode varchar(6), regioncode varchar(2), adr text);  
+ANALYZE tmp_nsi_addr;
+
+--витрина по домам и помещениям (порядок полей как в шаблоне xls)
+DROP TABLE IF EXISTS tmp_house_apart_liv_numbr ;
+CREATE TEMPORARY TABLE tmp_house_apart_liv_numbr AS
+SELECT
+	adr.regioncode, --для разбивки нет в экселе
+	h.guid, --№ п/п
+	h.house_guid,
+	h.house_code,
+	CASE WHEN h.house_type_code = '1' THEN 'МКД' WHEN h.house_type_code = '2' AND h.blocked_house = false THEN 'ЖД' WHEN h.house_type_code = '2' AND h.blocked_house THEN 'ЖД блок' END AS house_type_code,
+	h.blocked_house,--жд блок застройки	
+	adr.postalcode,-- Индекс дома
+	adr.adr,--Адрес дома
+	h.oktmo_code, --ОКТМО
+	h.total_square AS house_total_square, --Общая площадь здания
+	h.wall_materials, -- Тип внутренних стен   wall_materials Материалы стен - список строкой 	
+	h.building_year, --Год постройки
+	h.operation_year, --Год ввода в эксплуатацию
+	h.max_floor_count, --Кол-во этажей
+	h.underground_floor_count, -- Количество подземных этажей
+	COALESCE(h.plan_series,'') ||'-'|| COALESCE(h.plan_type_code,'') AS house_plan_ser_type, --Серия, тип проекта здания
+
+	hpar.liv_numbr AS hm_houses_liv_numbr, -- Кол-во проживающих в доме из доп.параметров дома
+	rh.liv_numbr AS room_h_liv_numbr, --Кол-во проживающих из комнат (в доме без квартир)
+	rhpar.liv_numbr AS room_h_par_liv_numbr, --Кол-во проживающих из доп парам комнат (в доме без квартир)
+	acc_r.living_cnt_hd_acc AS acc_h_rooms_liv_numbr, -- Кол-во проживающих из ЛС комнат  (в доме без квартир)
+	
+	ap.guid AS apartment_guid, --квартиры (блоки в ЖД лежат в квартирах, в блоке могут быть комнаты)
+	ap.flat_number, --номер квартиры
+	ap.total_square AS apart_total_square, --Общая площадь жилого помещения/блока
+	ap.residential_premise_type_code,--"Характеристика помещения" = квартира коммунальго заселения 1Отдельная квартира 2Квартира коммунального заселения 3Общежитие nsism.nsi_resident_premise_types 
+	
+	appar.liv_numbr AS apart_liv_numbr, --прож  в квартире (взято из доп парам квартиры)
+	rpar.liv_numbr AS room_par_liv_numbr, --прож  в квартире (взято  из доп парам комнаты)
+	r.liv_numbr AS room_liv_numbr, --прож в квартире (взято из комнат)
+	acc_app.living_cnt_ap_acc AS acc_ap_liv_numbr, --прож в квартире (взято из ЛС квартиры)
+	acc_app.living_cnt_r_acc AS acc_r_liv_numbr --прож в квартире (взято из ЛС комнат квартиры)
+FROM 
+	--дома
+	hmsm.hm_houses h  --полный список домов из РАО (колонки с прож нет)   idx_hm_houses_house_guid  house_guid
+	LEFT JOIN hmsm.hm_async_processes async ON async.house_guid = h.guid
+	--nsi может в tmp?
+	LEFT JOIN tmp_nsi_addr adr ON adr.house_guid = h.house_guid
+	LEFT JOIN tmp_house_params hpar ON hpar.house_guid = h.guid --доп параметры дома
+	LEFT JOIN tmp_rooms rh ON rh.house_guid = h.guid AND rh.apartment_guid IS NULL --  комнаты в домах (не имеющие квартир)
+	LEFT JOIN tmp_room_params rhpar ON rhpar.house_guid = h.guid AND rhpar.apartment_guid IS NULL -- доп параметры комнаты
+	LEFT JOIN tmp_living_acc acc_r ON acc_r.house_guid = h.guid AND acc_r.apartment_guid IS NULL --  ЛС комнат  (их немного поэтому INDEX idx_tmp_living_acc )
+	--помещения 
+	LEFT JOIN hmsm.hm_apartments ap ON ap.house_guid = h.guid AND ap.actual AND ap.status = 'APPROVED' AND ap.confirmed_by_supplier AND apartment_category_code = '1'--FK на hm_houses, квартиры (блоки) (колонки с прож нет) 1 Жилое 2 Нежилое nsism.nsi_apartment_categories
+	LEFT JOIN tmp_apartment_params

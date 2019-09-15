@@ -1,0 +1,82 @@
+1.691533] irq 36: nobody cared (try booting with the "irqpoll" option)
+
+[    1.698242] CPU: 0 PID: 87 Comm: kworker/0:1 Not tainted 4.9.88 #24
+
+[    1.704509] Hardware name: Freescale i.MX8QXP MEK (DT)
+
+[    1.709659] Workqueue: pm pm_runtime_work
+
+[    1.713675] Call trace:
+
+[    1.716123] [<ffff0000080897d0>] dump_backtrace+0x0/0x1b0
+
+[    1.721523] [<ffff000008089994>] show_stack+0x14/0x20
+
+[    1.726582] [<ffff0000083daff0>] dump_stack+0x94/0xb4
+
+[    1.731638] [<ffff00000810f064>] __report_bad_irq+0x34/0xf0
+
+[    1.737212] [<ffff00000810f4ec>] note_interrupt+0x2e4/0x330
+
+[    1.742790] [<ffff00000810c594>] handle_irq_event_percpu+0x44/0x58
+
+[    1.748974] [<ffff00000810c5f0>] handle_irq_event+0x48/0x78
+
+[    1.754553] [<ffff0000081100a8>] handle_fasteoi_irq+0xc0/0x1b0
+
+[    1.760390] [<ffff00000810b584>] generic_handle_irq+0x24/0x38
+
+[    1.766141] [<ffff00000810bbe4>] __handle_domain_irq+0x5c/0xb8
+
+[    1.771979] [<ffff000008081798>] gic_handle_irq+0x70/0x15c
+
+   1.807416] 7a40: 00000000000002ba ffff80002645bf00 00000000fa83b2da 0000000001fe116e
+
+[    1.815252] 7a60: ffff000088bf7c47 ffffffffffffffff 00000000000003f8 ffff0000085c47b8
+
+[    1.823088] 7a80: 0000000000000010 ffff800026484600 0000000000000001 ffff8000266e9718
+
+[    1.830925] 7aa0: ffff00000b8b0008 ffff800026784280 ffff00000b8b000c ffff00000b8d8018
+
+[    1.838760] 7ac0: 0000000000000001 ffff000008b76000 0000000000000000 ffff800026497b20
+
+[    1.846596] 7ae0: ffff00000810bd24 ffff800026497b20 ffff000008851d18 0000000000000145
+
+[    1.854433] 7b00: ffff000008b8d6c0 ffff0000081102d8 ffffffffffffffff ffff00000810dda8
+
+[    1.862268] [<ffff000008082eec>] el1_irq+0xac/0x120
+
+[    1.867155] [<ffff000008851d18>] _raw_spin_unlock_irqrestore+0x18/0x48
+
+[    1.873684] [<ffff00000810bd24>] __irq_put_desc_unlock+0x1c/0x48
+
+[    1.879695] [<ffff00000810de10>] enable_irq+0x48/0x70
+
+[    1.884756] [<ffff0000085ba8f8>] cdns3_enter_suspend+0x1f0/0x440
+
+[    1.890764] [<ffff0000085baca0>] cdns3_runtime_suspend+0x48/0x88
+
+[    1.896776] [<ffff0000084cf398>] pm_generic_runtime_suspend+0x28/0x40
+
+[    1.903223] [<ffff0000084dc3e8>] genpd_runtime_suspend+0x88/0x1d8
+
+[    1.909320] [<ffff0000084d0e08>] __rpm_callback+0x70/0x98
+
+[    1.914724] [<ffff0000084d0e50>] rpm_callback+0x20/0x88
+
+[    1.919954] [<ffff0000084d1b2c>] rpm_suspend+0xf4/0x4c8
+
+[    1.925184] [<ffff0000084d20fc>] rpm_idle+0x124/0x168
+
+[    1.930240] [<ffff0000084d26c0>] pm_runtime_work+0xa0/0xb8
+
+[    1.935732] [<ffff0000080dc1dc>] process_one_work+0x1dc/0x380
+
+[    1.941481] [<ffff0000080dc3c8>] worker_thread+0x48/0x4d0
+
+[    1.946885] [<ffff0000080e2408>] kthread+0xf8/0x100
+[    1.957080] handlers:
+
+[    1.959350] [<ffff0000085ba668>] cdns3_irq
+
+[    1.963449] Disabling IRQ #36

@@ -1,0 +1,6 @@
+cat /proc/mtrr
+reg00: base=0x000000000 (    0MB), size=16384MB, count=1: write-back
+reg01: base=0x400000000 (16384MB), size= 1024MB, count=1: write-back
+reg02: base=0x0c0000000 ( 3072MB), size= 1024MB, count=1: uncachable
+reg03: base=0x0bf700000 ( 3063MB), size=    1MB, count=1: uncachable
+reg04: base=0x0bf800000 ( 3064MB), size=    8MB, count=1: uncachabl

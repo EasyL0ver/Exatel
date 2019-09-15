@@ -1,0 +1,4 @@
+i686-linux	kotlin
+x86_64-linux	kotlin
+aarch64-linux	kotlin
+x86_64-darwin	kotlin

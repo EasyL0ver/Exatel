@@ -1,0 +1,40 @@
+#include "pch.h"
+#include <iostream>
+using namespace std;
+int main()
+{
+	int const n = 2;
+	int a[n*(n + 1) / 2];
+	int mass[n][n] = { 0 };
+	int i, j, k;
+	for (i = 0; i < n*(n + 1) / 2; i++)
+	{
+		cin >> a[i];
+	}
+	k = 0;
+	for (i = 0; i < n; i++)
+	{
+		for (j = i; j < n; j++)
+		{
+			mass[i][j] = a[k];
+			k++;
+		}
+	}
+
+	for (i = 1; i < n; i++)
+	{
+		for (j = 0; j < i; j++)
+		{
+			mass[i][j] = mass[j][i];
+		}
+	}
+for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < n; j++)
+		{
+			cout << mass[i][j] << " ";
+		}
+		cout << endl;
+	}
+	system("pause");
+}

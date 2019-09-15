@@ -1,0 +1,8 @@
+apollo: {
+  foo: {
+    query: ...,
+    subscribeToMore: {
+      document: ...,
+      updateQuery: (previous, { subscriptionData }) => {
+         ...
+      }

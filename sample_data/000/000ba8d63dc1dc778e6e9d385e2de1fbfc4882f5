@@ -1,0 +1,26 @@
+pub trait MyTrait<Argument> {
+    type Result;
+    fn call(&mut self, arg: Argument) -> Self::Result;
+}
+
+impl<Arg, R, F> MyTrait<Arg> for F where F: Fn(Arg) -> R {
+    type Result = R;
+    fn call(&mut self, arg: Arg) -> Self::Result {
+        (self)(arg)
+    }
+}
+
+fn main() {
+    direct(convert(fn1));
+    direct(fn1);
+
+    println!("Ok");
+}
+
+fn fn1(_: ()) -> usize { 1 }
+
+fn convert<Arg, R>(f: fn(Arg) -> R) -> impl MyTrait<Arg, Result = R> {
+    f
+}
+
+fn direct<U, T: MyTrait<U>>(_f: T) { }

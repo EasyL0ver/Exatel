@@ -1,0 +1,54 @@
+/*
+ * GlutController.h
+ *
+ *  Created on: Aug 3, 2012
+ *      Author: antoine
+ */
+
+#ifndef GLUTCONTROLLER_H_
+#define GLUTCONTROLLER_H_
+
+#include <stdexcept>
+#include <GLTools.h>
+#include <GLShaderManager.h>
+#include <GLFrustum.h>
+#include <GLMatrixStack.h>
+#include <GLGeometryTransform.h>
+#include <GL/freeglut.h>
+
+#include "Constants.h"
+#include "models/IDrawableModel.h"
+
+class GlutController {
+   public:
+
+      // Constructor/Destructor
+      GlutController(int argc, char **argv);
+      virtual ~GlutController();
+
+
+      // Interface
+      void Start(void);
+
+
+
+   private:
+
+      // Fields
+      GLShaderManager mShaderManager;
+      GLFrustum mViewFrustrum;
+      GLMatrixStack mProjectionMatrixStack;
+      GLMatrixStack mModelViewMatrixStack;
+      GLGeometryTransform mTransformPipeline;
+
+      // Callbacks
+      void OnSpecialKeys(int key, int x, int y);
+      void OnChangeSize(int aNewWidth, int aNewHeight);
+      void OnRenderScene(void);
+
+      // Methods
+      void SetupRenderContext(void);
+
+};
+
+#endif /* GLUTCONTROLLER_H_ */

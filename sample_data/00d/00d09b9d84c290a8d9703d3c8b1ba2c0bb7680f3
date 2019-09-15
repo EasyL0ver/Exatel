@@ -1,0 +1,249 @@
+<?php 
+
+$studentInfo = [
+    [
+        'name'=>'Mahfuj',
+        'Roll'=>310264,
+        'mark'=>[
+            ["Bangla"=>50,
+            'GPA'=>2.5,
+            'Grade'=>'B+'
+            ],
+            [
+            "History"=>60,
+            'GPA'=>4,
+            'Grade'=>'A+'
+            ],
+            ["English"=>82,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ]
+        ]
+    ],
+    [
+        'name'=>'Faruk',
+        'Roll'=>310265,
+        'mark'=>[
+            ["Bangla"=>67,
+            'GPA'=>3.50,
+            'Grade'=>'A-'
+            ],
+            [
+            "History"=>75,
+            'GPA'=>4,
+            'Grade'=>'A'
+            ],
+            ["English"=>82,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ]
+        ]
+    ],
+    [
+        'name'=>'Mamun',
+        'Roll'=>310269,
+        'mark'=>[
+            ["Bangla"=>40,
+            'GPA'=>2,
+            'Grade'=>'C'
+            ],
+            [
+            "History"=>90,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ],
+            ["English"=>70,
+            'GPA'=>4,
+            'Grade'=>'A'
+            ]
+        ]
+    ],
+    [
+        'name'=>'Arif',
+        'Roll'=>310267,
+        'mark'=>[
+            ["Bangla"=>80,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ],
+            [
+            "History"=>70,
+            'GPA'=>4,
+            'Grade'=>'A+'
+            ],
+            ["English"=>82,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ]
+        ]
+    ],
+    [
+        'name'=>'Kamal',
+        'Roll'=>310264,
+        'mark'=>[
+            ["Bangla"=>80,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ],
+            [
+            "History"=>70,
+            'GPA'=>4,
+            'Grade'=>'A+'
+            ],
+            ["English"=>82,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ]
+        ]
+    ],
+    [
+        'name'=>'Ashib',
+        'Roll'=>310264,
+        'mark'=>[
+            ["Bangla"=>80,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ],
+            [
+            "History"=>70,
+            'GPA'=>4,
+            'Grade'=>'A+'
+            ],
+            ["English"=>82,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ]
+        ]
+    ],
+    [
+        'name'=>'Ratan',
+        'Roll'=>310264,
+        'mark'=>[
+            ["Bangla"=>50,
+            'GPA'=>5,
+            'Grade'=>'A+'
+            ],
+            [
+            "History"=>47,
+            'GPA'=>4,
+            'Grade'=>'A+'
+            ],
+            ["English"=>62,
+            'GPA'=>5,
+            'Grade'=>'A+',
+            ]
+        ]
+    ],
+
+];
+
+ /* 
+    Print those data on a table
+    Calculate Total Mark individual student
+    Calculate average mark
+    Calculate Final GPA and Grade 
+ */
+
+echo '<table border style="border-collapse:collapse">';
+
+echo '
+    <tr>
+        <th>Name</th>
+        <th>Roll</th>
+        <th>Mark</th>
+    </tr>
+';
+
+foreach ($studentInfo as $studentInfo_key => $studentInfo_value) {
+
+    echo '<tr>';
+    
+    foreach ($studentInfo_value as $key1 => $value1) {
+        
+
+        if (is_array($value1)) {
+
+            echo '<td><table border style="border-collapse:collapse">';
+echo '<tr><th>Subject</th><th>Mark</th><th>GPA</th><th>Grade</th></tr>';
+            $individual_student_mark = 0;
+
+            $gpa = 0;
+
+            foreach ($value1 as $key2 => $value2) {
+
+                echo '<tr>';
+				$counter = 1;
+
+                foreach ($value2 as $key3 => $value3) {
+                    
+                    if ($key3 != 'GPA' && is_numeric($value3)) {
+                        $individual_student_mark += $value3;  
+                    }
+
+                    if ($key3 == 'GPA') {
+                        $gpa += $value3;
+                    }
+if($counter==1){
+                    echo '<td>'.$key3.'</td>';
+					$counter = 2;
+}
+					echo '<td>'.$value3.'</td>';
+                    
+                }
+                
+                echo '</tr>';
+
+            }
+
+            echo '<tr>
+                    <td colspan="3">
+                        Total Marks = '.$individual_student_mark.'
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        Avg Marks = '.$individual_student_mark / count($value2).'
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        GPA = '.number_format( $gpa / count($value2),2).'
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        Grade = '.grade($gpa / count($value2)).'
+                    </td>
+                </tr>
+            </table></td>';
+
+        } else {
+            echo '<td>'.$value1.'</td>';
+        }
+    }
+
+    echo '</tr>';
+
+}
+
+echo '</table>';
+
+
+function grade($gpa)
+{
+    if ($gpa == 5) {
+        return 'A+';
+    } elseif ($gpa >= 4 && $gpa < 5) {
+        return 'A';
+    } elseif ($gpa >= 3.50 && $gpa < 4) {
+        return 'A-';
+    } elseif ($gpa >= 3 && $gpa < 3.50) {
+        return 'B';
+    } elseif ($gpa >= 2.50 && $gpa < 3) {
+        return 'C';
+    } elseif ($gpa >= 1 && $gpa < 2) {
+        return 'D';
+    } else {
+        return 'F';
+    }
+}

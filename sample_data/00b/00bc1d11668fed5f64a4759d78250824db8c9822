@@ -1,0 +1,11 @@
+import arcpy
+lyr = r”\gistest.lyr”
+layer = arcpy.mapping.Layer(lyr)
+print layer.dataSource
+Runtime error 
+Traceback (most recent call last):
+File "<string>", line 1, in <module>
+File "c:program files (x86)arcgisdesktop10.5arcpyarcpyarcobjects_base.py", line 78, in _get
+(attr_name, self.__class__.__name__))
+NameError: The attribute 'dataSource' is not supported on this instance of 
+Layer.

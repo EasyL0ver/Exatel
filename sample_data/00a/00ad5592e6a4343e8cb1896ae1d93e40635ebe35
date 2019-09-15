@@ -1,0 +1,26 @@
+2019-02-07 15:57:30	ERROR	Uncaught exception: Traceback (most recent call last):
+File "/volume1/@appstore/gitmylar/mylar/mylar/logger.py", line 337, in new_run
+old_run(*args, **kwargs)
+File "/usr/lib/python2.7/threading.py", line 754, in run
+self.__target(*self.__args, **self.__kwargs)
+File "/volume1/@appstore/gitmylar/mylar/mylar/helpers.py", line 3124, in search_queue
+ss_queue = mylar.search.searchforissue(item['issueid'])
+File "/volume1/@appstore/gitmylar/mylar/mylar/search.py", line 1850, in searchforissue
+foundNZB, prov = search_init(ComicName, IssueNumber, str(IssueYear), SeriesYear, Publisher, IssueDate, StoreDate, actissueid, AlternateSearch, UseFuzzy, ComicVersion, SARC=SARC, IssueArcID=IssueArcID, mode=mode, rsscheck=rsscheck, ComicID=ComicID, filesafe=Comicname_filesafe, allow_packs=allow_packs, oneoff=oneoff, manual=manual, torrentid_32p=TorrentID_32p, digitaldate=DigitalDate, booktype=booktype)
+File "/volume1/@appstore/gitmylar/mylar/mylar/search.py", line 340, in search_init
+findit = NZB_SEARCH(ComicName, IssueNumber, ComicYear, SeriesYear, Publisher, IssueDate, StoreDate, searchprov, send_prov_count, IssDateFix, IssueID, UseFuzzy, newznab_host, ComicVersion=ComicVersion, SARC=SARC, IssueArcID=IssueArcID, RSS="yes", ComicID=ComicID, issuetitle=issuetitle, unaltered_ComicName=unaltered_ComicName, oneoff=oneoff, cmloopit=cmloopit, manual=manual, torznab_host=torznab_host, digitaldate=digitaldate, booktype=booktype)
+File "/volume1/@appstore/gitmylar/mylar/mylar/search.py", line 1389, in NZB_SEARCH
+if int(intIss) == int(comintIss) or all([cmloopit == 4, findcomiciss is None, pc_in is None]) or all([cmloopit == 4, findcomiciss is None, pc_in == 1]):
+TypeError: int() argument must be a string or a number, not 'NoneType'
+2019-02-07 15:57:29	DEBUG	integer value of issue we are looking for : None
+2019-02-07 15:57:29	DEBUG	issue we are looking for is : None
+2019-02-07 15:57:29	DEBUG	Series Year not provided but Series Volume detected of v1. Bypassing Year Match.
+2019-02-07 15:57:29	DEBUG	[Vx] Version detected as v1
+2019-02-07 15:57:29	DEBUG	match_check: {'justthedigits': None, 'issueid': None, 'match_type': None, 'sub': None, 'comiclocation': None, 'booktype': 'issue', 'series_name': u'Star Wars - Age Of The Republic - Anakin Skywalker', 'comicfilename': u'Star Wars - Age Of The Republic - Anakin Skywalker (2019) (Digital) (Kileko-Empire)', 'annual_comicid': None, 'issue_year': '2019', 'volume': 'v1', 'process_status': 'match', 'scangroup': u'Kileko-Empire', 'alt_series': u'Star Wars', 'alt_issue': u'Age Of The Republic - Anakin Skywalker (2019) (Digital)', 'series_volume': 'v1'}
+2019-02-07 15:57:29	DEBUG	parsed_info: {'series_volume': 'v1', 'booktype': 'issue', 'issueid': None, 'sub': None, 'comiclocation': None, 'reading_order': None, 'parse_status': 'success', 'dynamic_name': u'StarWars|AgeOf|Republic|AnakinSkywalker', 'series_name': u'Star Wars - Age Of The Republic - Anakin Skywalker', 'comicfilename': u'Star Wars - Age Of The Republic - Anakin Skywalker (2019) (Digital) (Kileko-Empire)', 'issue_number': None, 'issue_year': '2019', 'scangroup': u'Kileko-Empire', 'alt_series': u'Star Wars', 'alt_issue': u'Age Of The Republic - Anakin Skywalker (2019) (Digital)', 'series_name_decoded': 'Star Wars - Age Of The Republic - Anakin Skywalker'}
+2019-02-07 15:57:29	INFO	Possible UKNOWN TPB/GN detected - no issue number present, no clarification in filename, but volume present with series title
+2019-02-07 15:57:29	DEBUG	Alternate series / issue title: Star Wars [Age Of The Republic - Anakin Skywalker (2019) (Digital)]
+2019-02-07 15:57:29	DEBUG	series title possibly: Star Wars - Age Of The Republic - Anakin Skywalker
+2019-02-07 15:57:29	DEBUG	sf_highest_series_pos: [u'Star', u'Wars', u'-', u'Age', u'Of', u'The', u'Republic', u'-', u'Anakin', u'Skywalker']
+2019-02-07 15:57:29	DEBUG	ALT-SERIES NAME [ISSUE TITLE]: Star Wars [Age Of The Republic - Anakin Skywalker (2019) (Digital)]
+2019-02-07 15:57:29	INFO	No issue number present in filename.

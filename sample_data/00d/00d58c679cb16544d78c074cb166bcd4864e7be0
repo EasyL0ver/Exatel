@@ -1,0 +1,163 @@
+import json
+import os
+import re
+import smtplib
+import socket
+from hashlib import sha256
+from email.mime.text import MIMEText
+
+Serveur = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+Serveur.bind(("localhost", 15556))
+ParentDirectoryPath = os.path.dirname(__file__)
+
+print (" Le serveur ecoute desormait sur le port : 15556")
+
+def ListMessageSubjects(lstFiles, pathBoiteReception):
+    strFilesToSend = []
+    for F in lstFiles:
+        #Retirer config.txt et les dossiers de la liste
+        if(F != "config.txt" and os.path.isfile(os.path.join(pathBoiteReception, F))):
+            strFilesToSend.append(F)
+    return strFilesToSend
+
+
+while True:
+    Serveur.listen(5)
+    Client, Address = Serveur.accept()
+    print (" Le client  : {} est maintenant connecte".format(Address))
+    runserver = True
+
+    while runserver:
+        data = Client.recv(1024)
+        data = json.loads(data.decode())
+        action = data.get("action")
+
+        if(action == "2" or action == "1"):
+            username = data.get("username")
+            password = data.get("password")
+
+        # Creer un compte
+        if(action == "2"):
+            if(len(password) >= 6 or len(password) <= 12):
+                pattern = re.compile('^(?=.*[0-9]$)(?=.*[a-zA-Z])')
+
+                if(pattern.search(password)):
+                    print(password)
+                    hashedPwd = sha256(password.encode()).hexdigest()
+
+                    if not os.path.exists(os.path.join(ParentDirectoryPath, username)):
+                        os.mkdir(os.path.join(ParentDirectoryPath, username))
+                        file = open(ParentDirectoryPath + "/" + username + "/" + "config.txt", "w+")
+                        file.write(hashedPwd)
+                        file.close()
+                        Client.send("Compte cree avec succes.".encode())
+                    else:
+                        Client.send("L'utilisateur existe deja.".encode())
+
+        # Se conntecter
+        elif(action == "1"):
+            if username != "":
+                if os.path.exists(os.path.join(ParentDirectoryPath, username)):
+                    hashedPwd = sha256(password.encode()).hexdigest()
+                    file = open(ParentDirectoryPath + "/" + username + "/" + "config.txt", "r")
+                    contenu = file.read()
+                    file.close()
+                    if contenu == hashedPwd:
+                        Client.send(("Bienvenue : " + username).encode())
+                    else:
+                        Client.send("Mot de passe invalide.".encode())
+                else:
+                    Client.send("La combinaison utilisateur/mot de passe est invalide.".encode())
+            else:
+                Client.send("Veuillez entrer un utilisateur / mot de passe".encode())
+
+        # Envoyer un message
+        elif(action == "3"):
+            adresseDestination = data.get("adresseDestination")
+            sujet = data.get("sujet")
+            corpsMessage = data.get("corpsMessage")
+
+            userDest, typeEmail = adresseDestination.split("@")
+
+            if (typeEmail != "reseauglo.ca"):
+                msg = MIMEText(corpsMessage)
+                msg['From'] = "alex.lacasse.1@ulaval.ca"
+                msg['To'] = adresseDestination
+                msg['Subject'] = sujet
+
+                smtp = smtplib.SMTP('smtp.ulaval.ca')
+                smtp.sendmail(msg['From'], msg['To'], msg.as_string())
+                Client.send(("Le message a ete envoye a : " + msg["To"]).encode())
+
+            elif (typeEmail == "reseauglo.ca"):
+                # si l'utilisateur n'existe pas
+                if not os.path.exists(os.path.join(ParentDirectoryPath, userDest)):
+                    if not os.path.exists(os.path.join(ParentDirectoryPath, "DESTERREUR")):
+                        os.mkdir(os.path.join(ParentDirectoryPath, "DESTERREUR"))
+                        file = open(ParentDirectoryPath + "/" + "DESTERREUR" + "/" + sujet + ".txt", "w+")
+                        file.write("sujet : " + sujet + "\n message : " + corpsMessage)
+                        file.close()
+                    else:
+                        file = open(ParentDirectoryPath + "/" + "DESTERREUR" + "/" + sujet + ".txt", "w+")
+                        file.write("sujet : " + sujet + "\n message : " + corpsMessage)
+                        file.close()
+                    Client.send("Le message est dans le repertoire DESTERREUR.".encode())
+                else:
+                    file = open(ParentDirectoryPath + "/" + userDest + "/" + sujet + ".txt", "w+")
+                    file.write("sujet : " + sujet + "\n message : " + corpsMessage)
+                    file.close()
+                    Client.send(("Le message est dans le repertoire " + userDest).encode())
+
+        # Boite de reception
+        elif (action == "4"):
+            pathBoiteReception = os.path.join(ParentDirectoryPath, username)
+
+            # Envoi des sujets au client
+            lstFiles = os.listdir(pathBoiteReception)
+            strFilesToSend = ListMessageSubjects(lstFiles, pathBoiteReception)
+
+            message = json.dumps({"Sujets" : strFilesToSend})
+            Client.send(message.encode())
+
+            if not strFilesToSend:
+                print("La boite de courriel demandee est vide")
+            else:
+                # Attente du courriel a lire
+                msgALire = Client.recv(1024)
+                msgALire = json.loads(msgALire.decode())
+                strIdMsg = msgALire.get("Message")
+
+                FileToRead = lstFiles[int(strIdMsg)]
+                file = open(os.path.join(pathBoiteReception, FileToRead), "r")
+                content = file.read()
+                file.close()
+
+                message = json.dumps({"Contenu" : content})
+                Client.send(message.encode())
+
+        # Afficher les statistiques
+        elif (action == "5"):
+
+            pathBoiteReception = os.path.join(ParentDirectoryPath, username)
+
+            # Envoi des sujets au client
+            lstFiles = os.listdir(pathBoiteReception)
+            strFilesToSend = ListMessageSubjects(lstFiles, pathBoiteReception)
+
+            size = 0
+            for i in lstFiles:
+                size += os.path.getsize(pathBoiteReception + "/" + i)
+
+            message = json.dumps({"NbMessages": len(lstFiles), "Sujets": strFilesToSend, "Size": str(size)})
+            Client.send(message.encode())
+
+            print("Statistiques")
+
+        else:
+            print("Commande non reconnue")
+
+
+
+print ("Fermeture du serveur")
+Client.close()
+Serveur.close()

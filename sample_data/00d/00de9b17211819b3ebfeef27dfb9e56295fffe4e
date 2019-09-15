@@ -1,0 +1,51 @@
+class Report:
+    def __init__(self, keywords):
+        self.keywords = keywords
+        self.outputBuffer = ''
+
+    def GetHeader(self):
+        pass
+
+    def GetFooter(self):
+        pass
+
+    def GetBody(self):
+        pass
+
+    def CreateReport(self):
+        self.outputBuffer += "<h1>" + self.GetHeader() + "</h1>\n"
+        self.outputBuffer += "<div>" + self.GetBody() + "</div>\n"
+        self.outputBuffer += "<h6>" + self.GetFooter() + "</h6>\n"
+        for c in self.keywords:
+            self.outputBuffer += "["+ c + "]"
+    def GetReport(self):
+        return self.outputBuffer
+
+class TestReport(Report):
+    def __init__(self,keywords):
+        super().__init__(keywords)
+    def GetHeader(self):
+        return "The test report"
+    def GetBody(self):
+        return "All test passed"
+    def GetFooter(self):
+        return "(c) ...."
+    
+class DeployReport(Report):
+    def __init__(self):
+        super().__init__(["deployment","luxoft"])
+
+    def GetHeader(self):
+        return "Deployment report for "+str(self.keywords)
+    def GetBody(self):
+        return "No crash found"
+    def GetFooter(self):
+        return "elapsed time 365 days"
+        
+tr = TestReport(["test","study","luxoft"])
+tr.CreateReport()
+print(tr.GetReport())
+print("---------------")
+dr = DeployReport()
+dr.CreateReport()
+print(dr.GetReport())

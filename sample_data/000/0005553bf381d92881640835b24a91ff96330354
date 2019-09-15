@@ -1,0 +1,45 @@
+def stacker(folder, num):
+images = []
+for filename in os.listdir(folder):
+    img = cv2.imread(os.path.join(folder,filename))
+    if img is not None:
+        images.append(img)
+stacked = stack(images)
+newpath = "key-frames" #destination of final image
+os.chdir(newpath)
+cv2.imwrite("Stacked%d.png" % num, stacked)
+	
+def stack(imgs):
+ #aligns the images
+ images = imageAlignment(imgs)
+ laps = []
+
+ #loop through images and compute lap
+ for i in range(len(images)):
+    grayImg = cv2.cvtColor(images[i],cv2.COLOR_BGR2GRAY)
+    laps.append(findLap(grayImg))
+
+ #converts input to array
+ laps = np.asarray(laps)
+
+ #creates empty array
+ output = np.zeros(shape=images[0].shape, dtype=images[0].dtype)
+
+ #find absolute value of laps
+ abs_laps = np.absolute(laps)
+
+ #find maximum of laps
+ maximum = abs_laps.max(axis=0)
+
+ #boolean to determine if lap for image is max
+ booleanChecker = abs_laps == maximum
+
+ #pixels are unit8 and uint8 will wrap
+ mask = booleanChecker.astype(np.uint8)
+
+ #inverts every bit of array using mask that specifies of output array 
+ #to be changed
+ for i in range(0,len(images)):
+    output = cv2.bitwise_not(images[i],output, mask=mask[i])
+
+ return 255 - output

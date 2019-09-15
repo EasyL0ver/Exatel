@@ -1,0 +1,31 @@
+stages:
+  - test
+  - deploy
+  - invalidate
+
+test:
+  stage: test
+  script:
+    - python munkilinter.py $CI_PROJECT_DIR
+  only:
+    - master
+  tags:
+    - runner
+
+deploy:
+  stage: deploy
+  script:
+    - s3cmd -v --delete-removed sync /munki_repo/ s3://$S3_BUCKET_NAME/
+  only:
+    - master
+  tags:
+    - runner
+
+invalidate:
+  stage: invalidate
+  script:
+    - php invalidate-cloudfront.php $AWS_ACCESS_KE$
+  only:
+    - master
+  tags:
+    - runner

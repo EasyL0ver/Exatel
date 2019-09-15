@@ -1,0 +1,149 @@
+a simple photo gallery slideshow in javascript
+<html>
+<head>
+<style type="text/css">
+    *{
+       margin:0px;
+       padding:0px;
+    }
+    #foto_album
+    {
+      width:500px;
+      margin:0 auto;
+    }
+    #foto_album a:hover
+    {
+         margin-top:2px;
+         font-weight:bold;
+
+    }
+    #start_slide_show
+    {
+      background: url(images/start_slide_show.gif) no-repeat;
+      width:179px;
+      height:33px;
+      float:left;
+      text-align:center;
+      margin-left:160px;
+      padding-top:5px;
+      font-size:14px;
+      text-decoration:none;
+      color:black;
+      display:block;
+    }
+
+    #back_photo
+    {
+      background:url(images/arrow_back.png) no-repeat center;
+    }#back_photo:hover
+    {
+      background:url(images/arrow_back_hover.png) no-repeat center;
+    }#next_photo
+    {
+      background:url(images/arrow_forwad.png) no-repeat center;
+    }#next_photo:hover
+    {
+      background:url(images/arrow_forwad_hover.png) no-repeat center;
+    }
+
+    #next_photo, #back_photo
+    {
+      height:25px;
+      width:50%;
+      border:none;
+      float:left;
+      margin-top:15px;
+      cursor:pointer;
+
+    }
+    h2
+    {
+     background: url(images/play.png) no-repeat center;
+     height:50px;
+     width:100%
+     margin-bottom:15px;
+    }
+
+    h2 span
+    {
+      display:none; 
+
+    }
+</style>
+<script type="text/javascript">
+
+    var index = 0;
+    var album = [];
+    var photo_timer;
+
+    function collectArrayPhotos (first_photo, last_photo)
+
+    {
+
+        {
+
+          album.push("nature_" + first_photo + ".jpg");
+          first_photo++;
+        }while (first_photo < last_photo)
+
+    }
+     collectArrayPhotos (1, 5);
+
+     function backPhoto()
+     {
+        var img = document.getElementById('photo');
+        index--;
+        if (index < 0)
+           index = album.length -1
+        img.src = "images/" + album[index];
+
+     }
+
+     function nextPhoto()
+     {
+        var img = document.getElementById('photo');
+        index++;
+        if (index >= album.length)
+           index = 0;
+        img.src = "images/" + album[index];
+
+     }
+
+     function startSlideShow()
+     {
+        var start_slide_show = document.getElementById('start_slide_show');
+        if (!photo_timer){
+            photo_timer = setInterval("nextPhoto()", 1500)
+            start_slide_show.firstChild.nodeValue = 'stop slideshow'
+            } else {
+                start_slide_show.firstChild.nodeValue = 'start slideshow'
+                window.clearInterval(photo_timer);
+                photo_timer = null;
+
+            }
+     }
+
+     window.onload = function ()
+     {   
+       var img = document.getElementById('photo');
+       img.src = "images/" + album[index];
+     }
+
+</script>
+</head>
+<body>
+
+
+ <div id="foto_album">
+    <h2><span> foto album</span></h2>
+    <img id="photo">
+    <input id="back_photo" type="button" onClick="backPhoto()">
+    <input id="next_photo" type="button"onClick="nextPhoto()">
+    <a href="javascript:startSlideShow()" id="start_slide_show" >start slideshow
+    </a>
+
+ </div>
+
+</body>
+
+</html>

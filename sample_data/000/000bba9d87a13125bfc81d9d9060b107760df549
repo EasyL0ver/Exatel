@@ -1,0 +1,12 @@
+import Ember from 'ember';
+
+export default Ember.Component.extend({
+  actions: {
+  	numberChanged(e) {
+      const stringValue = e.currentTarget.value;
+      const numValue = parseFloat(stringValue);
+      console.log("No, really, this is a number!", numValue, typeof numValue);
+      this.set('data', numValue);
+    }
+  }
+});

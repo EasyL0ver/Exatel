@@ -1,0 +1,30 @@
+class Book:
+    num_of_books = 0
+    def __init__ (self,idbook, autor, title, is_borrowed):
+       
+        self.idbook = idbook
+        self.author = author
+        self.title = title
+        self.is_borrowed = is_borrowed
+       
+        Book.num_of_books += 1
+ 
+ 
+b = Book(Book.num_of_books + 1,input("Author of the book: "), input("Title of the book: "), input("Is the book borrowed? "))
+print (b.__dict__)
+ 
+#Potrebujem poradiť s tým ako urobiť dictionary v dictionary v def
+#Celé mi to ide na JSON takže môj JSON vyzerá takto: [{"idbook": 1, "autor": "Autor1", "title": "Title1", "is_borrowed": "True"}, {"Id": 2, "autor": "Autor2", "title": "Title2", "is_borrowed": "False"}] - a neviem vyvolať 2. objekt
+ 
+#Result - to čo mám teraz
+#{'idbook': 1, 'author': 'Input1', 'title': 'Input2', 'is_borrowed': 'Input3'}
+ 
+#Pridávanie a veci okolo toho mám vyriešené len toto neviem
+ 
+#Chcem aby som mohol vyvolať objekty takto:
+ 
+#print (b['1']['author']) #výsledok printu = Input
+#print (b['2']['title']) #výsledok printu = Input5
+#takto by vyzerali objekty:
+#{'1', {'autor': 'Input', 'title': 'Input2', 'is_borrowed': 'Input3'}}
+#{'2', {'autor': 'Input4', 'title': 'Input5', 'is_borrowed': 'Input6'}}

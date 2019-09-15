@@ -1,0 +1,36 @@
+create procedure sumOrder
+@customerID int
+as
+begin tran
+	alter table Vevo
+	add sumOrder int
+
+	update Vevo
+	set sumOrder=(
+		select distinct sum(NettoAr*Mennyiseg)
+		from MegrendelesTetel mt
+		inner join Megrendeles m on mt.MegrendelesID=m.ID
+		inner join Telephely t on m.TelephelyID=t.ID
+		inner join Vevo v on t.VevoID=v.ID
+		group by v.ID)
+	
+	create trigger sumTrigger
+	on Vevo
+	for DELETE,INSERT,UPDATE
+	as
+	update Vevo
+	set sumOrder=isnull(sumOrder,0)+change
+	from MegrendelesTetel mt
+		inner join 
+		(select i.MegrendelesID, sum(Mennyiseg*NettoAr) as change
+				from inserted i
+				group by i.MegrendelesID) 
+		Megrendeles m on mt.MegrendelesID=m.ID
+		inner join Telephely t on m.TelephelyID=t.ID
+		inner join Vevo v on t.VevoID=v.ID
+		
+	update Vevo
+	set sumOrder=isnull(sumOrder,)-change
+	...inserted helyett deleted
+
+end

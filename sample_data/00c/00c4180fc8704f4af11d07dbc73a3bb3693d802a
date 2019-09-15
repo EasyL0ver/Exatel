@@ -1,0 +1,191 @@
+package main
+
+import (
+	"fmt"
+	"html/template"
+	"net/url"
+	"os"
+	"strconv"
+	"time"
+
+	"github.yandex-team.ru/product-security/ctf-tasks-2018-public/pasteless/lib/brobot"
+	"github.yandex-team.ru/product-security/ctf-tasks-2018-public/pasteless/lib/captcha"
+
+	"github.com/gin-contrib/multitemplate"
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
+	"github.com/karlseguin/ccache"
+	"github.com/pkg/errors"
+)
+
+var pastes = ccache.New(ccache.Configure())
+
+func updateMessage(id string, content string) (ok bool) {
+	pastes.Set(id, content, 5*time.Minute)
+	return true
+}
+
+func getMessage(id string) (content string, ok bool) {
+	if item := pastes.Get(id); item != nil && !item.Expired() && item.Value() != nil {
+		content = item.Value().(string)
+		ok = true
+	}
+	return
+}
+
+func nonce() string {
+	return uuid.New().String()
+}
+
+func sendReport(c *gin.Context) error {
+	var input struct {
+		Url string `form:"url" json:"url"`
+		Key string `form:"key" json:"key"`
+		Rep string `form:"rep" json:"rep"`
+	}
+
+	if err := c.Bind(&input); err != nil {
+		return err
+	}
+
+	if !captcha.Check(input.Key, input.Rep) {
+		return errors.New("captcha failed")
+	}
+
+	if parsed, err := url.Parse(input.Url); err != nil || (parsed.Scheme != "http" && parsed.Scheme != "https") {
+		return errors.New("unexpected url")
+	}
+
+	navInfo := brobot.Info{
+		AuthToken: os.Getenv("BROBOT_API_TOKEN"),
+		Url:       input.Url,
+		Cookies: []brobot.Cookie{
+			{
+				Domain: c.Request.Host,
+				Name:   "ctf-flag",
+				Value:  os.Getenv("CTF_FLAG"),
+			},
+		},
+	}
+	if err := brobot.Navigate(navInfo); err != nil {
+		return err
+	}
+	return nil
+}
+
+func NewRenderer() multitemplate.Renderer {
+	templates := multitemplate.NewRenderer()
+	templates.AddFromFiles("index",
+		"templates/layout.min.html",
+		"templates/index.min.html",
+	)
+
+	templates.AddFromFiles("message",
+		"templates/layout.min.html",
+		"templates/message.min.html",
+	)
+
+	templates.AddFromFiles("404",
+		"templates/layout.min.html",
+		"templates/404.min.html",
+	)
+	return templates
+}
+
+func NewRouter() *gin.Engine {
+	r := gin.Default()
+	r.Static("/static", "./static")
+	r.LoadHTMLGlob("templates/*.html")
+	r.HTMLRender = NewRenderer()
+
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(200, "index", gin.H{"nonce": nonce()})
+	})
+
+	r.POST("/message", func(c *gin.Context) {
+		content := c.PostForm("content")
+		if content == "" {
+			c.AbortWithError(400, errors.New("empty content"))
+			return
+		}
+
+		id := uuid.New().String()
+		if !updateMessage(id, content) {
+			c.AbortWithError(500, errors.New("failed to update message"))
+			return
+		}
+		c.Redirect(302, "/message/"+id)
+	})
+
+	r.GET("/message/:uuid", func(c *gin.Context) {
+		content, ok := getMessage(c.Param("uuid"))
+		if !ok || content == "" {
+			c.HTML(404, "404", nil)
+			return
+		}
+
+		c.HTML(200, "message", gin.H{
+			"content": template.HTML(content),
+			"nonce":   nonce(),
+		})
+	})
+
+	// TODO: add GUI
+	r.POST("/message/:uuid", func(c *gin.Context) {
+		content := c.PostForm("content")
+		if content == "" {
+			c.AbortWithError(400, errors.New("empty content"))
+			return
+		}
+
+		id := c.Param("uuid")
+		if !updateMessage(id, content) {
+			c.AbortWithError(500, errors.New("failed to update message"))
+			return
+		}
+		c.Redirect(302, "/message/"+id)
+	})
+
+	r.GET("/captcha", func(c *gin.Context) {
+		info := captcha.Generate()
+		if info == nil {
+			c.JSON(200, gin.H{
+				"status": "error",
+				"error":  "failed to generate captcha",
+			})
+			return
+		}
+
+		c.JSON(200, gin.H{
+			"status":  "ok",
+			"captcha": info,
+		})
+	})
+	r.POST("/arrr", func(c *gin.Context) {
+		if err := sendReport(c); err != nil {
+			c.JSON(200, gin.H{
+				"status": "error",
+				"error":  err.Error(),
+			})
+			return
+		}
+
+		c.JSON(200, gin.H{
+			"status": "ok",
+		})
+	})
+
+	return r
+}
+
+func main() {
+	gin.SetMode(gin.ReleaseMode)
+	router := NewRouter()
+	port := 3000
+	if qloudPort := os.Getenv("QLOUD_HTTP_PORT"); qloudPort != "" {
+		if iPort, err := strconv.Atoi(qloudPort); err == nil {
+			port = iPort
+		}
+	}
+	router.Run(fmt.Sprintf(":%d", port))
+}

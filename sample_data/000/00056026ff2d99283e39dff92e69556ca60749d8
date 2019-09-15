@@ -1,0 +1,77 @@
+#include <stdio.h>
+
+struct distance{
+    int feet;
+    int inch;
+};
+
+
+
+//prototye
+void addDistance(struct distance, struct distance);
+void add(struct distance,struct distance, struct distance *);
+void display(struct distance *);
+
+int main()
+{
+    struct distance d1,d2, d3;
+    printf("Enter first distance in feet & inches:");
+    scanf("%d%d",&d1.feet, &d1.inch);
+    
+    printf("Enter second distance in feet & inches:");
+    scanf("%d%d",&d2.feet, &d2.inch);
+    /*add two distances*/
+    addDistance(d1,d2);
+    
+    //------------------POINTERS--------------------
+    printf("Enter first distance in feet & inches:");
+    scanf("%d%d",&d1.feet, &d1.inch);
+    
+    printf("Enter second distance in feet & inches:");
+    scanf("%d%d",&d2.feet, &d2.inch);
+    
+    add(d1,d2,&d3);
+    display(&d3);
+    return 0;
+}
+
+
+
+
+void addDistance(struct distance d1,struct distance d2){
+    struct distance d3;
+    
+    d3.feet= d1.feet + d2.feet;
+    d3.inch= d1.inch + d2.inch;
+    
+    
+    
+    printf("\nWITHOUT POINTER\n"
+        "Total distance: Feet: %d, Inches: %d \n\n",d3.feet,d3.inch);
+}
+
+//-------------------Adding with pointers-----------------------------------------------
+
+/*
+    the convertion from inch >= feet ++ is working
+    
+*/
+void display(struct distance *dis){
+    //struct distance d;
+    printf("\nWITH POINTER\n\n"
+        "Total distance: Feet %d, Inches: %d",dis->feet, dis->inch );
+        
+}
+void add(struct distance d1,struct distance d2, struct distance *d3) 
+{
+     //Adding distances d1 and d2 and storing it in d3
+     d3->feet = d1.feet + d2.feet; 
+     d3->inch = d1.inch + d2.inch;
+
+     // using -> because d3 is a pointer
+     
+    
+    
+   
+
+}

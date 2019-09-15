@@ -1,0 +1,23 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+
+cache:
+  key: node_modules-${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+
+stages:
+  - test
+
+test:
+  image: docker-builder-javascript
+  stage: test
+  before_script:
+    - npm install
+  script:
+    - npm test

@@ -1,0 +1,30 @@
+ ###################
+###		        ###
+##         Farid NIzam         ##
+###		       ###
+ ###################
+
+#SUBJEK
+:local subjek "PING"
+
+#Atur IP & NAMA
+:local addre 208.67.220.220
+:local nama OpenDNS
+
+#Atur LATENCY/DELAY
+:local ms 30;
+
+#JANGAN DI RUBAH
+:local avgRtt;
+/tool flood-ping $addre count=10 do={
+  :if ($sent = 10) do={
+    :set avgRtt $"avg-rtt"
+}}
+:if ($avgRtt >= $ms) do={
+
+#RUBAH TeleBot (Telegram-Bot)
+ #	*********:************* --> Isi API Token
+ #	xxxxxxxxx --> Isi Chat_ID
+/tool fetch url="https://api.telegram.org/bot*********:*************/sendMessage?chat_id=*xxxxxxxxx&text=$subjek $nama  $avgRtt ms" keep-result=no
+:log info "----------------------------------------------------> Pesan Terkirim <----------------------------------------------------";
+}

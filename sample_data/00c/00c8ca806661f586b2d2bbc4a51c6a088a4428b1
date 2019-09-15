@@ -1,0 +1,8 @@
+EthFilter filter = new EthFilter(
+        DefaultBlockParameterName.EARLIEST, 
+        DefaultBlockParameterName.LATEST, 
+        contractAddress);
+
+web3.ethLogFlowable(filter).subscribe(event -> {
+    log.info("event = {}", event);
+});

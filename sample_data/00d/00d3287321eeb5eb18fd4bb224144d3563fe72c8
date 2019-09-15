@@ -1,0 +1,342 @@
+if game:GetService("RunService"):IsClient() then error("Script must be server-side in order to work; use h/ and not hl/") end
+local Player,game,owner = owner,game
+local RealPlayer = Player
+do
+	print("FE Compatibility code by Mokiros")
+	local rp = RealPlayer
+	script.Parent = rp.Character
+	
+	--RemoteEvent for communicating
+	local Event = Instance.new("RemoteEvent")
+	Event.Name = "UserInput_Event"
+
+	--Fake event to make stuff like Mouse.KeyDown work
+	local function fakeEvent()
+		local t = {_fakeEvent=true,Functions={},Connect=function(self,f)table.insert(self.Functions,f) end}
+		t.connect = t.Connect
+		return t
+	end
+
+	--Creating fake input objects with fake variables
+    local m = {Target=nil,Hit=CFrame.new(),KeyUp=fakeEvent(),KeyDown=fakeEvent(),Button1Up=fakeEvent(),Button1Down=fakeEvent()}
+	local UIS = {InputBegan=fakeEvent(),InputEnded=fakeEvent()}
+	local CAS = {Actions={},BindAction=function(self,name,fun,touch,...)
+		CAS.Actions[name] = fun and {Name=name,Function=fun,Keys={...}} or nil
+	end}
+	--Merged 2 functions into one by checking amount of arguments
+	CAS.UnbindAction = CAS.BindAction
+
+	--This function will trigger the events that have been :Connect()'ed
+	local function te(self,ev,...)
+		local t = m[ev]
+		if t and t._fakeEvent then
+			for _,f in pairs(t.Functions) do
+				f(...)
+			end
+		end
+	end
+	m.TrigEvent = te
+	UIS.TrigEvent = te
+
+	Event.OnServerEvent:Connect(function(plr,io)
+	    if plr~=rp then return end
+		m.Target = io.Target
+		m.Hit = io.Hit
+		if not io.isMouse then
+			local b = io.UserInputState == Enum.UserInputState.Begin
+			if io.UserInputType == Enum.UserInputType.MouseButton1 then
+				return m:TrigEvent(b and "Button1Down" or "Button1Up")
+			end
+			for _,t in pairs(CAS.Actions) do
+				for _,k in pairs(t.Keys) do
+					if k==io.KeyCode then
+						t.Function(t.Name,io.UserInputState,io)
+					end
+				end
+			end
+			m:TrigEvent(b and "KeyDown" or "KeyUp",io.KeyCode.Name:lower())
+			UIS:TrigEvent(b and "InputBegan" or "InputEnded",io,false)
+	    end
+	end)
+	Event.Parent = NLS([==[
+	local Player = game:GetService("Players").LocalPlayer
+	local Event = script:WaitForChild("UserInput_Event")
+
+	local Mouse = Player:GetMouse()
+	local UIS = game:GetService("UserInputService")
+	local input = function(io,a)
+		if a then return end
+		--Since InputObject is a client-side instance, we create and pass table instead
+		Event:FireServer({KeyCode=io.KeyCode,UserInputType=io.UserInputType,UserInputState=io.UserInputState,Hit=Mouse.Hit,Target=Mouse.Target})
+	end
+	UIS.InputBegan:Connect(input)
+	UIS.InputEnded:Connect(input)
+
+	local h,t
+	--Give the server mouse data 30 times every second, but only if the values changed
+	--If player is not moving their mouse, client won't fire events
+	while wait(1/30) do
+		if h~=Mouse.Hit or t~=Mouse.Target then
+			h,t=Mouse.Hit,Mouse.Target
+			Event:FireServer({isMouse=true,Target=t,Hit=h})
+		end
+	end]==],Player.Character)
+
+	----Sandboxed game object that allows the usage of client-side methods and services
+	--Real game object
+	local _rg = game
+
+	--Metatable for fake service
+	local fsmt = {
+		__index = function(self,k)
+			local s = rawget(self,"_RealService")
+			if s then return s[k] end
+		end,
+		__newindex = function(self,k,v)
+			local s = rawget(self,"_RealService")
+			if s then s[k]=v end
+		end,
+		__call = function(self,...)
+			local s = rawget(self,"_RealService")
+			if s then return s(...) end
+		end
+	}
+	local function FakeService(t,RealService)
+		t._RealService = typeof(RealService)=="string" and _rg:GetService(RealService) or RealService
+		return setmetatable(t,fsmt)
+	end
+
+	--Fake game object
+	local g = {
+		GetService = function(self,s)
+			return self[s]
+		end,
+		Players = FakeService({
+			LocalPlayer = FakeService({GetMouse=function(self)return m end},Player)
+		},"Players"),
+		UserInputService = FakeService(UIS,"UserInputService"),
+		ContextActionService = FakeService(CAS,"ContextActionService"),
+	}
+	rawset(g.Players,"localPlayer",g.Players.LocalPlayer)
+	g.service = g.GetService
+	
+	g.RunService = FakeService({
+		RenderStepped = _rg:GetService("RunService").Heartbeat,
+		BindToRenderStep = function(self,name,_,fun)
+			self._btrs[name] = self.Heartbeat:Connect(fun)
+		end,
+		UnbindFromRenderStep = function(self,name)
+			self._btrs[name]:Disconnect()
+		end,
+	},"RunService")
+
+	setmetatable(g,{
+		__index=function(self,s)
+			return _rg:GetService(s) or typeof(_rg[s])=="function"
+			and function(_,...)return _rg[s](_rg,...)end or _rg[s]
+		end,
+		__newindex = fsmt.__newindex,
+		__call = fsmt.__call
+	})
+	--Changing owner to fake player object to support owner:GetMouse()
+	game,owner = g,g.Players.LocalPlayer
+end
+	--[[ Kitchen Gun (REMADE) ]]--
+-------------------------------------------------------
+--[[
+
+This script was created by WafflesAreVeryGood.
+ATTACKS
+_______
+
+
+--]]
+-------------------------------------------------------
+print("This script was created by WafflesAreVeryGood!")
+	--[[Changeable Variables]]--
+local multiplier = 1 --Attack multiplier (default is 1)
+local soundlist = {
+	HardHit1 = "rbxassetid://565207203",
+	HardHit2 = "rbxassetid://541909913",
+	HardHit3 = "rbxassetid://541909983",
+	WeakHit1 = "rbxassetid://558642292",
+	WeakHit2 = "rbxassetid://541907812",
+	Slice1 = "rbxassetid://260429964",
+	Slice2 = "rbxassetid://260430015",
+	Explosion1 = "rbxassetid://138186576",
+	Explosion2 = "rbxassetid://157878578",
+	Woosh1 = "rbxassetid://541909867",
+	Woosh2 = "rbxassetid://541909763",
+	
+}
+local bgmusic = Instance.new("Sound")
+bgmusic.Volume = 3.5
+bgmusic.SoundId = "rbxassetid://2590490779"
+bgmusic.Looped = true
+bgmusic.Parent = game:GetService('Players').LocalPlayer.Character.Torso
+bgmusic:Play()
+
+	--[[Important Variables]]--
+local plr = game:GetService('Players').LocalPlayer
+local char = plr.Character
+local mouse = plr:GetMouse()
+local input = game:GetService('UserInputService')
+----
+local joints = {"Right Shoulder", "Left Shoulder", "Right Hip", "Left Hip", "Neck", "RootJoint"}
+local torso,head,rootpart = char.Torso,char.Head,char.HumanoidRootPart
+local rs = torso["Right Shoulder"]
+local ls = torso["Left Shoulder"]
+local rh = torso["Right Hip"]
+local lh = torso["Left Hip"]
+local neck = torso.Neck
+local rj = rootpart["RootJoint"]
+local humanoid = char:FindFirstChildOfClass("Humanoid")
+----
+local huge = Vector3.new(math.huge, math.huge, math.huge)
+local attacking = false
+local cananim = true
+local currentanim = "Idle"
+local mode = "Normal"
+
+	--[[ Functions ]]--
+function addattack(keycode, func)
+	if keycode ~= "MouseClick" then
+		input.InputBegan:connect(function(inp)
+			if inp.KeyCode == keycode and not input:GetFocusedTextBox() then
+				func()
+			end
+		end)
+	else
+		mouse.Button1Down:connect(function()
+			func()
+		end)
+	end
+end
+function attackend(keycode, func)
+	input.InputEnded:connect(function(inp)
+		if inp.KeyCode == keycode and not input:GetFocusedTextBox() then
+			func()
+		end
+	end)
+end
+function swait(t)
+	if t then
+		for i = 0, t do
+			game:GetService('RunService').Stepped:wait(0)
+		end
+	else
+		game:GetService('RunService').Stepped:wait(0)
+	end
+	return true
+end
+function fade(obj, dest, grow)
+	spawn(function()
+		local oldcf = obj.CFrame
+		for i = 0, 10 do
+			if grow then
+				obj.Size = obj.Size +Vector3.new(1,1,1)
+				obj.CFrame = oldcf
+			end
+			obj.Transparency = obj.Transparency +0.1
+			swait()
+		end
+		if dest then
+		obj:Destroy()
+		end
+	end)
+end
+function replacejoint(name)
+	local j = torso:FindFirstChild(name)
+	if not j then j = char.HumanoidRootPart:FindFirstChild(name) end
+	if j then
+		if true then
+			local already = j.Parent:FindFirstChild(j.Name.." Replacement")
+			local new = Instance.new("Weld")
+			local c0 = j.C0
+			local c1 = j.C1
+			new.Part0 = j.Part0
+			j.Part0 = nil
+			new.Name = j.Name.." Replacement"
+			if already then c0 = already.C0 c1 = already.C1 already:Destroy() end
+			new.Parent = j.Parent
+			new.Part1 = j.Part1
+			new.C0 = c0
+			new.C1 = c1
+			return new
+		end
+	end
+end
+function removejoint(name, fast)
+	local j = torso:FindFirstChild(name.." Replacement")
+	if not j then j = char.HumanoidRootPart:FindFirstChild(name.." Replacement") end
+	if j then
+		local p0 = j.Part0
+		if p0 ~= nil then
+		local c0 = j.C0
+		local c1 = j.C1
+		j:Destroy()
+		local new = p0:FindFirstChild(name)
+		local ac0 = new.C0
+		local ac1 = new.C1
+		new.Part0 = p0
+		new.C0 = c0
+		new.C1 = c1
+		spawn(function()
+			if name ~= "RootJoint" then
+			if not fast then
+			for i = 0, 0.6, 0.1 do
+				print(i)
+				new.C0 = new.C0:Lerp(ac0, 0.5)
+				new.C1 = new.C1:lerp(ac1, 0.5)
+				swait()
+			end
+			else
+				new.C0 = new.C0:Lerp(ac0, 1)
+				new.C1 = new.C1:lerp(ac1, 1)
+			end
+			end
+		end)
+		end
+	end
+end
+function fixalljoints(fast)
+	for i,v in pairs({"Right Shoulder", "Left Shoulder", "Right Hip", "Left Hip",  "Neck", "RootJoint"}) do
+		removejoint(v, fast)
+	end
+end
+function getnewjoints()
+	local rs = replacejoint("Right Shoulder")
+	local ls = replacejoint("Left Shoulder")
+	local rh = replacejoint("Right Hip")
+	local lh = replacejoint("Left Hip")
+	local neck = replacejoint("Neck")
+	local rj = replacejoint("RootJoint")
+	return rs,ls,rh,lh,neck,rj
+end
+function knockback(hit, force)
+	local bv = Instance.new("BodyVelocity")
+	bv.MaxForce = huge
+	bv.Velocity = force
+	bv.Parent = hit
+	game:GetService('Debris'):AddItem(bv, 0.15)
+end
+function soundeffect(id, volume, speed, parent, forcewait)
+	local func = function()
+		local s = LoadLibrary("RbxUtility").Create("Sound")()
+		s.Name = "SoundEffect"
+		s.Volume = volume
+		s.PlaybackSpeed = speed
+		s.SoundId = id
+		s.Looped = false
+		s.Parent = parent
+		s:Play()
+		repeat wait() until not s.Playing
+		s:Destroy()
+	end
+	if forcewait then
+		func()
+	else
+		spawn(func)
+	end
+end
+function specialsound(id, volume, speed, parent,

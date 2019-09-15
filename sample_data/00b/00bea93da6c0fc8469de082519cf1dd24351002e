@@ -1,0 +1,44 @@
+TXT(0) = "Sveiki, šis ir CSGOUIx.
+Lietotne ar kuras palīdzību var nomainīt spēlētāja modeli jaunajā CSGO Panorama UI.
+Jūs pats atbildat par riskiem kas var notikt izmantojot lietotni.
+Lietotnes izveidotājs: Gordon Walkedby
+Valodas tulks: /id/yoloking_
+Versija: " + version 
+TXT(1) = "Atvaino, Tev mani jaieliek CSGO mapē,
+piemēram: [D:\Steam\steamapps\common\Counter-Strike Global Offensive]"
+TXT(2) = "Šī lietotne mainīs šo [csgo\pak01_dir.vpk] failu,
+pārliecinies ka tu esi to kautkur noglabājis rezervei.
+
+Es arī mainīšu šo  [csgo\models\player\custom_player\legacy] folderi,
+ja tu vēlies, glabā arī šo.
+
+Ja tu mainiji šo [csgo\pak01_dir.vpk] failu agrāk, 
+tev vajadzētu to nomainīt atpakaļ uz oriģinālo."
+TXT(3) = "Pirmais, Es gribu dažus custom spēlētaja modeļus.
+Šie modeļi ir šajā [csgo\models\player] mapē."
+TXT(4) = "Atvaino, tev nav neviena modeļa. Lūdzu dabū pāris."
+TXT(5) = "Tagad pasaki man kuru modeli vēlies lietot.
+Uzraksti tā numuru."
+TXT(6) = "OK , tagad pasaki man kuru CSGO modeli tu vēlies aizstāt?"
+TXT(7) = "Labi , tagad , vai tu esi drošš ka vēlies to aizstāt?
+Vai tu esi saglabājis failus?"
+TXT(8) = "Ja tu esi drošš par to,
+tad nospied jebkuru pogu lai turpinātu"
+Ja nē, vienkāŗši aizver mani."
+TXT(9) = "Labi! Sāksim."
+TXT(10) = "Lasa pak01_dir.vpk ,faila ilgums: "
+TXT(11) = "Meklē bitus apmaiņai."
+TXT(12) = "Tur ir "
+TXT(13) = " tika pārmainīti "
+TXT(14) = "pak01_dir.vpk tagad ir uzlabota."
+TXT(15) = "Nē, jūsu teksts ir par īsu vai garu.
+Lūdzu pārrakstiet:"
+TXT(16) = "Nē, jūsu cipars ir par īsu vai garu.
+Lūdzu pārrakstiet:"
+TXT(17) = " fails kopēts."
+TXT(18) = "Nospied jebkuru pogu lai izietu."
+TXT(19) = "Jaunais modelis: "
+TXT(20) = "Vecais moedlis: "
+TXT(21) = "Nospied jebkuru pogu lai turpinātu."
+TXT(22) = "Vai tu vēlies mainīt savu modeli?"
+TXT(23) = "Pabeigts!"

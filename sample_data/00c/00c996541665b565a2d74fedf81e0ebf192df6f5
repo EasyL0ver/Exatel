@@ -1,0 +1,127 @@
+FTB Launcher logs:
+[19:56:16] [INFO] JGoogleAnalyticsTracker$2.run:484: AnalyticsBackgroundThread started
+[19:56:16] [INFO] MainHelpers.printInfo:22: FTBLaunch starting up (version 1.4.14 Build: 10414)
+[19:56:16] [INFO] MainHelpers.printInfo:30: OS: Windows 10 10.0 (64-bit)
+[19:56:16] [INFO] MainHelpers.printInfo:31: Launcher Install Dir: C:\Users\Micha\Desktop\FTB_Pack_Install\
+[19:56:16] [INFO] MainHelpers.printInfo:32: System memory: 3137M free, 8140M total
+[19:56:17] [ERROR] OutputOverride.write:88: From Console: Aug 05, 2018 7:56:17 PM java.util.prefs.WindowsPreferences <init>
+WARNUNG: Could not open/create prefs root node Software\JavaSoft\Prefs at root 0x80000002. Windows RegCreateKeyEx(...) returned error code 5.
+[19:56:17] [INFO] JavaFinder.parseJavaVersion:176: The FTB Launcher has found the following Java versions installed:
+[19:56:17] [INFO] JavaFinder.parseJavaVersion:178: Java Version: 1.8.0_181 sorted as: 1.8.0_181 64 Bit Java at : C:\Program Files\Java\jre1.8.0_181\bin\java.exe
+[19:56:17] [INFO] JavaFinder.parseJavaVersion:178: Java Version: 1.8.0_181 sorted as: 1.8.0_181 64 Bit Java at : C:\Program Files\Java\jre1.8.0_181\bin\java.exe
+[19:56:17] [INFO] JavaFinder.parseJavaVersion:205: Preferred: Java Version: 1.8.0_181 sorted as: 1.8.0_181 64 Bit Java at : C:\Program Files\Java\jre1.8.0_181\bin\java.exe
+[19:56:17] [INFO] I18N.addFiles:97: [i18n] Fallback enUS loaded
+[19:56:17] [INFO] I18N.setLocale:120: [i18n] deDE Deutsche Sprachdatei geladen!
+[19:56:17] [INFO] LoadingDialog.advance:46: Checking installation location
+[19:56:17] [INFO] DownloadUtils.run:559: Using download server Automatic:CurseCDN on host ftb.cursecdn.com (54.240.162.112)
+[19:56:17] [INFO] LoadingDialog.advance:46: Loading user data
+[19:56:18] [INFO] User.readObject:154: Password is now encrypted with new key
+[19:56:18] [INFO] User.readObject:155: Converted password will be saved to disk after successful login
+[19:56:18] [INFO] User.readObject:160: mojang token is now encrypted with new key
+[19:56:18] [INFO] User.readObject:161: Converted token will be saved to disk after successful login
+[19:56:18] [INFO] LoadingDialog.advance:46: Creating Console window
+[19:56:18] [INFO] LoadingDialog.advance:46: Creating main window
+[19:56:18] [INFO] AuthlibDLWorker.downloadJars:152: Local Authlib Version is good, skipping Download
+[19:56:18] [INFO] AuthlibDLWorker.doInBackground:73: Adding Authlib to Classpath
+[19:56:18] [INFO] ModpackLoader$XmlHtmlRunnable.handleXML:106: Loading modpack information for thirdparty.xml...
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 0 enUS to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 1 cyGB to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 2 daDK to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 3 deDE to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 4 enGB to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 5 enUS to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 6 esES to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 7 fiFI to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 8 frCA to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 9 frFR to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 10 itIT to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 11 maHU to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 12 nlNL to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 13 noNO to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 14 plPL to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 15 ptBR to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 16 ptPT to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 17 ruRU to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 18 svSE to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 19 zhCN to options pane
+[19:56:18] [INFO] OptionsPane.<init>:172: [i18n] Added 20 zhTW to options pane
+[19:56:18] [INFO] I18N.setLocale:120: [i18n] deDE Deutsche Sprachdatei geladen!
+[19:56:18] [INFO] LoadingDialog.advance:46: Setting up Launcher
+[19:56:18] [INFO] LoadingDialog.advance:46: Downloading pack data
+[19:56:18] [INFO] ModpackLoader$XmlHtmlRunnable.handleXML:106: Loading modpack information for modpacks.xml...
+[19:56:18] [INFO] LoadingDialog.advance:46: Opening main window
+[19:56:18] [INFO] MapLoader.run:43: loading map information...
+[19:56:18] [INFO] TexturePackLoader.run:43: loading texture pack information...
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 1 (FTB Trident Default Map)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 2 (Agrarian Skies Default Map)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 3 (Agrarian Skies Flat Map)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 4 (Agrarian Skies Server Map)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 5 (Direwolf20 Map Ep.0)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 6 (FTB Pax Challenge)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 7 (Direwolf20 Map Ep.0)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 8 (Direwolf20 Map Ep.10)
+[19:56:19] [INFO] TexturepackPane$6.run:237: Adding texture pack 1 (Soartex Fanver)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 9 (Direwolf20 Map Ep.20)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 10 (Direwolf20 Map Ep.30)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 11 (Direwolf20 Map Ep.40)
+[19:56:19] [INFO] TexturepackPane$6.run:237: Adding texture pack 2 (Jadedcat Mixpack)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 12 (Direwolf20 Map Ep.50)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 13 (Direwolf20 Map Ep.80)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 14 (FTB Normal)
+[19:56:19] [INFO] MapUtils$6.run:250: Adding map 15 (FTB Insanity)
+[19:56:19] [INFO] TexturepackPane$6.run:237: Adding texture pack 3 (Invictus)
+[19:56:19] [INFO] TexturepackPane$6.run:237: Adding texture pack 4 (Faithful)
+[19:56:19] [INFO] TexturepackPane$6.run:237: Adding texture pack 5 (JohnSmith Technicians Remix)
+[19:56:19] [INFO] TexturepackPane$6.run:237: Adding texture pack 6 (Familiar yet Different)
+[19:56:51] [ERROR] LaunchFrame.doLaunch:1025->Main$1.uncaughtException:109: Unhandled exception in Thread[AWT-EventQueue-0,6,main]: java.lang.NullPointerException
+net.ftb.gui.LaunchFrame.doLaunch(LaunchFrame.java:1025)
+net.ftb.gui.LaunchFrame$10.actionPerformed(LaunchFrame.java:318)
+javax.swing.AbstractButton.fireActionPerformed(Unknown Source)
+javax.swing.AbstractButton$Handler.actionPerformed(Unknown Source)
+javax.swing.DefaultButtonModel.fireActionPerformed(Unknown Source)
+javax.swing.DefaultButtonModel.setPressed(Unknown Source)
+javax.swing.plaf.basic.BasicButtonListener.mouseReleased(Unknown Source)
+java.awt.Component.processMouseEvent(Unknown Source)
+javax.swing.JComponent.processMouseEvent(Unknown Source)
+java.awt.Component.processEvent(Unknown Source)
+java.awt.Container.processEvent(Unknown Source)
+java.awt.Component.dispatchEventImpl(Unknown Source)
+java.awt.Container.dispatchEventImpl(Unknown Source)
+java.awt.Component.dispatchEvent(Unknown Source)
+java.awt.LightweightDispatcher.retargetMouseEvent(Unknown Source)
+java.awt.LightweightDispatcher.processMouseEvent(Unknown Source)
+java.awt.LightweightDispatcher.dispatchEvent(Unknown Source)
+java.awt.Container.dispatchEventImpl(Unknown Source)
+java.awt.Window.dispatchEventImpl(Unknown Source)
+java.awt.Component.dispatchEvent(Unknown Source)
+java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+java.awt.EventQueue.access$500(Unknown Source)
+java.awt.EventQueue$3.run(Unknown Source)
+java.awt.EventQueue$3.run(Unknown Source)
+java.security.AccessController.doPrivileged(Native Method)
+java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+java.awt.EventQueue$4.run(Unknown Source)
+java.awt.EventQueue$4.run(Unknown Source)
+java.security.AccessController.doPrivileged(Native Method)
+java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+java.awt.EventQueue.dispatchEvent(Unknown Source)
+java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+java.awt.EventDispatchThread.run(Unknown Source)
+[19:57:22] [INFO] LaunchFrame.doLogin:630: Logging in...
+[19:57:22] [INFO] AuthlibHelper.authenticateWithAuthlib:70: Beginning authlib authentication attempt
+[19:57:22] [INFO] AuthlibHelper.authenticateWithAuthlib:71: successfully created YggdrasilAuthenticationService
+[19:57:22] [INFO] LaunchFrame$20.done:682: Login complete.
+[19:57:22] [INFO] MCInstaller.gatherAssets:140: Checking local assets file, for MC version 1.7.10 Please wait! 
+[19:57:24] [INFO] MCInstaller.launchMinecraft:341: Setting up native libraries for FTB Infinity Evolved 1.7 v Recommended Version MC 1.7.10
+[19:57:25] [INFO] MCLauncher.syncAssets:292: Syncing Assets:
+[19:57:25] [INFO] MCLauncher.launchMinecraft:89: Java Path: C:\Program Files\Java\jre1.8.0_181\bin\javaw.exe
+[19:57:25] [INFO] MCLauncher.launchMinecraft:90: Pack: FTB Infinity Evolved 1.7 1.7.10
+[19:57:25] [INFO] MCLauncher.setMemory:275: Setting MinMemory to 256
+[19:57:25] [INFO] MCLauncher.setMemory:277: Setting MaxMemory to 2048
+[19:57:25] [main/INFO] [LaunchWrapper]: Loading tweak class name cpw.mods.fml.common.launcher.FMLTweaker
+[19:57:25] [main/INFO] [LaunchWrapper]: Using primary

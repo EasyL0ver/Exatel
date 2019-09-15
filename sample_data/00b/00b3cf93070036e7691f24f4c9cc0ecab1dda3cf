@@ -1,0 +1,11 @@
+system = {X1'[t] == a*X1[t]^0.4*X2[t]^(-0.15) - X1[t]^0.2,
+          X2'[t] == X1[t] - X2[t]^0.2,
+          X1[0] == 1, X2[0] == 1};
+sol = ParametricNDSolve[system, {X1[t], X2[t]}, {t, 0, 500}, {a}]
+	
+Plot[
+Evaluate[
+    Table[{X1[a][t], X2[a][t]} /. sol,
+        {a, 0.7, 0.9, .1}]],
+             {t, 0, 500},
+              PlotRange -> All]

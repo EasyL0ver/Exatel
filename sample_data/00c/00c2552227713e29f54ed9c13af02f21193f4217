@@ -1,0 +1,68 @@
+
+body{
+	color:gray;
+	margin: 0 auto;
+	font-size: 22px;
+	height: 100%;
+	max-width: 800px;
+}
+        
+a{
+	color:#006CA7;
+	text-decoration: none;
+}
+
+.blue{
+    	color:#006CA7;
+}
+h2,h3{
+    	text-align:center;
+    	color:#006CA7;
+}
+#col-left {
+    	width: 44%;
+    	float: left;
+    	margin-right: 3%;
+    	overflow: hidden;
+}
+
+#col-left img {
+	display: block;
+    	padding-top: 100px;
+    	width: 44%;
+	position: absolute;
+}
+
+img.roue {
+	display: block;
+	width: 40%;
+	position :absolute;
+	z-index: -1;
+}
+
+#carre{
+	height: 90%;
+}
+
+#haut{
+	background-color: red;
+	float: left;
+	width: 12%;
+	z-index: 1;
+}
+
+#mid{
+	background-color: orange;
+	float: left;
+	width: 27%;
+	height: 200px;
+	z-index: 1;
+}
+
+#long{
+	background-color: yellow;
+	float: left;
+	width: 42%;
+	height: 70px;
+	z-index: 1;
+}

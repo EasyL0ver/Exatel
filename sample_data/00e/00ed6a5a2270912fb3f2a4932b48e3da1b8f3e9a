@@ -1,0 +1,314 @@
+testput = """lass="row">
+	<td width=35px>1</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=soawesome&r=useast.battle.net&s=datetime&o=desc&n=0">soawesome</a></td>
+	<td width=100px>1453</td>
+	<td width=68px>97</td>
+	<td width=70px>64</td>
+	<td width=68px>33</td>
+	<td width=70px>957</td>
+	<td width=70px>576</td>
+	<td width=70px>1114</td>
+	<td width=70px>1.66</td>
+	<td width=70px>14749</td>
+	<td width=70px>1169</td>
+	<td width=70px>965</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>2</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=global&r=useast.battle.net&s=datetime&o=desc&n=0">global</a></td>
+	<td width=100px>1418</td>
+	<td width=68px>114</td>
+	<td width=70px>73</td>
+	<td width=68px>41</td>
+	<td width=70px>1460</td>
+	<td width=70px>820</td>
+	<td width=70px>1233</td>
+	<td width=70px>1.78</td>
+	<td width=70px>14828</td>
+	<td width=70px>1071</td>
+	<td width=70px>830</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>3</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=wqqw&r=useast.battle.net&s=datetime&o=desc&n=0">wqqw</a></td>
+	<td width=100px>1411</td>
+	<td width=68px>40</td>
+	<td width=70px>33</td>
+	<td width=68px>7</td>
+	<td width=70px>398</td>
+	<td width=70px>128</td>
+	<td width=70px>425</td>
+	<td width=70px>3.11</td>
+	<td width=70px>5759</td>
+	<td width=70px>222</td>
+	<td width=70px>674</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>4</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=suncrusher-&r=uswest.battle.net&s=datetime&o=desc&n=0">suncrusher-</a></td>
+	<td width=100px>1365</td>
+	<td width=68px>57</td>
+	<td width=70px>40</td>
+	<td width=68px>17</td>
+	<td width=70px>528</td>
+	<td width=70px>312</td>
+	<td width=70px>666</td>
+	<td width=70px>1.69</td>
+	<td width=70px>7915</td>
+	<td width=70px>299</td>
+	<td width=70px>1196</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>5</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=vision&r=useast.battle.net&s=datetime&o=desc&n=0">vision</a></td>
+	<td width=100px>1351</td>
+	<td width=68px>94</td>
+	<td width=70px>59</td>
+	<td width=68px>35</td>
+	<td width=70px>869</td>
+	<td width=70px>581</td>
+	<td width=70px>1183</td>
+	<td width=70px>1.5</td>
+	<td width=70px>11136</td>
+	<td width=70px>769</td>
+	<td width=70px>1304</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>6</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=toxin-&r=useast.battle.net&s=datetime&o=desc&n=0">toxin-</a></td>
+	<td width=100px>1348</td>
+	<td width=68px>130</td>
+	<td width=70px>78</td>
+	<td width=68px>52</td>
+	<td width=70px>1662</td>
+	<td width=70px>679</td>
+	<td width=70px>1478</td>
+	<td width=70px>2.45</td>
+	<td width=70px>19443</td>
+	<td width=70px>949</td>
+	<td width=70px>1533</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>7</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=voa&r=useast.battle.net&s=datetime&o=desc&n=0">voa</a></td>
+	<td width=100px>1323</td>
+	<td width=68px>102</td>
+	<td width=70px>61</td>
+	<td width=68px>41</td>
+	<td width=70px>1005</td>
+	<td width=70px>529</td>
+	<td width=70px>1161</td>
+	<td width=70px>1.9</td>
+	<td width=70px>12016</td>
+	<td width=70px>982</td>
+	<td width=70px>1246</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>8</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=muscleglasses_&r=useast.battle.net&s=datetime&o=desc&n=0">muscleglasses_</a></td>
+	<td width=100px>1306</td>
+	<td width=68px>79</td>
+	<td width=70px>49</td>
+	<td width=68px>30</td>
+	<td width=70px>788</td>
+	<td width=70px>587</td>
+	<td width=70px>1047</td>
+	<td width=70px>1.34</td>
+	<td width=70px>8927</td>
+	<td width=70px>850</td>
+	<td width=70px>2047</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>9</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=droningengine&r=useast.battle.net&s=datetime&o=desc&n=0">droningengine</a></td>
+	<td width=100px>1302</td>
+	<td width=68px>64</td>
+	<td width=70px>42</td>
+	<td width=68px>22</td>
+	<td width=70px>636</td>
+	<td width=70px>370</td>
+	<td width=70px>800</td>
+	<td width=70px>1.72</td>
+	<td width=70px>6929</td>
+	<td width=70px>331</td>
+	<td width=70px>953</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>10</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=canskgj&r=useast.battle.net&s=datetime&o=desc&n=0">canskgj</a></td>
+	<td width=100px>1283</td>
+	<td width=68px>117</td>
+	<td width=70px>68</td>
+	<td width=68px>49</td>
+	<td width=70px>1047</td>
+	<td width=70px>815</td>
+	<td width=70px>1384</td>
+	<td width=70px>1.28</td>
+	<td width=70px>10172</td>
+	<td width=70px>389</td>
+	<td width=70px>2037</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>11</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=uknowit&r=useast.battle.net&s=datetime&o=desc&n=0">uknowit</a></td>
+	<td width=100px>1270</td>
+	<td width=68px>135</td>
+	<td width=70px>76</td>
+	<td width=68px>59</td>
+	<td width=70px>1226</td>
+	<td width=70px>836</td>
+	<td width=70px>1868</td>
+	<td width=70px>1.47</td>
+	<td width=70px>12656</td>
+	<td width=70px>935</td>
+	<td width=70px>1302</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>12</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=ak1na&r=useast.battle.net&s=datetime&o=desc&n=0">ak1na</a></td>
+	<td width=100px>1250</td>
+	<td width=68px>87</td>
+	<td width=70px>52</td>
+	<td width=68px>35</td>
+	<td width=70px>648</td>
+	<td width=70px>608</td>
+	<td width=70px>914</td>
+	<td width=70px>1.07</td>
+	<td width=70px>8961</td>
+	<td width=70px>514</td>
+	<td width=70px>1018</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>13</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=slim_&r=uswest.battle.net&s=datetime&o=desc&n=0">slim_</a></td>
+	<td width=100px>1236</td>
+	<td width=68px>89</td>
+	<td width=70px>52</td>
+	<td width=68px>37</td>
+	<td width=70px>964</td>
+	<td width=70px>654</td>
+	<td width=70px>1083</td>
+	<td width=70px>1.47</td>
+	<td width=70px>9578</td>
+	<td width=70px>575</td>
+	<td width=70px>893</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>14</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=helix.&r=useast.battle.net&s=datetime&o=desc&n=0">helix.</a></td>
+	<td width=100px>1223</td>
+	<td width=68px>81</td>
+	<td width=70px>48</td>
+	<td width=68px>33</td>
+	<td width=70px>724</td>
+	<td width=70px>580</td>
+	<td width=70px>945</td>
+	<td width=70px>1.25</td>
+	<td width=70px>10439</td>
+	<td width=70px>1008</td>
+	<td width=70px>1270</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>15</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=zerovongola&r=useast.battle.net&s=datetime&o=desc&n=0">zerovongola</a></td>
+	<td width=100px>1203</td>
+	<td width=68px>54</td>
+	<td width=70px>35</td>
+	<td width=68px>19</td>
+	<td width=70px>424</td>
+	<td width=70px>337</td>
+	<td width=70px>492</td>
+	<td width=70px>1.26</td>
+	<td width=70px>6800</td>
+	<td width=70px>378</td>
+	<td width=70px>1886</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>16</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=mitchellz&r=useast.battle.net&s=datetime&o=desc&n=0">mitchellz</a></td>
+	<td width=100px>1189</td>
+	<td width=68px>57</td>
+	<td width=70px>35</td>
+	<td width=68px>22</td>
+	<td width=70px>418</td>
+	<td width=70px>376</td>
+	<td width=70px>753</td>
+	<td width=70px>1.11</td>
+	<td width=70px>5805</td>
+	<td width=70px>477</td>
+	<td width=70px>805</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>17</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=ethan77777&r=useast.battle.net&s=datetime&o=desc&n=0">ethan77777</a></td>
+	<td width=100px>1177</td>
+	<td width=68px>41</td>
+	<td width=70px>26</td>
+	<td width=68px>15</td>
+	<td width=70px>374</td>
+	<td width=70px>196</td>
+	<td width=70px>357</td>
+	<td width=70px>1.91</td>
+	<td width=70px>4825</td>
+	<td width=70px>277</td>
+	<td width=70px>1779</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>18</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=be-a-man&r=useast.battle.net&s=datetime&o=desc&n=0">be-a-man</a></td>
+	<td width=100px>1177</td>
+	<td width=68px>72</td>
+	<td width=70px>42</td>
+	<td width=68px>30</td>
+	<td width=70px>493</td>
+	<td width=70px>437</td>
+	<td width=70px>793</td>
+	<td width=70px>1.13</td>
+	<td width=70px>7950</td>
+	<td width=70px>462</td>
+	<td width=70px>1382</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>19</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=drmustache&r=useast.battle.net&s=datetime&o=desc&n=0">drmustache</a></td>
+	<td width=100px>1177</td>
+	<td width=68px>65</td>
+	<td width=70px>38</td>
+	<td width=68px>27</td>
+	<td width=70px>434</td>
+	<td width=70px>368</td>
+	<td width=70px>857</td>
+	<td width=70px>1.18</td>
+	<td width=70px>6422</td>
+	<td width=70px>532</td>
+	<td width=70px>682</td>
+	</tr>
+
+		<tr class="row">
+	<td width=35px>20</td>
+	<td width=150px><a style="width: 175px; padding: 0px; margin: 0px;"  href="?p=tier2stats&u=spreet&r=useast.battle.net&s=datetime&o=desc&n=0">spreet</a></td>
+	<td width=100px>1174</td>
+	<td width=68px>139</td>
+	<td width=70px>75</td>
+	<td width=68px>64</td>
+	<td width=70px>1011</td>
+	<td width=70px>916</td>
+	<td

@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace informatika{
+    class Program{
+        static void Main(string[] args){
+            char ch;
+            int numberCounter = 0;
+            int pointsCounter = 0;
+            int commaCounter = 0;
+            StreamReader reader;
+            Console.OutputEncoding = Encoding.UTF8;
+            string filePlace = "";
+            bool isExist = false;
+
+            while (isExist == false) {
+                Console.Clear();
+                Console.WriteLine("Въведете местоположението на файла.");
+                Console.WriteLine(@"Пример: C:\folder1\file.txt");
+                Console.Write("Местоположение: ");
+                filePlace = Console.ReadLine();
+
+                if (filePlace == ""){
+                    Console.Clear();
+                    Console.WriteLine("Не съществува такъв файл.");
+                }else{
+                    reader = new StreamReader(@filePlace);
+                    if (reader.EndOfStream){
+                        Console.Clear();
+                        Console.WriteLine("Не съществува такъв файл.");
+                    }
+                    else if (filePlace == ""){
+                        Console.Clear();
+                        Console.WriteLine("Не съществува такъв файл.");
+                    }
+                    else{
+                        isExist = true;
+                    }
+                }
+                
+            }
+            reader = new StreamReader(@filePlace);
+            Console.Clear();
+            do{
+                ch = (char)reader.Read();
+                if (Char.IsNumber(ch)){
+                    numberCounter++;
+                }
+                switch (ch){
+                    case '.':
+                        pointsCounter++;
+                        break;
+                    case ',':
+                        commaCounter++;
+                        break;
+                }
+                
+            } while (!reader.EndOfStream);
+            reader.Close();
+            reader.Dispose();
+            Console.WriteLine("Във файлът има: ");
+            Console.WriteLine(numberCounter.ToString() + " числа");
+            Console.WriteLine(pointsCounter.ToString() + " точки");
+            Console.WriteLine(commaCounter.ToString() + " запетайки");
+            Console.ReadLine();
+        }
+    }
+    }

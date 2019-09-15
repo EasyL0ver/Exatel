@@ -1,0 +1,28 @@
+#!bin/bash
+#############################################
+#######监控某个端口被连接的外部IP地址
+port=1024
+if [ ! -f pid ];then
+  touch pid
+  echo 1 > pid
+fi
+while [ 1 = 1 ]
+do
+  pid=`cat pid`
+  timeH=`date +%H`
+  timeM=`date +%M`
+  if [[ ${timeH#0} -eq 0 && ${timeM#0} -lt 9 && $pid -eq 1 ]];then
+    mv linked_ip.txt log/linked_ip.txt.`date +%Y%m%d%H%M%S`
+    touch linked_ip.txt
+    echo 0 > pid
+  else
+    echo 1 > pid
+  fi
+  ss -nat|grep ${port} | awk -F ' ' 'NR>1{print $5}'|awk -F ':' '{print $1}'| sort|uniq | awk '{$2=time}{print}' time=`date +%Y/%m/%d-%H:%M:%S` >> linked_ip.txt
+  diff_ip_count=`cat linked_ip.txt|awk -F ' ' '{print $1}' |sort|uniq|wc -l`
+  if [ $diff_ip_count -gt 10 ];then
+    echo `date +%Y%m%d%H%M%S ` ----------------- >> danger_ip.log
+    cat linked_ip.txt|awk -F ' ' '{print $1}' | sort|uniq >> danger_ip.log
+  fi
+  sleep 600
+done

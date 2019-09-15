@@ -1,0 +1,4 @@
+long startRec = System.nanoTime(); // Start time for recursion
+long startIter = System.nanoTime(); // Start time for iteration
+System.out.print("fib(" + n + ") Answer with iteration: " + fibIter(n) + "    Time: " + (System.nanoTime() - startIter) + "ns" + 
+                        "\nfib(" + n + ") Answer with recursion: " + fibRec(n) + "    Time: " + (System.nanoTime() - startRec) + "ns");

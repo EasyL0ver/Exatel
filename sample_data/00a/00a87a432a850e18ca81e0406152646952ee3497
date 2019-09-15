@@ -1,0 +1,13 @@
+	{exp:low_search:form required="keywords" collection="my_collection" query="{segment_x}" result_page="search/results"}
+		<input type="text" name="keywords">
+		<input type="text" name="search:custom_field:colx">
+		<select name="category[]">
+			<option value="">Everywhere</option>
+			{exp:channel:categories category_group="1" style="linear"}
+			<option value="{category_id}"{if low_search_category ~ '/\b'.category_id.'\b/'} selected{/if}>
+				{category_name}
+			</option>
+			{/exp:channel:categories}
+		</select>
+		<button type="submit" class="btn btn-primary mb-2">Search</button>
+	{/exp:low_search:form}

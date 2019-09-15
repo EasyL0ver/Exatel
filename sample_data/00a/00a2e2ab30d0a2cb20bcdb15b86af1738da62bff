@@ -1,0 +1,13 @@
+All candidates sourced today by everyone
+
+GET candidatesources/_count
+{
+  "query": {
+    "range":{
+      "candidateCreationTime":{
+        "gte": "28/12/2018",
+        "format": "dd/MM/yyyy"
+      }
+    }
+  }
+}

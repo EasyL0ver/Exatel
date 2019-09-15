@@ -1,0 +1,19 @@
+PRACS bugs:
+
+-rifles' iron sights zoom too low (values should be as such):
+	opticsZoomMin=0.25;
+	opticsZoomMax=1.1;
+	opticsZoomInit=0.75;
+-CETME-S charging handle "breaks" when reloading
+-G3s with rails only have some optics compatible (needs to inherit from rhs rail class)
+-G3 T40 variants don't have iron sights for GL (assumed WIP)
+-weapons could use RHS sounds, if you like I can easily set that up. Current ideas:
+	-FN FNC will use G36 sounds
+	-.308 Galil and G3 variants will use MP44 firing sounds, with AK bolt/echo sounds
+	-Galil SAR will use same sounds as M21 (the Serbian 5.56 AK)
+
+-Air Crew Tac Vest (RACS) and Jet Pilot Survival Harness could use some repositioning on the pistol proxy
+-Sahrani pistol holste (PRACS_holster_vest) doesn't have a pistol proxy
+-1st ID Officer uniform (PRACS_M93_ASDPM_1ID_PL_uniform) has same camo as 2nd Paras
+-consider setting all of the "Ammo backpacks" (ALICE/Assault pack variants) to scope=1, since they're all the same model and Arsenal no longer spawns these backpacks with their intended ammo load
+-CIRAS-S and chest rigs have an insane carry limit, no armor values (consider having them inherit from RHS SPCS vests, since they are similar in construction and purpose)

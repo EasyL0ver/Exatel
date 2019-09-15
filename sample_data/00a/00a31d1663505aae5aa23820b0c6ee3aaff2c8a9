@@ -1,0 +1,20 @@
+~$ gem search -b  postgres
+
+*** LOCAL GEMS ***
+
+postgres (0.7.9.2008.01.28)
+
+*** REMOTE GEMS ***
+
+activerecord-jdbcpostgresql-adapter (0.9.2, 0.9.1)
+antage-postgres (0.7.9.2009.05.13)
+do_postgres (0.10.0)
+jdbc-postgres (8.3.604, 8.2)
+jeremyevans-sequel_postgresql_triggers (1.0.2)
+jqr-postgres_sequence_support (0.0.5)
+michaelyta-neverblock-postgresql-adapter (0.1)
+oldmoe-activerecord-neverblock-postgresql-adapter (0.1.0)
+postgres (0.7.9.2008.01.28)
+postgres-pr (0.6.1)
+rafaelp-postgresql_migrations (0.1.2)
+ruby-postgres (0.7.1.2006.04.06)

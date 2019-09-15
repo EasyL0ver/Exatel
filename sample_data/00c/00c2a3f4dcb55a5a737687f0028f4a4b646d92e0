@@ -1,0 +1,395 @@
+Position = {0, 0, 0}
+RootPos = {0, 0, 0}
+ChestPos = {0, 0, 0}
+TopPos = {0, 0, 0}
+Orientation = 0
+StartOrientation = 0
+Stored_Position = {0, 0, 0}
+LastLayer = {0, 0, 0}
+Junk = {"minecraft:cobblestone", "minecraft:dirt", "minecraft:gravel", "minecraft:stone"}
+
+
+function init()
+    Position = {0, 0, 0}    
+end
+init()    
+function dig_front()
+    if turtle.detect() then
+        return turtle.dig()    
+    else
+        return true
+    end
+end
+    
+function dig_up()
+    if turtle.detectUp() then
+        return turtle.digUp()
+    else
+        return true
+    end
+end
+
+function dig_down()
+    if turtle.detectDown() then
+        return turtle.digDown()
+    else
+        return true
+    end
+end
+
+function forward()
+    if turtle.forward() then
+        if Orientation == 0 then
+            Position[2] = Position[2] - 1
+        elseif Orientation == 1 then
+            Position[1] = Position[1] + 1
+        elseif Orientation == 2 then
+            Position[2] = Position[2] + 1
+        elseif Orientation == 3 then
+            Position[1] = Position[1] - 1
+        end
+        return true    
+    else 
+        return false
+    end    
+end
+
+function up()
+    local success = true
+    success = turtle.up()
+    if success == true then
+        Position[3] = Position[3] + 1
+        return true
+    else
+        return false
+    end
+end
+
+function down()
+    local success = true
+    success = turtle.down()
+    if success == true then
+        Position[3] = Position[3] - 1
+        return true
+    else
+        return false
+    end
+end
+
+
+function mine_forward()
+    local success = true
+    success = dig_front()
+    if success == false then
+        return false
+    end
+    return forward()
+end
+
+function mine_up()
+    local success = true
+    success = dig_up()
+    if success == false then
+        return false
+    end
+    return up()
+end    
+function mine_down()
+    local success = true
+    success = dig_down()
+    if success == false then
+        return false
+    end
+    return down()
+end
+function turn_right()
+    turtle.turnRight()
+    Orientation = (Orientation + 1) % 4
+end
+
+function turn_left()
+    turtle.turnLeft()
+    Orientation = (Orientation - 1) % 4
+end
+
+function set_orientation(o)
+    while o ~= Orientation do
+        turn_right()
+    end
+end
+
+
+
+function navigate_to(x, y, z)
+    navigate_to_z(z)
+    navigate_to_x(x)
+    navigate_to_y(y)
+end
+
+function navigate_to_xyz(x, y, z)
+    navigate_to_x(x)
+    navigate_to_y(y)
+    navigate_to_z(z)
+end
+
+function navigate_to_x(x)
+    local offset = x - Position[1]
+    if offset > 0 then
+        set_orientation(1)
+        while Position[1] ~= x do
+            mine_forward()
+        end
+    elseif offset < 0 then
+        set_orientation(3)
+        while Position[1] ~= x do
+            mine_forward()
+        end
+    end
+end
+
+function navigate_to_y(y)
+    local offset = y - Position[2]
+    if offset > 0 then
+        set_orientation(2)
+    elseif offset < 0 then
+        set_orientation(0)
+    end
+    while Position[2] ~= y do
+        mine_forward()
+    end
+end
+                                                
+function navigate_to_z(z)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    local offset = z - Position[3]
+    print(offset)
+    if offset < 0 then
+        while Position[3] > z do
+            mine_down()
+        end    
+    elseif offset > 0 then
+        while Position[3] < z do
+            mine_up()
+        end
+    end
+end
+
+function navigate_to_start()
+    navigate_to(0,0,0)
+    set_orientation(0)
+end
+
+function distance_to_start()
+
+    local distance = 0
+
+
+    local y_dist = math.abs(Position[1])
+    local x_dist = math.abs(Position[2])
+    local z_dist = math.abs(Position[3])
+    distance = y_dist + x_dist + y_dist
+    return distance
+end
+
+function check_fuel_return(delta )
+    local fuel = turtle.getFuelLevel()
+    local distance = distance_to_start()
+    if distance + delta >= fuel then
+        print("Not enough fuel - ")
+        print("Returning to start")
+        navigate_to_start()
+    return true
+    end
+    return false
+end
+
+Mine_Circ = 8
+Mine_Height = 40
+print("ayy lmao")
+
+function do_mine_up(length, width, start_height)    
+    local returning
+    for i=1, start_height-1, 1 do
+        mine_up()
+    end
+    for i=start_height, Mine_Height, 1 do
+        returning = mine_layer(length-1, width)
+        if returning == true then
+            return
+        end
+        LastLayer = Position
+        serialize_mining_info()
+        -- Check inventory
+        -- Dump if necessary
+        check_inv_dump()
+        navigate_to_x(RootPos[1])
+        navigate_to_y(RootPos[2])        
+        set_orientation(StartOrientation)
+        mine_up()
+    end
+end
+
+function check_fuel_mine_up()
+    local returning = check_fuel_for_return(Mine_Circ*Mine_Circ)
+    return returning
+end    
+
+function mine_layer(length, width)  
+    local returning = check_fuel_return(Mine_Circ * Mine_Circ)
+    if returning == true then
+        return true    
+    end
+    set_orientation(StartOrientation)
+    for trips=1, width / 2, 1 do
+        mine_line(length)
+        turn_right()
+        while mine_forward() == false do
+        end
+        turn_right()    
+        mine_line(length)        
+        --turn_left()        
+        if trips ~= width / 2 then
+            turn_left()
+            while mine_forward() == false do
+            end
+            turn_left()
+        end
+        --turn_left()
+    end 
+end    
+
+function mine_line(length)
+    local line_counter = 0
+    while line_counter < length do
+        while mine_forward() == false do
+        end
+        line_counter = line_counter + 1
+        check_inv_dump()
+    end
+end
+
+function keep_item(item)
+    return false
+end
+
+function dump_junk()
+    for i=1, 16, 1 do
+        turtle.select(i)
+        info = turtle.getItemDetail(i)
+        if info ~= nil  then       
+            for _, item in ipairs(Junk) do
+                if info.name == item then
+                    turtle.dropDown()
+                end
+            end
+        end
+    end
+end
+
+function empty_inventory()
+    for i=1, 16, 1 do
+        turtle.select(i)
+        item = turtle.getItemDetail(i)
+        qty = turtle.getItemCount(i)
+        if keep_item(item) == false then
+            turtle.dropDown(qty)
+        end
+    end
+end        
+
+function empty_slots()
+    empty = 0
+    for i=1, 16, 1 do        
+        qty = turtle.getItemCount(i)
+        if qty == 0 then
+            empty = empty + 1
+        end
+    end
+    return empty
+end
+
+function is_inv_full()
+    if empty_slots() == 0 then
+        return true
+    end
+    return false
+end
+function check_inv_dump()
+    if is_inv_full() == true then
+        dump_junk()
+    end
+    if is_inv_full() == true then
+        print("Returning to start to")
+        print("Unload inventory")
+        Stored_Orientation = Orientation
+        Stored_Position[1] = Position[1]
+        Stored_Position[2] = Position[2]
+        Stored_Position[3] = Position[3]
+        return_to_chest()        
+        while is_inv_full() == true do
+            empty_inventory()
+        end
+        print("Resuming mining")
+        chest_to_root()
+        navigate_to_xyz(Stored_Position[1], Stored_Position[2], Stored_Position[3])
+        set_orientation(Stored_Orientation)
+        return true
+    end
+    return false
+end
+
+function dig_stairs(width, height)
+    Mine_Circ = width
+    for i=1, height, 1 do
+        mine_down()
+        mine_layer()
+        navigate_to(0, i, -i)
+    end
+end
+
+function resume()
+    h = 0
+    while up() do
+        h = h + 1
+        Mine_Height = Mine_Height - 1
+    end
+    do_mine_up()
+end        
+
+function print_pos(pos_array)
+    print(string.format("x: %d y: %d z: %d", pos_array[1], pos_array[2], pos_array[3]))
+end
+
+function get_pos()
+    x,y, z = gps.locate()
+    Position[1] = x
+    Position[2] = y
+    Position[3] = z
+    return {x, y, z}
+end
+
+function set_chest_pos()
+    ChestPos = get_pos()
+end
+
+function set_top_pos()
+    TopPos = get_pos()
+end
+
+function set_last_layer()
+    LastLayer = Position
+end
+
+function set_root_pos()
+    RootPos = get_pos()
+end
+
+function return_to_chest()
+    print(RootPos[1])
+    navigate_to_xyz(RootPos[1], RootPos[2], RootPos[3])
+    navigate_to_xyz(TopPos[1], TopPos[2], TopPos[3])
+    navigate_to_xyz(ChestPos[1], ChestPos[2], ChestPos[3])
+end
+
+function chest_to_root()
+    navigate_to_xyz(TopPos[1], TopPos[2], TopPos[3])
+   

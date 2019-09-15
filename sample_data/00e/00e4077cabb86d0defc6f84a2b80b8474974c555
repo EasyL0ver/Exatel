@@ -1,0 +1,29 @@
+dig glasno.st
+
+; <<>> DiG 9.5.1-P2 <<>> glasno.st
+;; global options:  printcmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 26325
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 4, ADDITIONAL: 3
+
+;; QUESTION SECTION:
+;glasno.st.			IN	A
+
+;; ANSWER SECTION:
+glasno.st.		560	IN	A	195.178.186.40
+
+;; AUTHORITY SECTION:
+st.			40556	IN	NS	ns2.bahnhof.net.
+st.			40556	IN	NS	auth61.ns.uu.net.
+st.			40556	IN	NS	dns-au.st.
+st.			40556	IN	NS	ns1.bahnhof.net.
+
+;; ADDITIONAL SECTION:
+ns1.bahnhof.net.	1791	IN	A	195.178.160.2
+ns2.bahnhof.net.	153	IN	A	212.85.64.4
+dns-au.st.		38884	IN	A	203.19.59.140
+
+;; Query time: 12 msec
+;; SERVER: 195.130.131.1#53(195.130.131.1)
+;; WHEN: Wed Sep 16 00:15:25 2009
+;; MSG SIZE  rcvd: 186

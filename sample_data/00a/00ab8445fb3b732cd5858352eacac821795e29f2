@@ -1,0 +1,32 @@
+### View AWSCLI version
+```
+aws --version
+aws-cli/1.11.112 Python/3.6.3 Linux/4.4.0-130-generic botocore/1.5.75
+```
+
+### List collections
+```
+aws rekognition list-collections
+{
+    "CollectionIds": [
+        "test_collection",
+        "test_collectionaa"
+    ]
+}
+```
+
+### Delete collection using collection name
+```
+aws rekognition delete-collection --collection-id "test_collection"
+{
+    "StatusCode": 200
+}
+aws rekognition delete-collection --collection-id "test_collectionaa"
+{
+    "StatusCode": 200
+}
+aws rekognition list-collections                                   
+{
+    "CollectionIds": []
+}
+```

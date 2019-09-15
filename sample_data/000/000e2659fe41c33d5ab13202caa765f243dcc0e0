@@ -1,0 +1,18 @@
+emx@emx.mx
+19:25:22пример 
+19:26:31xmpp.emx.mx.conf
+
+# renew_before_expiry = 30 days
+version = 0.10.2
+archive_dir = /etc/letsencrypt/archive/xmpp.emx.mx
+cert = /etc/letsencrypt/live/xmpp.emx.mx/cert.pem
+privkey = /etc/letsencrypt/live/xmpp.emx.mx/privkey.pem
+chain = /etc/letsencrypt/live/xmpp.emx.mx/chain.pem
+fullchain = /etc/letsencrypt/live/xmpp.emx.mx/fullchain.pem
+
+# Options used in the renewal process
+[renewalparams]
+authenticator = apache
+installer = apache
+account = ***
+post_hook = путь к скрипту, который будет делаться после renew'а сертификата

@@ -1,0 +1,132 @@
+class Assignment3():
+    
+    mappings = {0 : "e",
+               1 : "jnq", 
+               2 : "rwx", 
+               3 : "dsy", 
+               4 : "ft", 
+               5 : "am", 
+               6 : "civ", 
+               7 : "bku", 
+               8 : "lop", 
+               9 : "ghz"}
+    
+    mappings2 = {"a" : 5,
+                 "b" : 7,
+                 "c" : 6,
+                 "d" : 3,
+                 "e" : 0,
+                 "f" : 4,
+                 "g" : 9,
+                 "h" : 9,
+                 "i" : 6,
+                 "j" : 1,
+                 "k" : 7,
+                 "l" : 8,
+                 "m" : 5,
+                 "n" : 1,
+                 "o" : 8,
+                 "p" : 8,
+                 "q" : 9,
+                 "r" : 2,
+                 "s" : 3,
+                 "t" : 4,
+                 "u" : 7,
+                 "v" : 6,
+                 "w" : 2,
+                 "x" : 2,
+                 "y" : 3,
+                 "z" : 9}
+
+    
+    def __init__(self):
+        pass
+    
+        
+    def readFileRow(self, name):
+        f = open(name, 'r')
+        array = []
+        for line in f:
+            array.append(line.strip())
+            
+        return array
+    
+    def mapWords(self, dict, phone):
+        for phonenumber in phone:
+            words = []
+       
+            for line in dict:
+                number = ""
+                for char in line:
+                    number += str(self.mappings2[char.lower()])
+                
+                
+                if(phonenumber.find(number) != -1):
+                    words.append(Word(line, number))
+            
+      
+            print(self.recurse(phonenumber, words))
+            #self.strip(phonenumber, words)
+            #for line in array:
+            #    print(line.toString())
+            #for k, v in collection.items():
+                #print(v.toString())
+            
+            print("Rest:", phonenumber)
+            print("----")
+            
+    def strip(self, phoneNr, words):
+        array = []
+        for word in words: 
+            number = str(phoneNr)
+            if(number.replace(str(word.number), "") != number):
+                if(number.find(str(word.number)) > 1):
+                    continue
+                number = number.replace(str(word.number), word.word + " ")               
+                for word in words:
+                    if(number.replace(str(word.number), "") != number):
+                        number = number.replace(str(word.number), word.word + " ")
+
+
+            array.append(phoneNr + ": " + number)
+        if(len(array) > 0):
+            print(array)
+            
+    
+    def recurse(self, number, words, result = [], start = 0, end = 1):
+        if(end > len(number)):
+            start += 1
+            end = start + 1
+        
+        if(start > len(number)):
+            return result
+        else:
+            for word in words:
+                if(number[start:end] == word.number):
+                    result.append(word.word)
+                    number = number.replace(str(word.number), "")
+                    end = start + 1
+                    self.recurse(number, words, result, start, end)
+                else:
+                    end += 1
+                    self.recurse(number, words, result, start, end)
+        
+        return result
+        
+        
+    
+class Word():
+    word = ""
+    number = ""
+    
+    def __init__(self, word, number):
+        self.word = word
+        self.number = number
+        
+    def toString(self):
+        return self.number, self.word
+        
+ass = Assignment3()
+
+
+ass.mapWords(ass.readFileRow("dict.txt"), ass.readFileRow("phone.txt"))

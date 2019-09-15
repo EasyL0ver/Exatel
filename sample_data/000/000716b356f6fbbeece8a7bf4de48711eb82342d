@@ -1,0 +1,117 @@
+
+""" * * Association Tables  * """
+
+class AlbumOwner(DeclarativeBase):
+    __tablename__ = 'albumOwner'
+
+    user_id = Column(types.Integer, ForeignKey('user.id'), nullable=False, primary_key=True)
+    album_id = Column(types.Integer, ForeignKey('album.id'), nullable=False, primary_key=True)
+
+class GroupPermission(DeclarativeBase):
+    __tablename__ = 'groupPermission'
+
+    group_id = Column(types.Integer, ForeignKey('group.id'), nullable=False, primary_key=True)
+    permission_id = Column(types.Integer, ForeignKey('permission.id'), nullable=False, primary_key=True)
+
+class UserGroup(DeclarativeBase):
+    __tablename__ = 'userGroup'
+
+    group_id = Column(types.Integer, ForeignKey('group.id'), nullable=False, primary_key=True)
+    user_id = Column(types.Integer, ForeignKey('user.id'), nullable=False, primary_key=True)
+
+class AlbumGroupPermission(DeclarativeBase):
+    __tablename__ = 'albumGroupPermission'
+
+    album_id = Column(types.Integer, ForeignKey('album.id'), nullable=False, primary_key=True)
+    group_id = Column(types.Integer, ForeignKey('group.id'), nullable=False, primary_key=True)
+    permission_id = Column(types.Integer, ForeignKey('permission.id'), nullable=False, primary_key=True)
+
+    album = relation('Album')
+    group = relation('Group')
+    permission = relation('AlbumPermission')
+
+    def __init__(self, album, group, permission):
+        self.album = album
+        self.group = group
+        self.permission = permission
+
+
+""" * * * * * * * * * * * * * """
+""" * * * * *  User * * * * * """
+
+class User(DeclarativeBase):
+    __tablename__ = 'user'
+
+    id = Column(types.Integer, primary_key=True)
+    username = Column(types.String(16), nullable=False, unique=True)
+    _password = Column('password', types.String(255), nullable=False)
+    name = Column(types.String(255))
+    email = Column(types.String(128))
+    create_date = Column(types.DateTime, nullable=True)
+
+    groups = relation('Group', secondary=UserGroup.__table__)
+    ownedAlbums = relation('Album', backref=backref('owner', uselist=False), secondary=AlbumOwner.__table__)
+
+    def __init__(self, username, passwd, name = None, email = None):
+        self.username = username
+        self.password = passwd
+        self.name = name
+        self.email = email
+        self.create_date = datetime.datetime.now()
+
+    def validate_password(self, password):
+        p = hashlib.md5(password).hexdigest()
+        return (self.password == p)
+
+    def __get_password__(self):
+        return self._password
+
+    def __set_password__(self, password):
+        p = hashlib.md5(password).hexdigest()
+        self._password = p
+
+    password = property(__get_password__, __set_password__)
+
+
+""" * * * * * * * * * * * * * """
+""" * * * * *  Group  * * * * """
+
+class Group(DeclarativeBase):
+    __tablename__ = 'group'
+
+    id = Column(types.Integer, primary_key=True)
+    name = Column(types.String(16), nullable=False, unique=True)
+    create_date = Column(types.DateTime, nullable=True)
+
+    users = relation('User', secondary=UserGroup.__table__)
+    globalPermissions = relation('GlobalPermission', secondary=GroupPermission.__table__, backref=backref('groups'))
+    albumPermissions = relation('AlbumPermission', secondary=GroupPermission.__table__, backref=backref('groups'))
+
+    def __init__(self, name, initial_members=[]):
+        self.name = name
+        self.create_date = datetime.datetime.now()
+        self.users = initial_members
+
+
+""" * * * * * * * * * * * * * """
+""" * * * * Permissions * * * """
+
+class Permission(DeclarativeBase):
+    __tablename__ = 'permission'
+
+    id = Column(types.Integer, primary_key=True)
+    name = Column(types.String(16), nullable=False)
+    title = Column(types.String(64))
+    context = Column(types.String(32))
+    __mapper_args__ = {'polymorphic_on': context}
+
+    def __init__(self, name, title=None, initial_groups=[]):
+        self.name = name
+        self.title = title
+        self.groups = initial_groups
+
+class GlobalPermission(Permission):
+    __mapper_args__ = {'polymorphic_identity': 'global'}
+
+class AlbumPermission(Permission):
+    __mapper_args__ = {'polymorphic_identity': 'album'}

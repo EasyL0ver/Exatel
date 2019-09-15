@@ -1,0 +1,22 @@
+import javax.swing.JOptionPane;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        String Input = JOptionPane.showInputDialog("Text:");
+        String Output;
+
+        //replace
+        Output = Input.replaceAll("1", "one");
+        Output = Input.replaceAll("2", "two");
+
+        //Output
+        System.out.println(Output);
+    }
+}
+	
+Output = Input.replaceAll("1", "one");
+Output = Output.replaceAll("2", "two");
+	
+Output = Input.replaceAll("1", "one").replaceAll("2", "two");

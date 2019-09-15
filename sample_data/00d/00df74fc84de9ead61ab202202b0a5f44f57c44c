@@ -1,0 +1,125 @@
+#include "stdio.h"
+#include "stdlib.h"
+#include "cmath"
+void inputNumber(float*, float*);
+void outputNumber(float, float);
+void indicativeForm(float, float, float*, float*);
+void conjugateNumber(float, float);
+void involution(float, float, float, float);
+void informationAboutDeveloper();
+
+int main() {
+	bool flag = false;
+	float valid = 0, imaginary = 0, z = 0, fi = 0;	//fi is angle , z is module of complex number
+	int choise;
+	printf("1 - Input your number a + bi\n"
+		"2 - Output your number a + bi\n"
+		"3 - Dispay your number in inddicative form ( z = sqrt(a*a + b*b) * e^(i*arctg(b/a)) )\n"
+		"4 - Display your number in conjugate form ( z = a - b * i )\n"
+		"5 - Your number in invlolution ( z^power = |z|( (cos(power*fi) + sin(power*fi) )\n"
+		"6 - Information about developer\n"
+		"7 - Exit\n");
+	do {
+		printf("\nPlease enter your choise: ");
+		scanf("%d", &choise);
+		fflush(stdin);
+		switch (choise){
+		case 1:
+			valid = 0, imaginary = 0;
+			inputNumber(&valid, &imaginary); 
+			flag = true;
+			break;
+		case 2:
+			if (flag == true){
+				outputNumber(valid, imaginary);
+			}
+			else {
+				printf("Please input your number(press 1)");
+			}
+			break;
+		case 3:
+			if (flag == true) {
+				indicativeForm(valid, imaginary, &z, &fi);
+			}
+			else {
+				printf("Please input your number(press 1)");
+			}
+			break;
+		case 4:
+			if (flag == true) {
+				conjugateNumber(valid, imaginary);
+			}
+			else {
+				printf("Please input your number(press 1)");
+			}
+			break;
+		case 5:
+			if (flag == true) {
+				involution(valid, imaginary, z, fi);
+			}
+			else {
+				printf("Please input your number(press 1)");
+			}
+			break;
+		case 6:
+			informationAboutDeveloper();
+			break;
+		case 7:
+			exit(0);
+		}
+	} while (true);
+	return 0;
+}
+
+void inputNumber(float* valid, float *imaginary) {
+	printf("Please,input valid part of complex number: ");
+	while (!scanf("%f", valid)) {
+		printf("Please enter your valid number again :");
+		fflush(stdin);
+	}
+	printf("Please,input imaginary part of complex number: ");
+	while (!scanf("%f", imaginary)) {
+		printf("Please enter your  number again :");
+		fflush(stdin);
+	}
+}
+
+void outputNumber(float valid, float imaginary) {    // z = a + b * i
+	if (imaginary >= 0){
+		printf("Your number is : %.1f+%.1fi\n", valid, imaginary);
+	}
+	else {
+		printf("Your number is : %.1f%.1fi\n", valid, imaginary);
+	}
+}
+
+void indicativeForm(float valid, float imaginary, float *z, float *fi) { // z = sqrt(a*a + b*b) * e^(i*arctg(b/a))
+	*z = sqrt(valid*valid + imaginary*imaginary);
+	*fi = atan(imaginary / valid);
+	printf("z=%.1f*e^(i*%.1f)\n", *z, *fi);
+}
+
+void conjugateNumber(float valid, float imaginary) { // z = a - b * i
+	if (imaginary>0)
+		printf("Conjugate number is : %.1f-%.1f*i\n", valid, imaginary);
+	else {
+		imaginary *= -1;
+		printf("Conjugate number is : %.1f+%.1f*i\n", valid, imaginary);
+	}
+}
+
+void involution(float valid, float imaginary, float z, float fi) {
+	z = sqrt(valid*valid + imaginary*imaginary); //we do this operation to make "printf" easier to read
+	fi = atan(imaginary / valid);				 //same reason
+	int power;
+	printf("Please,input your power: ");
+	scanf("%d", &power);
+	fflush(stdin);
+	z = pow(abs(z), power);   //same too
+	fi *= power;
+	printf("z^%d=%.3f*(cos(%.3f)+i*sin(%.3f)\n", power, z, fi, fi);
+}
+
+void informationAboutDeveloper(){
+	printf("Creator is Masha :)\n");
+}

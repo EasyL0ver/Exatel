@@ -1,0 +1,90 @@
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+class Stack{
+	private:
+		int *arr;
+		int top;
+		int size;
+	public:
+		Stack();
+		Stack(int);
+		~Stack();
+		void push(int);
+		int pop();
+};
+
+Stack::Stack(){
+	top = -1;
+	size = 100;
+	arr = new int[size];
+}
+
+Stack::Stack(int size){
+	top = -1;
+	this->size = size;
+	arr = new int[this->size];
+}
+
+Stack::~Stack(){
+	delete[] arr;
+}
+
+void Stack::push(int item){
+	if(top == (size - 1)){
+		cout << "STACK OVERFLOW" << endl;
+	}
+	else{
+		top = top + 1;
+		arr[top] = item;
+		cout << item << " pushed" << endl;
+	}
+}
+
+int Stack::pop(){
+	int ret  = -1;
+	if(top == -1){
+		cout << "STACK UNDERFLOW" << endl;
+	}
+	else{
+		ret = arr[top];
+		top = top - 1;
+	}
+	return ret;
+}
+
+int main() {
+	system("cls");
+	int size;
+	cout << "Enter the size of the stack: ";
+	cin >> size;
+	Stack obj(size);
+	int choice;
+	do {
+		cout << "Press 1 to push an element\n";
+		cout << "Press 2 to pop an element\n";
+		cout << "Press 3 to quit\n";
+		cout << "Enter your choice: ";
+		cin >> choice;
+		int temp;
+		switch(choice){
+			case 1:
+				cout << "Enter item: ";
+				cin >> temp;
+				obj.push(temp);
+				break;
+			case 2:
+				temp = obj.pop();
+				if(temp != -1)
+					cout << temp << " popped" << endl;
+				break;
+			case 3:
+				break;
+			default:
+				cout << "Invalid choice" << endl;
+		}	
+	}while(choice != 3);
+	return 0;
+}

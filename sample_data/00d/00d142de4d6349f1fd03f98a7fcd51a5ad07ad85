@@ -1,0 +1,510 @@
+-- Settings
+local red = 0
+local green = 0
+local blue = 0
+local shirt = 331055592  
+local pants =  2182786531 
+local face =  7075502 
+local hat =  244159819 
+local tshirt = 0 
+
+local color = Color3.new(red / 255, green / 255, blue / 255)
+local RHSize = Instance.new("ScreenGui")
+local ODerDetector = Instance.new("Frame")
+local kk = Instance.new("TextLabel")
+local Up = Instance.new("ImageButton")
+local Down = Instance.new("ImageButton")
+--Properties:
+RHSize.Name = "RHSiz"
+RHSize.Parent = game.CoreGui
+
+ODerDetector.Name = "ODerDetector"
+ODerDetector.Parent = RHSize
+ODerDetector.BackgroundColor3 = Color3.new(0.0470588, 1, 0.572549)
+ODerDetector.Position = UDim2.new(0, 0, 0, 0)
+ODerDetector.Size = UDim2.new(0, 83, 0, 82)
+
+kk.Name = "kk"
+kk.Parent = ODerDetector
+kk.BackgroundColor3 = Color3.new(0.0470588, 1, 0.572549)
+kk.BorderSizePixel = 2
+kk.Position = UDim2.new(0.942307711, -41, 0.5, -25)
+kk.Size = UDim2.new(0, 41, 0, 50)
+kk.Font = Enum.Font.SourceSans
+kk.Text = "0"
+kk.TextColor3 = Color3.new(0, 0, 0)
+kk.TextScaled = true
+kk.TextSize = 14
+kk.TextWrapped = true
+
+Up.Name = "Up"
+Up.Parent = ODerDetector
+Up.BackgroundColor3 = Color3.new(1, 1, 1)
+Up.BackgroundTransparency = 1
+Up.Position = UDim2.new(0.112961441, 0, 0.254901975, 0)
+Up.Size = UDim2.new(0, 20, 0, 21)
+Up.Image = "rbxassetid://38186614"
+
+Down.Name = "Down"
+Down.Parent = ODerDetector
+Down.BackgroundColor3 = Color3.new(1, 1, 1)
+Down.BackgroundTransparency = 1
+Down.Position = UDim2.new(0.108433738, 0, 0.539215684, 0)
+Down.Rotation = 180
+Down.Size = UDim2.new(0, 20, 0, 21)
+Down.AutoButtonColor = false
+
+function yayaya()
+	local theGUI = game.CoreGui:FindFirstChild("RHSize")
+	RHSize.Name = "RHSize"
+	if theGUI == nil then return end
+	local wad = theGUI:FindFirstChild("ODerDetector")
+	local newPos = wad.Position
+	ODerDetector.Position = newPos
+	local size = wad.kk.Text
+	ODerDetector.kk.Text = size
+	theGUI:Destroy()
+end
+
+yayaya()
+
+Down.Image = "rbxassetid://38186614"
+-- Scripts:
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = ODerDetector
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+	
+	
+	local frame = ODerDetector
+	local Event = game:GetService("ReplicatedStorage").AvatarEditor.Remote.CommitCharacterAppearance
+	
+	
+	function setSize(size)
+		frame.kk.Text = tostring(size)
+		local shit = {
+["assets"] = 
+{
+[1] = 
+{
+["drotation"] = 
+{
+["y"] = 90, 
+["x"] = 90, 
+["z"] = 90
+}, 
+["dposition"] = 
+{
+["y"] = 200, 
+["x"] = 200, 
+["z"] = 200
+}, 
+["scale"] = 
+{
+["y"] = 100, 
+["x"] = 100, 
+["z"] = 100
+}, 
+["dscale"] = 
+{
+["y"] = 500, 
+["x"] = 500, 
+["z"] = 500
+}, 
+["vscale"] = 
+{
+["y"] = 1, 
+["x"] = 1, 
+["z"] = 1
+}, 
+["rotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["assetId"] = pants, 
+["changedFX"] = false, 
+["position"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["fx"] = 
+{
+[1] = true, 
+[2] = true, 
+[3] = true, 
+[4] = true, 
+[5] = true
+}, 
+["vrotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["vposition"] = 
+{
+["y"] = 0, 
+["x"] = -0, 
+["z"] = -0
+}
+}, 
+[2] = 
+{
+["drotation"] = 
+{
+["y"] = 90, 
+["x"] = 90, 
+["z"] = 90
+}, 
+["dposition"] = 
+{
+["y"] = 200, 
+["x"] = 200, 
+["z"] = 200
+}, 
+["scale"] = 
+{
+["y"] = 100, 
+["x"] = 100, 
+["z"] = 100
+}, 
+["dscale"] = 
+{
+["y"] = 500, 
+["x"] = 500, 
+["z"] = 500
+}, 
+["vscale"] = 
+{
+["y"] = 1, 
+["x"] = 1, 
+["z"] = 1
+}, 
+["rotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["assetId"] = shirt, 
+["changedFX"] = false, 
+["position"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["fx"] = 
+{
+[1] = true, 
+[2] = true, 
+[3] = true, 
+[4] = true, 
+[5] = true
+}, 
+["vrotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["vposition"] = 
+{
+["y"] = 0, 
+["x"] = -0, 
+["z"] = -0
+}
+}, 
+[3] = 
+{
+["drotation"] = 
+{
+["y"] = 180, 
+["x"] = 90, 
+["z"] = 90
+}, 
+["dposition"] = 
+{
+["y"] = 100, 
+["x"] = 200, 
+["z"] = 200
+}, 
+["scale"] = 
+{
+["y"] = 100, 
+["x"] = 100, 
+["z"] = 100
+}, 
+["dscale"] = 
+{
+["y"] = 500, 
+["x"] = 500, 
+["z"] = 500
+}, 
+["vscale"] = 
+{
+["y"] = 1, 
+["x"] = 1, 
+["z"] = 1
+}, 
+["rotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["assetId"] = hat, 
+["changedFX"] = false, 
+["position"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["fx"] = 
+{
+[1] = true, 
+[2] = true, 
+[3] = true, 
+[4] = true, 
+[5] = true
+}, 
+["vrotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["vposition"] = 
+{
+["y"] = 0, 
+["x"] = -0, 
+["z"] = -0
+}
+}, 
+[4] = 
+{
+["drotation"] = 
+{
+["y"] = 90, 
+["x"] = 90, 
+["z"] = 90
+}, 
+["dposition"] = 
+{
+["y"] = 200, 
+["x"] = 200, 
+["z"] = 200
+}, 
+["scale"] = 
+{
+["y"] = 100, 
+["x"] = 100, 
+["z"] = 100
+}, 
+["dscale"] = 
+{
+["y"] = 500, 
+["x"] = 500, 
+["z"] = 500
+}, 
+["vscale"] = 
+{
+["y"] = 1, 
+["x"] = 1, 
+["z"] = 1
+}, 
+["rotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["assetId"] = face, 
+["changedFX"] = false, 
+["position"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["fx"] = 
+{
+[1] = true, 
+[2] = true, 
+[3] = true, 
+[4] = true, 
+[5] = true
+}, 
+["vrotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["vposition"] = 
+{
+["y"] = 0, 
+["x"] = -0, 
+["z"] = -0
+}
+}, 
+[5] = 
+{
+["drotation"] = 
+{
+["y"] = 90, 
+["x"] = 90, 
+["z"] = 90
+}, 
+["dposition"] = 
+{
+["y"] = 200, 
+["x"] = 200, 
+["z"] = 200
+}, 
+["scale"] = 
+{
+["y"] = 100, 
+["x"] = 100, 
+["z"] = 100
+}, 
+["dscale"] = 
+{
+["y"] = 500, 
+["x"] = 500, 
+["z"] = 500
+}, 
+["vscale"] = 
+{
+["y"] = 1, 
+["x"] = 1, 
+["z"] = 1
+}, 
+["rotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["assetId"] = tshirt, 
+["changedFX"] = false, 
+["position"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["fx"] = 
+{
+[1] = true, 
+[2] = true, 
+[3] = true, 
+[4] = true, 
+[5] = true
+}, 
+["vrotation"] = 
+{
+["y"] = 0, 
+["x"] = 0, 
+["z"] = 0
+}, 
+["vposition"] = 
+{
+["y"] = 0, 
+["x"] = -0, 
+["z"] = -0
+}
+}
+}, 
+["description"] = "", 
+["createdDate"] = 1000, 
+["lowerDesc"] = "", 
+["bodyColors"] = 
+{
+["HeadColor"] = color, 
+["TorsoColor"] = color, 
+["LeftArmColor"] = color, 
+["RightLegColor"] = color, 
+["RightArmColor"] = color, 
+["LeftLegColor"] = color
+}, 
+["scales"] = 
+{
+["LowerLegHeight"] = size, 
+["UpperTorsoWidth"] = size, 
+["UpperArmHeight"] = size, 
+["HandHeight"] = size, 
+["UpperLegWidth"] = size, 
+["LowerArmWidth"] = size, 
+["FootWidth"] = size, 
+["LowerArmHeight"] = size, 
+["UpperArmWidth"] = size, 
+["FootHeight"] = size, 
+["LowerTorsoWidth"] = size, 
+["UpperTorsoHeight"] = size, 
+["HandWidth"] = size, 
+["HeadScale"] = size, 
+["UpperLegHeight"] = size, 
+["LowerTorsoHeight"] = size, 
+["LowerLegWidth"] = size
+}, 
+["name"] = "", 
+["outfitId"] = 1, 
+["isOutfit"] = true, 
+["collageSeed"] = 0, 
+["lowerName"] = ""
+}
+		Event:FireServer(shit)
+	end
+	
+	function getSize()
+		return tonumber(frame.kk.Text)
+	end
+	
+	frame.Down.MouseButton1Click:Connect(function()
+		setSize(getSize() - 1)
+	end)
+	frame.Up.MouseButton1Click:Connect(function()
+		setSize(getSize() + 1)
+	end)
+	setSize(getSize())

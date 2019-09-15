@@ -1,0 +1,29 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Test {
+  public static void main(String[] args) {
+    List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+    List<Integer> even = numbers.stream()
+	.map(s -> s * 2)
+	.collect(Collectors.toList());
+    System.out.println("nums = " + even);
+
+  }
+
+}
+
+but the java.util.function.Function s -> s * 2 decompiles to
+  private static java.lang.Integer lambda$0(java.lang.Integer p0);
+    Flags: PRIVATE, STATIC, SYNTHETIC
+    Code:
+      stack=2, locals=1, arguments=1
+           0: aload_0        
+           1: invokevirtual   java/lang/Integer.intValue:()I
+           4: iconst_2       
+           5: imul           
+           6: invokestatic    java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+           9: areturn  
+
+Is it possible then to replace the function in .map(..) with a method?

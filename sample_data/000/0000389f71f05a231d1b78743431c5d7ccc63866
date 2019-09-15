@@ -1,0 +1,28 @@
+Get the current element and the list containing everything else in Clojure?
+(defn this-and-that [xs]
+  (map-indexed (fn [i x]
+                [x (concat (take i xs) 
+                           (drop (inc i) xs))])
+              xs))
+	
+user=> (this-and-that [1 2 nil 3])
+([1 (2 nil 3)] [2 (1 nil 3)] [nil (1 2 3)] [3 (1 2 nil)])
+	
+(defn this-and-that
+  [s]
+  (map-indexed (fn [i el]
+                 [el (keep-indexed #(if (= %1 i)
+                                            nil
+                                            %2) s)]) s))
+	
+user> (this-and-that [1 2 3])
+([1 (2 3)] [2 (1 3)] [3 (1 2)])
+	
+user> (let [xs #{1 2 3}]
+        (for [x xs] [x (disj xs x)]))
+([1 #{2 3}] [2 #{1 3}] [3 #{1 2}])
+	
+(let [xs (set (range 1000000))]
+  (time (count (for [x xs] [x (disj xs x)]))))
+"Elapsed time: 841.668 msecs"
+1000000

@@ -1,0 +1,10 @@
+class user{
+var $point;
+var $this;
+var $count;
+
+public function addPoints($count){
+$this->points+=$count;
+}
+
+}

@@ -1,0 +1,38 @@
+Automate slider with jquery?
+$(document).ready(function (){
+$('#button a').click(function(){
+    var integer = $(this).attr('rel');
+    $('#myslide .cover').animate({left:-720*(parseInt(integer)-1)}) 
+    $('#button a').each(function(){
+    $(this).removeClass('active');
+        if($(this).hasClass('button'+integer)){
+            $(this).addClass('active')}
+    });
+}); 
+});
+	
+setInterval(function() {
+      // Do something every 2 seconds
+ }, 2000);
+	
+$(function() {
+    //Click our link
+    $("a").click(function() {
+        animateOurImage();
+        setInterval(function() { animateOurImage(); }, 3000);
+        //Be sure you account for the animation's duration in setInterval.
+    }); 
+});
+
+function animateOurImage() {
+    // We need the .each to access the image with $(this)
+    $('.image').animate({
+        left: "-=120" //relative to current position
+    }, 1000); //Duration
+}
+	
+function animate() {...}
+	
+$('#button a').click(animate);
+	
+setTimeout(animate, 3000);

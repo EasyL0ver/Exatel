@@ -1,0 +1,71 @@
+function filter_queries($sql){
+        global $wpdb, $pagenow;
+        // keep a record of the queries
+        $this->queries[] = $sql;
+
+        if($pagenow=='categories.php' || $pagenow=='edit-tags.php'){
+            if(preg_match('#^SELECT COUNT\(\*\) FROM '.$wpdb->term_taxonomy.' WHERE taxonomy = \'(category|post_tag)\' $#',$sql,$matches)){
+                $element_type= 'tax_' . $matches[1];
+                $sql = "
+                    SELECT COUNT(*) FROM {$wpdb->term_taxonomy} tx
+                        JOIN {$wpdb->prefix}icl_translations tr ON tx.term_taxonomy_id=tr.element_id
+                    WHERE tx.taxonomy='{$matches[1]}' AND tr.element_type='{$element_type}' AND tr.language_code='".$this->get_current_language()."'";
+            }
+        }
+
+        if($pagenow=='edit.php' || $pagenow=='edit-pages.php'){
+            /* preWP3 compatibility  - start */
+            if(ICL_PRE_WP3 && $pagenow == 'edit-pages.php'){
+                $_GET['post_type'] = 'page';
+            }
+            /* preWP3 compatibility  - end */
+            $post_type = isset($_GET['post_type']) ? $_GET['post_type'] : 'post';
+            $element_type = 'post_' . $post_type;
+            if($this->is_translated_post_type($post_type)){
+                if(preg_match('#SELECT post_status, COUNT\( \* \) AS num_posts FROM '.$wpdb->posts.' WHERE post_type = \'(.+)\' GROUP BY post_status#i',$sql,$matches)){
+                    if('all'!=$this->get_current_language()){
+                        $sql = '
+                        SELECT post_status, COUNT( * ) AS num_posts
+                        FROM '.$wpdb->posts.' p
+                            JOIN '.$wpdb->prefix.'icl_translations t ON p.ID = t.element_id
+                        WHERE p.post_type = \''.$matches[1].'\'
+                            AND t.element_type=\''.$element_type.'\'
+                            AND t.language_code=\''.$this->get_current_language().'\'
+                        GROUP BY post_status';
+                    }else{
+                        $sql = '
+                        SELECT post_status, COUNT( * ) AS num_posts
+                        FROM '.$wpdb->posts.' p
+                            JOIN '.$wpdb->prefix.'icl_translations t ON p.ID = t.element_id
+                            JOIN '.$wpdb->prefix.'icl_languages l ON t.language_code = l.code AND l.active = 1
+                        WHERE p.post_type = \''.$matches[1].'\'
+                            AND t.element_type=\''.$element_type.'\'
+                        GROUP BY post_status';
+                    }
+                }
+            }
+        }
+
+        if(isset($_GET['action']) && $_GET['action']=='ajax-tag-search'){
+            $search = 'SELECT t.name FROM '. $wpdb->term_taxonomy
+                .' AS tt INNER JOIN '.$wpdb->terms.' AS t ON tt.term_id = t.term_id WHERE tt.taxonomy = \''. $wpdb->escape($_GET['tax'])
+                .'\' AND t.name LIKE (\'%' . $wpdb->escape($_GET['q']) . '%\')';
+            if($sql == $search){
+                $parts = parse_url($_SERVER['HTTP_REFERER']);
+                @parse_str($parts['query'], $query);
+                $lang = isset($query['lang']) ? $query['lang'] : $this->get_language_cookie();
+                $element_type = 'tax_' . $_GET['tax'];
+                $sql =
+                    'SELECT t.name FROM '. $wpdb->term_taxonomy
+                    .' AS tt
+                    INNER JOIN '.$wpdb->terms.' AS t ON tt.term_id = t.term_id
+                    JOIN '.$wpdb->prefix.'icl_translations tr ON tt.term_taxonomy_id = tr.element_id
+                    WHERE tt.taxonomy = \''. $wpdb->escape($_GET['tax'])
+                    .'\' AND tr.language_code=\''.$lang.'\' AND element_type=\''.$element_type.'\'
+                    AND t.name LIKE (\'%' . $wpdb->escape($_GET['q']) . '%\')
+                ';
+            }
+        }
+
+        return $sql;
+    }

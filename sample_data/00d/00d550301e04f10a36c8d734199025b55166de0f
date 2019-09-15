@@ -1,0 +1,147 @@
+package cz.uhk.balonek;
+
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Random;
+
+import javax.swing.SwingUtilities;
+
+import fim.utils.Application;
+import fim.utils.Console;
+
+public class BalonekApp extends Application {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	ArrayList<Color> barvy = new ArrayList<Color>();
+	ArrayList<Balonek> list = new ArrayList<Balonek>();
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new BalonekApp().start();
+			}
+		});
+	}
+
+	@Override
+	public void start() {
+		barvy.add(Color.BLUE);
+		barvy.add(Color.CYAN);
+		barvy.add(Color.GREEN);
+		barvy.add(Color.MAGENTA);
+		barvy.add(Color.RED);
+		barvy.add(Color.DARK_GRAY);
+		out.setTitle("Balonek");
+		out.switchView(Console.VIEW_GRAPH);
+		// TODO Auto-generated method stub
+
+		for (int i = 1; i <=2; i++) {
+			new Thread() {
+				public void run() {
+					Random generovac = new Random();
+					Balonek balonek = new Balonek(img.getWidth() / 2 + generovac.nextInt(200),
+							img.getHeight() / 2 + generovac.nextInt(200), 10, generovac.nextInt(4) + 1,
+							barvy.get(generovac.nextInt(5) + 1));
+					list.add(balonek);
+					animujBalonek(balonek);
+				}; // vlakno na vykresleni
+			}.start();
+		}
+
+	}
+
+	private void animujBalonek(Balonek b) {
+
+		//graph.setXORMode(Color.BLACK);
+		int smer = b.smer;
+		int aa;
+		int bb;
+		int cc;
+		while (true) {
+			graph.setColor(b.barva);
+			for (int i = 0;i < list.size();i++) {
+				for (int m = 1;m < list.size();m++) {
+			
+					
+			if (list.get(i).getX() > img.getWidth()-2*list.get(i).getR()) // odraz z pravy strany
+			{
+				if (list.get(i).getSmer() == 2)
+					list.get(i).setSmer(4);
+				else
+					list.get(i).setSmer(3);
+			} 
+			else if (list.get(i).getY() > img.getHeight()-2*list.get(i).getR()) // odraz odspoda
+			{
+				if (list.get(i).getSmer() == 1)
+					list.get(i).setSmer(2);
+				else
+					list.get(i).setSmer(4);
+			}
+			else if (list.get(i).getX() < 0) // odraz z levy strany
+			{
+
+				if (list.get(i).getSmer() == 3)
+					list.get(i).setSmer(1);
+				else
+					list.get(i).setSmer(2);
+			}
+			else if (list.get(i).getY() < 0) // odraz ze shora
+			{
+				if (list.get(i).getSmer() == 4)
+					list.get(i).setSmer(3);
+				else
+					list.get(i).setSmer(1);
+			}
+			
+			Math.abs(aa = list.get(i).getY() - list.get(m).getY());
+			Math.abs(bb = list.get(i).getX() - list.get(m).getX());
+			Math.abs(cc = (int) Math.sqrt((aa*aa) + (bb*bb)));
+			
+			if (cc <= 2*b.getR()) {
+				
+				if (list.get(i).getSmer() == 4)
+					list.get(i).setSmer(3);
+				else
+					list.get(i).setSmer(1);
+			}
+			switch (smer) 
+			{
+			case 1:
+				b.posun(1, 1);
+				break;
+			case 2:
+				b.posun(1, -1);
+				break;
+			case 3:
+				b.posun(-1, 1);
+				break;
+			case 4:
+				b.posun(-1, -1);
+				break;
+			}
+			b.kresli(graph);
+			out.repaint();
+			try {
+				Thread.sleep(3);
+				//out.clearScreen();
+				out.clearScreen();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+	}
+	}
+}
+	//graph.drawLine(10, 10, 100, 200);
+	//graph.drawLine(10, 10, 200, 300);
+	//out.repaint(); //obcerstveni obrazovky
+
+}

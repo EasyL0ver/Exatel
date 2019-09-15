@@ -1,0 +1,32 @@
+import org.bouncycastle.asn1.ASN1EncodableVector;
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
+import org.bouncycastle.asn1.DERSequence;
+import org.bouncycastle.asn1.x509.Extension;
+import org.bouncycastle.asn1.x509.Extensions;
+import org.bouncycastle.asn1.x509.ExtensionsGenerator;
+import org.bouncycastle.asn1.x509.PolicyInformation;
+
+class Scratch {
+    public static void main(String[] args) throws Exception{
+        /*
+        * Для добавления расширений вместо (BC 1.46)
+        * 
+        *  Vector<ASN1ObjectIdentifier> oids = new Vector<ASN1ObjectIdentifier>();
+        *        Vector<X509Extension> values = new Vector<X509Extension>();
+        *        oids.add(OCSPObjectIdentifiers.id_pkix_ocsp_nonce);
+        *        values.add(extension);
+        *       X509Extensions  responseExtensions = new X509Extensions(oids, values));
+        * 
+        * 
+        * 
+        * BC 1.59
+        * */
+        ExtensionsGenerator extGen = new ExtensionsGenerator();
+        ASN1EncodableVector policyExtensions = new ASN1EncodableVector();
+        policyExtensions.add(new PolicyInformation(new ASN1ObjectIdentifier("1.2.643.100.113.1")));
+        policyExtensions.add(new PolicyInformation(new ASN1ObjectIdentifier("1.2.643.100.113.2")));
+        extGen.addExtension(Extension.certificatePolicies, true, new DERSequence(policyExtensions));
+        
+        Extensions responseExtensions = extGen.generate();
+    }
+}

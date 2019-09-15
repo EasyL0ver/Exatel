@@ -1,0 +1,100 @@
+xslt 1.0 group by in group by with sum
+<NewDataSet>
+        <StatInfo>
+            <Type>Type1</Type>
+            <Country>Country1</Country>
+            <Value>1</Value>
+        </StatInfo>
+        <StatInfo>
+            <Type>Type2</Type>
+            <Country>Country1</Country>
+            <Value>5</Value>
+        </StatInfo>
+        <StatInfo>
+            <Type>Type2</Type>
+            <Country>Country1</Country>
+            <Value>2</Value>
+        </StatInfo>
+        <StatInfo>
+            <Type>Type3</Type>
+            <Country>Country1</Country>
+            <Value>6</Value>
+        </StatInfo>
+
+        <Type>Type1</Type>
+            <Country>Country2</Country>
+            <Value>1</Value>
+        </StatInfo>
+        <StatInfo>
+            <Type>Type2</Type>
+            <Country>Country2</Country>
+            <Value>5</Value>
+        </StatInfo>
+        <StatInfo>
+            <Type>Type2</Type>
+            <Country>Country2</Country>
+            <Value>2</Value>
+        </StatInfo>
+        <StatInfo>
+            <Type>Type3</Type>
+            <Country>Country2</Country>
+            <Value>6</Value>
+        </StatInfo>
+        ...
+    </NewDataSet>
+	
+<table>
+    <tr>
+        <td>Country</td>
+        <td>Type</td>
+        <td>Value</td>
+    </tr>
+
+
+    <tr>
+        <td>Country1</td>
+        <td>Type1</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td colspan="2">Sum By Type1</td>
+        <td>1</td>
+    </tr>
+
+    <tr>
+        <td>Country1</td>
+        <td>Type2</td>
+        <td>5</td>
+    </tr>
+
+    <tr>
+        <td>Country1</td>
+        <td>Type2</td>
+        <td>2</td>
+    </tr>
+
+    <tr>
+        <td colspan="2">Sum By Type2</td>
+        <td>7</td>
+    </tr>
+
+    <tr>
+        <td>Country1</td>
+        <td>Type3</td>
+        <td>6</td>
+    </tr>
+
+
+    <tr>
+        <td colspan="2">Sum By Type3</td>
+        <td>6</td>
+    </tr>   
+
+
+    <tr>
+        <td colspan="2">Sum By Country1</td>
+        <td>14</td>
+    </tr>
+
+</table>

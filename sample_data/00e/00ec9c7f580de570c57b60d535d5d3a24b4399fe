@@ -1,0 +1,71 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+	//Variablen für die Zwischenspeicher (Übertrag)
+	int zwischenspeicher1 = 0;
+	int zwischenspeicher2 = 0;
+	int zwischenspeicher3 = 0;
+
+	//Strings -> Da bei Strings einzelne Stellen anstatt die gesamte Zahl verändert werden können (0 und 1 wechsel).
+	string zahl1;
+	string zahl2;
+	string ergebnis = "    ";
+
+	// Verlangen der ersten Binären Zahl.
+	cout << "Bitte geben Sie die erste Binärzahl ein, die Sie addieren möchten: ";
+	cin >> zahl1;
+
+	// Verlangen der zweiten Binären Zahl.
+	cout << "Bitte geben Sie die zweite Binärzahl ein, die Sie addieren möchten: ";
+	cin >> zahl2;
+
+	// Wenn Zahl 1 oder 2 and 3. Stelle eine 1 hat wird die 4. Stelle vom Ergebnis zu 1
+	if (zahl1[2] == '1' || zahl2[2] == '1') {
+		ergebnis[3] = '1';
+	// Abfrage, ob beide Zahlen an 3. Stelle eine 1 haben, da dann das Ergebnis an Stelle 4 eine 0 hat und ein Übertrag beachtet werden muss, der in einem Zwischenspeicher(3) abgelegt wird. 
+		if (zahl1[2] == '1' && zahl2[2] == '1') {
+			ergebnis[3] = '0';
+			zwischenspeicher3 = 1;
+		}
+	}
+	// Wenn Zahl 1 oder 2 and 2. Stelle eine 1 hat wird die 3. Stelle vom Ergebnis zu 1
+	if (zahl1[1] == '1' || zahl2[1] == '1' || zwischenspeicher3 == 1) {
+		ergebnis[2] = '1';
+	// Abfrage, ob beide Zahlen an 2. Stelle eine 1 haben, da dann das Ergebnis an Stelle 3 eine 0 hat und ein Übertrag beachtet werden muss, der in einem Zwischenspeicher(2) abgelegt wird.
+		if (zahl1[1] == '1' && zahl2[1] == '1' || zahl1[1] == '1' && zwischenspeicher3 == 1 || zahl2[1] == '1' && zwischenspeicher3 == 1) {
+			
+			
+		if (!(zahl1[1] == '1' && zahl2[1] == '1' && zwischenspeicher3 == '1')){
+					ergebnis[2] = '0';
+			}
+			zwischenspeicher2 = 1;
+		}
+	} 
+		
+	// Wenn Zahl 1 oder 2 and 1. Stelle eine 1 hat wird die 2. Stelle vom Ergebnis zu 1
+	if (zahl1[0] == '1' || zahl2[0] == '1' || zwischenspeicher2 == 1) {
+		ergebnis[1] = '1';
+	// Abfrage, ob beide Zahlen an 1. Stelle eine 1 haben, da dann das Ergebnis an Stelle 2 eine 0 hat und ein Übertrag beachtet werden muss, der in einem Zwischenspeicher(1) abgelegt wird.
+		if (zahl1[0] == '1' && zahl2[0] == '1' || zahl1[0] == '1' && zwischenspeicher2 == 1 || zahl2[0] == '1' && zwischenspeicher2 == 1) {
+			
+		if (!(zahl1[0] == '1' && zahl2[0] == '1' && zwischenspeicher2 == '1')){
+					ergebnis[1] = '0';
+			}
+			zwischenspeicher1 = 1;
+		}
+	}
+	
+	// Wenn der Zwischenspeicher1 gefüllt ist also ein Übertrag zuvor entstanden ist, wird dieser hier berücksichtigt und an die 1. Position im Ergebnis eingefügt. 
+	if (zwischenspeicher1 == 1) {
+		ergebnis[0] = '1';
+	}
+	
+	//Ausgabe Ergebnis
+	cout<< "Ergebnis: " << ergebnis << endl;
+	return 0;
+		
+}

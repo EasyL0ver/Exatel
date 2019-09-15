@@ -1,0 +1,14 @@
+    Private Function GetPlayerPoint(ByVal name As String) As Single
+        Dim rows = (From row In WebBrowser1.Document.GetElementsByTagName("thead")(0).Children
+                    Select row).Skip(1)
+
+        Dim pointsString As String = (From el As HtmlElement In rows
+                                 Where el.Children(1).InnerText.ToLower.Contains(name)
+                                 Select el.Children(2).InnerText).First()
+        Dim points As Single
+        If Not Single.TryParse(pointsString, points) Then
+            points = 0
+        End If
+
+        Return points
+    End Function

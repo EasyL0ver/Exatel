@@ -1,0 +1,69 @@
+class Trade {
+    int day;
+    String tradeType;
+    int amount;
+    int price;
+
+    Trade(int day, String tradeType, int amount, int price){
+        this.day = day;
+        this.tradeType = tradeType;
+        this.amount = amount;
+        this.price = price;
+    }
+}
+
+class Trader {
+    public static boolean suspiciousTransaction(int originalPrice, int newPrice, String tradeType, int amount){
+        if (tradeType.equals("BUY")) { return (newPrice - originalPrice)*amount >= 500000; }
+        else { return (originalPrice - newPrice)*amount >= 500000; }
+    }
+    public static void processPrice(int day, int price, HashMap<String, List<Trade>> trades, List<String> suspiciousTradeList){
+        List<String> tempSuspiciousTradeList = new ArrayList<>();
+        for(Map.Entry<String, List<Trade>> trade : trades.entrySet()){
+            String trader = trade.getKey();
+            List<Trade> transactionsForTrader = trade.getValue();
+            for(Trade transaction : transactionsForTrader){
+                if (day - transaction.day <= 3 && suspiciousTransaction(transaction.price, price, transaction.tradeType, transaction.amount)){
+                    tempSuspiciousTradeList.add(transaction.day + "|" + trader);
+                }
+            }
+        }
+        Collections.sort(tempSuspiciousTradeList, new Comparator<String>() {
+            @Override
+            public int compare(String t1, String t2) {
+                String[] transaction1 = t1.split("\\|");
+                String[] transaction2 = t2.split("\\|");
+                int day1 = Integer.valueOf(transaction1[0]);
+                String trader1 = transaction1[1];
+                int day2 = Integer.valueOf(transaction2[0]);
+                String trader2 = transaction2[1];
+                if (day1 != day2) { return day1 - day2; }
+                else { return trader1.compareTo(trader2); }
+            }
+        });
+        suspiciousTradeList.addAll(tempSuspiciousTradeList);
+    }
+    public static ArrayList<String> getSuspiciousTrades(List<String> data){
+        HashMap<String, List<Trade>> allTrades = new HashMap<>();
+        ArrayList<String> suspiciousTradesList = new ArrayList<>();
+        int currentPrice = 0;
+        for(String info : data){
+            String[] parsedInfo = info.split("\\|");
+            int day = Integer.valueOf(parsedInfo[0]);
+            if(parsedInfo.length == 2){
+                int newPrice = Integer.valueOf(parsedInfo[1]);
+                if (day != 0 && currentPrice != newPrice) {
+                    processPrice(day, newPrice, allTrades, suspiciousTradesList);
+                }
+                currentPrice = Integer.valueOf(parsedInfo[1]);
+            }
+            else{
+                String tradeType = parsedInfo[2];
+                int amount = Integer.valueOf(parsedInfo[3]);
+                Trade trade = new Trade(day, tradeType, amount, currentPrice);
+                allTrades.computeIfAbsent(parsedInfo[1], k-> new ArrayList<Trade>()).add(trade);
+            }
+        }
+        return suspiciousTradesList;
+    }
+}

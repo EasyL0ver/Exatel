@@ -1,0 +1,82 @@
+#ifndef EFL_BETA_API_SUPPORT
+#define EFL_BETA_API_SUPPORT
+#endif
+#ifndef EFL_EO_API_SUPPORT
+#define EFL_EO_API_SUPPORT
+#endif
+#ifndef ELM_INTERNAL_API_ARGESFSDFEFC
+#define ELM_INTERNAL_API_ARGESFSDFEFC
+#endif
+
+#include <Elementary.h>
+#include <Eo.h>
+
+#define ELM_WIDGET_PROTECTED
+#include "elm_widget.h"
+#include "elm_widget_container.h"
+#include "elm_interface_scrollable.h"
+
+static const char * _label_var_1 [2] = { "<b>This is a small label</b>", "This is a larger label with newlines<br/>to make it bigger, bit it won't expand or wrap<br/>just be a block of text that can't change its<br/>formatting as it's fixed based on text<br/>" };
+
+
+void
+label_win_1_create()
+{
+   Eo *win_1 = efl_add(EFL_UI_WIN_CLASS, NULL,
+         efl_gfx_size_hint_weight_set(efl_added, 0, 0),
+         efl_gfx_size_hint_align_set(efl_added, 0.5, 0.5),
+         efl_text_set(efl_added, "Label"),
+         efl_ui_win_name_set(efl_added, "label"),
+         efl_ui_win_type_set(efl_added, EFL_UI_WIN_BASIC));
+   efl_gfx_entity_size_set(win_1, (Eina_Size2D) { 320, 300 });
+   efl_gfx_entity_visible_set(win_1, EINA_TRUE);
+   efl_name_set(win_1, "win_1");
+
+   Eo *_box_1 = elm_box_add(win_1);
+   efl_gfx_size_hint_weight_set(_box_1, 1, 1);
+   efl_gfx_entity_visible_set(_box_1, EINA_TRUE);
+   for (int i = 0; i < 2; i++) {
+      Eo *_label_4 = elm_label_add(_box_1);
+      efl_text_set(efl_part(_label_4, "elm.text"), _label_var_1[i]);
+      efl_gfx_size_hint_weight_set(_label_4, 0, 0);
+      efl_gfx_size_hint_align_set(_label_4, -1, -1);
+      efl_gfx_entity_visible_set(_label_4, EINA_TRUE);
+      elm_box_pack_end(_box_1, _label_4);
+   }
+
+   Eo *_label_5 = elm_label_add(_box_1);
+   elm_label_line_wrap_set(_label_5, ELM_WRAP_CHAR);
+   efl_text_set(efl_part(_label_5, "elm.text"), "<b>This is more text designed to line-wrap here as This object is resized horizontally. As it is resized vertically though, nothing should change. The amount of space allocated vertically should change as horizontal size changes.</b>");
+   efl_gfx_size_hint_weight_set(_label_5, 1, 0);
+   efl_gfx_size_hint_align_set(_label_5, -1, -1);
+   efl_gfx_entity_visible_set(_label_5, EINA_TRUE);
+   elm_box_pack_end(_box_1, _label_5);
+
+   Eo *_label_6 = elm_label_add(_box_1);
+   efl_text_set(efl_part(_label_6, "elm.text"), "This small label set to wrap");
+   efl_gfx_size_hint_weight_set(_label_6, 1, 0);
+   efl_gfx_size_hint_align_set(_label_6, -1, -1);
+   efl_gfx_entity_visible_set(_label_6, EINA_TRUE);
+   elm_box_pack_end(_box_1, _label_6);
+
+   Eo *_label_7 = elm_label_add(_box_1);
+   efl_text_set(efl_part(_label_7, "elm.text"), "You can also use all the default entry style tags, like <hilight>hilight</hilight>, <success>success</success>, <bigger>bigger</bigger>, <smaller>smaller</smaller>, etc...");
+   elm_label_line_wrap_set(_label_7, ELM_WRAP_WORD);
+   efl_gfx_size_hint_weight_set(_label_7, 1, 0);
+   efl_gfx_size_hint_align_set(_label_7, -1, -1);
+   efl_gfx_entity_visible_set(_label_7, EINA_TRUE);
+   elm_box_pack_end(_box_1, _label_7);
+   efl_content_set(win_1, _box_1);
+}
+
+EAPI_MAIN int
+elm_main (int argc, char *argv[])
+{
+   const char *test = (argc == 2 ? argv[1] : "");
+ 
+   if (argc == 1 || !strcmp(test, "label")) label_win_1_create();
+   else return 1;
+   elm_run();
+   return 0;
+}
+ELM_MAIN()

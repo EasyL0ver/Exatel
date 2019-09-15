@@ -1,0 +1,110 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Prognose2Lab
+{
+    class Program
+    {
+        static double[] x = new double[10];//вход
+        static double[] t = new double[10];//обучающая выборка
+        static double[] t_korr = new double[10];//обучающая выборка коррелированная
+        static double[] y = new double[10];//текущий ответ
+        static double[] y_korr = new double[10];//текущий ответ коррелированный
+        static double[,] w = new double[10, 10];//синапсы первого слоя
+        static double[] v = new double[10];//синапсы второго слоя
+        static double[] delta = new double[10];
+        static double a = 1.6;//нижняя граница
+        static double b = 4.0;//верхняя граница
+        static double eta = 0.5;//скорость обучения
+        static double MinError = 0.001;//минимальная суммарная ошибка сети
+        static int MaxEra = 100000;//максимальное число эпох обучения
+        static int CountEra = 0;//эпоха обучения
+        static double MinDeltaError = 0.0000000005;//минимальное улучшение ошибки
+        static double EraError = 1;//Ошибка эпохи
+        static double PrevError = 0;//Ошибка предыдущей эпохи
+
+        static void Main(string[] args)
+        {
+            var random = new Random();
+            for (int i = 0; i < w.GetLength(0); i++)
+            {
+                v[i] = random.Next(10) - 5;
+                for (int j = 0; j < w.GetLength(1); j++)
+                {
+                    w[i, j] = random.Next(10) - 5;
+                }
+            }
+            for (int i = 0; i < x.GetLength(0); i++)//формирование t[]
+            {
+                x[i] = a + i * (b - a) / (x.GetLength(0) - 1);
+                t[i] = 3 * x[i] * x[i] + Math.Tan(x[i]);
+                Console.WriteLine($"t[{i}]={t[i]}");
+            }
+            for (int i = 0; i < t.GetLength(0); i++)//нормирование t[]
+            {
+                t_korr[i] = (t[i] - t[0]) * 0.8 / (t[9] - t[0]) + 0.1;
+                Console.WriteLine($"t_korr[{i}]={t_korr[i]}");
+            }
+            while ((EraError > MinError) && (CountEra < MaxEra)) //обучение
+            {
+                EraError = 0;
+                CountEra++;
+                for (int i = 0; i < w.GetLength(0); i++)//заполнение y
+                {
+                    var sum = 0d;
+                    for (int j = 0; j < w.GetLength(1); j++)
+                    {
+                        sum += x[j] * w[i, j];
+                    }
+                    y[i] = sum * v[i];
+                }
+                var min_y = 0;
+                var max_y = 0;
+                for (int i = 1; i < y.GetLength(0); i++)
+                {
+                    if (y[min_y]>y[i])
+                    {
+                        min_y = i;
+                    }
+                    if (y[max_y]<y[i])
+                    {
+                        max_y = i;
+                    } 
+                }
+                for (int i = 0; i < y.GetLength(0); i++)//корреляция ответов
+                {
+                    y_korr[i] = (y[i] - y[min_y]) * 0.8 / (y[max_y] - y[min_y]) + 0.1;
+                    EraError += 0.5 * (t_korr[i] - y_korr[i]) * (t_korr[i] - y_korr[i]);
+                }
+                for (int i = 0; i < w.GetLength(0); i++)//коррекция синапсов
+                {
+                    delta[i] = y_korr[i] * (1.0 - y_korr[i]) * (t_korr[i] - y_korr[i]);
+                    //Console.WriteLine($"delta[{i}]={delta[i]}");
+                    v[i] -= eta * delta[i] * y_korr[i];
+                    for (int j = 0; j < w.GetLength(1); j++)
+                    {
+                        w[i, j] -= eta * delta[i] * v[i] * y_korr[i] * (1 - y_korr[i]) * x[j];
+                    }
+                }
+                Console.WriteLine($"эра={CountEra}");
+                if (Math.Abs(EraError - PrevError) < MinDeltaError) 
+                {
+                    var del = EraError - PrevError;
+                    break;
+                }
+                Console.WriteLine($"ошибка эры={EraError}");
+                PrevError = EraError;
+            }
+            var answer = 0d;
+            for (int i = 0; i < w.GetLength(0); i++)
+            {
+                answer+= x[i] * w[4, i];
+            }
+            Console.WriteLine($"check4={answer*v[4]}");
+            Console.ReadLine();
+        }
+    }
+}

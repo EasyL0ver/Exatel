@@ -1,0 +1,12 @@
+public class Teacher
+{
+    public int Id{ get; set; }
+    public ICollection<Product> Products{ get; set; }
+}
+	
+modelBuilder.Entity("XYZ.Models.Entities.Product", b =>
+            {
+                b.HasOne("XYZ.Models.Entities.Teacher")
+                    .WithMany("Courses")
+                    .HasForeignKey("TeacherId");
+            });

@@ -1,0 +1,136 @@
+#libs
+from tkinter import *
+import random
+import os
+
+#important variables
+tasks = []
+
+#create root window and set properties
+root = Tk()
+root.title("To-Do-List")
+root.configure(bg="white")
+root.geometry("300x400")
+
+#functions
+def update_listbox():
+    #clear the listbox
+    clear_listbox()
+    #populate listbox
+    for task in tasks:
+        lb_tasks.insert("end", task)
+
+def clear_listbox():
+    lb_tasks.delete(0, "end")
+
+def add_task():
+    #get the task to add from entry
+    task = txt_input.get()
+
+    if task != "":
+        tasks.append(task)
+        update_listbox()
+
+    else:
+        lbl_disp["text"] = "Please Enter a Task!"
+    
+    txt_input.delete(0,"end")
+
+def del_all():
+    #globalizing tasks list
+    global tasks
+    tasks = []
+    update_listbox()
+
+def del_one():
+    #get the text of curr seleced task
+    task = lb_tasks.get("active")
+    if task in tasks:
+        tasks.remove(task)
+
+    update_listbox()
+
+def sort_asc():
+    tasks.sort()
+    update_listbox()
+
+def sort_desc():
+    tasks.sort()
+    tasks.reverse()
+    update_listbox()
+
+def choose_random():
+    task = random.choice(tasks)
+    lbl_disp["text"] = task
+
+def number_of_tasks():
+    number_of_tasks = len(tasks)
+    msg = "Number of tasks: " + str(number_of_tasks)
+    lbl_disp["text"] = msg
+
+def exit():
+    quit()
+
+def save():
+    file = open("tasks.txt", "w")
+    for task in tasks:
+        file.write(task)
+        
+    file.close()
+    lbl_disp["text"] = "Saved!"
+
+def load():
+    with open("tasks.txt") as file:
+        for line in file:
+            tasks.append(line)
+    for task in tasks:
+        lb_tasks.insert("end", task)
+   
+
+
+#create widgets
+lbl_text = Label(root, text="To-Do-List", bg="white")
+lbl_text.pack()
+
+lbl_disp = Label(root, text="", bg="white")
+lbl_disp.pack()
+
+txt_input = Entry(root, width=225)
+txt_input.pack()
+
+btn_add_task = Button(root,text = "Add Task", fg="green", bg="white", command = add_task)
+btn_add_task.pack()
+
+btn_del_all = Button(root,text = "Delete All", fg="green", bg="white", command = del_all)
+btn_del_all.pack()
+
+btn_del_one = Button(root,text = "Delete One", fg="green", bg="white", command = del_one)
+btn_del_one.pack()
+
+btn_sort_asc = Button(root,text = "Sort (ASC)", fg="green", bg="white", command = sort_asc)
+btn_sort_asc.pack()
+
+btn_sort_desc = Button(root,text = "Sort (DSC)", fg="green", bg="white", command = sort_desc)
+btn_sort_desc.pack()
+
+btn_choose_random = Button(root,text = "Choose Random", fg="green", bg="white", command = choose_random)
+btn_choose_random.pack()
+
+btn_number_of_tasks = Button(root,text = "Number Of Tasks", fg="green", bg="white", command = number_of_tasks)
+btn_number_of_tasks.pack()
+
+btn_save = Button(root,text = "Save", fg="green", bg="white", command = save)
+btn_save.pack()
+
+btn_exit = Button(root,text="Exit", bg="white", fg="green", command=exit)
+btn_exit.pack()
+
+lb_tasks = Listbox(root,width=300)
+lb_tasks.pack()
+
+#load task file if exists
+if os.path.exists('tasks.txt'):
+    load()
+
+#main event loop
+root.mainloop()

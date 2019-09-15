@@ -1,0 +1,149 @@
+@echo off
+color 1E
+for %%i in (*.mkv) do (call :subroutine "%%i" %0)
+GOTO :eof
+
+:subroutine
+ @set completo=%~nx1
+ @set nombre=%~n1
+ @set extension=%~x1
+ @echo "%nombre%"
+ @echo "%extension%"
+ @echo "%completo%"
+ @mkdir "%nombre%"
+ @mkdir "%nombre%\Sample"
+ @mkdir "%nombre%\Proof"
+ 
+ SET minus=%nombre%
+ SET minus=%minus:A=a%
+ SET minus=%minus:B=b%
+ SET minus=%minus:C=c%
+ SET minus=%minus:D=d%
+ SET minus=%minus:E=e%
+ SET minus=%minus:F=f%
+ SET minus=%minus:G=g%
+ SET minus=%minus:H=h%
+ SET minus=%minus:I=i%
+ SET minus=%minus:J=j%
+ SET minus=%minus:K=k%
+ SET minus=%minus:L=l%
+ SET minus=%minus:M=m%
+ SET minus=%minus:N=n%
+ SET minus=%minus:O=o%
+ SET minus=%minus:P=p%
+ SET minus=%minus:Q=q%
+ SET minus=%minus:R=r%
+ SET minus=%minus:S=s%
+ SET minus=%minus:T=t%
+ SET minus=%minus:U=u%
+ SET minus=%minus:V=v%
+ SET minus=%minus:W=w%
+ SET minus=%minus:X=x%
+ SET minus=%minus:Y=y%
+ SET minus=%minus:Z=z%
+ 
+ @tools\mkvmerge.exe --default-language "spa" --split parts:00:10:00-00:11:30 -o "%nombre%\Sample\%minus%-sample.mkv" "--track-name" "0:%completo%" --no-chapters "%completo%"
+ @tools\rar.exe a -vn -m0 -ep -v150000 "%nombre%"\"%minus%.rar" "%completo%"
+ @tools\pure-sfv.exe -c -D "%nombre%" -s "%minus%.sfv" -f *.r??
+ 
+ mkdir temp
+ echo %DATE% > temp\emitido.txt
+ @tools\mediainfo --Inform=General;%%Duration/String%% %completo% > temp\duracion.txt
+ @tools\mediainfo --Inform=General;%%FileSize/String%% %completo% > temp\tamanyo.txt
+ @tools\mediainfo --Inform=Video;%%Encoded_Library%% %completo% > temp\encoder.txt
+ @tools\mediainfo --Inform=Video;%%DisplayAspectRatio/String%% %completo% > temp\aspect2.txt
+ @tools\mediainfo --Inform=Video;%%Width%% %completo% > temp\ancho.txt
+ @tools\mediainfo --Inform=Video;%%Height%% %completo% > temp\alto.txt
+ @tools\mediainfo --Inform=Video;%%FrameRate%% %completo% > temp\fps.txt
+ @tools\mediainfo --Inform=Video;%%BitRate/String%% %completo% > temp\videobitrate.txt
+ @tools\mediainfo --Inform=Video;%%Format%% %completo% > temp\videoformat.txt
+ @tools\mediainfo --Inform=Audio;%%Language/String%%\n %completo% | tools\head -1 > temp\language1.txt
+ @tools\mediainfo --Inform=Audio;%%Language/String%%\n %completo% | tools\head -2 | tools\tail -1 > temp\language2.txt  
+ @tools\mediainfo --Inform=Audio;%%Language/String%%\n %completo% | tools\head -3 | tools\tail -2 > temp\language3.txt 
+ @tools\mediainfo --Inform=Audio;%%Language/String%%\n %completo% | tools\head -4 | tools\tail -3 > temp\language4.txt 
+ REM ====================================
+ @tools\mediainfo --Inform=Audio;%%Format%%\n %completo% | tools\head -1 > temp\audioformat1.txt
+ @tools\mediainfo --Inform=Audio;%%Format%%\n %completo% | tools\head -2 | tools\tail -1 > temp\audioformat2.txt 
+ @tools\mediainfo --Inform=Audio;%%Format%%\n %completo% | tools\head -3 | tools\tail -2 > temp\audioformat3.txt 
+ @tools\mediainfo --Inform=Audio;%%Format%%\n %completo% | tools\head -4 | tools\tail -3 > temp\audioformat4.txt 
+ REM ====================================
+ @tools\mediainfo --Inform=Audio;%%Channels%%\n %completo% | tools\head -1 > temp\audiochannel1.txt
+ @tools\mediainfo --Inform=Audio;%%Channels%%\n %completo% | tools\head -2 | tools\tail -1 > temp\audiochannel2.txt 
+ @tools\mediainfo --Inform=Audio;%%Channels%%\n %completo% | tools\head -3 | tools\tail -2 > temp\audiochannel3.txt
+ @tools\mediainfo --Inform=Audio;%%Channels%%\n %completo% | tools\head -4 | tools\tail -3 > temp\audiochannel4.txt
+ REM ====================================
+ @tools\mediainfo --Inform=Audio;%%BitRate/String%%\n %completo% | tools\head -1 > temp\audiobitrate1.txt
+ @tools\mediainfo --Inform=Audio;%%BitRate/String%%\n %completo% | tools\head -2 | tools\tail -1 > temp\audiobitrate2.txt
+ @tools\mediainfo --Inform=Audio;%%BitRate/String%%\n %completo% | tools\head -3 | tools\tail -2 > temp\audiobitrate3.txt
+ @tools\mediainfo --Inform=Audio;%%BitRate/String%%\n %completo% | tools\head -4 | tools\tail -3 > temp\audiobitrate4.txt
+ REM ====================================
+ @tools\mediainfo --Inform=Audio;%%BitDepth%%\n %completo% | tools\head -1 > temp\audiobit1.txt
+ @tools\mediainfo --Inform=Audio;%%BitDepth%%\n %completo% | tools\head -2 | tools\tail -1 > temp\audiobit2.txt
+ @tools\mediainfo --Inform=Audio;%%BitDepth%%\n %completo% | tools\head -3 | tools\tail -2 > temp\audiobit3.txt
+ @tools\mediainfo --Inform=Audio;%%BitDepth%%\n %completo% | tools\head -4 | tools\tail -3 > temp\audiobit4.txt
+ REM ====================================
+ @tools\mediainfo --Inform=Audio;%%BitRate_Mode%% %completo% > temp\audiobitratemode.txt
+ @tools\mediainfo --Inform=Audio;%%Channel(s)%% %completo% > temp\canales.txt  
+ 
+ set /p duracion=<temp\duracion.txt
+ set /p tamanyo=<temp\tamanyo.txt
+ set /p encoder=<temp\encoder.txt
+ set /p aspect2=<temp\aspect2.txt
+ set /p ancho=<temp\ancho.txt
+ set /p alto=<temp\alto.txt
+ set /p fps=<temp\fps.txt
+ set /p videobitrate=<temp\videobitrate.txt
+ REM = NEW ==============================
+ set /p audiolanguage1=<temp\language1.txt
+ set /p audiolanguage2=<temp\language2.txt
+ set /p audiolanguage3=<temp\language3.txt
+ set /p audiolanguage4=<temp\language4.txt  
+ set /p audioformat1=<temp\audioformat1.txt
+ set /p audioformat2=<temp\audioformat2.txt 
+ set /p audioformat3=<temp\audioformat3.txt
+ set /p audioformat4=<temp\audioformat4.txt
+ set /p audiochannel1=<temp\audiochannel1.txt
+ set /p audiochannel2=<temp\audiochannel2.txt
+ set /p audiochannel3=<temp\audiochannel3.txt
+ set /p audiochannel4=<temp\audiochannel4.txt
+ set /p audiobitrate1=<temp\audiobitrate1.txt
+ set /p audiobitrate2=<temp\audiobitrate2.txt 
+ set /p audiobitrate3=<temp\audiobitrate3.txt 
+ set /p audiobitrate4=<temp\audiobitrate4.txt 
+ set /p audiobit1=<temp\audiobit1.txt
+ set /p audiobit2=<temp\audiobit2.txt 
+ set /p audiobit2=<temp\audiobit3.txt
+ set /p audiobit2=<temp\audiobit4.txt
+ REM ====================================
+ set /p audiobitratemode=<temp\audiobitratemode.txt
+ set /p audiobitrate=<temp\audiobitrate.txt
+ set /p canales=<temp\canales.txt
+ set /p videoformat=<temp\videoformat.txt
+ set /p emitido=<temp\emitido.txt
+ rmdir temp /s /q
+ copy %nombre%.jpg "%nombre%"\"%minus%".jpg
+ copy %nombre%-proof.jpg "%nombre%\Proof\%minus%-proof.jpg
+
+echo %nombre% >> "%nombre%"\"%minus%".nfo
+echo. >> "%nombre%"\"%minus%".nfo
+echo Date    : %emitido% >> "%nombre%"\"%minus%".nfo
+echo Source  : Bluray UHD >> "%nombre%"\"%minus%".nfo
+echo Runtime : %duracion% >> "%nombre%"\"%minus%".nfo
+echo Video   : %ancho%x%alto% @ %fps% fps - %videobitrate% >> "%nombre%"\"%minus%".nfo
+echo AR      : %aspect2% >> "%nombre%"\"%minus%".nfo
+echo Audio   : %audiolanguage1% %audioformat1% %audiochannel1% channels @ %audiobitrate1% >> "%nombre%"\"%minus%".nfo
+echo Audio   : %audiolanguage2% %audioformat2% %audiochannel2% channels @ %audiobitrate2% >> "%nombre%"\"%minus%".nfo
+echo Audio   : %audiolanguage1% %audioformat3% %audiochannel3% channels @ %audiobitrate3% >> "%nombre%"\"%minus%".nfo
+echo Audio   : %audiolanguage2% %audioformat4% %audiochannel4% channels @ %audiobitrate4% >> "%nombre%"\"%minus%".nfo
+echo Subs    : Spanish Forced >> "%nombre%"\"%minus%".nfo
+echo Subs    : Spanish >> "%nombre%"\"%minus%".nfo
+echo Subs    : English Forced >> "%nombre%"\"%minus%".nfo
+echo Subs    : English SDH >> "%nombre%"\"%minus%".nfo
+echo Subs    : Spanish Forced PGS>> "%nombre%"\"%minus%".nfo
+echo Subs    : Spanish PGS>> "%nombre%"\"%minus%".nfo
+echo Subs    : English Forced PGS>> "%nombre%"\"%minus%".nfo
+echo Subs    : English SDH PGS>> "%nombre%"\"%minus%".nfo
+echo Size    : %tamanyo% >> "%nombre%"\"%minus%".nfo
+echo iMDB    : http://www.imdb.com/title/ >> "%nombre%"\"%minus%".nfo
+echo Score   : /10 >> "%nombre%"\"%minus%".nfo
+GOTO :eof

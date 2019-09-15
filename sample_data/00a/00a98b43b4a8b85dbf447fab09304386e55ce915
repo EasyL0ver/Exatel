@@ -1,0 +1,18 @@
+def generador_fibonacci():
+    fib1 = 0
+    fib2 = 1
+
+    while True:
+        yield fib2
+        fib1, fib2 = fib2, fib1 + fib2
+
+with open('fibonaccis.txt', 'w') as f:
+    contador = 1
+
+    for fib in generador_fibonacci():
+        print('{}'.format(fib), file=f)
+
+        if contador == 10:
+            break
+
+        contador += 1

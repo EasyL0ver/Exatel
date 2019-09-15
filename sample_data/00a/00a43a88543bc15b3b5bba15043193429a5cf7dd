@@ -1,0 +1,56 @@
+#include <stdio.h>
+#define TRUE 1
+#define FALSE 0
+
+#define MAX_VER 7
+#define INF 1000L
+
+int weight[MAX_VER][MAX_VER]={
+	{0,29,INF,INF,INF,10,INF},
+{29,0,16,INF,INF,INF,15},
+{INF,16,0,12,INF,INF,INF},
+{INF,INF,12,0,22,INF,18},
+{INF,INF,INF,22,0,27,25},
+{10,INF,INF,INF,27,0,INF},
+{INF,15,INF,18,25,INF,0}
+};
+
+int selected[MAX_VER];
+int dist[MAX_VER];
+//트리집합에 인접하지 않은 정점의 dist값은 무한대.
+//dist값이 무한대라는것은, 더이상 갈 인접정점이 없다는 것을 의미한다.
+int get_min_vertex(int n)
+{
+	//n==MAX_VER
+	int v, i;
+	for(i=0;i<n;i++)
+		if (!selected[i]) { //아직 v로 선택되지 않았다면 
+			v = i;
+			break;
+		}
+	for (i = 0;i < n;i++) {
+		if (!selected[i] && (dist[i] < dist[v])) v = i; //선택되지 않고, 제일 작은 정점 
+ 	}
+	return (v);
+}
+
+void prim(int s, int n) {
+	int i, u, v;
+	for (u = 0;u < n;u++) { //정점이 다 소진될 때 까지
+		dist[u] = INF; selected[u] = FALSE; //모든 정점 초기화
+	}
+	dist[s] = 0; //첫 정점(시작정점 ) 0으로 초기화
+	for (i = 0;i < n;i++) {
+		u = get_min_vertex(n); //가장 dist(거리)가 작은 정점 가져오기.
+		selected[u] = TRUE; // 가져온 후 selected 되었다고 표시 (사이클 방지)
+		if (dist[u] == INF) return; //INF가 나왔다면 오류  
+		pritnf("%d ", u);
+		for(v=0; v<n; v++){ //가져온 정점의 인접 정점 탐색 
+			if (weight[u][v] != INF) //인접정점 조건
+				if (!selected[v] && weight[u][v] < dist[v])
+					//아직 선택되지 않았고, 현재 정점(u)로부터의 v의 거리가 
+					// 이전에 저장된 dist[v] (거리) 보다 작다면
+					dist[v] = weight[u][v]; //교체
+		}
+	}
+}

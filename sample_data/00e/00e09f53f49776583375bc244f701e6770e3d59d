@@ -1,0 +1,31 @@
+ public List<object> CreateInstanVar(List<int> tims, int level)
+        {
+            List<object> varType = new List<object>();//局部变量
+            try
+            {
+                ///判断是否最后一层循环
+                if (level == tims.Count - 1)
+                {
+                    for (int i = 1; i <= tims[level]; i++)
+                    {
+                        varType.Add(string.Empty);
+                    }
+                }
+                else //不是最后一层
+                {
+                    for (int i = 0; i < tims[level]; i++)
+                    {
+                        varType.Add(CreateInstanVar(tims, level + 1));
+                    }           }
+
+                return varType;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+1：我现在的需求是： 在参数List里面有多少项数据，就生成多深的List， 比如：times中有三项数据， 就生成List<List<List<object>>> a 这样深度的变量 并且填充里面的值，
+
+2：参数level 表示 time里面数据的 索引值， 从0开始

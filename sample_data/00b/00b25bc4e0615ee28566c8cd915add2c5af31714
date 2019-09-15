@@ -1,0 +1,43 @@
+import numpy as np
+import cv2
+from matplotlib import pyplot as plt
+img1 = cv2.imread('/Users/alisa/Desktop/sift.jpg') # queryImage
+gr_img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+img2 = cv2.imread('/Users/alisa/Desktop/siftt.jpg') # trainImage
+gr_img2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+
+# Initiate SIFT detector
+sift = cv2.xfeatures2d.SIFT_create()
+
+# find the keypoints and descriptors with SIFT
+kp1, des1 = sift.detectAndCompute(img1,None)
+kp2, des2 = sift.detectAndCompute(img2,None)
+#Write Features
+filename = '/Users/alisa/Desktop/aaa.txt'
+gr_img1=''
+for row_features in des1:
+    for feature in row_features:
+        gr_img1 = gr_img1 + str(feature) + ','
+    with open(filename, 'w+') as output:
+        W=output.write(gr_img1 + "\n")
+#read Keypoints
+with open('/Users/alisa/Desktop/aa.txt', 'r') as myfile:
+    a=myfile.read().replace('\n', '')
+    kp1 = np.asarray(a)
+#Read Features
+with open('/Users/alisa/Desktop/aaa.txt', 'r') as myfile:
+    b=myfile.read(W).replace('\n', ',')
+    des1= np.asarray(b)
+# create BFMatcher object
+bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
+
+# Match descriptors.
+matches = bf.match(des1,des2)
+
+# Sort them in the order of their distance.
+matches = sorted(matches, key = lambda x:x.distance)
+
+# Draw first 10 matches.
+img3 = cv2.drawMatches(img1,kp1,img2,kp2,matches[:10],None, flags=2)
+
+plt.imshow(img3),plt.show()

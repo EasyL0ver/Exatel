@@ -1,0 +1,126 @@
+import Data.Char
+
+type Name   = String
+type Relop  = String
+
+data Expr = Val Integer
+          | Ident Name [Expr]
+          | Conditional Expr Relop Expr Expr Expr
+          | Expr :+: Expr
+          | Expr :-: Expr
+          | Expr :*: Expr
+          | Expr :/: Expr
+          | Expr :%: Expr
+
+type Valuation = (Name, Expr)
+
+pars :: String -> String
+pars s = "(" ++ s ++ ")"
+
+instance Show Expr where
+  show (Val n) = show n
+  show (Ident id exp) = id ++ "{" ++ unwords (map show exp) ++ "}"
+  show (Conditional lhs op rhs e0 e1) =
+    "[" ++ show lhs ++ op ++ show rhs ++ " ? " ++ show e0 ++ " : " ++ show e1 ++ "]"
+  show (e0 :+: e1) = pars(show e0 ++ " + " ++ show e1)
+  show (e0 :-: e1) = pars(show e0 ++ " - " ++ show e1)
+  show (e0 :*: e1) = pars(show e0 ++ "*" ++ show e1)
+  show (e0 :/: e1) = pars(show e0 ++ "/" ++ show e1)
+  show (e0 :%: e1) = pars(show e0 ++ "%" ++ show e1)
+
+------------
+--Exercise 1
+------------
+lexer :: String -> [String]
+lexer [] = []
+lexer ('<':'=':cs)        = "<=":(lexer cs)
+lexer ('<':'>':cs)        = "<>":(lexer cs)
+lexer ('<':cs)            = "<":(lexer cs)
+lexer ('>':'=':cs)        = ">=":(lexer cs)
+lexer ('>':cs)            = ">":(lexer cs)
+lexer (':':'=':cs)        = ":=":(lexer cs)
+lexer (c:cs)
+  | elem c " \t\n"        = lexer cs   -- skip spaces, tabs, and newlines
+  | elem c "=+-*/%()[?:]{}" = [c]:(lexer cs)
+  | isAlpha c             = (c:takeWhile isAlpha cs):lexer(dropWhile isAlpha cs)
+  | isDigit c             = (c:takeWhile isDigit cs):lexer(dropWhile isDigit cs)
+  | otherwise             = error "Syntax Error: invalid character in input"
+
+{-
+  parser for the following grammar:
+  E  -> T E'
+  E' -> + T E' | - T E' | <empty string>
+  T  -> F T'
+  T' -> * F T' | / F T' | % F T' | <empty string>
+  F  -> (E) | <integer> | <identifier> | [ E Rel E ? Expr : Expr]
+-}
+
+parseExpr :: String -> (Expr,[String])
+parseExpr tokens = parseE (lexer tokens)
+
+parseE :: [String] -> (Expr,[String])
+parseE tokens = parseE' acc rest where (acc,rest) = parseT tokens
+
+parseE' :: Expr -> [String] -> (Expr,[String])
+parseE' accepted ("+":tokens) = let (acc,rest) = parseT tokens in parseE' (accepted :+: acc) rest
+parseE' accepted ("-":tokens) = let (acc,rest) = parseT tokens in parseE' (accepted :-: acc) rest
+parseE' accepted tokens = (accepted,tokens)
+
+parseT :: [String] -> (Expr,[String])
+parseT tokens = let (acc,rest) = parseF tokens in parseT' acc rest
+
+parseT' :: Expr -> [String] -> (Expr,[String])
+parseT' accepted ("":tokens) = let (acc,rest) = parseF tokens in parseT' (accepted :: acc) rest
+parseT' accepted ("/":tokens) = let (acc,rest) = parseF tokens in parseT' (accepted :/: acc) rest
+parseT' accepted ("%":tokens) = let (acc,rest) = parseF tokens in parseT' (accepted :%: acc) rest
+parseT' accepted tokens = (accepted,tokens)
+
+parseF :: [String] -> (Expr,[String])
+parseF ("(":tokens) = (e, tail rest) where (e,rest) = parseE tokens 
+parseF ("[":tokens) = (Conditional l op r e0 e1, tail rest4)
+  where
+     (l,rest1) = parseE tokens
+     op = head rest1
+     (r,rest2) = parseE (tail rest1)
+     (e0,rest3) = parseE (tail rest2)
+     (e1,rest4) = parseE (tail rest3)
+parseF (t:tokens)
+  | isAlpha (head t) && tokens /= [] && (head tokens =="{") = ((Ident t (fst(helperAcolades [] (tail tokens)))), snd(helperAcolades [] (tail tokens)))
+  | isAlpha (head t) = ((Ident t []), tokens)
+  | isDigit (head t) = (Val (read t), tokens)
+  | otherwise = error "syntax error"
+parseF [] = error "syntax error"
+
+helperAcolades :: [Expr] -> [String] -> ([Expr], [String])
+helperAcolades accepted tokens
+  | take 1 tokens == ["}"] = (accepted, drop 1 tokens)
+  | otherwise = (helperAcolades (accepted ++ [returnedExpr]) restTokens) where (returnedExpr, restTokens) = (parseE tokens)
+
+
+------------
+--Exercise 2
+------------
+
+parseProgram :: String -> ([Valuation],[Expr])
+parseProgram txt = (vals,exprs)
+  where
+    (vals,rest) = parseDefines (lexer txt)
+    (exprs,_) = parseCalculation rest
+
+parseDefines :: [String] -> ([Valuation],[String])
+parseDefines ("let":tokens) = (val:vals,rest)
+  where
+    (val,toks) = parseDefine ("let":tokens)
+    (vals,rest) = parseDefines toks
+parseDefines tokens = ([],tokens)
+
+--parseDefine :: [String] -> (Valuation,[String])
+--parseDefine ("let":name:":=":tokens) = ((name,expr),rest) where (expr,rest) = parseE tokens
+parseDefine ("")
+
+parseCalculation :: [String] -> ([Expr],[String])
+parseCalculation [] = ([],[])
+parseCalculation tokens = (expr:exprs,rest)
+  where
+    (expr,toks) = parseE tokens
+    (exprs,rest) = parseCalculation toks

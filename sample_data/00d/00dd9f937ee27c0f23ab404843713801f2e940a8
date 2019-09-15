@@ -1,0 +1,124 @@
+function deploy {
+    python /home/juan/Projects/at_dev/execute_deploy.py "$@"
+}
+
+function deployall {
+    deploy 1 stable &;
+    deploy 3 stable &;
+    deploy 4 stable &;
+    deploy 5 stable &;
+    deploy 6 stable &;
+    deploy 7 stable &;
+}
+
+function update_temporal {
+    BRANCH="$1"
+    if [ -z "$1"  ]
+        then
+            BRANCH="stable"
+    fi 
+
+    ssh root@s7 "source /srv/virtualenvs/dj111/bin/activate; cd /srv/Projects/at_j7a/; hg pull; hg up $BRANCH -C; python manage.py collectstatic --noinput; touch /etc/uwsgi/apps-available/at_j7a.ini; python -c 'from main.deploy import update_version;           update_version(\"j7a\")'"
+}
+
+function runcentral {
+   source /home/juan/virtualenvs/central/bin/activate
+   cd /home/juan/Projects/at_central
+   python manage.py runserver 0:9000  
+}
+
+function runcelery {
+    source /home/juan/virtualenvs/py3/bin/activate
+    cd /home/juan/Projects/at_dev/
+    celery worker -A admintotal.celeryapp -E -Q default,reportes_a -l info -n "instance-1"
+}
+
+function runat {
+   source /home/juan/virtualenvs/dj111/bin/activate
+   cd /home/juan/Projects/at_dev/
+   python manage.py runserver 0:8000  
+}
+
+function runat3 {
+   source /home/juan/virtualenvs/py3/bin/activate
+   cd /home/juan/Projects/at_dev 
+   python manage.py runserver 0:8003 
+}
+
+function propagate {
+    scp /home/juan/Projects/at_dev/main/deploy.py root@s1:/opt/admintotal/;
+    scp /home/juan/Projects/at_dev/main/deploy.py root@s3:/opt/admintotal/;
+    scp /home/juan/Projects/at_dev/main/deploy.py root@s4:/opt/admintotal/;
+    scp /home/juan/Projects/at_dev/main/deploy.py root@s5:/opt/admintotal/;
+    scp /home/juan/Projects/at_dev/main/deploy.py root@s6:/opt/admintotal/;
+    scp /home/juan/Projects/at_dev/main/deploy.py root@s7:/opt/admintotal/;
+
+}
+
+function remote {
+ host=$1
+ if [ -z "$1" ]
+    then
+     echo "Especifique el número de servidor."
+     exit 1
+ fi
+ re='^[0-9]+$'
+ if ! [[ $host =~ $re ]]; then
+    host="$1"
+ else
+    host="s$1"
+ fi
+ echo "Conectando: root@$host"
+ ssh root@$host
+}
+
+#Terminate psql connections
+function pg_term {
+  t="$1"
+  if [ -z "$1" ]
+    then
+     t="20"
+  fi
+  
+  sql="SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity 
+  WHERE backend_start < CURRENT_TIMESTAMP - INTERVAL '$t minutes';"
+  
+  echo "Terminando conexiones mayores a $t minutos."
+  psql template1 -c "$sql"
+}
+function descargar_respaldo {
+  TENANT=$1
+  DEST="$HOME/.sql/"
+  FECHA="$2"
+  if [ -z "$2" ]
+    then
+     FECHA="$(date +%y%m%d)"
+  fi
+  
+  mkdir -p "$DEST"
+  gsutil cp gs://at-backups/$FECHA/$TENANT.sql $DEST$TENANT.sql
+  echo "Respaldo descargado en: $DEST$TENANT.sql"
+}
+function respaldar_certificados {
+ REMOTE_SCRIPT_PATH="/.scripts/backup_certs.sh"
+ CURDIR="$HOME/certificados_clientes/$(date +%Y-%m-%d)"
+ REMOTE_BACKUP_ZIP="/tmp/certs_$1.tar.gz"
+ mkdir -p $CURDIR
+ ssh root@$1 "$REMOTE_SCRIPT_PATH $REMOTE_BACKUP_ZIP"
+ echo "Iniciando descarga root@$1:$REMOTE_BACKUP_ZIP"
+ echo "---------------------------------------------"
+ rsync -av --progress root@$1:$REMOTE_BACKUP_ZIP $CURDIR
+}
+function kill_celery {
+  if [ -z "$1" ]
+  then
+   echo "Especifique la instancia a | b."
+   exit 1
+  fi
+
+  ps auxww | grep 'celeryd_$1' | awk '{print $2}' | xargs kill -9
+}
+#System
+export GREP_COLOR="1;33"
+alias grep='grep --color=auto'
+alias at_celery="celery worker -A admintotal.celeryapp -E --pid=/tmp/celery1.pid -n "instance-1""

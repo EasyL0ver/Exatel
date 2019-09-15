@@ -1,0 +1,13 @@
+countries = {
+    'Россия': ['Евразия', 124251 ], 
+    'Германия': ['Европа', 1234],
+    'Англия': ['Европа', 2424],
+    'Китай': ['Евразия', 244244],
+    'Бразилия': ['Южная Америка', 14244],
+    }
+
+earth_part = 'Евразия'
+
+countries_earth_part = {k: v for k, v in filter(lambda x: x[1][0] == earth_part, countries.items())}
+print(countries_earth_part)
+print(sum([x[1][1] for x in countries_earth_part.items()]))

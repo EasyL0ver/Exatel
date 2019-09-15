@@ -1,0 +1,53 @@
+module Scorer exposing (..)
+
+import Array exposing (fromList, get, map, set, toList)
+import List exposing (all, foldl, map)
+import Maybe exposing (withDefault)
+
+
+markerX : Char
+markerX =
+    'X'
+
+
+empty : Char
+empty =
+    ' '
+
+
+nextBestMove : List (List Char) -> Int
+nextBestMove gameNode =
+    let
+        node =
+            List.map fromList gameNode
+
+        gameNodeAsArray =
+            fromList node
+
+        row1 =
+            get 0 gameNodeAsArray
+
+        row1NextState =
+            set 2 markerX (withDefault (Array.initialize 3 (always empty)) row1)
+
+        row2 =
+            get 1 gameNodeAsArray
+
+        row2NextState =
+            set 2 markerX (withDefault (Array.initialize 3 (always empty)) row2)
+    in
+    if winnerFound markerX row1NextState then
+        2
+    else if winnerFound markerX row2NextState then
+        5
+    else
+        0
+
+
+winnerFound : Char -> Array.Array Char -> Bool
+winnerFound marker row =
+    let
+        rowAsList =
+            toList row
+    in
+    all (\cell -> cell == marker) rowAsList

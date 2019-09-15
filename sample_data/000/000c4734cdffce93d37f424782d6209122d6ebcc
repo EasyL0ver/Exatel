@@ -1,0 +1,147 @@
+/******************************************************************
+// LOSHUSQUARE HEADER
+CIS 22B
+
+Lab6: LoshuSquare.h will define functions that will be used by
+Player.h using the dot operator. Player.h has public access to
+LoShuSquare.h, and will  take a LoShuSquare object as a parameter.
+
+The functions of class LoshuSquare.h will be
+
+
+Author: Owehn Lagman
+
+Date:11/29/2018
+
+*******************************************************************/
+
+#pragma once
+#include <iostream>
+using namespace std;
+class LoShuSquare
+{
+protected:
+	int** grid;
+	int choice;
+
+public:
+	static const int THREE = 3;
+	static const int FIFTEEN = 15;
+	//defaults values to 0
+	LoShuSquare() {
+		// dynamically allocates 2d array
+		grid = new int *[THREE]; // pointer to pointer?
+		for (int i = 0; i != THREE; ++i) {
+			grid[i] = new int[THREE];
+		}
+
+		for (int i = 0; i < THREE; i++) {
+			for (int j = 0; j < THREE; j++) {
+				grid[i][j] = 0;
+			}
+		}
+	}
+
+	// destructor
+	~LoShuSquare() {
+		for (int i = 0; i < THREE; i++) {
+			delete[] grid[i];
+		}
+		delete[] grid;
+		//grid = 0;
+	}
+
+	// changes squares
+	void fillGrid() {
+		// fill [0][0] then [0][1], etc
+		for (int i = 0; i < THREE; i++) {
+			for (int j = 0; j < THREE; j++) {
+				cout << "choose a number for row " << i;
+				cout << " column " << j << ": ";
+				cin >> choice;
+				grid[i][j] = choice;
+				print();
+			}
+		}
+	}
+
+	// prints board
+	void print() {
+		cout << "Contents of 3x3 Matrix: " << endl;
+		for (int i = 0; i < THREE; i++) {
+			for (int j = 0; j < THREE; j++) {
+				cout << grid[i][j] << " ";
+			}
+			cout << endl;
+		}
+	}
+	// could break into multiple functions
+	bool isLoshuSquare() {
+		bool isLoshuSquare;
+		if (rowCheck() == true && diagonalCheck() == true && columnCheck() == true) {
+			isLoshuSquare = true;
+			cout << "User has a Loshu Square." << endl;
+			return isLoshuSquare;
+
+		}
+		else {
+			isLoshuSquare = false;
+			cout << "User does not have a Loshu Square." << endl;
+			return isLoshuSquare;
+
+		}
+
+	}
+
+	// for rows
+	bool rowCheck() {
+
+		int row1 = grid[0][0] + grid[0][1] + grid[0][2];
+		int row2 = grid[1][0] + grid[1][1] + grid[1][2];
+		int row3 = grid[2][0] + grid[2][1] + grid[2][2];
+		bool rowCheck;
+		if (row1 == FIFTEEN && row2 == FIFTEEN && row3 == FIFTEEN) {
+			rowCheck = true;
+			return rowCheck;
+
+		}
+		else {
+			rowCheck = false;
+			return rowCheck;
+		}
+	}
+
+	bool columnCheck() {
+
+		int column1 = grid[0][0] + grid[1][0] + grid[2][0];
+		int column2 = grid[0][1] + grid[1][1] + grid[2][1];
+		int column3 = grid[0][2] + grid[1][2] + grid[2][2];
+		bool columnCheck;
+
+		if (column1 == FIFTEEN && column2 == FIFTEEN && column3 == FIFTEEN) {
+			columnCheck = true;
+			return columnCheck;
+		}
+		else {
+			columnCheck = false;
+			return columnCheck;
+		}
+	}
+
+	bool diagonalCheck() {
+
+		int diagonal1 = grid[0][0] + grid[1][1] + grid[2][2];
+		int diagonal2 = grid[0][2] + grid[1][1] + grid[2][0];
+		bool diagonalCheck;
+
+		if (diagonal1 == FIFTEEN && diagonal2 == FIFTEEN) {
+			diagonalCheck = true;
+			return diagonalCheck;
+		}
+		else {
+			diagonalCheck = false;
+
+			return diagonalCheck;
+		}
+	}
+};

@@ -1,0 +1,121 @@
+on spawn:
+	if event-entity is zombie:
+		event-entity's name is "aaa"
+		if {boss::spawn} is not set:
+			set {boss::spawn} to "on"
+			if {boss::countdown} is not set:
+				set {boss::countdown} to 300
+			while {boss::countdown} is more than 0:
+				wait 1 second
+				remove 1 from {boss::countdown}
+				loop all Players in radius 30 around the event-entity:
+					wipe loop-entity's sidebar
+					set name of sidebar of loop-entity to "&7VS BOSS"
+					set score "&b残り &e%{boss::countdown}% &b秒" in sidebar of loop-entity to 0
+				set {_boss.count1} to random integer between 1 and 2
+				if {_boss.count1} is 1:
+					set {_boss.count2} to random integer between 1 and 4
+					if {_boss.count2} is 1:
+						set {_boss.shot} to 0.5
+						set {_Particle} to location of the block {_boss.shot} meter in front of event-entity's head
+						loop 30 times:
+							show 20 crit particles at {_Particle} offset by 0, 0, 0
+							set {_boss.shot} to {_boss.shot} + 0.5
+							set {_Particle} to location of the block {_boss.shot} meter infront of event-entity's head
+						shoot an arrow from event-entity at speed 50
+						loop all Players in radius 30 around the event-entity:
+							play "entity_generic_explode" to loop-entity at volume 10
+					if {_boss.count2} is 2 or 4:
+						loop 10 times:
+							shoot an snowball from event-entity at speed 3
+							loop all Players in radius 30 around the event-entity:
+								play "entity_irongolem_attack" to loop-entity at volume 10
+					if {_boss.count2} is 3:
+						loop all Players in radius 10 around the event-entity:
+							strike lightning effect at loop-entity
+							make event-entity damage loop-entity by 20
+							play "entity_enderdragon_ambient" to loop-entity at volume 10
+				else if {_boss.count1} is 2:
+					set {_boss.count3} to random integer between 1 and 4
+					if {_boss.count3} is 1:
+						push event-entity east at speed 2
+					if {_boss.count3} is 2:
+						push event-entity west at speed 2
+					if {_boss.count3} is 3:
+						push event-entity north at speed 2
+					if {_boss.count3} is 4:
+						push event-entity south at speed 2
+			if {boss::kill} is "on":
+				delete {boss::*}
+				loop all Players in radius 30 around the event-entity:
+					wipe loop-entity's sidebar
+				stop
+			else:
+				delete event-entity
+				loop all Players in radius 30 around the event-entity:
+					wipe loop-entity's sidebar
+					send "&8[&7BOSS&8] &7時間切れです。また次回挑戦してください" to loop-entity
+				delete {boss::*}
+		else:
+			stop
+
+on death:
+	victim's name is "aaa"
+	if {boss::spawn} is not set:
+		stop
+	else:
+		delete {boss::*}
+		set {boss::kill} to "on"
+		drop {boss.drop::*} at attacker
+
+command /boss [<text>]:
+	permission: admin.sk
+	trigger:
+		if arg-1 is "reset":
+			delete {boss::*}
+			execute console command "kill @e[type=zombie]"
+			send "&8[&7BOSS&8] &7BOSSをResetさせました"
+		if arg-1 is "drop":
+			set {boss.drop::*} to Player's tool
+			send "&8[&7BOSS&8] &7ドロップ品を設定しました"
+
+on Damage:
+	attacker's name is "aaa"
+	if {boss::spawn} is not set:
+		stop
+	else:
+		if projectile is snowball:
+			set Damage to 6
+			apply slowness 5 to the victim for 2 seconds
+		if projectile is arrow:
+			set Damage to Damage*100
+
+on shoot:
+	loop entities in radius 1 of projectile:
+		loop-entity is a snowball
+		add 1 to {_random}
+		if {_random} is 1:
+			push loop-entity to the right at speed random number from 0.05 to 0.11
+			push loop-entity upwards at speed random number from 0.04 to 0.10
+		if {_random} is 2:
+			push loop-entity to the left at speed random number from 0.04 to 0.10
+			push loop-entity upwards at speed random number from 0.05 to 0.11
+		if {_random} is 3:
+			push loop-entity forwards at speed random number from 0.05 to 0.10
+			push loop-entity upwards at speed random number from 0.05 to 0.10
+		if {_random} is 4:
+			push loop-entity backwards at speed random number from 0.04 to 0.10
+			push loop-entity to the left at speed random number from 0.05 to 0.11
+			push loop-entity upwards at speed random number from 0.04 to 0.11
+		if {_random} is 5:
+			push loop-entity backwards at speed random number from 0.05 to 0.11
+			push loop-entity to the right at speed random number from 0.04 to 0.10
+			push loop-entity upwards at speed random number from 0.04 to 0.11
+		if {_random} is 6:
+			push loop-entity forwards at speed random number from 0.05 to 0.10
+			push loop-entity to the left at speed random number from 0.05 to 0.10
+			push loop-entity upwards at speed random number from 0.05 to 0.10
+		if {_random} is 7:
+			push loop-entity forwards at speed random number from 0.05 to 0.10
+			push loop-entity to the right at speed random number from 0.05 to 0.10
+			push loop-entity upwards at speed random number from 0.05 to 0.10

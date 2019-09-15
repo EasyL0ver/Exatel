@@ -1,0 +1,180 @@
+#include <iostream>
+#include <math.h>
+#include <iomanip>
+#include <stdlib.h>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+    int Zadanie;
+    cout << "Podaj Numer Zadania: " << endl;
+    cin >> Zadanie;
+
+    switch(Zadanie)
+    {
+
+    case 1:
+        {
+            cout << "Program oblicza wartosc funkcji y = 3x dla x zmieniajacego sie od 0 do 10" << endl;
+            for(int x = 0; x<=10; x++)
+            {
+                int y = x*3;
+                cout << "x = " << x << "  y = " << y << endl;
+            }
+        break;
+        }
+
+    case 2:
+        {
+            cout << "Program oblicza wartosc funkcji y = 3x dla x zmieniajacego sie od 0 do 10" << endl;
+            int x = 0;
+            do
+            {
+                x+=1;
+                int y = x*3;
+                cout << "x = " << x << "  y = " << y << endl;
+            }
+            while(x < 10);
+        break;
+        }
+
+    case 3:
+        {
+            cout << "Program oblicza wartosc funkcji y = 3x dla x zmieniajacego sie od 0 do 10" << endl;
+            int x = 0;
+            while(x < 10)
+            {
+                x+=1;
+                int y = x*3;
+                cout << "x = " << x << "  y = " << y << endl;
+            }
+        break;
+        }
+
+    case 4:
+        {
+            cout << "Program wyswietla liczby calkowite od 1 do 20." << endl;
+            for(int x = 0; x<=20; x++)
+            {
+                cout << x << ", " << endl;
+            }
+        break;
+        }
+
+    case 5:
+        {
+            int x = 0;
+            int y = 0;
+            do
+            {
+                x+=1;
+                y+=x;
+            }
+            while(x < 100);
+            cout << "Program sumuje liczby calkowite od 1 do 100." << endl;
+            cout << "Suma liczb calkowitych od 1 do 100 wynosi " << y << endl;
+        break;
+        }
+
+    case 6:
+        {
+            int x = 0;
+            int y = 0;
+            do
+            {
+                x+=1;
+                if(x % 2 != 0)
+                {
+                    y+=x;
+                }
+            }
+            while(x < 100);
+            cout << "Program sumuje liczby nieparzyste od 1 do 100." << endl;
+            cout << "Suma liczb nieparzystych od 1 do 100 wynosi " << y << endl;
+        break;
+        }
+
+    case 7:
+        {
+            int x = 0;
+            int y = 0;
+            while(x < 100)
+            {
+                x+=1;
+                if(x % 2 != 0)
+                {
+                    y+=x;
+                }
+            }
+            cout << "Program sumuje liczby nieparzyste od 1 do 100." << endl;
+            cout << "Suma liczb nieparzystych od 1 do 100 wynosi" << y << endl;
+        break;
+        }
+
+    case 8:
+        {
+            int x = 0;
+            int y = 0;
+            for(x; x <= 100; x++)
+            {
+                if(x % 2 != 0)
+                {
+                    y+=x;
+                }
+            }
+            cout << "Program sumuje liczby nieparzyste od 1 do 100." << endl;
+            cout << "Suma liczb nieparzystych od 1 do 100 wynosi " << y << endl;
+        break;
+        }
+
+        case 9:
+        {
+	    cout << fixed;
+            int najwieksza = 0;
+            int najmniejsza = 0;
+            int tablica[5];
+            int poz[5];
+            double srednia = 0;
+            double suma = 0;
+            int ilosc = 0;
+            srand(time(NULL));
+            cout << "Program losuje 5 liczb z przedzialu  od 0 do 99, \na nastepnie  znajduje najmniejsza i najwieksza \noraz oblicza srednia ze wszystkich wylosowanych liczb.\n\nWylosowano liczby: " << endl;
+            for(ilosc = 0; ilosc < 5; ilosc++)
+            {
+                tablica[ilosc] = rand() % 100;
+                cout << tablica[ilosc] << ", ";
+                suma+=tablica[ilosc];
+
+            }
+            for(int x = 0; x < 5; x++)
+            {
+                if(najwieksza < tablica[x])
+                {
+                    najwieksza = tablica[x];
+                }
+
+            }
+	    najmniejsza = najwieksza;
+            for(int x = 0; x < 5; x++)
+            {
+                if(najmniejsza > tablica[x])
+                {
+                    najmniejsza = tablica[x];
+                }
+
+            }
+            srednia=suma/ilosc;
+
+            cout << "Najwieksza liczba to: " << najwieksza << endl;
+            cout << "Najmniejsza liczba to: " << najmniejsza << endl;
+            cout << setprecision(2) << "Srednia liczb to: " << srednia << endl;
+        break;
+        }
+
+
+    default:
+        break;
+    }
+}

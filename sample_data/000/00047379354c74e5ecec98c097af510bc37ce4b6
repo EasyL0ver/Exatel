@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+ /*function Message(){
+	 errCustId=document.getElementById("errCustId");
+	 errCustId.innerHTML="<font color=Yellow>Please enter valid customer id</font>";
+	 
+ }
+ function correctMessage(){
+     customerId = document.getElementById("customerId").value;
+     console.log(customerId);
+     if (customerId.length == 0)
+         //alert("customer id cannot be left blank")
+         errCustId.innerHTML = "<font color=red>customer id cannot be left blank</font>";
+     else if (customerId <= 0)
+         errCustId.innerHTML = "<font color=red>Negative customer id not allowed"
+         else
+     errCustId.innerHTML ="<font color=green>You are great, </font>";
+ }*/
+    function validateCustomerDetails() {
+        var errCustId.innerHTML="<font color=red>Customer Id can not be left blank</font>";
+        var customerName = document.customerform.customerName.value;
+        var customerAddress  = document.forms[0].elements[2].value;
+        
+        var errCustId=document.getElementById("errCustId");
+        var errCustName=document.getElementById("errCustName");
+        var errCustAdd=document.getElementById("errCustAdd");
+       
+        if (customerId.length== 0)
+            {
+        errCustId.innerHTML="<font color=red>Customer Id can not be left blank</font>";
+            }
+        else if (customerId.length < 0)
+            alert("Negative Customer Id is not allowed");
+        else if (customerName.length == 0)
+            errCustName.innerHTML="<font color=red>Customer Name can not be left blank</font>";
+        else if (customerAddress =="-1")
+        	{
+            errCustAdd.innerHTML="<font color=red>Select Customer Address</font>";
+        	}
+        else if (document.forms[0].elements[3].checked)
+            alert("billAmount not Checked");
+        else
+            alert("Welcome!!");
+    }
+</script>
+ 
+
+</head>
+<body>
+    <form name="customerform">
+        <h2 align="center">Please Provide Some details..</h2>
+        <div class=a>
+            <table border="0" cellspacing="10" cellpadding="10" align="center">
+                <tr>
+                    <td>Customer Id:</td>
+                    <td><input type="number" id="customerId"
+                        placeholder="Enter customerId " name="customerId"></td>
+                                <td><span id="errCustId"></span></td>
+                               
+                </tr>
+                <tr>
+                    <td>Customer Name:</td>
+                    <td><input type="text" id="customerName"
+                        placeholder="Enter Customer Name" name="customerName"></td>
+                        <td><span id="errCustName"></span></td>
+                </tr>
+                <tr>
+                    <td>Customer Address:</td>
+                    <td><select name=customerAddress id="customerAddress">
+                    <option value="-1">--Select--</option>
+                            <option value="Bhubaneswar">Bhubaneswar</option>
+                            <option value="Vizag">Vizag</option>
+                            <option value="Nepal">Nepal</option>
+                            <option value="Andhra">Andhra</option>
+                            <option value="Marathahalli"> Marathahalli</option>
+                    </select></td>
+                    <td><span id="errCustAdd"></span></td>
+                </tr>
+                <tr>
+                    <td>Bill Amount</td>
+                    <td><input type="radio" id="billAmount" name="billAmount"
+                        value="500" checked> 500
+                        <input type="radio" id="billAmount"
+                        name="billAmount" value="1500"> 1500
+                         <input type="radio"
+                        id="billAmount" name="billAmount" value="2500"> 2500</td>
+                </tr>
+                <tr>
+                    <td><input type="submit"></td>
+                    <td><input type="button" value="Check"
+                        onclick="validateCustomerDetails()"></td>
+                    <td><input type="reset"></td>
+                   
+            </table>
+        </div>
+ 
+    </form>
+ 
+</body>
+</html>

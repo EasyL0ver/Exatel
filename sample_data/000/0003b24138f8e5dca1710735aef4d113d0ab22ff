@@ -1,0 +1,64 @@
+#include <iostream>
+#include <chrono>
+
+namespace chrono_out{
+
+    template<class T, class R>
+    std::ostream &operator<<(std::ostream &os, std::chrono::duration<T, R> duration) {
+        using namespace std::chrono;
+        using namespace std;
+
+        const auto hours   = duration_cast< chrono::duration<T, std::ratio<3600> > >(duration);
+        duration -= hours;
+
+        const auto minutes = duration_cast< chrono::duration<T, std::ratio<60> > >(duration);
+        duration -= minutes;
+
+        const auto seconds = duration_cast< chrono::duration<T> >(duration);
+        duration -= seconds;
+
+        const auto milliseconds = duration_cast< chrono::duration<T, std::milli > >(duration);
+        duration -= milliseconds;
+
+        const auto microseconds = duration_cast< chrono::duration<T, std::micro > >(duration);
+        duration -= microseconds;
+
+        const auto nanoseconds = duration_cast< chrono::duration<T, std::nano > >(duration);
+        duration -= nanoseconds;
+
+        const auto picoseconds = duration_cast< chrono::duration<T, std::pico > >(duration);
+        duration -= picoseconds;
+
+        const auto femtoseconds = duration_cast< chrono::duration<T, std::femto > >(duration);
+        duration -= femtoseconds;
+
+
+        if (hours.count()){
+            os << hours.count() << "h ";
+        }
+        if (minutes.count()){
+            os << minutes.count() << "m ";
+        }
+        if (seconds.count()){
+            os << seconds.count() << "s ";
+        }
+        if (milliseconds.count()){
+            os << milliseconds.count() << "ms ";
+        }
+        if (microseconds.count()){
+            os << microseconds.count() << "us ";
+        }
+        if (nanoseconds.count()){
+            os << nanoseconds.count() << "ns ";
+        }
+        if (picoseconds.count()){
+            os << picoseconds.count() << "ps ";
+        }
+        if (femtoseconds.count()){
+            os << femtoseconds.count() << "fs ";
+        }
+
+        return os;
+    }
+
+}

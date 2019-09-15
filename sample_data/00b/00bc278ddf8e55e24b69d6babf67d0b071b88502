@@ -1,0 +1,45 @@
+__global__ void kernel_creategradient( CUDA_Pic colorPic )
+{
+	// X,Y coordinates and check image dimensions
+	int y = blockDim.y * blockIdx.y + threadIdx.y;
+	int x = blockDim.x * blockIdx.x + threadIdx.x;
+	if ( y >= colorPic.Size.y ) return;
+	if ( x >= colorPic.Size.x ) return;
+
+	int dy = x * colorPic.Size.y / colorPic.Size.x + y - colorPic.Size.y;
+	unsigned char color = 255 * abs( dy ) / colorPic.Size.y;
+
+	uchar3 bgr = ( dy < 0 ) ? ( uchar3 ) { color, 255 - color, 0 } : ( uchar3 ) { 0, 255 - color, color };
+
+	// Store point into image
+	colorPic.P_uchar3[ y * colorPic.Size.x + x ] = bgr;
+}
+
+// -----------------------------------------------------------------------------------------------
+
+// Demo kernel to create picture with alpha channel gradient
+__global__ void kernel_insertimage( CUDA_Pic bigPic, CUDA_Pic smallPic, int2 position )
+{
+	// X,Y coordinates and check image dimensions
+	int y = blockDim.y * blockIdx.y + threadIdx.y;
+	int x = blockDim.x * blockIdx.x + threadIdx.x;
+	if ( y >= smallPic.Size.y ) return;
+	if ( x >= smallPic.Size.x ) return;
+	int by = y + position.y;
+	int bx = x + position.x;
+	if ( by >= bigPic.Size.y || by < 0 ) return;
+	if ( bx >= bigPic.Size.x || bx < 0 ) return;
+
+	// Get point from small image
+	uchar4 fg_bgra = smallPic.P_uchar4[ y * smallPic.Size.x + x ];
+	uchar3 bg_bgr = bigPic.P_uchar3[ by * bigPic.Size.x + bx ];
+	uchar3 bgr = { 0, 0, 0 };
+
+	// compose point from small and big image according alpha channel
+	bgr.x = fg_bgra.x * fg_bgra.w / 255 + bg_bgr.x * ( 255 - fg_bgra.w ) / 255;
+	bgr.y = fg_bgra.y * fg_bgra.w / 255 + bg_bgr.y * ( 255 - fg_bgra.w ) / 255;
+	bgr.z = fg_bgra.z * fg_bgra.w / 255 + bg_bgr.z * ( 255 - fg_bgra.w ) / 255;
+
+	// Store point into image
+	bigPic.P_uchar3[ by * bigPic.Size.x + bx ] = bgr;
+}

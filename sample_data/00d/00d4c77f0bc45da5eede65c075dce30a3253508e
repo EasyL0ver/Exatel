@@ -1,0 +1,3 @@
+def array_diff(a, b)
+  a.delete_if {|a| b.include?(a)}
+end

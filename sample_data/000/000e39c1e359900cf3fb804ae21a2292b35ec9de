@@ -1,0 +1,88 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+
+
+namespace ChatClient
+{
+   
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            openclient();
+            InitializeComponent();
+
+        }
+        TcpClient tcpClient;
+        NetworkStream stream;
+        StreamWriter writer;
+        StreamReader reader;
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if(richTextBox1.Text.ToLower().Equals("end"))
+            {
+                tcpClient.Close();
+                Environment.Exit(0);
+            }
+            writer.WriteLine(richTextBox1.Text);
+            writer.Flush();
+            richTextBox1.Clear();
+           
+            //richTextBox1.Text;
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    
+
+      
+        public void openclient()
+        {
+
+            
+            tcpClient = new TcpClient();
+            if (!Connect("127.0.0.1", 4444))
+            {
+                tcpClient.Close();
+                Environment.Exit(0);
+            }
+        }
+        bool Connect(string ipAddress, int port)
+        {
+            try
+            {
+
+
+                tcpClient.Connect(ipAddress, port);
+                stream = tcpClient.GetStream();
+
+                writer = new StreamWriter(stream);
+                reader = new StreamReader(stream);
+            }
+            catch (Exception e)
+            {
+                Console.Write("ERROR " + e.Message);
+                return false;
+            }
+            return true;
+        }
+    }
+}

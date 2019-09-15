@@ -1,0 +1,194 @@
+Config Report
+
+Stats
+------------------------------------------------------------------------
+  STR:  0  / 75      INT:  80  / 75      Hits:  201  / 200      AF:  0  /
+50    
+  CON:  77  / 75      PIE:  0  / 75      End:  0  / 25    
+  DEX:  79  / 75      EMP:  0  / 75      Pow:  9  / 26    
+  QUI:  0  / 75      CHA:  0  / 75      %PP:  0%  / 25%    
+
+Resists
+------------------------------------------------------------------------
+  Body:  26  / 26      Energy:  26  / 26      Crush:  26  / 26  (+2)  
+  Cold:  26  / 26      Matter:  25  / 26      Slash:  27  / 26  (+3)  
+  Heat:  30  / 26      Spirit:  27  / 26  (+5)    Thrust:  26  / 26    
+  Essence:  0  / 26    
+
+Skills
+------------------------------------------------------------------------
+  5  / 11  All Magic Skills
+  11  / 11  Cold Magic
+  11  / 11  Earth Magic
+  11  / 11  Fire Magic
+
+Focus
+------------------------------------------------------------------------
+  50  / 50  All Spell Lines
+  50  / 50  Cold Magic
+  50  / 50  Earth Magic
+  50  / 50  Fire Magic
+
+Piece Listing
+------------------------------------------------------------------------
+Chest
+Name: SIDI CHEST MAGE
+Level: 51 Quality: 99
+  Slot 1:  21  Dexterity
+  Slot 2:  21  Intelligence
+  Slot 3:  8  Cold Resist
+  Slot 4:  8  Heat Resist
+Utility: 60.0
+
+
+Arms
+Name: Crafted Item2
+Level: 51 Quality: 99
+Imbue Points: 33.5 of 32 Overcharge: 1,5
+  Gem 1:  22  Constitution - Precious Earthen Essence Jewel
+  Gem 2:  22  Dexterity - Precious Vapor Essence Jewel
+  Gem 3:  7  Thrust Resist - Imperfect Airy Shielding Jewel
+  Gem 4:  3  Fire Magic Skill - Rough Fiery Evocation Sigil
+Utility: 58.3 SC Cost: 44g 20s 80c SC Price: 44g 20s 80c
+
+
+Head
+Name: Crafted Item3
+Level: 51 Quality: 99
+Imbue Points: 32.5 of 32 Overcharge: 0,5
+  Gem 1:  3  Fire Magic Skill - Rough Fiery Evocation Sigil
+  Gem 2:  22  Constitution - Precious Earthen Essence Jewel
+  Gem 3:  5  Crush Resist - Flawed Fiery Shielding Jewel
+  Gem 4:  9  Power - Polished Mystical Essence Jewel
+Utility: 45.7 SC Cost: 30g 58s 80c SC Price: 30g 58s 80c
+
+
+Legs
+Name: Crafted Item4
+Level: 51 Quality: 99
+Imbue Points: 33.5 of 32 Overcharge: 1,5
+  Gem 1:  25  Constitution - Flawless Earthen Essence Jewel
+  Gem 2:  19  Dexterity - Faceted Vapor Essence Jewel
+  Gem 3:  7  Crush Resist - Imperfect Fiery Shielding Jewel
+  Gem 4:  5  Energy Resist - Flawed Light Shielding Jewel
+Utility: 53.3 SC Cost: 44g 56s 60c SC Price: 44g 56s 60c
+
+
+Hands
+Name: Crafted Item5
+Level: 51 Quality: 100
+Imbue Points: 37.5 of 32 Overcharge: 5,5
+  Gem 1:  2  Slash Resist - Uncut Watery Shielding Jewel
+  Gem 2:  76  Hits - Perfect Blood Essence Jewel
+  Gem 3:  6  Cold Magic Skill - Polished Icy Evocation Sigil
+  Gem 4:  3  Body Resist - Rough Dusty Shielding Jewel
+Utility: 59.0 SC Cost: 39g 8s 40c SC Price: 39g 8s 40c
+
+
+Feet
+Name: Crafted Item6
+Level: 51 Quality: 100
+Imbue Points: 37.5 of 32 Overcharge: 5,5
+  Gem 1:  13  Intelligence - Imperfect Dusty Essence Jewel
+  Gem 2:  5  Matter Resist - Flawed Earthen Shielding Jewel
+  Gem 3:  5  Spirit Resist - Flawed Vapor Shielding Jewel
+  Gem 4:  6  Earth Magic Skill - Polished Earthen Evocation Sigil
+Utility: 58.7 SC Cost: 15g 72s 40c SC Price: 15g 72s 40c
+
+
+2 Handed
+Name: quete SI staff
+Level: 51 Quality: 99
+  Slot 1:  30  Intelligence
+  Slot 2:  50  All Spell Lines
+Utility: 21.0
+
+
+Neck
+Name: SI neck quest
+Level: 51 Quality: 99
+  Slot 1:  10  Body Resist
+  Slot 2:  10  Crush Resist
+  Slot 3:  10  Spirit Resist
+  Slot 4:  10  Thrust Resist
+Utility: 80.0
+
+
+Cloak
+Name: Drop Item13
+Level: 51 Quality: 99
+  Slot 1:  40  Hits
+  Slot 2:  7  Body Resist
+  Slot 3:  5  Cold Resist
+  Slot 4:  4  Crush Resist
+  Slot 5:  5  Energy Resist
+  Slot 6:  6  Slash Resist
+Utility: 64.0
+
+
+Jewel
+Name: Drop Item14
+Level: 51 Quality: 99
+  Slot 1:  8  Slash Resist
+  Slot 2:  8  Thrust Resist
+  Slot 3:  8  Heat Resist
+  Slot 4:  24  Hits
+Utility: 54.0
+
+
+Belt
+Name: Drop Item15
+Level: 51 Quality: 99
+  Slot 1:  1  Constitution
+  Slot 2:  32  Hits
+  Slot 3:  6  Body Resist
+  Slot 4:  4  Energy Resist
+  Slot 5:  5  Matter Resist
+  Slot 6:  1  All Magic Skills
+Utility: 43.7
+
+
+Left Ring
+Name: Drop Item16
+Level: 51 Quality: 99
+  Slot 1:  17  Dexterity
+  Slot 2:  6  Heat Resist
+  Slot 3:  1  Matter Resist
+  Slot 4:  6  Spirit Resist
+  Slot 5:  1  Thrust Resist
+  Slot 6:  16  Acuity
+  Slot 7:  1  All Magic Skills
+Utility: 55.0
+
+
+Right Ring
+Name: Drop Item17
+Level: 51 Quality: 99
+  Slot 1:  5  Cold Resist
+  Slot 2:  6  Energy Resist
+  Slot 3:  8  Heat Resist
+  Slot 4:  5  Slash Resist
+  Slot 5:  1  All Magic Skills
+Utility: 53.0
+
+
+Left Wrist
+Name: Drop Item18
+Level: 51 Quality: 99
+  Slot 1:  1  Hits
+  Slot 2:  8  Cold Resist
+  Slot 3:  7  Matter Resist
+  Slot 4:  6  Slash Resist
+  Slot 5:  6  Spirit Resist
+Utility: 54.3
+
+
+Right Wrist
+Name: Drop Item19
+Level: 51 Quality: 99
+  Slot 1:  7  Constitution
+  Slot 2:  28  Hits
+  Slot 3:  6  Energy Resist
+  Slot 4:  7  Matter Resist
+  Slot 5:  2  All Magic Skills
+Utility: 47.7

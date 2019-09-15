@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+convert -coalesce $1 frames%04d.png
+rm list.txt
+ffmpeg -r 10 -i frames%04d.png -vcodec mjpeg -y concatenated.mp4
+for i in {1..10}; do printf "file '%s'\n" concatenated.mp4 >> list.txt; done
+ffmpeg -y -f concat -i list.txt -c copy bad_format.mp4
+ffmpeg -y -i bad_format.mp4 -vcodec h264 -acodec aac -strict -2 -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" $1.mp4

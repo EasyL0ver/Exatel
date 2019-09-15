@@ -1,0 +1,24 @@
+export class StateComponent  {
+  _studentForm;  //Use a _studentForm
+  @Input() 
+  set studentForm(value)  //use a setter, to subscribe when has value
+  {
+     this._studentForm=value;
+     this._studentForm.valueChanges.subscribe(res=>{
+       var val = this._studentForm.controls[this.countryId].value;
+       this.states=this.selectService.filterStates(val);
+     })
+  }
+  @Input() id:string;
+  @Input() countryId:string;
+  states: State[];
+
+  constructor(private selectService: SelectService) { }
+}
+	
+<form [formGroup]="_studentForm">
+    <select [formControlName]="id" >
+      <option [value]="0">--Select--</option>
+      <option *ngFor="let state of states " value= {{state.id}}>{{state.name}}</option>
+    </select>
+</form>

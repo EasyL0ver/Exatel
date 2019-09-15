@@ -1,0 +1,168 @@
+00    /r     ADD r/m8,r8             ADD 
+01    /r     ADD r/m32,r32           ADD 
+02    /r     ADD r8,r/m8             ADD 
+03    /r     ADD r32,r/m32           ADD 
+04       ib  ADD AL,imm8             Add 
+05       id  ADD EAX,imm32           Add 
+06           PUSH ES                 Push ES
+07           POP ES                  Pop ES
+08    /r     OR r/m8,r8              OR 
+09    /r     OR r/m32,r32            OR 
+0A    /r     OR r8,r/m8              OR 
+0B    /r     OR r32,r/m32            OR 
+0C       ib  OR AL,imm8              OR
+0D       id  OR EAX,imm32            OR 
+0E           PUSH CS                 Push CS
+0F 00 /0     SLDT r/m32              Store Local Descriptor Table Register
+0F 00 /1     STR r/m16               Store Task Register
+0F 00 /2     LLDT r/m16              Load segment selector r/m16 into LDTR
+0F 00 /3     LTR r/m16               Load Task Register
+0F 00 /4     VERR r/m16              Verify a Segment for Reading
+0F 00 /5     VERW r/m16              Verify a Segment for Writing
+0F 01 /0     SGDT m                  Store GDTR to m
+0F 01 /1     SIDT m                  Store IDTR to m
+0F 01 /2     LGDT m16&32             Load m into GDTR
+0F 01 /3     LIDT m16&32             Load m into IDTR
+0F 01 /4     SMSW r/m32              Store Machine Status Word
+0F 01 /6     LMSW r/m16              Load r/m16 in machine status word of CR0
+0F 01 /7     INVLPG m                Invalidate TLB Entry for page (m)
+0F 02 /r     LAR r32,r/m32           Load Access Rights Byte     
+0F 03 /r     LSL r16,r/m16           Load Segment Limit
+0F 03 /r     LSL r32,r/m32           Load Segment Limit
+0F 06        CLTS                    Clear Task-Switched Flag in Control Reg. Zero
+0F 08        INVD                    Flush internal caches
+0F 09        WBINVD                  Write Back and Invalidate Cache
+0F 0B        UD2                     Undifined Instruction
+0F 20 /r     MOV r32,CR0             Move CR0 to r32
+0F 20 /r     MOV r32,CR2             Move CR2 to r32
+0F 20 /r     MOV r32,CR3             Move CR3 to r32
+0F 20 /r     MOV r32,CR4             Move CR4 to r32
+0F 21 /r     MOV r32,DR0-DR7         Move debug register to r32
+0F 22 /r     MOV CR0, r32            Move r32 to CR0
+0F 22 /r     MOV CR2, r32            Move r32 to CR2
+0F 22 /r     MOV CR3, r32            Move r32 to CR3
+0F 22 /r     MOV CR4, r32            Move r32 to CR4
+0F 23 /r     MOV DR0-DR7,r32         Move r32 to debug register
+0F 30        WRMSR                   Write to Model Specific Register
+0F 31        RDTSC                   Read Time-Stamp Counter
+0F 32        RDMSR                   Read from Model Specific Register
+0F 33        RDPMC                   Read Performance-Monitoring counters
+0F 40 /r     CMOVO r32,r/m32         Move if overflow 
+0F 41 /r     CMOVNO r32,r/m32        Move if not overflow 
+0F 42 /r     CMOVB r32,r/m32         Move if below 
+0F 42 /r     CMOVC r32,r/m32         Move if carry 
+0F 42 /r     CMOVNAE r32,r/m32       Move if not above or equal 
+0F 43 /r     CMOVAE r32,r/m32        Move if above or equal 
+0F 43 /r     CMOVNB r32,r/m32        Move if not below 
+0F 43 /r     CMOVNC r32,r/m32        Move if not carry 
+0F 44 /r     CMOVE r32,r/m32         Move if equal 
+0F 44 /r     CMOVZ r32,r/m32         Move if zero 
+0F 45 /r     CMOVNE r32,r/m32        Move if not equal 
+0F 45 /r     CMOVNZ r32,r/m32        Move if not zero 
+0F 46 /r     CMOVBE r32,r/m32        Move if below or equal 
+0F 46 /r     CMOVNA r32,r/m32        Move if not above 
+0F 47 /r     CMOVA r32,r/m32         Move if above 
+0F 47 /r     CMOVNBE r32,r/m32       Move if not below or equal 
+0F 48 /r     CMOVS r32,r/m32         Move if sign 
+0F 49 /r     CMOVNS r32,r/m32        Move if not sign 
+0F 4A /r     CMOVP r32,r/m32         Move if parity 
+0F 4A /r     CMOVPE r32,r/m32        Move if parity even 
+0F 4B /r     CMOVNP r32,r/m32        Move if not parity 
+0F 4B /r     CMOVPO r32,r/m32        Move if parity odd 
+0F 4C /r     CMOVL r32,r/m32         Move if less 
+0F 4C /r     CMOVNGE r32,r/m32       Move if not greater or equal 
+0F 4D /r     CMOVGE r32,r/m32        Move if greater or equal 
+0F 4D /r     CMOVNL r32,r/m32        Move if not less 
+0F 4E /r     CMOVLE r32,r/m32        Move if less or equal 
+0F 4E /r     CMOVNG r32,r/m32        Move if not greater 
+0F 4F /r     CMOVG r32,r/m32         Move if greater 
+0F 4F /r     CMOVNLE r32,r/m32       Move if not less or equal 
+0F 60 /r     PUNPCKLBW mm,mm/m64     Unpack Low Packed Data
+0F 61 /r     PUNPCKLWD mm,mm/m64     Unpack Low Packed Data
+0F 62 /r     PUNPCKLDQ mm,mm/m64     Unpack Low Packed Data
+0F 63 /r     PACKSSWB mm,mm/m64      Pack with Signed Saturation
+0F 64 /r     PCMPGTB mm,mm/m64       Packed Compare for GT
+0F 65 /r     PCMPGTW mm,mm/m64       Packed Compare for GT
+0F 66 /r     PCMPGTD mm,mm/m64       Packed Compare for GT
+0F 67 /r     PACKUSWB mm,mm/m64      Pack with Unsigned Saturation
+0F 68 /r     PUNPCKHBW mm,mm/m64     Unpack High Packed Data
+0F 69 /r     PUNPCKHWD mm,mm/m64     Unpack High Packed Data
+0F 6A /r     PUNPCKHDQ mm,mm/m64     Unpack High Packed Data
+0F 6B /r     PACKSSDW mm,mm/m64      Pack with Signed Saturation
+0F 6E /r     MOVD mm,r/m32           Move doubleword from r/m32 to mm
+0F 6F /r     MOVQ mm,mm/m64          Move quadword from mm/m64 to mm
+0F 71 /2 ib  PSRLW mm,imm8           Packed Shift Right Logical 
+0F 71 /4 ib  PSRAW mm,imm8           Packed Shift Right Arithmetic
+0F 71 /6 ib  PSLLW mm,imm8           Packed Shift Left Logical
+0F 72 /2 ib  PSRLD mm,imm8           Packed Shift Right Logical 
+0F 72 /4 ib  PSRAD mm,imm8           Packed Shift Right Arithmetic
+0F 72 /6 ib  PSLLD mm,imm8           Packed Shift Left Logical
+0F 73 /2 ib  PSRLQ mm,imm8           Packed Shift Right Logical 
+0F 73 /6 ib  PSLLQ mm,imm8           Packed Shift Left Logical
+0F 74 /r     PCMPEQB mm,mm/m64       Packed Compare for Equal
+0F 75 /r     PCMPEQW mm,mm/m64       Packed Compare for Equal
+0F 76 /r     PCMPEQD mm,mm/m64       Packed Compare for Equal
+0F 77        EMMS                    Set the FP tag word to empty
+0F 7E /r     MOVD r/m32,mm           Move doubleword from mm to r/m32
+0F 7F /r     MOVQ mm/m64,mm          Move quadword from mm to mm/m64
+0F 80    cd  JO rel32                Jump near if overflow 
+0F 81    cd  JNO rel32               Jump near if not overflow 
+0F 82    cd  JB rel32                Jump near if below 
+0F 83    cd  JAE rel32               Jump near if above or equal 
+0F 84    cd  JE rel32                Jump near if equal 
+0F 85    cd  JNE rel32               Jump near if not equal 
+0F 86    cd  JBE rel32               Jump near if below or equal 
+0F 87    cd  JA rel32                Jump near if above 
+0F 88    cd  JS rel32                Jump near if sign 
+0F 89    cd  JNS rel32               Jump near if not sign 
+0F 8A    cd  JPE rel32               Jump near if parity even 
+0F 8B    cd  JPO rel32               Jump near if parity odd 
+0F 8C    cd  JL rel32                Jump near if less 
+0F 8D    cd  JGE rel32               Jump near if greater or equal 
+0F 8E    cd  JLE rel32               Jump near if less or equal 
+0F 8F    cd  JG rel32                Jump near if greater 
+0F 90 /r     SETO r/m8               Set byte if overflow 
+0F 91 /r     SETNO r/m8              Set byte if not overflow 
+0F 92 /r     SETB r/m8               Set byte if below 
+0F 93 /r     SETAE r/m8              Set byte if above or equal
+0F 94 /r     SETE r/m8               Set byte if equal 
+0F 95 /r     SETNE r/m8              Set byte if not equal 
+0F 96 /r     SETBE r/m8              Set byte if below or equal 
+0F 97 /r     SETA r/m8               Set byte if above 
+0F 98 /r     SETS r/m8               Set byte if sign 
+0F 99 /r     SETNS r/m8              Set byte if not sign 
+0F 9A /r     SETPE r/m8              Set byte if parity even 
+0F 9B /r     SETPO r/m8              Set byte if parity odd 
+0F 9C /r     SETL r/m8               Set byte if less 
+0F 9D /r     SETGE r/m8              Set byte if greater or equal
+0F 9E /r     SETLE r/m8              Set byte if less or equal 
+0F 9F /r     SETG r/m8               Set byte if greater 
+0F A0        PUSH FS                 Push FS
+0F A1        POP FS                  Pop FS
+0F A2        CPUID                   EAX := Processor id.info.
+0F A3 /r     BT r/m32,r32            Bit Test
+0F A4 /r ib  SHLD r/m32,r32,imm8     Double Precision Shift Left
+0F A5 /r     SHLD r/m32,r32,CL       Double Precision Shift Left
+0F A8        PUSH GS                 Push GS
+0F A9        POP GS                  Pop GS
+0F AA        RSM                     Resume from System Management
+0F AB /r     BTS r/m32,r32           Bit Test and Set
+0F AC /r ib  SHRD r/m32,r32,imm8     Double Precision Shift Right
+0F AD /r     SHRD r/m32,r32,CL       Double Precision Shift Right
+0F AF /r     IMUL r32,r/m32          Multiply
+0F B0 /r     CMPXCHG r/m8,r8         Compare and Exchange
+0F B1 /r     CMPXCHG r/m32,r32       Compare and Exchange
+0F B2 /r     LSS r32,m16:32          Load SS:r32 with far ptr
+0F B3 /r     BTR r/m32,r32           Bit Test and Clear
+0F B4 /r     LFS r32,m16:32          Load FS:r32 with far ptr
+0F B5 /r     LGS r32,m16:32          Load GS:r32 with far ptr
+0F B6 /r     MOVZX r32,r/m8          Move byte to doubleword, zero-extension
+0F B7 /r     MOVZX r32,r/m16         Move word to doubleword, zero-extension
+0F BA /4 ib  BT r/m32,imm8           Bit Test
+0F BA /5 ib  BTS r/m32,imm8          Bit Test and Set
+0F BA /6 ib  BTR r/m32,imm8          Bit Test and Clear
+0F BA /7 ib  BTC r/m32,imm8          Bit Test and Complement
+0F BB /r     BTC r/m32,r32           Bit Test and Complement
+0F BC /r     BSF r32,r/m32           Bit scan forward on r/m32
+0F BD /r     BSR r32,r/m32           Bit scan reverse on r/m32
+0F BE /r     MOVSX r32,r/m8          Move

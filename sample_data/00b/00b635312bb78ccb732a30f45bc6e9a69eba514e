@@ -1,0 +1,27 @@
+from ftplib import FTP
+ftp = FTP('ftp.xx.net/psd/stweq/wewq/deeqwe-awewe-wewe-latest1')
+ftp.cwd('Users/rock/projj/')
+def grabFile():
+    filename = 'ips.txt'
+    localFile = open(filename,'wb')
+    ftp.retrbinary('RETR ' + filename,localFile.write, 1024)
+    ftp.quit()
+    localFile.close()
+def placeFile(): 
+    filename = 'ips.txt' 
+    ftp.storbinary('STOR '+filename, open(filename, 'rb'))
+    ftp.quit() 
+grabFile() 
+placeFile()
+	
+for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 8] nodename nor servname provided, or not known
+	
+IPLIST1 = ftp://ftp.xx.net/psd/stweq/wewq/deeqwe-awewe-wewe-latest1
+IPLIST2 = ftp://ftp.xx.net/psd/stweq/wewq/deeqwe-awewe-wewe-latest2
+IPLIST3 = ftp://ftp.xx.net/psd/stweq/wewq/deeqwe-awewe-wewe-latest3
+	
+arscn|*|asq|*|801|summary
+arscn|*|ipv6|*|407844|summary
+arscn|CN|ipv4|1.0.1.0|10|20110414|alloc|A00E1060
+laznic|BR|ipv4|5.4.16.0|1024|20110221|alloc|122851

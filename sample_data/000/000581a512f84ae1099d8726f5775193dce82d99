@@ -1,0 +1,60 @@
+network:add("auto_join", function(player, game_mode, difficulty)
+	local max_players, preferred_players = game_mode_data.max_players[game_mode], game_mode_data.preferred_players[game_mode]
+	local servers = {}
+	local no_servers = true
+	if server_data then
+		if game_mode_data.has_difficulty[game_mode] then
+			for code, v in pairs(server_data[game_mode]) do
+				if v[2] == difficulty and tonumber(v[players_index[game_mode]]) < max_players then
+					servers[code] = v
+					no_servers = false
+				end
+			end
+		elseif server_data[game_mode] then
+			for code, v in pairs(server_data[game_mode]) do
+				if v[players_index[game_mode]] < max_players then
+					servers[code] = v
+					no_servers = false
+				end
+			end
+		end
+	end
+	
+	if no_servers then
+		network:send(player, "join_queue", difficulty)
+		joinQueue(player, game_mode, difficulty)
+	elseif not join_cooldown[player] or tick() - join_cooldown[player] > 10 then
+		join_cooldown[player] = tick()
+		
+		local best_points, best_option_codes
+		for code, v in pairs(servers) do
+			local points = (tonumber(v[players_index[game_mode]]) >= max_players / 2 and 1 or 0) + (tonumber(v[players_index[game_mode]]) < preferred_players and 1 or 0)
+			if not best_points or points > best_points then
+				best_points = points
+				best_option_codes = { code }
+			elseif points == best_points then
+				table.insert(best_option_codes, code)
+			end
+		end
+		
+		local best_option_code
+		for _, code in pairs(best_option_codes) do
+			if not best_option_code or servers[best_option_code][players_index[game_mode]] > servers[code][players_index[game_mode]] then
+				best_option_code = code
+			end
+		end
+		
+		local accessCode = DS:GetDataStore("ServerInstanceData", game_mode):GetAsync(best_option_code)--ServerInstanceDataStore:GetAsync(best_option_code)
+		print("BABY SHARK AUTO JOIN - "..player.Name)
+		TS:TeleportToPrivateServer(game_mode_data.place_id[game_mode], accessCode, {player})
+		
+		local key = "user_" .. player.userId
+		local success, message = pcall(function()
+			LocationDataStore:SetAsync(key, { ACode = accessCode, PlaceID = game_mode_data.place_id[game_mode] })
+		end)
+		if not success then
+			print("Error: Failed to save location data for " .. key)
+		end
+		script.Teleporting:Clone().Parent = player.PlayerGui
+	end
+end)

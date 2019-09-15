@@ -1,0 +1,60 @@
+<table width="100%" border="1">
+						<tr>
+							<td>
+								<select class="popup" id="industryID" name="industryID" style="width:200px;">
+									<option value="-Please Select-">-Please Select-</option>
+									<option value="Defense/Aerospace">Defense/Aerospace</option>
+									<option value="Education">Education</option>
+									<option value="Energy/Utilities">Energy/Utilities</option>
+									<option value="Finance">Finance</option>
+									<option value="Government">Government</option>
+									<option value="Healthcare">Healthcare</option>
+									<option value="Hospitals">Hospitals</option>
+								</select>
+							</td>
+							<td>
+								<select class="popup" name="employeesID" id="employeesID" style="width:200px;">
+									<option value="-Please Select-">-Please Select-</option>
+									<option>1-10</option>
+									<option>11-499</option>
+									<option>500-999</option>
+									<option>1,000-2,499</option>
+									<option>2,500-4,999</option>
+									<option>5,000-14,999</option>
+									<option>15,000+</option>
+								</select>
+							</td>
+							<td>
+								<select name="currencyID" class="popup" id="currencyID" style="width:200px;">
+									<option value="-Please Select-">Please Select...</option>
+									<option value="Canadian Dollar / (CAD)">Canadian Dollar / (CAD)</option>
+									<option value="European Union Euro / (EUR)">European Union Euro / (EUR)</option>
+									<option value="Hong Kong Dollar / (HKD)">Hong Kong Dollar / (HKD)</option>
+									<option value="UK Pound Sterling / (GBP)">UK Pound Sterling / (GBP)</option>
+									<option selected="" value="US Dollar / (USD)">US Dollar / (USD</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" name="A_AnnualHiresID" id="A_AnnualHiresID" value="" placeholder="0" onblur="TBapp.doTheCalcs()" class="placeholder">
+							</td>
+							<td>
+								<input type="text" name="B_ActualHiresID" id="B_ActualHiresID" value="" placeholder="0" onblur="TBapp.doTheCalcs()" class="placeholder">
+							</td>
+							<td>
+								<input type="text" name="F_AverageCustomerValueID" id="F_AverageCustomerValueID" value="" placeholder="0" onblur="TBapp.doTheCalcs()" class="placeholder">
+							</td>
+						</tr>
+						<!--Rejected applicants per hire: <br />--> 
+						<input type="hidden" name="C_RejectedID" id="C_RejectedID" value="0" disabled>
+						<!--Number of annual rejected applicants: --> 
+						<input type="hidden" name="D_AnnualRejectedID" id="D_AnnualRejectedID" value="0" disabled>
+						<!-- Total rejected candidate audience: -->
+						<input type="hidden" name="E_TotalRejectedID" id="E_TotalRejectedID" value="0" disabled>
+						<!-- Lost customers: <br/> -->
+						<input type="hidden" name="G_LostCustomersID" id="G_LostCustomersID" value="0" disabled>
+						<!--Lost revenue  at 8%: -->
+						<input type="hidden" name="H_LostRevenueID" id="H_LostRevenueID" value="0" disabled>
+					</table>
+					Result: <span id="F_Currency_ID2"></span>

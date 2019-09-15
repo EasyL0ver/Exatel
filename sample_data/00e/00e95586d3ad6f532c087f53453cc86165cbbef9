@@ -1,0 +1,16 @@
+SurfaceViews overlapping on resize
+public void shrinkSurface(StreamSurfaceView surface){
+
+RelativeLayout.LayoutParams lp = (android.widget.RelativeLayout.LayoutParams) surface.getLayoutParams();
+int index = surfaces.indexOf(surface);
+if(index == 0){
+    lp.addRule(RelativeLayout.ALIGN_LEFT);
+} else {
+    lp.addRule(RelativeLayout.RIGHT_OF, surfaces.indexOf(surface));
+            // surfaces have indexes in layout that start from 1
+}             
+lp.width = 100;
+lp.height = 100; 
+surface.setLayoutParams(lp);
+streamLayout.invalidate();
+}

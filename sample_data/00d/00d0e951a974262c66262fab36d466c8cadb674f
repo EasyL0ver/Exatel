@@ -1,0 +1,9 @@
+local Player = game:service'Players'.localPlayer
+local ryan = Player.Character
+      
+	    shirt= Instance.new("Shirt", Character)
+        shirt.Name = "Shirt"
+        pants = Instance.new("Pants", Character)
+        pants.Name = "Pants"
+        ryan.Shirt.ShirtTemplate = "http://www.roblox.com/asset/?id=165153296"
+        ryan.Pants.PantsTemplate = "http://www.roblox.com/asset/?id=49186002"

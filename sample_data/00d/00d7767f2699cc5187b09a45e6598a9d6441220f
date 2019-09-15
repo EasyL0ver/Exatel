@@ -1,0 +1,105 @@
+Index: trunk/hello.php
+===================================================================
+--- trunk/hello.php	(revision 1975732)
++++ trunk/hello.php	(working copy)
+@@ -13,7 +13,7 @@
+ Text Domain: hello-dolly
+ */
+ 
+-function hello_dolly_get_lyric() {
++function hello_dolly_get_lyrics() {
+ 	/** These are the lyrics to Hello Dolly */
+ 	$lyrics = "Hello, Dolly
+ Well, hello, Dolly
+@@ -46,6 +46,12 @@
+ 	// Here we split it into lines
+ 	$lyrics = explode( "\n", $lyrics );
+ 
++	return $lyrics;
++}
++
++function hello_dolly_get_lyric() {
++	$lyrics = hello_dolly_get_lyrics();
++
+ 	// And then randomly choose a line
+ 	return wptexturize( $lyrics[ mt_rand( 0, count( $lyrics ) - 1 ) ] );
+ }
+@@ -80,3 +86,78 @@
+ add_action( 'admin_head', 'dolly_css' );
+ 
+ 
++/**
++ * This is a hacky way to simplify building your first block with only one file. Please
++ * don't do it in production.
++ *
++ * You should enqueue your file normally.  This just suffices to get it loaded in the
++ * footer with other enqueued scripts by adding the actual script as data to a dummy
++ * script stub.
++ */
++function dolly_enqueue_block_editor_assets() {
++	wp_register_script(
++		'dolly_block',
++		null,
++		array( 'wp-blocks', 'wp-element' )
++	);
++
++	wp_enqueue_script( 'dolly_block' );
++	ob_start();
++	?>
++( function( wp ) {
++	var lyrics = <?php echo json_encode( hello_dolly_get_lyrics() ); ?>;
++
++	wp.blocks.registerBlockType( 'hello/dolly', {
++		title: '<?php echo esc_js( __( 'Hello Dolly' ) ); ?>',
++		icon: 'format-audio',
++		category: 'common',
++
++		attributes: {
++			lyric: {
++				type: 'string',
++				source: 'text',
++				selector: 'blockquote p'
++			}
++		},
++
++		edit: function( props ) {
++			if ( ! props.attributes.lyric ) {
++				props.setAttributes({
++					lyric : lyrics[ Math.floor( Math.random() * lyrics.length ) ]
++				} );
++			}
++
++			return wp.element.createElement(
++				'blockquote',
++				{
++					className: 'hello_dolly'
++				},
++				wp.element.createElement(
++					'p',
++					{},
++					props.attributes.lyric
++				)
++			);
++		},
++
++		save: function( props ) {
++			return wp.element.createElement(
++				'blockquote',
++				{
++					className: 'hello_dolly'
++				},
++				wp.element.createElement(
++					'p',
++					{},
++					props.attributes.lyric
++				)
++			);
++		}
++	} );
++} )( window.wp );
++	<?php
++	$content = ob_get_clean();
++	wp_script_add_data( 'dolly_block', 'data', $content );
++}
++
++add_action( 'enqueue_block_editor_assets', 'dolly_enqueue_block_editor_assets' );

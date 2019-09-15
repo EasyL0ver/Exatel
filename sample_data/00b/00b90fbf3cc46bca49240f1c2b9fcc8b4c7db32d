@@ -1,0 +1,23 @@
+%% Controlador - Diseño PI Ideal y Paralelo
+PO = 0.08;
+Tss = 5;
+% PO = PO * (2/3);
+% Tss = Tss * (2/3);
+cosaRara = -(log(PO))/(sqrt((log(PO))*(log(PO)) + (pi*pi)));
+Wn = 3/(cosaRara * Tss);
+K = kAprox;
+Tau = tauAprox;
+
+%IDEAL 
+Kp = 1;
+kp = (Wn*Wn)/K;
+Ti = (2*Wn*cosaRara)/(Wn*Wn + 1);
+controladorAuxC_Ideal = tf([kp*Ti Kp],[Ti 0]);
+
+%PARALELO
+%
+%
+%
+%
+%
+controladorAuxC_Paralelo = tf();

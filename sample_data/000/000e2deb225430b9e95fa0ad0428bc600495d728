@@ -1,0 +1,2 @@
+git tag -l | xargs git tag -d  # delete local tag(s)
+git fetch origin --tags  # fetch tags

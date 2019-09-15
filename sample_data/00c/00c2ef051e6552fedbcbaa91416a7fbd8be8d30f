@@ -1,0 +1,138 @@
+myServoFlag=1;             // change ServoFlag variable to dispense chocolate
+	
+if (myServoFlag == 1){
+	
+for (myServoPos = 0; myServoPos <= 100; myServoPos += 1) { // goes from 0 degrees to 100 degrees in steps of 5 degrees
+           myServo.write(myServoPos);    // tell servo to go to position in variable 'myServoPos'
+           delay(15);                    // waits 3 sec for the servo to reach the position
+       }
+       myServo.detach();   // detaches the servo library from pin 10
+	
+myServo.attach(srvoMtr);   // attaches the servo library to pin 10
+	
+for (myServoPos = 100; myServoPos >= 0; myServoPos -= 1) { // goes from 100 degrees to 0 degrees in steps of 1 degree
+           myServo.write(myServoPos);    // tell servo to go to position in variable 'pos
+           delay(15);
+       }
+       myServo.detach();   // detaches the servo library from pin 10
+	
+digitalWrite(ledLight, HIGH);   // turn on light to indicate chocolate is dispensed
+	
+void midi() {
+             tone(tonePin, 233, 203.992851562);
+             delay(226.658723958);
+             delay(4.82252604167);
+             tone(tonePin, 184, 412.325976562);
+             delay(458.139973958);
+             delay(4.82252604167);
+             tone(tonePin, 184, 99.8262890625);
+             delay(110.918098958);
+             delay(4.82252604167);
+             tone(tonePin, 155, 99.8262890625);
+             delay(110.918098958);
+             delay(4.82252604167);
+             tone(tonePin, 184, 203.992851562);
+             delay(226.658723958);
+             delay(4.82252604167);
+             tone(tonePin, 184, 203.992851562);
+             delay(226.658723958);
+             delay(236.303776042);
+             tone(tonePin, 184, 99.8262890625);
+             delay(110.918098958);
+             delay(4.82252604167);
+             tone(tonePin, 155, 99.8262890625);
+             delay(110.918098958);
+             delay(4.82252604167);
+             tone(tonePin, 184, 203.992851562);
+             delay(226.658723958);
+             delay(4.82252604167);
+             tone(tonePin, 184, 203.992851562);
+             delay(226.658723958);
+             delay(236.303776042);
+             tone(tonePin, 184, 203.992851562);
+             delay(226.658723958);
+             delay(236.303776042);
+             tone(tonePin, 233, 555.555);
+             }
+
+    delay(3000);
+	
+digitalWrite(pButton1, LOW);   // initialize pin 4 as LOW (pin voltage less than 1.5V)
+	
+pButtonFlag=0;                // changes pButtonFlat value back to zero (0)
+	
+myServoFlag=1;    // change ServoFlag variable to dispense chocolate
+	
+if (myServoFlag == 1){
+	
+for (myServoPos = 0; myServoPos <= 100; myServoPos += 1) { // goes from 0 degrees to 100 degrees in steps of 5 degrees
+           myServo.write(myServoPos);    // tell servo to go to position in variable 'myServoPos'
+           delay(15);                    // waits 3 sec for the servo to reach the position
+       }
+       myServo.detach();   // detaches the servo library from pin 10
+	
+myServo.attach(srvoMtr);   // attaches the servo library to pin 10
+	
+for (myServoPos = 100; myServoPos >= 0; myServoPos -= 1) { // goes from 100 degrees to 0 degrees in steps of 1 degree
+           myServo.write(myServoPos);    // tell servo to go to position in variable 'pos
+           delay(15);
+       }
+       myServo.detach();   // detaches the servo library from pin 10
+	
+digitalWrite(ledLight, HIGH);    // turn on light to indicate chocolate is dispensed
+	
+digitalWrite(pButton2, LOW);   // initialize pin 5 as LOW (pin voltage less than 1.5V)
+	
+pButtonFlag=0;   // changes pButton2Flag value back to zero (0)
+	
+// position 3
+if (pButton3State == HIGH) {
+	
+myServoFlag=1;   // change ServoFlag variable to dispense chocolate
+      Serial.println("nServo Flag = 1 - Dispense Chocolate");
+
+      if (myServoFlag == 1){
+	
+for (myServoPos = 0; myServoPos <= 100; myServoPos += 1) { // goes from 0 degrees to 100 degrees in steps of 5 degrees
+             myServo.write(myServoPos);    // tell servo to go to position in variable 'myServoPos'
+             delay(15);                    // waits 3 sec for the servo to reach the position
+         }
+         myServo.detach();   // detaches the servo library from pin 10
+	
+myServo.attach(srvoMtr);   // attaches the servo library to pin 10
+	
+for (myServoPos = 100; myServoPos >= 0; myServoPos -= 1) { // goes from 100 degrees to 0 degrees in steps of 1 degree
+           myServo.write(myServoPos);    // tell servo to go to position in variable 'pos
+           delay(15);
+         }
+         myServo.detach();   // detaches the servo library from pin 10
+	
+digitalWrite(ledLight, HIGH);   // turn on light to indicate chocolate is dispensed
+	
+digitalWrite(pButton3, LOW);   // initialize pin 6 as LOW (pin voltage less than 1.5V)
+	
+pButtonFlag=0;   // changes pButton3Flag value back to zero (0)
+	
+myServoFlag=1;   // change ServoFlag variable to dispense chocolate
+	
+if (myServoFlag == 1){
+	
+for (myServoPos = 0; myServoPos <= 100; myServoPos += 1) { // goes from 0 degrees to 100 degrees in steps of 5 degrees
+             myServo.write(myServoPos);    // tell servo to go to position in variable 'myServoPos'
+             delay(15);                    // waits 3 sec for the servo to reach the position
+         }
+         myServo.detach();   // detaches the servo library from pin 10
+	
+myServo.attach(srvoMtr);   // attaches the servo library to pin 10
+	
+for (myServoPos = 100; myServoPos >= 0; myServoPos -= 1) { // goes from 100 degrees to 0 degrees in steps of 1 degree
+           myServo.write(myServoPos);    // tell servo to go to position in variable 'pos
+           delay(15);
+         }
+         myServo.detach();   // detaches the servo library from pin 10
+	
+digitalWrite(ledLight, HIGH);   // turn on light to indicate chocolate is dispensed
+	
+digitalWrite(pButton3, LOW);   // initialize pin 6 as LOW (pin voltage less than 1.5V)
+	
+pButtonFlag=0;   // changes pButton3Flag value back to zero (0)

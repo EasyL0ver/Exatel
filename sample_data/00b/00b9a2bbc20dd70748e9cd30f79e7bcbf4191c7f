@@ -1,0 +1,21 @@
+else if(@$_GET['add_messages'] == 'true') {
+  $HASH = sha1('marcheweczka' . time());
+  $TO_WORLD = ucfirst(strtolower($_GET['to_world']));
+  
+  $query = $DB->prepare('INSERT INTO caughtMessages (to_world, from_world, to_character, gold, premium_code, hash) VALUES (:to_world, :from_world, :to_character, :gold, :premium_code, :hash) ');
+  $query->bindParam(':to_world', $TO_WORLD, PDO::PARAM_STR);
+  $query->bindParam(':from_world', $_GET['from_world'], PDO::PARAM_STR);
+  $query->bindParam(':to_character', $_GET['to_character'], PDO::PARAM_STR);
+  $query->bindValue(':gold', $_GET['gold'], PDO::PARAM_INT);
+  $query->bindParam(':from_nick', $_GET['from_nick'], PDO::PARAM_STR);
+  $query->bindParam(':premium_code', $_GET['premium_code'], PDO::PARAM_STR);
+  $query->bindParam(':hash', $HASH, PDO::PARAM_STR);
+  $query->execute();
+
+  if($query->rowCount() > 0) {
+    exit(json_encode(['ok' => 1]));
+  }
+  else {
+    exit(json_encode(['ok' => 0]));
+  }
+}

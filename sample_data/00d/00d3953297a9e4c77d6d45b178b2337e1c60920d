@@ -1,0 +1,13 @@
+class SymlinkLinkPeer extends BaseSymlinkLinkPeer
+{
+	static public function getLinkPager ($page=1, $homepage=false) {
+		$pager = new sfPropelPager('SymlinkLink', 2);
+		$pager->setPage($page);
+		$criteria = new Criteria();
+		$criteria->add(SymlinkLinkPeer::HOMEPAGE, $homepage);
+
+		$pager->setCriteria($criteria);
+		$pager->init();
+		return $pager;
+	}
+}

@@ -1,0 +1,96 @@
+package kleurenpaneel;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+/**
+ *
+ * @author Flash
+ */
+public class Kleurenpaneel {
+
+    protected String[] sliders = {"Rood", "Groen", "Blauw"};
+    protected HashMap<String, JSlider> mapke = new HashMap<>();
+    protected List<JLabel> labels = new ArrayList<>();
+    protected Color color;
+    protected static JPanel kleurPanel = new JPanel();
+    protected static JFrame window = new JFrame("Kleurenpanneel");
+    protected static JPanel panel = new JPanel(new GridLayout(0, 1));
+    protected static JPanel mPanel = new JPanel(new FlowLayout());
+
+    public Kleurenpaneel() {
+        for (int i = 0; i < sliders.length; i++) {
+            mapke.put(sliders[i], new JSlider(0, 100, 0));
+        }
+        kleurPanel.setPreferredSize(new Dimension(100, 100));
+        float startKleur = (float) 0.0;
+        color = new Color(startKleur, startKleur, startKleur);
+        kleurPanel.setBackground(color);
+        Change change = new Change();
+        for (String kleur : sliders) {
+            JPanel panelS = new JPanel();
+            final JSlider slider = mapke.get(kleur);
+            slider.setMajorTickSpacing(10);
+            slider.setMinorTickSpacing(5);
+            slider.createStandardLabels(1);
+            slider.setPaintTicks(true);
+            panelS.setBorder(javax.swing.BorderFactory.createTitledBorder(kleur));
+            final JLabel label = new JLabel("0." + Integer.toString(slider.getValue()));
+            slider.addChangeListener(new ChangeListener() {
+
+                @Override
+                public void stateChanged(ChangeEvent e) {
+                    String value = Integer.toString(slider.getValue());
+                    if (value.equals("0")) {
+                        label.setText("0");
+                    } else if (value.equals("100")) {
+                        label.setText("1");
+                    } else {
+                        label.setText("0." + Integer.toString(slider.getValue()));
+                    }
+                    window.pack();
+                }
+            });
+            slider.addChangeListener(change);
+            panelS.add(slider);
+            panelS.add(label);
+            labels.add(label);
+            panel.add(panelS);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Kleurenpaneel(); 
+        mPanel.add(panel);
+        mPanel.add(kleurPanel);
+        window.setContentPane(mPanel);
+        window.pack();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);
+    }
+
+    class Change implements ChangeListener {
+
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            int i = 0;
+            color = new Color(convert(i), convert(i + 1), convert(i + 2));
+            kleurPanel.setBackground(color);
+        }
+    }
+
+    public float convert(int i) {
+        return Float.valueOf(labels.get(i).getText()).floatValue();
+    }
+}

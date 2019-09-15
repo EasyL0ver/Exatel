@@ -1,0 +1,199 @@
+--[[
+    Script: gLevel
+    Version: 1
+    Copyrighted by Konnie Industries located in Mexico.
+]]
+
+if SERVER then
+	net.Receive( "gLevel.buyWeapon", function( len, ply )
+		local cmd = net.ReadString()
+		gLevel.buyWeapon( ply, cmd )
+	end )
+end
+
+if CLIENT then
+	gLevel.tabs[ 1 ] = { loadPanels = function( parent )
+		local scrollPanel = vgui.Create( "parent_menu", parent )
+		scrollPanel:SetSize( parent:GetWide(), parent:GetTall() )
+
+		local tab = vgui.Create( "DPanel", scrollPanel )
+		tab:SetSize( scrollPanel:GetWide(), scrollPanel:GetTall() )
+		tab:SetPos( 0, 0 )
+		tab.Paint = function( slf )
+			gLevel.drawBox( 0, 0, slf:GetWide(), 27, Color( 15, 15, 15, 100 ) )
+			gLevel.drawPicture( 560, 292, 32, 32, "materials/f1menu/key.png", 255, 223, 127, 125 )
+			gLevel.drawText( 0, gLevel.getKeys( LocalPlayer() ), 20, 590, 306, Color( 163, 163, 163, 125 ), TEXT_ALIGN_LEFT, 1 )
+			gLevel.drawText( 0, gLevel.cfg.Language[gLevel.cfg.Lang].keys, 20, 760, 306, Color( 163, 163, 163, 125 ), TEXT_ALIGN_RIGHT, 1 )
+			gLevel.drawText( 0, string.format( gLevel.cfg.Language[gLevel.cfg.Lang].in_order_to_buy_permanent, gLevel.cfg.Language[gLevel.cfg.Lang].keys ), 18, slf:GetWide() / 2, 12, Color( 163, 163, 163, 125 ), TEXT_ALIGN_CENTER, 1 )
+			gLevel.drawBox( 0, 30, 550, 292, Color( 15, 15, 15, 100 ) )
+			gLevel.drawBox( 553, 30, 227, 260, Color( 15, 15, 15, 100 ) )
+			gLevel.drawBox( 553, 292, 227, 30, Color( 15, 15, 15, 100 ) )
+	    end
+
+	    local weaponsCategory = vgui.Create( "DPanelList", scrollPanel )
+	    weaponsCategory:SetPos( 6, 37 )
+	    weaponsCategory:SetSize( 550, 290 )
+	    weaponsCategory:SetSpacing( 5 )
+	    weaponsCategory:EnableVerticalScrollbar( true )
+	    weaponsCategory:EnableHorizontal( true )
+
+	    local groupsTab = vgui.Create( "DPanelList", scrollPanel )
+	    groupsTab:SetPos( 553, 100 )
+	    groupsTab:SetSize( 227, 110 )
+	    groupsTab:SetSpacing( 5 )
+	    groupsTab:EnableVerticalScrollbar( true )
+	    groupsTab:EnableHorizontal( true )
+
+	    for k, v in pairs( gLevel.weaponDB or {} ) do
+	    	
+	    	local weapon = vgui.Create( "DButton", scrollPanel )
+	        weapon:SetSize( 176.6, 136 );
+	        weapon:SetText( "" )
+	        weapon.Paint = function( slf )
+	        	if gLevel.getWeapon( v.cmd, LocalPlayer() ) > 0 then
+	        		gLevel.drawPicture( 0, 0, 32, 32, "materials/f1menu/lock_open.png", 0, 163, 27, 125 )
+	        	else
+	        		gLevel.drawPicture( 0, 0, 32, 32, "materials/f1menu/lock_closed.png", 163, 163, 163, 125 )
+	        	end
+
+	        	if gLevel.cfg.displayWeapons == false then
+	        		gLevel.drawPicture( 20, 0, 128, 128, v.icon or "materials/f1menu/picture.png", 163, 163, 163, 125 )	        		
+	        	end
+	       		gLevel.drawBox( 0, 0, slf:GetWide(), slf:GetTall(), Color( 15, 15, 15, 100 ) )
+	       		gLevel.drawBox( 0, slf:GetTall() - 25, slf:GetWide(), 25, Color( 15, 15, 15, 100 ) )
+	       		gLevel.drawText( 0, v.name, 17, slf:GetWide() / 2, slf:GetTall() - 14, Color( 163, 163, 163, 125 ), TEXT_ALIGN_CENTER, 1 )
+	    	end
+
+	    	if gLevel.cfg.displayWeapons == true then
+		    	local mdlpnl = vgui.Create( "DModelPanel", weapon )
+		    	mdlpnl:SetPos( 0, 0 )
+				mdlpnl:SetSize( 128, 128 )
+				mdlpnl:SetModel( v.model ) -- you can only change colors on playermodels
+				
+				local mn, mx = mdlpnl.Entity:GetRenderBounds()
+				local size = 0
+				size = math.max( size, math.abs(mn.x) + math.abs(mx.x) )
+				size = math.max( size, math.abs(mn.y) + math.abs(mx.y) )
+				size = math.max( size, math.abs(mn.z) + math.abs(mx.z) )
+
+				mdlpnl:SetFOV( 45 )
+				mdlpnl:SetCamPos( Vector( size, size, size ) )
+				mdlpnl:SetLookAt( (mn + mx) * 0.5 )
+
+				mdlpnl.DoClick = function( slf )
+					weapon.DoClick( slf )
+				end
+
+			end
+
+
+	    	weapon.DoClick = function( slf )
+	    		local buyColor = Color( 15, 15, 15, 100 )
+	    		local buyButton = vgui.Create( "DButton", scrollPanel )
+	    		buyButton:SetSize( 227, 30 )
+	    		buyButton:SetPos( 553, 235 )
+	    		buyButton:SetText( "" )
+	    		buyButton.Paint = function()
+	    		end
+
+	    		buyButton.OnCursorEntered = function()
+	    			buyColor = Color( 15, 15, 15, 150 )
+	    		end
+
+	    		buyButton.OnCursorExited = function()
+	    			buyColor = Color( 15, 15, 15, 100 )
+	    		end
+
+	    		buyButton.DoClick = function()
+
+	    			if CurTime() < ( slf.cooldown or 0 ) then return end
+
+	    			if ( v.group && !table.HasValue( v.group, gLevel.getGroup( LocalPlayer() ) ) ) then
+    					gLevel.notification( gLevel.cfg.Language[gLevel.cfg.Lang].you_dont_meet_requirements, scrollPanel, 255, 50, 50 )
+    					slf.cooldown = CurTime() + 3
+    					return
+	    			end
+
+	    			if ( gLevel.getWeapon( v.cmd, LocalPlayer() ) >= 1 ) then
+	    				gLevel.notification( gLevel.cfg.Language[gLevel.cfg.Lang].you_already_bought, scrollPanel, 255, 50, 50 )
+	    				slf.cooldown = CurTime() + 3
+	    				return
+	    			end
+
+	    			if ( gLevel.getKeys( LocalPlayer() ) < v.keys ) then
+	    				gLevel.notification( string.format( gLevel.cfg.Language[gLevel.cfg.Lang].you_dont_have_enough_keys, gLevel.cfg.Language[gLevel.cfg.Lang].keys ), scrollPanel, 255, 50, 50 )
+	    				slf.cooldown = CurTime() + 3
+	    				return
+	    			end
+
+	    			net.Start( "gLevel.buyWeapon" )
+	    				net.WriteString( v.cmd )
+	    			net.SendToServer()
+	    			gLevel.notification( string.format( gLevel.cfg.Language[gLevel.cfg.Lang].you_just_bought, v.name ), scrollPanel, 0, 163, 90 )
+	    			slf.cooldown = CurTime() + 3
+	    		end
+
+	    		scrollPanel.PaintOver = function()
+	    			gLevel.drawPicture( 602.5, 10, 128, 128, v.icon or "materials/f1menu/picture.png", 163, 163, 163, 125 )
+	    			gLevel.drawBox( 553, slf:GetTall() - 25, 227, 100, Color( 15, 15, 15, 100 ) )
+	    			gLevel.drawBox( 553, slf:GetTall() - 12, 227, 2, Color( 15, 15, 15, 100 ) )
+	    			gLevel.drawText( 0, gLevel.cfg.Language[gLevel.cfg.Lang].information, 20, 666.5, slf:GetTall() - 14, Color( 163, 163, 163, 125 ), TEXT_ALIGN_CENTER, 1 )
+	    			gLevel.drawText( 0, gLevel.cfg.Language[gLevel.cfg.Lang].name, 17, 555, 150, Color( 163, 163, 163, 125 ), TEXT_ALIGN_LEFT, 1 )
+	    			gLevel.drawText( 0, v.name, 17, scrollPanel:GetWide() - 10, 150, Color( 163, 163, 163, 125 ), TEXT_ALIGN_RIGHT, 1 )
+	    			gLevel.drawText( 0, gLevel.cfg.Language[gLevel.cfg.Lang].keys2, 17, 555, 170, Color( 163, 163, 163, 125 ), TEXT_ALIGN_LEFT, 1 )
+	    			gLevel.drawText( 0, v.keys, 17, scrollPanel:GetWide() - 10, 170, Color( 163, 163, 163, 125 ), TEXT_ALIGN_RIGHT, 1 )
+	    			gLevel.drawText( 0, gLevel.cfg.Language[gLevel.cfg.Lang].specific_groups, 17, 555, 190, Color( 163, 163, 163, 125 ), TEXT_ALIGN_LEFT, 1 )
+	    			
+	    			if v.group then
+	    				gLevel.drawPicture( scrollPanel:GetWide() - 32, 174, 32, 32, "materials/f1menu/tick.png", Color( 0, 163, 97, 100 ) )
+	    			else
+	    				gLevel.drawPicture( scrollPanel:GetWide() - 32, 174, 32, 32, "materials/f1menu/prohibido.png", Color( 255, 50, 50, 100 ) )
+	    				--local tabla = v.group
+	    				--for i = 1, #tabla do
+	    					--gLevel.drawText( 0, gLevel.cfg.userGroups[ tabla[ i ] ].name, 13, scrollPanel:GetWide() - 10, 170 + ( i * 12 ), Color( 163, 163, 163, 125 ), TEXT_ALIGN_RIGHT, 1 )
+	    				--end
+	    			end
+	    			   			
+
+	    			local upgradeColor = Color( 163, 163, 163, 50 )
+
+	    			if ( gLevel.getWeapon( v.cmd, LocalPlayer() ) >= 1 ) then
+	    				upgradeColor = Color( 255, 50, 50, 50 )
+	    				gLevel.drawText( 0, gLevel.cfg.Language[gLevel.cfg.Lang].you_already_bought, 17, 666.5, 250, Color( 255, 50, 50, 125 ), TEXT_ALIGN_CENTER, 1 )
+	    				buyButton:SetCursor( "no" )
+	    			elseif ( gLevel.getKeys( LocalPlayer() ) < v.keys ) then
+	    				upgradeColor = Color( 255, 50, 50, 50 )
+	    				gLevel.drawText( 0, string.format( gLevel.cfg.Language[gLevel.cfg.Lang].you_dont_have_enough_keys, gLevel.cfg.Language[gLevel.cfg.Lang].keys ), 17, 666.5, 250, Color( 255, 50, 50, 125 ), TEXT_ALIGN_CENTER, 1 )
+	    				buyButton:SetCursor( "no" )
+	    			elseif ( v.group && !table.HasValue( v.group, gLevel.getGroup( LocalPlayer() ) ) ) then
+    					upgradeColor = Color( 255, 50, 50, 50 )
+				    	gLevel.drawText( 0, gLevel.cfg.Language[gLevel.cfg.Lang].you_dont_meet_requirements, 17, 666.5, 250, Color( 255, 50, 50, 125 ), TEXT_ALIGN_CENTER, 1 )
+				    	buyButton:SetCursor( "no" )
+				    else
+				    	upgradeColor = Color( 0, 163, 0 , 50 )
+				    	gLevel.drawText( 0, gLevel.cfg.Language[gLevel.cfg.Lang].unlock_now, 17, 666.5, 250, Color( 0, 163, 50, 125 ), TEXT_ALIGN_CENTER, 1 )
+	    			end
+
+	    			gLevel.drawBox( 553, 235, 227, 30, buyColor )
+	    			gLevel.drawBox( 553, 263, 227, 1, upgradeColor )
+	    		end
+	    	end
+
+	    	local i = 0
+	    	for k, group in pairs( gLevel.cfg.userGroups ) do
+	    		if table.HasValue( v.group or {}, k ) then
+	    			i = i + 20
+			    	local groups = vgui.Create( "DPanel", weapon )
+			    	groups:SetPos( 160 - i, -5 )
+			        groups:SetSize( 32, 32 )
+			        groups:SetText( "" )
+			        groups:SetTooltip( group.name )
+			        groups.Paint = function( slf )
+			        	gLevel.drawPicture( 0, 0, 32, 32, "materials/f1menu/flag.png", group.color.r, group.color.g, group.color.b, group.color.a )
+			    	end
+			    end
+		    end
+	    	weaponsCategory:AddItem( weapon )
+	    end
+	end }
+end

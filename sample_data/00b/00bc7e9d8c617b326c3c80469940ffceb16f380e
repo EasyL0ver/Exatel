@@ -1,0 +1,21 @@
+<div class="fancy-hover-links">
+  <ul>
+    <li id='twitter'>
+      Twitter
+      <span></span>
+      <!-- don't forget this empty span! -->
+    </li>
+    <li id='facebook'>
+      Facebook
+      <span></span>
+    </li>
+    <li id='forrst'>
+      Forrst
+      <span></span>
+    </li>
+    <li id='rss'>
+      RSS
+      <span></span>
+    </li>
+  </ul>
+</div>

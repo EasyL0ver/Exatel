@@ -1,0 +1,130 @@
+class Base {
+protected:
+	int x, y;
+public:
+	Base() {
+		cout << "Конструктор Base()\n";
+	}
+
+	Base(int x, int y) {
+		cout << "Конструктор Base(int x, int y)\n";
+	}
+
+	Base(Base *obj) {
+		cout << "Конструктор Base(Base *obj)\n";
+	}
+
+	Base(Base &obj) {
+		cout << "Конструктор Base(Base &obj)\n";
+	}
+
+	virtual ~Base() {
+		cout << "Деструктор ~Base()\n";
+	}
+
+	void metodBase() {
+		cout << "Метод metodBase() класса Base\n";
+	}
+
+	virtual string className(){
+		return "Base";
+	}
+
+	virtual bool isA(string classname) {
+		if (classname == "Base") {
+			return true;
+		}
+		return false;
+	}
+
+	void metodA() {
+		cout << "Метод metodA() класса Base\n";
+	}
+
+	void metodB() {
+		cout << "Метод metodB() класса Base\n";
+		metodA();
+		virtualMetodA();
+	}
+
+	virtual void virtualMetodA() {
+		cout << "Виртуальный метод virtualMetodA() класаа Base\n";
+		metodA();
+	}
+
+	virtual void virtualMetodB() {
+		cout << "Виртуальный метод virtualMetodB() класаа Base\n";
+	}
+};
+
+class Desc: public Base {
+private:
+	int a, b;
+public:
+	Desc() {
+		cout << "Конструктор Desc()\n";
+	}
+
+	Desc(int a, int b) {
+		cout << "Конструктор Desc(int a, int b)";
+	}
+
+	Desc(Desc *obj) {
+		cout << "Конструктор Desc(Desc *obj)\n";
+	}
+
+	Desc(Desc &obj) {
+		cout << "Конструктор Desc(Desc &obj)\n";
+	}
+
+	~Desc() {
+		cout << "Деструктор ~Desc()\n";
+	}
+
+	void metodDesc() {
+		cout << "Метод metodDesc() класса Desc\n";
+	}
+
+	string className() {
+		return "Desc";
+	}
+
+	bool isA(string classname) {
+		if (classname == "Desc" || classname == "Base") {
+			return true;
+		}
+		return false;
+	}
+
+	void metodA() {
+		cout << "Метод metodA() класса Desc\n";
+	}
+
+	virtual void virtualMetodA() {
+		cout << "Виртуальный метод virtualMetodA() класса Desc\n";
+	}
+};
+
+void func1(Base  obj) {
+	cout << "Функция func1(Base obj)\n";
+}
+
+void func2(Base *obj) {
+	cout << "Функция func2(Base *obj)\n";
+}
+
+void func3(Base &obj) {
+	cout << "Функция func3(Base &obj)\n";
+}
+
+Base base;
+Desc d;
+cout << "\n";
+func1(base);
+func2(&base);
+func3(base);
+cout << "\n";
+func1(d);
+func2(&d);
+func3(d);
+cout << "\n";

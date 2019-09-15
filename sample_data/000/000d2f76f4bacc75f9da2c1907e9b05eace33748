@@ -1,0 +1,11 @@
+package com.awesometodo.model.manager;
+
+import com.awesometodo.model.TaskBean;
+import java.util.List;
+import javax.ejb.Local;
+
+@Local
+public interface TaskBeanManagerLocal {
+	void addTask(TaskBean taskBean);
+    List<TaskBean> getTaskList();
+}

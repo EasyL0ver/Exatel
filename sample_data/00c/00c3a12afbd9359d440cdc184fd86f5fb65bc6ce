@@ -1,0 +1,32 @@
+using System;
+using System.Linq;
+using System.Collections.Generic;
+class Kata
+{
+    public static long MinValue(int[] arr)
+    {
+      Array.Sort(arr);
+      Array.Reverse(arr);
+    
+      var seenList = new List<int>();
+    
+      foreach (int num in arr)
+      {
+      if (!seenList.Contains(num))
+        {
+          seenList.Add(num);
+        }
+      }
+    
+      var counter = 0;
+      var number = 0.0;
+    
+      foreach (int num in seenList)
+      {
+      number += ((double)num * Math.Pow(10, counter));
+      counter++;
+      }
+    
+      return (long)number;
+  }
+}

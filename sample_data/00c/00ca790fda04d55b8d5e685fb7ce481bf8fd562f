@@ -1,0 +1,163 @@
+function printo(x,y){
+      print(parseInt(x)+" "+parseInt(y));
+}
+
+function reverseD(d){
+    printErr("REVERSE");
+    if (d == "L"){
+        return "R";   
+    }
+    else if (d == "R"){
+        return "L";
+    }
+    else if (d == "T"){
+        return "B";
+    }
+    else if (d == "B"){
+        return "T";   
+    }
+    return d;
+}
+
+var inputs = readline().split(' ');
+ W = parseInt(inputs[0]); // width of the building.
+ H = parseInt(inputs[1]); // height of the building.
+const N = parseInt(readline()); // maximum number of turns before game over.
+var inputs = readline().split(' ');
+const X0 = parseInt(inputs[0]);
+const Y0 = parseInt(inputs[1]);
+ CW = 0;
+ CH = 0;
+printErr("W = "+W+" | H = "+H);
+// game loop
+
+var bombDir = readline();
+var bool = false
+if (W > H){
+ bool = true;   
+}
+
+//printWow(W, H, bool);
+//PRINT CENTRE !!!!!
+printo(W/2, H/2);
+bombDir = readline();
+directionW = "L";
+directionH = "T";
+buW = "N";
+buH = "N";
+test = ""; //a enlever
+fauteW = 0;
+fauteH = 0;
+while (true) {
+    printErr(directionW+directionH);
+    
+
+    
+    if (bool){
+        if (directionW == "L"){ //DIRECTION GAUCHE
+            printo(CW + W * 1/4, CH + H/2);
+            if (readline() == "WARMER"){ // ID = 1
+                W = parseInt(W/2);
+               // fauteW = 0;
+            }
+            else{
+                //  fauteW++;
+                printo(CW + W * 3/4, CH + H/2);
+                if (readline() == "COLDER"){ //ID = 1
+                     W = parseInt(W/2);
+                   
+                }
+                else{ //ID = 2;
+                    W = parseInt(W/2);
+                    CW += W;
+                    directionW = "R";
+                   // directionW = directionW == buW ? "R" : "L";
+                   
+                }
+            }
+        }
+        else{ //DIRECITON DROITE
+            printo(CW + W * 3/4, CH + H/2);
+            if (readline() == "WARMER"){ // ID = 1
+                W = parseInt(W/2);
+                CW += W;
+               // fauteW = 0;
+            }
+            else{
+               // fauteW++;
+                printo(CW + W * 1/4, CH + H/2);
+                if (readline() == "COLDER"){ //ID = 1
+                     W = parseInt(W/2);
+                     CW += W;
+                     
+                }
+                else{ //ID = 2;
+                    W = parseInt(W/2);
+                    directionW = "L";
+
+                    //directionW = directionW == buW ? "L" : "R";
+                }
+            }
+        }
+    }
+    else{
+        if (directionH == "T"){
+            printo(CW + W/2, CH + H * 1/4);
+            if (readline() == "WARMER"){ // ID = 1
+                H = parseInt(H/2);
+               // fauteH = 0;
+            }
+            else{
+              //  fauteH++;
+                printo(CW + W/2, CH + H* 3/4);
+                if (readline() == "COLDER"){ //ID = 1
+                    H = parseInt(H/2);
+                   
+                }
+                else{ //ID = 2;
+                    H = parseInt(H/2);
+                    CH += H;
+                    directionH = "B";
+                    //directionH = directionH == buH ? "B" : "T";
+                }
+            }
+        }
+        else{
+            printo(CW + W/2, CH + H * 3/4);
+            if (readline() == "WARMER"){ // ID = 1
+                H = parseInt(H/2);
+                CH += H;
+               // fauteH = 0;
+            }
+            else{
+                //fauteH++;
+                printo(CW + W/2, CH + H* 1/4);
+                if (readline() == "COLDER"){ //ID = 1
+                    H = parseInt(H/2);
+                    CH += H;
+                    
+                }
+                else{ //ID = 2;
+                    H = parseInt(H/2);
+                    directionH = "T";
+                    //directionH = directionH == buH ? "T" : "B";
+                }
+            }
+        }
+    }
+    /*buH = directionH;
+    buW = directionW;
+    test+= directionW+directionH+" ";
+    printErr(test);
+    if (fauteH  % 2> 0 && bool){
+        directionH = reverseD(directionH);
+    }
+    else if (fauteW % 2 > 0){
+        directionW = reverseD(directionW);
+    }
+    
+    printErr(fauteW+" "+fauteH);*/
+    bool = !bool;
+    
+   // print('0 0');
+}

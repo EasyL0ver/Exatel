@@ -1,0 +1,10 @@
+package mx.hashblog.ejemploAnotaciones.clases;
+
+import mx.hashblog.ejemploAnotaciones.anotaciones.Anotacion;
+
+@Anotacion(uso="Clase para empleados", orden=2)
+public class Empleados {
+    private String nombre;
+    private Integer numeroEmpleado;
+    private String posicion;    
+}

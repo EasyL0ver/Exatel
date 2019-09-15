@@ -1,0 +1,10 @@
+import std.stdio;
+
+void main()
+{
+    writeln("Okulda kaç öğrenci var");
+
+       int ogrenci_sayisi;
+       readf("%s",  & ogrenci_sayisi);
+    writeln("Anladım: okulda ", ogrenci_sayisi,    " öğrenci varmış");
+}

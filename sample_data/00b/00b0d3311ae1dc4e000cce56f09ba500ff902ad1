@@ -1,0 +1,29 @@
+public static Map<String, String> findIp() {
+
+    Map<String, String> map = new HashMap<>();
+
+    String nodeName = "A\d-BH\d";
+    String ip = "(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\." +
+            "(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\." +
+            "(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\." +
+            "(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])";
+
+    Pattern nodePattern = Pattern.compile(nodeName);
+    Pattern ipPattern = Pattern.compile(ip);
+
+    try {
+        List<String> lines = Files.readAllLines(Paths.get("test.txt"));
+        for (String line: lines) {
+            if (Pattern.matches(nodeName + ".+", line)) {
+                Matcher nodeMatcher = nodePattern.matcher(line);
+                nodeMatcher.find();
+                Matcher ipMatcher = ipPattern.matcher(line);
+                ipMatcher.find();
+                map.put(nodeMatcher.group(), ipMatcher.group());
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return map;
+}

@@ -1,0 +1,83 @@
+public class Article implements Comparable{
+    private String name;
+    private Double price;
+
+    public Article(String name, Double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public static Article parseArticle(String s) {
+        StringBuilder sb = new StringBuilder(s);
+        String[] reversedStrings = sb.reverse().toString().split(" +");
+
+        int priceIndex = 3;
+        Double p;
+
+        try {
+            p = parsePrice(priceIndex, reversedStrings);
+        } catch(NumberFormatException e) {
+            priceIndex = 2;
+            p = parsePrice(priceIndex, reversedStrings);
+        }
+
+        String n = parseName(priceIndex + 1, reversedStrings);
+        return new Article(n, p);
+    }
+
+    private static Double parsePrice(int priceIndex, String[] reversedStrings) {
+        String reversedPrice = reversedStrings[priceIndex];
+        String price = new StringBuilder(reversedPrice).reverse().toString();
+        return Double.parseDouble(price);
+    }
+
+    private static String parseName(int startIndex, String[] reversedStrings) {
+        StringBuilder reversedName = new StringBuilder();
+        for(int i = startIndex, n = reversedStrings.length; i < n; i++) {
+            reversedName.append(reversedStrings[i]).append(" ");
+        }
+        return reversedName.reverse().toString().trim();
+    }
+
+    public static boolean isArticleLine(String s) {
+        if(s.startsWith("Račun")) return false;
+        if(s.startsWith("Kupac")) return false;
+        if(s.startsWith("---")) return false;
+        if(s.startsWith("Proizvod")) return false;
+        if(s.startsWith("UKUPNO")) return false;
+        if(s.startsWith("   ")) return false;
+        if(s.equals("")) return false;
+        return true;
+    }
+	// other methods...
+}
+
+public class MySecondByteReader implements FileVisitor, Closeable {
+
+    Set<Article> articles;
+    BufferedReader reader;
+
+    public MySecondByteReader(Set<Article> articles) {
+        this.articles = articles;
+    }
+
+    @Override
+    public FileVisitResult visitFile(Object file, BasicFileAttributes attrs) throws IOException {
+
+        if(!file.toString().endsWith(".txt")) return FileVisitResult.CONTINUE;
+
+        readFile((Path) file);
+
+        return FileVisitResult.CONTINUE;
+    }
+    private void readFile(Path file) throws IOException {
+
+        reader = new BufferedReader(new InputStreamReader(new FileInputStream(file.toFile())));
+        String s;
+        while((s = reader.readLine()) != null) {
+            if(!Article.isArticleLine(s)) continue;
+            Article a = Article.parseArticle(s);
+            articles.add(a);
+        }
+    }
+}

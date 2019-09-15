@@ -1,0 +1,16 @@
+suspend fun observeUser(): ReceiveChannel<User> {
+    val channel = Channel<User>()
+    firestore.collection("users")
+        .document("user_id")
+        .addSnapshotListener { document, exception ->
+            CoroutineScope(dispatcher).launch {
+                when {
+                    document != null -> {
+                        channel.send(document.toUser())
+                    }
+                    exception != null -> handleException(exception)
+                }
+            }
+        }
+    return channel
+}

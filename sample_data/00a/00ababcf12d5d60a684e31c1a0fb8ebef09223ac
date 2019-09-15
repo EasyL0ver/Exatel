@@ -1,0 +1,80 @@
+public class Foo
+{
+    public int FooId { get; set; }
+    public string FooName { get; set; }
+
+    public override bool Equals(object obj)
+    {
+        Foo fooItem = obj as Foo;
+
+        return fooItem.FooId == this.FooId;
+    }
+
+    public override int GetHashCode()
+    {
+        // Which is preferred?
+
+        return base.GetHashCode();
+
+        //return this.FooId.GetHashCode();
+    }
+}
+	
+int hash = 13;
+hash = (hash * 7) + field1.GetHashCode();
+hash = (hash * 7) + field2.GethashCode();
+...
+return hash;
+	
+public override int GetHashCode()
+    {
+        unchecked
+        {
+            var result = 0;
+            result = (result * 397) ^ m_someVar1
+            result = (result * 397) ^ m_someVar2
+            result = (result * 397) ^ m_someVar3
+            result = (result * 397) ^ m_someVar4
+            return result;
+        }
+    }
+	
+public override bool Equals(object obj)
+{
+    if (obj == null || GetType() != obj.GetType())
+        return false;
+
+    Foo fooItem = obj as Foo;
+
+    return fooItem.FooId == this.FooId;
+}
+	
+public override int GetHashCode()
+    {
+        return string.Format("{0}_{1}_{2}", prop1, prop2, prop3).GetHashCode();
+    }
+	
+public override int GetHashCode()
+   {
+      return base.GetHashCode();
+   }
+	
+class A
+   {
+      public int Value;
+
+      public override int GetHashCode()
+      {
+         return Value.GetHashCode(); //WRONG! Value is not constant during the instance's life time
+      }
+   }
+	
+class A
+   {
+      public readonly int Value;
+
+      public override int GetHashCode()
+      {
+         return Value.GetHashCode(); //OK  Value is read-only and can't be changed during the instance's life time
+      }
+   }

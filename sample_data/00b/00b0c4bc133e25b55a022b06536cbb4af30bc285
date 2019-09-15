@@ -1,0 +1,39 @@
+String result = input.split("-")[0];
+	
+String result = input.substring(0, input.indexOf("-"));
+	
+String substr = mysourcestring.substring(0,mysourcestring.indexOf("-"));
+	
+String str="Stack Overflow - A place to ask stuff";
+
+String newStr = str.substring(0, str.indexOf("-"));
+	
+newValue = oldValue.substring(0, oldValue.indexOf("-");
+	
+Using builder : 54
+Using Split : 252
+Using Substring  : 10
+	
+for (int count = 0; count < 1000; count++) {
+        // For JIT
+    }
+    long start = System.nanoTime();
+    //Builder
+    StringBuilder builder = new StringBuilder(
+            "Stack Overflow - A place to ask stuff");
+    builder.delete(builder.indexOf("-"), builder.length());
+    System.out.println("Using builder : " + (System.nanoTime() - start)
+            / 1000);
+    start = System.nanoTime();
+    //Split
+    String string = "Stack Overflow - A place to ask stuff";
+    string.split("-");
+    System.out.println("Using Split : " + (System.nanoTime() - start)
+            / 1000);
+    //SubString
+    start = System.nanoTime();
+    String string1 = "Stack Overflow - A place to ask stuff";
+    string1.substring(0, string1.indexOf("-"));
+    System.out.println("Using Substring : " + (System.nanoTime() - start)
+            / 1000);
+    return null;

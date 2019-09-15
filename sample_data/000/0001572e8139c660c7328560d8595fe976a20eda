@@ -1,0 +1,37 @@
+import java.util.Set;
+import java.util.HashSet;
+
+class Element {
+     private String value;
+
+     public Element(String value) {
+         this.value = value;
+     }
+
+     public String getValue() {
+         return value;
+     }
+
+     public boolean equals(Object obj) {
+         if (!(obj instanceof Element)) {
+             return false;
+         }
+         return hashCode() == obj.hashCode();
+     }
+
+     public int hashCode() {
+         return value.hashCode();
+     }
+}
+
+public class Main {
+     public static void main(String[] args) {
+         Element element1 = new Element("data1");
+         Element element2 = new Element("data1");
+
+         Set<Element> set = new HashSet<Element>();
+         set.add(element1);
+         set.add(element2);
+         set.forEach(e -> System.out.println("data: " + e.getValue()));
+     }
+}

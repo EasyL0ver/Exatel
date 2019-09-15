@@ -1,0 +1,7 @@
+class Subscriber < TablelessBase
+  
+  # black magic for bad data
+  def method_missing(message, *args)
+    ""
+  end
+end

@@ -1,0 +1,27 @@
+#![feature(unsize, const_fn, existential_type)]
+
+use std::marker::Unsize;
+
+use std::fmt::Debug;
+
+trait ShortArray<T>: Unsize<[T]> + AsRef<[T]> {}
+
+impl <T, A> ShortArray<T> for A where A: Unsize<[T]> + AsRef<[T]> {}
+
+const fn array_size_1() -> impl ShortArray<i32> + Debug {
+    [1; 1]
+}
+
+const fn array_size_2() -> impl ShortArray<i32> + Debug {
+    [2; 2]
+}
+
+const fn array_size_32() -> impl ShortArray<i32> + Debug {
+    [32; 32]
+}
+
+fn main() {
+    println!("{:?}", array_size_1());
+    println!("{:?}", array_size_2());
+    println!("{:?}", array_size_32());
+}

@@ -1,0 +1,42 @@
+case 237: //vip
+{
+    if(!response)
+        return true;//cmd_donate(playerid);
+
+    if(PlayerInfo[playerid][pVip])
+        return SendClientMessage(playerid, COLOR_GREY, !"Ó âàñ óæå åñòü äåéñòâóþùèé VIP");
+
+    new
+        local_price_vip[][] =
+        {
+            350,    //  LOCAL_PRICE_VIP1
+            650,    //  LOCAL_PRICE_VIP2
+            1000    //  LOCAL_PRICE_VIP3
+        },
+        local_name_vip[][]
+        {
+            "Âû óñïåøíî êóïèëè {CD853F}BRONZE{ffffff} VIP"
+            "Âû óñïåøíî êóïèëè {afafaf}SILVER{ffffff} VIP"
+            "Âû óñïåøíî êóïèëè {ffff00}GOLD{ffffff} VIP"
+        }
+    ;
+
+
+    if(PlayerInfo[playerid][pRouble] < local_price_vip[PlayerInfo[playerid][pVip]-1])
+        return Send(playerid,-1,"Ó Âàñ íåäîñòàòî÷íî äåíåã.");
+
+    is_vip = strval(inputtext);
+
+    if(is_vip == 4)
+        ShowVIPHelp(playerid), 1;
+
+    PlayerInfo[playerid][pVip] = is_vip;
+    PlayerInfo[playerid][pRouble] -= local_price_vip[PlayerInfo[playerid][pVip]-1];
+    PlayerInfo[playerid][pVipTime] = gettime() + (86400 * 30);
+
+    OnPlayerUpdateAccountsPer(playerid,"pRouble",PlayerInfo[playerid][pRouble]);
+    OnPlayerUpdateAccountsPer(playerid,"pVip",PlayerInfo[playerid][pVip]);
+    OnPlayerUpdateAccountsPer(playerid,"pVipTime",PlayerInfo[playerid][pVipTime]);
+
+    SendClientMessage(playerid, -1, local_name_vip[PlayerInfo[playerid][pVip]-1])
+}

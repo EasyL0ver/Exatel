@@ -1,0 +1,130 @@
+[PopupWindowManager] Showing popup. Type: 3, queue length: 1
+[RemoteAtlasLoader] load atlas images_mobile/backgrounds/ex_scroll_blue/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] load atlas images/backgrounds/scroll_beige/Upscale/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] load atlas images/common_icons/upscale/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] load atlas images_mobile/avatar_illustration/hunteress/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] load atlas images_mobile/avatar_spells/archer_set/archer_set_cards/atlas.dxt.atf?v=788
+[>>> ServerRequest] GetPersonalOptions
+timestamp: 409339, session: 6032655246566621184
+message: 
+
+[RemoteAtlasLoader] load atlas images_mobile/backgrounds/location_bg/world_bg/atlas.dxt.atf?v=840
+[MusicManager] playPlaylist: island_global, musicEnabled:false
+[RemoteAtlasLoader] upload texture to GPU images_mobile/backgrounds/ex_scroll_blue/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] upload texture to GPU images/backgrounds/scroll_beige/Upscale/atlas.dxt.atf?v=788
+[<<< ServerResponse] GetPersonalOptions
+timestamp: 409392, netlag: 53
+message: personal_options:[{backtimer:38668 option_id:634},{backtimer:38668 option_id:635},{backtimer:38668 option_id:633},{backtimer:82690 option_id:638}]
+
+[PopupWindowManager] Removed popup from queue. Type: 7, queue length: 1
+[AnimationManager] preload {"u":"animations/index/ribbons/side_flap_up_v2.zip","h":"","w":"","v":1460120900920}
+[AnimationManager] preload {"u":"animations/index/ribbons/side_flap_up_v2.zip","h":"","w":"","v":1460120900920}
+[>>> ServerRequest] GetDailyQuestsAndTimer
+timestamp: 409398, session: 6032655246566621184
+message: 
+
+[RemoteAtlasLoader] upload texture to GPU images_mobile/avatar_illustration/hunteress/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] upload texture to GPU images/common_icons/upscale/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] upload texture to GPU images_mobile/avatar_spells/archer_set/archer_set_cards/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] upload texture to GPU images_mobile/backgrounds/location_bg/world_bg/atlas.dxt.atf?v=840
+[<<< ServerResponse] GetDailyQuestsAndTimer
+timestamp: 409441, netlag: 43
+message: update_backtimer:40722 daily_quests:[{is_completed:false quest_id:76},{is_completed:false quest_id:77},{is_completed:false quest_id:78}]
+
+[AvatarInfoWindow] opened
+[SoundsManager] playSoundEffect() soundKey: interface_button, needInvert: false
+[AvatarInfoWindow] closed
+[PopupWindowManager] Removed popup from queue. Type: 3, queue length: 0
+[RemoteAtlasLoader] unload and dispose atlas images_mobile/avatar_illustration/hunteress/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] unload and dispose atlas images/common_icons/upscale/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] unload and dispose atlas images/backgrounds/scroll_beige/Upscale/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] unload and dispose atlas images_mobile/backgrounds/ex_scroll_blue/atlas.dxt.atf?v=788
+[SoundsManager] playSoundEffect() soundKey: interface_button, needInvert: false
+[ScreenManager] openScreenByName(), name: openChest; opened screens: main
+[RemoteAtlasLoader] load atlas images_mobile/backgrounds/open_chest/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] load atlas images/common_icons/atlas.dxt.atf?v=842
+[RemoteAtlasLoader] load atlas images_mobile/buttons/atlas.dxt.atf?v=842
+[RemoteAtlasLoader] upload texture to GPU images_mobile/backgrounds/open_chest/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] upload texture to GPU images/common_icons/atlas.dxt.atf?v=842
+[RemoteAtlasLoader] upload texture to GPU images_mobile/buttons/atlas.dxt.atf?v=842
+[RemoteAtlasLoader] unload and dispose atlas images_mobile/backgrounds/location_bg/world_bg/atlas.dxt.atf?v=840
+[SoundsManager] playSoundEffect() soundKey: interface_button, needInvert: false
+[>>> ServerRequest] OpenContainer
+timestamp: 412796, session: 6032655246566621184
+message: artifact_id:17746324
+
+[<<< ServerResponse] OpenContainer
+timestamp: 413143, netlag: 347
+message: error_code:0 container_rewards:[{reward{reward_id:103 params:[686,1,0]}},{reward{reward_id:128 params:[969,1]}},{reward{reward_id:128 params:[968,2]}},{reward{reward_id:128 params:[967,2]}}]
+
+[<<< ServerEvent] TriggerValuesChanged
+timestamp: 413381, netlag: 0
+message: new_values:[{trigger_id:686 value:6}]
+
+[SoundsManager] playSoundEffect() soundKey: items.open_chest, needInvert: false
+[<<< ServerEvent] NewArtifact
+timestamp: 413586, netlag: 0
+message: slot_id:3 art_info{art_skills:[1,1,100,0,3,0,0,1,0,0,0,0] user_absolute_modifiers:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2] container_backtimer:0 spells:[182] artifact_id:17746311 level:2 artikul_id:969}
+
+[<<< ServerEvent] NewArtifact
+timestamp: 413587, netlag: 0
+message: slot_id:2 art_info{art_skills:[1,1,100,0,5,0,0,1,0,0,0,0] user_absolute_modifiers:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2] container_backtimer:0 spells:[183] artifact_id:17746310 level:2 artikul_id:968}
+
+[<<< ServerEvent] NewArtifact
+timestamp: 413588, netlag: 0
+message: slot_id:1 art_info{art_skills:[1,1,100,0,3,0,0,1,0,0,0,0] user_absolute_modifiers:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3] container_backtimer:0 spells:[186] artifact_id:17746309 level:3 artikul_id:967}
+
+[<<< ServerEvent] DelArtifact
+timestamp: 413589, netlag: 0
+message: artifact_id:17746324
+
+[PopupWindowManager] Removed popup from queue. Type: 1, queue length: 0
+[ItemsManager] Removed chest 17746324 from open queue. Queue length: 0
+[<<< ServerEvent] SkillCacheChanged
+timestamp: 413591, netlag: 0
+message: skill_cache_info{strength:6 modifiers{mods:[0,0,0,84,84,0,1008,84,3,0,0,0,0,100,0,0,0,0,5,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,16,0,0,0,0,0,0,0,0,0,0,0,0,168,0,0,0,0,0,0,0,0]} boost_modifiers{}}
+
+[<<< ServerEvent] TriggerValuesChanged
+timestamp: 413592, netlag: 0
+message: new_values:[{trigger_id:325 value:8}]
+
+[RemoteAtlasLoader] unload and dispose atlas images_mobile/backgrounds/open_chest/atlas.dxt.atf?v=788
+[SoundsManager] playSoundEffect() soundKey: interface_button, needInvert: false
+[SoundsManager] playSoundEffect() soundKey: interface_button, needInvert: false
+[SoundsManager] playSoundEffect() soundKey: interface_button, needInvert: false
+[ScreenManager] closeScreenByName(), name: openChest; opened screens: main, openChest
+[RemoteAtlasLoader] unload and dispose atlas images_mobile/buttons/atlas.dxt.atf?v=842
+[RemoteAtlasLoader] unload and dispose atlas images/common_icons/atlas.dxt.atf?v=842
+[PopupWindowManager] Added popup to queue. Type: 4, queue length: 1
+[PopupWindowManager] Showing popup. Type: 4, queue length: 1
+[ScreenManager] openScreenByName(), name: upgradeSpell; opened screens: main
+[RemoteAtlasLoader] load atlas images/common_icons/atlas.dxt.atf?v=842
+[RemoteAtlasLoader] load atlas images/userinfo_new/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] load atlas images_mobile/backgrounds/upgrade_spell_stat_bg/atlas.dxt.atf?v=846
+[RemoteAtlasLoader] load atlas images/userskills/big/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] load atlas images/skills/big/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] load atlas images_mobile/buttons/atlas.dxt.atf?v=842
+[RemoteAtlasLoader] load atlas images_mobile/common_icons/atlas.dxt.atf?v=839
+[RemoteAtlasLoader] upload texture to GPU images/common_icons/atlas.dxt.atf?v=842
+[RemoteAtlasLoader] upload texture to GPU images/userinfo_new/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] upload texture to GPU images_mobile/backgrounds/upgrade_spell_stat_bg/atlas.dxt.atf?v=846
+[RemoteAtlasLoader] upload texture to GPU images/userskills/big/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] upload texture to GPU images/skills/big/atlas.dxt.atf?v=788
+[RemoteAtlasLoader] upload texture to GPU images_mobile/buttons/atlas.dxt.atf?v=842
+[RemoteAtlasLoader] upload texture to GPU images_mobile/common_icons/atlas.dxt.atf?v=839
+[>>> ServerRequest] TournamentShopGetInfo
+timestamp: 419397, session: 6032655246566621184
+message: force_regen:false
+
+[<<< ServerResponse] TournamentShopGetInfo
+timestamp: 419559, netlag: 162
+message: regen_backtimer:60 premium_items:[{item_id:1601797 art_info{art_skills:[0,1,0,0,1,100,0,5,0,0,0,0] container_backtimer:0 artifact_id:0 artikul_id:1322}},{item_id:1601798},{item_id:1601799}] items:[{item_id:1601794 art_info{art_skills:[10,0,0,100,5,0,0,4,0,0] container_backtimer:0 spells:[349] artifact_id:0 artikul_id:1061}},{item_id:1601795 art_info{art_skills:[10,0,0,200,5,0,0,7,0,0] container_backtimer:0 spells:[343] artifact_id:0 artikul_id:1044}},{item_id:1601796 art_info{art_skills:[10,1,0,0,5,250,0,8,0,0,25,25] container_backtimer:0 spells:[398] artifact_id:0 artikul_id:1093}}]
+
+[SoundsManager] playSoundEffect() soundKey: interface_button, needInvert: false
+[>>> ServerRequest] ShopGetInfo
+timestamp: 421415, session: 6032655246566621184
+message: force_regen:false
+
+[<<< ServerResponse] ShopGetInfo
+timestamp: 421608, netlag: 193
+message: regen_backtimer:30 premium_items:[{item_id:5628467 art_info{art_skills:[1,0,0,1600,1,0,0,5,0,0,0,0] container_backtimer:0 artifact_id:0 artikul_id:1010}},{item_id:5628468 art_info{art_skills:[1,0,0,210,1,0,0,3,0,0,0,0] container_backtimer:0 artifact_id:0 artikul_id:1008}},{item_id:5628469 art_info{art_skills:[1,0,0,320,1,0,0,4,0,0,0,0] container_backtimer:0 artifact_id:0 artikul_id:1009}},{item_id:5628470 art_info{art_skills:[10,0,0,350,1,0,0,4,0,0] container_backtimer:0 spells:[346] artifact_id:0 artikul_id:1047}},{item_id:5628471 art_info{art_skills:[10,0,0,350,1,0,0,4,0,0] container_backtimer:0 spells:[345] artifact_id:0 artikul_id:1046}},{item_id:5628472 art_info{art_skills:[1,0,0,100,1,0,0,5,0,0,0,0] container_backtimer:0 artifact_id:0 artikul_id:1244}},{item_id:5628473}] items:[{item_id:5628463 art_info{art_skills:[1,1,600,0,3,0,0,2,0,0,0,0]

@@ -1,0 +1,142 @@
+init python:
+    #Back for Seconds
+    #Requirements: after week 16, Jezera Influence is at least 5
+    event('back_for_seconds', triggers='week_end', conditions=('week>=16', 'week<=34'), group='ruler_event', run_count=1, priority=pr_ruler)
+
+label back_for_seconds:
+#Back for Seconds
+#Requirements: after week 16, Jezera Influence is at least 5
+
+#if alexia is in rowan's room
+if alexiaSeparateRoom:
+    scene bg7 with fade
+else:
+    scene bg9 with fade
+
+#rejoin
+show alexia necklace naked neutral at midleft with dissolve
+
+"Alexia was rummaging through her closet, searching for the day’s outfit, when she was surprised by the sudden appearance of a maid in the doorway. When had she even gotten in? The maid was a meek girl with braided red hair and freckles."
+"Alexia threw her hands over her body, covering her nakedness."
+
+show alexia necklace naked shock at midleft with dissolve
+
+maid "Mistress Jezera would like you to join her in the parlor for a lunchtime tea shortly."
+
+"The girl didn’t even look at her creamy nudity before turning and starting down the hallway. She left the housewife to close the door after her. "
+
+show alexia necklace naked concerned at midleft with dissolve
+
+"Alexia, shivered slightly. The prospect of a teatime chat with Jezera could be...dangerous."
+
+#if visiting Jezera was chosen during the Demon Tome event
+if alexia_and_her_demon_book == 3:
+    "Alexia still remembered the last time she’d sat with Jezera for tea. Or at least she remembered part of it. Hazy visions of her body dancing and swaying in the air under Jezera’s hungry watchful eyes."
+    if alexia_has_sex_with_jezera_during_demon_book:
+        "Then what came afterwards. Soft feminine fingers exploring her. A tongue against her slit. Her tongue against another slit. Things she should never have enjoyed."
+    else:
+        "It had been providence that she’d had the willpower to leave before anything...untoward happened. Still, the thought of what the demoness might have done to her still lingered in the back of her mind."
+        "And Jezera wanted her company once again..."
+else:
+    "For all the interest the demoness had shown in her in the past, she’d never once been called to tea before. While perhaps it was just an innocent lunch date, Alexia would have to be a fool at this point to trust the demoness not to take advantage of the situation."
+    "The question was, if Alexia went along with it, would she have the willpower to prevent said advantage being taken…"
+
+#rejoin (from demon tome if/else)
+"Alexia sighed, rifling quickly through the closet to find something to cover herself with. Then she rushed down the hall, seeking to catch up to the redheaded maid."
+
+scene bg14 with fade
+show alexia 2 necklace neutral at midleft with dissolve
+
+al "I have a message that I want you to bring back to Lady Jezera."
+
+menu:
+    "Make an excuse.":
+        $ released_fix_rollback()
+        al "Please tell the lady that I deeply apologize, but I will not be able to attend today. I have urgent business that I need to focus on, and I beg her leave to allow me to complete my needed tasks, for the good of the war effort."
+        "Jezera wasn’t going to be happy about this, but so long as it was sugar coated properly, Alexia hoped that she wouldn’t earn the woman’s wrath."
+        maid "Ar...are you certain about this? The mistress will not be pleased."
+        "The look in the girl’s eyes told Alexia that this displeasure was very likely to affect the girl personally. Still, she had to remain resolute. "
+        al "I am certain. It really cannot work today with the current schedule. Please give her my fondest regards."
+        "The maid nodded and left to deliver the message. Clearly it must have worked, since Alexia heard nothing more of the manner for the rest of the day. No angry rants, no further insistence on her attendance, not even a passive aggressive reply."
+        "Still there was a moment where she was almost certain she heard Jezera fuming from her room as she passed by. Alexia felt a strange stirring of pride at that."
+        #Alexia loses 2 Jezera influence
+        $ change_relation('jezera', -2)
+        return
+
+    "Accept the command.":
+        $ released_fix_rollback()
+        al "Please tell her that I humbly accept her invitation and will be along in a timely manner."
+        "The maid smiled softly. She looked almost relieved."
+        maid "Of course, madam Alexia. I will tell the mistress to expect you. She will be most pleased to hear of your attendance. I believe she was looking forward to it."
+        "The maid returned to Jezera’s room, leaving Alexia to wonder if she’d made the right choice."
+        #if rowan's influence on Alexia is 10 more than Jezera's
+        if  all_actors['alexia'].relation - all_actors['alexia'].flags['jezera_influence'] > 10:
+            "She brought a hand to the amulet around her neck softly."
+            al "This would be much easier if you were here today, Rowan. I never know what to do around those two…"
+        else:
+            "She tried to think about her husband and her vows to him, but the longer she thought about her upcoming visit, the harder it was to stop from blushing."
+        #rejoin
+        jump secondsTea
+
+label secondsTea:
+
+scene bg18 with fade
+show jezera happy at midright with dissolve
+show alexia 2 necklace concerned at midleft with moveinleft
+
+"Alexia walked into Jezera’s room and found the blue woman sitting on a small wooden chair at a low table. Jezera happily waved to her as soon as she arrived, as if the two were a pair of friends having a casual sit in."
+"She also noted that the red haired maid from earlier was still hovering around, still maintaining her eyes to the ground. Only now she had a unmistakeable soft pinkish hew to her cheeks."
+"Then Alexia noticed an issue."
+
+al "Is there nowhere for me to sit, my lady?"
+
+"There wasn’t another chair in the entire room. Well, a large one near the back, but it was obviously unsuited for this kind of lunchtime nicety."
+
+je "Nowhere to...Oh. Oh, of course. How silly. I must have forgotten to bring up something as simple as another chair in all my excitement."
+
+#if rowan's influence on Alexia is 10 more than Jezera's
+if all_actors['alexia'].relation - all_actors['alexia'].flags['jezera_influence'] > 10:
+    "Alexia furrowed her brow softly. This had to be some sort of trick or power play. She didn’t trust it for the moment. Still, there was little to be done in the situation."
+    "She had a sneaking suspicion that if she tried to insist on a chair be brought, that Jezera would wave her concern off."
+else:
+    show alexia 2 necklace aroused at midleft with dissolve
+    "Alexia instantly turned a shade pinker. She had no illusions that this was actually an accident. It was no doubt meant to force Alexia to sit at the other woman’s feet. The mental image was...effecting."
+#rejoin
+je "We must have somewhere for our poor darling guest to sit. It would be so rude otherwise."
+je "I’ve got it!"
+je "Would you be a dear and get some of the cushions from the armoire? The red velvet ones. If I lack a chair for the poor girl, the least I can do is provide somewhere comfortable for her to recline."
+
+maid "Of course, Mistress."
+
+"Alexia eyed the cushions wearily, but had little choice but to kneel down on them. Trying her best to maintain enough height to come close to matching her host at the table."
+
+#CG 1 Variation 1
+scene black with fade
+show jezera happy behind black
+show alexia 2 necklace neutral behind black
+
+"In this position, if she stopped forcing herself up towards the table for a second, then she’d be practically kneeling at Jezera’s feet."
+"The maid, Amelia, soon came around with tea. Of course, it tasted delicious. A fine black that must have come from the twins’ private stores directly."
+"Alexia sipped the drink down and laughed along at the conversation. She couldn’t show her discomfort with the situation."
+"Alexia would occasionally catch a glimpse of Jezera putting a hand on Amelia’s thigh, or otherwise catching a glance at the girl’s behind whenever her skirt would ride up from some action. However, she just couldn’t connect the dots of their relationship."
+"Eventually the conversation turned, of all things, to stories from their hometowns."
+
+je "So, there was this old woman in my hometown who I’d talk to sometimes. She was quite wealthy, so it quite literally paid to be in her favour. And she had this majestic story."
+je "See, she was born a commoner."
+
+"Alexia felt the weight of Jezera’s gaze on her."
+
+je "She eventually married this merchant. From an entire family of merchants. They ran all sorts of trade ships running to and from Travelers Rest. Nice enough man, I was told. She said they were happy together."
+je "Then he died. Pirates, I think? Perhaps minotaurs. It was some time, and you humans are all so fragile."
+je "Anyway, she was to be left with his entire fortune. It was riches to last many a mortal lifetime. Only there was a problem. His older brother was also a merchant, and he laid claim to the fortune as well."
+
+"Alexia almost unconsciously lowered back into her cushion, temporarily distracted from Jezera’s power plays by the story."
+
+je "She couldn’t fight him for influence with his own family as the judge. She couldn’t run away with the money, since so much of it was tied to property and that paper nonsense you humans use."
+je "So she...actually, no. Let’s play a little game first. Fun, no? What would you do in that situation? How would you protect your newly acquired wealth?"
+
+"Alexia paused. What would she do in that situation? Alexia had never dealt with matters of inheritance and intrigue before she’d come to Bloodmeen. She was a housewife, damnit."
+
+al "May I think about that for a moment, m’lady?"
+
+je "Why of course. I want to see the little gears in

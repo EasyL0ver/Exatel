@@ -1,0 +1,10 @@
+> showMethods(readFastq)
+Function: readFastq (package ShortRead)
+dirPath="character"
+dirPath="FastqFile"
+dirPath="SolexaPath 
+     
+> getwd()
+[1] "C:/Users/Research/Documents" code here 
+     
+> lawdata <- readFastq(getwd(),"16SMicrobial.tar.gz")

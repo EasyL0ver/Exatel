@@ -1,0 +1,55 @@
+STUFF = {
+center:function(element,how)
+{
+	var options = Object.extend({constraint:'none', update: false},arguments[2] || {});
+	if(how === undefined)
+		how = 'viewport';
+	
+	Position.prepare();
+
+	//the element that we are centering in.
+	
+	var container = (how == 'viewport' ? document.viewport : element.up());
+ 	
+ 	// the original position style of this element
+ 	var original_position = element.getStyle('position');
+
+ 	if(!original_position)
+ 		original_position = '';
+ 	
+  // the containers position style
+ 	if($(container).getStyle !== undefined)
+ 		var container_position = $(container).getStyle('position');
+ 	
+ 	else
+ 		container_position = 'absolute';
+ 	
+ 	// If the element's original position was absolute, no further checking needed, just leave it absolute.
+ 	// If its position was anything other than absolute and we're centering in the viewport, make it absolute,
+ 	// If we're centering on this elements parent, and its parent's position is absolute it's safe to make it absolute
+ 	// otherwise make it relative so it doesn't jump out of its container.
+ 	var new_position = original_position == 'absolute' ? 'absolute' : (how == 'viewport' ? 'absolute' : (container_position != 'relative' ? 'absolute' : 'relative'));
+
+ 	var el_dims = element.getDimensions(); 
+ 	var container_dims = $(container).getDimensions();
+	
+ 	var offset_top  = (Position.deltaY + Math.floor( (container_dims.height - el_dims.height) / 2 ) );
+ 	var offset_left = (Position.deltaX + Math.floor( (container_dims.width - el_dims.width) / 2 ) );
+ 	
+ 	switch(options.constraint)
+ 	{
+ 		case 'x':
+ 			element.style.left = ((offset_left != null && offset_left > 0) ? offset_left :'0') + 'px';
+ 		break;
+ 		case 'y':
+ 			element.style.top = ((offset_top != null && offset_top> 0) ? offset_top : '0')+ 'px';
+ 		break;
+ 		case 'none':
+ 			element.setStyle({position:new_position,top : ( (offset_top != null &&  offset_top > 0) ? offset_top : '0') + 'px', left: ((offset_left != null && offset_left > 0) ? offset_left :'0') + 'px'});
+ 		break;
+ 	}
+}
+}
+
+
+Element.addMethods(STUFF);

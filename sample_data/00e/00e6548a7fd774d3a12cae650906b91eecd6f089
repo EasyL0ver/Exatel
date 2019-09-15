@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <sys/time.h>
+
+int r = 0;
+int m = 0;
+
+int incrementR();
+int incrementM();
+
+int isModule2(int* v);
+
+int main(int argc, const char* argv[] )
+{
+    int c;
+
+    for(int i = 0; i <= 500000000; i++)
+    {
+        c += incrementR();
+        c += incrementM();
+    }
+
+    printf("End of the big loop, end_t = %ld\n", clock());
+
+    printf("Clocks per second: %d\n", CLOCKS_PER_SEC);
+}
+
+int incrementR()
+{
+    if(isModule2(&r) == 1)
+    {
+        r += 1;
+    }
+    else
+    {
+        r += 2;
+    }
+}
+
+int incrementM()
+{
+    if(isModule2(&m) == 1)
+    {
+        m += 1;
+    }
+    else
+    {
+        m += 2;
+    }
+}
+
+int isModule2(int* v)
+{
+    if(*v % 2 == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}

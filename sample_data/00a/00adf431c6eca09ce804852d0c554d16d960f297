@@ -1,0 +1,28 @@
+mySQL query error: CREATE TABLE backup_vars (
+  backup_var_key    VARCHAR(255) NOT NULL DEFAULT '',
+  backup_var_value  TEXT,
+  PRIMARY KEY (backup_var_key)
+) ENGINE=MyISAM;
+
+SQL error: Specified key was too long; max key length is 1000 bytes
+SQL error code: 1071
+Date: Thursday 27th December 2018 06:50:58 PM
+
+
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Date: Thu, 27 Dec 2018 18:50:58 +0000
+ Error: 1071 - Specified key was too long; max key length is 1000 bytes
+ IP Address: 127.0.0.1 - /forums/vcpd/admin/install/index.php?app=install§ion=install&do=sql
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ mySQL query error: CREATE TABLE backup_vars (
+  backup_var_key    VARCHAR(255) NOT NULL DEFAULT '',
+  backup_var_value  TEXT,
+  PRIMARY KEY (backup_var_key)
+) ENGINE=MyISAM;
+ .--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------.
+ | File                                                                       | Function                                                                      | Line No.          |
+ |----------------------------------------------------------------------------+-------------------------------------------------------------------------------+-------------------|
+ | admin/setup/applications/install/sections/install.php                      | [install_install].install_sql                                                 | 89                |
+ '----------------------------------------------------------------------------+-------------------------------------------------------------------------------+-------------------'
+ | admin/setup/sources/base/ipsController_setup.php                           | [install_install].doExecute                                                   | 258               |
+ '----------------------------------------------------------------------------+-------------------------------------------------------------------------------+-------------------'

@@ -1,0 +1,52 @@
+### CLOSURES 
+* What are they?
+    * Anonymous function (has no name)
+    * self contained package of functionality
+
+```swift
+import UIKit
+
+/* Initial calulator function
+func calculator (n1: Int, n2: Int) -> Int {
+    return n1 + n2
+}
+ 
+*/
+
+func add (n1: Int, n2: Int) -> Int {
+    return n1 + n2
+}
+
+// We want to pass add into calculator
+// We need to boil down the add function into its primitive data types
+// function add is essentially (Int, Int) -> Int
+// Now you can pass this in as the 3rd argument of the calculator function
+
+func calculator (n1: Int, n2: Int, operation: (Int, Int) -> Int) -> Int {
+    return operation(n1, n2)
+}
+
+// Notice that the 3rd argument of the calculator function is called operation
+// It's datatype is a function with 2 Int params that returns a function
+
+calculator(n1: 2, n2: 3, operation: add)
+
+/* Convert a regular function into a closure
+
+func name (par1: Int, par2: Int) -> Int {
+    return par1 + par2
+}
+
+Becomes
+
+{ (par1: Int, par2: Int) -> Int in
+        return par1 + par2
+}
+*/
+
+calculator(n1: 2, n2: 3, operation: { (n1: Int, n2: Int) -> Int in
+    return n1 * n2
+})
+
+
+```

@@ -1,0 +1,302 @@
+1:Carte de la contrée
+2:Minerai de cuivre
+3:Gland de monstre
+4:Chapeau de champi bleu
+5:Feuille verte
+6:Feuille rouge
+7:Plume de coq
+8:Cadavre de chenille
+9:Minerai d'or
+10:Chapeau de champi rouge
+11:Ailes de mouche
+12:Coquille d'escargot bleue
+13:Coquille d'escargot jaune
+14:Coquille d'escargot verte
+15:Champi piquant
+16:Peau de grenouille
+17:Pince de crabe
+18:Ailes de libellule
+19:Tête d'abeille
+20:Pattes d'araignée
+21:Bec d'aigle
+22:Peau d'iguane
+23:Bracelet doré
+24:Peau sauvage
+25:Mâchoire d'esprit
+26:Queue de serpent
+27:Plume de harpie
+28:Queue de loup
+29:Griffe de loup
+30:Pièce de pionniers
+31:Crâne de sanglier
+32:Tête de gomina
+33:Carapace de cloporte
+34:Minerai de fer
+35:Minerai de Pierre-sang
+36:Fiole vide
+37:Baie rouge
+38:Grimoire de Damis
+39:Queue de salamandre
+40:Peau de serpent
+41:Corne de licorne
+42:Crâne félé
+43:Fragment de golem de Fangelice
+44:Sang d'origine inconnue
+45:Aile de chauve-souris
+46:Touffe de poils
+47:Queue de triton
+48:Griffe de grizzly
+49:Boue sacrée
+50:Poudre de fée
+51:Carapace de tortue
+52:Anti-poison
+53:Chope de bière
+54:Grenat
+55:Cordiérite
+56:Diamant rouge
+57:Aigue-marine
+58:Olivine
+59:Onyx
+60:Fragment du passé
+61:Saphir
+62:Zircon
+63:Minerai d'étain
+64:Pièce en or d'Ashkran
+65:Crâne de Yéti
+66:Crinière d'hérisson
+67:Fourrure de bouquetin
+68:Aile sombre
+69:Dent de dragon
+70:Grelot porte-bonheur
+71:nom_71
+72:Pierre spectrique
+73:Spinelle
+74:Crâne fossilisé
+75:Diamant
+76:Corindon
+77:Bouteille vide
+78:Bol
+79:Linceul miteux
+80:Cape mortelle
+81:Crinière de manticore
+82:Poupée vaudou
+83:Dent gâtée
+84:Balai pas magique
+85:Artefact de glace
+86:Artefact d'eau
+87:Griffe de loup du glacier
+88:Poussière de torche
+89:Petite clef
+90:Pierre de feu
+91:Griffe d'ours-garou
+92:Bois
+93:Mèche de cheveux
+94:Potion étrange
+95:Sang de l'équipage
+96:Malédiction de l'équipage
+97:Citrouille
+98:Fantôme
+99:Pièce du testeur V2
+100:Pierre
+101:Fragment de fer
+102:Ortie
+103:Ronce
+104:Lavande
+105:Houblon
+106:Pivoine
+107:Sureau
+108:Sanicle
+109:Valériane
+110:Fumeterre
+111:Gratiole
+112:Raifort
+113:Datura
+114:Gui
+115:Cobalt
+116:Minerai d’argent
+117:Sphalérite
+118:Manganèse
+119:Minerai de titane
+120:Scandium
+121:Sardine sauvage
+122:Palourde brillante
+123:Goujon grossier
+124:Rouget agressif
+125:Truite centenaire
+126:Requin nordique
+127:Palourde géante
+128:Baleine dragon
+129:Requin trembleterre
+130:Peau abimée
+131:Cuir déchiré
+132:Carapace déformée
+133:Ecaille terne
+134:Peau trouée
+135:Ecaille ébréchée
+136:Cuir robuste
+137:Carapace lourde
+138:Ecaille solide
+139:Cuir de bonne facture
+140:Peau épaisse
+141:Carapace précieuse
+142:Peau légendaire
+143:Cuir enchanté
+144:Lame de serpe rouillée
+145:Lame de serpe fine
+146:Lame de serpe pointue
+147:Lame de serpe tranchante
+148:Lame de serpe de bronze
+149:Lame de serpe d’argent
+150:Lame de serpe d’or
+151:Manche de pioche rouillée
+152:Manche de pioche fine
+153:Manche de pioche pointue
+154:Manche de pioche légere
+155:Manche de pioche solide
+156:Manche de pioche en argent
+157:Manche de pioche enchantée
+158:Hameçon rouillé
+159:Hameçon tordu
+160:Hameçon fin
+161:Hameçon pointu
+162:Hameçon de fer
+163:Hameçon d'argent
+164:Hameçon enchanté
+165:Lame rouillée
+166:Lame tordue
+167:Lame fine
+168:Lame pointue
+169:Lame de fer
+170:Lame d'argent
+171:Lame dorée
+172:Poudre d'ortie
+173:Macération de Pivoine
+174:Fermentation de Guppy
+175:Saphir poli
+176:Fiole en verre
+177:Macération de Sureau
+178:Infusion de perche dorée
+179:Macération de sanicle
+180:Poudre de valériane
+181:Crâne broyé
+182:Fragment du passé restauré
+183:Poudre de ronce
+184:Manche de marteau fendu
+185:Manche de marteau humide
+186:Manche de marteau solide
+187:Manche de marteau ancien
+188:Manche de marteau rare
+189:Manche de marteau argenté
+190:Manche de marteau doré
+191:Lingot d'or
+192:Aigue-marine taillé
+193:Assemblage marin
+194:Fragment du passé taillé
+195:Crâne fossilisé restauré
+196:Carapace allégée
+197:Bouillie de Palourde brillante
+198:Zircon chauffé
+199:Assiette vide
+200:Assiette ébréchée
+201:Assiette brillante
+202:Assiette en porcelaine
+203:Assiette ancienne
+204:Assiette dorée
+205:Assiette enchantée
+206:Jus de sardine sauvage
+207:Bouillie de Bass
+208:Bouillie de jumbo bass
+209:Fermentation de Guppy
+210:Écaille réparée
+211:Aiguille tordue
+212:Aiguille fragile
+213:Aiguille brillante
+214:Aiguille pointue
+215:Aiguille ancienne
+216:Aiguille dorée
+217:Aiguille enchantée
+218:Peau recousue
+219:Cuir recousu
+220:Carapace reprise
+221:Écaille retouchée
+222:Assemblage d'apprenti
+223:Ecaille tassée
+224:Peau rafistolée
+225:Zircon poli
+226:Cuir optimisé
+227:Carapace retouchée
+228:Cuir tendu
+229:Fragment du passé optimisé
+230:Manche de couteau abimé
+231:Manche de couteau humide
+232:Manche de couteau de bonne facture
+233:Manche de couteau résistant
+234:Manche de couteau ancien
+235:Manche de couteau solide
+236:Manche de couteau légendaire
+237:Peau retendue
+238:Cuir aplati
+239:Carapace travaillée
+240:Ecaille aplatie
+241:Peau améliorée
+242:Fusion bleutée
+243:Saphir fondu
+244:Crâne émietté
+245:Manche de marteau envouté
+246:Mélange doré
+247:Fusion diamantée
+248:Aigue-marine brisée
+249:Fusion multiple
+250:Fusion précieuse
+251:Manche de marteau en cuir
+252:Carapace de cristal
+253:Alkékenge
+254:Corindon taillé
+255:Diamant fondu
+256:Fiole fragile
+257:Mixture de lavande
+258:Macération d'houblon
+259:Poudre de sureau
+260:Grenat poli
+261:Barre de fer
+262:Mixture de guppy rouge
+263:Hachis de goujon
+264:Fusion improbable
+265:Fiole raffinée
+266:Mellite de Fumeterre
+267:Poudre de Gratiole
+268:Bouillie de rouget agressif
+269:Infusion de truite centenaire
+270:Fusion argentée
+271:Cobalt scindé
+272:Écaille allégée
+273:Cuir amélioré
+274:Écaille repiquée
+275:Cuir allégé
+276:Argent chauffé
+277:Cobalt réduit
+278:Cobalt enrichi
+279:Eclat argenté
+280:Tête d'hydre
+281:Oeil de tyrannoeil
+282:Chapeau de champi
+283:Dent de dragon rouge
+284:Peau aplatie
+285:Carapace optimisée
+286:Poudre de Sphalérite
+287:Manganèse fondu
+288:Sphalérite fondu
+289:Manganèse broyé
+290:Sphalérite poli
+291:Manganèse chauffé
+292:Peau doublée
+293:Carapace chauffée
+294:Soupe de requin nordique
+295:Bouillie de Palourde géante
+296:Hydrolat de Raifort
+297:Macération de Datura
+298:Fiole enchantée
+299:Bonbons marrons
+300:Bonbons rouges
+301:Bonbons noirs,
+302:Bonbons Divins

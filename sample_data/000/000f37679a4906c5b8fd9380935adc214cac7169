@@ -1,0 +1,32 @@
+"""
+This is for xaphan the world needs less perl
+you can donate it to that dancer at the point 
+"""
+
+import sys,random
+
+def takeitin(filename):
+    butt = []
+    try:
+        handler = open(filename, 'ro')
+        for crack in handler:
+            butt.append(crack)
+        handler.close()
+    except:
+        sys.exit("something is fucking wrong with your shit")
+    return(butt)
+
+def shuffle(list):
+    random.shuffle(list)
+    return list
+    
+def main(filename):
+    for lines in shuffle(takeitin(filename)):
+        print lines.strip()
+    
+if __name__ == '__main__':
+    try:
+        if sys.argv[1]:
+            main(sys.argv[1])
+    except:
+        sys.exit("Usage: shuffle.py [filename]")

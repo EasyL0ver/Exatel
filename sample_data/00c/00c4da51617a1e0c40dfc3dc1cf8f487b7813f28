@@ -1,0 +1,4 @@
+const store = createStore(combineReducers({
+   auth: authReducer,
+   todo: todoReducer
+}))

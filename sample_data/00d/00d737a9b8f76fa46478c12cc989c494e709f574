@@ -1,0 +1,13 @@
+var crypto = require("crypto");
+
+var repeat = function(str, times){
+    var _str = str;
+    while(--times){
+        str += _str;
+    }
+    return str;
+};
+
+var cipher = crypto.createCipher("aes-128-ecb", repeat("1", 16));
+// changing to "ascii" or "binary" will give the same result
+console.log(cipher.update(repeat("2", 16), "utf8", "base64")); // prints K5GLLZeXr3ufthAEFTTe

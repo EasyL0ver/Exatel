@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+
+# This hooks script syncs task warrior to the configured task server.
+# The on-exit event is triggered once, after all processing is complete.
+
+# Make sure hooks are enabled and this hook script is executable. 
+# Run `task diag` for diagnostics on the hook.
+
+import sys
+import json
+import subprocess
+import signal
+
+class TimeoutException(Exception):   # Custom exception class
+    pass
+
+def timeout_handler(signum, frame):   # Custom signal handler
+    raise TimeoutException
+
+# Change the behavior of SIGALRM
+signal.signal(signal.SIGALRM, timeout_handler)
+
+try:
+    tasks = json.loads(sys.stdin.readline())
+except:
+    # No input
+        pass
+
+    # Call the `sync` command
+    # hooks=0 ensures that the sync command doesn't call the on-exit hook
+    # verbose=nothing sets the verbosity to print nothing at all
+    #
+signal.alarm(1) 
+try :
+    subprocess.call(["task", "rc.hooks=0", "rc.verbose=nothing", "sync"])
+except TimeoutException:
+    sys.stdout.write("Sync is too long ! Skiped")
+finally:
+    signal.alarm(0)
+    sys.exit(0)

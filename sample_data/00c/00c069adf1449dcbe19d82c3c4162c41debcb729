@@ -1,0 +1,92 @@
+[ 2084.420333] BUG: unable to handle kernel paging request at 0000000400000008
+[ 2084.420338] IP: [<ffffffff81103331>] find_get_pages+0x61/0x110
+[ 2084.420344] PGD 1fe726067 PUD 0 
+[ 2084.420347] Oops: 0000 [#1] SMP 
+[ 2084.420349] last sysfs file: /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
+[ 2084.420351] CPU 2 
+[ 2084.420352] Modules linked in: binfmt_misc parport_pc ppdev snd_hda_codec_atihdmi snd_hda_codec_realtek snd_hda_intel snd_seq_midi snd_hda_codec snd_hwdep snd_rawmidi snd_pcm snd_seq_midi_event fglrx(P) snd_seq snd_timer snd_seq_device serio_raw snd i2c_piix4 soundcore snd_page_alloc k10temp edac_core edac_mce_amd lp parport usbhid hid usb_storage floppy ahci r8169 pata_atiixp libahci mii
+[ 2084.420369] 
+[ 2084.420372] Pid: 25638, comm: kio_file Tainted: P            2.6.35-32-generic #66-Ubuntu GA-78LMT-S2P/GA-78LMT-S2P
+[ 2084.420374] RIP: 0010:[<ffffffff81103331>]  [<ffffffff81103331>] find_get_pages+0x61/0x110
+[ 2084.420377] RSP: 0018:ffff8801d3a31c98  EFLAGS: 00010246
+[ 2084.420378] RAX: ffff8801967e58a8 RBX: ffff8801d3a31d58 RCX: 0000000000000003
+[ 2084.420380] RDX: 0000000000000002 RSI: 0000000000000002 RDI: 0000000400000000
+[ 2084.420381] RBP: ffff8801d3a31ce8 R08: 0000000000000002 R09: 0000000000000003
+[ 2084.420383] R10: ffffea0006333a90 R11: ffff8801967e58a8 R12: 0000000000000000
+[ 2084.420384] R13: 000000000000000e R14: ffff8801d3a31d68 R15: 0000000000000002
+[ 2084.420386] FS:  00007ffdaf21c760(0000) GS:ffff880001e80000(0000) knlGS:0000000055700d00
+[ 2084.420388] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2084.420389] CR2: 0000000400000008 CR3: 000000019507d000 CR4: 00000000000006e0
+[ 2084.420391] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 2084.420393] DR3: 0000000000000000 DR6: 00000000ffff0ff0 DR7: 0000000000000400
+[ 2084.420394] Process kio_file (pid: 25638, threadinfo ffff8801d3a30000, task ffff880223102de0)
+[ 2084.420396] Stack:
+[ 2084.420397]  ffff8801d3a31cc8 ffffffff8117f556 ffff8801bf044438 ffff8801bf044558
+[ 2084.420399] <0> ffff88021f9c3408 ffff8801d3a31d48 ffffffffffffffff ffff8801bf044550
+[ 2084.420402] <0> ffff8801d3a31d48 0000000000000000 ffff8801d3a31d08 ffffffff8110e032
+[ 2084.420405] Call Trace:
+[ 2084.420408]  [<ffffffff8117f556>] ? __getblk+0x36/0x70
+[ 2084.420411]  [<ffffffff8110e032>] pagevec_lookup+0x22/0x30
+[ 2084.420415]  [<ffffffff8110f643>] truncate_inode_pages_range+0xa3/0x470
+[ 2084.420417]  [<ffffffff8104d6b3>] ? __wake_up+0x53/0x70
+[ 2084.420421]  [<ffffffff811ef8d1>] ? ext4_mark_iloc_dirty+0x71/0x90
+[ 2084.420424]  [<ffffffff8158d15e>] ? mutex_lock+0x1e/0x50
+[ 2084.420426]  [<ffffffff8158e64e>] ? _raw_spin_lock+0xe/0x20
+[ 2084.420429]  [<ffffffff8118c53c>] ? fsnotify_clear_marks_by_inode+0x9c/0x100
+[ 2084.420431]  [<ffffffff8110fa25>] truncate_inode_pages+0x15/0x20
+[ 2084.420434]  [<ffffffff811f5a3b>] ext4_delete_inode+0x5b/0x300
+[ 2084.420437]  [<ffffffff8116d469>] generic_delete_inode+0xa9/0x170
+[ 2084.420439]  [<ffffffff8116d595>] generic_drop_inode+0x65/0x80
+[ 2084.420441]  [<ffffffff8116c322>] iput+0x62/0x70
+[ 2084.420443]  [<ffffffff81162ff2>] do_unlinkat+0x112/0x1d0
+[ 2084.420446]  [<ffffffff81159836>] ? sys_newstat+0x36/0x50
+[ 2084.420448]  [<ffffffff811630c6>] sys_unlink+0x16/0x20
+[ 2084.420451]  [<ffffffff8100a0f2>] system_call_fastpath+0x16/0x1b
+[ 2084.420453] Code: bb 1b 00 85 c0 89 c1 0f 84 a4 00 00 00 49 89 de 45 31 ff 31 d2 eb 03 90 90 90 49 8b 06 48 8b 38 48 85 ff 74 3a 40 f6 c7 01 75 51 <44> 8b 47 08 4c 8d 57 08 45 85 c0 74 e5 45 8d 48 01 44 89 c0 f0 
+[ 2084.420470] RIP  [<ffffffff81103331>] find_get_pages+0x61/0x110
+[ 2084.420472]  RSP <ffff8801d3a31c98>
+[ 2084.420474] CR2: 0000000400000008
+[ 2084.420475] ---[ end trace 0be1710692d64d59 ]---
+[ 2092.594904] BUG: unable to handle kernel paging request at 0000000400000008
+[ 2092.594910] IP: [<ffffffff81103331>] find_get_pages+0x61/0x110
+[ 2092.594915] PGD 1940c4067 PUD 0 
+[ 2092.594918] Oops: 0000 [#2] SMP 
+[ 2092.594920] last sysfs file: /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq
+[ 2092.594922] CPU 3 
+[ 2092.594923] Modules linked in: binfmt_misc parport_pc ppdev snd_hda_codec_atihdmi snd_hda_codec_realtek snd_hda_intel snd_seq_midi snd_hda_codec snd_hwdep snd_rawmidi snd_pcm snd_seq_midi_event fglrx(P) snd_seq snd_timer snd_seq_device serio_raw snd i2c_piix4 soundcore snd_page_alloc k10temp edac_core edac_mce_amd lp parport usbhid hid usb_storage floppy ahci r8169 pata_atiixp libahci mii
+[ 2092.594940] 
+[ 2092.594943] Pid: 25661, comm: kio_file Tainted: P      D     2.6.35-32-generic #66-Ubuntu GA-78LMT-S2P/GA-78LMT-S2P
+[ 2092.594945] RIP: 0010:[<ffffffff81103331>]  [<ffffffff81103331>] find_get_pages+0x61/0x110
+[ 2092.594948] RSP: 0018:ffff8801957f1c98  EFLAGS: 00010246
+[ 2092.594950] RAX: ffff880196bf58a8 RBX: ffff8801957f1d58 RCX: 0000000000000003
+[ 2092.594951] RDX: 0000000000000002 RSI: 0000000000000002 RDI: 0000000400000000
+[ 2092.594953] RBP: ffff8801957f1ce8 R08: 0000000000000002 R09: 0000000000000003
+[ 2092.594954] R10: ffffea000580ab40 R11: ffff880196bf58a8 R12: 000000000000000e
+[ 2092.594956] R13: 000000000000000e R14: ffff8801957f1d68 R15: 0000000000000002
+[ 2092.594958] FS:  00007ffdaf21c760(0000) GS:ffff880001ec0000(0000) knlGS:0000000055700d00
+[ 2092.594959] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[ 2092.594961] CR2: 0000000400000008 CR3: 00000001fd409000 CR4: 00000000000006e0
+[ 2092.594962] DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
+[ 2092.594964] DR3: 0000000000000000 DR6: 00000000ffff0ff0 DR7: 0000000000000400
+[ 2092.594966] Process kio_file (pid: 25661, threadinfo ffff8801957f0000, task ffff880223102de0)
+[ 2092.594967] Stack:
+[ 2092.594968]  ffffea0005cb1708 ffffea0005cb16d0 ffffea00055c9bf8 ffff8801aadb8dc8
+[ 2092.594971] <0> ffff8801957f1cc8 ffff8801957f1d48 ffffffffffffffff ffff8801aadb8dc0
+[ 2092.594973] <0> ffff8801957f1d48 0000000000000000 ffff8801957f1d08 ffffffff8110e032
+[ 2092.594976] Call Trace:
+[ 2092.594980]  [<ffffffff8110e032>] pagevec_lookup+0x22/0x30
+[ 2092.594984]  [<ffffffff8110f643>] truncate_inode_pages_range+0xa3/0x470
+[ 2092.594987]  [<ffffffff8110fa25>] truncate_inode_pages+0x15/0x20
+[ 2092.594990]  [<ffffffff811f5a3b>] ext4_delete_inode+0x5b/0x300
+[ 2092.594993]  [<ffffffff8116d469>] generic_delete_inode+0xa9/0x170
+[ 2092.594995]  [<ffffffff8116d595>] generic_drop_inode+0x65/0x80
+[ 2092.594998]  [<ffffffff8116c322>] iput+0x62/0x70
+[ 2092.595000]  [<ffffffff81162ff2>] do_unlinkat+0x112/0x1d0
+[ 2092.595002]  [<ffffffff81159836>] ? sys_newstat+0x36/0x50
+[ 2092.595004]  [<ffffffff811630c6>] sys_unlink+0x16/0x20
+[ 2092.595008]  [<ffffffff8100a0f2>] system_call_fastpath+0x16/0x1b
+[ 2092.595009] Code: bb 1b 00 85 c0 89 c1 0f 84 a4 00 00 00 49 89 de 45 31 ff 31 d2 eb 03 90 90 90 49 8b 06 48 8b 38 48 85 ff 74 3a 40 f6 c7 01 75 51 <44> 8b 47 08 4c 8d 57 08 45 85 c0 74 e5 45 8d 48 01 44 89 c0 f0 
+[ 2092.595027] RIP  [<ffffffff81103331>] find_get_pages+0x61/0x110
+[ 2092.595029]  RSP <ffff8801957f1c98>
+[ 2092.595030] CR2: 0000000400000008
+[ 2092.595032] ---[ end trace 0be1710692d64d5a ]---

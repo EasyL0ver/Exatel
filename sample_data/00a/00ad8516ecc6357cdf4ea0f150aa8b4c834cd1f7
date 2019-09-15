@@ -1,0 +1,119 @@
+# SimC Addon 1.10.10
+priest="Exceedlimits"
+level=120
+race=goblin
+region=eu
+server=blackhand
+role=spell
+professions=alchemy=159/tailoring=125
+talents=3311111
+spec=shadow
+
+head=,id=159279,bonus_id=5062/1557/4786/4775,context=35,azerite_powers=405/462/14/13
+neck=,id=158075,bonus_id=4936/4929/4930/1546,context=11,azerite_level=38
+shoulder=,id=160613,bonus_id=4824/1507/4786/4775,context=6,azerite_powers=483/459/15/13
+back=,id=160644,enchant_id=6087,gem_id=154127,bonus_id=4800/1808/1507/4786,context=6
+chest=,id=158349,bonus_id=5061/1557/4786/4775,context=35,azerite_powers=403/459/14/13
+wrist=,id=159256,enchant_id=5971,bonus_id=5010/1562/4783,context=35
+hands=,id=160715,bonus_id=4800/1507/4786,context=6
+waist=,id=160734,bonus_id=4800/1517/4783,context=6
+legs=,id=158350,bonus_id=5010/1562/4784,context=16
+feet=,id=160714,bonus_id=4800/1512/4783,context=6
+finger1=,id=159463,enchant_id=5943,gem_id=154127,bonus_id=5010/4802/1542/4786,context=16
+finger2=,id=166559,enchant_id=5943,context=14
+trinket1=,id=159615,bonus_id=5010/1552/4783,context=35
+trinket2=,id=160656,bonus_id=4799/1492/4786,context=5
+main_hand=,id=160691,enchant_id=5963,bonus_id=4800/1507/4786,context=6
+off_hand=,id=160695,gem_id=153709,bonus_id=4800/1808/1507/4786,context=6
+
+### Gear from Bags
+#
+# Plaguebringer's Skullcap (390)
+# head=,id=166564,bonus_id=5126/1502/4786/5402/4775,context=6,azerite_powers=526/463/15/13
+#
+# Smartly Plumed Cap (390)
+# head=,id=155886,bonus_id=5062/1557/4786/4775,context=35,azerite_powers=399/463/204/13
+#
+# Bloodhex Hood of the Aurora (266)
+# head=,id=154833,bonus_id=4796/1708,drop_level=120
+#
+# Blue Crystal Monocle (1)
+# head=,id=156724
+#
+# Brood Cleanser's Amice (390)
+# shoulder=,id=159254,bonus_id=5063/1557/4786/4775,context=35,azerite_powers=196/461/472/13
+#
+# Mantle of Contained Corruption (390)
+# shoulder=,id=160613,bonus_id=4824/1507/4786/4775,context=6,azerite_powers=483/19/15/13
+#
+# Plaguebringer's Shoulderguards (390)
+# shoulder=,id=165469,bonus_id=5126/1502/4786/5403/4775,context=6,azerite_powers=166/461/14/13
+#
+# Void-Drenched Cape (395)
+# back=,id=159289,bonus_id=5010/1567/4784,context=35
+#
+# Cloak of Coordination (58)
+# back=,id=65274,context=14
+#
+# Robes of the Unraveler (375)
+# chest=,id=160614,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=483/30/44/13
+#
+# Garments of the Forest Lord (390)
+# chest=,id=166684,bonus_id=5478/1502/4786/5401/4775,context=3,azerite_powers=404/103/15/13
+#
+# Ruffled Poet Blouse (390)
+# chest=,id=158301,bonus_id=5061/1557/4786/4775,context=35,azerite_powers=227/21/14/13
+#
+# Robes of the Unraveler (375)
+# chest=,id=160614,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=405/30/44/13
+#
+# Leggings of Lingering Infestation (395)
+# legs=,id=160615,bonus_id=4800/1517/4783,context=6
+#
+# Band of Certain Annihilation (390)
+# finger1=,id=160646,enchant_id=5943,bonus_id=4800/1512/4783,context=6
+#
+# Seal of the Regal Loa (380)
+# finger1=,id=159458,enchant_id=5943,bonus_id=5010/40/1552/4783,context=35
+#
+# Ring of the Infinite Void (370)
+# finger1=,id=160647,bonus_id=4799/1808/1492/4786,context=5
+#
+# Seal of Questionable Loyalties (370)
+# finger1=,id=158314,enchant_id=5943,bonus_id=5010/1542/4786,context=16
+#
+# Overseer's Lost Seal (380)
+# finger1=,id=159460,bonus_id=5010/42/1552/4786,context=35
+#
+# Seal of the Regal Loa (375)
+# finger1=,id=159458,enchant_id=5939,bonus_id=5010/41/1547/4783,context=16
+#
+# Ornate Elun'dris Ring (320)
+# finger1=,id=165679,bonus_id=4803/1512/4785,context=25
+#
+# Seal of the City Watch (370)
+# finger1=,id=162542,enchant_id=5944,gem_id=154129,bonus_id=5010/4802/1542/4786,context=16
+#
+# Doom's Hatred (370)
+# trinket1=,id=161461,bonus_id=5119/1492/4786,context=3
+#
+# Ancient Knot of Wisdom (385)
+# trinket1=,id=166793,bonus_id=5479/1502/4786,context=3
+#
+# Fangs of Intertwined Essence (370)
+# trinket1=,id=158368,bonus_id=5010/1542/4786,context=16
+#
+# Dread Gladiator's Insignia (370)
+# trinket1=,id=161676,bonus_id=5287/1562/5128,context=56
+#
+# Emblazoned Alchemist Stone (385)
+# trinket1=,id=166976,context=13
+#
+# Herbalist's Spade (4)
+# main_hand=,id=85663,context=14
+#
+# Ancient Chronicler's Focus (330)
+# off_hand=,id=160979,bonus_id=4802/4803/1522/4785,context=27
+
+# Stacks of reorigination array based on hidden quest completion
+# bfa.reorigination_array_stacks=10

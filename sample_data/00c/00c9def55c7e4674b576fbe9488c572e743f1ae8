@@ -1,0 +1,39 @@
+class Collatz:
+
+    def __init__(self):
+        self.c = 1
+
+    def if_even(self, n):
+        return int(n / 2)
+
+    def if_odd(self, n):
+        return int(n * 3 + 1)
+
+    def decide(self, n):
+        if (n & 1) == 0:
+            return self.if_even(n)
+        elif (n & 1) == 1:
+            return self.if_odd(n)
+
+    def iter_nums(self, n):
+        if n == 1:
+            return n
+        self.c += 1
+        n = self.decide(n)    
+        self.iter_nums(n)
+
+largest = 0
+
+# col = Collatz()
+# col.iter_nums(13)
+
+# print(col.c)
+
+
+for i in range(1000000, -1, -1):
+    col = Collatz()
+    col.iter_nums(i)
+    if col.c > largest:
+        largest = i
+
+print(largest)

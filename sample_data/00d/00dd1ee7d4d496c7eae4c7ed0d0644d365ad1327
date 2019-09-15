@@ -1,0 +1,177 @@
+#include <iostream>
+#include <locale.h>
+#include "Header.h"
+using namespace std;
+void main()
+{
+Rectangle re,*rest[1];
+Circle c,*cir[1];
+Righttriangle r,*rig[1];
+Trapezium t,*trap[1];
+setlocale(LC_ALL, "Rus");
+long long int num;
+cout << "0-выход из программы, 1-вывод площади прямоугольника, 2-вывод площади окружности, 3-вывод площади прямоугольного треугольника , 4-вывод площади трапеции" << endl;
+cout << "введите номер действия: " << endl;
+cin >> num;
+while (num != 648792398385)
+{
+switch (num)
+{
+case 1:
+rest[1] = &re;
+rest[1]->getRectangle();
+rest[1]->show();
+cout << "введите номер действия: " << endl;
+cin >> num;
+break;
+case 2:
+cir[1] = &c;
+cir[1]->getCircle();
+cir[1]->show();
+cout << "введите номер действия: " << endl;
+cin >> num;
+break;
+case 3:
+rig[1] = &r;
+rig[1]->getRigh();
+rig[1]->show();
+cout << "введите номер действия: " << endl;
+cin >> num;
+break;
+case 4:
+trap[1] = &t;
+trap[1]->getTrapez();
+trap[1]->show();
+cout << "введите номер действия: " << endl;
+cin >> num;
+break;
+case 0:
+cout << " !!!!! конец работы программы !!!!! " << endl;
+num = 648792398385;
+break;
+default:
+cout << "не правильный номер, введите другой номер действия: " << endl;
+cin >> num;
+break;
+}
+}
+}
+
+
+3.2 Заголовочный файл с образами функций
+#pragma once
+#include <iostream>
+#include <locale.h>
+#include "Header.h"
+using namespace std;
+class Perent
+{
+public:
+virtual double Area() = 0;
+void show();
+};
+class Rectangle : public Perent
+{
+private:
+double height;
+double width;
+public:
+void getRectangle();
+double Area() override;
+};
+class Circle :public Perent
+{
+private:
+double radius;
+public:
+void getCircle();
+double Area() override;
+};
+class Righttriangle :public Perent
+{
+private:
+double base;
+double height;
+public:
+void getRigh();
+double Area() override;
+};
+class Trapezium :public Perent
+{
+private:
+double base1;
+double base2;
+double height;
+public:
+void getTrapez();
+double Area() override;
+};
+
+
+
+3.3 Файл с описанием методов и дружественных функций библиотеки "Header.h"
+#include <iostream>
+#include <locale.h>
+#include "Header.h"
+using namespace std;
+void Perent:: show()
+{
+double S = Area();
+cout << "Area: " << S << endl;
+}
+void Rectangle:: getRectangle()
+{
+double h;
+double w;
+cout << "введите значения высоты и основания: ";
+cin >> h;
+cin >> w;
+height = h;
+width = w;
+}
+double Rectangle:: Area()
+{
+return height*width;
+}
+void Circle:: getCircle()
+{
+double r;
+cout << "введите значение радиуса: ";
+cin >> r;
+radius = r;
+}
+double Circle:: Area()
+{
+return radius * 3.14 * radius;
+}
+void Righttriangle:: getRigh()
+{
+double h;
+double b;
+cout << "введите два значение высоты и основания соответсвенно: ";
+cin >> h;
+cin >> b;
+base = b;
+height = h;
+}
+double Righttriangle:: Area()
+{
+return 0.5*height*base;
+}
+void Trapezium:: getTrapez()
+{
+double b1;
+double b2;
+double h;
+cout << "введите 3 значения: высоты, верхнего основания, нижнего основания: ";
+cin >> h;
+cin >> b2;
+cin >> b1;
+base1 = b1;
+base2 = b2;
+height = h;
+}
+double Trapezium:: Area()
+{
+return 0.5*(base1 + base2)*height;
+}

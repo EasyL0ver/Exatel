@@ -1,0 +1,46 @@
+#trunk14 b, #nav14 a, #trunk14 .openlink:hover {
+    color: #1eb337
+;
+}
+<td id="nav14"><a href="#trunk14">Elle</a></td>
+<div id="trunk14" class="mtrunk" style="border-radius: 20px;">
+<div class="profile">
+<a id="close14" href="#open14" class="blank" title="click to view Elle’s items"> </a>
+<div class="open">
+
+<h2>restrictedsection 
+<a href="/neomessages.phtml?type=send&recipient=restrictedsection">
+<img src="http://i.imgur.com/LAdjHLJ.png" border="0"></a></h2>
+<img src="http://i.imgur.com/pdmCzl2.png" style="float: left;"><table class="stats"><tr><th>
+<b>Name:</b> <a href="/userlookup.phtml?user=restrictedsection">Elle</a></th>
+<th><b>Gender:</b>Witch</th>
+<th><b>Birthday:</b> May 6th </th>
+</tr><tr><th><b>Time Zone:</b>  NST+ 3</th>
+<th colspan="2"><b>Position:</b> <b class="hilight">First Year</b></th>
+</tr><tr><th><b>Animagus form:</b> None</th>
+<th><b>Boggart:</b> None</th>
+<th><b>Patronus:</b> None</th>
+</tr><tr><th><b>Artifact owned:</b>
+<b class=”hilight”>None</b></th>
+<th><b>Blood Purity:</b> Half-Blood</th>
+</tr><tr><th><b>Avatars:</b> 2</th>
+<th><b>Superlative:</b> None</th>
+<th><b>Galleons:</b> NUMBER</th>
+</tr></table></div>
+<a id="open14" href="#close14" class="blank" title="click to view Elle’s info"> </a>
+<div class="open">
+<div class="close">
+
+<h1>avatars</h1>
+<table style="font: 7.5pt arial;"><tr><td><img src="https://imgur.com/FX4FmXN
+.png" class="av"></td>
+<td><img src="https://imgur.com/QTIwXek.gif" class="av"></td>
+<td><img src="https://imgur.com/adtRNVd.png" class="av"></td>
+<td><img src="http://i.imgur.com/pdmCzl2.png" class="av"></td>
+<td><img src="http://i.imgur.com/pdmCzl2.png" class="av"></td>
+<td><img src="http://i.imgur.com/pdmCzl2.png" class="av"></td>
+<td><img src="http://i.imgur.com/pdmCzl2.png" class="av"></td>
+<td><img src="http://i.imgur.com/pdmCzl2.png" class="av"></td>
+<td><img src="http://i.imgur.com/pdmCzl2.png" class="av"></td>
+<td><img src="http://i.imgur.com/pdmCzl2.png" class="av"></td>
+</tr></table>

@@ -1,0 +1,122 @@
+
+build-plugins:
+
+compile:
+     [echo] Building at: com.dotcms.config at /Users/deangonzalez/singledotcms/trunkpostgres/plugins/com.dotcms.config
+    [javac] /Users/deangonzalez/singledotcms/trunkpostgres/plugins/common.xml:49: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+
+checkFileExists:
+
+if_target:
+
+doif:
+
+jar:
+
+build:
+
+compile:
+     [echo] Building at: com.solrplugin at /Users/deangonzalez/singledotcms/trunkpostgres/plugins/com.solrplugin
+    [javac] /Users/deangonzalez/singledotcms/trunkpostgres/plugins/common.xml:49: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+
+checkFileExists:
+
+if_target:
+
+doif:
+
+jar:
+
+build:
+
+build:
+
+deploy-config:
+
+deploy-core:
+     [copy] Copying 1 file to /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/lib
+   [delete] Deleting directory /Users/deangonzalez/singledotcms/trunkpostgres/build/classes
+
+-check-use-file:
+
+use-file:
+
+setup-deploy-location:
+     [echo] Deploying plugins to: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS | /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/lib
+
+deploy-plugins:
+     [echo] Copying plugins to: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS
+  [taskdef] Could not load definitions from resource cactus.tasks. It could not be found.
+
+deploy-plugin:
+  [taskdef] Could not load definitions from resource cactus.tasks. It could not be found.
+
+deploy-plugin:
+     [echo] Deploying plugins from: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS
+[plugin-deploy-task] Starting mergePlugins
+[plugin-deploy-task] Getting JAR list for:/Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/lib
+[plugin-deploy-task] Loading files using filter from filesystem
+[plugin-deploy-task] Sorting JAR list
+[plugin-deploy-task] Starting ParsePluginXML
+[plugin-deploy-task] Building DOM Doc Factory
+[plugin-deploy-task] Looking for plugin element
+[plugin-deploy-task] Loading 2 plugins
+[plugin-deploy-task] Loading plugin at: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/lib/plugin-com.solrplugin.jar
+[plugin-deploy-task] Plugin name: com.solrplugin
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/toolbox.xml
+[plugin-deploy-task] Removing tag from source: ## END PLUGIN:com.solrplugin
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/dwr.xml
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/portal-ext.properties
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/system-ext.properties
+[plugin-deploy-task] Merging file: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/portlet-ext.xml
+[plugin-deploy-task] Removing tag from source: <!-- END PLUGIN:com.solrplugin -->
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/urlrewrite.xml
+[plugin-deploy-task] Merging file: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/liferay-portlet-ext.xml
+[plugin-deploy-task] Removing tag from source: <!-- END PLUGIN:com.solrplugin -->
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/tiles-defs-ext.xml
+[plugin-deploy-task] Merging file: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/dotmarketing-config.properties
+[plugin-deploy-task] Removing tag from source: ## END PLUGIN:com.solrplugin
+[plugin-deploy-task] Merging file: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/messages/Language-ext.properties
+[plugin-deploy-task] Removing tag from source: ## END PLUGIN:com.solrplugin
+[plugin-deploy-task] Starting to copy files to file system
+[plugin-deploy-task] The deployAppClassLoader parameter is false
+[plugin-deploy-task] The lib directry is /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/lib
+[plugin-deploy-task] Extracting: com/dotcms/solr/business/DotSolrException.class to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/ as /com/dotcms/solr/business/DotSolrException.class
+[plugin-deploy-task] Extracting: com/dotcms/solr/business/SolrAPI.class to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/ as /com/dotcms/solr/business/SolrAPI.class
+[plugin-deploy-task] Extracting: com/dotcms/solr/business/SolrAPIImpl.class to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/ as /com/dotcms/solr/business/SolrAPIImpl.class
+[plugin-deploy-task] Extracting: com/dotcms/solr/business/SolrAddActionlet.class to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/ as /com/dotcms/solr/business/SolrAddActionlet.class
+[plugin-deploy-task] Extracting: com/dotcms/solr/business/SolrDeleteActionlet.class to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/ as /com/dotcms/solr/business/SolrDeleteActionlet.class
+[plugin-deploy-task] Extracting: com/dotcms/solr/business/SolrQueueJob.class to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/ as /com/dotcms/solr/business/SolrQueueJob.class
+[plugin-deploy-task] Extracting: com/dotcms/solr/util/SolrPluginDeployer.class to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/ as /com/dotcms/solr/util/SolrPluginDeployer.class
+[plugin-deploy-task] Extracting: com/dotcms/solr/util/SolrUtil.class to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/ as /com/dotcms/solr/util/SolrUtil.class
+[plugin-deploy-task] Extracting: jsp/solr_tool/css/solr.css to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/html/plugins/com.solrplugin as /solr_tool/css/solr.css
+[plugin-deploy-task] Extracting: jsp/solr_tool/images/solr.gif to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/html/plugins/com.solrplugin as /solr_tool/images/solr.gif
+[plugin-deploy-task] Extracting: jsp/solr_tool/view_solr_content_list.jsp to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/html/plugins/com.solrplugin as /solr_tool/view_solr_content_list.jsp
+[plugin-deploy-task] Extracting: jsp/solr_tool/view_solr_queue_list.jsp to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/html/plugins/com.solrplugin as /solr_tool/view_solr_queue_list.jsp
+[plugin-deploy-task] Extracting: jsp/solr_tool/view_solr_servers.jsp to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/html/plugins/com.solrplugin as /solr_tool/view_solr_servers.jsp
+[plugin-deploy-task] Extracting: jsp/solr_tool/view_solr_tool.jsp to destination: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/html/plugins/com.solrplugin as /solr_tool/view_solr_tool.jsp
+[plugin-deploy-task] Finished to copy files to file system
+[plugin-deploy-task] Loaded plugin at: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/lib/plugin-com.solrplugin.jar
+[plugin-deploy-task] Loading plugin at: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/lib/plugin-com.dotcms.config.jar
+[plugin-deploy-task] Plugin name: com.dotcms.config
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/toolbox.xml
+[plugin-deploy-task] Removing tag from source: ## END PLUGIN:com.dotcms.config
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/dwr.xml
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/portal-ext.properties
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/system-ext.properties
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/portlet-ext.xml
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/urlrewrite.xml
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/liferay-portlet-ext.xml
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/tiles-defs-ext.xml
+[plugin-deploy-task] Nothing to merge into: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/classes/dotmarketing-config.properties
+[plugin-deploy-task] Starting to copy files to file system
+[plugin-deploy-task] The deployAppClassLoader parameter is false
+[plugin-deploy-task] The lib directry is /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/lib
+[plugin-deploy-task] Finished to copy files to file system
+[plugin-deploy-task] Loaded plugin at: /Users/deangonzalez/singledotcms/trunkpostgres/dotCMS/WEB-INF/lib/plugin-com.dotcms.config.jar
+
+deploy:
+
+BUILD SUCCESSFUL
+Total time: 1 minute 25 seconds
+Dean-Gonzalezs-MacBook-Pro:trunkpostgres deangonzalez$

@@ -1,0 +1,16 @@
+let quote ic =
+  let buf = Buffer.create 1000 in
+  Buffer.add_string buf "\
+let contents =
+\"";
+  try
+    while true do
+      Buffer.add_string buf (String.escaped (input_line ic));
+      Buffer.add_char buf '\n';
+    done;
+    assert false
+  with End_of_file ->
+    Buffer.add_char buf '"';
+    print_endline (Buffer.contents buf)
+
+let () = quote stdin

@@ -1,0 +1,66 @@
+<div class="row">
+						<div class="col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
+							<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+								<div class="panel panel-default active">
+									<!-- Single Faq -->
+									<div class="faq-heading" id="FaqTitle1">
+									  <h4 class="faq-title">
+										<a data-toggle="collapse" data-parent="#accordion" href="#faq1">Why Choose Our Website?</a>
+									  </h4>
+									</div>
+									<div id="faq1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="FaqTitle1">
+									  <div class="faq-body">Suspendisse rutrum metus sit amet luctus ullamcorper. Ut id odio vel elit eleifend venenatis. Vestibulum placerat mi sit amet est commodo, sed vulputate nibh lacinia. Phasellus et tincidunt tortor, ullamcorper condimentum justo. Mauris mollis mi vitae eleifend mattis. Sed nec arcu at tortor efficitur viverra.</div>
+									</div>
+									<!--/ End Single Faq -->
+								</div>
+								<div class="panel panel-default">
+									<!-- Single Faq -->
+									<div class="faq-heading" id="FaqTitle2">
+									  <h4 class="faq-title">
+										<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#faq2">How can i receive payments?</a>
+									  </h4>
+									</div>
+									<div id="faq2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="FaqTitle2">
+									  <div class="faq-body">Suspendisse rutrum metus sit amet luctus ullamcorper. Ut id odio vel elit eleifend venenatis. Vestibulum placerat mi sit amet est commodo, sed vulputate nibh lacinia. Phasellus et tincidunt tortor, ullamcorper condimentum justo. Mauris mollis mi vitae eleifend mattis. Sed nec arcu at tortor efficitur viverra.</div>
+									</div>
+									<!--/ End Single Faq -->
+								</div>
+								<div class="panel panel-default">
+									<!-- Single Faq -->
+									<div class="faq-heading" id="FaqTitle3">
+									  <h4 class="faq-title">
+										<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#faq3">What do we work?</a>
+									  </h4>
+									</div>
+									<div id="faq3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="FaqTitle3">
+									  <div class="faq-body">Suspendisse rutrum metus sit amet luctus ullamcorper. Ut id odio vel elit eleifend venenatis. Vestibulum placerat mi sit amet est commodo, sed vulputate nibh lacinia. Phasellus et tincidunt tortor, ullamcorper condimentum justo. Mauris mollis mi vitae eleifend mattis. Sed nec arcu at tortor efficitur viverra.</div>
+									</div>
+									<!--/ End Single Faq -->
+								</div>
+								<div class="panel panel-default">
+									<!-- Single Faq -->
+									<div class="faq-heading" id="FaqTitle4">
+									  <h4 class="faq-title">
+										<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#faq4">How choose our service?</a>
+									  </h4>
+									</div>
+									<div id="faq4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="FaqTitle4">
+									 <div class="faq-body">Suspendisse rutrum metus sit amet luctus ullamcorper. Ut id odio vel elit eleifend venenatis. Vestibulum placerat mi sit amet est commodo, sed vulputate nibh lacinia. Phasellus et tincidunt tortor, ullamcorper condimentum justo. Mauris mollis mi vitae eleifend mattis. Sed nec arcu at tortor efficitur viverra.</div>
+									</div>
+									<!--/ End Single Faq -->
+								</div>
+								<div class="panel panel-default">
+									<!-- Single Faq -->
+									<div class="faq-heading" id="FaqTitle5">
+									  <h4 class="faq-title">
+										<a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#faq5">How can i download a theme?</a>
+									  </h4>
+									</div>
+									<div id="faq5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="FaqTitle5">
+									 <div class="faq-body">Suspendisse rutrum metus sit amet luctus ullamcorper. Ut id odio vel elit eleifend venenatis. Vestibulum placerat mi sit amet est commodo, sed vulputate nibh lacinia. Phasellus et tincidunt tortor, ullamcorper condimentum justo. Mauris mollis mi vitae eleifend mattis. Sed nec arcu at tortor efficitur viverra.</div>
+									</div>
+									<!--/ End Single Faq -->
+								</div>
+							</div>
+						</div>
+					</div>

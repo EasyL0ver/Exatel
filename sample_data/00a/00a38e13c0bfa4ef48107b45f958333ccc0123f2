@@ -1,0 +1,32 @@
+var speed = 6.0;
+var jumpSpeed = 8.0;
+var gravity = 20.0;
+
+private var moveDirection = Vector3.zero;
+private var grounded : boolean = false;
+
+function Start() {
+transform.localEulerAngles = new Vector3(0,90,0);
+}
+function FixedUpdate() {
+	if (grounded) {
+		// We are grounded, so recalculate movedirection directly from axes
+		moveDirection = Vector3.forward;
+		moveDirection = transform.TransformDirection(moveDirection);
+		moveDirection *= speed;
+		if (Input.GetKeyDown (KeyCode.D) && ((transform.localEulerAngles == new Vector3(0,90,0)) || (transform.localEulerAngles == new Vector3(0,270,0)))){
+		transform.Rotate(Vector3.up,90,Space.Self);
+		}
+		if (Input.GetKeyDown (KeyCode.A)){
+		transform.Rotate(-Vector3.up,90,Space.Self);
+		}
+	}
+
+
+	// Move the controller
+	var controller : CharacterController = GetComponent(CharacterController);
+	controller.Move(moveDirection * Time.deltaTime);
+	grounded = (CollisionFlags.CollidedBelow) != 0;
+}
+
+@script RequireComponent(CharacterController)

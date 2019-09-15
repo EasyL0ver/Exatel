@@ -1,0 +1,15 @@
+#ifdef ENABLE_OBJ_SCALLING
+void CGraphicObjectInstance::SetScale(float x, float y, float z, bool bScale = false)
+{
+	m_v3Scale.x = x;
+	m_v3Scale.y = y;
+	m_v3Scale.z = z;
+}
+#else 
+void CGraphicObjectInstance::SetScale(float x, float y, float z)
+{
+	m_v3Scale.x = x;
+	m_v3Scale.y = y;
+	m_v3Scale.z = z;
+}
+#endif

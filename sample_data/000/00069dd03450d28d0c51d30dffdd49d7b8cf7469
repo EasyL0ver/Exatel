@@ -1,0 +1,29 @@
+import trippinspring.*
+
+class BootStrap {
+
+def init = { servletContext ->
+
+  def adminRole = new SpringRole(authority: 'ROLE_ADMIN').save(flush: true)
+  def userRole = new SpringRole(authority: 'ROLE_USER').save(flush: true)
+
+  def testUser = new SpringUser(username: 'me', enabled: true, password: 'password')
+  testUser.save(flush: true)
+
+if (!testUser.authorities.contains(adminRole)) {
+new SpringUserSpringRole(springUser: testUser, springRole: adminRole).save(flush: true,failOnError: true)
+}
+
+if (!testUser.authorities.contains(userRole)) {
+new SpringUserSpringRole(springUser: testUser, springRole: userRole).save(flush: true,failOnError: true)
+}
+}
+}
+	
+if (!testUser.authorities.contains(adminRole)) {
+    new SpringUserSpringRole(user: testUser, role: adminRole).save(flush: true,failOnError: true)
+  }
+
+ if (!testUser.authorities.contains(userRole)) {
+    new SpringUserSpringRole(user: testUser, role: userRole).save(flush: true,failOnError: true)
+  }

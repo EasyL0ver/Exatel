@@ -1,0 +1,61 @@
+public class Questions implements Listener {
+	
+
+	  public Questions(Main main) {
+		// TODO Auto-generated constructor stub
+	}
+
+	  @EventHandler(priority = EventPriority.HIGH)
+	  public void onPlayerChat(AsyncPlayerChatEvent chat) {
+	    if (chat.isCancelled()) {
+	      return;
+	    }
+	    
+		ChatColor RED = ChatColor.RED;
+		ChatColor BLUE = ChatColor.BLUE;
+		Player player = chat.getPlayer();
+		String Displayname = player.getDisplayName();
+		String mesage = chat.getMessage();
+		String message_lower = mesage.toLowerCase();
+		
+		
+		//  ______                 _   _                       
+		//  |  ____|               | | (_)                      
+		//  | |__      ___    ___  | |  _   _ __     __ _   ___ 
+		//  |  __|    / _ \  / _ \ | | | | | '_ \   / _` | / __|
+		//  | |      |  __/ |  __/ | | | | | | | | | (_| | \__ \
+		//  |_|       \___|  \___| |_| |_| |_| |_|  \__, | |___/
+		//                                           __/ |      
+		//                                          |___/      
+
+		
+	    if ((message_lower.contains("Ai".toLowerCase()) && (message_lower.contains("Hello".toLowerCase()) || (message_lower.contains("Ai".toLowerCase()) && (message_lower.contains("Hey".toLowerCase())) || (message_lower.contains("Ai".toLowerCase()) && (message_lower.contains("Hi".toLowerCase()))))))){
+	   		 chat.setCancelled(true);
+	    	player.sendMessage(RED +"[AI] " + BLUE + "Hello " + Displayname+ " how are you?");
+			      return;
+	   }
+	    if ((message_lower.contains("Ai".toLowerCase()) && (message_lower.contains("ok".toLowerCase()) && (message_lower.contains("you".toLowerCase()) && (message_lower.contains("?".toLowerCase())))))){
+	   		 chat.setCancelled(true);
+	    	player.sendMessage(RED +"[AI] " + BLUE + "Im fine thanks for asking");
+			      return;
+	   }
+	    if ((message_lower.contains("Ai".toLowerCase()) && (message_lower.contains("good".toLowerCase()) && (message_lower.contains("you".toLowerCase()) && (message_lower.contains("?".toLowerCase())))))){
+	   		 chat.setCancelled(true);
+	    	player.sendMessage(RED +"[AI] " + BLUE + "Im fine thanks for asking");
+			      return;
+	   }
+	    if ((message_lower.contains("Ai".toLowerCase()) && (message_lower.contains("bad".toLowerCase()) && (message_lower.contains("you".toLowerCase()) && (message_lower.contains("?".toLowerCase())))))){
+	   		 chat.setCancelled(true);
+	    	player.sendMessage(RED +"[AI] " + BLUE + "Whats wrong?");
+			      return;
+	   }
+	    if ((message_lower.contains("Ai".toLowerCase()) && (message_lower.contains("good".toLowerCase()) && (!message_lower.contains("you".toLowerCase()) && (!message_lower.contains("?".toLowerCase())))))){
+	   		 chat.setCancelled(true);
+	    	player.sendMessage(RED +"[AI] " + BLUE + "Good :)");
+			      return;
+	   }
+	    if ((message_lower.contains("Ai".toLowerCase()) && (message_lower.contains("ok".toLowerCase()) && (!message_lower.contains("you".toLowerCase()) && (!message_lower.contains("?".toLowerCase())))))){
+	   		 chat.setCancelled(true);
+	    	player.sendMessage(RED +"[AI] " + BLUE + "good :)");
+			      return;
+	   }

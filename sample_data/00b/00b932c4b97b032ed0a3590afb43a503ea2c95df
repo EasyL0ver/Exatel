@@ -1,0 +1,12 @@
+let copyData = data.reversed() // it is pull to refresh response (load page 1)
+for (_,element) in copyData.enumerated() {
+    let foundElement = allObjects.filter{$0.id == element.id} // Find  element in main array
+    if let firstElement = foundElement.first, let index =   allObjects.index(of: firstElement) {
+        allObjects[index] = element // Replace if found
+    } else {
+        allObjects.insert(element, at: 0) // Insert if not found 
+    }
+}
+
+
+self.arrayPosts = allObjects

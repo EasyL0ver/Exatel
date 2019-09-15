@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+txt = input('>')
+out = []
+other = {
+	' ': ' ',
+	'0': ':zero:',
+	'1': ':one:',
+	'2': ':two:',
+	'3': ':three:',
+	'4': ':four:',
+	'5': ':five:',
+	'6': ':six:',
+	'7': ':seven:',
+	'8': ':eight:',
+	'9': ':nine:',
+	'?': ':question:',
+	'!': ':exclamation:'
+	}
+for i in txt:
+	if i in other:
+		out.append(other[i])
+	else:
+		out.append(':regional_indicator_{}:'.format(i))
+print(' '.join(out))

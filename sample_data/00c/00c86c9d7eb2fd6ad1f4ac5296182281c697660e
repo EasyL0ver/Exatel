@@ -1,0 +1,145 @@
+'donator':
+  command: /donator
+  type: TEXT
+  text:
+  - '&f&m---------------&e&lKomendy Ogolne&f&m---------------'
+  - ''
+  - '&ePREFIX:'
+  - '&8$player &a&lDonator&2'
+  - ''
+  - '&eKomendy:'
+  - '&e/hat &9- Zaklada dowolny item na glowe.'
+  - '&e/feed &9- Natychmiastowo uzupelnia pasek glodu'
+  - '&e/heal &9- Natychmiastowo leczy'
+  - '&e/ec &9- Otwiera przenosny enderchest.'
+  - ''
+  - '&eDostep do:'
+  - '&eKitu donatora ./kit'
+  - '&eWystawienia 10 przedmiotow na aukcji.'
+  - ''
+  - '&f&m--------------------------------------------'
+  permission-required: false
+  permission-node: mycommand.cmd.pomoc
+  permission-error: "&a$player! , &2You can't use this command!"
+'lord':
+  command: /lord
+  type: TEXT
+  text:
+  - '&f&m---------------&e&lKomendy Ogolne&f&m---------------'
+  - ''
+  - '&ePREFIX:'
+  - '&8$player &8&d&lLORD&f'
+  - ''
+  - '&eKomendy:'
+  - '&e/hat &9- Zaklada dowolny item na glowe.'
+  - '&e/feed &9- Natychmiastowo uzupelnia pasek glodu'
+  - '&e/heal &9- Natychmiastowo leczy'
+  - '&e/ec &9- Otwiera przenosny enderchest.'
+  - '&e/ci &9- Czysci ekwipunek gracza.'
+  - ''
+  - '&eDostep do:'
+  - '&eZachowania ex po smierci.'
+  - '&eKitu lorda ./kit'
+  - '&eWystawienia 15 przedmiotow na aukcji.'
+  - ''
+  - '&f&m--------------------------------------------'
+  permission-required: false
+  permission-node: mycommand.cmd.pomoc
+  permission-error: "&a$player! , &2You can't use this command!"
+'tytan':
+  command: /tytan
+  type: TEXT
+  text:
+  - '&f&m---------------&e&lKomendy Ogolne&f&m---------------'
+  - ''
+  - '&ePREFIX:'
+  - '&8$player &3&lTYTAN&f'
+  - ''
+  - '&eKomendy:'
+  - '&e/hat &9- Zaklada dowolny item na glowe.'
+  - '&e/feed &9- Natychmiastowo uzupelnia pasek glodu'
+  - '&e/heal &9- Natychmiastowo leczy'
+  - '&e/ec &9- Otwiera przenosny enderchest.'
+  - '&e/ci &9- Czysci ekwipunek gracza.'
+  - ''
+  - '&eDostep do:'
+  - '&9Zachowania ex po smierci.'
+  - '&9Kitu tytana ./kit'
+  - '&9Wystawienia 20 przedmiotow na aukcji.'
+  - ''
+  - '&f&m--------------------------------------------'
+  permission-required: false
+  permission-node: mycommand.cmd.pomoc
+  permission-error: "&a$player! , &2You can't use this command!"  
+'legat':
+  command: /legat
+  type: TEXT
+  text:
+  - '&f&m---------------&e&lKomendy Ogolne&f&m---------------'
+  - ''
+  - '&ePREFIX:'
+  - '&8$player &6&lLEGAT&f'
+  - ''
+  - '&eKomendy:'
+  - '&e/balance &9- Sprawdzasz stan konta'
+  - '&e/parkour &9- pokazuje komendy z parkoura dziennego'
+  - '&e/ignore NICK &9- Ignorujesz danego gracza'
+  - '&e/drop &9- Pokazuje aktualny drop na serwerze.'
+  - ''
+  - '&eDostep do:'
+  - '&9dostep do czegos...'
+  - '&9dostep do czegos...'
+  - '&9dostep do czegos...'
+  - ''
+  - '&f&m--------------------------------------------'
+  permission-required: false
+  permission-node: mycommand.cmd.pomoc
+  permission-error: "&a$player! , &2You can't use this command!"  
+'bog':
+  command: /bog
+  type: TEXT
+  text:
+  - '&f&m---------------&e&lKomendy Ogolne&f&m---------------'
+  - ''
+  - '&ePREFIX:'
+  - '&8$player &c&lBOG&f'
+  - ''
+  - '&eKomendy:'
+  - '&e/balance &9- Sprawdzasz stan konta'
+  - '&e/parkour &9- pokazuje komendy z parkoura dziennego'
+  - '&e/ignore NICK &9- Ignorujesz danego gracza'
+  - '&e/drop &9- Pokazuje aktualny drop na serwerze.'
+  - ''
+  - '&eDostep do:'
+  - '&9dostep do czegos...'
+  - '&9dostep do czegos...'
+  - '&9dostep do czegos...'
+  - ''
+  - '&f&m--------------------------------------------'
+  permission-required: false
+  permission-node: mycommand.cmd.pomoc
+  permission-error: "&a$player! , &2You can't use this command!"  
+'wladca':
+  command: /wladca
+  type: TEXT
+  text:
+  - '&f&m---------------&e&lKomendy Ogolne&f&m---------------'
+  - ''
+  - '&ePREFIX:'
+  - '&8$player &d&k:&d &lWLADCA &d&k:&r'
+  - ''
+  - '&eKomendy:'
+  - '&e/balance &9- Sprawdzasz stan konta'
+  - '&e/parkour &9- pokazuje komendy z parkoura dziennego'
+  - '&e/ignore NICK &9- Ignorujesz danego gracza'
+  - '&e/drop &9- Pokazuje aktualny drop na serwerze.'
+  - ''
+  - '&eDostep do:'
+  - '&9dostep do czegos...'
+  - '&9dostep do czegos...'
+  - '&9dostep do czegos...'
+  - ''
+  - '&f&m--------------------------------------------'
+  permission-required: false
+  permission-node: mycommand.cmd.pomoc
+  permission-error: "&a$player! , &2You can't use this command!"

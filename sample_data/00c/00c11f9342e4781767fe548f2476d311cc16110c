@@ -1,0 +1,77 @@
+Translate the text here :D
+
+
+#DO NOT CHANGE!
+Config_Version: 0.8
+
+
+#Der Prefix vor den Nachrichten. (Farbcodes unterstützt)
+Prefix: "&6[Server] &f"
+#Die Nachricht die einn Spieler bekommt wenn er sich bewegen möchte
+Freeze_Message:
+    - "Zeile 1"
+    - "Zeile 2"
+    - "Zeile &63"
+    - "Farbcodes werden unterstützt &6:&4D"
+#Nutze {USER} um den Namen des Ziels anzuzeigen {DISPLAY_NAME} für den Dispaynamen
+Command_On_Leave: "ban {USER} Verlasse den Server nicht!"
+#Die zeit die im screenshare vergehen muss 
+#befor der CommandOnTimeDone ausgeführt wird
+#In ticks 20 ticks = 1 sekunde
+#1,200 ticks = 1 minute
+#6,000 ticks = 5 minuten
+#12,000 ticks = 10 minuten
+TimeToJoinScreenShare: '120'
+#Wenn TimeToJoinScreenShare vorbei ist wird dieser Befehl ausgeführt
+#Nutze {USER} um den Namen des Ziels anzuzeigen {DISPLAY_NAME} für den Dispaynamen
+#Nutze {TIME} um die vergangene Zeit anzuzeigen
+CommandOnTimeDone: "ban {USER} Du bist nicht dem Discord beigetreten!"
+#Spieler aus dem Freeze entfernen wenn TimeToJoinScreenShare's ist vorbei
+UnFreezePlayerOnTimeDone: true
+#Führe den befehl aus Command_On_Leave's wenn der spieler den Server verlässt
+ExecuteCommandOnLeave: true
+
+#Nutze {USER} für den spieler der den Befehl ausführt  (Funktioniert nicht so wie mit dem, Du bist gefreezed wurden) nutze {TARGET} für den ziel spieler (Du musst einen Spieler auswählen es funktzioniert nicht so wie bei dem, Du hast den Server verlassen )
+Messages:
+#Nachricht für den Befehel /sslist
+    sslist_message: "&6&lDie liste der Spieler die keinem Screenshare angenommen haben:"
+#Nachricht für den Befehl /joinedsslist
+    joinedsslist_message: "&6&lDie liste der Spieler die den Screenshare angenommen haben:"
+#Nachricht wenn ein Spieler den Screenshare bypassed (Mit dem Recht screenshare.bypass können spieler nicht gescreenshared werden)
+    Player_Bypassing:
+#Unterstütz farbcodes {TARGET} und {USER} (USER ist der, der den Befehl aus führt. Der Zielspieler ist TARGET)
+    Un_Freeze: "Du wurdest, &6entfroren!"
+#Unterstütz farbcodes {TARGET} und {USER} (USER ist der, der den Befehl aus führt. Der Zielspieler ist TARGET)
+    Freeze: "Du wurdest, &6eingefroren!"
+#Unterstütz farbcodes {TARGET} und {USER} (USER ist der, der den Befehl aus führt. Der Zielspieler ist TARGET)
+    On_Freeze: "Du hast {TARGET} eingefroren"
+#Unterstütz farbcodes {TARGET} und {USER} (USER ist der, der den Befehl aus führt. Der Zielspieler ist TARGET)
+    On_UnFreeze: "Du hast {TARGET} entfroren"
+#Unterstütz farbcodes {TARGET} (Der Zielspieler ist TARGET)
+    Specify_Player: "{USER} Bitte gebe einen Spieler an"
+#Unterstütz farbcodes {TARGET} und {USER} (USER ist der, der den Befehl aus führt. Der Zielspieler ist TAREGT)
+    On_Player_already_off: "&6{TARGET} ist nicht eingefroren, {USER}"
+#Unterstütz farbcodes {TARGET} und {USER} (USER ist der, der den Befehl aus führt. Der Zielspieler ist TAREGT)
+    On_Player_already_on: "&6{TARGET} ist bereits eingfroren, {USER}"
+    
+# ScreenShare Befehle (beigetreten):
+
+#Nachricht wenn spieler nicht eingefroren ist und du möchtest das er beitritt
+    On_Joinedss_Already_false: "Spieler nicht eingefroren!"
+#Nachricht wenn du spieler von der joined liste entfernst
+    On_UnSS: "Der Spieler wurde erfolgreich entfernt" 
+#Nachricht wenn spieler entfernt wird 
+    Un_SS: "Du hast unseren screenshare verlassen" 
+#Nachricht wenn du versuchst einen Spieler auf die joined list setzen möchtest obwohl er das schon ist
+    On_Joinedss_Already_true: "Dieser Spieler ist bereits beigetreten, entferne ihn mit: /joinedss {TARGET} false"
+#Nachricht wenn Spieler zur Joined list hinzugefügt wird
+    On_JoinedSS: "Gespeichert... {TARGET} ist dem ScreenShare beigetreten"
+#Nachricht die der Spieler bekommt wenn er beitritt
+    JoinedSS: "Der screenshare wurde gestartet"
+#Nachricht wenn kein Spieler angegeben wurde
+    Specify_Player_JoinedSS: "{USER} Bitte wähle einen Spieler aus"
+    
+#Nachticht wenn /joinedsslist leer ist
+    NoOne_HasJoinedSS_Error: "&6Es ist niemand dem screenshare beigetreten"
+#Nachricht wenn /sslist leer ist
+    NoOne_IsFrozen_Error: "&6Es wurde noch keiner Eingefroren."

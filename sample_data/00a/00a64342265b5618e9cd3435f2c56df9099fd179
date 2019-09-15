@@ -1,0 +1,3 @@
+angAbsRotationAfterUpdatingClientSideAnimation = *(QAngle*)((DWORD)local_player + 0xC4);
+	angRotationAfterUpdatingClientSideAnimation = *(QAngle*)((DWORD)local_player + 0xD0);
+	angNetworkAnglesAfterUpdatingClientSideAnimation = *(QAngle*)((DWORD)local_player + 0x128);

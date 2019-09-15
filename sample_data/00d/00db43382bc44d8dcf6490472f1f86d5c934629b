@@ -1,0 +1,27 @@
+
+import tkinter as dia
+from tkinter import filedialog
+
+Key =  {' ': 'I', '$': 'V', '(': '7', ',': 'i', '0': '!', '4': '}', '8': ')', '<': '#', '@': '-', 'D': ']', 'H': 'R', 'L': 'T', 'P': 'X', 'T': '@', 'X': 'S', '\\': 'o', '`': 'Z', 'd': '5', 'h': '3', 'l': 'a', 'p': 'c', 't': 'z', 'x': 'k', '#': 'x', "'": 'm', '+': 'r', '/': '^', '3': 'j', '7': '~', ';': 'G', '?': 'e', 'C': 'v', 'G': 's', 'K': 'l', 'O': 'C', 'S': '(', 'W': 'b', '[': 'W', '_': 'B', 'c': '"', 'g': '>', 'k': 'A', 'o': 'f', 's': '+', 'w': 'N', '{': '2', '"': '8', '&': ';', '*': 'M', '.': 'd', '2': 'U', '6': '1', ':': 'y', '>': 'h', 'B': 'J', 'F': 'Q', 'J': '<', 'N': 'F', 'R': 'g', 'V': 'P', 'Z': '*', '^': '6', 'b': ',', 'f': '4', 'j': '9', 'n': '[', 'r': ' ', 'v': '0', 'z': 'E', '~': '`', '!': 'L', '%': '=', ')': '%', '-': '?', '1': '$', '5': 'q', '9': 'p', '=': 'O', 'A': 'Y', 'E': '/', 'I': '.', 'M': 'K', 'Q': 'D', 'U': '{', 'Y': '&', ']': 'H', 'a': 't', 'e': ':', 'i': 'n', 'm': 'w', 'q': "'", 'u': '_', 'y': '\\', '}': 'u'}
+
+
+def MonoSubEncryptor(text):
+    return ''.join(Key[l] for l in text)
+    
+
+def Main():
+    print("Please select a file to open")
+    root = dia.Tk()
+    root.withdraw()
+    file_path = filedialog.askopenfilename()
+    file = open(file_path, 'r')
+    d = file.read()
+    returenedvalue = MonoSubEncryptor(d)
+    print(returenedvalue)
+    file2 = open('MonoSub_Encrypted.txt', 'w')
+    file2.write(returenedvalue)
+    file2.close()
+    print("Saved new file with Encryption" )
+    
+    
+Main()

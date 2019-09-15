@@ -1,0 +1,153 @@
+/* Empiral Multiplayer Modding System for SRB2 2.1.21
+Made by: ChaoLoveIceMDBoy (2018) */
+
+/* If you are the server, then you will be the Owner rank, but if you are the admin, then you will be the Co-Owner rank.
+ However, if you are neither the server nor the admin, then you will be the Citizen rank. */
+empiralMP.server.userranks = {
+	EMP_UR_OWNER = {name = "Owner"},
+	EMP_UR_ADMIN = {name = "Admin"},
+	EMP_UR_CITIZEN = {name = "Citizen"},
+}
+
+// If you are the Owner or the Admin, then you will be considered the Staff rank type; otherwise, you will be the Member rank type.
+empiralMP.server.userranktypes = {
+	EMP_URTYPE_STAFF = {name = "Staff"},
+	EMP_URTYPE_MEMBER = {name = "Member"},
+}
+
+/* The empiralMP.server.colors table stores all of the colors that you can use while chatting, as long as empiralMP_mode is enabled
+ and you are not chatting in the Vanilla Chat Room. The reason this is used is to make using colored text in mods easier to use. */
+empiralMP.server.colors = {
+	white = "\128",
+	purple = "\129",
+	yellow = "\130",
+	green = "\131",
+	blue = "\132",
+	red = "\133",
+	grey = "\134",
+	orange = "\135",
+}
+
+// Parties that players have created will be stored in the empiralMP.server.parties table.
+empiralMP.server.parties = {}
+
+// Any player can join public parties, while only players that were invited by the party host can join the private party.
+empiralMP.server.partycategories = {
+	EMP_PARTYCATEGORY_PUBLIC = {name = "Public Party"},
+	EMP_PARTYCATEGORY_PRIVATE = {name = "Private Party"},
+}
+
+/* The empiralMP.server.localchatrange variable is used to determine what is the maximum chat range
+in the Local Chat Room. */
+empiralMP.server.localchatrange = 1024
+
+// Functions for each chat room are stored in the empiralMP.client.chatroomfunctions table.
+empiralMP.client.chatroomfunctions = {}
+
+function empiralMP.client.chatroomfunctions.globalChatRoom(source, msgtype, target, msg)
+	if not netgame return end
+	if not empiralMP.cvars.empiralMP_mode.value return end
+	if not source.valid return end
+	if not source.empiralMP or not source.empiralMP.exists return end
+	if (source.empiralMP.chatroom == empiralMP.server.chatrooms.EMP_CR_GLOBAL.name)
+		msgtype = 0
+		print("\03" + empiralMP.server.colors.blue + "[" + empiralMP.server.colors.grey + empiralMP.server.chatrooms.EMP_CR_GLOBAL.name + empiralMP.server.colors.blue + "](" + empiralMP.server.colors.orange + source.empiralMP.userrank + empiralMP.server.colors.blue + ")<" + empiralMP.server.colors.yellow + source.name + empiralMP.server.colors.blue + ">" + msg)
+	end
+end
+
+function empiralMP.client.chatroomfunctions.localChatRoom(source, msgtype, target, msg)
+	if not netgame return end
+	if not empiralMP.cvars.empiralMP_mode.value return end
+	if not source.valid return end
+	if not source.empiralMP or not source.empiralMP.exists return end
+	if (source.empiralMP.chatroom == empiralMP.server.chatrooms.EMP_CR_LOCAL.name)
+		msgtype = 2
+		if empiralMP.client.IsServerDedicated()
+			if source == server CONS_Printf(source, "The host of dedicated servers cannot talk in the Local Chat Room since they are not ingame players.\n") return end
+		end
+		if not source.mo or not source.mo.valid or source.spectator CONS_Printf(source, "Spectators cannot talk in the Local Chat Room.\n") return end
+		if server.mo and server.mo.valid and not server.spectator
+			local xyzdist = R_PointToDist2(R_PointToDist2(source.mo.x, source.mo.y, server.mo.x, server.mo.y), source.mo.z, 0, server.mo.z)
+			if (xyzdist <= (empiralMP.server.localchatrange * FRACUNIT))
+				CONS_Printf(server, "\03" + empiralMP.server.colors.blue + "[" + empiralMP.server.colors.grey + empiralMP.server.chatrooms.EMP_CR_LOCAL.name + empiralMP.server.colors.blue + "](" + empiralMP.server.colors.orange + source.empiralMP.userrank + empiralMP.server.colors.blue + ")<" + empiralMP.server.colors.yellow + source.name + empiralMP.server.colors.blue + ">" + msg)
+			end
+		end
+		for player in players.iterate
+			if not player.mo or not player.mo.valid or player.spectator continue end
+			if player == server continue end
+			local xyzdist = R_PointToDist2(R_PointToDist2(source.mo.x, source.mo.y, player.mo.x, player.mo.y), source.mo.z, 0, player.mo.z)
+			if (xyzdist <= (empiralMP.server.localchatrange * FRACUNIT))
+				CONS_Printf(player, "\03" + empiralMP.server.colors.blue + "[" + empiralMP.server.colors.grey + empiralMP.server.chatrooms.EMP_CR_LOCAL.name + empiralMP.server.colors.blue + "](" + empiralMP.server.colors.orange + source.empiralMP.userrank + empiralMP.server.colors.blue + ")<" + empiralMP.server.colors.yellow + source.name + empiralMP.server.colors.blue + ">" + msg)
+			end
+		end
+	end
+end
+
+function empiralMP.client.chatroomfunctions.vanillaChatRoom(source, msgtype, target, msg)
+	if not netgame return end
+	if not empiralMP.cvars.empiralMP_mode.value return end
+	if not source.valid return end
+	if not source.empiralMP or not source.empiralMP.exists return end
+	if (source.empiralMP.chatroom == empiralMP.server.chatrooms.EMP_CR_VANILLA.name)
+		msgtype = 0
+	end
+end
+
+function empiralMP.client.chatroomfunctions.soloChatRoom(source, msgtype, target, msg)
+	if not netgame return end
+	if not empiralMP.cvars.empiralMP_mode.value return end
+	if not source.valid return end
+	if not source.empiralMP or not source.empiralMP.exists return end
+	if (source.empiralMP.chatroom == empiralMP.server.chatrooms.EMP_CR_SOLO.name)
+		msgtype = 2
+		CONS_Printf(source, "\03" + empiralMP.server.colors.blue + "[" + empiralMP.server.colors.grey + empiralMP.server.chatrooms.EMP_CR_SOLO.name + empiralMP.server.colors.blue + "](" + empiralMP.server.colors.orange + source.empiralMP.userrank + empiralMP.server.colors.blue + ")<" + empiralMP.server.colors.yellow + source.name + empiralMP.server.colors.blue + ">" + msg)
+	end
+end
+
+function empiralMP.client.chatroomfunctions.partyChatRoom(source, msgtype, target, msg)
+	if not netgame return end
+	if not empiralMP.cvars.empiralMP_mode.value return end
+	if not source.valid return end
+	if not source.empiralMP or not source.empiralMP.exists return end
+	if (source.empiralMP.chatroom == empiralMP.server.chatrooms.EMP_CR_PARTY.name)
+		if not source.empiralMP.party CONS_Printf(source, "You must be in a party in order to use party chat!\n") return true end
+		msgtype = 1
+		if server.empiralMP.party == source.empiralMP.party
+			CONS_Printf(server, "\03" + empiralMP.server.colors.blue + "[" + empiralMP.server.colors.grey + empiralMP.server.chatrooms.EMP_CR_PARTY.name + empiralMP.server.colors.blue + "]{" + empiralMP.server.colors.green + source.empiralMP.party + "(" + empiralMP.server.parties[source.empiralMP.party].category + ")" + empiralMP.server.colors.blue + "}(" + empiralMP.server.colors.orange + source.empiralMP.userrank + empiralMP.server.colors.blue + ")<" + empiralMP.server.colors.yellow + source.name + empiralMP.server.colors.blue + ">" + msg)
+		end
+		for player in players.iterate
+			if player == server continue end
+			if player.empiralMP.party == source.empiralMP.party
+				CONS_Printf(player, "\03" + empiralMP.server.colors.blue + "[" + empiralMP.server.colors.grey + empiralMP.server.chatrooms.EMP_CR_PARTY.name + empiralMP.server.colors.blue + "]{" + empiralMP.server.colors.green + source.empiralMP.party + "(" + empiralMP.server.parties[source.empiralMP.party].category + ")" + empiralMP.server.colors.blue + "}(" + empiralMP.server.colors.orange + source.empiralMP.userrank + empiralMP.server.colors.blue + ")<" + empiralMP.server.colors.yellow + source.name + empiralMP.server.colors.blue + ">" + msg)
+			end
+		end
+	end
+end
+
+function empiralMP.client.chatroomfunctions.staffChatRoom(source, msgtype, target, msg)
+	if not netgame return end
+	if not empiralMP.cvars.empiralMP_mode.value return end
+	if not source.valid return end
+	if not source.empiralMP or not source.empiralMP.exists return end
+	if (source.empiralMP.chatroom == empiralMP.server.chatrooms.EMP_CR_STAFF.name)
+		if source.empiralMP.userranktype != empiralMP.server.userranktypes.EMP_URTYPE_STAFF.name CONS_Printf(source, "You must be a staff member in order to chat in the Staff Chat Room!\n") return true end
+		msgtype = 1
+		if server.empiralMP.userranktype == empiralMP.server.userranktypes.EMP_URTYPE_STAFF.name
+			CONS_Printf(server, "\03" + empiralMP.server.colors.blue + "[" + empiralMP.server.colors.grey + empiralMP.server.chatrooms.EMP_CR_STAFF.name + empiralMP.server.colors.blue + "](" + empiralMP.server.colors.orange + source.empiralMP.userrank + empiralMP.server.colors.blue + ")<" + empiralMP.server.colors.yellow + source.name + empiralMP.server.colors.blue + ">" + msg)
+		end
+		for player in players.iterate
+			if player == server continue end
+			if player.empiralMP.userranktype == empiralMP.server.userranktypes.EMP_URTYPE_STAFF.name
+				CONS_Printf(player, "\03" + empiralMP.server.colors.blue + "[" + empiralMP.server.colors.grey + empiralMP.server.chatrooms.EMP_CR_STAFF.name + empiralMP.server.colors.blue + "](" + empiralMP.server.colors.orange + source.empiralMP.userrank + empiralMP.server.colors.blue + ")<" + empiralMP.server.colors.yellow + source.name + empiralMP.server.colors.blue + ">" + msg)
+			end
+		end
+	end
+end
+
+// Chat rooms, including custom ones, are stored in the empiralMP.server.chatrooms table.
+empiralMP.server.chatrooms = {
+	EMP_CR_GLOBAL = {name = "Global Chat Room", alias = "global", func = empiralMP.client.chatroomfunctions.globalChatRoom},
+	EMP_CR_LOCAL = {name = "Local Chat Room", alias = "local", func = empiralMP.client.chatroomfunctions.localChatRoom},
+	EMP_CR_VANILLA = {name = "Vanilla Chat Room", alias = "vanilla", func = empiralMP.client.chatroomfunctions.vanillaChatRoom},
+	EMP_CR_SOLO = {name = "Solo Chat Room", alias = "solo", func = empiralMP.client.chatroomfunctions.soloChatRoom},
+	EMP_CR_PARTY = {name = "Party Chat Room", alias = "party", func = empiralMP.client.chatroomfunctions.partyChatRoom},

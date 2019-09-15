@@ -1,0 +1,19 @@
+bool Check_Collision(float x1,float y1, float x2, float y2)
+{
+	int j=MyPolyVector.size()-1;
+	for (int i=0;i<MyPolyVector.size();i++)
+	{
+		float x3=MyPolyVector[i].X;
+		float x4=MyPolyVector[j].X;
+		float y3=MyPolyVector[i].Y;
+		float y4=MyPolyVector[j].Y;
+
+		float denom= ((y4-y3)*(x2-x1))-((x4-x3)*(y2-y1));
+		float ua = (((x4-x3)*(y1-y3))-((y4-y3)*(x1-x3)))/denom;
+		float ub = (((x2-x1)*(y1-y3))-((y2-y1)*(x1-x3)))/denom;
+		j=i;
+
+		if(ua >= 0.0f && ua <= 1.0f && ub >= 0.0f && ub <= 1.0f) return true;
+	}
+	return false;
+}

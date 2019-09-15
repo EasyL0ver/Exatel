@@ -1,0 +1,11 @@
+How to use methods in a informal protocol in Objective C
+didStartProvisionalLoadForFrame
+	
+@interface AppDelegate : NSObject <NSApplicationDelegate,WebFrameLoadDelegate>
+	
+- (void)webView:(WebView *)webView didFinishLoadForFrame:(WebFrame*)frame;
+	
+- (void)webView:(WebView *)webView didFinishLoadForFrame:(WebFrame*)frame
+{
+    //Do stuff here.
+}

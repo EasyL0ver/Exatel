@@ -1,0 +1,242 @@
+%%%%%%%%%DP
+load 'dtmf33.mat';
+%%%Zmienne stale nam towarzyszace%%%
+Fs=f_probkowanie; %czestotliwosc probkowania
+Ts = 1/Fs; % Okres probkowania
+N = length(signal); % ilsoc probek
+t = 0:Ts:(N-1)*Ts; % czas w sekundach
+f = 0:Fs/N:(Fs - Fs/N); % czestotliwosc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+fp = 860;
+fz = 960;
+wp = 2*pi*fp*Ts;
+wz = 2*pi*fz*Ts;
+wc = (wp+wz)/2;
+delta_w = abs(wz-wp);
+M = ceil((6.2*pi)/(delta_w));
+n = 1:M;
+d = M/2;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+h_d = (sin(wc*(n-d))./(pi*(n-d)));
+h_d(d) = wc/pi;
+w_n = 0.5*(1 - cos((2*pi*n)/(M-1)));
+b = h_d .* w_n;
+y = filter(b,1,signal);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+freqz(b,1,[],Fs);
+figure;
+subplot(211);
+plot(f, 20*log10(abs(fft(signal)))); title('Widmo sygnalu przed filtracja'); xlabel('f [Hz]');
+subplot(212);
+plot(f, 20*log10(abs(fft(y)))); title('Widmo sygnalu po filtracji'); xlabel('f [Hz]');
+
+% %%%Wykresiki pomocnicze%%%
+% figure;
+% subplot(221);
+% plot(t,signal); title('Signal');
+% subplot(222);
+% plot(t,y); title('Signal po filtracji');
+% subplot(223);
+% plot(f,abs(fft(signal))); title('Widmo sygnalu przed filtracja'); xlabel('f [Hz]');
+% subplot(224);
+% plot(f,abs(fft(y))); title('Widmo sygnalu po filtracji'); xlabel('f [Hz]');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%GP
+load 'dtmf33.mat';
+%%%Zmienne stale nam towarzyszace%%%
+Fs=f_probkowanie; %czestotliwosc probkowania
+Ts = 1/Fs; % Okres probkowania
+N = length(signal); % ilsoc probek
+t = 0:Ts:(N-1)*Ts; % czas w sekundach
+f = 0:Fs/N:(Fs - Fs/N); % czestotliwosc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+fp = 1630;
+fz = 1530;
+wp = 2*pi*fp*Ts;
+wz = 2*pi*fz*Ts;
+wc = (wp+wz)/2;
+delta_w = abs(wz-wp);
+M = ceil((6.2*pi)/(delta_w));
+n = 1:M;
+d = M/2;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+h_d = (sin(wc*(n-d))./(pi*(n-d)));
+h_d(d) = wc/pi;
+w_n = 0.5*(1 - cos((2*pi*n)/(M-1)));
+dK = zeros(size(h_d));
+dK(d) = 1;
+h = dK - h_d;
+b = h .* w_n;
+y = filter(b,1,signal);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+freqz(b,1,[],Fs);
+figure;
+subplot(211);
+plot(f, 20*log10(abs(fft(signal)))); title('Widmo sygnalu przed filtracja'); xlabel('f [Hz]');
+subplot(212);
+plot(f, 20*log10(abs(fft(y)))); title('Widmo sygnalu po filtracji'); xlabel('f [Hz]');
+
+%%%Wykresiki pomocnicze%%%
+figure;
+subplot(221);
+plot(t,signal); title('Signal');
+subplot(222);
+plot(t,y); title('Signal po filtracji');
+subplot(223);
+plot(f,abs(fft(signal))); title('Widmo sygnalu przed filtracja'); xlabel('f [Hz]');
+subplot(224);
+plot(f,abs(fft(y))); title('Widmo sygnalu po filtracji'); xlabel('f [Hz]');
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PP
+load 'dtmf33.mat';
+%%%Zmienne stale nam towarzyszace%%%
+Fs=f_probkowanie; %czestotliwosc probkowania
+Ts = 1/Fs; % Okres probkowania
+N = length(signal); % ilsoc probek
+t = 0:Ts:(N-1)*Ts; % czas w sekundach
+f = 0:Fs/N:(Fs - Fs/N); % czestotliwosc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+fp = 900;
+fz = 1000;
+fp2 = 1480;
+fz2 = 1580;
+wp = 2*pi*fp*Ts;
+wz = 2*pi*fz*Ts;
+wp2 = 2*pi*fp2*Ts;
+wz2 = 2*pi*fz2*Ts;
+wc = (wp+wz)/2;
+wc2 = (wp2+wz2)/2;
+delta_w = abs(wz-wp);
+M = ceil((6.2*pi)/(delta_w));
+n = 1:M;
+d = M/2;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+h_d = (sin(wc*(n-d))./(pi*(n-d)));
+h_d(d) = wc/pi;
+h_d2 = (sin(wc2*(n-d))./(pi*(n-d)));
+h_d2(d) = wc2/pi;
+w_n = 0.5*(1 - cos((2*pi*n)/(M-1)));
+h = h_d2 - h_d;
+b = h .* w_n;
+y = filter(b,1,signal);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+freqz(b,1,[],Fs);
+figure;
+subplot(211);
+plot(f, 20*log10(abs(fft(signal)))); title('Widmo sygnalu przed filtracja'); xlabel('f [Hz]');
+subplot(212);
+plot(f, 20*log10(abs(fft(y)))); title('Widmo sygnalu po filtracji'); xlabel('f [Hz]');
+
+% %%%Wykresiki pomocnicze%%%
+% figure;
+% subplot(221);
+% plot(t,signal); title('Signal');
+% subplot(222);
+% plot(t,y); title('Signal po filtracji');
+% subplot(223);
+% plot(f,abs(fft(signal))); title('Widmo sygnalu przed filtracja'); xlabel('f [Hz]');
+% subplot(224);
+% plot(f,abs(fft(y))); title('Widmo sygnalu po filtracji'); xlabel('f [Hz]');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ZP (TROCHE DO ZMIAN)
+
+load 'dtmf33.mat';
+%%%Zmienne stale nam towarzyszace%%%
+Fs=f_probkowanie; %czestotliwosc probkowania
+Ts = 1/Fs; % Okres probkowania
+N = length(signal); % ilsoc probek
+t = 0:Ts:(N-1)*Ts; % czas w sekundach
+f = 0:Fs/N:(Fs - Fs/N); % czestotliwosc
+%%%Zmienne potrzebne do filtru%%%
+fp=860; %poczatek pasma przejsciowego
+fz=1000; %koniec pasma przejsciowego
+wp = 2*pi*fp/Fs; %?
+wz = 2*pi*fz/Fs; %?
+wcd = (wp+wz)/2; % pulsacja odciecia
+delta_wd = abs(wz-wp); % roznica czestotliwosci (szerokosc pasma przejsciowego)
+Md = ceil(6.2*pi/(delta_wd)); % to zalezy od okna (tutaj to von Hanna)
+nd = 0:Md-1; % z ksiazki
+dd = Md/2 + 0.5; % do spytania
+
+fppp=1500; %poczatek pasma przejsciowego
+fkpp=1600; %koniec pasma przejsciowego
+wppp = 2*pi*fppp/Fs; %?
+wkpp = 2*pi*fkpp/Fs; %?
+wcg = (wppp+wkpp)/2; % pulsacja odciecia
+delta_wg = abs(wkpp-wppp); % roznica czestotliwosci (szerokosc pasma przejsciowego)
+Mg = ceil(6.2*pi/(delta_wg)); % to zalezy od okna (tutaj to von Hanna)
+ng = 0:Mg-1; % z ksiazki
+dg = Mg/2 + 1; % do spytania
+%%%Wspolczynnik filtru%%%
+h_dd = (sin(wcd*(nd-dd))./(pi*(nd-dd))); % filtr idealny
+h_dd(dd+1) = wcd/pi; % tez pytanie
+
+h_dg = (sin(wcg*(ng-dg))./(pi*(ng-dg))); % filtr idealny
+h_dg(dg+1) = wcg/pi; % tez pytanie
+%%%Okno%%%
+w_nd = 0.5*(1 - cos((2*pi*nd)/(Md-1))); % okno von Hamma
+w_ng = 0.5*(1 - cos((2*pi*ng)/(Mg-1))); % okno von Hamma
+%%%Zokienkowany filtr idealny%%%
+dD=zeros(1,length(h_dg)); % robimy delte diraca, tutaj zera
+dD(dg+1)=1; % tutaj dirac
+h_GP=dD-h_dg;
+hg = h_GP.*w_ng; %obliczony wspolczynnik filtru
+hd = h_dd.*w_nd; %obliczony wspolczynnik filtru
+for i = length(hd):length(hg)
+   hd(i)=0; 
+end
+h = hd+hg;
+y = filter(h,1,signal); 
+%%%Wykresy%%%
+freqz(h,1,[],Fs); title('Filtr gornoprzepustowy');
+figure;
+plot(t,y); title('Postac czasowa sygnalu po odfiltrowaniu'); xlabel('t [s]');
+figure;
+subplot(211);
+plot(f, 20*log10(abs(fft(signal)))); title('Widmo sygnalu przed filtracja'); xlabel('f [Hz]');
+subplot(212);
+plot(f, 20*log10(abs(fft(y)))); title('Widmo sygnalu po filtracji'); xlabel('f [Hz]');
+% %%%Wykresiki pomocnicze%%%
+% figure;
+% subplot(221);
+% plot(t,signal); title('Signal');
+% subplot(222);
+% plot(t,y); title('Signal po filtracji');
+% subplot(223);
+% plot(f,abs(fft(signal))); title('Widmo sygnalu przed filtracja'); xlabel('f [Hz]');
+% subplot(224);
+% plot(f,abs(fft(y))); title('Widmo sygnalu po filtracji'); xlabel('f [Hz]');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ZAD 2
+
+load 'dtmf33.mat';
+
+Fs=f_probkowanie;
+N = length(signal); 
+t = 0:1/Fs:(N-1)*1/Fs; 
+f = 0:Fs/N:(Fs - Fs/N); 
+
+fp=860;             
+fz=1100;            
+Ap = 1;             
+Az = 40;            
+Fs = f_probkowanie;
+
+wp=fp/(Fs/2);
+ws=fz/(Fs/2);
+
+[N, wn] = cheb1ord(wp, ws, Ap, Az);
+[B, A] = cheby1(N, Ap, wn, 'low');
+
+y=filter(B,A,signal);
+
+%%%%%%%Wykresy%%%%%%%
+
+figure;
+freqz(B,A,[0:Fs/2-1],Fs);
+
+figure;
+plot(t,y);title('Postać czasowa po odfiltorwaniu');xlabel('T [s]');ylabel('Amplituda');
+
+figure;
+subplot(211);plot(f,20*log10(abs(fft(signal))), 'b');title('Widmo oryginalnego sygnału');xlabel('F [Hz]');ylabel('Amplituda skala log');
+subplot(212);plot(f,20*log10(abs(fft(y))), 'r');title('Widmo przefiltrowanego sygnału');xlabel('F [Hz]');ylabel('Amplituda skala log');

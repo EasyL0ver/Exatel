@@ -1,0 +1,35 @@
+ const afk = require('./afk.json');
+client.on('message',async STEWART => {
+      if(STEWART.author.bot) return;
+  if (afk[STEWART.author.id]) {
+    delete afk[STEWART.author.id];
+    if (STEWART.member.nickname === null) {
+      msg.channel.send("WELCOME BACK , <@"+STEWART.author.id+"> **I WILL REMOVE AFK ON YOU**.");     } else {
+      STEWART.member.setNickname(STEWART.member.nickname.replace(/(\[AFK\])/,''));
+      STEWART.channel.send("WELCOME BACK , <@"+STEWART.author.id+"> **AFK REMOVE**"); 
+    }
+    fs.writeFile("./afk.json", JSON.stringify(afk), (err) => {if (err) console.error(err);});
+} else {
+    if (STEWART.content.startsWith(prefix + 'afk ')||STEWART.content === prefix + 'afk') {
+      STEWART.member.setNickname("[AFK] " + STEWART.member.displayName);
+      let args1 = rebel.content.split(' ').slice(1);
+      if (args1.length === 0) {
+        afk[STEWART.author.id] = {"reason": true}; 
+        STEWART.reply("**YOU NOW AFK**")
+      } else {
+        afk[STEWART.author.id] = {"reason": args1.join(" ")}; // with reason
+        STEWART.reply("**YOU ADDED TO AFK** "+ args1.join(" ") + ".")
+      }
+      fs.writeFile("./afk.json", JSON.stringify(afk), (err) => {if (err) console.error(err);});   
+  }
+}
+         var mentionned = STEWART.mentions.users.first();
+if(STEWART.mentions.users.size > 0) return ;
+if (afk[STEWART.mentions.users.first().id]) {
+if (afk[STEWART.mentions.users.first().id].reason === true) {
+STEWART.channel.send(`**<@!${mentionned.id}> AFK** `);
+}else{
+STEWART.channel.send(`**<@!${mentionned.username}> Afk , Afk Reson\n ${afk[STEWART.mentions.users.first().id].reason}**`);
+}
+} 
+});

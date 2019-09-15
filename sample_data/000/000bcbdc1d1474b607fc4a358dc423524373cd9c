@@ -1,0 +1,71 @@
+==5644== Conditional jump or move depends on uninitialised value(s)
+	
+GmpPipePlayer::GmpPipePlayer( IOBase *pIO, Referee *pBack, PieceColor pc, int size, const DataBoard *pBd, int handicap, const char *cmd_line, int bDebug )
+    : GmpPlayer(pIO, pBack, pc, size, pBd, handicap, bDebug)
+{
+    int down[2], up[2];
+        pid_t _pid;  //here the var is declared
+
+    pipe(down);   
+    pipe(up);
+
+
+    _pid = fork();
+
+    if (_pid < 0)
+        exit(1);
+
+
+    if (_pid == 0)
+    {
+        close(down[1]);
+        close(up[0]);
+
+        dup2(down[0], 0);
+        dup2(up[1], 1);
+
+        execl("/bin/sh", "sh", "-c", cmd_line, NULL);
+
+        _exit(1);
+    }
+
+    close(down[0]);
+    close(up[1]);
+    _down = down[1];
+    _up = up[0];
+
+    _reader_thd = new Thread(reader_wrapper, this);
+}
+
+GmpPipePlayer::~GmpPipePlayer()
+{
+    if (_pid > 0)   //valgrind is reporting that the error is here!!
+    {
+        kill(_pid, SIGTERM);
+        _pid = 0;
+    }
+
+    if (_up)
+    {
+        close(_up);
+        _up = 0;
+    }
+
+    if (_down)
+    {
+        close(_down);
+        _down = 0;
+    }   
+       delete _reader_thd
+}
+	
+pid_t _pid=0;
+	
+pid_t _pid;  //here the var is declared
+	
+if (_pid > 0)   //valgrind is reporting that the error is here!!
+	
+GmpPipePlayer::GmpPipePlayer( IOBase *pIO, Referee *pBack, PieceColor pc, int size, const DataBoard *pBd, int handicap, const char *cmd_line, int bDebug )
+: GmpPlayer(pIO, pBack, pc, size, pBd, handicap, bDebug), _pid(0) {
+    ... //                         HERE ------------------^
+}

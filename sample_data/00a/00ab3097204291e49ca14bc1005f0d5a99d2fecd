@@ -1,0 +1,134 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x0000000000000000, pid=13808, tid=0x00000000000013a4
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_144-b01) (build 1.8.0_144-b01)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.144-b01 mixed mode windows-amd64 compressed oops)
+# Problematic frame:
+# C  0x0000000000000000
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000019537000):  JavaThread "JavaFX Application Thread" [_thread_in_native, id=5028, stack(0x000000001aae0000,0x000000001abe0000)]
+
+siginfo: ExceptionCode=0xc0000005, ExceptionInformation=0x0000000000000008 0x0000000000000000
+
+Registers:
+RAX=0x00000000194a19a8, RBX=0x000000004e25154f, RCX=0x00000000195371f8, RDX=0x00000000194a19a8
+RSP=0x000000001abdd188, RBP=0x000000001abdd290, RSI=0x000000001abdd490, RDI=0x00000000653a00b9
+R8 =0x000000001abdd1dc, R9 =0x0000000000008000, R10=0x0000000025cfc300, R11=0x0000000000000000
+R12=0x000000001abdd470, R13=0x000000001abdd498, R14=0x00000000195371f8, R15=0x00000000000009bf
+RIP=0x0000000000000000, EFLAGS=0x0000000000010202
+
+Top of Stack: (sp=0x000000001abdd188)
+0x000000001abdd188:   00007ff9bba976ea 000000004e25154f
+0x000000001abdd198:   000000001abdd290 000000001abdd490
+0x000000001abdd1a8:   0000000002e13a71 0000154b4abeaf83
+0x000000001abdd1b8:   0000000002de5e99 0000000000000000
+0x000000001abdd1c8:   00000000000009bf 00000000653a00b9
+0x000000001abdd1d8:   4e25154f00000000 0000000000000000
+0x000000001abdd1e8:   000000001abdd488 00000000194a1990
+0x000000001abdd1f8:   00000000801dbab8 051c00000220027f
+0x000000001abdd208:   0000000002ce4a5d 000000001abddc28
+0x000000001abdd218:   0000ffff00001fa5 8000000000000000
+0x000000001abdd228:   0000000000003fff d555555555555800
+0x000000001abdd238:   0000000000003ffd 8000000000000000
+0x000000001abdd248:   0000000000003fff 0000000000000000
+0x000000001abdd258:   0000000000000000 8000000000000000
+0x000000001abdd268:   0000000000003fff 0000000025cff970
+0x000000001abdd278:   0000000000000005 00000000194a19a0 
+
+Instructions: (pc=0x0000000000000000)
+0xffffffffffffffe0:   
+
+
+Register to memory mapping:
+
+RAX=0x00000000194a19a8 is an unknown value
+RBX=0x000000004e25154f is an unknown value
+RCX=0x00000000195371f8 is an unknown value
+RDX=0x00000000194a19a8 is an unknown value
+RSP=0x000000001abdd188 is pointing into the stack for thread: 0x0000000019537000
+RBP=0x000000001abdd290 is pointing into the stack for thread: 0x0000000019537000
+RSI=0x000000001abdd490 is pointing into the stack for thread: 0x0000000019537000
+RDI=0x00000000653a00b9 is an unknown value
+R8 =0x000000001abdd1dc is pointing into the stack for thread: 0x0000000019537000
+R9 =0x0000000000008000 is an unknown value
+R10=0x0000000025cfc300 is an unknown value
+R11=0x0000000000000000 is an unknown value
+R12=0x000000001abdd470 is pointing into the stack for thread: 0x0000000019537000
+R13=0x000000001abdd498 is pointing into the stack for thread: 0x0000000019537000
+R14=0x00000000195371f8 is an unknown value
+R15=0x00000000000009bf is an unknown value
+
+
+Stack: [0x000000001aae0000,0x000000001abe0000],  sp=0x000000001abdd188,  free space=1012k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  java.lang.ClassLoader.defineClass1(Ljava/lang/String;[BIILjava/security/ProtectionDomain;Ljava/lang/String;)Ljava/lang/Class;+0
+J 573 C1 java.lang.ClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/ProtectionDomain;)Ljava/lang/Class; (43 bytes) @ 0x0000000002f3d7a4 [0x0000000002f3d1c0+0x5e4]
+j  java.security.SecureClassLoader.defineClass(Ljava/lang/String;[BIILjava/security/CodeSource;)Ljava/lang/Class;+12
+j  jdk.nashorn.internal.runtime.ScriptLoader.installClass(Ljava/lang/String;[BLjava/security/CodeSource;)Ljava/lang/Class;+13
+j  jdk.nashorn.internal.runtime.Context$ContextCodeInstaller.install(Ljava/lang/String;[B)Ljava/lang/Class;+36
+j  jdk.nashorn.internal.codegen.CompilationPhase$InstallPhase.transform(Ljdk/nashorn/internal/codegen/Compiler;Ljdk/nashorn/internal/codegen/Compiler$CompilationPhases;Ljdk/nashorn/internal/ir/FunctionNode;)Ljdk/nashorn/internal/ir/FunctionNode;+111
+J 4203 C1 jdk.nashorn.internal.codegen.CompilationPhase.apply(Ljdk/nashorn/internal/codegen/Compiler;Ljdk/nashorn/internal/codegen/Compiler$CompilationPhases;Ljdk/nashorn/internal/ir/FunctionNode;)Ljdk/nashorn/internal/ir/FunctionNode; (40 bytes) @ 0x0000000003810ffc [0x0000000003810c60+0x39c]
+j  jdk.nashorn.internal.codegen.Compiler.compile(Ljdk/nashorn/internal/ir/FunctionNode;Ljdk/nashorn/internal/codegen/Compiler$CompilationPhases;)Ljdk/nashorn/internal/ir/FunctionNode;+210
+j  jdk.nashorn.internal.runtime.Context.compile(Ljdk/nashorn/internal/runtime/Source;Ljdk/nashorn/internal/runtime/ErrorManager;Z)Ljava/lang/Class;+395
+j  jdk.nashorn.internal.runtime.Context.compileScript(Ljdk/nashorn/internal/runtime/Source;Ljdk/nashorn/internal/runtime/ScriptObject;Ljdk/nashorn/internal/runtime/ErrorManager;)Ljdk/nashorn/internal/runtime/ScriptFunction;+7
+j  jdk.nashorn.internal.runtime.Context.compileScript(Ljdk/nashorn/internal/runtime/Source;Ljdk/nashorn/internal/runtime/ScriptObject;)Ljdk/nashorn/internal/runtime/ScriptFunction;+7
+j  jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(Ljdk/nashorn/internal/runtime/Source;Ljdk/nashorn/internal/objects/Global;)Ljdk/nashorn/internal/runtime/ScriptFunction;+31
+j  jdk.nashorn.api.scripting.NashornScriptEngine.compileImpl(Ljdk/nashorn/internal/runtime/Source;Ljavax/script/ScriptContext;)Ljdk/nashorn/internal/runtime/ScriptFunction;+7
+j  jdk.nashorn.api.scripting.NashornScriptEngine.evalImpl(Ljdk/nashorn/internal/runtime/Source;Ljavax/script/ScriptContext;)Ljava/lang/Object;+4
+j  jdk.nashorn.api.scripting.NashornScriptEngine.eval(Ljava/lang/String;Ljavax/script/ScriptContext;)Ljava/lang/Object;+7
+j  javax.script.AbstractScriptEngine.eval(Ljava/lang/String;)Ljava/lang/Object;+6
+j  net.k773.api.API$1.run()V+8
+j  net.k773.gui.BridgeFX.runAndWait(Ljava/lang/Runnable;)V+7
+j  net.k773.api.API.eval0(Ljava/lang/String;Ljavax/script/ScriptEngine;)V+18
+j  net.k773.api.API.eval0(Ljava/lang/String;)V+4
+j  net.k773.gui.Monitor$1.run()V+114
+j  java.util.concurrent.Executors$RunnableAdapter.call()Ljava/lang/Object;+4
+j  java.util.concurrent.FutureTask.run()V+42
+j  com.sun.javafx.application.PlatformImpl.lambda$null$173(Ljava/lang/Runnable;)Ljava/lang/Void;+1
+j  com.sun.javafx.application.PlatformImpl$$Lambda$52.run()Ljava/lang/Object;+4
+v  ~StubRoutines::call_stub
+J 3507  java.security.AccessController.doPrivileged(Ljava/security/PrivilegedAction;Ljava/security/AccessControlContext;)Ljava/lang/Object; (0 bytes) @ 0x0000000003782aa6 [0x0000000003782a40+0x66]
+j  com.sun.javafx.application.PlatformImpl.lambda$runLater$174(Ljava/lang/Runnable;Ljava/security/AccessControlContext;)V+7
+j  com.sun.javafx.application.PlatformImpl$$Lambda$50.run()V+8
+J 4985 C1 com.sun.glass.ui.InvokeLaterDispatcher$Future.run()V (91 bytes) @ 0x0000000003a3cf0c [0x0000000003a3ce00+0x10c]
+v  ~StubRoutines::call_stub
+j  com.sun.glass.ui.win.WinApplication._runLoop(Ljava/lang/Runnable;)V+0
+j  com.sun.glass.ui.win.WinApplication.lambda$null$148(ILjava/lang/Runnable;)V+8
+j  com.sun.glass.ui.win.WinApplication$$Lambda$40.run()V+12
+j  java.lang.Thread.run()V+11
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000021115000 JavaThread "DestroyJavaVM" [_thread_blocked, id=7948, stack(0x00000000029f0000,0x0000000002af0000)]
+  0x000000002111c000 JavaThread "Thread-32" [_thread_blocked, id=7176, stack(0x0000000028620000,0x0000000028720000)]
+  0x000000002111f000 JavaThread "Thread-28" [_thread_in_native, id=15344, stack(0x0000000028220000,0x0000000028320000)]
+  0x0000000021119800 JavaThread "Thread-21" [_thread_blocked, id=13796, stack(0x0000000027b20000,0x0000000027c20000)]
+  0x0000000021118000 JavaThread "Thread-14" [_thread_in_native, id=944, stack(0x0000000027420000,0x0000000027520000)]
+  0x0000000019146800 JavaThread "URL-Loader-1" daemon [_thread_blocked, id=15016, stack(0x0000000025680000,0x0000000025780000)]
+  0x0000000020920000 JavaThread "Keep-Alive-Timer" daemon [_thread_blocked, id=7388, stack(0x0000000025390000,0x0000000025490000)]
+  0x0000000020588000 JavaThread "Prism Font Disposer" daemon [_thread_blocked, id=12440, stack(0x0000000023590000,0x0000000023690000)]
+  0x0000000020496800 JavaThread "Disposer" daemon [_thread_blocked, id=11400, stack(0x0000000022eb0000,0x0000000022fb0000)]
+  0x0000000019aab000 JavaThread "Thread-4" daemon [_thread_in_native, id=14676, stack(0x000000001ff20000,0x0000000020020000)]
+=>0x0000000019537000 JavaThread "JavaFX Application Thread" [_thread_in_native, id=5028, stack(0x000000001aae0000,0x000000001abe0000)]
+  0x000000001950f800 JavaThread "Thread-3" daemon [_thread_blocked, id=13080, stack(0x000000001a9e0000,0x000000001aae0000)]
+  0x0000000019a82800 JavaThread "QuantumRenderer-0" daemon [_thread_blocked, id=13620, stack(0x000000001a240000,0x000000001a340000)]
+  0x000000001948f800 JavaThread "JavaFX-Launcher" [_thread_blocked, id=7992, stack(0x0000000019940000,0x0000000019a40000)]
+  0x0000000019293000 JavaThread "Thread-0" [_thread_blocked, id=14664, stack(0x0000000019840000,0x0000000019940000)]
+  0x000000001914b000 JavaThread "Service Thread" daemon [_thread_blocked, id=12980, stack(0x0000000019640000,0x0000000019740000)]
+  0x0000000019143800 JavaThread "C1 CompilerThread2" daemon

@@ -1,0 +1,93 @@
+# Branch Managment
+
+## How to create a branch
+
+```cmd
+git branch my-branch
+```
+
+## How to use the new branch or move to another branch
+
+```cmd
+git checkout my-branch
+```
+
+## How to list all the branches
+
+```cmd
+git branch
+```
+
+## How to push the new branch
+
+```cmd
+git push -u origin my-branch
+```
+
+## How to list remote branches
+
+```cmd
+git branch -a
+```
+
+## How to list all the branches that have been merged into the current branch (locally and remotely)
+
+```cmd
+git branch --merged
+git branch -a --merged
+```
+
+## How to merge a branch
+
+We need to follow the next steps:
+
+```cmd
+git checkout master
+git pull origin master
+git branch --merged
+git merge my-branch
+git push origin master
+```
+
+## How to delete a branch (local and remote)
+
+The first command will delete `my-branch` branch locally and the next one remotely and prune it from the list
+
+```cmd
+git branch -d my-branch
+git branch -d -r origin/my-branch
+```
+
+## How to prune branches from remote list
+
+```cmd
+git remote prune origin
+```
+If we want to see which branches will be prune without actually prune them run this instead
+
+```cmd
+git remote prune origin --dry-run
+```
+
+
+## How to save uncommited changes
+If you need to move to another branch and don't want to commit unfinished work or you realized you're working int he wrong branch and need to move the changes so  you can use the stash command
+```cmd
+git stash save(optional)
+```
+To apply the changes on the branch you want without deleting the changes.
+
+```cmd
+git stash apply
+```
+To apply the changes on the branch you want deleting the changes.
+
+```cmd
+git stash pop
+```
+
+To discard the changes.
+
+```cmd
+git stash drop
+```

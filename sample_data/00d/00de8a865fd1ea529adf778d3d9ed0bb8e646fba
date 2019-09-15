@@ -1,0 +1,96 @@
+var config = {};
+var identifyCountry = window.location.href.split('/')[5];
+
+$('.siteConfig').each(function(index){
+    var categoryName = $(this).find('h3').text().split('Category: ')[1];
+    var tr = $(this).find('tr:gt(0)');
+
+    config[categoryName] = {}
+
+    tr.each(function(i, tr){
+       var td = $(tr).find('td');
+       config[categoryName][td.eq(0).text().trim()] = td.eq(1).text().trim()
+    });
+});
+
+if ( !(JSON.parse(localStorage.getItem('config-' + identifyCountry))) )
+    localStorage.setItem('config-' + identifyCountry, JSON.stringify(config));
+
+function filter(obj1, obj2) {
+    if (obj1 != undefined && obj2 != undefined ) {
+        var result = {};
+        for(var category in obj1) {
+            var found = false;
+            result[category] = {};
+            for( var key in obj1[category] ){
+                if( obj1[category] &&  obj2[category] ){
+                    if( (obj2[category][key] != obj1[category][key]) ){
+                        result[category][key] = obj2[category][key];
+                        found = true;
+                    }
+                }
+            }
+            if(!found) delete result[category]
+        }
+        return $(document.body).prepend(populate(result));
+    }
+}
+
+var css = '.diff { background: #ddd; margin: 50px; padding: 5px; overflow: auto } .diff ul { background: #f9f9f9; padding: 5px; margin: 10px; }',
+    head = document.head || document.getElementsByTagName('head')[0],
+    style = document.createElement('style');
+
+style.type = 'text/css';
+
+if (style.styleSheet)
+  style.styleSheet.cssText = css;
+ else
+  style.appendChild(document.createTextNode(css));
+
+head.appendChild(style);
+
+function populate(data) {
+    var category = $('<ul class="diff">');
+
+    for (var i in data) {
+        var li = $('<li>').text(i);
+        category.append(li);
+
+        var ul = $('<ul>');
+        for (var key in data[i]) {
+            var item = $('<li>').text(key + ' => ' + data[i][key]);
+            ul.append(item);
+        }
+        li.append(ul);
+    }
+
+    return category;
+}
+
+
+// http://aalu.unileversolutions.com/content/lipton/fr_fr/config.html?wcmmode=disabled
+// COUNTRIES LIST
+var configEnUs = JSON.parse(localStorage.getItem('config-en_us'));
+var configEsUs = JSON.parse(localStorage.getItem('config-es_us'));
+var configFr = JSON.parse(localStorage.getItem('config-fr_fr'));
+var configRu = JSON.parse(localStorage.getItem('config-ru_ru'));
+var configNl = JSON.parse(localStorage.getItem('config-nl_nl'));
+var configBr = JSON.parse(localStorage.getItem('config-pt_br'));
+var configEsMx = JSON.parse(localStorage.getItem('config-es_mx'));
+var configEnCa = JSON.parse(localStorage.getItem('config-en_ca'));
+var configFrCa = JSON.parse(localStorage.getItem('config-fr_ca'));
+var configEnGb = JSON.parse(localStorage.getItem('config-en_gb'));
+var configElGr = JSON.parse(localStorage.getItem('config-el_gr'));
+var configTrTr = JSON.parse(localStorage.getItem('config-tr_tr'));
+var configSvSe = JSON.parse(localStorage.getItem('config-sv_se'));
+
+//filter(configEnUs, configFr);
+
+
+// If the right-click -> copy is not available you could try:
+// 1 - Right-click the object and select "Store as global variable"
+// 2 - The console will print the new variable's name, for example:
+// temp1
+// 3 - Type:
+// copy(temp1)   
+// The object is now available in your clipboard.

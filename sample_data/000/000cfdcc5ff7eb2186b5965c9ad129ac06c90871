@@ -1,0 +1,171 @@
+# SimC Addon 1.10.8
+warrior="Flakes"
+level=120
+race=pandaren
+region=eu
+server=bloodhoof
+role=attack
+professions=engineering=53/enchanting=111
+talents=2123123
+spec=fury
+
+head=,id=166696,bonus_id=5478/1502/4786/5402/4775,context=3,azerite_powers=119/31/14/13
+neck=,id=158075,bonus_id=4936/4929/4930/1542,context=11,azerite_level=36
+shoulder=,id=160641,bonus_id=4824/1507/4786/5403/4775,context=6,azerite_powers=437/30/476/13
+back=,id=160644,gem_id=154127,bonus_id=4800/1808/1507/4786,context=6
+chest=,id=159416,bonus_id=5061/1557/4786/4775,context=35,azerite_powers=119/31/14/13
+tabard=,id=45585,context=14
+wrist=,id=161074,enchant_id=5971,bonus_id=4800/1507/4786,context=6
+hands=,id=159445,bonus_id=5010/1557/4784,context=35
+waist=,id=159426,bonus_id=5010/1567/4784,context=35
+legs=,id=160639,bonus_id=4800/1517/4783,context=6
+feet=,id=160640,gem_id=154127,bonus_id=4800/1808/1507/4786,context=6
+finger1=,id=160645,enchant_id=5943,gem_id=154127,bonus_id=4800/1808/1507/4786,context=6
+finger2=,id=160646,enchant_id=5943,gem_id=154127,bonus_id=4799/1808/1492/4786,context=5
+trinket1=,id=160655,bonus_id=4800/1507/4786,context=6
+trinket2=,id=160650,bonus_id=4800/1507/4786,context=6
+main_hand=,id=160679,enchant_id=5964,bonus_id=4800/1507/4786,context=6
+off_hand=,id=159638,enchant_id=5963,bonus_id=5010/1552/4783,context=35
+
+### Gear from Bags
+#
+# Helm of Tempered Jade (400)
+# head=,id=165548,bonus_id=4823/1522/4786/5417,context=5,azerite_powers=237/440/101
+#
+# Helm of the Raptor King (370)
+# head=,id=159422,bonus_id=4819/1542/4786/5411,context=23,azerite_powers=118/177/30/476
+#
+# Hallowed Helm (1)
+# head=,id=33292,context=11
+#
+# Gridrunner Galea (390)
+# head=,id=160634,bonus_id=4824/1507/4786/4775,context=6,azerite_powers=450/89/15/13
+#
+# Deathguard's Pauldrons (345)
+# shoulder=,id=165494,bonus_id=5124/1457/4786/5394/4775,context=3,azerite_powers=176/461/554/13
+#
+# Chitinspine Pauldrons (375)
+# shoulder=,id=160641,enchant_id=5440,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=483/30/476/13
+#
+# Kraken Shell Pauldrons (390)
+# shoulder=,id=159431,bonus_id=5063/1557/4786/4775,context=35,azerite_powers=118/461/84/13
+#
+# Cloak of Rippling Whispers (370)
+# back=,id=160642,gem_id=154127,bonus_id=4799/1808/1492/4786,context=5
+#
+# Cloak of Rippling Whispers (390)
+# back=,id=160642,bonus_id=4800/1512/4783,context=6
+#
+# Cloak of Coordination (58)
+# back=,id=65274,context=14
+#
+# Chestguard of Virulent Mutagens (375)
+# chest=,id=160636,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=435/459/15/13
+#
+# Chestplate of Apocalyptic Machinations (375)
+# chest=,id=160722,bonus_id=4823/1492/4786/4775,context=5,azerite_powers=485/462/85/13
+#
+# Chestguard of Virulent Mutagens (390)
+# chest=,id=160636,bonus_id=4824/1507/4786/4775,context=6,azerite_powers=483/31/15/13
+#
+# Ashvane Warden's Cuirass (390)
+# chest=,id=159440,bonus_id=5061/1557/4786/4775,context=35,azerite_powers=450/30/84/13
+#
+# Breastplate of the Vengeful (390)
+# chest=,id=159448,bonus_id=5061/1557/4786/4775,context=35,azerite_powers=440/461/554/13
+#
+# Chestplate of Apocalyptic Machinations (390)
+# chest=,id=160722,bonus_id=4824/1507/4786/5401/4775,context=6,azerite_powers=177/99/85/13
+#
+# Dragonrider's Wristguards (310)
+# wrist=,id=164396,context=11
+#
+# Embalmer's Steadying Bracers (370)
+# wrist=,id=159409,bonus_id=5010/1542/4786,context=16
+#
+# Gauntlets of the Avian Sentinel (375)
+# hands=,id=159413,bonus_id=4779/4802/1547/4783,context=23
+#
+# Crusade Pummelers (385)
+# hands=,id=165549,bonus_id=4798/41/1507/4786,context=3
+#
+# Saurok Scale Grips (310)
+# hands=,id=164501,context=11
+#
+# Spiritbough Belt (310)
+# waist=,id=164450,context=11
+#
+# Legplates of Beaten Gold (385)
+# legs=,id=158313,bonus_id=5005/1557/4786,context=16
+#
+# Sharkwater Waders (385)
+# legs=,id=158361,bonus_id=5009/1557/4786,context=16
+#
+# Coinage Stampers (400)
+# feet=,id=165561,bonus_id=4799/1522/4786,context=5
+#
+# Rot-Scour Ring (390)
+# finger1=,id=160645,enchant_id=5943,bonus_id=4800/1512/4783,context=6
+#
+# Seal of Questionable Loyalties (395)
+# finger1=,id=158314,bonus_id=5010/1567/4784,context=35
+#
+# Vial of Animated Blood (370)
+# trinket1=,id=159625,bonus_id=4779/1542/4786,context=23
+#
+# Lingering Sporepods (380)
+# trinket1=,id=159626,bonus_id=5010/1552/4786,context=35
+#
+# Darkmoon Deck: Fathoms (355)
+# trinket1=,id=159125,context=13
+#
+# Dread Aspirant's Insignia (350)
+# trinket1=,id=162899,bonus_id=1542/4784,context=47
+#
+# Runeblade of Baron Rivendare (168)
+# main_hand=,id=13505,bonus_id=4051,drop_level=60,context=1
+#
+# Stinkrot Smasher (325)
+# main_hand=,id=163928,context=11
+#
+# Blacksmith Hammer (1)
+# main_hand=,id=5956,context=14
+#
+# Biomelding Cleaver (385)
+# main_hand=,id=160685,enchant_id=5950,gem_id=154127,bonus_id=4800/1808/1507/4786,context=6
+#
+# Plundered Oracle Fin Staff (325)
+# main_hand=,id=164326,context=11
+#
+# Blade of Encroaching Death (385)
+# main_hand=,id=165595,bonus_id=4798/1507/4786,context=3
+#
+# Arclight Spanner (10)
+# main_hand=,id=6219
+#
+# Fishing Pole (1)
+# main_hand=,id=6256,context=14
+#
+# Disc of Indomitable Will (385)
+# off_hand=,id=158713,bonus_id=5010/1557/4783,context=35
+#
+# Runeblade of Baron Rivendare (168)
+# off_hand=,id=13505,bonus_id=4051,drop_level=60,context=1
+#
+# Stinkrot Smasher (325)
+# off_hand=,id=163928,context=11
+#
+# Deathguard's Warshield (340)
+# off_hand=,id=165620,bonus_id=5124/1457/4786,context=3
+#
+# Biomelding Cleaver (385)
+# off_hand=,id=160685,enchant_id=5950,gem_id=154127,bonus_id=4800/1808/1507/4786,context=6
+#
+# Plundered Oracle Fin Staff (325)
+# off_hand=,id=164326,context=11
+#
+# Blade of Encroaching Death (385)
+# off_hand=,id=165595,bonus_id=4798/1507/4786,context=3
+
+# Stacks of reorigination array based on hidden quest completion
+# bfa.reorigination_array_stacks=10

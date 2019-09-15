@@ -1,0 +1,44 @@
+object(MyCar)#1 (4) {
+  ["engine:private"]=>
+  object(MyEngine)#2 (4) {
+    ["engine:private"]=>
+    object(DefaultEngine)#3 (2) {
+      ["name:private"]=>
+      string(9) "V6 engine"
+      ["weight"]=>
+      int(230)
+    }
+    ["manifold:private"]=>
+    object(DefaultManifold)#4 (2) {
+      ["name:private"]=>
+      string(15) "Normal manifold"
+      ["weight"]=>
+      int(50)
+    }
+    ["carbs:private"]=>
+    object(DefaultCarbs)#5 (2) {
+      ["name:private"]=>
+      string(12) "Normal carbs"
+      ["weight"]=>
+      int(20)
+    }
+    ["weight"]=>
+    int(300)
+  }
+  ["brakes:private"]=>
+  object(DefaultBrakes)#6 (2) {
+    ["name:private"]=>
+    string(13) "normal brakes"
+    ["weight"]=>
+    int(150)
+  }
+  ["gear:private"]=>
+  object(DefaultGear)#7 (2) {
+    ["name:private"]=>
+    string(11) "normal gear"
+    ["weight"]=>
+    int(42)
+  }
+  ["weight"]=>
+  int(492)
+}

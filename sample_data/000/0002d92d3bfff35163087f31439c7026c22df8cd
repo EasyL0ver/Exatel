@@ -1,0 +1,17 @@
+protected $commands = [
+    CountProfit::class
+];
+
+/**
+ * Define the application's command schedule.
+ *
+ * @param  IlluminateConsoleSchedulingSchedule  $schedule
+ * @return void
+ */
+protected function schedule(Schedule $schedule)
+{
+    $schedule
+        ->command('count:profit')
+        ->everyMinute()
+        ->thenPing("https://cronhub.io/ping/61d30020-021e-11e9-a3d6-7babf34214bf"); 
+}

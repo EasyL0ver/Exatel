@@ -1,0 +1,40 @@
+Creating additonal step on jquery step by step form
+<div id="third-step">
+    <h2>Third Step</h2>
+    <div class="label"><label for="Site">Site</label></div>
+            What you want...
+</div>
+	
+....
+    else if( whichStep == 'second-step' )
+                    {
+                        // validate second-step
+                    }
+//this -->
+                    else if( whichStep == 'third-step' )
+                    {
+                        // validate third-step
+                    }
+//this -->
+                    else if( whichStep == 'last-step' )
+                    {
+                        // validate last-step
+                    }
+    ....
+	
+else if( whichStep == 'third-step' ) {
+    // validate third-step
+}
+	
+<div id="third-step">
+        <h2>Third Step</h2>
+        <div class="label"><label for="Site">Site</label></div>
+
+    *stuff*
+
+    </div> <!-- end third-step -->
+	
+else if( whichStep == 'third-step' )
+                {
+                    // validate third-step
+                }

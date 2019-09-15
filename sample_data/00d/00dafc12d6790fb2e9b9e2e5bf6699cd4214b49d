@@ -1,0 +1,1 @@
+var threads = GmailApp.search('is:starred subject:"IMPORTANT"');

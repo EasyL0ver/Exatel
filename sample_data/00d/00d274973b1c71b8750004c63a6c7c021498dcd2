@@ -1,0 +1,103 @@
+[style]
+a {color: #fff;letter-spacing:0.0px; -webkit-transition: all 0.1s ease-in-out;}
+a:hover {color: #b5b5b5; text-decoration:underline;-webkit-transition: all 0.1s ease-in-out;}
+a {text-decoration:underline;}
+
+.panel {
+        border: 0px;
+      width: 0px;
+  &>h3 {
+background: rgb(107,30,152,0.1); 
+             width: 246px;
+            padding: 0;
+            height: 25px;
+text-align: center;
+    line-height: 25px;
+   font-family: Mason;
+   color: #FFF;
+   text-shadow: 0 0 5px #972dd6;
+    border-color: white;
+            border-radius: 0px;
+            font-size: 16px;
+    border: double;      
+    display: inline-block;
+margin-left: -10px;
+margin-bottom: 5px;
+}
+    &>div {
+        color: white;
+        width: 241.5px;
+background: purple;
+margin-left: -10px;
+background: rgb(107,30,152,0.1);
+border-style: double; 
+border-color: #fff;
+padding: 10px 2px 2px 2px;
+text-align: center;
+font-family: times;
+color: #FFF;
+text-shadow: 0 0 5px #972dd6;
+overflow: hidden;
+}
+}
+th {
+border: 1px solid #449abd;
+background-color: rgb(255, 131, 193,0.0);
+text-align:center;
+}
+
+td {
+border: 1px solid #ffff;
+text-align:center;
+}
+table,th,td,{
+    border: 3px double #fff;
+    margin: 0 auto;
+font-family: times;
+color: #fff;
+text-shadow: 0 0 5px #972dd6;
+  
+}
+.tooltip_content {
+  font-size: 10px;
+  padding:10px;
+  text-shadow: 0 0 5px #b5b5b5;
+  padding-top:78px;
+  text-align:center;
+font-family:arial;
+ min-width:100px;
+width:294px;
+  background:transparent;
+  color: #fff;
+  border-radius: 0px;
+ border:0px double #fff;
+}
+span.bbcode_tooltip {
+    border-bottom: 1px dotted #303030;
+}
+.expbar {
+ height: 10px;
+   width: 214px;
+   border-radius: 0px;
+background:#1c1c1c;
+color: rgb(255, 131, 193,0.1);
+border-style: double; 
+    border:3px double #fff;
+padding: 1px 2px 6px 2px;
+   text-align: top;
+   font-family: Mason;
+   color: #FFF;
+  line-height: 15px;
+ text-shadow: 0 0 5px #fc9ee3;
+overflow: hidden;}
+
+.expbar div {
+background: #654688;
+border-style: double;
+border: 0px double #fff;}
+
+[/style][css=width:310px;][tip=© TWD AND GREY'S ANATOMY][IMG]https://i.imgur.com/d1GFwIE.png[/IMG][/tip][css=background:url('https://i.imgur.com/imSXyRs.png'); background-repeat: repeat-y;  color: #fff; padding: 0px 35px 3px 39px; font-family: arial; font-size:15px; text-align:center; text-shadow: 0 0 5px #b5b5b5; font-size:10px; line-height:15px;]
+
+[b]WILL[/b] / BISEXUAL MALE / ADULT
+COLLECTING JADE ORBS: 1 / ???
+[url=https://tellonym.me/williamgraham]TELLONYM.ME/WILLIAMGRAHAM[/url][/css][IMG]https://i.imgur.com/imSXyRs.png[/IMG][/css]

@@ -1,0 +1,44 @@
+package prime;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author EliF
+ */
+public class Prime {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static boolean isPrime(int n)   {
+        for(int iCurrentFactor = 2; iCurrentFactor <= n/2; ++iCurrentFactor) //Loop through each factor of
+        {
+            if(n % iCurrentFactor == 0)
+            {
+                return false;
+            }
+        } 
+        
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        Scanner var = new Scanner(System.in);
+        System.out.println("Enter number to find amount of primes below it.");
+        int iMaxNumber = var.nextInt();
+        int iPrimeNumberCounts = 0;
+
+        for(int iCurrentNumber = 2; iCurrentNumber < iMaxNumber; ++iCurrentNumber) 
+        //Loop through each of the numbers up until MaxNumber and determine if that number "iCurrentNumber" is prime.
+        {
+            if (isPrime(iCurrentNumber))
+            {
+                ++iPrimeNumberCounts;
+            }
+        }
+        
+        System.out.println("Amount of prime numbers below " + iMaxNumber + ": " + iPrimeNumberCounts);
+    }
+    
+}

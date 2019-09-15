@@ -1,0 +1,295 @@
+import random as r
+print('Ładowanie gry...')
+class card():
+  def __init__(self):
+    self.powerchance = round(r.randint(1,11))
+    if self.powerchance > 1: 
+      self.number = r.randint(1,10) - 1
+      self.color_number = r.randint(0,3)
+      self.color_list = ['CZERWONY','NIEBIESKI','CZERWONY','ZOLTY']
+      self.color = self.color_list[self.color_number]
+
+    else:
+      self.powerchance2 = r.randint(0,5)
+      if self.powerchance2 == 0:
+        self.card_type = 'KARTASPECIALNA'
+      elif self.powerchance2 == 1 or self.powerchance2 == 2:
+        self.color_number = r.randint(0,3)
+        self.color_list = ['CZERWONY','NIEBIESKI','CZERWONY','ZOLTY']
+        self.color = self.color_list[self.color_number]
+      else:
+        self.color_number = r.randint(0,3)
+        self.color_list = ['CZERWONY','NIEBIESKI','CZERWONY','ZOLTY']
+        self.color = self.color_list[self.color_number]
+        self.card_type = '+2'
+
+        
+  def return_values(self):
+    if self.powerchance > 1:
+
+      self.list = [self.color, self.number]
+    elif self.powerchance2 == 0: 
+      self.list = [self.card_type, '+4']
+    elif self.powerchance2 == 1 or self.powerchance2 == 2:
+      self.list = [self.color, 'BLOKUJ']
+    elif self.powerchance2 != 0 and self.powerchance2 != 1 and self.powerchance2 != 2:
+      self.list = [self.color, self.card_type]
+    return self.list
+
+def drawcards():
+  h = card()
+  return h.return_values()
+  
+def printhand(cards):
+  print ("Twoje karty:")
+  for x in range(len(cards)):
+    print ("Karta #" + str(x+1) + ":   " + str(cards[x]))
+
+def think(cards, middlecard, drawing, skipturn):
+  choice = -1
+  print("Hmmmm...")
+  for x in range(len(cards)):
+    cardonto = cards[x]
+
+    if cardonto[1] == '+4':
+      choice = x
+      nextdrawing = 4
+      break
+    elif (cardonto[1] == '+2' and cardonto[0] == middlecard[0]) or (middlecard[0] == '+2' and cardonto[0] == '+2'):
+      choice = x
+      nextdrawing = 2
+      break
+    elif (cardonto[1] == 'BLOKUJ' and cardonto[0] == middlecard[0]) or (middlecard[0] == 'BLOKUJ' and cardonto[0] == 'BLOKUJ'):
+      choice = x
+      nextdrawing = 0
+    elif cardonto[1] == middlecard[1] or cardonto[0] == middlecard[0]:
+      choice = x
+      nextdrawing = 0
+  if choice == -1:
+    choice = 'DOBIERZ'
+    nextdrawing = 0
+  if drawing > 0:
+    choice = 'blokuj'
+    nextdrawing = 0
+  if skipturn == True:
+    return 'blokuj', 0 
+  else:
+    return choice, nextdrawing
+  
+def colorthink(cards):
+  ZOLTY = 0 
+  CZERWONY = 0 
+  ZIELONY = 0 
+  NIEBIESKI = 0
+  for x in range(len(cards)):
+    cardonto = cards[x]
+    if cardonto[0] == 'ZIELONY':
+      ZIELONY += 1
+    if cardonto[0] == 'CZERWONY':
+      CZERWONY += 1
+    if cardonto[0] == 'ZOLTY':
+      ZOLTY += 1
+    if cardonto[0] == 'NIEBIESKI':
+      NIEBIESKI += 1
+  colorpick = [ZIELONY, NIEBIESKI, CZERWONY, ZOLTY]
+  if max(colorpick) == ZIELONY:
+    return 0 
+  elif max(colorpick) == NIEBIESKI:
+    return 1 
+  elif max(colorpick) == CZERWONY:
+    return 2 
+  elif max(colorpick) == ZOLTY:
+    return 3 
+    
+color_list = ['ZIELONY','NIEBIESKI','CZERWONY','ZOLTY']
+cards = []
+
+print("Wybierz poziom:")
+print("Poziom 1 - Bardzo łatwy ")
+print("Poziom 2 - Średnio łatwy")
+print("Poziom 3 - Normalny ")
+print("Poziom 4 - Trudny ")
+print("Poziom 5 - Ambitny ")
+
+
+choice = int(input("Wybierz numer poziom trudności"))
+count = 10 - choice
+count_player = 4 + choice
+print("Zaczynasz grę z " + str(count_player) + " kartami, a Twoi przeciwnicy z " + str(count) + " kartami. Baw się dobrze.")
+for x in range(count_player):
+  hand = card()
+  cards.append(hand.return_values())
+opponent1cards = []
+for x in range(count):
+  hand = card()
+  opponent1cards.append(hand.return_values())
+opponent2cards = []
+for x in range(count):
+  hand = card()
+  opponent2cards.append(hand.return_values())
+opponent3cards = []
+for x in range(count):
+  hand = card()
+  opponent3cards.append(hand.return_values())
+nextpersondraws = 0 
+print("Gra jest gotowa!")
+print('')
+print('')
+print('')
+
+#MAIN
+middlecard = hand.return_values()
+if middlecard[0] == 'KARTASPECJALNA':
+  color_number = r.randint(0,3)
+  color = color_list[color_number]
+print('')
+print("Karta na stole to " + str(middlecard))
+print('')
+print('')
+print('')
+print('Zadczynajmy grę')
+botchoice = 'NIE'
+won = 0
+skipturn = False
+while won == 0:
+  choice = 0
+  if middlecard[1] == 'BLOKUJ' and skipturn == False:
+    skipturn = True
+  elif middlecard[1] == 'BLOKUJ' and skipturn == True:
+    skipturn = False
+  if nextpersondraws > 0:
+    for x in range(nextpersondraws):
+      cards.append(drawcards())
+      print("Dobierz kartę")
+    print("Dobrałeś kartę, omijasz kolejkę")
+    choice = 'blokuj'
+    nextpersondraws = 0
+  if middlecard[1] == 'BLOKUJ':
+    print("Niezwykle mi przykro ale zostałeś zablokowany, omijasz kolejkę...")
+    choice = 'blokuj'
+    skipturn = False
+  while str(choice) != 'blokuj': 
+    print("")
+    print("")
+    print("Twoja kolej!")
+    print("Karta na stole to: " + str(middlecard))
+    if botchoice != 'TAK':
+      printhand(cards)
+      for x in range(len(cards)):
+        print("Wpisz " + str(x+1) + " żeby wybrać kartę #" + str(x+1))
+      print("wpisz DOBIERZ żeby dobrać kartę")
+    print ("\n" * (15 - len(cards)))
+    if botchoice != 'TAK':
+      choice = input()
+    else:
+      choice, nextpersondraws = think(cards, middlecard, nextpersondraws, skipturn)
+      print(choice)
+    
+    if choice == "dobierz" or choice == 'DOBIERZ' or choice == "Dobierz" :
+      cards.append(drawcards())
+      choice = 'blokuj'
+    
+      if cardinquestion[0] == middlecard[0] or cardinquestion[1] == middlecard[1] or cardinquestion[0] == 'POWERUP':
+        middlecard = cards[choice]
+      if cardinquestion[1] == '+2':
+            nextpersondraws = 2
+      if cardinquestion[1] == '+4':
+            nextpersondraws = 4
+      cards.remove(cardinquestion)
+      choice = 'blokuj'
+    else:
+      choice = int(choice) - 1
+      
+      if choice < (len(cards)) and choice > -1:
+        cardinquestion = cards[choice]
+        if cardinquestion[0] == middlecard[0] or cardinquestion[1] == middlecard[1] or cardinquestion[0] == 'POWERUP':
+          middlecard = cards[choice]
+          if cardinquestion[1] == '+2':
+            nextpersondraws = 2
+          if cardinquestion[1] == '+4':
+            nextpersondraws = 4
+          cards.remove(cardinquestion)
+          choice = 'blokuj'
+        else: 
+          print( str(cardinquestion) + " - nie możesz dać tej karty! " + str(middlecard))
+          print("Spróbuj jeszcze raz.")
+      else:
+        print("Spróbuj jeszcze raz.")
+  if middlecard[0] == 'POWERUP':
+    if botchoice != 'TAK':
+      middlecard[0] = input("Jaki kolor wybierasz? (wpisz bez polskich znaków!)").upper()
+    else:
+      middlecard[0] = color_list[colorthink(cards)]
+  print ("\n" * 30)
+  
+  if nextpersondraws > 0:
+    for x in range(nextpersondraws):
+      opponent1cards.append(drawcards())
+      print("Przeciwnik 1 rzucił kartę")
+  if middlecard[1] == 'BLOKUJ' and skipturn == False:
+    skipturn = True
+  elif middlecard[1] == 'BLOKUJ' and skipturn == True:
+    skipturn = False
+  opponent1choice, nextpersondraws = think(opponent1cards, middlecard,nextpersondraws,skipturn)
+  if opponent1choice == 'DOBIERZ':
+    opponent1cards.append(drawcards())
+    print("Przeciwnik 1 dobrał kartę")
+  elif opponent1choice == 'blokuj':
+    if skipturn != True: 
+      print("Przeciwnik 1 dobrał karty i pominął kolejkę")
+    else: 
+      print("Została rzucona blokada, przeciwnik 1 został zablokowany")
+  else:
+    middlecard = opponent1cards[opponent1choice]
+    print("Przeciwnik 1 rzucił " + str(middlecard))
+    opponent1cards.remove(middlecard)
+    if middlecard[0] == 'POWERUP':
+      color_number = colorthink(opponent1cards)
+      color = color_list[color_number]
+      middlecard[0] = color 
+      print ("Wybrano kolor "+ color)
+      
+  if nextpersondraws > 0:
+    for x in range(nextpersondraws):
+      opponent2cards.append(drawcards())
+      print("Przeciwnik 2 dobrał kartę") 
+  if middlecard[1] == 'BLOKUJ' and skipturn == False:
+    skipturn = True
+  elif middlecard[1] == 'BLOKUJ' and skipturn == True:
+    skipturn = False
+  opponent2choice, nextpersondraws = think(opponent2cards,middlecard,nextpersondraws,skipturn)
+  if opponent2choice == 'DOBIERZ':
+    opponent2cards.append(drawcards())
+    print("Przeciwnik 2 dobrał kartę")
+  elif opponent2choice == 'skip':
+    if skipturn != True: 
+      print("Przeciwnik 2 dobrał karty i pominął kolejkę")
+    else: 
+      print("Została rzucona blokada, przeciwnik 2 został zablokowany")
+  else:
+    middlecard = opponent2cards[opponent2choice]
+    print("Przeciwnik 2 rzuci " + str(middlecard))
+    opponent2cards.remove(middlecard)
+    
+    if middlecard[0] == 'KARTASPECJALNA':
+      color_number = colorthink(opponent1cards)
+      color = color_list[color_number]
+      middlecard[0] = color 
+      print ("Wybrano kolor "+ color)
+      
+  print ("\n"*3)
+  print("Liczba kart \n Przeciwnik 1: " + str(len(opponent1cards)) + "\n Przeciwnik 2: " + str(len(opponent2cards)) )
+  if len(cards) == 0:
+    won = 1
+  if len(opponent1cards) == 0:
+    won = 2
+  if len(opponent2cards) == 0:
+    won = 3 
+  if len(opponent3cards) == 0:
+    won = 4       
+    
+print ("\n" * 50)
+if won == 1:
+  print("Kim jesteś? Jesteś zwycięzcą!")
+if won > 1:
+  print("Przeciwnik " + str(won-1) + " wygrał. Nie martw się, następnym razem na pewno pójdzie Ci znacznie lepiej. ")

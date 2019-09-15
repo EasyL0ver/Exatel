@@ -1,0 +1,8 @@
+val op_iter = ops.iterator();
+nums.reduce {a, b ->
+    when (op_iter.next()) {
+        "+" -> a+b
+        "-" -> a-b
+        else -> throw Exception()
+    }
+}

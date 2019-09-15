@@ -1,0 +1,5 @@
+	AddVehicle({
+		name = "Dodge chrager 2015",
+		price = 500000,
+		class = "dodge_charger_2015_lw",
+	})

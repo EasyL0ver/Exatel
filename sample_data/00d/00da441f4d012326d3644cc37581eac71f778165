@@ -1,0 +1,109 @@
+package polje;
+import java.util.Random;
+import java.util.Scanner;
+import java.io.*;
+
+public class MinskoPolje
+{
+	public Polje matrix[][]=new Polje[8][8];
+	
+	public MinskoPolje(int brojMina)
+	{
+		Random random=new Random();
+		int brMinaUMatrici=0;
+		
+		for(int i=0;i<8;i++)
+			for(int j=0;j<8;++j)
+			{
+				boolean mina=random.nextBoolean();
+				if(mina) brMinaUMatrici++;
+				if(brMinaUMatrici>=brojMina)
+					matrix[i][j]=new Polje(false);
+				else matrix[i][j]=new Polje(mina);
+			}
+			
+	}
+	public void ispisi()
+	{
+			for(int i=0;i<8;i++)
+			{
+				for(int j=0;j<8;++j)
+				{
+					if(matrix[i][j].otvoreno==false)
+						System.out.print("* ");
+					else if(matrix[i][j].otvoreno && matrix[i][j].imaMinu==false)
+						System.out.print("+ ");
+					else System.out.print("- ");
+				}
+				System.out.println("");
+			}
+	}
+	
+	public static void main(String[] args)
+	{
+		Scanner keyboard=new Scanner(System.in);
+		int brojMina=0;
+		System.out.println("UNESITE BROJ MINA (MANJE OD 64): ");
+		try{
+			brojMina=keyboard.nextInt();
+			if(brojMina>63) throw new Exception();
+		}catch(Exception e){ System.out.println("POKUSAJTE PONOVO I UNESITE BROJ MANJII OD 64");return;}
+		
+		MinskoPolje minpolje=new MinskoPolje(brojMina);
+		
+		minpolje.ispisi();
+		int pogodjeno=0;
+		
+		while(true)
+		{
+	
+			if(keyboard.hasNextLine())
+			{
+				int x,y;
+				String line=keyboard.nextLine();
+				String values[]=line.split(",");
+				if(line.contains(",")==false || values.length!=2 || values[0].isEmpty() || values[1].isEmpty()) continue;
+				x=Integer.parseInt(values[0]);
+				y=Integer.parseInt(values[1]);
+				if(x<0 || x>7 || y<0 || y>7)
+				{
+					System.out.println("MOLIM VAS UNESITE KOORDINATE IZMEDJU 0 i 7");
+					continue;
+				}
+				if(minpolje.matrix[x][y].imaMinu)
+				{
+					minpolje.matrix[x][y].otvoreno=true;
+					minpolje.ispisi();
+					System.out.println("GAME OVERRRR");
+					try(PrintWriter out=new PrintWriter(new FileWriter(new File("mapa.txt"))))
+					{
+						for(int i=0;i<8;i++)
+						{
+							for(int j=0;j<8;++j)
+							{
+								if(minpolje.matrix[i][j].otvoreno==false)
+									out.print("* ");
+								else if(minpolje.matrix[i][j].otvoreno && minpolje.matrix[i][j].imaMinu==false)
+									out.print("+ ");
+								else out.print("- ");
+							}
+						out.println("");
+						}
+						out.println("POGODJENO JE "+pogodjeno+" POLJA");
+					}catch(Exception e){e.printStackTrace();}
+					return;
+				}
+				else {
+					minpolje.matrix[x][y].otvoreno=true;
+					pogodjeno++;
+					minpolje.ispisi();
+				}
+				System.out.println("UNESITE SLEDECE KOORDINATE");
+				
+			}
+			
+		}
+		
+		
+	}
+}

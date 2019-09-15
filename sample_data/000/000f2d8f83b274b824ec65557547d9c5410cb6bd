@@ -1,0 +1,183 @@
+Public Class Form1
+    Dim vcaverage As Decimal
+    Dim vctotal As Integer
+    Dim vcCount As Integer = 0
+    Dim vcvfunction As String
+    Dim vcafunction As String
+    Private Sub btn_clear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_clear.Click
+        'clears all scores and the category and changes the status
+        Clear()
+    End Sub
+    Private Sub Clear()
+        'clears all scores and the category and changes the status
+        txtbox_s1.Clear()
+        txtbox_cat.Clear()
+        txtbox_s2.Clear()
+        txtbox_s3.Clear()
+        txtbox_s4.Clear()
+        lbl_statusv.Text = "All data is cleared"
+    End Sub
+
+    Private Sub btn_exit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_exit.Click
+        'closes the program
+        Closes()
+    End Sub
+    Private Sub Closes()
+        'closes the program
+        Me.Close()
+    End Sub
+
+ 
+    Private Sub btn_default_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_default.Click
+        'DEFAULTS ALL VALUES
+        DefaultValues()
+      
+    End Sub
+    Private Sub DefaultValues()
+        'DEFAULTS ALL VALUES
+        txtbox_s1.Text = "7"
+        txtbox_cat.Text = "A"
+        txtbox_s2.Text = "2"
+        txtbox_s3.Text = "0"
+        txtbox_s4.Text = "4"
+    End Sub
+
+    Private Sub btn_average_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_average.Click
+        'Validates and then averages the score from the total
+        Average()
+    End Sub
+    Private Sub Average()
+        'AVERAGES THE SCORE
+        vcvfunction = Validates()
+        lbl_statusv.Text = vcvfunction
+        Calculate()
+        vcaverage = vctotal / 4
+        lbl_statusv.Text = "The average is" & " " & vcaverage
+    End Sub
+
+    Private Sub btn_sum_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_sum.Click
+        'validates then adds up all scores
+
+        vcvfunction = Validates()
+        lbl_statusv.Text = vcvfunction
+        Calculate()
+    End Sub
+    Private Sub Calculate()
+        'Calculates score
+        Dim vscore1 As Integer
+        Dim vscore2 As Integer
+        Dim vscore3 As Integer
+        Dim vscore4 As Integer
+        vscore1 = Val(txtbox_s1.Text)
+        vscore2 = Val(txtbox_s2.Text)
+        vscore3 = Val(txtbox_s3.Text)
+        vscore4 = Val(txtbox_s4.Text)
+        vctotal = vscore1 + vscore2 + vscore3 + vscore4
+        lbl_statusv.Text = "The total is" & " " & vctotal
+    End Sub
+    Private Sub btn_validate_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btn_validate.Click
+        'validate all text boxes
+        lbl_statusv.Text = ""
+        vcvfunction = Validates()
+        lbl_statusv.Text = vcvfunction
+    End Sub
+    Function Validates()
+        'validate all text boxes
+
+        Dim vstr As String
+        vstr = lbl_statusv.Text
+
+        lbl_statusv.Text = ""
+
+        If txtbox_s1.Text = "" Then
+            vstr = vstr & "Score 1 is blank"
+        Else
+            If Not IsNumeric(txtbox_s1.Text) Then
+                vstr = vstr & ControlChars.NewLine & "Only numeric values please"
+            Else
+                vstr = vstr & ControlChars.NewLine & "Score 1 is valid"
+            End If
+        End If
+        If txtbox_s2.Text = "" Then
+            vstr = vstr & ControlChars.NewLine & "Score 2 is blank"
+        Else
+            If Not IsNumeric(txtbox_s2.Text) Then
+                vstr = vstr & ControlChars.NewLine & "Only numeric values please"
+            Else
+                vstr = vstr & ControlChars.NewLine & "Score 2 is valid"
+            End If
+        End If
+
+        If txtbox_s3.Text = "" Then
+            vstr = vstr & ControlChars.NewLine & "Score 3 is blank"
+        Else
+            If Not IsNumeric(txtbox_s3.Text) Then
+                lbl_statusv.Text = lbl_statusv.Text & ControlChars.NewLine & "Only numeric values please"
+            Else
+                lbl_statusv.Text = lbl_statusv.Text & ControlChars.NewLine & "Score 3 is valid"
+            End If
+        End If
+
+
+        If txtbox_s4.Text = "" Then
+            vstr = vstr & ControlChars.NewLine & "Score 4 is blank"
+        Else
+            If Not IsNumeric(txtbox_s4.Text) Then
+                vstr = vstr & ControlChars.NewLine & "Only numeric values please"
+            Else
+                vstr = vstr & ControlChars.NewLine & "Score 4 is valid"
+            End If
+        End If
+        If txtbox_cat.Text = "" Then
+            vstr = vstr & ControlChars.NewLine & "Category is blank"
+        ElseIf IsNumeric(txtbox_cat.Text) Then
+            vstr = vstr & ControlChars.NewLine & "Only Alphabet values please"
+        ElseIf Not txtbox_cat.Text = "a""b""c""A""B""C" Then
+            vstr = vstr & ControlChars.NewLine & "Only A-C or a-c"
+        End If
+        Return vstr
+    End Function
+
+    Private Sub btn_porf_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_porf.Click
+        'PASS OR FAIL
+        Calculate()
+        PorF()
+    End Sub
+    Private Sub PorF()
+        'Pass or Fail if all three values are lower than 5 automatic fail
+        Dim vfive1 As Integer
+        Dim vfive2 As Integer
+        Dim vfive3 As Integer
+        Dim vfive4 As Integer
+        vfive1 = Val(txtbox_s1.Text)
+        vfive2 = Val(txtbox_s2.Text)
+        vfive3 = Val(txtbox_s3.Text)
+        vfive4 = Val(txtbox_s4.Text)
+        Countvalue(vfive1)
+        CountValue(vfive2)
+        CountValue(vfive3)
+        CountValue(vfive4)
+        If vcCount >= 3 Then
+            lbl_statusv.Text = lbl_statusv.Text & ControlChars.NewLine & "FAIL"
+        ElseIf vctotal <= 20 And txtbox_cat.Text.ToUpper = "A" Then
+            lbl_statusv.Text = lbl_statusv.Text & ControlChars.NewLine & "PASS"
+            ElseIf vctotal <= 20 And txtbox_cat.Text.ToUpper = "A" Then
+                lbl_statusv.Text = lbl_statusv.Text & ControlChars.NewLine & "FAIL"
+        ElseIf vctotal >= 25 And txtbox_cat.Text.ToUpper = "B" Then
+            lbl_statusv.Text = lbl_statusv.Text & ControlChars.NewLine & "PASS"
+            Else if vctotal <= 25 And txtbox_cat.Text.ToUpper = "B" Then
+            lbl_statusv.Text = lbl_statusv.Text & ControlChars.NewLine & "FAIL"
+        ElseIf vctotal >= 30 And txtbox_cat.Text.ToUpper = "C" Then
+            lbl_statusv.Text = lbl_statusv.Text & ControlChars.NewLine & "PASS"
+        ElseIf vctotal <= 30 And txtbox_cat.Text.ToUpper = "C" Then
+            lbl_statusv.Text = lbl_statusv.Text & ControlChars.NewLine & "FAIL"
+        End If
+
+    End Sub
+    Private Sub CountValue(ByVal Vnum As Integer)
+        If Vnum < 5 Then
+            vcCount = vcCount + 1
+        End If
+    End Sub
+
+End Class

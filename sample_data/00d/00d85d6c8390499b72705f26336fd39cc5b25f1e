@@ -1,0 +1,12 @@
+modellm <- lm(`Sepal.Length` ~ `Sepal.Width` + `Petal.Length` + `Petal.Width`, data = iris)
+
+model <- coef(Modellm)["(Intercept)"] + 
+  coef(Modellm)["Sepal.Width"] * iris$`Sepal.Width` + 
+  coef(Modellm)["Petal.Length"] * iris$`Petal.Length` + 
+  coef(Modellm)["Petal.Width"] * iris$`Petal.Width` + 
+  residuals(Modellm)
+
+library(ggplot2)
+ggplot(iris, aes(`Sepal.Length`, model))+ 
+  geom_point(size=2, alpha=0.2)+
+  geom_smooth(method='lm')

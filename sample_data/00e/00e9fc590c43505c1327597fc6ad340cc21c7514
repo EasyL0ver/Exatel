@@ -1,0 +1,2 @@
+// Take a duration in ms and convert it to either Hours, minutes or seconds;
+const msToHours = (duration) => duration / 60 / 60 / 1000;

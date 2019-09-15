@@ -1,0 +1,15 @@
+WORKS:
+$sql = 'WITH table1_ids AS (SELECT ID FROM table1 WHERE criterion="1")
+		SELECT * FROM table2 WHERE reference1 IN (SELECT * FROM table1_ids)
+		UNION
+		SELECT * FROM table2 WHERE reference2 IN (SELECT * FROM table1_ids)';
+$stmt = static::$pdo->prepare($sql);
+$stmt->execute();
+
+FAILS:
+$sql = 'WITH table1_ids AS (SELECT ID FROM table1 WHERE criterion=?)
+		SELECT * FROM table2 WHERE reference1 IN (SELECT * FROM table1_ids)
+		UNION
+		SELECT * FROM table2 WHERE reference2 IN (SELECT * FROM table1_ids)';
+$stmt = static::$pdo->prepare($sql); // $stmt === false
+$stmt->execute(['1'])

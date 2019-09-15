@@ -1,0 +1,91 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+
+class NetworkTest
+  def initialize
+    @errors = 0
+    @urls = [
+      "https://pivotal.io",
+      "https://github.com",
+      "https://gradle.org",
+      "https://travis-ci.org",
+      "https://www.cloudfoundry.org",
+      "https://spring.io",
+      "http://www.appcontinuum.io",
+      "https://12factor.net",
+      "https://maven.apache.org/",
+      "https://www.wikipedia.org",
+      "https://www.youtube.com",
+      "https://stackoverflow.com",
+      "https://www.google.com",
+      "https://accounts.google.com/ServiceLogin",
+      "https://pivotal.slack.com",
+      "https://palexternal.slack.com",
+      "https://www.pivotaltracker.com",
+      "https://login.sys.evans.pal.pivotal.io/login",
+    ]
+  end
+  
+  def run
+    puts "Testing url access"
+    @urls.each { |url| check_url(url) }
+    puts ""
+
+    check_command(
+      "netcat github.com 22 -w 2 -z",
+      "Testing SSH access",
+      "SSH failed"
+    )
+
+    system("rm -rf pal-tracker-distributed")
+    system("rm -rf ~/.gradle")
+
+    check_command(
+      "git clone -q https://github.com/platform-acceleration-lab/pal-tracker-distributed.git",
+      "Testing Git access",
+      "Git clone failed"
+    )
+
+    check_command(
+      "./gradlew -q --console=plain -Dorg.gradle.internal.launcher.welcomeMessageEnabled=false clean assemble",
+      "Downloading Gradle dependencies (this may take some time)",
+      "Gradle assemble failed"
+    )
+  end
+  
+  def summarize
+    if @errors
+      puts "Network test completed with error count #{errors}."
+    else
+      puts "Network test completed successfully."
+    end
+  end
+  
+  private
+  
+  def check_url(url)
+    response = Net::HTTP.get_response(URI(url))
+
+    if response.code.to_i >= 300
+      puts "Request to #{url} failed with status code #{response.code}"
+      errors += 1
+      print "x"
+    else
+      print "."
+    end
+  end
+  
+  def check_command(command, open_message, failure_message)
+    puts open_message
+    unless system(command)
+      puts failure_message
+      @errors += 1
+    end
+  end
+end
+
+NetworkTest.new.tap do |t|
+  t.run
+  t.summarize
+end

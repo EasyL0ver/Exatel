@@ -1,0 +1,45 @@
+Get decibel values whilst recording sound?
+short data[] = new short[bufferSize];
+read = recorder.read(data, 0, bufferSize);
+double p2 = data[data.length-1];
+System.out.println("p2: " + p2);
+double decibel;
+
+if (p2==0)
+   decibel=Double.NEGATIVE_INFINITY;
+else
+   decibel = 20.0*Math.log10(p2/65535.0);
+   System.out.println("p2/65535: " + (p2/65535.0));
+
+System.out.println("decibel: " + decibel);
+	
+01-11 16:43:03.821: I/System.out(14530): p2: 0.0
+01-11 16:43:03.821: I/System.out(14530): p2/65535: 0.0
+01-11 16:43:03.821: I/System.out(14530): decibel: -Infinity
+01-11 16:43:03.911: I/System.out(14530): p2: 0.0
+01-11 16:43:03.911: I/System.out(14530): p2/65535: 0.0
+01-11 16:43:03.911: I/System.out(14530): decibel: -Infinity
+01-11 16:43:04.001: I/System.out(14530): p2: 0.0
+01-11 16:43:04.001: I/System.out(14530): p2/65535: 0.0
+01-11 16:43:04.001: I/System.out(14530): decibel: -Infinity
+01-11 16:43:04.091: I/System.out(14530): p2: 0.0
+01-11 16:43:04.091: I/System.out(14530): p2/65535: 0.0
+01-11 16:43:04.091: I/System.out(14530): decibel: -Infinity
+01-11 16:43:04.191: I/System.out(14530): p2: 0.0
+01-11 16:43:04.191: I/System.out(14530): p2/65535: 0.0
+01-11 16:43:04.191: I/System.out(14530): decibel: -Infinity
+01-11 16:43:04.281: I/System.out(14530): p2: 0.0
+01-11 16:43:04.281: I/System.out(14530): p2/65535: 0.0
+01-11 16:43:04.281: I/System.out(14530): decibel: -Infinity
+01-11 16:43:04.371: I/System.out(14530): p2: 0.0
+01-11 16:43:04.371: I/System.out(14530): p2/65535: 0.0
+01-11 16:43:04.371: I/System.out(14530): decibel: -Infinity
+	
+short buffer[] = new short[bufferSize];
+read = recorder.read(buffer, 0, bufferSize);
+double p2 = data[data.length-1];
+double decibel;
+if (p2==0)
+    decibel=Double.NEGATIVE_INFINITY;
+else
+    decibel = 20.0*Math.log10(p2/65535.0);

@@ -1,0 +1,127 @@
+private static void ConcurrentBagTest()
+   {
+        int collSize = 10000000;
+        Stopwatch stopWatch = new Stopwatch();
+        ConcurrentBag<int> bag1 = new ConcurrentBag<int>();
+
+        stopWatch.Start();
+
+
+        Parallel.For(0, collSize, delegate(int i)
+        {
+            bag1.Add(i);
+        });
+
+
+        stopWatch.Stop();
+        Console.WriteLine("Elapsed Time = {0}", 
+                          stopWatch.Elapsed.TotalSeconds);
+ }
+	
+private static void LockCollTest()
+       {
+        int collSize = 10000000;
+        object list1_lock=new object();
+        List<int> lst1 = new List<int>(collSize);
+
+        Stopwatch stopWatch = new Stopwatch();
+        stopWatch.Start();
+
+
+        Parallel.For(0, collSize, delegate(int i)
+            {
+                lock(list1_lock)
+                {
+                    lst1.Add(i);
+                }
+            });
+
+        stopWatch.Stop();
+        Console.WriteLine("Elapsed = {0}", 
+                          stopWatch.Elapsed.TotalSeconds);
+       }
+	
+System.Collections.Concurrent
+	
+class Program
+{
+    private static object list1_lock = new object();
+    private const int collSize = 1000;
+
+    static void Main()
+    {
+        ConcurrentBagTest();
+        LockCollTest();
+    }
+
+    private static void ConcurrentBagTest()
+    {
+        var bag1 = new ConcurrentBag<int>();
+        var stopWatch = Stopwatch.StartNew();
+        Task.WaitAll(Enumerable.Range(1, collSize).Select(x => Task.Factory.StartNew(() =>
+        {
+            Thread.Sleep(5);
+            bag1.Add(x);
+        })).ToArray());
+        stopWatch.Stop();
+        Console.WriteLine("Elapsed Time = {0}", stopWatch.Elapsed.TotalSeconds);
+    }
+
+    private static void LockCollTest()
+    {
+        var lst1 = new List<int>(collSize);
+        var stopWatch = Stopwatch.StartNew();
+        Task.WaitAll(Enumerable.Range(1, collSize).Select(x => Task.Factory.StartNew(() =>
+        {
+            lock (list1_lock)
+            {
+                Thread.Sleep(5);
+                lst1.Add(x);
+            }
+        })).ToArray());
+        stopWatch.Stop();
+        Console.WriteLine("Elapsed = {0}", stopWatch.Elapsed.TotalSeconds);
+    }
+}
+	
+int collSize = 1000000;
+        object list1_lock=new object();
+        List<int> lst1 = new List<int>();
+        ConcurrentBag<int> concBag = new ConcurrentBag<int>();
+        int numTasks = 15;
+
+        int i = 0;
+
+        Stopwatch sWatch = new Stopwatch();
+        sWatch.Start();
+         //First, try locks
+        Task.WaitAll(Enumerable.Range(1, numTasks)
+           .Select(x => Task.Factory.StartNew(() =>
+            {
+                for (i = 0; i < collSize / numTasks; i++)
+                {
+                    lock (list1_lock)
+                    {
+                        lst1.Add(x);
+                    }
+                }
+            })).ToArray());
+
+        sWatch.Stop();
+        Console.WriteLine("lock test. Elapsed = {0}", 
+            sWatch.Elapsed.TotalSeconds);
+
+        // now try concurrentBag
+        sWatch.Restart();
+        Task.WaitAll(Enumerable.Range(1, numTasks).
+                Select(x => Task.Factory.StartNew(() =>
+            {
+                for (i = 0; i < collSize / numTasks; i++)
+                {
+                    concBag.Add(x);
+                }
+            })).ToArray());
+
+        sWatch.Stop();
+        Console.WriteLine("Conc Bag test. Elapsed = {0}",
+               sWatch.Elapsed.TotalSeconds);

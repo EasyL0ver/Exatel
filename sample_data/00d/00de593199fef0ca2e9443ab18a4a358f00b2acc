@@ -1,0 +1,77 @@
+Shader "Perkele/GrassShader" 
+{
+	Properties
+	{
+		_MainTex("Main Texture", 2D) = "white" {}
+		_Cutoff("Alpha Cutoff", Range (0,1)) = 0.5
+		_WindDir("Wind Direction", Vector) = (0,0,0,0)
+		_WindDirTex("Wind Dir Texture", 2D) = "black" {}
+		_WindStrTex("Wind Str Texture", 2D) = "black" {}
+		_Speed("Wind Speed", float) = 1
+		_WindStrength("Wind Strength", float) = 1
+		_PlayerPos("Player Position", vector) = (1,1,1,1)
+		_Dist("Distance", float) = 0
+	}
+
+	SubShader
+	{
+		Tags
+		{
+			"Queue" = "AlphaTest"
+			"IgnoreProjection" = "True"
+			"RenderType" = "TransparentCutout"
+		}
+
+		CGPROGRAM
+
+		#pragma surface surf Lambert vertex:vert alphatest:_Cutoff
+
+		struct Input
+		{
+			float2 uv_MainTex;
+		};
+
+		sampler2D _MainTex;
+		sampler2D _WindDirTex;
+		sampler2D _WindStrTex;
+		float4 _WindDir;
+		float _Speed;
+		float _WindStrength;
+		float4 _PlayerPos;
+		float _Dist;
+
+		float4 wind(float2 uv)
+		{
+			float2 wd = tex2Dlod(_WindDirTex, float4(uv.x, uv.y, 0, 0)).xy;
+			float t = wd.x;
+			wd = (wd - 0.5) * 2;
+			float u = fmod(_Time[1] * _Speed - t * 0.1, 1.0);
+			float w = tex2Dlod(_WindStrTex, float4(u, 0,0,0));
+			w *= _WindStrength;
+			return normalize(_WindDir + float4(wd.x, 0, wd.y, 0) * 0.4) * w;
+		}
+
+		void vert(inout appdata_full v)
+		{
+			float4 w = wind(v.texcoord1.xy);
+			v.vertex += w * v.texcoord.y;
+
+
+			float3 direction = normalize(v.vertex.xyz-_PlayerPos.xyz);
+			float l = sqrt(pow(v.vertex.x, 2) + pow(v.vertex.y, 2) + pow(v.vertex.z, 2));
+			float a = normalize(v.vertex.xyz + (direction * (l/_Dist)));
+
+			if(l < 0)
+			{return;}
+			else {v.vertex.x = a.x;}		
+		}
+
+		void surf(Input IN, inout SurfaceOutput o)
+		{
+			fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
+			o.Albedo = c.rgb;
+			o.Alpha = c.a;
+		}
+		ENDCG
+	}
+}

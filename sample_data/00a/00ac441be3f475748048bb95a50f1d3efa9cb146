@@ -1,0 +1,20 @@
+category 1 
+     category 2
+     category 3 
+     
+2015
+     category 2 
+     
+function extend_date_archives_add_rewrite_rules($wp_rewrite) {
+    $rules = array();
+    $structures = array(
+        $wp_rewrite->get_category_permastruct() . $wp_rewrite->get_date_permastruct(),
+        $wp_rewrite->get_category_permastruct() . $wp_rewrite->get_month_permastruct(),
+        $wp_rewrite->get_category_permastruct() . $wp_rewrite->get_year_permastruct(),
+    );
+    foreach( $structures as $s ){
+        $rules += $wp_rewrite->generate_rewrite_rules($s);
+    }
+    $wp_rewrite->rules = $rules + $wp_rewrite->rules;
+}
+add_action('generate_rewrite_rules', 'extend_date_archives_add_rewrite_rules');

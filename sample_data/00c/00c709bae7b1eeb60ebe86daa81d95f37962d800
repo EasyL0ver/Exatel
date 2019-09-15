@@ -1,0 +1,13 @@
+public void paint(Graphics g){
+        Graphics2D g2 = (Graphics2D)g;
+//        g2.drawLine(100, 100, 200, 100);
+//        g2.drawRect(100, 200, 100, 100);
+//        g2.drawOval(250, 200, 100, 100);
+          
+          int x=0;
+          int y=0;
+          int size=600;
+          for(x=50,y=50;x<size-50;x+=10,y+=10){
+              g2.drawRect(x, y, size-2*x, size-2*y);
+          }
+    }

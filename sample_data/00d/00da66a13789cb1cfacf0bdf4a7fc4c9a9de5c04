@@ -1,0 +1,12 @@
+CREATE TABLE shelf
+(
+	S_Code VARCHAR2(4),
+	Description VARCHAR2(60)
+);
+
+CREATE TABLE book
+(
+	ISBN VARCHAR2(15) PRIMARY KEY,
+	Title VARCHAR(80),
+	Code REFERENCES shelf
+)

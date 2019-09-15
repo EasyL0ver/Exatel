@@ -1,0 +1,165 @@
+		if(strcmp(cmd, "/cuff", true) == 0)
+        {
+        if(IsPlayerConnected(playerid))
+        {
+        if(IsACop(playerid) || IsAUSAF(playerid) || IsASWAT(playerid) || IsAnAgent(playerid))
+        {
+        tmp = strtok(cmdtext, idx);
+        if(!strlen(tmp))
+        {
+        SendClientMessage(playerid, WHITE, "** [Usage]: /cuff [playerid/name]");
+        return 1;
+        }
+        if(IsPlayerInAnyVehicle(playerid))
+        {
+        SendClientMessage(playerid, GREY, "Cannot use this while in a Car.");
+        return 1;
+        }
+        giveplayerid = ReturnUser(tmp);
+        if(IsPlayerConnected(giveplayerid))
+		{
+        if(PlayerTied[giveplayerid] > 0)
+        {
+        SendClientMessage(playerid, GREY, "    That player is Tied up.");
+        return 1;
+        }
+        if(PlayerCuffed[giveplayerid] > 1)
+        {
+        SendClientMessage(playerid, GREY, "    That player is already Cuffed.");
+        return 1;
+        }
+        if(IsPlayerInAnyVehicle(giveplayerid))
+        {
+        SendClientMessage(playerid, GREY, "Suspect is in a car, get him out first.");
+        return 1;
+        }
+        if(PlayerCuffed[giveplayerid] == 1 || GetPlayerSpecialAction(giveplayerid) == SPECIAL_ACTION_HANDSUP)
+        {
+        if(ProxDetectorS(8.0, playerid, giveplayerid))
+        {
+        if(giveplayerid == playerid) { SendClientMessage(playerid, GREY, "    You can't Cuff yourself."); return 1; }
+        GetPlayerName(giveplayerid, giveplayer, sizeof(giveplayer));
+        GetPlayerName(playerid, sendername, sizeof(sendername));
+        format(string, sizeof(string), "* You were cuffed by Officer %s.", sendername);
+        SendClientMessage(giveplayerid, LIGHTBLUE, string);
+        if(PlayerInfo[giveplayerid][pMask] == 1)
+        {
+        format(string, sizeof(string), "* You Cuffed A Stranger.");
+        SendClientMessage(playerid, LIGHTBLUE, string);
+        format(string, sizeof(string), "* %s hand cuffs A Stranger, so he wont go anywhere.", PlayerName(playerid));
+        ProxDetector(30.0, playerid, string, PURPLE,PURPLE,PURPLE,PURPLE,PURPLE);
+        }
+        else
+        {
+        format(string, sizeof(string), "* You cuffed %s.", giveplayer);
+        SendClientMessage(playerid, LIGHTBLUE, string);
+        format(string, sizeof(string), "* %s hand cuffs %s, so he wont go anywhere.", sendername ,giveplayer);
+        ProxDetector(30.0, playerid, string, PURPLE,PURPLE,PURPLE,PURPLE,PURPLE);
+        }
+        GameTextForPlayer(giveplayerid, "~r~Cuffed", 2500, 3);
+        TogglePlayerControllable(giveplayerid, 0);
+        ClearAnimations(giveplayerid);
+        ApplyAnimation(giveplayerid,"ped","cower",1,1,0,0,0,0);
+        ApplyAnimation(giveplayerid,"ped","cower",1,1,0,0,0,0);
+        PlayerCuffed[giveplayerid] = 2;
+        PlayerCuffedTime[giveplayerid] = 300;
+        }
+        else
+        {
+        SendClientMessage(playerid, GREY, "    That player is not near you.");
+        return 1;
+        }
+        }
+        else
+        {
+        SendClientMessage(playerid, GREY, "    That player needs to be restrained first.");
+        return 1;
+        }
+        }
+        else
+        {
+        SendClientMessage(playerid, GREY, "    That player is Offline.");
+        return 1;
+        }
+        }
+        else
+        {
+        SendClientMessage(playerid, GREY, "    You're not a Cop / FBI / RCSD / USAF.");
+        }
+        }
+        return 1;
+        }
+        if(strcmp(cmd, "/uncuff", true) == 0)
+        {
+        if(IsPlayerConnected(playerid))
+        {
+        if(IsACop(playerid) || IsAUSAF(playerid) || IsASWAT(playerid) || IsAnAgent(playerid))
+        {
+        tmp = strtok(cmdtext, idx);
+        if(!strlen(tmp))
+        {
+        SendClientMessage(playerid, WHITE, "** [Usage]: /uncuff [playerid/name]");
+        return 1;
+        }
+        giveplayerid = ReturnUser(tmp);
+        if(IsPlayerConnected(giveplayerid))
+        {
+        if(giveplayerid != INVALID_PLAYER_ID)
+        {
+        if(ProxDetectorS(8.0, playerid, giveplayerid))
+        {
+        if(giveplayerid == playerid) { SendClientMessage(playerid, GREY, "    You can't Uncuff yourself."); return 1; }
+        if(PlayerCuffed[giveplayerid])
+        {
+        GetPlayerName(playerid, sendername, sizeof(sendername));
+        GetPlayerName(giveplayerid, giveplayer, sizeof(giveplayer));
+        format(string, sizeof(string), "* You were Uncuffed by %s.", sendername);
+        SendClientMessage(giveplayerid, LIGHTBLUE, string);
+        if(PlayerInfo[giveplayerid][pMask] == 1)
+        {
+        format(string, sizeof(string), "* You uncuffed A Stranger.");
+        SendClientMessage(playerid, LIGHTBLUE, string);
+        format(string, sizeof(string), "* %s has uncuffed A Stranger.", PlayerName(playerid));
+        ProxDetector(30.0, playerid, string, PURPLE,PURPLE,PURPLE,PURPLE,PURPLE);
+        }
+        else
+        {
+        format(string, sizeof(string), "* You uncuffed %s.", giveplayer);
+        SendClientMessage(playerid, LIGHTBLUE, string);
+        format(string, sizeof(string), "* %s has uncuffed %s.", sendername ,giveplayer);
+        ProxDetector(30.0, playerid, string, PURPLE,PURPLE,PURPLE,PURPLE,PURPLE);
+        }
+        GameTextForPlayer(giveplayerid, "~g~Uncuffed", 2500, 3);
+        TogglePlayerControllable(giveplayerid, 1);
+        ClearAnimations(giveplayerid);
+        PlayerCuffed[giveplayerid] = 0;
+        PlayerCuffedTime[giveplayerid] = 0;
+        }
+        else
+        {
+        SendClientMessage(playerid, GREY, "    That player isn't Cuffed.");
+        return 1;
+        }
+        }
+        else
+        {
+        SendClientMessage(playerid, GREY, "    That player is not near you.");
+        return 1;
+        }
+        }
+        }
+        else
+        {
+        SendClientMessage(playerid, GREY, "    That player is Offline.");
+        return 1;
+        }
+        }
+        else
+        {
+        SendClientMessage(playerid, GREY, "    You're not a Cop / FBI / RCSD / USAF.");
+        }
+        }
+        return 1;
+        }
+		return 0;
+        }

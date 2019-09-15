@@ -1,0 +1,205 @@
+=> Using `/home/jasper/repos/void-packages/hostdir/binpkgs/perl-Wx' as local repository.
+[*] Updating `https://repo.voidlinux.eu/current/musl/x86_64-repodata' ...
+[*] Updating `https://repo.voidlinux.eu/current/musl/nonfree/x86_64-repodata' ...
+[*] Updating `https://repo.voidlinux.eu/current/x86_64-repodata' ...
+[*] Updating `https://repo.voidlinux.eu/current/nonfree/x86_64-repodata' ...
+[*] Updating `https://repo.voidlinux.eu/current/aarch64/x86_64-repodata' ...
+[*] Updating `https://repo.voidlinux.eu/current/multilib/x86_64-repodata' ...
+[*] Updating `https://repo.voidlinux.eu/current/multilib/nonfree/x86_64-repodata' ...
+=> perl-Wx-0.9932_1: removing autodeps, please wait...
+=> perl-Wx-0.9932_1: building [perl-module] ...
+   [host] perl-5.26.1_6: found (https://repo.voidlinux.eu/current)
+   [host] pkg-config-0.29.2_1: found (https://repo.voidlinux.eu/current)
+   [target] perl-Alien-wxWidgets-0.69_1: found (/host/binpkgs/perl-Wx)
+   [target] wxWidgets-devel-3.0.4_1: found (https://repo.voidlinux.eu/current)
+   [target] libstdc++-devel-7.3.0_3: installed.
+   [runtime] perl>=0: found perl-5.26.1_6 (https://repo.voidlinux.eu/current)
+   [runtime] perl-Alien-wxWidgets>=0: found perl-Alien-wxWidgets-0.69_1 (/host/binpkgs/perl-Wx)
+   [runtime] wxWidgets>=0: found wxWidgets-3.0.4_1 (https://repo.voidlinux.eu/current)
+=> perl-Wx-0.9932_1: installing host dependency 'perl-5.26.1_6' ...
+=> perl-Wx-0.9932_1: installing host dependency 'pkg-config-0.29.2_1' ...
+=> perl-Wx-0.9932_1: installing target dependency 'perl-Alien-wxWidgets-0.69_1' ...
+=> perl-Wx-0.9932_1: installing target dependency 'wxWidgets-devel-3.0.4_1' ...
+=> perl-Wx-0.9932_1: running do-fetch hook: 00-distfiles ...
+=> perl-Wx-0.9932_1: running do-extract hook: 00-distfiles ...
+=> perl-Wx-0.9932_1: extracting distfile(s), please wait...
+=> perl-Wx-0.9932_1: running post_extract ...
+=> perl-Wx-0.9932_1: running post-extract hook: 00-patches ...
+=> perl-Wx-0.9932_1: running pre-configure hook: 00-gnu-configure-asneeded ...
+=> perl-Wx-0.9932_1: running pre-configure hook: 01-override-config ...
+=> perl-Wx-0.9932_1: running pre-configure hook: 02-script-wrapper ...
+=> perl-Wx-0.9932_1: running do_configure ...
+Checking if your kit is complete...
+Looks good
+'WX' is not a known MakeMaker parameter name.
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your perl and your Config.pm seem to have different ideas about the
+architecture they are running on.
+Perl thinks: [perlprefix-x86_64]
+Config says: [x86_64-linux]
+This may or may not cause problems. Please check your installation of perl
+if you have problems building this extension.
+Writing MYMETA.yml and MYMETA.json
+Have /builddir/.xbps-perl-Wx/perlprefix-x86_64
+Want /usr/lib/perl5/core_perl
+Your

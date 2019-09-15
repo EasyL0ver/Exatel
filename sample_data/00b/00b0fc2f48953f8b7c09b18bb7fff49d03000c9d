@@ -1,0 +1,22 @@
+How to insert into values into two table with foreign key relationship built in?
+CREATE TABLE `question` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(128) NOT NULL DEFAULT '',
+  `content` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+	
+CREATE TABLE `answer` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `question_id` int(11) unsigned NOT NULL,
+  `content` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `question_id` (`question_id`),
+  CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `question` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+	
+INSERT INTO answer(content, question_id) 
+VALUES('Ironman', (select id 
+                     from question 
+                    where title ='favourite characters' 
+                      and content = 'Who is your favourite characters in Avanger?'));

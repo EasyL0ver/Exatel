@@ -1,0 +1,10 @@
+Error message (clang stderr):
+src/main.c:58:23: error: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Werror,-Wformat]
+    printf("%d %d\n", matice->radku, matice->sloupcu);
+            ~~        ^~~~~~~~~~~~~
+            %zu
+src/main.c:58:38: error: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Werror,-Wformat]
+    printf("%d %d\n", matice->radku, matice->sloupcu);
+               ~~                    ^~~~~~~~~~~~~~~
+               %zu
+2 errors generated.

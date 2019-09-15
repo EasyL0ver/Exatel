@@ -1,0 +1,31 @@
+const router = RootStack.router;
+const initialState = router.getStateForAction(NavigationActions.init());
+
+export default navReducer = (state = initialState, action) => {
+  return router.getStateForAction(action, state);
+
+}
+	
+const SiraRoute = (props) => (
+    <RootStack navigation={{
+            dispatch: props.dispatch,
+            state: props.nav,
+        }} 
+    />
+)
+
+const mapStateToProps = (state) => ({
+    nav: state.navReducer,
+});
+
+export default connect(mapStateToProps)(SiraRoute);
+	
+const store = configureStore();
+
+const sira = () => (
+  <Provider store={store}>
+    <SiraRoute  />
+  </Provider>
+)
+
+AppRegistry.registerComponent('SIRA', () => sira);

@@ -1,0 +1,4 @@
+$App->get("index", function()
+{    
+    $this->view->write("index", $this->data->get());
+});

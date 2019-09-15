@@ -1,0 +1,16 @@
+How to programmatically 'load' things in iphone app?
+if (object) {
+// saying just 'object' asks if it is non-zero/valid
+}
+	
+if([self.view.subviews containsObject:object])
+	
+if([object superview] == self.view)
+	
+-(BOOL)isDescendantOfView:(UIView *)view;
+	
+if([otherClass finishedLoading])
+	
+- (BOOL)finishedLoading {
+return ([object superview] == self.view)
+}

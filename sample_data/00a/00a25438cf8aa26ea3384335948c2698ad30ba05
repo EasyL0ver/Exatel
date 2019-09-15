@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson 7 Movie Data</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+
+
+
+
+
+    <script>
+        $(function () {
+            //When the page loads
+            var searchString = 'wedding';
+            $('#movieSearch').val(searchString);
+            loadMovies(searchString);
+
+
+            // Clear the end field
+            $('#movieSearch').on('focus', function () {
+
+                loadMovies($(this).val(''));
+
+            })
+
+            //Set up to resond to changes in the edit field
+            $('#movieSearch').on('blur', function () {
+
+                var searchString = $(this).val();
+                loadMovies(searchString);
+
+            })
+
+
+        }); // end loading jquery
+
+
+        function loadMovies(searchString) {
+
+            var url = 'http://www.omdbapi.com/?apikey=<key here>&s=' + searchString;
+
+
+            $.getJSON(url, function (movieDataList) {
+                console.log(movieDataList)
+                movieList = movieDataList.Search;
+                firstMovie = movieDataList.Search[0];
+
+
+
+                $('#movieSelection').children().remove();
+
+
+                for (var i = 0; i < movieList.length; i++) {
+
+                    var htmlOption = "<option value='" + movieList[i].imdbID + "'>" + movieList[i].Title + "</option"
+
+                    $('#movieSelection').children().end().append(htmlOption);
+                }
+
+
+                
+                loadMovie(firstMovie.imdbID)
+
+            })
+
+            $('#movieSelection').on("change", function () {
+
+                var selectedMovieId = $(this).val();
+                loadMovie(selectedMovieId)
+            })
+
+
+        } // function loadMovies()
+
+
+        function loadMovie(selectedMovieId) {
+
+
+            var urlMovie = 'http://www.omdbapi.com/?apikey=<key here>&i=' + selectedMovieId;
+            $.getJSON(urlMovie, function (movieData) {
+
+                console.log(movieData);
+
+
+                $('#movieTitle').html(movieData.Title)
+                $('#movieRating').html('Rating: ' + movieData.Rated)
+                $('#movieRuntime').html('Runtime: ' + movieData.Runtime)
+                $('#moviePlot').html(movieData.Plot)
+
+                $('#movieImage').prop('src', movieData.Poster);
+
+            })
+
+
+        }// function loadMovie
+
+
+
+
+
+
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <div class="row">
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading" id="movieHeading">
+                    <div class="row">
+                        <div class="col-md-6"><input type="text" id="movieSearch" class="form-control" /></div>
+                        <div class="col-md-6"> <select class="form-control" id="movieSelection"></select></div>
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-2">
+
+                            <img id="movieImage" width="52" height="81">
+
+                        </div>
+                        <div class="col-md-10">
+                            <h4 id="movieTitle"></h4>
+                            <h5 id="movieRating"></h5>
+                            <h5 id="movieRunTime"></h5>
+                            <p id="moviePlot"></p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

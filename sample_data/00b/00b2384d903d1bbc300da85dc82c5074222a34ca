@@ -1,0 +1,165 @@
+(function ()
+{
+    g.loadQueue.push(
+    {
+        fun: funDisb
+    });
+
+
+    let map_name = [];
+	const constStorageString = localStorage.getItem("mapsDisbandAddonV1");
+    let storageString = constStorageString;
+    if (storageString != null)
+    {
+        let i = storageString.indexOf(',');
+        let y = 0;
+        while (i != -1)
+        {
+            map_name.push(storageString.substring(y, i));
+            storageString = storageString.substring(i + 1);
+            i = storageString.indexOf(',');
+        }
+        map_name.push(storageString.substring(0));
+    }
+
+    function updateMaps()
+    {
+		if(map_name.length>0)
+			localStorage.setItem("mapsDisbandAddonV1", map_name);
+		else
+			localStorage.setItem("mapsDisbandAddonV1", "");
+    }
+
+      g.chat.parsers.push(function (ch)
+        {
+            if (ts() / 1000 - ch.ts <= 5)
+            {
+                if (ch.t == 'add' && ch.k == 2 && ch.n == hero.nick)
+                {
+                    const name = map_name.some(function (element)
+                    {
+                        return element.indexOf(map.name) === 0;
+                    });
+                    if (!name)
+                    {
+                        map_name.push(map.name);
+                        updateMaps();
+                        message('Dodano mapę: ' + map.name);
+                    }
+
+                }
+                else if (ch.t == 'delete' && ch.k == 2 && ch.n == hero.nick)
+                {
+                    let element = map_name.indexOf(map.name);
+                    if (element != -1)
+                    {
+                        map_name.splice(element, 1);
+                        updateMaps();
+                        message('Usunięto mapę: ' + map.name);
+                    }
+
+                }
+              else if((ch.t).indexOf('delete')==0 && ch.k == 2 && ch.n == hero.nick)
+              {
+                const mapToDelete = (ch.t).substring(7);
+                console.log(mapToDelete);
+                let element = map_name.indexOf(mapToDelete);
+                    if (element != -1)
+                    {
+                        map_name.splice(element, 1);
+                        updateMaps();
+                        message('Usunięto mapę: ' + mapToDelete);
+                    }
+              }
+				else if(ch.t == 'maps' && ch.k == 2 && ch.n == hero.nick)
+				{
+						message("Mapy to: " + localStorage.getItem("mapsDisbandAddonV1"));
+				}
+                
+            }
+        });
+    
+
+    function funDisb()
+    {
+
+        let timer = document.getElementById("battletimer");
+        let fbool = false;
+        let mbool = false;
+        let interval;
+
+        for (var iter = 0; iter < map_name.length; ++iter)
+            if (map_name[iter].search(map.name) != -1)
+                mbool = true;
+
+        function setProp()
+        {
+            fbool = false;
+            document.getElementById('battle')
+                .addEventListener('DOMSubtreeModified', check);
+            clearInterval(interval);
+        }
+
+        function check()
+        {
+
+            if (!fbool && timer.innerHTML != "Walka zakończona." && timer.innerHTML != "-" && g.party.length && localStorage.getItem("auto*disband") == "on")
+            {
+                fbool = true;
+                document.getElementById('battle')
+                    .removeEventListener('DOMSubtreeModified', check);
+                interval = setInterval(disband, 5000);
+            }
+        }
+
+        function disband()
+        {
+            if (g.party.length)
+            {
+                if (timer.innerHTML == "Walka zakończona.")
+                {
+
+                    if (document.getElementById("loots_counter")
+                        .innerHTML <= 0)
+                    {
+                        var tmp = document.getElementsByClassName("party_member")[0].innerText.search(hero.nick);
+                        if (document.getElementsByClassName("party_member")[0].innerText.substring(tmp - 3, 4) == ("[D]" + hero.nick[0]))
+                        {
+                            _g("party&a=disband");
+                            setProp();
+
+                        }
+                        else
+                        {
+                            _g('party&a=rm&id=' + hero.id + '');
+                            setProp();
+                        }
+                    }
+                }
+            }
+            else setProp();
+        }
+
+
+        if (mbool)
+            document.getElementById('battle')
+            .addEventListener('DOMSubtreeModified', check);
+
+        document.addEventListener('keydown', function (event)
+        {
+            if (event.keyCode == 107)
+            {
+                if (localStorage.getItem("auto*disband") != "on")
+                {
+                    localStorage.setItem("auto*disband", "on");
+                    message("Rozwiązywanie włączone.");
+                }
+                else
+                {
+                    localStorage.setItem("auto*disband", "off");
+                    message("Rozwiązywanie wyłączone.");
+                }
+            }
+        });
+    }
+})();

@@ -1,0 +1,69 @@
+function forward(num)
+        for i = 1, num do
+                turtle.forward()
+        end
+end
+ 
+function chopTree()
+        turtle.turnLeft()
+        turtle.select(3)
+		
+		print(turtle.compare)
+ 
+        if turtle.compare then
+             turtle.dig()
+			turtle.forward()
+ 
+			while turtle.detectUp() do
+                turtle.digUp()
+                turtle.up()
+			end
+ 
+			while turtle.detectDown() do
+                turtle.down()
+			end		
+			turtle.back()
+		end
+		turtle.turnRight()
+end
+
+function refuel()
+	turtle.select(1)
+	turtle.turnRight()
+	turtle.suck()
+	turtle.refuel()
+	turtle.turnLeft()
+end
+
+function chopSection()
+	for i = 1, 5 do
+		forward(3)
+		chopTree()
+	end
+
+	turtle.back()
+	turtle.turnLeft()
+	forward(3)
+	turtle.turnLeft()
+	forward(11)
+	turtle.turnLeft()
+	turtle.turnLeft()
+
+	for i = 1, 5 do
+		choptree()
+		forward()
+	end
+end
+
+	
+refuel()
+chopSection()
+turtle.turnRight()
+forward(5)
+turtle.turnRight()
+chopSection()
+turtle.turnRight()
+turtle.up()
+forward(5)
+turtle.down()
+turtle.turnRight()

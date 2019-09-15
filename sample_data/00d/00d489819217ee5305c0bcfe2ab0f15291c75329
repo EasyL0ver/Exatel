@@ -1,0 +1,18 @@
+How to apply a git patch on a non-checked out branch?
+$ git read-tree <branch>
+$ git apply --cached <patch>
+$ git update-ref refs/heads/<branch> 
+    -m "<optional reflog message>" 
+    $(git commit-tree $(git write-tree) -m "<message>" -p <branch>)
+	
+$ git checkout -b temp             # Create a temp branch
+$ git reset --mixed <branch>       # Reset the index to the branch you want
+$ git apply --cached <patch>       # Apply the patch to the index
+$ git commit                       # Create a commit object
+
+  # Move the branch's reference to the new commit
+$ git update-ref refs/heads/<branch> refs/heads/temp
+
+  # Clean up
+$ git checkout --force <original_branch>
+$ git branch -d temp

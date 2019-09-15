@@ -1,0 +1,7 @@
+on chat:
+	if player has permission "skript.emoji":
+		replace all "check" in message with "&a&l✔︎&r"
+		replace all "heart" in message with "&c&l❤︎&r"
+		replace all "fuck" in message with "&4&l[Msg-Block]&r"
+		replace all "love" in message with "&c&l❤︎❤︎❤︎"
+		replace all "star" in message with "&6&l⭐︎"

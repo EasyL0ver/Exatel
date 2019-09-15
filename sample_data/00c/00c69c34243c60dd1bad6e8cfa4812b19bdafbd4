@@ -1,0 +1,292 @@
+routing:
+  jurisdictions:
+    CURACAO:
+      purchase:
+        default-weights:
+          - { processing: Wirecard, weight: 1.0 }
+        rules:
+
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              currencies:
+                - { code: RUB, min-amount: 1, max-amount: 385 }
+            weights:
+              - { processing: Ecommpay, weight: 0.99999 }
+              - { processing: Wirecard, weight: 0.00001 }
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              currencies:
+                - { code: RUB, min-amount: 385 }
+            weights:
+              - { processing: Ecommpay, weight: 0.94 }
+              - { processing: Wirecard, weight: 0.05 }
+              - { processing: Payvision, weight: 0.01 }
+
+          - criterias:
+              card-types: MC, MAESTRO
+              countries: RU
+              currencies:
+                - { code: RUB, min-amount: 1, max-amount: 385 }
+            weights:
+              - { processing: Ecommpay, weight: 0.99999 }
+              - { processing: Payvision, weight: 0.00001 }
+          - criterias:
+              card-types: MAESTRO
+              countries: RU
+              currencies:
+                - { code: RUB, min-amount: 385 }
+            weights:
+              - { processing: Ecommpay, weight: 0.99999 }
+              - { processing: Payvision, weight: 0.00001 }
+          - criterias:
+              card-types: MC
+              countries: RU
+              currencies:
+                - { code: RUB, min-amount: 385, max-amount: 750000 }
+            weights:
+              - { processing: Ecommpay, weight: 0.95 }
+              - { processing: Payvision, weight: 0.05 }
+          - criterias:
+              card-types: MC
+              countries: RU
+              currencies:
+                - { code: RUB, min-amount: 750000 }
+            weights:
+              - { processing: Ecommpay, weight: 1.0 }
+
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              countries: RU
+              currencies:
+                - { code: USD }
+                - { code: EUR }
+            weights:
+              - { processing: Ecommpay, weight: 0.89 }
+              - { processing: Wirecard, weight: 0.1 }
+              - { processing: Payvision, weight: 0.01 }
+          - criterias:
+              card-types: MC, MAESTRO
+              countries: RU
+              currencies:
+                - { code: USD }
+                - { code: EUR }
+            weights:
+              - { processing: Ecommpay, weight: 0.99 }
+              - { processing: Payvision, weight: 0.01 }
+
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              countries: NO, JP, IN
+              currencies:
+                - { code: NOK }
+                - { code: JPY }
+                - { code: INR }
+            weights:
+              - { processing: Wirecard, weight: 1.0 }
+
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              countries: CA
+              currencies:
+                - { code: EUR }
+            weights:
+              - { processing: Wirecard, weight: 0.99 }
+              - { processing: Payvision, weight: 0.01 }
+
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              countries: UA
+              currencies:
+                - { code: USD }
+            weights:
+              - { processing: Wirecard, weight: 0.79 }
+              - { processing: Ecommpay, weight: 0.2 }
+              - { processing: Payvision, weight: 0.01 }
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              countries: UA
+              currencies:
+                - { code: EUR }
+            weights:
+              - { processing: Wirecard, weight: 0.59 }
+              - { processing: Ecommpay, weight: 0.4 }
+              - { processing: Payvision, weight: 0.01 }
+          - criterias:
+              card-types: MC, MAESTRO
+              countries: UA
+              currencies:
+                - { code: USD }
+                - { code: EUR }
+            weights:
+              - { processing: Ecommpay, weight: 0.99 }
+              - { processing: Payvision, weight: 0.01 }
+
+          - criterias:
+              card-types: MAESTRO
+              countries: BG, BE
+            weights:
+              - { processing: Credorax, weight: 1.0 }
+          - criterias:
+              card-types: MC
+              countries: BG, BE
+            weights:
+              - { processing: Credorax, weight: 0.99 }
+              - { processing: Payvision, weight: 0.01 }
+
+          - criterias:
+              card-types: MC, MAESTRO
+              currencies:
+                - { code: TRY }
+                - { code: NOK }
+                - { code: SEK }
+                - { code: ZAR }
+                - { code: SGD }
+                - { code: RON }
+                - { code: PLN }
+                - { code: JPY }
+                - { code: DKK }
+                - { code: CAD }
+                - { code: AUD }
+            weights:
+              - { processing: Credorax, weight: 0.5 }
+              - { processing: Payvision, weight: 0.5 }
+
+          - criterias:
+              card-types: MC, MAESTRO
+              currencies:
+                - { code: THB }
+            weights:
+              - { processing: Payvision, weight: 1.0 }
+
+          - criterias:
+              card-types: MAESTRO
+              currencies:
+                - { code: NZD }
+            weights:
+              - { processing: Credorax, weight: 0.5 }
+              - { processing: Payvision, weight: 0.5 }
+          - criterias:
+              card-types: MC
+              currencies:
+                - { code: NZD }
+            weights:
+              - { processing: Payvision, weight: 1.0 }
+
+          - criterias:
+              card-types: MC, MAESTRO
+              currencies:
+                - { code: UAH }
+            weights:
+              - { processing: Credorax, weight: 1.0 }
+
+          - criterias:
+              card-types: MC
+            weights:
+              - { processing: Credorax, weight: 0.99 }
+              - { processing: Payvision, weight: 0.01 }
+          - criterias:
+              card-types: MAESTRO
+            weights:
+              - { processing: Credorax, weight: 1.0 }
+
+      payout:
+        default-weights:
+          - { processing: Wirecard, weight: 0.99 }
+          - { processing: Payvision, weight: 0.01 }
+        rules:
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              countries: UA
+              currencies:
+                - { code: UAH }
+            weights:
+              - { processing: Wirecard, weight: 1.0 }
+          - criterias:
+              card-types: MC, MAESTRO
+              countries: UA
+              currencies:
+                - { code: UAH }
+            weights:
+              - { processing: WalletoneBankcard, weight: 1.0 }
+
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              countries: UA, RU
+              currencies:
+                - { code: USD }
+                - { code: EUR }
+            weights:
+              - { processing: Wirecard, weight: 0.8 }
+              - { processing: Ecommpay, weight: 0.2 }
+          - criterias:
+              card-types: MC, MAESTRO
+              countries: UA, RU
+              currencies:
+                - { code: USD }
+                - { code: EUR }
+            weights:
+              - { processing: Payvision, weight: 0.8 }
+              - { processing: Ecommpay, weight: 0.2 }
+
+          - criterias:
+              card-types: MC, MAESTRO
+              countries: RU
+              currencies:
+                - { code: RUB }
+            weights:
+              - { processing: Ecommpay, weight: 0.5 }
+              - { processing: qiwi-bankcard, weight: 0.5 }
+
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              currencies:
+                - { code: RUB, max-amount: 6000 }
+            weights:
+              - { processing: Ecommpay, weight: 0.48 }
+              - { processing: qiwi-bankcard, weight: 0.5 }
+              - { processing: Wirecard, weight: 0.02 }
+          - criterias:
+              card-types: VISA, VISA_CREDIT, VISA_ELECTRON
+              currencies:
+                - { code: RUB, min-amount: 6000 }
+            weights:
+              - { processing: Ecommpay, weight: 0.45 }
+              - { processing: qiwi-bankcard, weight: 0.5 }
+              - { processing: Wirecard, weight: 0.05 }
+
+          - criterias:
+              card-types: MC, MAESTRO
+              countries: BE, BG
+            weights:
+              - { processing: Payvision, weight: 1.0 }
+
+          - criterias:
+              card-types: MC, MAESTRO
+              currencies:
+                - { code: TRY }
+                - { code: NOK }
+                - { code: SEK }
+                - { code: ZAR }
+                - { code: SGD }
+                - { code: RON }
+                - { code: PLN }
+                - { code: JPY }
+                - { code: DKK }
+                - { code: CAD }
+                - { code: AUD }
+            weights:
+              - { processing: Credorax, weight: 0.5 }
+              - { processing: Payvision, weight: 0.5 }
+
+          - criterias:
+              card-types: MC, MAESTRO
+              currencies:
+                - { code: THB }
+            weights:
+              - { processing: Payvision, weight: 1.0 }
+
+          - criterias:
+              card-types: MAESTRO
+              currencies:
+                - { code: NZD }
+           

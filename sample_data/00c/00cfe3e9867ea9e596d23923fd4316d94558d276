@@ -1,0 +1,19 @@
+var arr = new string[] {"Item title","New task","22","High Priority"}
+	
+const string path = @"C:ProjectsTesttest.exe";
+	
+var arr = new string[] {"Item title", "New task", "22", "High Priority"};
+        const string path = @"C:ProjectsTesttest.exe";
+        const string argsSeparator = " ";
+        string args = string.Join(argsSeparator, arr);
+
+        Process.Start(path, args);
+	
+"Item title, New task, 22, High Priority"
+	
+var arrAsOneString = string.Join(", ", arr);
+	
+var values = argument.Split(',').Select(x => x.Trim());
+	
+ProcessStartInfo info = new ProcessStartInfo();
+ info.Arguments = "Item title,New task,22,High Priority"

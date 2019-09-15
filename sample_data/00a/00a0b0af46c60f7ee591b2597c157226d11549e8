@@ -1,0 +1,265 @@
+package server.world;
+    
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Scanner;
+
+import server.model.players.Client;
+import server.model.players.Client.Rank;
+import server.model.players.Player;
+import server.model.players.PlayerHandler;
+
+/**
+ * <p>
+ * Here is a clan system which is highly efficient, highly advanced, and flexible.  It might use a little bit of more
+ * than regular memory (because i'm allocating 6 instances of <code>java.util.List</code> and <code>java.util.LinkedList</code>
+ *  for each clan), but I'm sure there are no leaks because I am creating and deleting the lists properly and carefully.
+ * </p>
+ *
+ * <p>
+ * I have also included an method that can be called on server startup, which allows you to edit any clans
+ * that are saved, through user input via command prompt.  I added this because there is no other way to edit
+ * the binary file unless you login and join the clan yourself; I included options such as "add", "promote", 
+ * "remove", "deleteclan", and "allclans."  I created this for a reason.  Please credit me appropriately and respect
+ * my code, and my wishes for that matter.
+ * </p>
+ * 
+ * <p>
+ * If you have any questions or concerns about this system, feel free to message me on MSN: {@link lazerbike@hotmail.com};
+ * I will always be open for any questions or concerns you might have concerning this system, or anything for
+ * that matter.
+ * </p>
+ * 
+ * @author Rodrigo Molina
+ */
+public class NewClan {
+    
+        /**
+         * The world list of all clans in the server.
+         */
+        private List<Clan> clans;
+        
+        
+        public void editClansViaThing() {
+            Scanner scan = new Scanner(System.in);
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println("Here you can edit the clans via command prompt.");
+            System.out.println("Please specify the clan name or type in 'allnames' for a list of all the clans avaiable.");
+            if(clans.size() == 0) {
+    	    	System.out.println("Nope.  The clan list is empty, so fuck off pussy cunt licker.");
+        	return;
+            }
+            Clan clan = null;
+            String input = scan.next().toLowerCase();
+            if(input.equals("allnames")) {
+        	System.out.println("Loading clans..");
+        	for(Clan list : clans) {
+        	    if(list != null)
+        		System.out.println(list);
+        	}
+        	return;
+            }
+            for(Clan clan1 : clans) {
+        	if(clan1 != null)
+        	    if(clan1.getName().equalsIgnoreCase(input))
+        		clan = clan1;
+            }
+            if(clan == null) {
+        	System.out.println("I'm sorry, I could not find your clan for you.");
+        	return;
+            }
+            System.out.println("I have found your clan for you.");
+            System.out.println("Now please enter either 'add', 'remove', 'deleteclan', and 'promote'.");
+            String option = scan.next().toLowerCase();
+            switch(option) {
+            case "add":
+        		System.out.println("Now please specify which list to add the name into.");
+        		System.out.println("Choices are: 'corporal', 'general', and 'captain'");
+        		String list = scan.next().toLowerCase();
+        		switch(list) {
+        		case "corporal":
+        		    System.out.println("Now please enter the name to add:");
+        		    String s = scan.next().toLowerCase();
+        		    clan.getCorporal().add(s);
+        		    break;
+        		case "general":
+        		    System.out.println("Now please enter the name to add:");
+        		    String s1 = scan.next().toLowerCase();
+        		    clan.getGenerals().add(s1);
+        		    break;
+        		case "captain":
+        		    System.out.println("Now please enter the name to add:");
+        		    String s2 = scan.next().toLowerCase();
+        		    clan.getCaptains().add(s2);
+        		    break;
+        		default:
+        		    System.out.println("I'm sorry, that list is not reachable.");
+        		}
+        	break;
+            case "remove":
+                	System.out.println("Now please specify which list to add the name into.");
+                	System.out.println("Choices are: 'corporal', 'general', and 'captain'");
+        		String yo = scan.next().toLowerCase();
+        		switch(yo) {
+        		case "corporal":
+        		    System.out.println("Now please enter the name to remove:");
+        		    String s = scan.next().toLowerCase();
+        		    if(clan.getCorporal().remove(s)) {
+        			System.out.println("Remove was sucessful. List is now: "+clan.getCorporal());
+        		    }
+        		    break;
+        		case "general":
+        		    System.out.println("Now please enter the name to remove:");
+        		    String s1 = scan.next().toLowerCase();
+        		    if(clan.getGenerals().remove(s1)) {
+        			System.out.println("Remove was sucessful. List is now: "+clan.getGenerals());
+        		    }
+        		    break;
+        		case "captain":
+        		    System.out.println("Now please enter the name to remove:");
+        		    String s2 = scan.next().toLowerCase();
+        		    if(clan.getCaptains().remove(s2)) {
+        			System.out.println("Remove was sucessful. List is now: "+clan.getCaptains());
+        		    }
+        		    break;
+        		default:
+        		    System.out.println("I'm sorry, that list is not reachable.");
+        		}
+        	break;
+            case "deleteclan":
+        	if(clans.remove(clan)) {
+        	    System.out.println("Successfully deleted the clan specified.");
+        	} else {
+        	    System.out.println("Unsuccessful whilst deleteing clan.");
+        	}
+        	break;
+            case "promote":
+        	System.out.println("Now please specify the player to promote.");
+		String name = scan.next().toLowerCase();
+		if(clan.getPlayers().contains(name)) {
+		    if(clan.getCaptains().contains(name)) {
+			if(clan.getCaptains().remove(name) & clan.getGenerals().add(name)) {
+			    System.out.println("Successfully promoted "+name+".");
+			}
+		    } else if (clan.getCorporal().contains(name)) {
+			if(clan.getCorporal().remove(name) & clan.getCaptains().add(name)) {
+			    System.out.println("Successfully promoted "+name+".");
+			}
+		    } else if (clan.getGenerals().contains(name)) {
+			if(clan.getGenerals().remove(name)) {
+			   clan.setOwner(name);
+			   System.out.println("Successfully promoted "+name+"."); 
+			}
+		    }
+		} else {
+		    System.out.println("This clan does not have this player. ");
+		}
+        	break;
+            }
+            this.saveClans();
+        }
+        
+        /**
+         * Get's the {@link clans} list.
+         * 
+         * @return the clans.
+         */
+        public List<Clan> getClans() {
+    		return clans;
+        }
+        
+        /**
+         * Creates a new instance of this class and sets the list.
+         */
+        public NewClan() {
+    		loadClans();
+    		if(clans == null) {
+    		    clans = new ArrayList<Clan>(50);
+    		    System.out.println("Creating a new empty array list of clans.");
+        	}
+        }
+        
+        public void saveClans() {
+            ObjectOutputStream out = null;
+            
+            try {
+		out = new ObjectOutputStream(new FileOutputStream(new File("./Data/Clans.dat")));
+		out.writeObject(clans);
+	    } catch (FileNotFoundException e) {
+		e.printStackTrace();
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
+        }
+        
+	@SuppressWarnings("unchecked")
+	public void loadClans() {
+	    ObjectInputStream in = null;
+	    try {
+		in = new ObjectInputStream(new FileInputStream(new File("./Data/Clans.dat")));
+		try {
+		    clans = (ArrayList<Clan>) in.readObject();
+		} catch (ClassNotFoundException e) {
+		    e.printStackTrace();
+		}
+	    } catch (FileNotFoundException e) {
+		e.printStackTrace();
+	    } catch (IOException e) {
+		e.printStackTrace();
+	    }
+	}
+        
+        /**
+         * Creates a new clan.
+         * 
+         * @param c
+         * 	The client attempting to create the clan.
+         * @param clanName
+         * 	The clan name being requested by the client.
+         */
+        public void createNewClan(Client c, String clanName) {
+        	if(!c.inClan) {
+        	    Clan newC = null;
+        	    for(Clan clan : clans) {
+        		if (!clan.getName().equalsIgnoreCase(clanName)) {
+        		    newC = clan;
+        		    break;
+        		}
+        	    }
+        	    if(newC == null) {
+        		c.sendMessage("This clan already exists");
+    		    	joinClan(c, clanName);
+        		return;
+        	    }
+		    LinkedList<String> players = new LinkedList<String>();
+		    players.add(c.playerName);
+		    clans.add(new Clan(clanName, new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), new LinkedList<String>(), c.playerName, players, players));
+		    c.sendMessage("You have created a new clan called: "+clanName+".");
+		    c.inClan = true;
+		    this.setInterfaces(c, newC);
+		    saveClans();
+        	} else {
+        	    c.sendMessage("You are already in a clan!");
+        	}
+        }
+        
+        /**
+         * The player has just logged in and is requesting to join the last clan that they were in.
+         * 
+         * @param c
+         * 	The player.
+         */
+        public void login(Client c) {
+            for(Clan clan : clans) {
+        

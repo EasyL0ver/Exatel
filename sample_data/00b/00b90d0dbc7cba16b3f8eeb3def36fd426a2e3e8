@@ -1,0 +1,27 @@
+<form method="POST" action="Funktion.php"> 
+<b>Rechenaufgabe:</b><br> 
+<br> 
+<input name="a" size=6><br>
+<input name="b" size=6><br> 
+<input name="c" size=6><br>
+<br> 
+<input type=submit name=submit value="Rechnen"> 
+</form> 
+<?php
+$a = $_POST["a"];
+$b = $_POST["b"];
+$c = $_POST["c"];
+$e = sqrt($b*$b-4*$a*$c);
+$f = ((-1)*$b - $e)/(2*$a);
+$d = ((-1)*$b + $e)/(2*$a);
+print "<br>";
+print "Die Koeffizenten sind<br>";
+print "a = ".$a."<br>";
+print "b = ".$b."<br>";
+print "c = ".$c."<br>";
+print "<br>";
+print "Die Gleichung: ".$a."x^2 + (".$b."x) + (".$c.")= 0<br>";
+print "Die Nullstellen: <br>";
+print "Die erste ist " . $d . "<br>";
+print "Die zweite ist " . $f . "<br>";
+?>

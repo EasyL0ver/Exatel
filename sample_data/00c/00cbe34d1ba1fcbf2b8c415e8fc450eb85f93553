@@ -1,0 +1,8 @@
+mLiveData.observe(this, Observer {
+    when (it) {
+        0 -> zero()
+        1 -> one()
+        null -> mLiveData.postValue(0)  //Initialise
+        else -> many()
+    }
+})

@@ -1,0 +1,24 @@
+package main
+
+import "reflect"
+
+func f(data interface{}) {
+        val := reflect.NewValue(data)
+        if _,ok := val.(*reflect.StructValue); ok {
+                println("data is a struct")
+        } else if sval,ok := val.(*reflect.SliceValue); ok {
+                elemType := sval.Type().(*reflect.SliceType).Elem()
+                if _,ok := elemType.(*reflect.StructType); ok {
+                        println("data is a slice of structs")
+                }
+        }
+}
+
+type s struct {
+        a       int
+}
+
+func main() {
+        f(s{0})
+        f([]s{s{0}})
+}

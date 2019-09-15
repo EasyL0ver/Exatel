@@ -1,0 +1,94 @@
+Browser compatability issue -NOt working on IE
+$(document).ready(function () {
+    $('.delete').click(function () {
+        var contentId = $(this).attr('contentid');
+        $.confirm({
+            'title': 'Delete Confirmation',
+            'message': 'Are you sure you want to delete this record?',
+            'buttons': {
+                'Yes': {
+                    'class': 'blue',
+                    'action': function () {
+                        DoDelete(contentId);
+                    }
+                },
+                'No': {
+                    'class': 'orange',
+                    'action': function () {}
+                    // Nothing to do in this case. You can as well omit the action property.
+                },
+                'close': {
+                    'action': function () {}
+                    // Nothing to do in this case. You can as well omit the action property.
+                }
+            }
+        });
+    });
+});
+	
+(function ($) {
+    $.confirm = function (params) {
+        if ($('#confirmOverlay').length) {
+            return false;
+        }
+        var buttonHTML = '';
+        $.each(params.buttons, function (name, obj) {
+            buttonHTML += '<a href="#" class="button ' + obj['class'] + '">' + name + '<span></span></a>';
+            if (!obj.action) {
+                obj.action = function () {};
+            }
+        });
+        var markup = [
+            '<div id="confirmOverlay">',
+            '<div id="confirmBox">',
+            '<div id="header">',
+            '<div id ="title">',
+            params.title,
+            '</div></div>',
+            '<div id ="textbox">',
+            '<p>',
+            params.message,
+            '</p></div>',
+            '<div id="confirmButtons">',
+            buttonHTML,
+            '</div></div></div>'
+        ].join('');
+        $(markup).hide().appendTo('body').fadeIn();
+        var buttons = $('#confirmBox .button'),
+            i = 0;
+        $.each(params.buttons, function (name, obj) {
+            buttons.eq(i++).click(function () {
+                obj.action();
+                $.confirm.hide();
+                return false;
+            });
+        });
+    }
+    $.confirm.hide = function () {
+        $('#confirmOverlay').fadeOut(function () {
+            $(this).remove();
+        });
+    }
+})(jQuery);
+	
+var contentId = $(this).attr('contentid');
+	
+<div class="delete"></div>
+	
+var buttons = $('#confirmBox .button'),
+        i = 0;
+$.each(params.buttons, function (name, obj) {
+    buttons.eq(i++).click(function () {
+        obj.action();
+        $.confirm.hide();
+        return false;
+    });
+});
+	
+$('#confirmBox .button').each(function(button) {
+    $(button).click(function () {
+        params.buttons[$(this).text()].action();
+        $.confirm.hide();
+        return false;
+    });
+});

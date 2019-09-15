@@ -1,0 +1,121 @@
+package javaapplication2;
+	
+//Metodo setter
+public void setClassificacao(char c){
+    classificacao = c;
+}
+
+public void setGarantia(short g){
+    garantia = g;
+}
+
+public void setCor (String a){
+    cor = a;
+}
+
+public void setVoltagem(int v){
+    voltagem = v;
+}
+
+public void setTotalLitros(long t){
+    totalLitros = t;
+}
+
+public void setPreco(double p){
+    preco = p;
+}
+
+public void setConsumo(float con){
+    consumo = con;
+}
+
+public void setPuxadores(byte px){
+    puxadores = px;
+}
+
+public void setIlumincao(boolean i){
+    iluminacao = i;
+}
+
+
+//Metodo getter
+public char getClassificacao(){
+    return classificacao;
+}
+
+public short getGarantia(){
+    return garantia;
+}
+
+public String getCor(){
+    return cor;
+}
+
+public int getVoltagem(){
+    return voltagem;
+}
+
+public long getTotalLitros(){
+    return totalLitros;
+}
+
+public double getPreco(){
+    return preco;
+}
+
+public float getConsumo(){
+    return consumo;
+}
+
+public byte getPuxadores(){
+    return puxadores;
+}
+
+public boolean getIlimunacao(){
+    return iluminacao;
+}
+
+void getGarantia(short parseShort) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+}
+	
+package javaapplication2;
+	
+Scanner SC = new Scanner (System.in);
+
+    Geladeira dadosG = new Geladeira();
+
+    System.out.println("Digite a classificação energética: ");
+    dadosG.setClassificacao(SC.next());
+
+    System.out.println("Digite a garantia: ");
+    dadosG.setGarantia(Short.parseShort(SC.nextLine()));
+
+    System.out.println("Digite a cor: ");
+    dadosG.setCor(SC.nextLine());
+
+    System.out.println("Digite a voltagem: ");
+    dadosG.setVoltagem(Integer.parseInt(SC.nextLine()));
+
+    System.out.println("Digite o total de litros: ");
+    dadosG.setTotalLitros(Long.parseLong(SC.nextLine()));
+
+    System.out.println("Digite o preço: ");
+    dadosG.setPreco(Double.parseDouble(SC.nextLine()));
+
+    System.out.println("Digite o consumo: ");
+    dadosG.setConsumo(Float.parseFloat(SC.nextLine()));
+
+    System.out.println("Digite a quantidade de puxadores: ");
+    dadosG.setPuxadores(Byte.parseByte(SC.nextLine()));
+
+    System.out.println("Digite 1 se exitir ilimuninação interna ou 0 caso não exista: ");
+    dadosG.getIlimunacao(Boolean.parseBollean(SC.nextLine()));
+
+
+
+
+
+
+
+}

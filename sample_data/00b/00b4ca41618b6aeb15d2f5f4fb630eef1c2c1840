@@ -1,0 +1,163 @@
+************ : log created on : Friday September 21 2018 @ 09:09:24
+00:00:00.000 : [sys] running on x86_64 / Windows 10 x64 (version 10.0)
+00:00:00.000 : [sys] DirectX version : 4.09.00.0904
+00:00:00.000 : [sys] Command line:  C:\Program Files (x86)\Steam\steamapps\common\Euro Truck Simulator 2\bin\win_x64\eurotrucks2.exe
+00:00:00.001 : [cpu] CPU0: GenuineIntel [Intel(R) Core(TM) i3-4150 CPU @ 3.50GHz] with 2 cores (4 threads) at ~3492MHz.
+00:00:00.001 : [sys] using 1 worker thread(s)
+00:00:00.001 : [sys] and 3 worker threads for IO.
+00:00:00.001 : [sys] plus 1 real-time worker threads.
+00:00:00.001 : [sys] using QPC / TSC invariant timer, frequency 3410092Hz
+00:00:00.001 : [mem] physical total: 4046M
+00:00:00.002 : [mem] physical avail: 1285M
+00:00:00.002 : [mem] virtual total: 134217727M
+00:00:00.002 : [mem] virtual avail: 134213036M
+00:00:00.002 : [mem] Trying to allocate memory pool (409600K)
+00:00:00.002 : [mem] Allocated 5 temporary loading buffer(s)
+00:00:00.174 : [xinput] Using XInput version 1.4.0
+00:00:00.307 : [hashfs] effect.scs: Mounted, 10224 entries
+00:00:00.556 : [hashfs] base.scs: Mounted and validated, 69034 entries (62C88DD9E7FB1437B3C36549BF7FA8CDA4E65C860211562CE37C8A27B9057DBE)
+00:00:00.595 : [hashfs] core.scs: Mounted and validated, 9 entries (0610C9FACB7083E35DA172DD22EE7C286DA63E6CE5F51138C9DF329B326AE08E)
+00:00:00.996 : [hashfs] def.scs: Mounted and validated, 11594 entries (CDC91793FCC5C4561CEFD37223F8BCBAFFE0638DD47512A18FE65AB9BA984D1B)
+00:00:01.423 : [hashfs] locale.scs: Mounted and validated, 172 entries (87FABB7739CBFF6EDC4E30D7921B0B1871A7A05676B01F2F1EC9FE51201E7690)
+00:00:01.439 : [hashfs] base_cfg.scs: Mounted and validated, 1 entries (7F5E21DC7542F64967920254B3CD8DACF869B709F262BB63B2245722C898E865)
+00:00:01.448 : [ufs] Home directory: 'C:/Users/Skeczu/Documents/Euro Truck Simulator 2'.
+00:00:01.758 : [hashfs] dlc_daf_tuning_pack.scs: Mounted and validated, 2061 entries (D52A1150816CDD5B1E97B0EFA1F4E862925A6140F46CB80DD185ECADD95655AB)
+00:00:01.780 : [hashfs] dlc_daf_tuning_pack.scs: Unmounted.
+00:00:01.863 : [hashfs] dlc_dragon.scs: Mounted and validated, 342 entries (A3D451BAC92C0CC7AC4BF341138C93BA4F0090EC3C4CE80F48A377B0ED420086)
+00:00:01.863 : [hashfs] dlc_dragon.scs: Unmounted.
+00:00:02.584 : [hashfs] dlc_east.scs: Mounted and validated, 929 entries (33540169E690BD76E337651AA15512D36AD650B4F50439457CB33096822FD735)
+00:00:02.584 : [hashfs] dlc_east.scs: Unmounted.
+00:00:02.609 : [hashfs] dlc_flags_pl.scs: Mounted and validated, 383 entries (99EA0281A216B4C5F91D96E652C9AC69FDCC2E23D78683492D4EE088B49798BF)
+00:00:02.609 : [hashfs] dlc_flags_pl.scs: Unmounted.
+00:00:04.375 : [hashfs] dlc_fr.scs: Mounted and validated, 3570 entries (9FA57A75EA7E5676714A0BC357E0E21E16784F39578FF088A8D2671E9DF72977)
+00:00:04.375 : [hashfs] dlc_fr.scs: Unmounted.
+00:00:04.784 : [hashfs] dlc_heavy_cargo.scs: Mounted and validated, 820 entries (4EDA9D767CD87B30EEA15287751DE8BF7B7992D52E67657BD5D1361EA8FA203E)
+00:00:04.784 : [hashfs] dlc_heavy_cargo.scs: Unmounted.
+00:00:04.831 : [hashfs] dlc_metallics.scs: Mounted and validated, 386 entries (7D5FCFA94BA8ED7C43113CA1698CD01008E215581C5C247064DCC8C1E1C83716)
+00:00:04.831 : [hashfs] dlc_metallics.scs: Unmounted.
+00:00:05.261 : [hashfs] dlc_mighty_griffin.scs: Mounted and validated, 2955 entries (EC7E9565347534E59689A87B4AEF7BF283088CF78CADB1E924E1A63FC2F5404A)
+00:00:05.261 : [hashfs] dlc_mighty_griffin.scs: Unmounted.
+00:00:07.560 : [hashfs] dlc_north.scs: Mounted and validated, 6133 entries (F4A1C057B35AD3473EFEA787486DC03DC30FAF9F0B119C96888E31C7FA061785)
+00:00:07.560 : [hashfs] dlc_north.scs: Unmounted.
+00:00:08.111 : [hashfs] dlc_oversize.scs: Mounted and validated, 811 entries (32F66955A5AF71D916D77781B4B14741C1AF9F5A0759322ECE003C151610E777)
+00:00:08.111 : [hashfs] dlc_oversize.scs: Unmounted.
+00:00:08.384 : [hashfs] dlc_phys_flags.scs: Mounted and validated, 9110 entries (C7B639B604D89342C1B6ED87CD550F50BEE09350B2CFBD7B4F459E620BBA063A)
+00:00:08.384 : [hashfs] dlc_phys_flags.scs: Unmounted.
+00:00:08.531 : [hashfs] dlc_raven.scs: Mounted and validated, 842 entries (D4DEA15ACD84B57AC1D1BEE0234B97AEA3307F64480BF0A50D3771ACD75B978C)
+00:00:08.531 : [hashfs] dlc_raven.scs: Unmounted.
+00:00:08.752 : [hashfs] dlc_rims.scs: Mounted and validated, 740 entries (6190DAFA86F2410171E0FE4ADBBFC12A886CDF08ACE844A7C5AA5D65EDABDC62)
+00:00:08.752 : [hashfs] dlc_rims.scs: Unmounted.
+00:00:08.804 : [hashfs] dlc_rocket_league.scs: Mounted and validated, 134 entries (70E158BFACF5F7C1B9EFC0620DE46360552E97C6F132ACBD16427A6481C1A269)
+00:00:08.805 : [hashfs] dlc_rocket_league.scs: Unmounted.
+00:00:09.230 : [hashfs] dlc_schwarzmuller.scs: Mounted and validated, 702 entries (5BA721B014F95F181402A0CDA0AC2D4C821FF32A22A96A1EA9A2507867F178BF)
+00:00:09.231 : [hashfs] dlc_schwarzmuller.scs: Unmounted.
+00:00:09.333 : [hashfs] dlc_toys.scs: Mounted and validated, 1253 entries (7F6710C8AD192E965DFD800FA0E31D4CB3FB03277222507D4B1388851308BA76)
+00:00:09.333 : [hashfs] dlc_toys.scs: Unmounted.
+00:00:09.671 : [hashfs] dlc_trailers.scs: Mounted and validated, 1566 entries (7A3F880F1117A201E3D423B05AEC1D167DAECF1BBB7A78250D15171B84738094)
+00:00:09.671 : [hashfs] dlc_trailers.scs: Unmounted.
+00:00:09.725 : [mod_package_manager] Requesting Steam Workshop content..
+00:00:09.801 : exec /home/config.cfg
+00:00:09.801 : [sys] Executing /home/config.cfg ...
+00:00:09.830 : uset r_full_resolution_corrections "0"
+00:00:09.831 : uset r_force_color_shadowmaps "0"
+00:00:09.831 : uset g_mm_help_shown "1"
+00:00:09.831 : uset g_save_indicator "1"
+00:00:09.831 : uset g_game_version "1.32.3"
+00:00:09.831 : uset g_force_online_lscrs "0"
+00:00:09.831 : uset g_frame_image_fmt "jpg"
+00:00:09.831 : uset g_frames_path ""
+00:00:09.831 : uset g_hw_info "1"
+00:00:09.831 : uset g_glass_debugging_level "0"
+00:00:09.831 : uset g_line_sort "0"
+00:00:09.831 : uset g_cargo_sort "0"
+00:00:09.831 : uset g_tooltip_delay "0.4"
+00:00:09.831 : uset g_bloom_standard_deviation "0.5"
+00:00:09.831 : uset g_bloom_filter_radius "6"
+00:00:09.831 : uset g_bloom_resizing_steps "3"
+00:00:09.831 : uset g_bloom_override "0"
+00:00:09.831 : uset g_bloom "1.0"
+00:00:09.831 : uset g_global_force_load_selector "0"
+00:00:09.831 : uset g_desktop_fadeout "60"
+00:00:09.831 : uset inst_flags "0"
+00:00:09.832 : uset g_disable_hud_activation "0"
+00:00:09.832 : uset r_wireframe "0"
+00:00:09.832 : uset g_interior_camera_zero_pitch "0"
+00:00:09.832 : uset r_multimon_exterior_in_aux "0"
+00:00:09.845 : uset r_multimon_interior_in_main "1"
+00:00:09.845 : uset r_multimon_rotation_aux "0"
+00:00:09.846 : uset r_multimon_rotation_right "0"
+00:00:09.846 : uset r_multimon_rotation_left "0"
+00:00:09.846 : uset r_multimon_rotation_center "0"
+00:00:09.846 : uset r_multimon_vert_offset_right "0"
+00:00:09.846 : uset r_multimon_vert_offset_left "0"
+00:00:09.846 : uset r_multimon_border_fov_right "0"
+00:00:09.846 : uset r_multimon_border_fov_left "0"
+00:00:09.846 : uset r_multimon_fov_vertical "0"
+00:00:09.846 : uset r_multimon_fov_horizontal "50"
+00:00:09.846 : uset r_multimon_mode "0"
+00:00:09.846 : uset r_use_depth_bounds "1"
+00:00:09.846 : uset r_show_light_pixel_coverage "0"
+00:00:09.846 : uset r_deferred_debug "0"
+00:00:09.846 : uset r_mirror_scale_y "1"
+00:00:09.846 : uset r_mirror_scale_x "1"
+00:00:09.846 : uset r_scale_y "1"
+00:00:09.846 : uset r_scale_x "1"
+00:00:09.846 : uset r_normal_maps "0"
+00:00:09.846 : uset r_sunshafts "0"
+00:00:09.846 : uset r_color_saturation "1.0"
+00:00:09.847 : uset r_color_yellow_blue "0.0"
+00:00:09.847 : uset r_color_magenta_green "0.0"
+00:00:09.847 : uset r_color_cyan_red "0.0"
+00:00:09.847 : uset r_color_correction "0"
+00:00:09.847 : uset r_cloud_shadows "1"
+00:00:09.847 : uset r_dof_filter_size "0.5"
+00:00:09.847 : uset r_dof_transition "400.0"
+00:00:09.847 : uset r_dof_start "200.0"
+00:00:09.847 : uset r_dof "0"
+00:00:09.847 : uset r_mlaa_threshold "1.0"
+00:00:09.847 : uset r_mlaa "1"
+00:00:09.847 : uset r_hdr "1"
+00:00:09.847 : uset r_fake_shadows "2"
+00:00:09.847 : uset r_sun_shadow_texture_size "2048"
+00:00:09.847 : uset r_sun_shadow_quality "1"
+00:00:09.847 : uset r_mirror_group "3"
+00:00:09.847 : uset r_mirror_view_distance "120"
+00:00:09.847 : uset r_deferred_mirrors "0"
+00:00:09.847 : uset r_deferred "1"
+00:00:09.847 : uset r_nowmi "0"
+00:00:09.847 : uset r_startup_progress "0"
+00:00:09.847 : uset r_setup_done "1"
+00:00:09.847 : uset r_gamma "0.98"
+00:00:09.847 : uset r_manual_stereo_buffer_scale "1.0"
+00:00:09.847 : uset r_manual_stereo_ui_fov_game "100"
+00:00:09.847 : uset r_manual_stereo_ui_fov "80"
+00:00:09.847 : uset r_manual_stereo_ui_dist_game "0.5"
+00:00:09.847 : uset r_manual_stereo_ui_dist "0.8"
+00:00:09.847 : uset r_manual_stereo_in_menu "1"
+00:00:09.847 : uset r_nv_stereo_mode "2"
+00:00:09.847 : uset r_minimal_unfinished_frames "0"
+00:00:09.847 : uset r_no_frame_tracking "0"
+00:00:09.847 : uset r_msaa "0"
+00:00:09.847 : uset r_fullscreen "1"
+00:00:09.847 : uset r_mode_refresh "0"
+00:00:09.847 : uset r_mode_height "768"
+00:00:09.847 : uset r_mode_width "1366"
+00:00:09.847 : uset r_path ""
+00:00:09.847 : uset r_device "dx9"
+00:00:09.847 : uset i_virtual_cursor_speed "500.0"
+00:00:09.847 : uset g_trackir "1"
+00:00:09.847 : uset g_lod_factor_pedestrian "1"
+00:00:09.847 : uset g_pedestrian "0"
+00:00:09.847 : uset g_light_span_factor "0"
+00:00:09.847 : uset g_light_distance_factor "0"
+00:00:09.847 : uset g_vehicle_flare_lights "0"
+00:00:09.847 : uset g_auto_traffic_headlights "1"
+00:00:09.847 : uset g_lod_factor_parked "1"
+00:00:09.847 : uset g_lod_factor_traffic "1"
+00:00:09.847 : uset g_traffic "1.0"
+00:00:09.863 : uset g_kdop_preview "0"
+00:00:09.863 : uset g_screenshot_on_bug_quality "100"
+00:00:09.863 : uset g_screenshot_on_bug "0"
+00:00:09.863 : uset g_shoulder_block_coloring "0"
+00:00:09.863 : uset g_debug_map_limits "0"
+00:00:09.863 :

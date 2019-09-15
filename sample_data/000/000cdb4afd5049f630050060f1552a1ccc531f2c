@@ -1,0 +1,105 @@
+module CamSetup(clk, ready, error, scl, sda);
+input clk;
+output ready, error;
+output scl;
+inout sda;
+
+parameter ST_READY = 4'd1;
+parameter ST_WRITING = 4'd2;
+parameter ST_ENDING = 4'd3;
+parameter ST_INTERIM = 4'd4;
+parameter ST_INITIALWAIT = 4'd0;
+
+parameter REG_COUNT = 1;
+
+//truncated to save space (actually updates 170 registers)
+bit [1:REG_COUNT][0:2][7:0] RegValues = {
+    8'h42, 8'h7a, 8'h20 
+};
+
+parameter CLKS_INIT = 10;
+parameter CLKS_INTERIM = 50000;
+
+reg [23:0] InitiCounter = 0;
+reg [23:0] InterimCounter = 0;
+
+reg [3:0] State = ST_INITIALWAIT;
+reg [7:0] RegIndex  = 0;
+reg [2:0] RegByteIndex  = 0;
+reg [7:0] WrData = 0;
+
+wire WrDataRq;
+wire I2cIdle;
+wire Enable = (State == ST_WRITING);
+assign ready = (State == ST_READY);
+
+
+i2c i2c0(.clk(clk), .enable(Enable), .wr_data(WrData), .wr_data_rq(WrDataRq), .idle(I2cIdle), .error(error), .scl(scl), .sda(sda));
+
+always @(posedge clk)
+begin
+
+    case(State)
+
+    ST_INITIALWAIT:
+    begin
+        InitiCounter <= InitiCounter + 1;
+
+        if(InitiCounter >= CLKS_INIT)
+        begin
+            State <= ST_ENDING;
+        end     
+    end
+
+    ST_ENDING:
+    begin
+        if(I2cIdle)
+        begin           
+            if(RegIndex < REG_COUNT)
+            begin
+                RegIndex <= RegIndex + 1;
+                RegByteIndex <= 0;              
+                WrData <= RegValues[RegIndex+1][0];
+                State <= ST_INTERIM;
+            end
+            else
+            begin
+                State <= ST_READY;
+            end         
+        end
+    end
+
+    ST_INTERIM:
+    begin
+        InterimCounter <= InterimCounter + 1;
+
+        if(InterimCounter >= CLKS_INTERIM)
+        begin
+            InterimCounter <= 0;
+            State <= ST_WRITING;
+        end
+    end
+
+    ST_WRITING:
+    if(WrDataRq)
+    begin       
+        if(RegByteIndex < 2)
+        begin
+            RegByteIndex <= RegByteIndex + 1;
+            WrData <= RegValues[RegIndex][RegByteIndex+1];
+        end
+        else
+        begin
+            State <= ST_ENDING;
+        end
+    end         
+
+    endcase
+
+end
+
+endmodule
+	
+initial begin
+    State = non_zero_state;
+    ...

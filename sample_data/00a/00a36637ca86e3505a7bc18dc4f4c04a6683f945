@@ -1,0 +1,132 @@
+if (isset($_POST)&&is_array($_POST)&&count($_POST)>0) {
+
+    $erro = false;
+    $obrigatorio = array('ncorridas','nome','email','campoResultado','msg');
+    foreach ($_POST as $campo => $valor) {
+        if (in_array($campo, $obrigatorio)&&empty($valor)) $erro = true;
+        $$campo = $valor;
+    }
+
+    if (!$erro) {
+
+        $mensagem = "
+        <html>
+        <body>
+        <table>
+        <tr><td>Numero de corridas por dia: </td><td>$ncorridas</td></tr>
+        <tr><td>Nome completo: </td><td>$nome</td></tr>
+        <tr><td>Email corporativo: </td><td>$email</td></tr>
+        <tr><td>Sua empresa pode economizar até: </td><td>$campoResultado</td></tr>
+        </table>
+        </body>
+        </html>";
+
+        require 'phpmailer/PHPMailerAutoload.php';
+
+        $mail = new PHPMailer;
+
+        $mail->setFrom('jean@americoimoveisltda.com.br', 'Economizar | Ligue-Taxi');
+        $mail->addAddress('jean@americoimoveisltda.com.br');
+        $mail->addAddress('jean@americoimoveisltda.com.br');
+        $mail->Subject = 'Contato pelo Site: '. $nome;
+        $mail->msgHTML( $mensagem );
+        $mail->AltBody = strip_tags( $mensagem );
+
+        if ($mail->send()) {
+            $alert = array(
+                'tipo' => 'success',
+                'msg' => 'Seu e-mail foi enviado com sucesso!'
+            );
+        } else {
+            $alert = array(
+                'tipo' => 'danger',
+                'msg' => 'Não foi possivel enviar seu contato, tente novamente mais tarde!'
+            );
+        }
+
+    } else {
+        $alert = array(
+            'tipo' => 'danger',
+            'msg' => 'há campos obrigatórios que não foi preenchido. Por favor, verificar e enviar novamente!'
+        );
+    }
+}
+
+?>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Empresa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+</head>
+<body>
+<script>
+function troca(valor){
+var campo1 = document.getElementById("ncorridas").value;
+var resultado = parseFloat(campo1);
+resultado = resultado*5400;
+document.getElementById('campoResultado').value = ('R$ ') + resultado + (' reais por ano!');
+}
+</script>
+<style>
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button5 {
+    background-color: white;
+    color: black;
+    border: 2px solid #555555;
+}
+
+.button5:hover {
+    background-color: #555555;
+    color: white;
+}
+.fonte {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 18px;
+}
+.fontetitulo {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 24.px
+}
+
+.center {
+    margin: auto;
+    width: 90%;
+    padding: 10px;
+}
+
+form {
+    text-align: center;
+}
+</style>
+<div align="center" class="w3-container w3-black">
+<h2 class="fontetitulo">Calcule o quanto a sua empresa pode economizar com a Ligue-Táxi<br>Em desenvolvimento</h2>
+</div><br>
+<div class="center">
+<form action="" method="POST" class="w3-container w3-card-4 fonte" ><br>
+<?php if (!empty($alert)) echo "<div class='w3-panel w3-green w3-round".$alert['tipo']."' role='alert'>".$alert['msg']."</div>"; ?>
+<b>Número de corridas por dia <input class="w3-input w3-border" type="number" name="ncorridas" id="ncorridas" min="0" onChange="troca(this.value)" /><br>
+Nome completo <input class="w3-input w3-border" type="text" name="nome" id="nome"/><br>
+Email corporativo <input  class="w3-input w3-border" type="email" name="email" id="email"/><br>
+Sua empresa pode economizar até<br><input readonly="true" class="w3-input w3-border" type="text" name="campoResultado" id="campoResultado" /></b><br>
+<input class="button button5 fonte" type="submit"><br>
+</form>
+</div>
+
+</body>
+</html>

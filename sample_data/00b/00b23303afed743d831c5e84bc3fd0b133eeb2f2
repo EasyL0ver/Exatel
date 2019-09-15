@@ -1,0 +1,19 @@
+Tweak IE Conditional Comment with Nokogiri without converting entities
+<!--[if lt IE 9]>
+  <script src='../common/html5.js' type='text/javascript'></script>
+<![endif]-->
+	
+XML = <<ENDXML
+<r><!--[if lt IE 9]>
+  <script src='../common/html5.js' type='text/javascript'></script>
+<![endif]--></r>
+ENDXML
+
+require 'nokogiri'
+doc = Nokogiri.XML(XML)
+comment = doc.at_xpath('//comment()')
+comment.content = comment.content.sub('../','')
+puts comment.to_xml
+#=> <!--[if lt IE 9]>
+#=>   <script src='common/html5.js' type='text/javascript'></script>
+#=> <![endif]-->

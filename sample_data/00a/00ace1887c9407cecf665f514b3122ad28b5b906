@@ -1,0 +1,63 @@
+-- Guess the Number, coded in Lua, for ComputerCraft by Kaleb702 is licensed under a
+-- Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+ 
+-- Initialization --
+
+do
+    numb = math.random(1,100)
+    tries = 1
+    triesmax = 7
+    version = 1.1
+    win = false
+end
+ 
+-- Intro --
+ 
+do
+    term.clear()
+    textutils.slowPrint("-------------------------------")
+    textutils.slowPrint("Guess the Number V " .. version)
+    textutils.slowPrint("-------------------------------")
+    print("Enter to continue...")
+    io.read()
+    print("You have 6 guesses. Guess the number before you run out of guesses.")
+end
+ 
+-- Main loop --
+ 
+while true do
+    if tries > triesmax then
+        break
+    else
+        print("Guess. [1 - 100, whole number]")
+        guess = io.read()
+        guess = tonumber(guess)
+        if guess == numb then
+            win = true
+            break
+        else
+            print("Incorrect!")
+            if guess > numb then
+                print("Your guess was too high.")
+            elseif guess < numb then
+                print("Your guess was too low.")
+            else
+                print("I have no idea what happened.")
+            end
+            tries = tries + 1
+        end
+    end
+end
+
+-- Outro --
+ 
+do
+    term.clear()
+    textutils.slowPrint("GAME OVER")
+    if win == true then
+        print("Winner: PLAYER")
+    else
+        print("Winner: COMPUTER")
+    end
+        textutils.slowPrint("Thank you for choosing Kapow Creations.")
+end

@@ -1,0 +1,24 @@
+function update {
+    local ENDPOINTS
+    trap stop SIGTERM SIGINT
+    while :; do
+        if [ -e "etcd_endpoints.txt" ]; then
+            ENDPOINTS="$(cat etcd_endpoints.txt)"
+        fi
+        if [ -n "${ENDPOINTS}" ]; then
+            echo "Applying new endpoints: ${ENDPOINTS}..."
+            true > etcd_endpoints.txt
+            sed "s~__ETCD_ENDPOINTS__~${ENDPOINTS}~" template.txt |
+               tee config.txt > /dev/null
+        fi
+        sleep 1
+    done
+}
+
+function watch {
+    kubectl get configmap calico-config \
+            --namespace kube-system \
+            --watch \
+            --output jsonpath="{.data.etcd_endpoints}" |
+        tee etcd_endpoints.txt
+}

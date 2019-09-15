@@ -1,0 +1,17 @@
+import rsa
+(pubkey, privkey) = rsa.newkeys(512)
+print(privkey)
+privkey_str = str(privkey)
+key_str = str(pubkey)
+key_a = key_str[10:164]
+
+message = str(input('Message : ')).encode('utf-8')
+
+key = int(key_a)
+crypto = rsa.encrypt(message, rsa.PublicKey(key, 65537))
+crypto = str(crypto)
+print(crypto)
+print(type(crypto))
+bytes(crypto, 'utf-8')
+print(crypto)
+print(type(crypto))

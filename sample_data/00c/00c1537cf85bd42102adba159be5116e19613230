@@ -1,0 +1,6 @@
+  // Change date format
+  $node = $variables['node'];
+  $created_time = $node->getCreatedTime();
+  // $date = format_date($created_time , 'very_long');
+  $date = \Drupal::service('date.formatter')->format($created_time , 'very_long');
+  $variables['date'] = $date;

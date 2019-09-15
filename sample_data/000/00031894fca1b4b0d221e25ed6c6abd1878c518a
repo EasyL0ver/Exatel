@@ -1,0 +1,149 @@
+falling_blocks = {}
+
+pieces = {
+  {{x=0,y=0}, {x=1,y=0}, {x=0,y=1}, {x=1,y=1}}, -- O
+  {{x=0,y=0}, {x=1,y=0}, {x=2,y=0}, {x=1,y=1}}, -- T
+  {{x=0,y=0}, {x=0,y=1}, {x=0,y=2}, {x=1,y=2}}, -- L
+  {{x=1,y=0}, {x=1,y=1}, {x=1,y=2}, {x=0,y=2}}, -- J
+  {{x=1,y=0}, {x=2,y=0}, {x=0,y=1}, {x=1,y=1}}, -- S
+  {{x=0,y=0}, {x=1,y=0}, {x=1,y=1}, {x=2,y=1}}, -- Z
+  {{x=0,y=0}, {x=0,y=1}, {x=0,y=2}, {x=0,y=3}}  -- I
+}
+
+origin = {}
+
+blocks = {}
+
+BLOCK_SIDE = 16
+FALL_TIME = 1
+
+timer = 1
+math.randomseed(os.time())
+
+function new_piece(x, y)
+	local new_blocks = {}
+	for i,b in ipairs(pieces[math.random(#pieces)]) do
+		local new_block = {x=b.x+x, y=b.y+y}
+		origin = {x=0, y=0}
+		table.insert(new_blocks, new_block)
+	end
+	return new_blocks
+end
+
+function colision(x, y)
+	if y > 24 or x < 0 or x > 10 then
+		return true
+	end
+	for i, b in ipairs(blocks) do
+		if b.x == x and b.y == y then
+			return true
+		end
+	end
+	return false
+end
+left, right = false, false
+function love.keypressed(key)
+	if key == "w" then
+		local can_rotate = true
+		for i, b in ipairs(falling_blocks) do
+			if colision(b.y - origin.y + origin.x, - b.x + origin.x + origin.y) then
+				can_rotate = false
+				break
+			end
+		end
+		if can_rotate then
+			for i,b in ipairs(falling_blocks) do
+				local x, y = b.y - origin.y, - b.x + origin.x
+				b.x = x + origin.x
+				b.y = y + origin.y
+			end
+		end
+	elseif key == "a" then
+		left = true
+	elseif key == "d" then
+		right = true
+	elseif key == "s" then
+		while not fit do
+			for i, b in ipairs(falling_blocks) do
+			if colision(b.x, b.y + 1) then
+				for i, b in ipairs(falling_blocks) do
+					table.insert(blocks, b)
+				end
+				falling_blocks = new_piece(0, 0)
+				fit = true
+				break
+			end
+			end
+			for i, b in ipairs(falling_blocks) do
+				b.y = b.y + 1
+			end
+			origin.y = origin.y + 1
+		end
+		fit = false
+	end
+end
+
+falling_blocks = new_piece(0, 0)
+
+function love.update(dt)
+	if left then
+		local can_go = true
+		for i, b in ipairs(falling_blocks) do
+			if colision(b.x - 1, b.y) then
+				can_go = false
+				break
+			end
+		end
+		if can_go then
+			for i, b in ipairs(falling_blocks) do
+				b.x = b.x - 1
+			end
+			origin.x = origin.x - 1
+		end
+		left = false
+	elseif right then
+		local can_go = true
+		for i, b in ipairs(falling_blocks) do
+			if colision(b.x + 1, b.y) then
+				can_go = false
+				break
+			end
+		end
+		if can_go then
+			for i, b in ipairs(falling_blocks) do
+				b.x = b.x + 1
+			end
+			origin.x = origin.x + 1
+		end
+		right = false
+	end
+	if timer <= 0 then
+		for i, b in ipairs(falling_blocks) do
+			if colision(b.x, b.y + 1) then
+				for i, b in ipairs(falling_blocks) do
+					table.insert(blocks, b)
+				end
+				falling_blocks = new_piece(0, 0)
+				break
+			end
+		end
+		for i, b in ipairs(falling_blocks) do
+			b.y = b.y + 1
+		end
+		origin.y = origin.y + 1
+		timer = FALL_TIME - timer
+	else
+		timer = timer - dt
+	end
+end
+
+function love.draw()
+	love.graphics.setColor(255, 255, 255)
+	for i, block in ipairs(blocks) do
+		love.graphics.rectangle("fill", block.x * BLOCK_SIDE, block.y * BLOCK_SIDE, BLOCK_SIDE, BLOCK_SIDE)
+	end
+	love.graphics.setColor(255, 0, 0)
+	for i, block in ipairs(falling_blocks) do
+		love.graphics.rectangle("fill", block.x * BLOCK_SIDE, block.y * BLOCK_SIDE, BLOCK_SIDE, BLOCK_SIDE)
+	end
+end

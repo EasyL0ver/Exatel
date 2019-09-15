@@ -1,0 +1,102 @@
+{
+	"result": {
+		"INFORMATION_ABOUT_DEBTOR": {
+			"93643": {
+				"NAME": "ApiTest30",
+				"PHONE": "+254030819866",
+				"EMPLOYER_NAME": null,
+				"CURRENTLY_EMPLOYE": null,
+				"SALARY_CONSISTENT": null,
+				"PAY_DAY": null,
+				"HAVE_OTHER_LOAN": null,
+				"LOCATION_OF_WORK": null,
+				"WORKTIME": null
+			},
+			"93644": {
+				"NAME": "Tue Dec 04 2018 12:18:51 GMT+0300 (RTZ 2 (зима))",
+				"PHONE": "+254632254225",
+				"EMPLOYER_NAME": "Gffgvghh",
+				"CURRENTLY_EMPLOYE": "1",
+				"SALARY_CONSISTENT": "1",
+				"PAY_DAY": "3",
+				"HAVE_OTHER_LOAN": "0",
+				"LOCATION_OF_WORK": "uvdrvbbh",
+				"WORKTIME": "vcgvv bvgv",
+				"BIRTHDATE": "04.01.1985",
+				"MARITAL_STATUS": "Single",
+				"GENDER": "Male",
+				"COUNTRY_OF_RESIDENCE": "Nairobi-Kasarani",
+				"LEVEL_OF_EDUCATION": "Secondary\/High school",
+				"LOAN_PURPOSE": "Repairing the house",
+				"OCCUPATION": "Self-employed",
+				"WORK_EXPERIENCE": "12- 24 months",
+				"SOURCE_OF_INCOME": "Fulltime job salary",
+				"SALARY_FREQUENCE": "Weekly",
+				"INCOME_LEVEL": "75 000 - 150 000 KSh",
+				"CLIENT_SECTOR": "Daily farming",
+				"CONTACT_PERSONS": [
+					{
+						"NAME": "Gfhbh (Son)",
+						"PHONE": "+254585665556",
+						"RELATIONSHIP": "Son"
+					}
+				]
+			}
+		},
+		"INTERNAL_CREDIT_HISTORY": {
+			"93644": {
+				"DELAY_EXIST": true,
+				"MAX_DELAY_DAYS": 1,
+				"PAYMENTS": {
+					"143188": [
+						{
+							"DATE": "10.12.2018",
+							"AMOUNT": 500
+						}
+					]
+				},
+				"LOAN_COUNT": 1,
+				"LAST_LOAN_AMOUNT": "500",
+				"LAST_LOAN_TERM": "7"
+			}
+		},
+		"PAYMENTS": {
+			"93644": {
+				"143188": [
+					{
+						"DATE": "10.12.2018",
+						"AMOUNT": 500
+					}
+				]
+			}
+		},
+		"ACTIVE_LOANS": {
+			"93644": {
+				"DELAYS_COUNT": 1,
+				"MAX_DELAY_DAYS": 1,
+				"ALL_DELAY_DAYS": 1,
+				"CURRENT_DELAY_DAYS": 1,
+				"DELAY_AMOUNT": 183,
+				"ISSUE_DATE": "02.12.2018",
+				"TERM": 7,
+				"AMOUNT": 500,
+				"RATE": 4,
+				"CURRENT_PENALTY": 0,
+				"AMOUNT_FOR_SCHEDULE": 182.5,
+				"MAIN_DEBT": 182.5,
+				"PERCENT": 0,
+				"REST_MAIN_DEBT": 182.5,
+				"REST_PERCENT": 0,
+				"PROLONGATION": false
+			}
+		}
+	},
+	"time": {
+		"start": 1544442476.0236,
+		"finish": 1544442476.0979,
+		"duration": 0.074250936508179,
+		"processing": 0.049849987030029,
+		"date_start": "2018-12-10T14:47:56+03:00",
+		"date_finish": "2018-12-10T14:47:56+03:00"
+	}
+}

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -e
+
+# this runs _after_ terraform to generate the json assume role data
+while read -r line ; do
+  from='' ; id='' ; arn='' ; l2='' ; jqt=''
+  case "${line}" in
+    aws_iam_role.*)
+      while read -r l2 ; do
+        case "${l2}" in
+          arn*)                arn="${l2#* = }" ;;
+          id*)                 id="${l2#* = }"  ;;
+          assume_role_policy*)
+            jqt="$(echo "${l2#* = }" | jq -r '.Statement[].Principal.AWS')"
+            jqt="${jqt%:root}" ; jqt="${jqt##*:}" ; from="${jqt}"
+          ;;
+        esac
+      done < <(terraform state show "${line}")
+    ;;
+    aws_organizations_account.*)
+      while read -r l2 ; do
+        case "${l2}" in
+          arn*)  arn="arn:aws:iam::${l2##*/}:role/OrganizationAccountAccessRole"
+                 from="${l2#*arn:aws:organizations::}" ; from="${from%:*}"
+            ;;
+          name*) id="${l2#* = }" ; id="o-${id// /_}" ;;
+        esac
+      done < <(terraform state show "${line}")
+    ;;
+  esac
+  { [ -n "${from}" ] || [ -n "${arn}" ] || [ -n "${id}" ] ; } && { echo "from ${from}"
+  echo "arn ${arn}"
+  echo "id ${id}"
+  }
+done < <(terraform state list)

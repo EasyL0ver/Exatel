@@ -1,0 +1,8 @@
+forward RandomPoruke();
+public RandomPoruke()
+{
+	foreach(Player, i) {
+    PlayerTextDrawSetString(i, TDEditor_TD[i][9], RandomSPoruke[random(sizeof(RandomSPoruke))]);
+	}
+    return 1;
+}

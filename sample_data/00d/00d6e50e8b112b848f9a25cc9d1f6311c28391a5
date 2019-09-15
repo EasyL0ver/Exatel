@@ -1,0 +1,13 @@
+function theme_fonts_url(){
+    // Load CSS
+    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css' );
+    wp_enqueue_style( 'style', get_stylesheet_uri() );
+
+    //Load JS
+    wp_enqueue_script('jquery', get_template_directory_uri().'/js/jquery-3.2.1.min.js',false ,$cssVersion );
+    wp_enqueue_script('popper-js', get_template_directory_uri().'/js/popper.min.js',  array( 'jquery' ), $cssVersion, true  );
+    wp_enqueue_script('bootstrap-js', get_template_directory_uri().'/js/bootstrap.min.js',  array( 'jquery','popper-js' ), $cssVersion, true  );
+    wp_enqueue_script('infinite-scroll', get_template_directory_uri().'/js/infinitescroll.js',  array( 'jquery' ), $cssVersion, true  );
+}
+
+add_action( 'wp_enqueue_scripts', 'theme_fonts_url' );

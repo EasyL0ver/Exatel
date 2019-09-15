@@ -1,0 +1,599 @@
+var ggData = [
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "1990",
+    "Emissions": 69593
+  },
+   {
+    "Source": "Cars - Petrol", 
+    "Year": "1991",
+    "Emissions": 68925
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "1992",
+    "Emissions": 69569
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "1993",
+    "Emissions": 69196
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "1994",
+    "Emissions": 66808
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "1995",
+    "Emissions": 64783
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "1996",
+    "Emissions": 66260
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "1997",
+    "Emissions": 65967
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "1998",
+    "Emissions": 64867
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "1999",
+    "Emissions": 65179
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2000",
+    "Emissions": 64345
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2001",
+    "Emissions": 63143
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2002",
+    "Emissions": 62912
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2003",
+    "Emissions": 60191
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2004",
+    "Emissions": 58956
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2005",
+    "Emissions": 56987
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2006",
+    "Emissions": 54508
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2007",
+    "Emissions": 52975
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2008",
+    "Emissions": 49592
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2009",
+    "Emissions": 46777
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2010",
+    "Emissions": 41442
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2011",
+    "Emissions": 41443
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2012",
+    "Emissions": 39430
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2013",
+    "Emissions": 37416
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2014",
+    "Emissions": 36589
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2015",
+    "Emissions": 35781
+  },
+  {
+    "Source": "Cars - Petrol", 
+    "Year": "2016",
+    "Emissions": 35349
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1990",
+    "Emissions": 3148
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1991",
+    "Emissions": 3559
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1992",
+    "Emissions": 4502
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1993",
+    "Emissions": 5763
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1994",
+    "Emissions": 7551
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1995",
+    "Emissions": 8839
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1996",
+    "Emissions": 10166
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1997",
+    "Emissions": 11134
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1998",
+    "Emissions": 11490
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "1999",
+    "Emissions": 12564
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2000",
+    "Emissions": 13115
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2001",
+    "Emissions": 14155
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2002",
+    "Emissions": 15870
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2003",
+    "Emissions": 17287
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2004",
+    "Emissions": 18969
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2005",
+    "Emissions": 20871
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2006",
+    "Emissions": 22829
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2007",
+    "Emissions": 24638
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2008",
+    "Emissions": 25697
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2009",
+    "Emissions": 26185
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2010",
+    "Emissions": 27065
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2011",
+    "Emissions": 28506
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2012",
+    "Emissions": 30195
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2013",
+    "Emissions": 31043
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2014",
+    "Emissions": 32126
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2015",
+    "Emissions": 33455
+  },
+  {
+    "Source": "Cars - Diesel", 
+    "Year": "2016",
+    "Emissions": 35355
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1990",
+    "Emissions": 7321
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1991",
+    "Emissions": 7093
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1992",
+    "Emissions": 6637
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1993",
+    "Emissions": 6244
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1994",
+    "Emissions": 5764
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1995",
+    "Emissions": 5117
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1996",
+    "Emissions": 4848
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1997",
+    "Emissions": 4509
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1998",
+    "Emissions": 4226
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "1999",
+    "Emissions": 3582
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2000",
+    "Emissions": 3105
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2001",
+    "Emissions": 2648
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2002",
+    "Emissions": 2270
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2003",
+    "Emissions": 1950
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2004",
+    "Emissions": 1732
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2005",
+    "Emissions": 1498
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2006",
+    "Emissions": 1489
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2007",
+    "Emissions": 1377
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2008",
+    "Emissions": 1240
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2009",
+    "Emissions": 1086
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2010",
+    "Emissions": 978
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2011",
+    "Emissions": 902
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2012",
+    "Emissions": 823
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2013",
+    "Emissions": 768
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2014",
+    "Emissions": 728
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2015",
+    "Emissions": 684
+  },
+  {
+    "Source": "LGV - Petrol", 
+    "Year": "2016",
+    "Emissions": 650
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1990",
+    "Emissions": 4380
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1991",
+    "Emissions": 5002
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1992",
+    "Emissions": 5590
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1993",
+    "Emissions": 6187
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1994",
+    "Emissions": 7193
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1995",
+    "Emissions": 7854
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1996",
+    "Emissions": 8757
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1997",
+    "Emissions": 9671
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1998",
+    "Emissions": 10211
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "1999",
+    "Emissions": 10789
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2000",
+    "Emissions": 11249
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2001",
+    "Emissions": 11734
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2002",
+    "Emissions": 12321
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2003",
+    "Emissions": 13067
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2004",
+    "Emissions": 13757
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2005",
+    "Emissions": 14429
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2006",
+    "Emissions": 14858
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2007",
+    "Emissions": 15574
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2008",
+    "Emissions": 14821
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2009",
+    "Emissions": 14722
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2010",
+    "Emissions": 15170
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2011",
+    "Emissions": 15349
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2012",
+    "Emissions": 15590
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2013",
+    "Emissions": 15857
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2014",
+    "Emissions": 16626
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2015",
+    "Emissions": 17523
+  },
+  {
+    "Source": "LGV - Diesel", 
+    "Year": "2016",
+    "Emissions": 18567
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1990",
+    "Emissions": 5339
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1991",
+    "Emissions": 5467
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1992",
+    "Emissions": 5393
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1993",
+    "Emissions": 5378
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1994",
+    "Emissions": 5440
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1995",
+    "Emissions": 5508
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1996",
+    "Emissions": 5569
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1997",
+    "Emissions": 5566
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1998",
+    "Emissions": 5432
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "1999",
+    "Emissions": 5241
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year": "2000",
+    "Emissions": 4912
+  },
+  {
+    "Source": "Buses and Coaches", 
+    "Year":

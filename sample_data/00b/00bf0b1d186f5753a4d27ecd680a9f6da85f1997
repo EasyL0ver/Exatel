@@ -1,0 +1,43 @@
+Breakpoint 1, 0x933e0f16 in _NSAutoreleaseNoPool ()
+(gdb) bt
+#0  0x933e0f16 in _NSAutoreleaseNoPool ()
+#1  0x932ed432 in -[NSObject(NSObject) autorelease] ()
+#2  0x95e3c394 in -[NSView(NSInternal) _setTrackingAreasDirty:] ()
+#3  0x95e443a5 in -[NSView setFrame:] ()
+#4  0x27ff523c in OSXPlatformInterface::MoveVideoWindow (this=0x36937740, x=0, y=33, width=802, height=534) at /Users/nickkreeger/Projects/songbird/trunk/components/mediacore/gstreamer/src/sbGStreamerPlatformOSX.mm:241
+#5  0x27fd7009 in BasePlatformInterface::ResizeVideo (this=0x36937740) at /Users/nickkreeger/Projects/songbird/trunk/components/mediacore/gstreamer/src/sbGStreamerPlatformBase.cpp:175
+#6  0x27fd7143 in BasePlatformInterface::SetDisplayAspectRatio (this=0x36937740, aNumerator=720, aDenominator=480) at /Users/nickkreeger/Projects/songbird/trunk/components/mediacore/gstreamer/src/sbGStreamerPlatformBase.cpp:184
+#7  0x27fc63ab in sbGStreamerMediacore::OnVideoCapsSet (this=0x36934e90, caps=0x2eb0a980) at /Users/nickkreeger/Projects/songbird/trunk/components/mediacore/gstreamer/src/sbGStreamerMediacore.cpp:1387
+#8  0x27fc678b in sbGStreamerMediacore::videoCapsSetHelper (obj=0x2f6dd008, pspec=0xfc1c0, core=0x36934e90) at /Users/nickkreeger/Projects/songbird/trunk/components/mediacore/gstreamer/src/sbGStreamerMediacore.cpp:613
+#9  0x2754d3c2 in g_cclosure_marshal_VOID__PARAM (closure=0x294d0890, return_value=0x0, n_param_values=2, param_values=0xb06d342c, invocation_hint=0xb06d32cc, marshal_data=0x0) at gmarshal.c:531
+#10 0x27533273 in g_closure_invoke (closure=0x294d0890, return_value=0x0, n_param_values=2, param_values=0xb06d342c, invocation_hint=0xb06d32cc) at gclosure.c:490
+#11 0x2754bdf8 in signal_emit_unlocked_R (node=0x29e58130, detail=189, instance=0x2f6dd008, emission_return=0x0, instance_and_params=0xb06d342c) at gsignal.c:2440
+#12 0x2754ae06 in g_signal_emit_valist (instance=0x2f6dd008, signal_id=1, detail=189, var_args=0xb06d3620 "?\v[,") at gsignal.c:2199
+#13 0x2754b157 in g_signal_emit (instance=0x2f6dd008, signal_id=1, detail=189) at gsignal.c:2243
+#14 0x27535db0 in g_object_dispatch_properties_changed (object=0x2f6dd008, n_pspecs=1, pspecs=0xb06d36f4) at gobject.c:563
+#15 0x2798a3b6 in gst_object_dispatch_properties_changed (object=0x2f6dd008, n_pspecs=1, pspecs=0xb06d36f4) at gstobject.c:509
+#16 0x27534ae8 in g_object_notify_dispatcher (object=0x2f6dd008, n_pspecs=1, pspecs=0xb06d36f4) at gobject.c:245
+#17 0x2753627c in g_object_notify_queue_thaw (object=0x2f6dd008, nqueue=0x2c5b0a30) at gobjectnotifyqueue.c:123
+#18 0x275360da in g_object_notify (object=0x2f6dd008, property_name=0x27a2303a "caps") at gobject.c:622
+#19 0x279c8f83 in gst_pad_set_caps (pad=0x2f6dd008, caps=0x2eb0a980) at gstpad.c:2540
+#20 0x279b36d4 in gst_proxy_pad_do_setcaps (pad=0x2eaf2888, caps=0x2eb0a980) at gstghostpad.c:303
+#21 0x279c8e2d in gst_pad_set_caps (pad=0x2eaf2888, caps=0x2eb0a980) at gstpad.c:2526
+#22 0x279b36d4 in gst_proxy_pad_do_setcaps (pad=0x2eaf27b0, caps=0x2eb0a980) at gstghostpad.c:303
+#23 0x279c8e2d in gst_pad_set_caps (pad=0x2eaf27b0, caps=0x2eb0a980) at gstpad.c:2526
+#24 0x279c9160 in gst_pad_configure_sink (pad=0x2eaf27b0, caps=0x2eb0a980) at gstpad.c:2582
+#25 0x279cc6ac in gst_pad_chain_data_unchecked (pad=0x2eaf27b0, is_buffer=1, data=0x2ec2f8d0) at gstpad.c:4024
+#26 0x279cd2c7 in gst_pad_push_data (pad=0x2f298040, is_buffer=1, data=0x2ec2f8d0) at gstpad.c:4271
+#27 0x279cd87c in gst_pad_push (pad=0x2f298040, buffer=0x2ec2f8d0) at gstpad.c:4375
+#28 0x2b6979a3 in qtwrapper_video_decoder_chain (pad=0x117af00, buf=0x2ec2f6f0) at videodecoders.c:715
+#29 0x279cc74d in gst_pad_chain_data_unchecked (pad=0x117af00, is_buffer=1, data=0x2ec2f6f0) at gstpad.c:4042
+#30 0x279cd2c7 in gst_pad_push_data (pad=0x117ae38, is_buffer=1, data=0x2ec2f6f0) at gstpad.c:4271
+#31 0x279cd87c in gst_pad_push (pad=0x117ae38, buffer=0x2ec2f6f0) at gstpad.c:4375
+#32 0x2afc8788 in gst_single_queue_push_one (mq=0x2ef8c018, sq=0x3694fde0, object=0x2ec2f6f0) at gstmultiqueue.c:806
+#33 0x2afc8ec9 in gst_multi_queue_loop (pad=0x117ae38) at gstmultiqueue.c:978
+#34 0x279f3f15 in gst_task_func (task=0x2edd1350) at gsttask.c:234
+#35 0x279f5151 in default_func (tdata=0x2c1f9228, pool=0x10ff008) at gsttaskpool.c:70
+#36 0x273b1b4b in g_thread_pool_thread_proxy (data=0x29e4e040) at gthreadpool.c:265
+#37 0x273b03a9 in g_thread_create_proxy (data=0x369500a0) at gthread.c:635
+#38 0x918b5155 in _pthread_start ()
+#39 0x918b5012 in thread_start ()
+(gdb)

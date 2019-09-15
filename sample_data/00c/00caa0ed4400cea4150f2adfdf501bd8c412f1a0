@@ -1,0 +1,85 @@
+package navigation;
+
+public class WarriorNavigation {
+
+	public static void main(String[] args) throws InterruptedException {
+		Unity.initialize1D();
+
+		int nextPos = 0;
+		boolean whileSwitch = true;
+		int valueOfNextTurn = -1;
+
+		boolean[] _1DField = new boolean[10];
+		for (int i = 0; i < _1DField.length; i++) {
+			_1DField[i] = false;
+			System.out.println("Array on Index: " + i + " set to FALSE");
+		}
+
+		for (int i = 0; i < _1DField.length;) {
+
+			// walk from field to field
+			if (whileSwitch == true) {
+
+				System.out.println("Turn available");
+
+				// choose next turn
+				System.out.println("Action: walkTo " + nextPos);
+				Unity.walkTo1D(nextPos);
+				System.out.println(nextPos);
+
+				// implement next turn
+				System.out.println("finish turn (nextTurn)");
+				Unity.nextTurn();
+				System.out.println("should walk to position " + nextPos + ".");
+
+				// increase counter
+				nextPos = nextPos + 1;
+				System.out.println("next position is going to be: " + nextPos);
+
+				// switch negieren
+				whileSwitch = false;
+				System.out.println(whileSwitch);
+
+				// search for hints
+			} else if (whileSwitch == false) {
+
+				// choose next turn
+				System.out.println("Action: search");
+				Unity.search();
+				i++;
+
+				// implement next turn
+				System.out.println("finish turn (nextTurn)");
+				valueOfNextTurn = Unity.nextTurn();
+				_1DField[nextPos] = true;
+				System.out.println("should search for hints");
+				System.out.println("search result: " + valueOfNextTurn);
+
+				if (valueOfNextTurn > -1) {
+					// if hint found
+					Unity.walkTo1D(valueOfNextTurn);
+					Unity.nextTurn();
+					System.out.println("should walk to hint pos " + valueOfNextTurn + ".");
+					Thread.sleep(10000);
+					Unity.magic();
+					Unity.nextTurn();
+					System.out.println("should do magic to exit");
+
+					// end game
+					System.out.println("game schould succeed");
+					break;
+				}
+
+				// switch negieren
+				whileSwitch = true;
+				System.out.println(whileSwitch);
+
+			}
+
+			Thread.sleep(7000);
+
+		}
+
+	}
+
+}

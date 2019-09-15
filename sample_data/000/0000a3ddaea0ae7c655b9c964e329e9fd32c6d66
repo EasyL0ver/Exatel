@@ -1,0 +1,117 @@
+on join:
+	add 0 to {EXP.%Player%}
+	add 0 to {nextlv.%Player%}
+	add 0 to {lv.%Player%}
+	if {lv.%Player%} is 0:
+		add 20 to {nextlv.%Player%}
+		add 1 to {lv.%Player%}
+
+options:
+	wheat: 1
+
+on Rightclick on a dirt:
+	player's tool is enchanted with fortune 0
+	cancel event
+	damage Player's tool by 1
+	set event-block to farmland
+
+on break:
+	event-block is ripe_wheat or crops
+	cancel event
+	if event-block is ripe_wheat:
+		if {lv.%Player%} is not 50:
+			set action bar of Player to "&b%Player% &8[&7%{lv.%Player%}%Lv&8] &8[&7%{EXP.%Player%}%&8/&7%{nextlv.%Player%}%&8]"
+			add {wheat::*} to Player
+			add {@wheat} to {EXP.%Player%}
+			delete event-block
+			while {EXP.%Player%}+1 is more than {nextlv.%Player%}:
+				remove {nextlv.%Player%} from {EXP.%Player%}
+				send "&b=== &fLEVEL &fUP &b===" to Player
+				add 1 to {lv.%Player%}
+				set {nextlv.%Player%} to round({nextlv.%Player%} * 1.1)
+		else:
+			send "&8[&7Farm&8] &7最大レベルになりました"
+			send "&8[&7Farm&8] &7プレステージを行ってください"
+
+every 1 seconds:
+	loop all Players:
+		set action bar of loop-Player to "&b%loop-Player% &8[&7%{lv.%loop-Player%}%Lv&8] &8[&7%{EXP.%loop-Player%}%&8/&7%{nextlv.%loop-Player%}%&8]"
+		if {mvp.%loop-Player%} or {vip.%loop-Player%} or {admin.%loop-Player%} is "on":
+			if {mvp.%loop-Player%} is "on":
+				set the loop-player's tablist name to "&8[&7%{lv.%loop-Player%}%Lv&8]&b%loop-Player%"
+			if {vip.%loop-Player%} is "on":
+				set the loop-player's tablist name to "&8[&7%{lv.%loop-Player%}%Lv&8]&e%loop-Player%"
+			if {admin.%loop-Player%} is "on":
+				set the loop-player's tablist name to "&8[&7%{lv.%loop-Player%}%Lv&8]&c%loop-Player%"
+		else:
+			set the loop-player's tablist name to "&8[&7%{lv.%loop-Player%}%Lv&8]&7%loop-Player%"
+
+on chat:
+	cancel event
+	if {mvp.%Player%} or {vip.%Player%} or {admin.%Player%} is "on":
+		if {mvp.%Player%} is "on":
+			broadcast "&8[&bMVP&8]&8[&7%{lv.%Player%}%Lv&8] &7%Player%&a: &f%message%"
+		if {vip.%Player%} is "on":
+			broadcast "&8[&eVIP&8]&8[&7%{lv.%Player%}%Lv&8] &7%Player%&a: &f%message%"
+		if {admin.%Player%} is "on":
+			broadcast "&8[&cADMIN&8]&8[&7%{lv.%Player%}%Lv&8] &7%Player%&a: &f%message%"
+	else:
+		broadcast "&8[&7%{lv.%Player%}%Lv&8] &7%Player%&a: &f%message%"
+
+command /farm [<text>] [<Player>] [<number>]:
+	permission: admin.sk
+	permission message: &8[&7System&8] &c貴方には権限がありません
+	trigger:
+		if arg-1 is not set:
+			send "&8===== &7farm command &8====="
+			send "&8・&7EXPを与えます"
+			send "&7/Farm exp <Player> <number>"
+			send "&8・&7Moneyを与えます"
+			send "&7/Farm money <Player> <number>"
+			send "&8・&7アイテムを設定します"
+			send "&7/Farm wheat"
+			send "&8・&7Rankを設定します"
+			send "&7/Farm rank <Player> <number>"
+		else:
+			if arg-1 is "exp":
+				add arg-3 to {EXP.%arg-2%}
+				send "&8[&7System&8] &e%arg-2%&7に&a%arg-3%&7EXP与えました"
+			if arg-1 is "money":
+				add arg-3 to {money.%arg-2%}
+				send "&8[&7System&8] &e%arg-2%&7に&a%arg-3%&7E与えました"
+			if arg-1 is "wheat":
+				set {wheat::*} to player's tool
+				send "&8[&7System&8] &7Itemを設定しました"
+			if arg-1 is "rank":
+				if arg-3 is not set:
+					send "&8===== &7Rank &8====="
+					send "&7DEFAULT &8>> &71"
+					send "&cADMIN   &8>> &72"
+					send "&bMVP     &8>> &73"
+					send "&eVIP     &8>> &74"
+				else:
+					if arg-3 is 1:
+						delete {mvp.%arg-2%}
+						delete {vip.%arg-2%}
+						delete {admin.%arg-2%}
+						send "&8[&7System&8] &e%arg-2%&7のRankを剥奪しました"
+					if arg-3 is 2:
+						delete {mvp.%arg-2%}
+						delete {vip.%arg-2%}
+						set {admin.%arg-2%} to "on"
+						send "&8[&7Rank&8] &e%arg-2%&7に&cADMIN&7を与えました" to Player
+					if arg-3 is 3:
+						delete {vip.%arg-2%}
+						delete {admin.%arg-2%}
+						set {mvp.%arg-2%} to "on"
+						send "&8[&7Rank&8] &e%arg-2%&7に&bMVP&7を与えました" to Player
+					if arg-3 is 4:
+						delete {mvp.%arg-2%}
+						delete {admin.%arg-2%}
+						set {vip.%arg-2%} to "on"
+						send "&8[&7Rank&8] &e%arg-2%&7に&eVIP&7を与えました" to Player
+			if arg-1 is "delete":
+				set {nextlv.%arg-2%} to 20
+				set {lv.%arg-2%} to 1
+				set {EXP.%arg-2%} to 0
+				send "&8[&7Status&8] &e%arg-2%&7のステータスを削除しました" to Player

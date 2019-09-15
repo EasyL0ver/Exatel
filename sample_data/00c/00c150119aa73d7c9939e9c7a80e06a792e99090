@@ -1,0 +1,30 @@
+Good practice for multi-threading
+Thread thread = new Thread(new Runnable()
+{
+    public void run()
+    {
+        //...
+    }
+});
+
+thread.setName("killMeAtEnd");
+thread.start();
+	
+public void dispose()
+{
+    Thread threads[] = (Thread[])Thread.getAllStackTraces().keySet().toArray();
+    for(int x=0;x<threads.length;x++)
+    {
+        Thread thread = threads[x];
+        if(thread.getName().equalsIgnoreCase(KILL))
+        {
+            try
+            {
+                thread.interrupt();
+            }catch(Exception e){Log.e(Viewer.GAME,Log.getStackTraceString(e));}
+            thread = null;
+        }
+    }
+}
+
+public static final String KILL = "endOnDispose";

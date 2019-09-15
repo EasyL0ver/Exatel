@@ -1,0 +1,44 @@
+void setup() {
+  String whatClientSaid = "001";
+  if (whatClientSaid != null) {
+    //println(whatClientSaid);
+    if (whatClientSaid == "YO") {
+      println("New player has joined!");
+    }
+    else {
+      int msgType = int(whatClientSaid.substring(0, 1));
+      switch(msgType){
+
+        case(0): // Keypress Event
+        //println("A key was pressed!");
+        int parseCount = 1;
+        while (parseCount < whatClientSaid.length()) {
+          int whatKey = int(whatClientSaid.substring(parseCount, parseCount+1));
+          println(whatKey);
+
+          switch(whatKey){
+            case(0): // W was pressed
+            //println("W was pressed.");
+            break;
+
+            case(1): // A was pressed
+            //println("A was pressed.");
+            break;
+
+            case(2): // S was pressed
+            //println("S was pressed.");
+            break;
+
+            case(3): // D was pressed
+            //println("D was pressed.");
+            break;
+          }
+          parseCount++;
+        }
+
+        break;
+
+      }
+    }
+  } 
+}

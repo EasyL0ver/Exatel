@@ -1,0 +1,114 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NeuralNetwork {
+	public List<Layer> layers = new List<Layer>();
+	static float sigmoid ( float x ) 
+	{
+	 return 1f / (1f + Mathf.Exp(-x)); 
+	}
+	public class Layer
+	{
+		public int index;
+		public NeuralNetwork _parentNetwork;
+		public List<Neuron> neurons = new List<Neuron>();
+	}
+	public class Neuron{
+		public Layer _parentLayer;
+		public float _Value;
+		public float[] weights;
+		public float Value{
+			get{
+				//input layer
+				if(_parentLayer.index==0)
+				{
+					return _Value;
+				}else{
+					//hidden/output layers
+					float result = 0;
+					for(int i=0;i<weights.Length;i++)
+					{
+						result+=_parentLayer._parentNetwork.layers[_parentLayer.index-1].neurons[i].Value*weights[i];//_parentLayer.neurons[i].Value*weights[i];
+					}
+					return sigmoid(result);
+				}
+			}
+			set{
+				_Value = value;
+			}
+		}
+		public Neuron(Layer _pl)
+		{
+			_pl.neurons.Add(this);
+			_parentLayer = _pl;
+			Value = 0;
+		}
+	}
+	public Layer input()
+	{
+		return layers[0];
+	}
+	public Layer output()
+	{
+		return layers[layers.Count-1];
+	}
+	public void SetInput(int index, float _value)
+	{
+		input().neurons[index].Value = _value;
+	}
+	public List<float> GetOutput()
+	{
+		Layer _l = output();
+		List<float> result = new List<float>();
+		foreach(Neuron n in _l.neurons)
+		{
+			result.Add(n.Value);
+		}
+		return result;
+	}
+	public NeuralNetwork(int[] layerCounts)
+	{
+		layers = new List<Layer>();
+		for(int i = 0;i<layerCounts.Length;i++)
+		{
+			layers.Add(new Layer());
+			layers[i].neurons = new List<Neuron>();
+			layers[i].index = i;
+			layers[i]._parentNetwork = this;
+			for(int d = 0;d<layerCounts[i];d++)
+			{
+				Neuron n = new Neuron(layers[i]);
+				if(i>0){
+					n.weights = new float[layerCounts[i-1]];
+				}
+			}
+		}
+	}
+	//random mutations
+	public void Mutate()
+	{
+		for(int i = 1;i<layers.Count;i++)
+		{
+			for(int d = 0; d<layers[i].neurons.Count;d++)
+			{
+				for(int p = 0; p<layers[i].neurons[d].weights.Length;p++)
+				{
+					float r = Random.Range(0f,1f);
+					if(r<0.02f)
+					{
+						layers[i].neurons[d].weights[p] += 0.1f;
+					}else
+					if(r<0.04f)
+					{
+						layers[i].neurons[d].weights[p] *= -1;
+					}else
+					if(r<0.08f)
+					{
+						layers[i].neurons[d].weights[p] *=0.5f;
+					}
+				}
+			}
+		}
+	}
+}

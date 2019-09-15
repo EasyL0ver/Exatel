@@ -1,0 +1,116 @@
+getActivity().registerReceiver(new BroadcastReceiver(){...}, new IntentFilter(SENT));
+	
+View view = inflater.inflate(R.layout.activity_composer, container);
+	
+android:onClick="sendMessage"
+	
+public void sendMessage (View v) {
+        String phoneNumber = number_input.getText().toString();
+        String message = body_input.getText().toString();
+
+        if(message.length() > 0) {              
+            sendSMS(phoneNumber, message);
+            }
+
+        sendSMS(phoneNumber, message);
+        clearForm();
+    }
+	
+PendingIntent sentPI = PendingIntent.getBroadcast(getActivity(), 0,
+                new Intent(SENT), 0);
+	
+registerReceiver(new BroadcastReceiver(){...}, new IntentFilter(SENT));
+	
+package com.deadpixels.test.sms;
+
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.telephony.SmsManager;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+
+public class ComposerDialog extends DialogFragment {
+
+public ComposerDialog () {
+}
+
+private EditText body_input;
+private EditText number_input;
+SmsManager smsMgr = SmsManager.getDefault();
+private static final String TAG = "Composer";
+
+   @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.activity_composer, container);
+        body_input = (EditText) view.findViewById(R.id.text_input);
+        number_input = (EditText) view.findViewById(R.id.text_address);
+        getDialog().setTitle("Create your new Message!");
+
+        return view;
+    }
+
+   private void clearForm() {
+        body_input.setText("");
+        number_input.setText("");
+    }
+
+   public void sendMessage (View v) {
+        String phoneNumber = number_input.getText().toString();
+        String message = body_input.getText().toString();
+
+        if(message.length() > 0) {              
+            sendSMS(phoneNumber, message);
+            }
+
+        sendSMS(phoneNumber, message);
+        clearForm();
+    }
+
+   private void sendSMS(String phoneNumber, String message)
+    {           
+
+        String SENT = "SMS_SENT";
+
+        PendingIntent sentPI = PendingIntent.getBroadcast(getActivity(), 0,
+                new Intent(SENT), 0);
+
+         registerReceiver(new BroadcastReceiver(){
+
+            @Override
+            public void onReceive(Context arg0, Intent arg1) {
+                switch (getResultCode())
+                {
+                    case Activity.RESULT_OK:
+                        Log.v(TAG, "SMS sent succesfully");                     
+                        break;
+                    case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
+                        Log.v(TAG, "Generic failure");
+                        break;
+                    case SmsManager.RESULT_ERROR_NO_SERVICE:
+                        Log.v(TAG, "No service");                        
+                        break;
+                    case SmsManager.RESULT_ERROR_NULL_PDU:
+                        Log.v(TAG, "Null PDU");
+                        break;
+                    case SmsManager.RESULT_ERROR_RADIO_OFF:
+                        Log.v(TAG, "Radio off");                       
+                        break;
+                }
+            }
+        }, new IntentFilter(SENT));
+
+        smsMgr.sendTextMessage(phoneNumber, null, message, sentPI, null);      
+        clearForm();        
+    }
+	
+getActivity().registerReceiver(new BroadcastReceiver(){...}, new IntentFilter(SENT));

@@ -1,0 +1,65 @@
+/*
+  \file
+  \authors informatica (CDS Fisica) 2018/19
+  \brief A1: file di include
+ */
+
+/** tipo di ogni cella in sui e' suddiviso il mare (area di gioco)
+  -- EMPTY, cella vuota, 
+  -- ONE contenente una nave lunga uno, 
+  -- TWO, THREE parte di una nave lunga 2 o parte di una nave lunga 3 */
+
+#define EMPTY  0
+#define ONE    1
+#define TWO    2
+#define THREE  3
+
+
+/** area di gioco suddivisa in celle di uguali dimensioni
+    con condizioni periodiche di bordo 
+    (L-1 adiacente a 0 in tutte le dimensioni) */
+#define L 10
+int sea [L][L]; 
+
+/**
+   inizializza l'area di gioco (sea) tutta a EMPTY 
+*/
+void init (void);
+
+/**
+   inserisce nell'area di gioco una nuova nave lunga 1 (posizionamento casuale)
+
+   \retval 0 se l'inserimento è andato a buon fine
+   \retval -1 se si è verificato un errore (es. non c'e' posto)
+*/
+int put_one (void);
+
+/**
+   inserisce nell'area di gioco una nuova nave lunga 2 (posizionamento casuale e orientamento casuae della nave)
+
+   \retval 0 se l'inserimento è andato a buon fine
+   \retval -1 se si è verificato un errore (es. non c'e' posto)
+*/
+int put_two (void);
+
+/**
+   inserisce nell'area di gioco una nuova nave lunga 3 (posizionamento casuale e orientamento casuale della nave)
+
+   \retval 0 se l'inserimento è andato a buon fine
+   \retval -1 se si è verificato un errore (es. non c'e' posto)
+*/
+int put_three (void);
+
+/**
+   stampa fomattata del mare su stdout (FORNITO DAI DOCENTI NON MODIFICARE -- file shipbat_d.c)
+*/
+void print_sea (void);
+
+/**
+  conta le navi di tipo k (FORNITO DAI DOCENTI NON MODIFICARE --
+  -- file shipbat_d.c)
+  \param k tipo di navi da contare ONE, TWO o THREE
+
+  \retval n numero delle navi se ONE, TWO, THREE
+*/
+int count_ships (int k);

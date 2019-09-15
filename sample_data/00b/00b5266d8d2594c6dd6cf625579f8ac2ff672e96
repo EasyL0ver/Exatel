@@ -1,0 +1,8 @@
+NSObject Subclass Initiation
+Match *myMatch;
+
+@property (nonatomic, retain) Match *myMatch;
+	
+Match *match = [[Match alloc] initWithMatchData:[profile.matches objectAtIndex:indexPath.row]];
+
+[detailView setmyMatch: match];

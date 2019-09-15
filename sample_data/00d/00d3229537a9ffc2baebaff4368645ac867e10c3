@@ -1,0 +1,64 @@
+public static int Rozwiaz(Complex[,] A, Complex[] B, Complex[] X, double eps)
+        {
+            int i, j, k, blad, N, M, R;
+            double T, MA, a1 = 1.0;
+            Complex ZT, ZS;
+            N = A.GetLength(0) - 1; M = A.GetLength(1) - 1; R = B.Length - 1;
+
+
+            if (N == M && N == R)
+            {
+                //konstrukcja ciagu macierzy A[i] oraz ciagu macierzy B(i)
+                for (i = 1; i <= N; i++)
+                {
+                    //Wybór elementu gøównego
+                    T = (A[i, i]).Magnitude; k = i;
+                    for (j = i + 1; j <= N; j++)
+                    {
+                        MA = (A[j, i]).Magnitude;
+                        if (MA > T) { T = MA; k = j; };
+                    }
+                    if (T < eps)
+                    {
+                        blad = 5;
+                        return blad;
+                    }
+                    if (i == k) { ZT = A[i, i]; }
+                    else
+                    {
+                        //zamiana wiersa k-tego z i-tym macierzy MAcB
+                        ZS = B[k]; B[k] = B[i]; B[i] = ZS;
+                        ZT = A[k, i];
+                        for (j = N; j >= i; j--)
+                        {
+                            //zamiana wiersa k-tego z i-tym macierzy MAcB
+                            ZS = A[k, j]; A[k, j] = A[i, j]; A[i, j] = ZS;
+                            //j
+                        }
+
+                    }
+                    ZT = a1 / ZT;
+                    A[i, i] = ZT;
+                    for (j = i + 1; j <= N; j++)
+                    {
+                        ZS = A[j, i] * ZT;
+                        B[j] -= B[i] * ZS;
+                        for (k = i + 1; k <= N; k++)
+                        {
+                            A[j, k] -= A[i, k] * ZS;
+                        }///j
+                    }//i
+                     //Rozwiazywanie ukladu trojkatnego metoda postepowania wstecz
+
+                }
+                for (i = N; i >= 1; i--)
+                {
+                    ZT = B[i];
+                    for (j = i + 1; j <= N; j++) ZT -= A[i, j] * X[j];
+                    X[i] = ZT * A[i, i];
+                }//i
+
+            }
+            return blad = 0;
+
+        }

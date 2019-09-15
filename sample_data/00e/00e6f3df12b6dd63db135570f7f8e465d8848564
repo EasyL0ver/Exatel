@@ -1,0 +1,12 @@
+UPDATE tab_controle_nfe
+	SET 
+		Cod_erro_nfe = 297,
+		Cod_erro_1 = null,
+		Cod_erro_2 = null,
+		Cod_erro_3 = null,
+		Cod_erro_4 = null
+	WHERE 
+		Cod_erro_nfe is null
+		AND	Dth_inclusao >= '2018-01-01'
+		AND Dth_inclusao <= '2018-09-19'
+		AND Cod_situacao_envio_nfe = 'PE'

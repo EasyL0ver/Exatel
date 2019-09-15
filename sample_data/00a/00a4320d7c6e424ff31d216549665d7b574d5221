@@ -1,0 +1,7 @@
+import Data.List
+
+perms :: String -> [String]
+perms "" = [""]
+perms (c:s) = reverse $ sort $ nub
+	[t1 ++ [c] ++ t2 |  (s1, s2) <- [splitAt i s | i <- [0..length s]],
+						t1 <- perms s1, t2 <- perms s2]

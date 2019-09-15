@@ -1,0 +1,104 @@
+/*basically, this is just the request_queue processor. In the log output that
+  follows, the second device, (hdb) has just been connected, right after hda
+  was connected and hda1 was mounted to the system. */
+
+void nblk_request_proc(struct request_queue *q)
+{
+struct request *req;
+ndas_error_t err = NDAS_OK;
+
+dump_stack();
+
+while((req = NBLK_NEXT_REQUEST(q)) != NULL)
+{
+    dbgl_blk(8,"processing queue request from slot %d",SLOT_R(req));
+
+    if (test_bit(NDAS_FLAG_QUEUE_SUSPENDED, &(NDAS_GET_SLOT_DEV(SLOT_R(req))->queue_flags)))  {
+        printk ("ndas: Queue is suspendedn");
+        /* Queue is suspended */
+#if ( LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,31) )
+        blk_start_request(req);
+#else
+        blkdev_dequeue_request(req);
+#endif
+	
+/* Just below here you can see "slot" mentioned many times. This is the 
+     identification for the network case in which the hd is connected to the 
+     network. So you will see slot 2 in this log because the first device has 
+     already been connected and mounted. */
+
+  kernel: [231644.155503] BL|4|slot_enable|/driver/block/ctrldev.c:281|adding disk: slot=2, first_minor=16, capacity=976769072|nd/dpcd1,64:15:44.38,3828:10
+  kernel: [231644.155588] BL|3|ndop_open|/driver/block/ops.c:233|ing bdev=f6823400|nd/dpcd1,64:15:44.38,3720:10
+  kernel: [231644.155598] BL|2|ndop_open|/driver/block/ops.c:247|slot =0x2|nd/dpcd1,64:15:44.38,3720:10
+  kernel: [231644.155606] BL|2|ndop_open|/driver/block/ops.c:248|dev_t=0x3c00010|nd/dpcd1,64:15:44.38,3720:10
+  kernel: [231644.155615] ND|3|ndas_query_slot|netdisk/nddev.c:791|slot=2 sdev=d33e2080|nd/dpcd1,64:15:44.38,3696:10
+  kernel: [231644.155624] ND|3|ndas_query_slot|netdisk/nddev.c:817|ed|nd/dpcd1,64:15:44.38,3696:10
+  kernel: [231644.155631] BL|3|ndop_open|/driver/block/ops.c:326|mode=1|nd/dpcd1,64:15:44.38,3720:10
+  kernel: [231644.155640] BL|3|ndop_open|/driver/block/ops.c:365|ed open|nd/dpcd1,64:15:44.38,3724:10
+  kernel: [231644.155653] BL|8|ndop_revalidate_disk|/driver/block/ops.c:2334|gendisk=c6afd800={major=60,first_minor=16,minors=0x10,disk_name=ndas-44700486-0,private_data=00000002,capacity=%lld}|nd/dpcd1,64:15:44.38,3660:10
+  kernel: [231644.155668] BL|8|ndop_revalidate_disk|/driver/block/ops.c:2346|ed|nd/dpcd1,64:15:44.38,3652:10
+
+  /* So at this point the hard disk is added (gendisk=c6...) and the identifications
+     all match the network device. The driver is now about to begin scanning the 
+     hard drive for existing partitions. the little 'ed', at the end of the previous
+     line indicates that revalidate_disk has finished it's job. 
+
+     Also, I think the request queue is indicated by the output dpcd1 near the very
+     end of the line. 
+
+     Now below we have entered the function that is pasted above. In the function
+     you can see that the slot can be determined by the queue. And the log output
+     after the stack dump shows it is from slot 1. (The first network drive that was
+     already mounted.) */
+
+        kernel: [231644.155677]  ndas-44700486-0:Pid: 467, comm: nd/dpcd1 Tainted: P           2.6.32-5-686 #1
+  kernel: [231644.155711] Call Trace:
+  kernel: [231644.155723]  [<fc5a7685>] ? nblk_request_proc+0x9/0x10c [ndas_block]
+  kernel: [231644.155732]  [<c11298db>] ? __generic_unplug_device+0x23/0x25
+  kernel: [231644.155737]  [<c1129afb>] ? generic_unplug_device+0x1e/0x2e
+  kernel: [231644.155743]  [<c1123090>] ? blk_unplug+0x2e/0x31
+  kernel: [231644.155750]  [<c10cceec>] ? block_sync_page+0x33/0x34
+  kernel: [231644.155756]  [<c108770c>] ? sync_page+0x35/0x3d
+  kernel: [231644.155763]  [<c126d568>] ? __wait_on_bit_lock+0x31/0x6a
+  kernel: [231644.155768]  [<c10876d7>] ? sync_page+0x0/0x3d
+  kernel: [231644.155773]  [<c10876aa>] ? __lock_page+0x76/0x7e
+  kernel: [231644.155780]  [<c1043f1f>] ? wake_bit_function+0x0/0x3c
+  kernel: [231644.155785]  [<c1087b76>] ? do_read_cache_page+0xdf/0xf8
+  kernel: [231644.155791]  [<c10d21b9>] ? blkdev_readpage+0x0/0xc
+  kernel: [231644.155796]  [<c1087bbc>] ? read_cache_page_async+0x14/0x18
+  kernel: [231644.155801]  [<c1087bc9>] ? read_cache_page+0x9/0xf
+  kernel: [231644.155808]  [<c10ed6fc>] ? read_dev_sector+0x26/0x60
+  kernel: [231644.155813]  [<c10ee368>] ? adfspart_check_ICS+0x20/0x14c
+  kernel: [231644.155819]  [<c10ee138>] ? rescan_partitions+0x17e/0x378
+  kernel: [231644.155825]  [<c10ee348>] ? adfspart_check_ICS+0x0/0x14c
+  kernel: [231644.155830]  [<c10d26a3>] ? __blkdev_get+0x225/0x2c7
+  kernel: [231644.155836]  [<c10ed7e6>] ? register_disk+0xb0/0xfd
+  kernel: [231644.155843]  [<c112e33b>] ? add_disk+0x9a/0xe8
+  kernel: [231644.155848]  [<c112dafd>] ? exact_match+0x0/0x4
+  kernel: [231644.155853]  [<c112deae>] ? exact_lock+0x0/0xd
+  kernel: [231644.155861]  [<fc5a8b80>] ? slot_enable+0x405/0x4a5 [ndas_block]
+  kernel: [231644.155868]  [<fc5a8c63>] ? ndcmd_enabled_handler+0x43/0x9e [ndas_block]
+  kernel: [231644.155874]  [<fc5a8c20>] ? ndcmd_enabled_handler+0x0/0x9e [ndas_block]
+  kernel: [231644.155891]  [<fc54b22b>] ? notify_func+0x38/0x4b [ndas_core]
+  kernel: [231644.155906]  [<fc561cba>] ? _dpc_cancel+0x17c/0x626 [ndas_core]
+  kernel: [231644.155919]  [<fc562005>] ? _dpc_cancel+0x4c7/0x626 [ndas_core]
+  kernel: [231644.155933]  [<fc561cba>] ? _dpc_cancel+0x17c/0x626 [ndas_core]
+  kernel: [231644.155941]  [<c1003d47>] ? kernel_thread_helper+0x7/0x10
+
+  /* here are the output of the driver debugs. They show that this operation is
+     being performed on the first devices request queue. */
+
+  kernel: [231644.155948] BL|8|nblk_request_proc|/driver/block/block26.c:494|processing queue request from slot 1|nd/dpcd1,64:15:44.38,3408:10
+  kernel: [231644.155959] BL|8|nblk_handle_io|/driver/block/block26.c:374|struct ndas_slot sd = NDAS GET SLOT DEV(slot 1)
+  kernel: [231644.155966] |nd/dpcd1,64:15:44.38,3328:10
+  kernel: [231644.155970] BL|8|nblk_handle_io|/driver/block/block26.c:458|case READA call ndas_read(slot=1, ndas_req)|nd/dpcd1,64:15:44.38,3328:10
+  kernel: [231644.155979] ND|8|ndas_read|netdisk/nddev.c:824|read io: slot=1, cmd=0, req=x00|nd/dpcd1,64:15:44.38,3320:10
+	
+slot->disk = NULL;
+spin_lock_init(&slot->lock);
+slot->queue = blk_init_queue(
+    nblk_request_proc, 
+    &slot->lock
+);
+	
+Queue = blk_init_queue(sbd_request, &Device.lock);

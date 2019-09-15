@@ -1,0 +1,58 @@
+    empty_buff_for_conc_1();
+    generate_variable();
+    char variable[256];
+    for(int i = 0; i < 256; i++){
+        variable[i] = buff_for_conc_1[i];
+    }
+    tokenPtr tokptr = create_TOKEN(variable, f, "");
+    while(token->type == integer || token->type == floatingPoint || token->type == Operator){
+        if(token->type == integer || token->type == floatingPoint) { //neviem ako je to v typoch
+            dest = convertToken(token);
+            tokPtrStackPush(tokptr);
+        } else {
+            tokenPtr tokPtr1 = tokPtrStackPop();
+            tokenPtr tokPtr2 = tokPtrStackPop();
+
+            if (strcmp(token->value, "+") == 0) {
+                define_variable(tokenpo1);
+                define_variable(tokenpo2);
+
+                make_ADD(tokptr, tokenpo1, tokenpo2);
+                tokPtrStackPush(tokptr);
+                free(tokenpo1);
+                free(tokenpo2);
+            } else if (strcmp((token)->value, "-") == 0) {
+                define_variable(tokenpo1);
+                define_variable(tokenpo2);
+
+                make_SUB(tokptr, tokenpo1, tokenpo2);
+                tokPtrStackPush(tokptr);
+                free(tokenpo1);
+                free(tokenpo2);
+            } else if (strcmp(token->value, "") == 0) {
+                define_variable(tokenpo1);
+                define_variable(tokenpo2);
+
+                make_MUL(tokptr, tokenpo1, tokenpo2);
+                tokPtrStackPush(tokptr);
+                free(tokenpo1);
+                free(tokenpo2);
+            } else if (strcmp(token->value, "/") == 0) {
+                define_variable(tokenpo1);
+                define_variable(tokenpo2);
+
+                make_DIV(tokptr, tokenpo1, tokenpo2);
+                tokPtrStackPush(tokptr);
+                free(tokenpo1);
+                free(tokenpo2);
+            }//if
+        }//else
+        DLSucc(q);
+    }//while
+    char *tmpChar = getTokenPtrTypeStringValue(dest->type);
+    char type[3] = "";
+    concat_type(tmpChar, type);
+    create_instr(MOVE, tmpChar, type, NULL); //po poslednej operacii zostane premenna v rovnakom operande z ktoreho prebiehala operacia a je treba ju ulozit inde
+    free(tokptr);
+    free(dest->rPtr);//token s rovna sa
+    free(dest);

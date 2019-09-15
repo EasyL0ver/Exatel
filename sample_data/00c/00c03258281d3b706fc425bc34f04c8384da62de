@@ -1,0 +1,97 @@
+using Toybox.Application;
+using Toybox.WatchUi;
+
+class TestMenuAppApp extends Application.AppBase {
+
+    function initialize() {
+        AppBase.initialize();
+    }
+
+    // onStart() is called on application start up
+    function onStart(state) {
+    }
+
+    // onStop() is called when your application is exiting
+    function onStop(state) {
+    }
+
+    // Return the initial view of your application here
+    function getInitialView() {
+        return [ new TestMenuAppView(), new TestMenuAppDelegate() ];
+    }
+
+}
+
+
+class TestMenuAppView extends WatchUi.View {
+
+    function initialize() {
+        View.initialize();
+    }
+
+    // Load your resources here
+    function onLayout(dc) {
+        //setLayout(Rez.Layouts.MainLayout(dc));
+    }
+
+    // Called when this View is brought to the foreground. Restore
+    // the state of this View and prepare it to be shown. This includes
+    // loading resources into memory.
+    function onShow() {
+    }
+
+    // Update the view
+    function onUpdate(dc) {
+        // Call the parent onUpdate function to redraw the layout
+        View.onUpdate(dc);
+    }
+
+    // Called when this View is removed from the screen. Save the
+    // state of this View here. This includes freeing resources from
+    // memory.
+    function onHide() {
+    }
+
+}
+
+class TestMenuAppDelegate extends WatchUi.BehaviorDelegate {
+
+    function initialize() {
+        BehaviorDelegate.initialize();
+    }
+
+    function onSelect() {
+    	var menuA = new WatchUi.Menu();
+    	menuA.setTitle("Menu A");
+    	menuA.addItem("Random Item A1", null);
+        WatchUi.pushView(menuA, new MenuADelegate(), WatchUi.SLIDE_UP);
+        return true;
+    }
+
+}
+
+class MenuADelegate extends WatchUi.MenuInputDelegate {
+
+    function initialize() {
+        MenuInputDelegate.initialize();
+    }
+
+    function onMenuItem(item) {
+    	var menuB = new WatchUi.Menu();
+    	menuB.setTitle("Menu B");
+    	menuB.addItem("Random Item B1", null);
+        WatchUi.pushView(menuB, new MenuBDelegate(), WatchUi.SLIDE_UP);
+        return true;
+    }
+}
+
+class MenuBDelegate extends WatchUi.BehaviorDelegate {
+
+    function initialize() {
+        BehaviorDelegate.initialize();
+    }
+
+    function onMenuItem(item) {
+    	// do nothing
+    }
+}

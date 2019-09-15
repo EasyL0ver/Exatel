@@ -1,0 +1,64 @@
+<!DOCTYPE html><html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>HTML5 Syntax and Coding Style</title>
+</head>
+<body>
+<title>,df$Nachname df$Vorname ./. df$Versicherungsgesellschaft,</title>
+ 
+<p>Sehr geehrte(r) Frau/Herr df$Partner,</p>
+         
+<p>Folgende Fälle wurden nochmals geprüft und bereits an zuständige Anwälte übergeben:</p>
+           
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-size:12px;padding:4px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-size:12px;font-weight:normal;padding:8px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+<thread>
+<tr bgcolor="#E0E0E0">
+<td><strong> Policennr </strong></td>
+<td><strong> Produkt </strong></td>
+<td><strong> Versicherungsgesellschaft </strong></td>
+<td><strong> Policenstatus </strong></td>
+</tr>
+</thread>
+<tbody>
+<tr>
+<td>df$Policennr</td>
+<td>df$Produktname</td>
+<td>df$Versicherungsgesellschaft</td>
+<td>df$Policenstatus</td>
+</tr>
+</tbody>
+</table>
+
+ 
+<p>Der Widerruf der Policen wird jetzt individuell vorbereitet und an die Gesellschaft versendet.</p>
+<p>Wir hoffen ein abschließendes Ergebnis innerhalb der nächsten zwölf Wochen erzielen zu können.</p>
+
+<p>Bei Fragen freuen wir uns jederzeit auf Ihre schriftliche oder telefonische Kontaktaufnahme.</p>
+         
+<br>Herzliche Grüße,</br>
+         
+<p><img src = "/Users/Markus/Desktop/VSC360/VSC360Logo.png"></p>
+         
+<strong>Ihr Team von</strong>
+<br><font color="grey">Versicherungscheck360</font></br>
+         
+<br>Sophienstrasse 2 | 80333 München</br>
+Phone +49(089) |  215 429 72
+<br>Fax +49(089) |  215 429 73</br>
+info@versicherungscheck360.com
+<br><a href="http://www.versicherungscheck360.com/" > www.versicherungscheck360.com/</a></br>
+<FONT SIZE="1"><font color="green">_________________________________________________________</front></FONT>
+<br><font color="grey">Lawtechgroup GmbH | Sitz der Gesellschaft: München | Geschäftsführer: Daniel Kappes</br>
+Amtsgericht München | Handelsregister HRB226392
+<br>Bankverbindung: Raiffeisenbank Kirtorf | IBAN: DE05 5006 9477 0000 0847 94  | BIC: GENODE51K1F</front></br>
+         
+</P>
+</body>
+</html>

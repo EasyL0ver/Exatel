@@ -1,0 +1,5 @@
+FB.getLoginStatus(function(response) {
+    FB.api("/" + appId + "/scores", function(response2) {
+        console.log(response2);
+    });
+}, true);

@@ -1,0 +1,146 @@
+import math
+
+
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def add(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+    def sub(self, other):
+        return Point(self.x - other.x, self.y - other.y)
+
+    def scale(self, s):
+        return Point(self.x * s, self.y * s)
+
+    def len(self):
+        return math.sqrt(self.x * self.x + self.y * self.y)
+
+
+class Line:
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
+
+    def intersection(self, other):
+        x1 = self.p1.x
+        x2 = self.p2.x
+        x3 = other.p1.x
+        x4 = other.p2.x
+        y1 = self.p1.y
+        y2 = self.p2.y
+        y3 = other.p1.y
+        y4 = other.p2.y
+
+        a1 = x2 - x1
+        a2 = x3 - x4
+        a3 = y2 - y1
+        a4 = y3 - y4
+        b1 = x3 - x1
+        b2 = y3 - y1
+        detA = a1 * a4 - a2 * a3
+        s1 = (a4 * b1 - a2 * b2) / detA
+        return self.getPoint(s1)
+
+    def perpendicular(self):
+        a = self.p2.sub(self.p1)
+        return Line(self.p1, self.p1.add(Point(a.y, -a.x)))
+
+    def perpendicularBisector(self):
+        return Line(self.midPoint(), self.p2).perpendicular()
+
+    def midPoint(self):
+        return self.p1.add(self.p2).scale(0.5)
+
+    def getPoint(self, s):
+        return Point(self.p1.x + (self.p2.x - self.p1.x) * s, self.p1.y + (self.p2.y - self.p1.y) * s)
+
+    def normalize(self):
+        a = self.p2.sub(self.p1)
+        return a.scale(abs(1 / len(a)))
+
+
+def seg(x, y):
+    return x.sub(y).len()
+
+
+def angleBisector(a, b, c):
+    ac = seg(a, c)
+    ab = seg(a, b)
+    s = 1 / (1 + ac / ab)
+    return Line(a, b.add(c.sub(b).scale(s)))
+
+
+class Circle:
+    def __init__(self, o, r):
+        self.o = o
+        self.r = r
+
+    def circleLineIntersection(self, line):
+        ax = line.p1.x
+        ay = line.p1.y
+        bx = line.p2.x
+        by = line.p2.y
+        cx = self.o.x
+        cy = self.o.y
+        r = self.r
+        a = (bx - ax) ** 2 + (by - ay) ** 2
+        b = 2 * ((ax - cx) * (bx - ax) + (ay - cy) * (by - ay))
+        c = (ax - cx) ** 2 + (ay - cy) ** 2 - r ** 2
+        d = b ** 2 - 4 * a * c
+        s1 = (-b + (math.sqrt(d))) / (2 * a)
+        s2 = (-b - (math.sqrt(d))) / (2 * a)
+        if (s1 < 0.001):
+            return line.getPoint(s2)
+        else:
+            return line.getPoint(s1)
+
+
+class Triangle:
+    def __init__(self, a, b, c):
+        self.x1 = a
+        self.x2 = b
+        self.x3 = c
+
+    def circumCircle(self):
+        a = Line(self.x1,self.x2).perpendicularBisector()
+        b = Line(self.x1,self.x3).perpendicularBisector()
+        c = a.intersection(b)
+        r = seg(c,self.x1)
+        return Circle(c, r)
+
+    def incenter(self):
+        a = angleBisector(self.x1,self.x2,self.x3)
+        b = angleBisector(self.x2, self.x1, self.x3)
+        c = a.intersection(b)
+        return c
+
+def solve(t : Triangle):
+    a = t.x1
+    b = t.x2
+    c = t.x3
+
+    i = t.incenter()
+    o = t.circumCircle()
+    p = o.circleLineIntersection(Line(c, i))
+    n = o.circleLineIntersection(Line(b, i))
+    m = o.circleLineIntersection(Line(a, i))
+    e = Line(p, n).intersection(Line(a, b))
+    f = Line(p, n).intersection(Line(a, c))
+    k = Line(p, m).intersection(Line(a, b))
+    j = Line(p, m).intersection(Line(b, c))
+    h = Line(m, n).intersection(Line(b, c))
+    g = Line(m, n).intersection(Line(c, a))
+    return [seg(e, f), seg(f,g), seg(g,h), seg(h,j), seg(j,k), seg(k,e)]
+
+def makeTriangle(x1,y1,x2,y2,x3,y3):
+    return Triangle(Point(x1,y1),Point(x2,y2),Point(x3,y3))
+
+
+def solve3(bx,cx,cy):
+    ans = solve(makeTriangle(0,0,bx,0,cx,cy))
+    print("{:.6f} {:.6f} {:.6f} {:.6f} {:.6f} {:.6f}".format(*ans))
+
+solve3(*list(map(float,input().split(' '))))

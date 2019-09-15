@@ -1,0 +1,2 @@
+    @to_date   = params[:to]   || Date.today
+    @from_date = params[:from] || Date.today - 1.month

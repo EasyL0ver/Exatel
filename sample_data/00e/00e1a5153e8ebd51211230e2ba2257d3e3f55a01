@@ -1,0 +1,21 @@
+using System
+using System.Reflection;
+using PluginInterface;
+namespace Main
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+            Assembly asmb = Assembly.LoadForm("Interface.dll");
+            //DateTime beginTime = DateTime.Now;
+            //Console.WriteLine("Begin time: " + beginTime.ToString());
+            IPlugin obj = (IPlugin)asmb.CreateInstance("Plugin1.PluginClass");
+            obj.Execute();
+            //DateTime endTime = DateTime.Now;
+            //Console.WriteLine("End time: " + beginTime.ToString());
+            //Console.WriteLine("Total: " + (endTime - beginTime).ToString());
+        }
+    }
+}

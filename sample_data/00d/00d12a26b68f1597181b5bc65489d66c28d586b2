@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<pthread.h>
+#include<semaphore.h>
+
+void *grocer_function( void *idp );
+
+void *customer_function( void *idp );
+
+void service_customer( void );
+
+
+/* Semaphore 
+ * 0 : Both Grocers are sleeping
+ * 1 : Grover1 is working & Grocer2 is sleeping
+ * 2: Both Grocers are occupied 
+ */
+sem_t grocers_occupied;
+
+/* Semaphore 
+ *  0 : no customer on queue
+ * >0 : customer or customers still in queue
+ */
+sem_t waiting_room;
+sem_t customer_ready;
+sem_t service;
+
+extern int work;

@@ -1,0 +1,149 @@
+<6>[    0.000000] Initializing cgroup subsys cpu
+<5>[    0.000000] Linux version 2.6.39.4-kerneltreznorx (clemsyn@clemsyn-MM061) (gcc version 4.4.0 (GCC) ) #356 SMP PREEMPT Wed Feb 29 20:57:04 CST 2012
+<4>[    0.000000] CPU: ARMv7 Processor [411fc090] revision 0 (ARMv7), cr=10c53c7f
+<4>[    0.000000] CPU: VIPT nonaliasing data cache, VIPT aliasing instruction cache
+<4>[    0.000000] Machine: harmony
+<6>[    0.000000] Nvidia TAG: framebuffer: 2459648 @ 0x1fd95000
+<6>[    0.000000] Nvidia TAG: LP0: 8192 @ 0x1fd76ff0
+<6>[    0.000000] Tegra reserved memory:
+<6>[    0.000000] LP0:                    1fd76ff0 - 1fd78fef
+<6>[    0.000000] Bootloader framebuffer: 1fd95000 - 1ffedfff
+<6>[    0.000000] Framebuffer:            17300000 - 178fffff
+<6>[    0.000000] 2nd Framebuffer:        17900000 - 17ffffff
+<6>[    0.000000] Carveout:               18000000 - 1fffffff
+<6>[    0.000000] Vpr:                    00000000 - 00000000
+<4>[    0.000000] Memory policy: ECC disabled, Data cache writealloc
+<7>[    0.000000] On node 0 totalpages: 94720
+<7>[    0.000000] free_area_init_node: node 0, pgdat c07bfde0, node_mem_map c0933000
+<7>[    0.000000]   Normal zone: 1024 pages used for memmap
+<7>[    0.000000]   Normal zone: 0 pages reserved
+<7>[    0.000000]   Normal zone: 93696 pages, LIFO batch:31
+<6>[    0.000000] Tegra SKU: 8 Rev: A03 CPU Process: 1 Core Process: 1 Speedo ID: 1
+<6>[    0.000000] Tegra Revision: A03 SKU: 0x8 CPU Process: 1 Core Process: 1
+<4>[    0.000000] Unable to initialize clock fuse
+<6>[    0.000000] L310 cache controller enabled
+<6>[    0.000000] l2x0: 8 ways, CACHE_ID 0x410000c4, AUX_CTRL 0x7e080001, Cache size: 1048576 B
+<6>[    0.000000] PERCPU: Embedded 7 pages/cpu @c0d38000 s8192 r8192 d12288 u32768
+<7>[    0.000000] pcpu-alloc: s8192 r8192 d12288 u32768 alloc=8*4096
+<7>[    0.000000] pcpu-alloc: [0] 0 [0] 1 
+<4>[    0.000000] Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 93696
+<5>[    0.000000] Kernel command line: mem=512M@0M video=tegrafb console=ttyUSB0,115200n8 androidboot.console=ttyUSB0 tegraboot=nand mtdparts=tegra_nand:16384K@7424K(misc),16384K@62208K(recovery),16384K@79104K(boot),204800K@96000K(system),222464K@301312K(cache),4096K@24320K(bootbmp),32768K@28928K(logodata)
+<6>[    0.000000] PID hash table entries: 2048 (order: 1, 8192 bytes)
+<6>[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+<6>[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+<6>[    0.000000] Memory: 370MB = 370MB total
+<5>[    0.000000] Memory: 364720k/364720k available, 159568k reserved, 0K highmem
+<5>[    0.000000] Virtual kernel memory layout:
+<5>[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+<5>[    0.000000]     fixmap  : 0xfff00000 - 0xfffe0000   ( 896 kB)
+<5>[    0.000000]     DMA     : 0xff000000 - 0xffe00000   (  14 MB)
+<5>[    0.000000]     vmalloc : 0xe0800000 - 0xf8000000   ( 376 MB)
+<5>[    0.000000]     lowmem  : 0xc0000000 - 0xe0000000   ( 512 MB)
+<5>[    0.000000]     modules : 0xbf000000 - 0xc0000000   (  16 MB)
+<5>[    0.000000]       .init : 0xc0008000 - 0xc0050000   ( 288 kB)
+<5>[    0.000000]       .text : 0xc0050000 - 0xc075e6a8   (7226 kB)
+<5>[    0.000000]       .data : 0xc0760000 - 0xc07c18e8   ( 391 kB)
+<6>[    0.000000] Preemptable hierarchical RCU implementation.
+<6>[    0.000000] 	RCU-based detection of stalled CPUs is disabled.
+<6>[    0.000000] 	Verbose stalled-CPUs detection is disabled.
+<6>[    0.000000] NR_IRQS:480
+<6>[    0.000000] sched_clock: 32 bits at 1000kHz, resolution 1000ns, wraps every 4294967ms
+<6>[    0.002713] Calibrating delay loop... 1987.37 BogoMIPS (lpj=9936896)
+<6>[    0.066780] pid_max: default: 32768 minimum: 301
+<6>[    0.070487] Mount-cache hash table entries: 512
+<6>[    0.074357] Initializing cgroup subsys debug
+<6>[    0.077822] Initializing cgroup subsys cpuacct
+<6>[    0.081322] Initializing cgroup subsys freezer
+<6>[    0.084910] CPU: Testing write buffer coherency: ok
+<6>[    0.089640] ftrace: allocating 19574 entries in 58 pages
+<4>[    0.208620] CPU1: Booted secondary processor
+<6>[    0.210634] Brought up 2 CPUs
+<6>[    0.216049] SMP: Total of 2 processors activated (3974.75 BogoMIPS).
+<6>[    0.221671] print_constraints: dummy: 
+<6>[    0.225294] NET: Registered protocol family 16
+<6>[    0.227728] host1x bus init
+<4>[    0.232139] Unable to initialize clock fuse
+<6>[    0.450329] smba1002_audio_register_devices++Initializing BT RFKILL, clk_add_alias: 0
+<6>[    0.509954] ram_console: got buffer at 17200000, size 100000
+<6>[    0.514251] ram_console: uncorrectable error in header
+<6>[    0.519559] ram_console: no valid data in buffer (sig = 0x43010240)
+<6>[    0.529291] console [ram-1] enabled
+<6>[    0.532437] tegra_arb_init: initialized
+<6>[    0.536380] tegra_iovmm_register: added iovmm-gart
+<6>[    0.549046] bio: create slab <bio-0> at 0
+<5>[    0.552485] SCSI subsystem initialized
+<6>[    0.558065] tegra-otg tegra-otg: otg transceiver registered
+<6>[    0.562881] usbcore: registered new interface driver usbfs
+<6>[    0.567366] usbcore: registered new interface driver hub
+<6>[    0.571677] usbcore: registered new device driver usb
+<6>[    0.581000] tps6586x 4-0034: VERSIONCRC is 05
+<6>[    0.617244] Wake18 for irq=118
+<6>[    0.619172] Enabling wake18
+<6>[    0.629993] print_constraints: tps658621_sm0: 725 <--> 1500 mV at 1275 mV normal standby
+<6>[    0.640867] print_constraints: tps658621_sm1: 725 <--> 1500 mV at 1000 mV normal standby
+<6>[    0.653206] print_constraints: tps658621_sm2: 3000 <--> 4550 mV at 3700 mV normal standby
+<6>[    0.663415] print_constraints: tps658621_ldo0: 1500 <--> 3300 mV at 1200 mV normal standby
+<6>[    0.675818] print_constraints: tps658621_ldo1: 725 <--> 1500 mV at 1100 mV normal standby
+<6>[    0.687396] print_constraints: tps658621_ldo2: 725 <--> 1500 mV at 1275 mV normal standby
+<6>[    0.699005] print_constraints: tps658621_ldo3: 1250 <--> 3300 mV at 3300 mV normal standby
+<6>[    0.711513] print_constraints: tps658621_ldo4: 1700 <--> 2000 mV at 1800 mV normal standby
+<6>[    0.720888] print_constraints: tps658621_ldo5: 1250 <--> 3300 mV at 2850 mV normal standby
+<6>[    0.732569] print_constraints: tps658621_ldo6: 1250 <--> 3300 mV at 2850 mV normal standby
+<6>[    0.742702] print_constraints: tps658621_ldo7: 1250 <--> 3300 mV at 3300 mV normal standby
+<6>[    0.752913] print_constraints: tps658621_ldo8: 1250 <--> 3300 mV at 1800 mV normal standby
+<6>[    0.762273] print_constraints: tps658621_ldo9: 1250 <--> 3300 mV at 2850 mV normal standby
+<6>[    0.768256] Advanced Linux Sound Architecture Driver Version 1.0.24.
+<6>[    0.771370] Bluetooth: Core ver 2.16
+<6>[    0.774935] NET: Registered protocol family 31
+<6>[    0.780481] Bluetooth: HCI device and connection manager initialized
+<6>[    0.784468] Bluetooth: HCI socket layer initialized
+<6>[    0.788689] Bluetooth: L2CAP socket layer initialized
+<6>[    0.792743] Bluetooth: SCO socket layer initialized
+<6>[    0.798544] cfg80211: Calling CRDA to update world regulatory domain
+<6>[    0.802229] Switching to clocksource timer_us
+<6>[    0.808400] Switched to NOHz mode on CPU #0
+<6>[    0.811838] Switched to NOHz mode on CPU #1
+<6>[    0.818620] tegra-nvmap tegra-nvmap: created carveout iram (255KiB)
+<6>[    0.826052] tegra-nvmap tegra-nvmap: created carveout generic-0 (131072KiB)
+<6>[    0.830403] NET: Registered protocol family 2
+<6>[    0.836686] IP route cache hash table entries: 4096 (order: 2, 16384 bytes)
+<6>[    0.843341] TCP established hash table entries: 16384 (order: 5, 131072 bytes)
+<6>[    0.849370] TCP bind hash table entries: 16384 (order: 5, 196608 bytes)
+<6>[    0.855298] TCP: Hash tables configured (established 16384 bind 16384)
+<6>[    0.857516] TCP reno registered
+<6>[    0.862533] UDP hash table entries: 256 (order: 1, 8192 bytes)
+<6>[    0.867942] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+<6>[    0.871725] NET: Registered protocol family 1
+<6>[    0.874334] Unpacking initramfs...
+<6>[    0.885477] Freeing initrd memory: 160K
+<6>[    0.889677] PMU: registered new PMU device of type 0
+<6>[    0.902958] ashmem: initialized
+<6>[    0.906458] fuse init (API version 7.16)
+<7>[    0.911629] yaffs: yaffs built Feb 29 2012 07:15:46 Installing.
+<6>[    0.916189] io scheduler noop registered (default)
+<6>[    0.919609] io scheduler deadline registered
+<6>[    0.922544] io scheduler cfq registered
+<6>[    0.928859] tegra_grhost tegra_grhost: initialized
+<6>[    0.932347] tegradc tegradc.0: probed
+<6>[    0.935267] tegradc tegradc.0: probed
+<6>[    0.937422] Wake5 for irq=192
+<6>[    0.941241] nvhdcp: using "always on" policy.
+<6>[    0.944194] tegradc tegradc.1: probed
+<6>[    0.947111] tegradc tegradc.1: probed
+<6>[    0.952827] tegra_uart.0: ttyHS0 at I/O 0x0 (irq = 68) is a unknown
+<6>[    1.065247] Registered UART port ttyHS0
+<6>[    1.070740] tegra_uart.2: ttyHS2 at I/O 0x0 (irq = 78) is a unknown
+<6>[    1.225249] Registered UART port ttyHS2
+<6>[    1.230766] tegra_uart.3: ttyHS3 at I/O 0x0 (irq = 122) is a unknown
+<6>[    1.385249] Registered UART port ttyHS3
+<6>[    1.388398] Initialized tegra uart driver
+<6>[    1.392641] lis3lv02d: 8 bits sensor found
+<6>[    1.439876] input: ST LIS3LV02DL Accelerometer as /devices/platform/lis3lv02d/input/input0
+<4>[    1.445507] bcm4329_rfkill_probe : can't find shutdown gpio.
+<6>[    1.454286] tegra_nand: 1 NAND chip(s) found (vend=0xad, dev=0xdc) (Hynix NAND 512MiB 3,3V 8-bit)
+<6>[    1.460713] tegra_nand: NVIDIA Tegra NAND controller @ base=0x70008000 irq=56.
+<5>[    1.740371] 7 cmdlinepart partitions found on MTD device tegra_nand
+<5>[    1.744600] Creating 7 MTD partitions on "tegra_nand":
+<5>[    1.748548] 0x000000740000-0x000001740000 : "misc"
+<5>[    1.753278] 0x000003cc0000-0x000004cc0000 : "recovery"
+<5>[    1.757632]

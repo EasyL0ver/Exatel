@@ -1,0 +1,102 @@
+void aggregate(int auth)
+{
+extern mdata *mod;
+extern cdata content;
+extern EC_POINT g;
+extern EC_PAIRING p;
+extern EC_POINT publickey;
+
+int i, j;
+int mnmb;
+unsigned char aggstr[1024] = { 0 };
+unsigned char pair[1024] = { 0 };
+unsigned char strbuff[1024] = { 0 };
+FILE *aggsig;
+FILE *pairing1st;
+FILE *pairing2nd;
+FILE *pkey;
+EC_PAIRING ptmp;
+Element calcpair;
+Element pairbuff;
+Element verify;
+
+//Initialize
+mnmb = content.nummodel;
+//pairing_init(p, "ECBN254a");
+point_init(content.aggsig, p->g1);
+point_init(publickey, p->g1);
+element_init(calcpair, p->g3);
+element_set_one(calcpair);
+element_init(pairbuff, p->g3);
+element_set_one(pairbuff);
+element_init(verify, p->g3);
+
+if (auth == 1)
+{
+    aggsig = fopen("slot/aggregate_sig.txt", "w");
+    pairing1st = fopen("slot/pairing1st.txt", "w");
+}
+else {
+    aggsig = fopen("slot'/aggregate_sig.txt", "w");
+    pairing1st = fopen("slot/pairing1st.txt", "r");
+    pairing2nd = fopen("slot'/pairing2nd.txt", "w");
+    pkey = fopen("slot/publickey.txt", "r");
+
+    if (pairing1st == NULL)
+    {
+        printf("Failed to open file.n");
+        exit(1);
+    }
+
+    if (pkey == NULL)
+    {
+        printf("Failed to open file.n");
+        exit(1);
+    }
+}
+
+printf("Try to make aggregate signature.n");
+for (i = 0; i < mnmb; i++)
+{
+    point_add(content.aggsig, content.aggsig, mod[i].signature);
+}
+
+point_get_str(aggstr, content.aggsig);
+fputs(aggstr, aggsig);
+printf("Make aggregate signature!nSave to aggregate_sig.txtn");
+
+printf("Calcurate pairing.n");
+if (auth == 1)
+{
+    pairing_map(calcpair, content.aggsig, g, p);    //Segmentation fault
+    element_get_str(pair, calcpair);
+    fputs(pair, pairing1st);
+}
+else {
+    fgets(strbuff, 1024, pkey);
+    point_set_str(publickey, strbuff);
+    fgets(strbuff, 1024, pairing1st);
+    element_set_str(verify, strbuff);
+
+    for (i = 0; i < mnmb; i++)
+    {
+        pairing_map(pairbuff, mod[i].hash, publickey, ptmp);
+        element_mul(calcpair, calcpair, pairbuff);
+    }
+
+    if (element_cmp(verify, calcpair) == 0)
+    {
+        printf("Signature is legal.n");
+    }
+    else {
+        printf("Signature is illegal.n");
+    }
+}
+
+fclose(aggsig);
+fclose(pairing1st);
+fclose(pairing2nd);
+fclose(pkey);
+
+printf("aggregate.c Finished.nn");
+}

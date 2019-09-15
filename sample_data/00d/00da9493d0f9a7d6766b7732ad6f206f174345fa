@@ -1,0 +1,30 @@
+#[proc_macro_derive(SomeTrait)]
+pub fn derive_some_trait_from_def(item: TokenStream) -> TokenStream {
+    let item: syn::DeriveInput = syn::parse(item).unwrap();
+    ...
+}
+
+#[proc_macro_attribute]
+pub fn derive_some_trait_from_impl(attr: TokenStream, item: TokenStream) -> TokenStream {
+    let item: syn::ItemImpl = syn::parse(item).unwrap();
+    ...
+}
+
+#[derive(SomeTrait)]
+struct Foo {
+    x: u32,
+    y: u32,
+}
+
+#[derive_some_trait_from_impl]
+impl Foo {
+    fn cartesian(&self) -> f64 {
+       let x = self.x as f64;
+       let y = self.y as f64;
+       (x*x + y*y).sqrt()
+    }
+}
+
+trait SomeTrait {
+    fn dump_schema(&self, w: &mut Write) -> fmt::Result;
+}

@@ -1,0 +1,7 @@
+int sysctlbyname(const char *name, void *oldp, size_t *oldlenp, void *newp, size_t newlen);
+	
+size_t size;
+sysctlbyname("hw.model", NULL, &size, NULL, 0);
+char *model = malloc(size);
+sysctlbyname("hw.model", model, &size, NULL, 0);
+NSLog(@"%s", model);

@@ -1,0 +1,44 @@
+class Topic < ActiveRecord::Base
+  
+  validates_presence_of :name, :category_id
+  belongs_to :category
+  has_many :posts , :dependent => :destroy
+  accepts_nested_attributes_for :posts, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+
+  def save
+    for post in self.posts
+      post.user_id = self.user_id
+    end
+
+    if valid?
+      self.save!
+    else
+      return false
+    end
+    return true
+  end
+
+end
+
+================
+
+class Post < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :topic
+  validates_presence_of :content, :user_id
+
+  def save
+    if valid?
+      self.save!
+    else
+      return false
+    end
+  end
+end
+
+================
+
+topic_controller > create:
+
+@topic = Topic.new(params[:topic])
+@topic.save ? redirect_to(topic_path(@topic)) : render(:action => :new)

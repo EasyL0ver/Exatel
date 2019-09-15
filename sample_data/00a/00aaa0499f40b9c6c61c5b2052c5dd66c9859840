@@ -1,0 +1,237 @@
+diff --git a/lib/player/js/rgf_player.js b/lib/player/js/rgf_player.js
+index e8f4047..103a4ab 100644
+--- a/lib/player/js/rgf_player.js
++++ b/lib/player/js/rgf_player.js
+@@ -53,7 +53,7 @@ eidogo.Player.prototype = {
+         cfg = cfg || {};
+         
+         // add gamestream hooks to eidogo
+-        this.gsInsertAction = cfg.gsInsertAction ? cfg.gsInsertAction : function(action) { }
++        this.gsInsertActions = cfg.gsInsertActions ? cfg.gsInsertActions : function(actions) { }
+ 
+         // play, add_b, add_w, region, tr, sq, cr, label, number, score(?)
+         this.mode = cfg.mode ? cfg.mode : "play";
+@@ -1222,7 +1222,7 @@ eidogo.Player.prototype = {
+                     path.push(mn);
+                     // GAMESTREAM (removed for now)
+                     // this.goTo(path);
+-                    this.gsInsertAction({name: "VT", arg: "N", position: this._getAbsolutePath(path)});
++                    this.gsInsertActions({name: "VT", arg: "N", position: this._getAbsolutePath(path)});
+                     break;
+                 }
+                 mn++;
+@@ -1247,8 +1247,7 @@ eidogo.Player.prototype = {
+                     // move doesn't exist yet
+                     // GAMESTREAM
+                     // this.createMove(coord);
+-                    // GS
+-                    this.gsInsertAction([{name: ";"},{name: this.currentColor, arg: coord}]);
++                    this.gsInsertActions([{name: ";"},{name: this.currentColor, arg: coord}]);
+                 }
+             }
+         } else if (this.mode == "region" && x >= -1 && y >= -1 && this.regionBegun) {
+@@ -1319,7 +1318,7 @@ eidogo.Player.prototype = {
+                 }
+             }
+             // GAMESTREAM
+-            if (prop && this.gsInsertAction({name: prop, arg: coord})) {
++            if (prop && this.gsInsertActions({name: prop, arg: coord})) {
+                 switch (this.mode) {
+                     case "number":
+                         this.labelLastNumber++;
+@@ -2651,7 +2650,7 @@ eidogo.Player.prototype = {
+         var path = target.id.replace(/^navtree-node-/, "").split("-");
+         // GAMESTREAM: (NAV 3) this is finally the right spot!
+         // this.goTo(path, true);
+-        this.gsInsertAction({name: "VT", arg: "N", position: this._getAbsolutePath(path)});
++        this.gsInsertActions({name: "VT", arg: "N", position: this._getAbsolutePath(path)});
+         stopEvent(e);
+     },
+ 
+diff --git a/prototype/eidogo_player.js b/prototype/eidogo_player.js
+index d11623b..4af176b 100644
+--- a/prototype/eidogo_player.js
++++ b/prototype/eidogo_player.js
+@@ -22,9 +22,29 @@ function BoardPlayer(boardId) {
+         container:       this.id+"_eidogo",
+         sgf:             ";",
+         loadPath:        [0,0],
++        
++        gsInsertActions:  this.gsInsertActions
+     };
+ };
+ 
++BoardPlayer.prototype.attachStream = function (stream) {
++    var self = this;
++    this.attachedStream = stream;
++
++    stream.bind('applyAction', self.onApplyAction.bind(self));
++};
++
++BoardPlayer.prototype.detachStream = function () {
++    var self = this,
++    stream = this.attachedStream;
++
++    stream.unbind('applyAction', self.onApplyAction.bind(self));
++};
++
++BoardPlayer.prototype.gsInsertActions = function(actions) {
++    this.trigger('insertActions',actions);
++};
++
+ // Returns the html element for the board player
+ BoardPlayer.prototype.html=function(style) {
+     var elEidogo=document.createElement("div");
+@@ -42,7 +62,7 @@ BoardPlayer.prototype._getEidogoPath=function(position) {
+     return this.eidogoPlayer._getEidogoPath(pathToArray(position));
+ };
+ 
+-BoardPlayer.prototype.apply=function(action) {
++BoardPlayer.prototype.onApplyAction=function(action) {
+     var path;
+     if (action.name=="KeyFrame") {
+         this.eidogoConfig.sgf=action.arg;
+@@ -87,3 +107,5 @@ BoardPlayer.prototype.apply=function(action) {
+     $('div#'+this.id+"_sgf").text(parser.rgf);
+     $('div#'+this.id+"_actions").append(document.createTextNode(newActiontxt));
+ };
++
++asEvented.call(BoardPlayer.prototype);
+diff --git a/prototype/gui.js b/prototype/gui.js
+index dd9a2bd..753bdfb 100644
+--- a/prototype/gui.js
++++ b/prototype/gui.js
+@@ -20,6 +20,17 @@ function DisplayGUI(baseId,msSources,duration) {
+     this.mediaInterface=new MediaInterface(this.id+"_media_interface");
+     this.gameInterface=new GameInterface(this.id+"_game_interface");
+ 
++    // attach the mediaStream to the gameStream
++    this.gameStream.attachStream(this.mediaStream);
++    // Allow the game stream to force an update of the time of the media stream manually
++    this.gameStream.updateCurrentTime=this.mediaStream.updateTime.bind(this.mediaStream);
++    // attach the gameStream to the board
++    this.board.attachStream(this.gameStream);
++    // attach the board to the gameStream
++    this.gameStream.attachBoard(this.board);
++    // "attach" the mediaStream to the GUI
++    this.mediaStream.bind('statusChange', this.onStatusChange.bind(this));
++
+     // initialize the main HTML element(s)
+     this.html=document.createElement("div");
+     this.html.id=this.id;    
+@@ -86,26 +97,16 @@ function DisplayGUI(baseId,msSources,duration) {
+     // insert the gui into the html body
+     document.body.appendChild(this.html);
+ 
+-    // initialize the board
+-    this.board.eidogoConfig.gsInsertAction=this.gameStream.applyActionList.bind(this.gameStream);
++    // The game stream is set to the initial (starting) position,
++    // the other components are initialized
+     this.board.init();
+-    
+-    // Allow the game stream to force an update of the time of the media stream manually
+-    this.gameStream.updateCurrentTime=this.mediaStream.updateTime.bind(this.mediaStream);
+-    // The game stream is set to the initial (starting) position
+     this.gameStream.update(0);
+-
+-    // initialize the media stream
+-    this.mediaStream.addInterface(this.gameStream.updatedStatus.bind(this.gameStream),this.gameStream.updatedTime.bind(this.gameStream));
+-    this.mediaStream.addInterface(this.updatedStatus.bind(this));
+     this.mediaInterface.init(this.mediaStream);
+     this.mediaStream.init();
+-
+-    // Initialize the game interface
+     this.gameInterface.init(this.gameStream, this.mediaStream);
+ };
+ 
+-DisplayGUI.prototype.updatedStatus = function(newstatus) {
++DisplayGUI.prototype.onStatusChange = function(newstatus) {
+     if (newstatus.failed) {
+         // TODO: should load the fallback media stream...
+         alert("Media stream loading failed!");
+diff --git a/prototype/prototype.html b/prototype/prototype.html
+index bcfe340..805a9ce 100644
+--- a/prototype/prototype.html
++++ b/prototype/prototype.html
+@@ -17,6 +17,7 @@
+ -->
+     <script type="text/javascript" src="../lib/jquery-1.7.1.js"></script>
+     <script type="text/javascript" src="../lib/popcorn-complete.js"></script>
++    <script type="text/javascript" src="../lib/asevented.min.js"></script>
+ 
+     <script type="text/javascript" src="../lib/player/js/lang.js"></script>
+     <script type="text/javascript" src="../lib/player/js/eidogo.js"></script>
+diff --git a/src/game_stream.js b/src/game_stream.js
+index 799c60c..d6f56ca 100644
+--- a/src/game_stream.js
++++ b/src/game_stream.js
+@@ -3,9 +3,8 @@
+     Responsible to keep track of applied changes, where we are in this chain and to update the
+     current board drawing accordingly. It kind of "hijacks" the board...
+ */
+-function GameStream(gameId,board,maxDuration) {
++function GameStream(gameId,maxDuration) {
+     this.id=gameId;
+-    this.board=board;
+     
+     /* List of all KeyFrames:
+        A KeyFrame describes how to get the whole current SGF tree and the current position.
+@@ -49,6 +48,36 @@ function GameStream(gameId,board,maxDuration) {
+     // this.update(0);
+ };
+ 
++GameStream.prototype.attachStream = function (stream) {
++    var self = this;
++    this.attachedStream = stream;
++
++    stream.bind('statusChange', self.onStatusChange.bind(self));
++    stream.bind('timeChange', self.onTimeChange.bind(self));
++};
++
++GameStream.prototype.detachStream = function () {
++    var self = this, 
++    stream = this.attachedStream;
++
++    stream.unbind('statusChange', self.onStatusChange.bind(self));
++    stream.unbind('timeChange', self.onTimeChange.bind(self));
++};
++
++GameStream.prototype.attachBoard = function (board) {
++    var self = this;
++    this.attachedBoard = board;
++
++    board.bind('insertActions', self.applyActionList.bind(self));
++};
++
++GameStream.prototype.detachBoard = function () {
++    var self = this, 
++    board = this.attachedBoard;
++
++    board.unbind('insertActions', self.applyActionList.bind(self));
++};
++
+ // TODO: support insertions inbetween
+ GameStream.prototype.applyTimedActionList=function(actions) {
+     if (Array.isArray(actions)) {
+@@ -334,11 +363,11 @@ GameStream.prototype.writeRGF = function(node,base) {
+     return output;
+ };
+ 
+-GameStream.prototype.updatedStatus = function(newStatus) {
++GameStream.prototype.onStatusChange = function(newStatus) {
+     // TODO...
+ };
+ 
+-GameStream.prototype.updatedTime = function(newStatus) {
++GameStream.prototype.onTimeChange = function(newStatus) {
+     // TODO: maybe more happens depending on the new status...
+     if (this.status.inControl) {
+         // TODO: maybe we need to store the whole newStatus using e.g. deepClone?
+@@ -397,10 +426,10 @@ GameStream.prototype._advanceTo = function(nextTime,nextCounter) {
+             So the length of arrays in the tree may only increase and deleted indices may not be used
+             again for new purposes (because the RGF tree behaves that way). */
+         if (action.name!="KeyFrame") {
+-            this.board.apply(action);
++            this.trigger('applyAction',action);
+         } else if (this.status.timeIndex==0) {
+             // ok, we apply the very first

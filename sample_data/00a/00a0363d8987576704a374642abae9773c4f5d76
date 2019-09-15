@@ -1,0 +1,17 @@
+module.exports = function transformer(file, api) {
+  const j = api.jscodeshift;
+
+  return j(file.source)
+    .find(j.VariableDeclaration)
+  	.filter(d => d.value.declarations.length > 1)
+  	.forEach(path => {
+    	console.log(path)
+    	const newDeclarations = path.value.declarations.map(dec =>
+          j.variableDeclaration(path.value.kind, [
+            dec
+          ]))
+        console.log(newDeclarations)
+    	j(path).replaceWith(newDeclarations)
+    })
+  	.toSource()
+}

@@ -1,0 +1,1 @@
+Add-VpnConnection -Name "PC - VPN Connection" -ServerAddress "69.135.29.250" -TunnelType L2TP -L2tpPsk "VPN123" -Force -AuthenticationMethod MSChapv2 -UseWinlogonCredential -SplitTunneling $True -EncryptionLevel "Optional"

@@ -1,0 +1,195 @@
+##############################################################################
+# Copyright (c) 1998-2015,2016 Free Software Foundation, Inc.                #
+#                                                                            #
+# Permission is hereby granted, free of charge, to any person obtaining a    #
+# copy of this software and associated documentation files (the "Software"), #
+# to deal in the Software without restriction, including without limitation  #
+# the rights to use, copy, modify, merge, publish, distribute, distribute    #
+# with modifications, sublicense, and/or sell copies of the Software, and to #
+# permit persons to whom the Software is furnished to do so, subject to the  #
+# following conditions:                                                      #
+#                                                                            #
+# The above copyright notice and this permission notice shall be included in #
+# all copies or substantial portions of the Software.                        #
+#                                                                            #
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR #
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,   #
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL    #
+# THE ABOVE COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER      #
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING    #
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER        #
+# DEALINGS IN THE SOFTWARE.                                                  #
+#                                                                            #
+# Except as contained in this notice, the name(s) of the above copyright     #
+# holders shall not be used in advertising or otherwise to promote the sale, #
+# use or other dealings in this Software without prior written               #
+# authorization.                                                             #
+##############################################################################
+#
+# Author: Zeyd M. Ben-Halim <zmbenhal@netcom.com> 1992,1995
+#    and: Eric S. Raymond <esr@snark.thyrsus.com>
+#
+# $Id: Caps,v 1.40 2016/08/13 17:45:50 tom Exp $
+#
+# This is the master termcap/terminfo capability table.
+#
+# This table is used to generate initializers for tables that drive tic,
+# infocmp, and the library compilation code used to support the termcap
+# compatibility hack.  It is also used to generate the tabular portion of the
+# terminfo(5) man page; lines beginning with `#%' are passed through to become
+# the terminfo table.
+#
+# This file has three major sections; a standard-capabilities table, two
+# extension-capability tables, and a section of aliases declarations.
+# The first two have the same format, as follows:
+#
+# FILE FORMAT
+#
+# Column 1: terminfo variable name
+# Column 2: terminfo capability name
+# Column 3: capability type (boolean, numeric, or string)
+# Column 4: termcap capability name
+# Column 5: KEY_xxx name, if any, `-' otherwise
+# Column 6: value for KEY_xxx name, if any, `-' otherwise
+# Column 7: Lead with `Y' if capability should be emitted in termcap
+#           translations, `-' otherwise
+# Column 8: capability description
+#
+# The codes following [Y-] in column 7 describe the versions of termcap which
+# use the given capability.  This information is not used by the curses library
+# proper; rather, it's there to help the terminfo maintainer avoid emitting
+# termcap entry translations that are more than 1023 bytes long (and tank a
+# lot of old termcap-using programs).  The codes read as follows:
+#	B = mentioned in the BSD man page for 4.4BSD curses
+#	C = used by the 4.4BSD curses library
+#	G = mentioned in the documentation for GNU termcap
+#	E = used by GNU Emacs
+#	K = remove this terminfo capability when translating to standard format
+# The important codes are C and E.  A cap with C or E should be preserved in
+# translation if possible.  The problem is that preserving all such caps may
+# lead to some termcap translations being too long.  The termcap maintainer
+# has a bit of a juggling act to do...potential problem cases are marked with
+# an asterisk (*).
+#
+# The aliases section has the following format:
+#
+# Column 1: either `capalias' or `infoalias'
+# Column 2: name to be aliased
+# Column 3: what name it should translate to.  The name IGNORE means it
+#           should be discarded with a warning message.
+# Column 4: name of the extension set (used for compiler warning messages)
+# Column 5: capability description (usually an associated terminfo variable)
+#
+# HANDLING TERMCAP AND TERMINFO EXTENSIONS
+#
+# There are basically five different ways to handle termcap and terminfo
+# extensions:
+#
+# 1. Don't list the capname here, or list it but comment it out (the latter
+# is preferable; someone might want to handle it in the future).  If you do
+# this, the capability will be treated as unknown and raise a warning from
+# the compiler.
+#
+# 2. Alias it.  This is appropriate if the capability has the same meaning
+# as an already-supported one.  The compiler will handle aliasing, emitting
+# an appropriate informational message whenever an alias fires.
+#
+# 3. List it in the standard table.  You almost certainly do *not* want
+# to do this -- the capabilities in that one, and their order, have been
+# carefully chosen to be SVr4-binary-compatible when they're written out
+# as a terminfo object, and breaking this would be bad.  It's up to the ncurses
+# library what to do with the terminfo data after it's read in.
+#
+# 4. List it in the aliases table with an IGNORE target field.  If you
+# do this, the capability will be ignored on input (though the user will
+# get a warning message about it).
+#
+# 5. List it in the extensions table. If you do this, the compiler will
+# silently accept the capability, but the curses library proper will never
+# see it (because it won't be written out as part of the terminfo object
+# format).  It's up to you what you have the compiler do with it.
+#
+# There are two opposite reasons to choose option 5.  One is when you want
+# to eat the capability silently and discard it when doing translations
+# to terminfo with tic -I.  Some very old obsolete BSD caps like :kn: are
+# in this class.  Nothing will ever use them again.
+#
+# More usually, you want the compiler to try to deduce something from the
+# capability value that it can use to translate it into your output format.
+# You'll need to write custom code, probably in postprocess_termcap() or
+# postprocess_terminfo(), to handle the translation.
+#
+# CONTROLLING ENTRY LENGTH
+#
+# Notes on specific elisions made to fit translations within 1023 bytes:
+#
+# Machines with IBM PC-like keyboards want to be able to define the following
+# keys: key_npage, key_ppage, key_home, key_ll (which is used for in termcap-
+# only environments for End or Home-Down), key_dc, and key_ic.  This is also
+# the set of keys the `joe' editor will be upset if it can't see.  So don't
+# trim those out of the set to be translated to termcap, or various users of
+# the termcap file will become irate.
+#
+# It might look tempting to leave those long init strings out of translations.
+# We can't do it (yet); 4.4BSD tput and tset use them.
+#
+# We retain the sgr capability in translation in spite of the fact that neither
+# 4.4BSD nor GNU Emacs uses it, because (a) some entry naming distinctions are
+# hard to understand without it, and (b) the entries in which it is long tend
+# to be older types that don't use up a lot of string space on function keys.
+# The tic(1) translation code will complain and elide it if it makes a critical
+# difference (there is special code in tic to recognize this situation).
+#
+# Yes, BSD tset(1) uses hpa.  We elide hpa/vpa anyway because the motion
+# optimizer in BSD curses didn't use them.  This omission seems to be the
+# single most effective one, it shortened the resolved length of all thirteen
+# problem entries in the 9.9.0 version of the terminfo master below critical.
+#
+# It would be nice to keep f11 and f12 for Emacs use, but a couple of termcap
+# translations go back over critical if we do this.  As 4.4BSD curses fades
+# into history and GNU termcap's application base shrinks towards being GNU
+# Emacs only, we'll probably elide out some BSD-only capabilities in order
+# to buy space for non-essentials Emacs is still using.  Capabilities high
+# on that hit list: rc, sc, uc.
+#
+#############################################################################
+#
+# STANDARD CAPABILITIES
+#
+#%The following is a complete table of the capabilities included in a
+#%terminfo description block and available to terminfo-using code.  In each
+#%line of the table,
+#%
+#%The \fBvariable\fR is the name by which the programmer (at the terminfo level)
+#%accesses the capability.
+#%
+#%The \fBcapname\fR is the short name used in the text of the database,
+#%and is used by a person updating the database.
+#%Whenever possible, capnames are chosen to be the same as or similar to
+#%the ANSI X3.64-1979 standard (now superseded by ECMA-48, which uses
+#%identical or very similar names).  Semantics are also intended to match
+#%those of the specification.
+#%
+#%The termcap code is the old
+#%.B termcap
+#%capability name (some capabilities are new, and have names which termcap
+#%did not originate).
+#%.P
+#%Capability names have no hard length limit, but an informal limit of 5
+#%characters has been adopted to keep them short and to allow the tabs in
+#%the source file
+#%.B Caps
+#%to line up nicely.
+#%
+#%Finally, the description field attempts to convey the semantics of the
+#%capability.  You may find some codes in the description field:
+#%.TP
+#%(P)
+#%indicates that padding may be specified
+#%.TP
+#%#[1-9]
+#%in the description field indicates that the string is passed through tparm with
+#%parms as given (#\fIi\fP).
+#%.TP
+#%(P*)
+#%indicates that padding may vary in proportion to the

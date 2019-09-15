@@ -1,0 +1,104 @@
+<?php
+$user_stats = da_reactions_get_saved_user_statistics();
+$group_stats = da_reactions_get_saved_posts_statistics();
+/// Fix sort order
+usort($group_stats, function($a, $b) {
+    return $a['group_final_score'] < $b['group_final_score'];
+});
+usort($user_stats, function($a, $b) {
+    return $a->user_score < $b->user_score;
+});
+?>
+    <h2>Classifica gruppo</h2>
+<?php
+if (empty($group_stats)) {
+    ?><p>Non esiste nessuna classifica dei gruppi al momento.</p><?php
+} else {
+    ?>
+    <table class="da-reactions">
+        <thead>
+        <tr>
+            <td>#</td>
+            <td>Gruppo</td>
+            <td>Punteggio</td>
+            <td>Miglior Marcatore</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <?php
+            $i = 0;
+
+            foreach ($group_stats as $row) {
+                $image_id = get_option('da_reactions_group_image_' . $row['group_id'], 0);
+                $default_image_src =  plugins_url('../../images/groups/100x100.png', __FILE__);
+                if ($image_id == 0) {
+                    $image = '<img src="' . $default_image_src . '" width="64" height="64">';
+                } else {
+                    $image = wp_get_attachment_image($image_id, array(64, 64), false, array('id' => 'image_preview_' . $row['group_id'], 'data-default' => $default_image_src));
+                }
+                $i++;
+                ?>
+            <tr>
+                <td data-colname="Rank"><?= $i ?></td>
+                <td data-colname="Group Name" class="groupname"><?= $image; ?> <?= $row['name'] ?></td>
+                <td data-colname="Reactions"><?= number_format($row['group_final_score'], 2, ',', ' '); ?></td>
+                <td data-colname="Best Player" class="username">
+                    <?php echo get_avatar( $row['best_player']['id'], 64 ); ?>
+                    <?= $row['best_player']['user_display'] ?>
+                </td>
+            </tr>
+            <?php
+            }
+            ?>
+        </tbody>
+    </table>
+    <?php
+}
+?>
+    <h2>Classifica utenti</h2>
+<?php
+if (empty($user_stats)) {
+    ?><p>Non esiste nessuna classifica degli utenti al momento.</p><?php
+} else {
+    ?>
+    <table class="da-reactions">
+        <thead>
+        <tr>
+            <td>#</td>
+            <td>Utente</td>
+            <td>Punteggio</td>
+            <td>Badge</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <?php
+            $i = 0;
+            foreach ($user_stats as $row) {
+                $i++;
+                $badge_collection = '';
+                $user_badges = da_reactions_get_user_badges($row->user_id);
+            ?>
+        <tr>
+            <td data-colname="Rank"><?= $i ?></td>
+            <td data-colname="User Name" class="username">
+                <?php echo get_avatar( $row->user_id, 64 ); ?>
+                <?= $row->user_display ?>
+            </td>
+            <td data-colname="Reactions"><?= $row->user_score ?></td>
+            <td data-colname="Badge">
+                <?php foreach($user_badges as $b) { ?>
+                    <!--echo $b->badge_descr.' ~ ';-->
+                    <img class = "badge_img_ranking <?=$b->badge_descr?>">
+                <?php } ?>
+            </td>
+        </tr>
+        <?php
+        if ($i == 10) { break; };
+        }
+        ?>
+        </tbody>
+    </table>
+    <?php
+}

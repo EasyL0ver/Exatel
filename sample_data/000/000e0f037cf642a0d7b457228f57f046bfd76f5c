@@ -1,0 +1,8 @@
+{
+  "code": "WARN.SWS.HOST.ERROR_IN_RESPONSE",
+  "content": "OTA_AirPriceLLSRQ: NO COMBINABLE FARES FOR CLASS USED"
+},
+{
+  "code": "53",
+  "content": "NO COMBINABLE FARES FOR CLASS USED"
+}

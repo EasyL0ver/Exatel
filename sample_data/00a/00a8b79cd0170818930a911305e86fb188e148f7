@@ -1,0 +1,94 @@
+function Game.executeSpawn(spawnId)
+    if not StoreSpawn then
+        return false
+    end
+ 
+    if not CreatureSpawn then
+        CreatureSpawn = {}
+    end
+ 
+    local spawn = StoreSpawn[spawnId]
+    if spawn then
+        local monster = Game.createMonster(spawn[1], spawn[2], true, true)
+        if not monster then
+            return addEvent(executeSpawn, spawn[3], spawnId) -- retry later in spawntime miliseconds
+        end
+ 
+        CreatureSpawn[monster:getId()] = spawnId
+        monster:registerEvent("SpawnDeath")
+        return monster:getId()
+    end
+end
+ 
+function Game.createSpawn(name, spawntime, position)
+    if not StoreSpawn then
+        StoreSpawn = {}
+        lastSpawnId = 0
+    end
+ 
+    local mType = MonsterType(name)
+    if not mType then
+        return false
+    end
+ 
+    lastSpawnId = lastSpawnId + 1
+ 
+    local spawnId = lastSpawnId
+    StoreSpawn[spawnId] = {name, position, spawntime}
+ 
+    local spawnEvent = Game.executeSpawn(spawnId)
+    StoreSpawn[spawnId][4] = spawnEvent
+ 
+    return spawnId
+end
+ 
+function Game.removeSpawn(spawnId)
+    if not StoreSpawn then
+        return false
+    end
+ 
+    local spawn = StoreSpawn[spawnId]
+    if not spawn then
+        return false
+    end
+ 
+    if spawn[4] then
+        local monster = Monster(spawn[4])
+        if monster then
+            monster:remove()
+        else
+            stopEvent(spawn[4])
+        end
+    end
+ 
+    StoreSpawn[spawnId] = nil
+    return true
+end
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+function onDeath(creature, corpse, killer, mostDamageKiller, unjustified, mostDamageUnjustified)
+    if not CreatureSpawn or not StoreSpawn then
+        return true
+    end
+ 
+    local creatureId = creature:getId()
+    local spawnId = CreatureSpawn[creatureId]
+    CreatureSpawn[creatureId] = nil
+ 
+    local spawn = StoreSpawn[spawnId]
+ 
+    if not spawn then
+        return true
+    end
+ 
+    spawn[4] = addEvent(Game.executeSpawn, spawn[3], spawnId)
+    return true
+end

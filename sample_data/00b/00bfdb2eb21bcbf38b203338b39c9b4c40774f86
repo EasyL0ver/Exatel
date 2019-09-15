@@ -1,0 +1,7 @@
+def thisSquare(x):
+		y =x*x
+		return y
+		
+a = int (input ("Enter a number :"))
+b=thisSquare(a)
+print("Square of "+ str (a)+ " is " + str(b))

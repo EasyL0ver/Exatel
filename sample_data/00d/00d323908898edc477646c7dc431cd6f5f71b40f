@@ -1,0 +1,9 @@
+try(SomeClass obj = new SomeClass()) {
+    // code
+} catch(Exception1|Exception2 ex) {
+    // code
+} catch(Exception3 ex) {
+    // code
+} finally {
+    // code
+}

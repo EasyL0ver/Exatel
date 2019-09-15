@@ -1,0 +1,11 @@
+/* Objects/object.c in Python2.7 */
+
+PyObject *
+_PyObject_New(PyTypeObject *tp)
+{
+    PyObject *op;
+    op = (PyObject *) PyObject_MALLOC(_PyObject_SIZE(tp));
+    if (op == NULL)
+        return PyErr_NoMemory();
+    return PyObject_INIT(op, tp);
+}

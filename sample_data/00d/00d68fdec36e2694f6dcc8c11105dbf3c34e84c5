@@ -1,0 +1,199 @@
+[INFO] Server permissions file permissions.yml is empty, ignoring it
+
+[WARNING] **** SERVER IS RUNNING IN OFFLINE/INSECURE MODE!
+
+[WARNING] The server will make no attempt to authenticate usernames. Beware.
+
+[WARNING] While this makes the game possible to play without internet access, it also opens up the ability for hackers to connect with any username they choose.
+
+[WARNING] To change this, set "online-mode" to "true" in the server.properties file.
+
+[INFO] **** Beginning UUID conversion, this may take A LONG time ****
+
+[INFO] Preparing level "world"
+
+[INFO] Reloading ResourceManager: Default, bukkit
+
+[INFO] Loaded 524 recipes
+
+[INFO] -------- World Settings For [world] --------
+
+[INFO] Max TNT Explosions: 100
+
+[INFO] Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+
+[INFO] Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+
+[INFO] Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1
+
+[INFO] Random Lighting Updates: false
+
+[INFO] Custom Map Seeds: Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313Ocean: 14357621 Shipwreck: 165745295 Slime: 987234911
+
+[INFO] Mob Spawn Range: 8
+
+[INFO] Cactus Growth Modifier: 100%
+
+[INFO] Cane Growth Modifier: 100%
+
+[INFO] Melon Growth Modifier: 100%
+
+[INFO] Mushroom Growth Modifier: 100%
+
+[INFO] Pumpkin Growth Modifier: 100%
+
+[INFO] Sapling Growth Modifier: 100%
+
+[INFO] Wheat Growth Modifier: 100%
+
+[INFO] NetherWart Growth Modifier: 100%
+
+[INFO] Vine Growth Modifier: 100%
+
+[INFO] Cocoa Growth Modifier: 100%
+
+[INFO] Entity Activation Range: An 32 / Mo 32 / Mi 16 / Tiv true
+
+[INFO] Experience Merge Radius: 3.0
+
+[INFO] Item Merge Radius: 2.5
+
+[INFO] Item Despawn Rate: 6000
+
+[INFO] Allow Zombie Pigmen to spawn from portal blocks: true
+
+[INFO] View Distance: 10
+
+[INFO] Arrow Despawn Rate: 1200
+
+[INFO] Zombie Aggressive Towards Villager: true
+
+[INFO] Nerfing mobs spawned from spawners: false
+
+[INFO] -------- World Settings For [world_nether] --------
+
+[INFO] Max TNT Explosions: 100
+
+[INFO] Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+
+[INFO] Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+
+[INFO] Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1
+
+[INFO] Random Lighting Updates: false
+
+[INFO] Custom Map Seeds: Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313Ocean: 14357621 Shipwreck: 165745295 Slime: 987234911
+
+[INFO] Mob Spawn Range: 8
+
+[INFO] Cactus Growth Modifier: 100%
+
+[INFO] Cane Growth Modifier: 100%
+
+[INFO] Melon Growth Modifier: 100%
+
+[INFO] Mushroom Growth Modifier: 100%
+
+[INFO] Pumpkin Growth Modifier: 100%
+
+[INFO] Sapling Growth Modifier: 100%
+
+[INFO] Wheat Growth Modifier: 100%
+
+[INFO] NetherWart Growth Modifier: 100%
+
+[INFO] Vine Growth Modifier: 100%
+
+[INFO] Cocoa Growth Modifier: 100%
+
+[INFO] Entity Activation Range: An 32 / Mo 32 / Mi 16 / Tiv true
+
+[INFO] Experience Merge Radius: 3.0
+
+[INFO] Item Merge Radius: 2.5
+
+[INFO] Item Despawn Rate: 6000
+
+[INFO] Allow Zombie Pigmen to spawn from portal blocks: true
+
+[INFO] View Distance: 10
+
+[INFO] Arrow Despawn Rate: 1200
+
+[INFO] Zombie Aggressive Towards Villager: true
+
+[INFO] Nerfing mobs spawned from spawners: false
+
+[INFO] -------- World Settings For [world_the_end] --------
+
+[INFO] Max TNT Explosions: 100
+
+[INFO] Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+
+[INFO] Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+
+[INFO] Hopper Transfer: 8 Hopper Check: 1 Hopper Amount: 1
+
+[INFO] Random Lighting Updates: false
+
+[INFO] Custom Map Seeds: Village: 10387312 Desert: 14357617 Igloo: 14357618 Jungle: 14357619 Swamp: 14357620 Monument: 10387313Ocean: 14357621 Shipwreck: 165745295 Slime: 987234911
+
+[INFO] Mob Spawn Range: 8
+
+[INFO] Cactus Growth Modifier: 100%
+
+[INFO] Cane Growth Modifier: 100%
+
+[INFO] Melon Growth Modifier: 100%
+
+[INFO] Mushroom Growth Modifier: 100%
+
+[INFO] Pumpkin Growth Modifier: 100%
+
+[INFO] Sapling Growth Modifier: 100%
+
+[INFO] Wheat Growth Modifier: 100%
+
+[INFO] NetherWart Growth Modifier: 100%
+
+[INFO] Vine Growth Modifier: 100%
+
+[INFO] Cocoa Growth Modifier: 100%
+
+[INFO] Entity Activation Range: An 32 / Mo 32 / Mi 16 / Tiv true
+
+[INFO] Experience Merge Radius: 3.0
+
+[INFO] Item Merge Radius: 2.5
+
+[INFO] Item Despawn Rate: 6000
+
+[INFO] Allow Zombie Pigmen to spawn from portal blocks: true
+
+[INFO] View Distance: 10
+
+[INFO] Arrow Despawn Rate: 1200
+
+[INFO] Zombie Aggressive Towards Villager: true
+
+[INFO] Nerfing mobs spawned from spawners: false
+
+[INFO] Preparing start region for level minecraft:overworld (Seed: 8325993274750496246)
+
+[INFO] Preparing start region for level minecraft:the_nether (Seed: 8325993274750496246)
+
+[INFO] Preparing start region for level minecraft:the_end (Seed: 8325993274750496246)
+
+[INFO] Time elapsed: 307 ms
+
+[INFO] [SetSpawn] Enabling SetSpawn v2.1*
+
+[INFO] [SetSpawn] Spawn has been enabled!
+
+[INFO] Done (2.997s)! For help, type "help"
+
+[INFO] Starting GS4 status listener
+
+[INFO] Query running on 0.0.0.0:41365
+
+[INFO] Timings Reset

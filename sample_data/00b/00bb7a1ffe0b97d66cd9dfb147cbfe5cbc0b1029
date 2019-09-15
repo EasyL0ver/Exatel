@@ -1,0 +1,4 @@
+JSP - how to render html(or jsp) code from database
+<html>hello, user 1 </html>
+	
+<html>hello, user 2 </html>

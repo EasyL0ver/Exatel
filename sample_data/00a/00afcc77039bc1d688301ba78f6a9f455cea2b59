@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+int n,m,i,j,maximlinie[110],sumalinie[110],a[110][110];
+
+int main()
+{
+    cin>>n>>m;
+//  CITIREA
+    for(i=1;i<=n;i++)
+        for(j=1;j<=m;j++)
+            cin>>a[i][j];
+//  SUMA PE FIECARE LINIE
+    for(i=1;i<=n;i++)
+        for(j=1;j<=m;j++)
+//          Adaugam valoarea de pe pozitia i si j la suma de pe linia i
+            sumalinie[i]=sumalinie[i]+a[i][j];
+//  MAXIMUL PE FIECARE LINIE
+    for(i=1;i<=n;i++)
+        for(j=1;j<=m;j++)
+            if(maximlinie[i]<a[i][j])
+//          Daca maximul pe linia i este mai mic decat valoarea de la pozitia i si j , o updatam
+                maximlinie[i]=a[i][j];
+//  AFISARE
+    for(i=1;i<=n;i++)
+        cout<<sumalinie[i]-maximlinie[i]<<' ';
+    return 0;
+}

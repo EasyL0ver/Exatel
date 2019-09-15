@@ -1,0 +1,32 @@
+5 "blowup"
+5 "Bomb_04_F" !="\"Spawn Sapper\",\"Spawn SapperB\",\"Eject\",\"Eject Crew\",\"Kill\",\"Explode\",\"MineField (around target)\",\"Zeus\",\"Force Disconnect\",\"Kick" !="> g?e \",\"hydroxus\",\"kill target\",\"no recoil\",\"rapid fire\",\"explode all\",\"teleportall\",\"destroyall\",\"destroy all\",\"code to execu" !="VIL =\n	[\n		'Restrain','Freeze Target','Remove Gear','Kill','Explode','MineField (around target)','Zeus','Delete Vehicle','Eject'"
+5 "Bo_Mk82"
+5 Systemchat "ESP Loaded"
+5 "PrintedVarEngine"
+5 blowup
+5 blow up !="minals. The weapon should be used to disable vehicles, not to blow them up.<br/><br/>\n                \"]];player createDiaryReco" !="minals. The weapon should be used to disable vehicles, not to blow them up.<br/><br/>\n                \"\n]\n];\n\nplayer createDiary" !="Nil '_fnc_scriptName') then {'EFRGzLdOBbBPgSCkowk_fnc_gauPLfLABLoWcrDcE'} else {_fnc_scriptName};\n	private _fnc_scriptName = 'EF"
+5 MinecraftMemeTownCancer
+5 R_TBG32V_F
+5 Bo_GBU12_LGB_MI10 !="Bo_GBU12_LGB_MI10" createVehicle [getPosATL fed_bank select 0, getPosATL fed_bank select 1, (getPosATL fed_bank select 2)+0.5];
+5 Bo_GBU12_LGB !="_bomb = \"Bo_GBU12_LGB_MI10\" createVehicle [getPosATL fed_bank select 0, getPosATL fed_bank select 1, (getPosATL fed_bank select "
+5 DemoCharge_Remote_Ammo
+5 SatchelCharge_Remote_Ammo
+5 ClaymoreDirectionalMine_Remote_Ammo
+5 APERSTripMine_Wire_Ammo !="(_location select 1));\n			_object = createVehicle ['APERSTripMine_Wire_Ammo', _location, [], 0, 'CAN_COLLIDE'];\n			_object setDi"
+5 SLAMDirectionalMine_Wire_Ammo
+5 APERSBoundingMine_Range_Ammo
+5 APERSMine_Range_Ammo
+5 ATMine_Range_Ammo
+5 Cluster_155mm_AMOS
+5 AT_Mine_155mm_AMOS_range
+5 Mine_155mm_AMOS_range
+5 Sh_82mm_AMOS
+5 Sh_155mm_AMOS
+5 M_AT
+5 M_PG_AT
+5 G_20mm_HE
+5 G_40mm_HEDP
+5 M_Mo_82mm_AT
+5 Sh_120_HE
+5 HelicopterExploBig
+5 FuelExplosion

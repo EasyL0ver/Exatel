@@ -1,0 +1,66 @@
+public boolean chop() {
+		yewTree = getNearestObjectByID(1309);
+		treeStump = getNearestObjectByID(7402);
+		if(getMyPlayer().getAnimation() == 867){
+			wait(random(1000,5000));
+		}if(!(getMyPlayer().getAnimation() == 867)){
+			if(treeStump != null){
+				if(randomInt == 1){
+					if(secondTree = true){
+						if(!tree2Area.contains(getMyPlayer().getLocation())){
+							walkTileMM(theSecondTree, 3, 3);
+						}else if(tree2Area.contains(getMyPlayer().getLocation())){
+							if(thirdTree = true){
+								if(randomInt2 == 1){
+									walkTileMM(chopTile, 3, 3);
+								}else if(randomInt2 == 2){
+									walkTileMM(theThirdTree, 3, 3);
+								}
+							}else if(randomInt2 == 2){
+								walkTileMM(chopTile, 3, 3);
+							}
+						}
+					}else if(secondTree = false){
+						wait(random(1000,10000));
+					}
+				}else if(randomInt == 2){
+					if(thirdTree = true){
+						if(!tree3Area.contains(getMyPlayer().getLocation())){
+							walkTileMM(theThirdTree, 3, 3);
+						}else if(tree3Area.contains(getMyPlayer().getLocation())){
+							if(randomInt2 == 1){
+								walkTileMM(chopTile, 3, 3);
+							}else if(randomInt2 == 2){
+								walkTileMM(theSecondTree, 3, 3);
+							}
+						}
+					}else if(thirdTree = false){
+						wait(random(1000,10000));
+					}
+				}
+			}else if(randomInt == 3){
+				wait(random(1000,10000));
+			}
+		}else if(yewTree != null){
+			atTree(yewTree, "Chop down");
+			wait(random(1000, 3000));
+		}if(yewTree == null && treeStump == null){
+			wait(random(1000,5000));
+			if(yewTree == null && treeStump == null){
+				wait(random(10000,20000));
+				if(yewTree == null && treeStump == null){
+					stopScript();
+				}
+			}
+		}if(!bankArea.contains(getMyPlayer().getLocation()) 
+				&& !treeArea.contains(getMyPlayer().getLocation()) 
+				&& !tree2Area.contains(getMyPlayer().getLocation()) 
+				&& !tree3Area.contains(getMyPlayer().getLocation())){
+			if(getMyPlayer().isMoving()){
+				wait(random(100,1000));
+			}else if(getMyPlayer().isIdle()){
+				walkToYews();
+			}
+		}
+		return true;
+	}

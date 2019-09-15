@@ -1,0 +1,15 @@
+//For Arduino & ESP8622
+#if !(defined ARDUINO_NodeMCU_32S ) && !defined(__AVR_ATmega1280__) && !defined(__AVR_ATmega2560__) && !defined(ARDUINO_Node32s)
+	CS5490::CS5490(float mclk, int rx, int tx){
+		this->selectedPage = -1;
+		this->MCLK = mclk;
+		this->cSerial = new SoftwareSerial(rx,tx);
+	}
+//For ESP32 AND MEGA
+#else
+	CS5490::CS5490(float mclk){
+		this->selectedPage = -1;
+		this->MCLK = mclk;
+		this->cSerial = &Serial2;
+	}
+#endif

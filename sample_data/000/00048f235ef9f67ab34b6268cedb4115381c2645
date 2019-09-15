@@ -1,0 +1,22 @@
+@Component
+public class ScheduledTasks implements SchedulingConfigurer {
+
+  private static final Logger logger = LoggerFactory.getLogger(ScheduledTasks.class);
+  private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+
+  @Override
+  public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+    taskRegistrar.setScheduler(this.taskExecutor());
+    taskRegistrar.addTriggerTask(
+      () -> logger.info("The time is {}", dateFormat.format(new Date())),
+      new CronTrigger(this.randomCron(0, 60)));
+  }
+
+  public Executor taskExecutor() {
+    return Executors.newScheduledThreadPool(5);
+  }
+
+  private String randomCron(int min, int max) {
+    return ThreadLocalRandom.current().nextInt(min, max) + " * * * * *";
+  }
+}

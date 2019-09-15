@@ -1,0 +1,78 @@
+database:
+  working_dir: /mnt
+  volumes:
+    - .:/mnt
+  links:
+   - postgresql_db
+  ports:
+    - '3000:3000'
+  build: ./database
+  entrypoint: python database/server.py
+
+postgresql_db:
+  build: ./database
+  ports:
+    - '5432:5432'
+
+test_database:
+  working_dir: /mnt
+  volumes:
+    - .:/mnt
+  links:
+    - test_postgresql_db
+  ports:
+    - '5053:5053'
+  build: ./database/test
+
+test_postgresql_db:
+  image: postgres:latest
+  ports:
+    - '5432:5432'
+	
+version: '3'
+
+networks:
+  dbnet:
+    driver: bridge
+
+volumes:
+  postgresql_data: {}
+  postgresql_test_data: {}
+
+services:
+  database:
+    build: database
+    environment:
+      APPLICATION_DB_CONTAINER: db
+      APPLICATION_POSTGRES_HOST: db
+    working_dir: /mnt
+    volumes:
+      - .:/mnt
+    networks:
+      - dbnet
+    ports:
+      - '3000:3000'
+    command: python database/server.py
+
+  db:
+    image: postgres:latest
+    volumes:
+      - postgresql_data:/var/lib/postgresql/data
+    networks:
+      - dbnet
+    depends_on:
+      - database
+
+  test_database:
+    build: database/test
+    environment:
+      APPLICATION_DB_CONTAINER: testdb
+    working_dir: /mnt
+    volumes:
+      - .:/mnt
+    command: python -m pytest --cov=database --cov-report term --cov-report html:htmlcov database/test/
+
+  testdb:
+    image: postgres:latest
+    volumes:
+      - postgresql_test_data:/var/lib/postgresql/data

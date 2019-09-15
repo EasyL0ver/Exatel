@@ -1,0 +1,60 @@
+public void SendDataExamen()
+    {
+
+
+
+        SharedPreferences prefs2 =
+                getContext().getSharedPreferences(MIEXAMEN, Context.MODE_PRIVATE);
+
+
+
+        final String referencia= prefs2.getString("num_examen", "0");
+
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        final String currentDateandTime = sdf.format(new Date());
+
+
+        Log.d("PREGUNTA A MOSTRAR","A MOSTRAR DATOS REC. 0. FIN DEL EXAMEN "+referencia);
+        Log.d("PREGUNTA A MOSTRAR","A MOSTRAR DATOS REC. 0. FIN DEL EXAMEN "+currentDateandTime);
+
+
+      Toast.makeText(getActivity(),"vuelta_numero_siguiente",Toast.LENGTH_LONG).show();
+
+        progreso = ProgressDialog.show(getContext(), "Guardando datos finales del examen",
+                "Favor de esperar...", true);
+
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_final,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println(response);
+                        Log.d("PREGUNTA A MOSTRAR","A MOSTRAR DATOS REC. 0. FIN DEL EXAMEN RESPUESTA "+response);
+                        progreso.dismiss();
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getContext(),error.toString(),Toast.LENGTH_LONG).show();
+                    }
+                }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("referencia",referencia);
+                params.put("final",currentDateandTime);
+
+
+                return params;
+            }
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }

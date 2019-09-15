@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+git status | grep _spec.rb | cut -c 14- | xargs bundle exec rspec

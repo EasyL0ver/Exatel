@@ -1,0 +1,12 @@
+--tornando o banco como unico usuário ( desconectar geral, caso ocorra erro de que o banco ta sendo usado)
+ALTER DATABASE Odontosig_teste
+SET SINGLE_USER WITH
+ROLLBACK AFTER 60
+
+--Lembrar de utilizar outra base de dados para fazer o restore
+RESTORE DATABASE Odontosig_teste FROM DISK = 'E:\Backup\D0-WV122-SQL01\Odontosig\FULL\well-06-12.bak'
+WITH REPLACE
+GO
+
+--retornando o banco para multiusuário
+ALTER DATABASE Odontosig_teste SET MULTI_USER

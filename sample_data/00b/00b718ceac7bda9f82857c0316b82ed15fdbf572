@@ -1,0 +1,37 @@
+-- Farewell Infortality.
+-- Version: 2.82
+-- Instances:
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Frame_2 = Instance.new("Frame")
+local Frame_3 = Instance.new("Frame")
+local Frame_4 = Instance.new("Frame")
+local Frame_5 = Instance.new("Frame")
+--Properties:
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.new(1, 0.968628, 0.894118)
+Frame.Position = UDim2.new(0.365944713, 0, 0.515373349, 0)
+Frame.Size = UDim2.new(0, 100, 0, 100)
+
+Frame_2.Parent = ScreenGui
+Frame_2.BackgroundColor3 = Color3.new(1, 0.968628, 0.894118)
+Frame_2.Position = UDim2.new(0.457804322, 0, 0.515373349, 0)
+Frame_2.Size = UDim2.new(0, 100, 0, 100)
+
+Frame_3.Parent = ScreenGui
+Frame_3.BackgroundColor3 = Color3.new(1, 0.968628, 0.894118)
+Frame_3.Position = UDim2.new(0.413741589, 0, 0.169838935, 0)
+Frame_3.Size = UDim2.new(0, 100, 0, 236)
+
+Frame_4.Parent = ScreenGui
+Frame_4.BackgroundColor3 = Color3.new(1, 0.894118, 0.933333)
+Frame_4.Position = UDim2.new(0.448842406, 0, 0.16983895, 0)
+Frame_4.Size = UDim2.new(0, 4, 0, 29)
+
+Frame_5.Parent = ScreenGui
+Frame_5.BackgroundColor3 = Color3.new(1, 0.894118, 0.933333)
+Frame_5.Position = UDim2.new(0.413741589, 0, 0.212298676, 0)
+Frame_5.Size = UDim2.new(0, 100, 0, 1)
+-- Scripts:

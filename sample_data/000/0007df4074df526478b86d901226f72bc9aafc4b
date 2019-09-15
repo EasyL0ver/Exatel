@@ -1,0 +1,41 @@
+Java
+import java.io.*;
+
+public class MyProgram {
+
+	enum FreshJuiceSize{ SMALL, MEDIUM, LARGE }
+	this.property = val;
+
+	private boolean myFlag;
+	static final double weeks = 9.5;
+	protected static final int BOXWIDTH = 42;
+	b = (a == 1) ? true:false;
+
+	for( String name : names ){}				//Foreach
+
+
+	public static void main(String []args) {
+		System.out.println("Hello World");
+
+		InputStreamReader cin = InputStreamReader(System.in);
+		c = (char) cin.read();
+		cin.close();
+	}
+}				//No ;
+
+
+.::[Scanner]::.
+import java.util.scanner;
+
+Scanner Scanner1 = New Scanner(System.In);
+X = Scanner1.Next|Line|Int|Long()
+
+.::[Unicode]::.
+String str = String1.split(" ")[0];
+str = str.replace("\\","");
+String[] arr = str.split("u");
+String text = "";
+for(int i = 1; i < arr.length; i++){
+	int hexVal = Integer.parseInt(arr[i], 16);
+	text += (char)hexVal;
+}

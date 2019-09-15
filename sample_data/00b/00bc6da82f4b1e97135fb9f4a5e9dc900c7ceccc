@@ -1,0 +1,8 @@
+@implementaton MyAppDelegate
+- (void)applicationDidEnterBackground: (UIApplication *)application {
+    [myDatabase commit];
+    [myFiles save];
+    [myWhatever doWhatever];
+    // etc.
+}
+@end

@@ -1,0 +1,61 @@
+[02:33:06] [Server thread/INFO] [nucleus/]: Juloass ran the command: /lp user Mosca42 promote staff
+[02:33:10] [Server thread/INFO] [nucleus/]: Juloass ran the command: /lp user Mosca42 promote staff
+[02:33:11] [Server thread/INFO] [nucleus/]: Juloass ran the command: /lp user Mosca42 promote staff
+[02:33:11] [Server thread/INFO] [nucleus/]: Juloass ran the command: /lp user Mosca42 promote staff
+[02:33:14] [Server thread/INFO] [nucleus/]: Juloass ran the command: /lp user Mosca42 promote staff
+[02:33:14] [luckperms housekeeper/DEBUG] [me.lucko.luckperms.lib.hikari.pool.HikariPool/sponge]: luckperms - Pool stats (total=10, active=0, idle=10, waiting=0)
+[02:33:19] [Server thread/INFO] [nucleus/]: Juloass ran the command: /lp editor
+[02:33:20] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save continent
+[02:33:44] [luckperms housekeeper/DEBUG] [me.lucko.luckperms.lib.hikari.pool.HikariPool/sponge]: luckperms - Pool stats (total=10, active=0, idle=10, waiting=0)
+[02:33:47] [Server thread/DEBUG] [mixin/]: Mixing common.MixinSpongeProxyBlockAccess from mixins.forge.core.json into org.spongepowered.common.world.SpongeProxyBlockAccess
+[02:33:55] [Server thread/INFO] [nucleus/]: Juloass ran the command: /lp applyedits LCnPdz0sKK
+[02:34:05] [Server thread/DEBUG] [FML/]: Gathering id map for writing to world save continent
+[02:34:14] [luckperms housekeeper/DEBUG] [me.lucko.luckperms.lib.hikari.pool.HikariPool/sponge]: luckperms - Pool stats (total=10, active=0, idle=10, waiting=0)
+[02:34:26] [Server thread/INFO] [nucleus/]: Mosca42 ran the command: /tp SayniiYt
+[02:34:30] [Server thread/INFO] [nucleus/]: Juloass ran the command: /tp Mosca42
+[02:34:39] [Server thread/ERROR] [Sponge/]: /**************************************************************************************************************************************/
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*                                                    Exception during phase body                                                     */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /**************************************************************************************************************************************/
+[02:34:39] [Server thread/ERROR] [Sponge/]: /* Something happened trying to run the main body of a phase org.spongepowered.common.event.tracking.phase.entity.DeathPhase@53fcb8c0 */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /* PhaseContext :                                                                                                                     */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*         - Name: Source                                                                                                             */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*           Object: EntityBouftou['entity.Bouftou.name'/3648, l='continent', x=2690,56, y=94,00,                                     */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*           z=1755,03]                                                                                                               */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*         - Name: DamageSource                                                                                                       */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*           Object: EntityDamageSource{Name=player, Type=attack, Source=EntityPlayerMP['Juloass'/2992,                               */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*           l='continent', x=2689,25, y=94,00, z=1753,09]}                                                                           */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*         - Name: Owner                                                                                                              */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*           Object: EntityPlayerMP['Juloass'/2992, l='continent', x=2689,25, y=94,00, z=1753,09]                                     */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*         - Name: Notifier                                                                                                           */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*           Object: EntityPlayerMP['Juloass'/2992, l='continent', x=2689,25, y=94,00, z=1753,09]                                     */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*         - Name: CapturedBlocks                                                                                                     */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*           Object: CapturedBlocksSupplier{Captured=0}                                                                               */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*         - Name: CapturedEntities                                                                                                   */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*           Object: CapturedEntitiesSupplier{Captured=0}                                                                             */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /* Phases remaining :                                                                                                                 */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*   - Phase: org.spongepowered.common.event.tracking.phase.entity.DeathPhase@53fcb8c0                                                */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     Context:                                                                                                                       */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: Source                                                                                                                 */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: EntityBouftou['entity.Bouftou.name'/3648, l='continent', x=2690,56, y=94,00,                                         */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       z=1755,03]                                                                                                                   */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: DamageSource                                                                                                           */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: EntityDamageSource{Name=player, Type=attack, Source=EntityPlayerMP['Juloass'/2992,                                   */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       l='continent', x=2689,25, y=94,00, z=1753,09]}                                                                               */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: Owner                                                                                                                  */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: EntityPlayerMP['Juloass'/2992, l='continent', x=2689,25, y=94,00, z=1753,09]                                         */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: Notifier                                                                                                               */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: EntityPlayerMP['Juloass'/2992, l='continent', x=2689,25, y=94,00, z=1753,09]                                         */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: CapturedBlocks                                                                                                         */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: CapturedBlocksSupplier{Captured=0}                                                                                   */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: CapturedEntities                                                                                                       */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: CapturedEntitiesSupplier{Captured=0}                                                                                 */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*   - Phase: org.spongepowered.common.event.tracking.phase.packet.AttackEntityPacketState@2553ede8                                   */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     Context:                                                                                                                       */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: Source                                                                                                                 */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: EntityPlayerMP['Juloass'/2992, l='continent', x=2689,25, y=94,00, z=1753,09]                                         */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: PacketPlayer                                                                                                           */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: EntityPlayerMP['Juloass'/2992, l='continent', x=2689,25, y=94,00, z=1753,09]                                         */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: Packet                                                                                                                 */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: net.minecraft.network.play.client.CPacketUseEntity@510767fc                                                          */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*     - Name: Cursor                                                                                                                 */
+[02:34:39] [Server thread/ERROR] [Sponge/]: /*       Object: SpongeItemStackSnapshot{itemType=ItemAir{Name=null},

@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define TAM 5
+void pleitura(float veta[], float vetb[]);
+void pescreva(float veta[], float vetb[]);
+float fsoma(float veta[], float vetb[], float vetc[]);
+
+int main(int argc, char **argv){
+
+        float veta[TAM];
+        float vetb[TAM];
+        float vetc[TAM];
+
+        pleitura(veta, vetb);
+        pescreva(veta, vetb);
+        fsoma(veta, vetb, vetc);
+}
+void pleitura(float veta[],float vetb[]){
+
+    int i;
+
+    printf("\n-----------> Digitar Vetor A<-----------\n");
+
+    for(i=0;i<TAM;i++){
+
+            printf("%dº elemento do vetor A: ",i+1);
+            scanf("%f",&veta[i]);
+        }
+
+    printf("\n----------->Digitar Vetor B<-----------\n");
+
+    for(i=0;i<TAM;i++){
+
+            printf("%dº elemento do vetor B: ",i+1);
+            scanf("%f",&vetb[i]);
+    }
+}
+
+void pescreva(float veta[], float vetb[]){
+
+    int i;
+
+    printf("\n----------->Vetor A<-----------\n");
+
+    for(i=0;i<TAM;i++){
+
+        printf("Vet[%d] = %.2f\n",i,veta[i]);
+    }
+
+    printf("\n----------->Vetor B<-----------\n");
+
+        for(i=0;i<TAM;i++){
+
+            printf("Vet[%d] = %.2f\n",i,vetb[i]);
+        }
+}
+
+float fsoma(float veta[], float vetb[], float vetc[]){
+
+        int i;
+
+        for(i=0;i<TAM;i++){
+
+            vetc[i] = veta[i]+vetb[i];
+
+        }
+
+        printf("\n----------->Vetor A + B<-----------\n");
+
+        for(i=0;i<TAM;i++){
+
+            printf("Vet[%d] = %.2f\n",i,vetc[i]);
+
+        }
+ return 0;
+}

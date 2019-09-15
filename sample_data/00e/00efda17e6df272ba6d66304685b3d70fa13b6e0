@@ -1,0 +1,15 @@
+var
+   document: IHTMLDocument2;
+   stylesheet: IHTMLStyleSheet;
+   stylesheetIndex: Integer;
+begin
+
+   // Inject CSS Style Sheets
+   document := webBrowser1.Document as IHTMLDocument2;
+
+   stylesheetIndex := document.styleSheets.length;
+   if stylesheetIndex > 31 then
+      raise Exception.Create('Already have the maximum amount of CSS stylesheets');
+
+   stylesheet := document.createStyleSheet('', stylesheetIndex);
+   stylesheet.cssText := ...

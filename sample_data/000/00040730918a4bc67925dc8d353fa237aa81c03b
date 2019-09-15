@@ -1,0 +1,76 @@
+/**
+ * Animation class. Represents an animation as defined the YAT specification. Two classes inherit from this one: LinearAnimation and CircularAnimation.
+ * STRUCTURE: {
+ *  id: STRING,
+ *  span: FLOAT, // time span in MS
+ *  mat: mat4 // -> The animation matrix transformations.
+ * }
+ */
+
+class Animation {
+	/**
+	 * @constructor
+	 * @note If an error occurs the error property of the constructed object will be non null.
+	 */
+	constructor(animationXML, reader) {
+        // READ ID
+		this.id = ParsingUtils.parseString(ParsingUtils.RULES.STRINGS.NON_EMPTY, animationXML, reader, "id");
+		if (this.id == null) {
+			this.error = 1;
+			return;
+		}
+		// READ SPAN
+		this.span = ParsingUtils.parseFloat(ParsingUtils.RULES.POSITIVE, animationXML, reader, "span");
+		if (this.span == null) {
+			this.error = 1;
+			return;
+		}
+		this.span *= 1000;
+		// CREATE MATRIX
+		this.mat = mat4.create();
+	}
+		
+	/**
+	 * @brief Updates animation state.
+	 * @param {number} timeSinceStart Time in MS since this animation started.
+	 * @note Abstract function that must be implemented by inherited classes.
+	 */
+	update(timeSinceStart){
+		throw("Object must implement update() method.");
+	}
+
+	/**
+	 * Apply transformation to the scene matrix or a mat4.
+	 * @param {CGFScene / GL.Mat4} operand.
+	 */
+	apply(operand){
+		if(operand instanceof CGFscene)
+			operand.multMatrix(this.mat);
+		else
+			mat4.multiply(operand, this.mat, operand);
+		
+	}
+
+	/**
+	 * Get the angle between two 3D vectors
+	 * @param {vec3} a The first operand
+	 * @param {vec3} b The second operand
+	 * @returns {Number} The angle in radians
+	 * @author Copied from glmatrix most recent build @ http://glmatrix.net/docs/vec3.js.html#line633
+	 */
+	angle(a, b) {
+		let tempA = vec3.fromValues(a[0], a[1], a[2]);
+		let tempB = vec3.fromValues(b[0], b[1], b[2]);
+		vec3.normalize(tempA, tempA);
+		vec3.normalize(tempB, tempB);
+		let cosine = vec3.dot(tempA, tempB);
+		if(cosine > 1.0) {
+		  return 0;
+		}
+		else if(cosine < -1.0) {
+		  return Math.PI;
+		} else {
+		  return Math.acos(cosine);
+		}
+	}
+}

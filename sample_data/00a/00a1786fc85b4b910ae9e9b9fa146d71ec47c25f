@@ -1,0 +1,104 @@
+			int value = ServerTime % 19;
+			switch (value)
+			{
+			case 0:
+			{
+				SetMyClanTag("", "Animation");
+				break;
+			}
+			case 1:
+			{
+				SetMyClanTag("L", "Animation");
+				break;
+			}
+			case 2:
+			{
+				SetMyClanTag("Li", "Animation");
+				break;
+			}
+			case 3:
+			{
+				SetMyClanTag("Lil", "Animation");
+				break;
+			}
+			case 4:
+			{
+				SetMyClanTag("Lil'", "Animation");
+				break;
+			}
+			case 5:
+			{
+				SetMyClanTag("Lil'H", "Animation");
+				break;
+			}
+			case 6:
+			{
+				SetMyClanTag("Lil'Ho", "Animation");
+				break;
+			}
+			case 7:
+			{
+				SetMyClanTag("Lil'Hoo", "Animation");
+				break;
+			}
+			case 8:
+			{
+				SetMyClanTag("Lil'Hook", "Animation");
+				break;
+			}
+			case 9:
+			{
+				SetMyClanTag("Lil'Hook", "Animation");
+				break;
+			}
+			case 10:
+			{
+				SetMyClanTag("Lil'Hoo", "Animation");
+				break;
+			}
+			case 11:
+			{
+				SetMyClanTag("Lil'Ho", "Animation");
+				break;
+			}
+			case 12:
+			{
+				SetMyClanTag("Lil'H", "Animation");
+				break;
+			}
+			case 13:
+			{
+				SetMyClanTag("Lil'", "Animation");
+				break;
+			}
+			case 14:
+			{
+				SetMyClanTag("Lil", "Animation");
+				break;
+			}
+			case 15:
+			{
+				SetMyClanTag("Li", "Animation");
+				break;
+			}
+			case 16:
+			{
+				SetMyClanTag("L", "Animation");
+				break;
+			}
+			case 17:
+			{
+				SetMyClanTag("", "Animation");
+				break;
+			}
+			case 18:
+			{
+				SetMyClanTag("", "Animation");
+				break;
+			}
+			}
+			counter++;
+		}
+		break;
+		}
+	}

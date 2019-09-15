@@ -1,0 +1,11 @@
+update_user_meta( $user_id, 'status', 'completed' );
+	
+add_filter( 'login_message', array( $this,'custom_login_message' ) );
+
+    public function custom_login_message() {
+        if( 'completed' === get_user_meta( $user_id, 'status', true ) ) {
+            return print_notice( __( 'Payment Completed. Now login.','wdp' ) );
+        } else {
+              return print_notice( __( 'Payment Failed','wdp' ) );
+        }
+    }

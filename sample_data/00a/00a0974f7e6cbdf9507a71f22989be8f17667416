@@ -1,0 +1,13 @@
+import torchvision.models as models
+
+# Load resnet model, with pretrained weights
+resnet = models.resnet34(pretrained=True)
+
+# Replace the last FC layer with a FC layer with the correct number of classes
+num_ftrs = resnet.fc.in_features
+resnet.fc = nn.Linear(num_ftrs, 5)
+
+# Unfreeze the last block of convolutional layers (out of 5 blocks in total)
+for child in list(resnet.children())[:-3]:
+    for param in child.parameters():
+        param.requires_grad = False

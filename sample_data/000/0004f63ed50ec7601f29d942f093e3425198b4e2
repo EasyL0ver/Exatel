@@ -1,0 +1,11 @@
+Rails 3 asset routing issues in production
+Started GET "/assets/jquery.rest-f1490ffc30dcefe21715ae360de2bead.js" for 24.141.74.123 at 2011-12-20 18:40:50 -0500
+Served asset /jquery.rest-f1490ffc30dcefe21715ae360de2bead.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/jquery.rest-f1490ffc30dcefe21715ae360de2bead.js"):
+
+
+Started GET "/assets/jquery-ui-1.8.11.custom.min-707e06de7fe351e6e77e419988c20fd6.js" for 24.141.74.123 at 2011-12-20 18:40:50 -0500
+Served asset /jquery-ui-1.8.11.custom.min-707e06de7fe351e6e77e419988c20fd6.js - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/jquery-ui-1.8.11.custom.min-707e06de7fe351e6e77e419988c20fd6.js"):

@@ -1,0 +1,8 @@
+function truncateDecimal($number, $leavePlaces = 1)
+{
+    if ($number == 0) return 0;
+    $negate = $number / abs($number);
+    $shiftFactor = pow(10, $leavePlaces);
+    $epsilon = pow(10, -1 * $leavePlaces);
+    return floor(abs($number) * $shiftFactor + $epsilon) / $shiftFactor * $negate;
+}

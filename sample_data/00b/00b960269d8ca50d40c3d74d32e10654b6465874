@@ -1,0 +1,14 @@
+Initializing a struct to 0
+typedef struct
+{
+    unsigned char c1;
+    unsigned char c2;
+} myStruct;
+	
+myStruct _m1 = {0};
+	
+myStruct _m2 = {0,0};
+	
+myStruct _m1 = {.c2 = 0, .c1 = 1};
+	
+memset(&m, 0, sizeof(myStruct));

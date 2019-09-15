@@ -1,0 +1,5 @@
+Was thinking to use the UNION SELECT to set values for salt and password_hash columns to a known state (in this case a hash I made independantly with python). I think I just don't know what I'm doing with syntax.
+
+bob' 'UNION ALL SELECT salt AS 0, id, password_hash As 590c9f8430c7435807df8ba9a476e3f1295d46ef210f6efae2043a4c085a569e from users -- '
+
+right track?

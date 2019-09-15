@@ -1,0 +1,10 @@
+function OnClientNodeClicked(sender, eventArgs) {
+    var node = eventArgs.get_node();
+
+    if(yourConditionHere){
+        callFunctionA();
+    }
+    else{
+        callFunctionB();
+    }
+}

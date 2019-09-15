@@ -1,0 +1,48 @@
+<?php 
+
+class Atworldsend_View_Helper_Urlize extends Atworldsend_View_Helper_Abstract 
+{
+	protected $_param;
+	
+	public function urlize($param = null)
+	{
+		if ($param !== null)
+			$this->_param = $param;
+		return $this;
+	}
+	
+	public function render($param = null)
+	{
+		if ($param == null)
+			$param = $this->_param;
+		if($param == null)
+			throw new Exception("No parameter set.");
+		
+		return $this->_filterParam($param);
+	}
+	
+	public function __toString()
+	{
+		return $this->render();		
+	}
+	
+	protected function _filterParam($string)
+	{
+		$string = str_replace(' ', '_', $string);
+		$string = str_replace('Ã¤', 'ae', $string);
+		$string = str_replace('Ã¶', 'oe', $string);
+		$string = str_replace('Ã¼', 'ue', $string);
+		$string = str_replace("'", '', $string);
+		
+		return $string;
+	}
+}
+
+
+//use: inside view script
+$this->url(
+		array(
+			'id' => $content->id, 
+			'title' => $this->urlize($content->title), 
+			'subtitle' => $this->urlize($content->subtitle)
+			), 'contentView').'">';

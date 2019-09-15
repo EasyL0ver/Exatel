@@ -1,0 +1,59 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+public class nccc6s3 {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int X = sc.nextInt(), Y = sc.nextInt(), N = sc.nextInt();
+		int startX = sc.nextInt(), startY = sc.nextInt(), endX = sc.nextInt(), endY = sc.nextInt();
+		int[][] dis = new int[X+1][10000000];
+		boolean[][] vis = new boolean[X+1][10000000]; 
+		for (int i=0; i<=X; i++) {
+			Arrays.fill(dis[i], 1<<30);
+		}
+		Arrays.fill(dis[startX], 0);
+		Arrays.fill(vis[startX], true);
+		Queue<State> Q = new LinkedList<State>();
+		Q.add(new State(startX, 0)); 
+		ArrayList<Integer> ans = new ArrayList<Integer>(); 
+		while (!Q.isEmpty()) {
+			State cur = Q.poll(); 
+			if (cur.pos+cur.velocity+1>=0 && cur.pos+cur.velocity+1<=X && 
+					!vis[cur.pos+cur.velocity+1][cur.velocity+1000000+1]) {
+				dis[cur.pos+cur.velocity+1][cur.velocity+1000000+1] = dis[cur.pos][cur.velocity+1000000] + 1;
+				vis[cur.pos+cur.velocity+1][cur.velocity+1000000+1] = true; 
+				Q.add(new State(cur.pos+cur.velocity+1, cur.velocity+1));	
+				if (cur.pos+cur.velocity+1==endX && cur.velocity+1==0) {
+					System.out.println(dis[cur.pos+cur.velocity+1][cur.velocity+1000+1]);
+					System.exit(0);
+				}
+			}
+			if (cur.pos+cur.velocity-1>=0 && cur.pos+cur.velocity-1<=X && 
+					!vis[cur.pos+cur.velocity-1][cur.velocity-1+1000000]) {
+				dis[cur.pos+cur.velocity-1][cur.velocity-1+1000000] = dis[cur.pos][cur.velocity+1000000] + 1;
+				vis[cur.pos+cur.velocity-1][cur.velocity-1+1000000] = true; 
+				Q.add(new State(cur.pos+cur.velocity-1, cur.velocity-1));	
+				if (cur.pos+cur.velocity-1==endX && cur.velocity-1==0) {
+					System.out.println(dis[cur.pos+cur.velocity-1][cur.velocity+1000000-1]);
+					System.exit(0);
+				}
+				
+			}
+			
+		}
+		System.out.println(-1);
+		
+		
+	}
+	public static class State {
+		int pos, velocity;  
+		public State(int pos, int velocity) {
+			this.pos = pos;
+			this.velocity = velocity; 
+		}
+	}
+}

@@ -1,0 +1,19 @@
+import random
+
+
+def gooi_die_dobbelsteen(aantal_keer_gegooid):
+    getal = random.randint(1, 6)
+
+    print('Drop die dobbelsteen')
+    print('Het wordt', getal, '!')
+    print('Je hebt nu', aantal_keer_gegooid, 'keer gegooid')
+
+aantal_keer_gegooid = 0
+while True:
+    aantal_keer_gegooid += 1
+    gooi_die_dobbelsteen(aantal_keer_gegooid)
+
+    antwoord = input('Wil je nog een keer dobbelen? (ja/nee): ')
+    if antwoord.lower() != 'ja':
+        print('Jammer dat je stopt, doei poes')
+        break

@@ -1,0 +1,25 @@
+<form action="" method="post" enctype="multipart/form-data" id="form-box">
+<h1>Administrare mp3-uri</h1>
+
+<div id="form">
+    <input type="text" name="nume-1" class="nume" onblur="if(this.value == '') this.value = 'Numele fișierului...'" onfocus="if(this.value == this.defaultValue) this.value = ''" value="Numele fișierului..." />
+    <div class="browse">
+    <input type="file" name="file-1" id="file-1" />
+    <input type="button" class="show" value="Alege fișierul" onclick="document.getElementById('file-1').click()" />
+    </div>
+</div><div id="form">
+    <input type="text" name="nume-2" class="nume" onblur="if(this.value == '') this.value = 'Numele fișierului...'" onfocus="if(this.value == this.defaultValue) this.value = ''" value="asddsaads" />
+    <div class="browse">
+    <input type="file" name="file-2" id="file-2" />
+    <input type="button" class="show" value="Alege fișierul" onclick="document.getElementById('file-2').click()" />
+    </div>
+</div>  
+<div class="submit">
+<input type="submit" name="adauga_camp" value="Adaugă un nou câmp" />
+<input type="submit" name="incarca" value="Încarcă fișierul mp3" />
+</div></form>
+	
+if(isset($_POST['incarca']))
+{
+    echo 'Test'; exit();
+}

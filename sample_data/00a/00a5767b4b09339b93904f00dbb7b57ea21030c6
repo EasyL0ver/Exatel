@@ -1,0 +1,60 @@
+//problema 2
+#include <iostream>
+using namespace std;
+int val,n;
+
+struct nod
+{	int info;
+	nod* adr;
+};
+nod* v;nod* sf;
+
+
+void adaugare(nod*&v, nod*&sf, int val)
+{	nod* c;
+	if(v==0)
+	{	v=new(nod);
+		v->info=val;
+		v->adr=0;
+		sf=v;
+	}
+	else
+	{	c=new(nod);
+		sf->adr=c;
+		c->info=val;
+		c->adr=0;
+		sf=c;
+	}
+}
+
+void listare(nod* v)
+{	nod*c=v;
+	while(c)
+	{	cout<<c->info<<" ";
+		c=c->adr;
+	}
+	cout<<endl;
+}
+int verif(nod *v)
+{
+    int k=0;
+    nod*c=v;
+	while(c->adr)
+	{	if(c->info==c->adr->info)k++;
+		c=c->adr;
+	}
+
+	return k;
+}
+main()
+{	cout<<"n=";
+	cin>>n;
+	while(n)
+	{	cout<<"valoare:";
+		cin>>val;
+		adaugare(v,sf,val);
+		n--;
+	}
+listare(v);
+cout<<verif(v);
+}

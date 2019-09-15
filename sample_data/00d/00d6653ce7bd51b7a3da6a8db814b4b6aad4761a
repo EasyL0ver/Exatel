@@ -1,0 +1,22 @@
+protected UUID parseUUID() {
+    try {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        List<String> strings = new ArrayList<>();
+        strings.add(stringOne);
+        strings.add(stringTwo);
+        strings.add(stringThree);
+
+        strings.removeIf(str -> str == null || str.isEmpty());
+        for(int i = 0; i < strings.size(); i++) {
+            String string = strings.get(i);
+            string = string.replace("|", "\|");
+            strings.set(i, string);
+        }
+        String input = String.join("|", strings);
+        byte[] hash = digest.digest(input.getBytes());
+
+        return UUID.nameUUIDFromBytes(hash);
+    } catch(NoSuchAlgorithmException e) {
+        return null;
+    }
+}

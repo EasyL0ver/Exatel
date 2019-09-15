@@ -1,0 +1,53 @@
+class Node:
+    def __init__(self, value, previous=None, next_=None):
+        self.value = value
+        self.previous = previous
+        self.next_ = next_
+
+    def __repr__(self):
+        return str(self.value)
+
+    
+class LinkedList:
+    def __init__(self, head=None, tail=None):
+        self.head = head
+        self.tail = tail
+
+    def insert(self, *values):
+        node = Node(value)
+        if self.length == 0:
+            self.head = node
+            self.tail = node
+
+        elif self.length == 1:
+            node.previous = self.head
+            self.tail = node
+            self.head.next_ = self.tail
+        
+        else:
+            node.previous = self.tail
+            self.tail.next_ = node
+            self.tail = node
+
+    @property
+    def length(self):
+        if not self.head and not self.tail:
+            return 0
+
+        elif self.head == self.tail:
+            return 1
+
+        else:
+            actual = self.head
+            list_length = 0
+            while actual:
+                list_length += 1
+                actual = actual.next_
+                
+            return list_length
+
+    def print_list(self):
+        actual = self.head
+        while actual:
+            print(actual)
+            actual = actual.next_

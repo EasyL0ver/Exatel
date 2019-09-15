@@ -1,0 +1,13 @@
+Person		((pnr) namn adress tele)
+Elev		((Person))
+Lärare		((Person))
+Rum			((rumnr))
+Ämne		((kursid) kursnamn)
+Klass		((klassnamn) klassrum lärare)
+
+Samband
+
+behörig		((lärare ämne))
+lämplig		((rum ämne)
+tillval		((elev ämne lärare))
+oblig 		((klass lärare ämne))

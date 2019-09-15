@@ -1,0 +1,72 @@
+[ 25% 23051/89982] target thumb C++: libOmxVenc_3...-v4l2/vidc/venc/src/video_encoder_device_v4l2.cpp
+FAILED: /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj_arm/SHARED_LIBRARIES/libOmxVenc_intermediates/src/video_encoder_device_v4l2.o 
+/bin/bash -c "PWD=/proc/self/cwd /usr/bin/ccache prebuilts/clang/host/linux-x86/clang-4691093/bin/clang++ 	-I device/zuk/msm8996-common/include -I hardware/qcom/media/msm8996/mm-video-v4l2/vidc/venc/inc -I ./hardware/qcom/media/msm8996/mm-video-v4l2/vidc/common/inc -I hardware/qcom/media/msm8996/mm-core/inc -I hardware/qcom/media/msm8996/libstagefrighthw -I /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj/include/qcom/display -I /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj/include/adreno -I frameworks/native/include/media/hardware -I frameworks/native/include/media/openmax -I hardware/qcom/media/msm8996/libc2dcolorconvert -I /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj/include/libvqzip -I frameworks/av/include/media/stagefright -I /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj/KERNEL_OBJ/usr/include -I hardware/qcom/media/msm8996/mm-video-v4l2/vidc/venc -I /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj_arm/SHARED_LIBRARIES/libOmxVenc_intermediates -I /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/gen/SHARED_LIBRARIES/libOmxVenc_intermediates -I libnativehelper/include_jni \$(cat /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj_arm/SHARED_LIBRARIES/libOmxVenc_intermediates/import_includes)  -I system/core/include -I system/media/audio/include -I hardware/libhardware/include -I hardware/libhardware_legacy/include -I hardware/ril/include -I libnativehelper/include -I frameworks/native/include -I frameworks/native/opengl/include -I frameworks/av/include -isystem /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj/include -isystem bionic/libc/include -isystem bionic/libc/kernel/uapi -isystem bionic/libc/kernel/uapi/asm-arm -isystem bionic/libc/kernel/android/scsi -isystem bionic/libc/kernel/android/uapi -c  -fomit-frame-pointer -DANDROID -fmessage-length=0 -W -Wall -Wno-unused -Winit-self -Wpointer-arith -no-canonical-prefixes -DNDEBUG -UDEBUG -fno-exceptions -Wno-multichar -O2 -g -fno-strict-aliasing -fdebug-prefix-map=/proc/self/cwd= -D__compiler_offsetof=__builtin_offsetof -Werror=int-conversion -Wno-reserved-id-macro -Wno-format-pedantic -Wno-unused-command-line-argument -fcolor-diagnostics -Wno-expansion-to-defined -Wno-zero-as-null-pointer-constant -fdebug-prefix-map=\$PWD/= -ffunction-sections -fdata-sections -fno-short-enums -funwind-tables -fstack-protector-strong -Wa,--noexecstack -D_FORTIFY_SOURCE=2 -Wstrict-aliasing=2 -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point -Werror=date-time -Werror=format-security -nostdlibinc -msoft-float -march=armv8-a -mfloat-abi=softfp -mfpu=neon-fp-armv8 -mcpu=cortex-a53 -mfpu=neon-fp-armv8 -D__ARM_FEATURE_LPAE=1 -target arm-linux-androideabi -Bprebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/arm-linux-androideabi/bin  -Wsign-promo -Wno-inconsistent-missing-override -Wno-null-dereference -D_LIBCPP_ENABLE_THREAD_SAFETY_ANNOTATIONS -Wno-thread-safety-negative -Wno-gnu-include-next -fvisibility-inlines-hidden  -std=gnu++14 -mthumb -Os  -fno-rtti -g -O3 -Dlrintf=_ffix_r -D__align=__alignx -D__alignx\\(x\\)=__attribute__\\(\\(__aligned__\\(x\\)\\)\\) -DT_ARM -Dinline=__inline -D_ANDROID_ -UENABLE_DEBUG_LOW -UENABLE_DEBUG_HIGH -DENABLE_DEBUG_ERROR -UINPUT_BUFFER_LOG -UOUTPUT_BUFFER_LOG -USINGLE_ENCODER_INSTANCE -Werror -D_ANDROID_ICS_ -D_MSM8974_ -DMAX_RES_1080P -DMAX_RES_1080P_EBI -D_UBWC_ -DUSE_ION -fPIC -D_USING_LIBCXX -DANDROID_STRICT   -Werror=int-to-pointer-cast -Werror=pointer-to-int-cast -Werror=address-of-temporary -Werror=return-type -Wno-tautological-constant-compare -Wno-null-pointer-arithmetic -Wno-enum-compare -Wno-enum-compare-switch   -MD -MF /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj_arm/SHARED_LIBRARIES/libOmxVenc_intermediates/src/video_encoder_device_v4l2.d -o /home/ivvanvg/android/nitrogen/out/target/product/z2_plus/obj_arm/SHARED_LIBRARIES/libOmxVenc_intermediates/src/video_encoder_device_v4l2.o hardware/qcom/media/msm8996/mm-video-v4l2/vidc/venc/src/video_encoder_device_v4l2.cpp"
+hardware/qcom/media/msm8996/mm-video-v4l2/vidc/venc/src/video_encoder_device_v4l2.cpp:6256:135: error: format specifies type 'ssize_t' (aka 'int') but the argument has type 'ssize_t' (aka 'long') [-Werror,-Wformat]
+        DEBUG_PRINT_ERROR("ROI extradata insufficient. Check if OMX_QTIIndexParamVideoEnableRoiInfo was set. (%p, %zd, %u)", userptr, size, roiInfo->nRoiMBInfoSize);
+                                                                                                                  ~~~                 ^~~~
+                                                                                                                  %zd
+./hardware/qcom/media/msm8996/mm-video-v4l2/vidc/common/inc/vidc_debug.h:48:23: note: expanded from macro 'DEBUG_PRINT_ERROR'
+          ALOGE(fmt,##args); \
+                      ^~~~
+system/core/liblog/include/log/log_main.h:242:52: note: expanded from macro 'ALOGE'
+#define ALOGE(...) ((void)ALOG(LOG_ERROR, LOG_TAG, __VA_ARGS__))
+                                                   ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:308:67: note: expanded from macro 'ALOG'
+#define ALOG(priority, tag, ...) LOG_PRI(ANDROID_##priority, tag, __VA_ARGS__)
+                                                                  ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:72:69: note: expanded from macro 'LOG_PRI'
+#define LOG_PRI(priority, tag, ...) android_printLog(priority, tag, __VA_ARGS__)
+                                                                    ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:63:34: note: expanded from macro 'android_printLog'
+  __android_log_print(prio, tag, __VA_ARGS__)
+                                 ^~~~~~~~~~~
+hardware/qcom/media/msm8996/mm-video-v4l2/vidc/venc/src/video_encoder_device_v4l2.cpp:7336:68: error: format specifies type 'ssize_t' (aka 'int') but the argument has type 'ssize_t' (aka 'long') [-Werror,-Wformat]
+        DEBUG_PRINT_ERROR("Failed to alloc extradata memory: %zd", totalSize);
+                                                             ~~~   ^~~~~~~~~
+                                                             %zd
+./hardware/qcom/media/msm8996/mm-video-v4l2/vidc/common/inc/vidc_debug.h:48:23: note: expanded from macro 'DEBUG_PRINT_ERROR'
+          ALOGE(fmt,##args); \
+                      ^~~~
+system/core/liblog/include/log/log_main.h:242:52: note: expanded from macro 'ALOGE'
+#define ALOGE(...) ((void)ALOG(LOG_ERROR, LOG_TAG, __VA_ARGS__))
+                                                   ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:308:67: note: expanded from macro 'ALOG'
+#define ALOG(priority, tag, ...) LOG_PRI(ANDROID_##priority, tag, __VA_ARGS__)
+                                                                  ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:72:69: note: expanded from macro 'LOG_PRI'
+#define LOG_PRI(priority, tag, ...) android_printLog(priority, tag, __VA_ARGS__)
+                                                                    ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:63:34: note: expanded from macro 'android_printLog'
+  __android_log_print(prio, tag, __VA_ARGS__)
+                                 ^~~~~~~~~~~
+hardware/qcom/media/msm8996/mm-video-v4l2/vidc/venc/src/video_encoder_device_v4l2.cpp:7387:91: error: format specifies type 'ssize_t' (aka 'int') but the argument has type 'ssize_t' (aka 'long') [-Werror,-Wformat]
+    DEBUG_PRINT_LOW("%s: (%d, %p, %d, %u, %zd)", __func__, index, *userptr, *fd, *offset, *size);
+                                          ~~~                                             ^~~~~
+                                          %zd
+./hardware/qcom/media/msm8996/mm-video-v4l2/vidc/common/inc/vidc_debug.h:58:23: note: expanded from macro 'DEBUG_PRINT_LOW'
+          ALOGD(fmt,##args); \
+                      ^~~~
+system/core/liblog/include/log/log_main.h:203:52: note: expanded from macro 'ALOGD'
+#define ALOGD(...) ((void)ALOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__))
+                                                   ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:308:67: note: expanded from macro 'ALOG'
+#define ALOG(priority, tag, ...) LOG_PRI(ANDROID_##priority, tag, __VA_ARGS__)
+                                                                  ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:72:69: note: expanded from macro 'LOG_PRI'
+#define LOG_PRI(priority, tag, ...) android_printLog(priority, tag, __VA_ARGS__)
+                                                                    ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:63:34: note: expanded from macro 'android_printLog'
+  __android_log_print(prio, tag, __VA_ARGS__)
+                                 ^~~~~~~~~~~
+hardware/qcom/media/msm8996/mm-video-v4l2/vidc/venc/src/video_encoder_device_v4l2.cpp:7419:92: error: format specifies type 'ssize_t' (aka 'int') but the argument has type 'ssize_t' (aka 'long') [-Werror,-Wformat]
+    DEBUG_PRINT_LOW("%s: (%p, %p, %d, %u, %zd)", __func__, cookie, *userptr, *fd, *offset, *size);
+                                          ~~~                                              ^~~~~
+                                          %zd
+./hardware/qcom/media/msm8996/mm-video-v4l2/vidc/common/inc/vidc_debug.h:58:23: note: expanded from macro 'DEBUG_PRINT_LOW'
+          ALOGD(fmt,##args); \
+                      ^~~~
+system/core/liblog/include/log/log_main.h:203:52: note: expanded from macro 'ALOGD'
+#define ALOGD(...) ((void)ALOG(LOG_DEBUG, LOG_TAG, __VA_ARGS__))
+                                                   ^~~~~~~~~~~
+system/core/liblog/include/log/log_main.h:308:67: note: expanded from macro 'ALOG'
+#define

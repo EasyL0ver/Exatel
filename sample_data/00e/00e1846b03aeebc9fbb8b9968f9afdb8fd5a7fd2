@@ -1,0 +1,10 @@
+var a = {
+   r: 456,
+   getIt: function( param ) {
+      return this[ param ];
+   }
+}
+
+var t = new a;
+
+t.getIt('r');

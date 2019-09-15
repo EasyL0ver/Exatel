@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+void printRot13(const char* str)
+{
+  /* loop through string. Strings end with a \0 */
+  for(; *str != '\0'; ++str)
+  {
+    /* Check to see if the letter is in     *
+     * the lower 13 letters of the alphabet */
+    if((*str >= 'A' && *str <= 'M') || (*str >= 'a' && *str <= 'm'))
+    { putchar(*str + 13); }
+
+    /* Check to see if the letter is in     *
+     * the upper 13 letters of the alphabet */
+    if((*str >= 'N' && *str <= 'Z') || (*str >= 'n' && *str <= 'z'))
+    { putchar(*str - 13); }
+  }
+
+  /* Add a space between words */
+  putchar(' ');
+}
+
+int main(int argc, char** argv)
+{
+  /* Check to see if there is any input text */
+  if(argc == 1)
+  {
+    /* Print error if there is none */
+    printf("ERROR: No Input Text!\n");
+  }
+  else
+  {
+    /* Loop through all the inputs *
+     * and encrypt them all        */
+    for(int i = 1; i < argc; ++i)
+    { printRot13(argv[i]); }
+
+    /* Print new line, for the shell */
+    putchar('\n');
+  }
+
+  return 0;
+}

@@ -1,0 +1,9 @@
+class Meal < ActiveRecord::Base
+  has_many :meals_ratings
+  scope :order_by_rating, -> do
+    joins('left join meals_ratings as likes ON likes.meal_id = meals.id and likes.liked = TRUE')
+    .joins('left join meals_ratings as dislikes ON dislikes.meal_id = meals.id and dislikes.liked = FALSE')
+    .select('distinct meals.id, (COALESCE(COUNT(distinct likes), 0) - COALESCE(COUNT(distinct dislikes),0)) as rating')
+    .group(:id).order('rating desc')
+  end
+end

@@ -1,0 +1,49 @@
+Should LastPass remember this password?. 
+
+[Warning] DataObject::get_by_id passed a non-numeric ID #
+POST /claims/CreateForm
+
+Line 2570 in /home/carlinow/public_html/claims/sapphire/core/model/DataObject.php
+
+Source
+
+2561 				$tableClasses = ClassInfo::dataClassesFor($callerClass);
+2562 				$baseClass = array_shift($tableClasses);
+2563 				return DataObject::get_one($callerClass,"`$baseClass`.`ID` = $id");
+2564 
+2565 				// This simpler code will be used by non-DataObject classes that implement DataObjectInterface
+2566 			} else {
+2567 				return DataObject::get_one($callerClass,"`ID` = $id");
+2568 			}
+2569 		} else {
+2570 			user_error("DataObject::get_by_id passed a non-numeric ID #$id", E_USER_WARNING);
+2571 		}
+2572 	}
+2573 
+2574 	/**
+2575 	 * Get the name of the base table for this object
+2576 	 */
+Trace
+
+DataObject::get_by_id passed a non-numeric ID # 
+Line 2570 of DataObject.php
+DataObject::get_by_id(Member,) 
+Line 93 of Claim.php
+Claim->onBeforeWrite() 
+Line 783 of DataObject.php
+DataObject->write() 
+Line 194 of ClaimsManager.php
+ClaimsManager->doSave(Array,Form,HTTPRequest) 
+Line 241 of Form.php
+Form->httpSubmission(HTTPRequest) 
+Line 129 of RequestHandler.php
+RequestHandler->handleRequest(HTTPRequest) 
+Line 143 of RequestHandler.php
+RequestHandler->handleRequest(HTTPRequest) 
+Line 119 of Controller.php
+Controller->handleRequest(HTTPRequest) 
+Line 280 of Director.php
+Director::handleRequest(HTTPRequest,Session) 
+Line 121 of Director.php
+Director::direct(/claims/CreateForm) 
+Line 118 of main.php

@@ -1,0 +1,7 @@
+//	Parametry konfiguracyjne
+	//	Parametry wymagane opisane w README (api.payU.README) w UWAGI.
+	private static String client_id = "333230"
+	private static String merchantPosId = "333230"
+	private static String client_secret = "377f9266398b7a77bf75aa51875f9247"
+	private static String customerIp = net.getClientIP()
+	private static String hostUrl = "https://secure.snd.payu.com"

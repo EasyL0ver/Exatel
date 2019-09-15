@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map, catchError, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
+@Injectable()
+
+export class DataService {
+  this.request = {
+     count: 10
+  }
+
+  constructor(private http: HttpClient) { }
+
+  private handleError(error) {
+    console.log(error);
+  }
+
+  public getData(count): Observable<any> {
+    this.request.count = count;
+
+    return this.http.post<any>(environment.api + '/path', this.request).pipe(
+      map(response => {
+        return response;
+      }),
+      catchError(error => {
+        this.handleError(error);
+        return [];
+      })
+    );
+  }
+}
+	
+ngOnInit() {
+  const subscriber = this.dataService.getData(this.count).subscribe((data) => { this.data = data; });
+}

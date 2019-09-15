@@ -1,0 +1,168 @@
+#pragma semicolon 1
+
+#include <cstrike>
+#include <sourcemod> 
+
+#pragma newdecls required
+
+public Plugin myinfo =
+{
+	name = "[CSGO] Clan Tag Kick",
+	author = "SomeBody,
+	description = "Clan Tag Kick",
+	version = "1.0",
+	url = "http://sourcemod.net"
+};
+
+public void OnPluginStart()
+{  
+	HookEvent("player_team", EventPlayerTeam);
+	for(int i = 0;i < GetMaxClients();i++)
+	{
+		if(!IsValidClient(i))
+			continue;
+		OnClientPutInServer(i);
+	}
+}
+
+public Action EventPlayerTeam(Event event, const char[] name, bool dontBroadcast)
+{
+	int client = GetClientOfUserId(GetEventInt(event, "userid"));
+	if(IsValidClient(client))
+	{
+    	CreateTimer( 0.5, CheckClanTag, client );
+    }
+}  
+
+public void OnClientPutInServer ( int client )
+{
+    if(IsValidClient(client))
+	{
+    	CreateTimer( 0.5, CheckClanTag, client );
+    }
+}
+
+public Action CheckClanTag ( Handle timer, int client )
+{
+    char needed[32];
+    needed = "HACKZCHICKEN";
+	
+    char needed2[32];
+    needed2 = "[AFGCLAN]";
+	
+    char needed3[32];
+    needed3 = "AntiFrag.eu";
+	
+    char needed4[32];
+    needed4 = "I<3RE:FLex";
+	
+    char needed5[32];
+    needed5 = "AntifragClan";
+	
+    char needed6[32];
+    needed6 = "[ W a V e ]";
+	
+    char needed7[32];
+    needed7 = "#WaVe#";
+	
+    char needed8[32];
+    needed8 = "ZSEGZS";
+
+    char  clientClanTag[32];
+    CS_GetClientClanTag ( client, clientClanTag, sizeof clientClanTag );
+
+    if ( StrEqual ( needed, clientClanTag, false ) )
+    	KickClient( client, "Kérlek válts klán nevet." );
+		
+    if ( StrEqual ( needed2, clientClanTag, false ) )
+        KickClient( client, "Kérlek válts klán nevet." );
+		
+    if ( StrEqual ( needed3, clientClanTag, false ) )
+        KickClient( client, "Kérlek válts klán nevet." );
+		
+    if ( StrEqual ( needed4, clientClanTag, false ) )
+        KickClient( client, "Kérlek válts klán nevet." );
+		
+    if ( StrEqual ( needed5, clientClanTag, false ) )
+        KickClient( client, "Kérlek válts klán nevet." );
+		
+    if ( StrEqual ( needed6, clientClanTag, false ) )
+        KickClient( client, "Kérlek válts klán nevet." );
+
+    if ( StrEqual ( needed7, clientClanTag, false ) )
+        KickClient( client, "Kérlek válts klán nevet." );
+		
+    if ( StrEqual ( needed8, clientClanTag, false ) )
+        KickClient( client, "Kérlek válts klán nevet." );
+}  
+
+public Action OnClientCommandKeyValues(int client, KeyValues kv) 
+{ 
+	if(IsValidClient(client))
+	{
+	    char sCmd[64]; 
+	     
+	    if (kv.GetSectionName(sCmd, sizeof(sCmd)) && StrEqual(sCmd, "ClanTagChanged", false)) 
+	    { 
+			char needed[32];
+			needed = "HACKZCHICKEN";
+			
+			char needed2[32];
+			needed2 = "[AFGCLAN]";
+			
+			char needed3[32];
+			needed3 = "AntiFrag.eu";
+			
+			char needed4[32];
+			needed4 = "I<3RE:FLex";
+
+			char needed5[32];
+			needed5 = "AntifragClan";
+			
+			char needed6[32];
+			needed6 = "[ W a V e ]";
+			
+			char needed7[32];
+			needed7 = "#WaVe#";
+			
+			char needed8[32];
+			needed8 = "ZSEGZS";
+			
+			char  clientClanTag[32];
+			CS_GetClientClanTag ( client, clientClanTag, sizeof clientClanTag );
+
+			if ( StrEqual ( needed, clientClanTag, false ) )
+				KickClient( client, "Kérlek válts klán nevet." );
+				
+			if ( StrEqual ( needed2, clientClanTag, false ) )
+				KickClient( client, "Kérlek válts klán nevet." );
+				
+			if ( StrEqual ( needed3, clientClanTag, false ) )
+				KickClient( client, "Kérlek válts klán nevet." );
+				
+			if ( StrEqual ( needed4, clientClanTag, false ) )
+				KickClient( client, "Kérlek válts klán nevet." );
+				
+			if ( StrEqual ( needed5, clientClanTag, false ) )
+				KickClient( client, "Kérlek válts klán nevet." );
+				
+			if ( StrEqual ( needed6, clientClanTag, false ) )
+				KickClient( client, "Kérlek válts klán nevet." );
+				
+			if ( StrEqual ( needed7, clientClanTag, false ) )
+				KickClient( client, "Kérlek válts klán nevet." );
+				
+			if ( StrEqual ( needed8, clientClanTag, false ) )
+				KickClient( client, "Kérlek válts klán nevet." );
+	    } 
+	}
+	return Plugin_Continue; 
+}
+
+stock bool IsValidClient(int client)
+{
+	if(client <= 0 ) return false;
+	if(client > MaxClients) return false;
+	if(!IsClientConnected(client)) return false;
+	return IsClientInGame(client);
+}

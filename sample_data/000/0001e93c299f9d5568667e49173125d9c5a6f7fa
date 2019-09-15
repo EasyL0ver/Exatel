@@ -1,0 +1,21 @@
+-- Hjälpmetod för jukesCantor och poisson för att avgöra skillnaden mellan seqvenser
+calcSeqDiff :: String -> String -> Float
+calcSeqDiff seq1 seq2 = calcSeqDiffAck seq1 seq2 0
+	where
+		calcSeqDiffAck :: (String -> String -> Int) -> Float
+		calcSeqDiffAck [] h diff = ((diff + length h)/(length seq2))
+		calcSeqDiffAck h [] diff = ((diff + length h)/(length seq1))
+		calcSeqDiffAck (c:s) (h:t) diff
+			| c == h = calcSeqDiff s t diff
+			| otherwise = calcSeqDiff s t (diff+1)
+
+
+
+
+GER FÖLJANDE FELMEDDELANDE:
+
+Data.List> :l MolSeq.hs 
+ERROR "MolSeq.hs":89 - Type error in explicitly typed binding
+*** Term           : []
+*** Type           : [a]
+*** Does not match : String -> String -> Int

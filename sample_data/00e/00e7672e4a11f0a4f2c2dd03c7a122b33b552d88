@@ -1,0 +1,53 @@
+#dt = 0.1 #para el paso temporal (en segundos)
+#numero_pasos = 500 #el n´umero de pasos a simular
+#g = 9.8 #la aceleracion de la gravedad en m
+#y0 = 0 #la posicion desde la que es lanzado el objeto en m
+#vy = 10 #la velocidad con la que es lanzado el objeto en m/s
+#y1 = 0.01 #la posicion en el instante t=0 + dt en m
+#
+#tiempos = [0 , 0.5]
+#alturas = [0, 10]
+#
+#def trayectoria(tiempos , alturas , numero_pasos):
+#    for i in range (1 , numero_pasos - 1):
+#        y_actual = alturas [i]
+#        y_prev = alturas [i -1]
+#        nueva_posicion = 2 * y_actual - y_prev - g * dt**2
+#        alturas.append (nueva_posicion)
+#        nuevo_tiempo = tiempos [i] + dt
+#        tiempos.append(nuevo_tiempo)
+#    return alturas 
+#           
+#
+#print(trayectoria(tiempos , alturas , numero_pasos))
+
+#____________________________________________________________________________
+
+import
+
+x_tierra = [-147095000000.0, -147095000000.0]
+y_tierra = [2617920000.0, 0.0]
+x_sol = 0
+y_sol = 0
+
+dt = 60 * 60 * 24
+tiempo_total = 400
+
+ 
+ 
+for i in range (1 , tiempo_total - 1):
+                                   #calculo los deltas
+    delta_x = x_sol - x_tierra[i] 
+    delta_y = y_sol - y_tierra[i]
+                                    # calculo la fuerza de x
+    f_x = ((G*mtierra*msol)/(delta_x**2 + delta_y**2))*((delta_x/sqrt(delta_x**2 + delta_y**2)))
+                                    # actualizo la posicion x
+    x_actual = x_tierra[i]
+    x_prev = x_tierra[i-1]
+    
+    x_nueva = x_tierra[i+1]
+    x_tierra.append(x_nueva)
+                                    # idem para y
+    ___COMPLETAR___
+                                    # actualizo el tiempo
+    dias.append (i)

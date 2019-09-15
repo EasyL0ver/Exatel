@@ -1,0 +1,4 @@
+clc
+clear
+fid = fopen('exp.txt','w');
+fprintf(fid,'%.2f   %.2f    %.2f \n',wektoryH(:,1),wektoryH(:,2),wektoryH(:,3));

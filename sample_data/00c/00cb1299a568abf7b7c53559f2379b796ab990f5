@@ -1,0 +1,36 @@
+Python 3.1 builtin types __init__ doesn't call super().__init__?
+class A:
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print("A().__init__()")
+
+class B(list, A):
+    def __init__(self, *args, **kwargs):
+        print("B().__init__() start")
+        super().__init__(*args, **kwargs)
+        print("B().__init__() end")
+
+if __name__ == '__main__':
+    b = B()
+	
+class A(object):
+    def __init__(self, param_a, **kwargs):
+        self.param_a = param_a
+        super(A, self).__init__(**kwargs)
+
+class B(A):
+    def __init__(self, param_b, **kwargs):
+        self.param_b = param_b
+        super(B, self).__init__(**kwargs)
+
+class C(A):
+    def __init__(self, param_c, **kwargs):
+        self.param_c = param_c
+        super(C, self).__init__(**kwargs)
+
+class D(B, C):
+    def __init__(self, param_d, **kwargs):
+        self.param_d = param_d
+        super(D, self).__init__(**kwargs)
+
+d = D(param_a=1, param_b=2, param_c=3, param_d=4)

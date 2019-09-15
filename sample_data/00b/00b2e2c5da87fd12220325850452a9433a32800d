@@ -1,0 +1,7 @@
+class Foo
+{
+		public function __construct ( )
+		{
+				Bootstrap :: instance ( );
+		}
+}

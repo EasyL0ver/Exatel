@@ -1,0 +1,56 @@
+pass parameter from to MySQL statement
+import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+
+public class Validation {
+
+    private PreparedStatement statement;
+    private Connection con;
+    private String x, y;
+
+    public Validation(String userID) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/test", "root", "");
+            statement = con.prepareStatement(
+                    "SELECT * from employee WHERE  userID = " + "''" + userID);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                x = rs.getString(1);
+                System.out.print(x);
+                System.out.print(" ");
+                y = rs.getString(2);
+                System.out.println(y);
+            }
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+}
+	
+statement =con.prepareStatement("SELECT * from employee WHERE  userID = ?");
+statement.setString(1, userID);
+	
+statement = con.prepareStatement("SELECT * from employee WHERE  userID = ?");
+statement.setString(1, userID);
+ResultSet rs = statement.executeQuery();
+	
+statement =con.prepareStatement("SELECT * from employee WHERE  userID = ?");
+statement.setString(1, userID);
+ResultSet rs = statement.executeQuery();
+	
+"SELECT * from employee WHERE userID = ?"
+	
+statement.setString(1, userID);
+	
+statement =con.prepareStatement("SELECT * from employee WHERE  userID = "+"''"+userID);
+   ResultSet rs = statement.executeQuery();
+	
+statement =con.prepareStatement("SELECT * from employee WHERE  userID = :userId");
+   statement.setString(userId, userID);
+   ResultSet rs = statement.executeQuery();
+	
+statement =con.prepareStatement("SELECT * from employee WHERE  userID = ?");
+   statement.setString(1, userID);

@@ -1,0 +1,10 @@
+0>root@one /tmp# gcc -c t.c 
+0>root@one /tmp# nm t.o
+0000000000000000 T _INT_cairo_rel_line_to
+0000000000000000 T _cairo_rel_line_to
+                 U puts
+0>root@one /tmp# clang -c t.c
+0>root@one /tmp# nm t.o
+                 U _INT_cairo_rel_line_to
+0000000000000000 T cairo_rel_line_to
+                 U puts

@@ -1,0 +1,41 @@
+{
+	"version": 3,
+	"type": "CRYENGINE Project",
+	"info": {
+		"name": "GameSampleFPS",
+		"guid": "18848a42-b446-94c0-8317-cb2b0eff8774"
+	},
+	"content": {
+		"assets": [ "GameSampleFPS" ],
+		"code": [ "" ],
+		"libs": [
+			{
+				"name": "CE's First Person Shooter Game Template",
+				"shared": { "any": "CryGameSampleFPS", "win_x64": "", "win_x86": "" }
+			}<-- Ey, this multiline comment won't kill the json parser! .-.
+			ldsjfkl234;234 '' 2323k""
+			-->
+		]
+	},
+	"require": {
+		"engine": "engine-5.5-personal",
+		"plugins": [
+			{ "type": "EPluginType::Native", "path": "CryDefaultEntities" },
+			{ "type": "EPluginType::Native", "path": "CrySensorSystem" },
+			{ "type": "EPluginType::Native", "path": "CryPerceptionSystem" },
+			{ "type": "EPluginType::Native", "path": "bin/win_x64/CryGameSampleFPS.dll" }
+		]
+	},
+	"console_variables": {
+		{ "name": "sys_target_platforms", 			"value": "pc" },
+        { "name": "sys_user_folder", 				"value": "GameSampleFPS"}, <-- Creates&uses Users/userName/SavedGames/gamesamplefps -->
+        { "name": "sys_localization_folder",		"value": "Localization" },
+        { "name": "ed_popupMissingAssetResolver", 	"value": "0" },
+				
+		{ "name": "r_offset_x", 					"value": "-640"}, <-- Controls where launcher-window is spawned -->
+		{ "name": "r_offset_y", 					"value": "-360" },
+		
+		{ "name": "cl_DefaultNearPlane",			"value": "0.05"} <-- Changes camera near-plane default from 0 to 0.05 -->
+	},
+	"console_commands": { }
+}

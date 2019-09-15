@@ -1,0 +1,5 @@
+fn main() {
+    println!("Hello, world!");
+    print!("My number: {}", "140");
+    print!("My number: {}", "140");
+}

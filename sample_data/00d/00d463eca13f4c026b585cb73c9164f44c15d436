@@ -1,0 +1,32 @@
+--A script that will convert seconds, minutes, hours, or all 3 into a military time format.
+--I didn't actually know if there was a formula for this, so I just solved it using logic instead.
+--You can test it here: https://www.lua.org/cgi-bin/demo
+
+seconds=0
+minutes=0
+hours=0
+
+while seconds>60 do
+minutes=minutes+1
+seconds=seconds-60
+end
+while minutes>60 do
+hours=hours+1
+minutes=minutes-60
+end
+
+if seconds==60 then seconds=seconds-60 minutes = minutes+1 end
+if minutes==60 then minutes=minutes-60 hours = hours+1 end
+
+if seconds == 0 then
+seconds = "00" 
+end
+if minutes == 0 then
+minutes = "00"
+end
+if hours == 0 then
+hours = "00"
+end
+
+print("hh:mm:ss")
+print(hours..":"..minutes..":"..seconds)

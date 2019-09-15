@@ -1,0 +1,42 @@
+#pragma once
+#include <iostream>
+#include <string>
+#include "Happiness.h"
+
+using namespace std;
+
+class Cities
+{
+
+    public:
+
+        Cities();
+        Cities(string newName, int userStartPop, int userInputInfecPop, Happiness userInputH);
+
+        //set functions
+        void setName(string newName);
+        void setSusceptilePopulation(int userInputSusPop);
+        void setInfectedPopulation(int userInputInfecPop);
+        void setRecoveredPopulation(int userInputRecovPop);
+        void setStartPopulation(int userStartPop);
+        void setHappy(Happiness userInputH);
+        
+
+        //get functions
+        string getName();
+        int getPopulation();
+        int getSusceptilePopulation();
+        int getInfectedPopulation();
+        int GetRecoveredPopulation();
+        Happiness getHappy();
+
+
+    private:
+        string name;
+        int population;
+        int susceptile;
+        int infected;
+        int recovered;
+        Happiness Happy;
+
+};

@@ -1,0 +1,11 @@
+Does Netty concurrently modify passed ChannelBuffers
+@Override
+public void messageReceived(ChannelHandlerContext ctx, MessageEvent e)
+{
+  ChannelBuffer buffer = (ChannelBuffer) e.getMessage();
+
+  if (buffer.readableBytes() == 4)
+  {
+    // Is it possible for the number of readable bytes to increase here?
+  }
+}

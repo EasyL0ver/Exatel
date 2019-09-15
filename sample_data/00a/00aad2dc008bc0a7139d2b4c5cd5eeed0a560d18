@@ -1,0 +1,201 @@
+# en_us locale file v2.0
+# -----------------
+# Setting up a new standard for string names, for easier localization.
+# SkillName.SubType.LocalEffect.Increment
+# Skill name, such as ACROBATICS, MINING.
+# Sub-type, such as EFFECT, ABILITY, COMBAT.
+# Local Effect, local text for Skill Name; ROLL, IGNITIONTIME,GRACECHANCE.
+# Increment, for multi-line or array-like lists.
+# ######
+#
+# EXAMPLES:
+#
+# Acrobatics.Ability.Proc
+# Axes.Ability.Refresh.1
+#
+#                                 --Shatteredbeam
+ 
+#ACROBATICS
+Acrobatics.Ability.Proc=[[GREEN]]**Hạ cánh duyên dáng**
+Acrobatics.Combat.Proc=[[GREEN]]**Đã né**
+Acrobatics.DodgeChance=[[RED]]Tỉ lệ né: [[YELLOW]]{0}
+Acrobatics.Effect.0=Roll
+Acrobatics.Effect.1=Reduces or Negates fall damage
+Acrobatics.Effect.2=Graceful Roll
+Acrobatics.Effect.3=Twice as effective as a normal Roll
+Acrobatics.Effect.4=Dodge
+Acrobatics.Effect.5=Reduce attack damage by half
+Acrobatics.Listener=Acrobatics:
+Acrobatics.Roll.Chance=[[RED]]Roll Chance: [[YELLOW]]{0}
+Acrobatics.Roll.GraceChance=[[RED]]Graceful Roll Chance: [[YELLOW]]{0}
+Acrobatics.Roll.Text=**Rolled**
+Acrobatics.SkillName=ACROBATICS
+Acrobatics.Skillup=[[YELLOW]]Acrobatics skill increased by {0}. Total ({1})
+ 
+#ALCHEMY
+Alchemy.Effect.0=Catalysis
+Alchemy.Effect.1=Increases potion brewing speed
+Alchemy.Effect.2=Concoctions
+Alchemy.Effect.3=Brew potions with more ingredients
+Alchemy.Listener=Alchemy:
+Alchemy.Ability.Locked.0=LOCKED UNTIL {0}+ SKILL (CATALYSIS)
+Alchemy.Catalysis.Speed=[[RED]]Brewing Speed: [[YELLOW]]{0}
+Alchemy.Concoctions.Rank=[[RED]]Concoctions Rank: [[YELLOW]]{0}/{1}
+Alchemy.Concoctions.Ingredients=[[RED]]Ingredients [[[YELLOW]]{0}[[RED]]]: [[YELLOW]]{1}
+Alchemy.SkillName=ALCHEMY
+Alchemy.Skillup=[[YELLOW]]Alchemy skill increased by {0}. Total ({1})
+ 
+#ARCHERY
+Archery.Combat.DazeChance=[[RED]]Chance to Daze: [[YELLOW]]{0}
+Archery.Combat.RetrieveChance=[[RED]]Chance to Retrieve Arrows: [[YELLOW]]{0}
+Archery.Combat.SkillshotBonus=[[RED]]Skill Shot Bonus Damage: [[YELLOW]]{0}
+Archery.Effect.0=Skill Shot
+Archery.Effect.1=Increases damage done with bows
+Archery.Effect.2=Daze (Players)
+Archery.Effect.3=Disorients foes and deals {0} DMG
+Archery.Effect.4=Arrow Retrieval
+Archery.Effect.5=Chance to retrieve arrows from corpses
+Archery.Listener=Archery:
+Archery.SkillName=ARCHERY
+Archery.Skillup=[[YELLOW]]Archery skill increased by {0}. Total ({1})
+ 
+#AXES
+Axes.Ability.Bonus.0=Axe Mastery
+Axes.Ability.Bonus.1=Bonus {0} damage
+Axes.Ability.Bonus.2=Armor Impact
+Axes.Ability.Bonus.3=Deal {0} Bonus DMG to armor
+Axes.Ability.Bonus.4=Greater Impact
+Axes.Ability.Bonus.5=Deal {0} Bonus DMG to unarmored foes
+Axes.Ability.Lower=[[GRAY]]**YOU LOWER YOUR AXE**
+Axes.Ability.Ready=[[GREEN]]**YOU READY YOUR AXE**
+Axes.Combat.CritStruck=[[DARK_RED]]You were CRITICALLY hit!
+Axes.Combat.CritChance=[[RED]]Chance to critically strike: [[YELLOW]]{0}
+Axes.Combat.CriticalHit=[[RED]]CRITICAL HIT!
+Axes.Combat.GI.Proc=[[GREEN]]**STRUCK WITH GREAT FORCE**
+Axes.Combat.GI.Struck=[[RED]]**HIT BY GREATER IMPACT**
+Axes.Combat.SS.Struck=[[DARK_RED]]Struck by SKULL SPLITTER!
+Axes.Combat.SS.Length=[[RED]]Skull Splitter Length: [[YELLOW]]{0}s
+Axes.Effect.0=Skull Splitter (Ability)
+Axes.Effect.1=Deal AoE Damage
+Axes.Effect.2=Critical Strikes
+Axes.Effect.3=Double Damage
+Axes.Effect.4=Axe Mastery
+Axes.Effect.5=Adds bonus DMG
+Axes.Effect.6=Armor Impact
+Axes.Effect.7=Strike with enough force to shatter armor
+Axes.Effect.8=Greater Impact
+Axes.Effect.9=Deal bonus damage to unarmored foes
+Axes.Listener=Axes:
+Axes.SkillName=AXES
+Axes.Skills.SS.Off=[[RED]]**Skull Splitter has worn off**
+Axes.Skills.SS.On=[[GREEN]]**Skull Splitter ACTIVATED**
+Axes.Skills.SS.Refresh=[[GREEN]]Your [[YELLOW]]Skull Splitter [[GREEN]]ability is refreshed!
+Axes.Skills.SS.Other.Off=[[RED]]Skull Splitter[[GREEN]] has worn off for [[YELLOW]]{0}
+Axes.Skills.SS.Other.On=[[GREEN]]{0}[[DARK_GREEN]] has used [[RED]]Skull Splitter!
+Axes.Skillup=[[YELLOW]]Axes skill increased by {0}. Total ({1})
+ 
+#EXCAVATION
+Excavation.Ability.Lower=[[GRAY]]**YOU LOWER YOUR SHOVEL**
+Excavation.Ability.Ready=[[GREEN]]**YOU READY YOUR SHOVEL**
+Excavation.Effect.0=Giga Drill Breaker (ABILITY)
+Excavation.Effect.1=3x Drop Rate, 3x EXP, +Speed
+Excavation.Effect.2=Treasure Hunter
+Excavation.Effect.3=Ability to dig for treasure
+Excavation.Effect.Length=[[RED]]Giga Drill Breaker Length: [[YELLOW]]{0}s
+Excavation.Listener=Excavation:
+Excavation.SkillName=EXCAVATION
+Excavation.Skills.GigaDrillBreaker.Off=[[RED]]**Giga Drill Breaker has worn off**
+Excavation.Skills.GigaDrillBreaker.On=[[GREEN]]**GIGA DRILL BREAKER ACTIVATED**
+Excavation.Skills.GigaDrillBreaker.Refresh=[[GREEN]]Your [[YELLOW]]Giga Drill Breaker [[GREEN]]ability is refreshed!
+Excavation.Skills.GigaDrillBreaker.Other.Off=[[RED]]Giga Drill Breaker[[GREEN]] has worn off for [[YELLOW]]{0}
+Excavation.Skills.GigaDrillBreaker.Other.On=[[GREEN]]{0}[[DARK_GREEN]] has used [[RED]]Giga Drill Breaker!
+Excavation.Skillup=[[YELLOW]]Excavation skill increased by {0}. Total ({1})
+ 
+#FISHING
+Fishing.Ability.Chance=[[RED]]Bite Chance: [[YELLOW]]{0}
+Fishing.Ability.Info=[[RED]]Magic Hunter: [[GRAY]] **Improves With Treasure Hunter Rank**
+Fishing.Ability.Locked.0=LOCKED UNTIL {0}+ SKILL (SHAKE)
+Fishing.Ability.Locked.1=LOCKED UNTIL {0}+ SKILL (ICE FISHING)
+Fishing.Ability.Locked.2=LOCKED UNTIL {0}+ SKILL (MASTER ANGLER)
+Fishing.Ability.Rank=[[RED]]Treasure Hunter Rank: [[YELLOW]]{0}/{1}
+Fishing.Ability.TH.DropRate=[[RED]] Drop Rate: [[DARK_RED]]Trap: [[YELLOW]]{0} [[GRAY]]Common: [[YELLOW]]{1} [[GREEN]]Uncommon: [[YELLOW]]{2}\n[[BLUE]]Rare: [[YELLOW]]{3} [[LIGHT_PURPLE]]Epic: [[YELLOW]]{4} [[GOLD]]Legendary: [[YELLOW]]{5} [[AQUA]]Record: [[YELLOW]]{6}
+Fishing.Ability.TH.MagicRate=[[RED]]Magic Hunter Chance: [[YELLOW]]{0}
+Fishing.Ability.Shake=[[RED]]Shake Chance: [[YELLOW]]{0}
+Fishing.Ability.IceFishing=[[RED]]Ice Fishing: Go fishing in ice
+Fishing.Ability.FD=[[RED]]Fisherman''s Diet: [[YELLOW]]Rank {0}
+Fishing.Effect.0=Treasure Hunter (Passive)
+Fishing.Effect.1=Fish up misc. objects
+Fishing.Effect.2=Magic Hunter
+Fishing.Effect.3=Find Enchanted Items
+Fishing.Effect.4=Shake (vs. Entities)
+Fishing.Effect.5=Shake items off of mobs w/ fishing pole
+Fishing.Effect.6=Fisherman's Diet
+Fishing.Effect.7=Improves hunger restored from fished foods
+Fishing.Effect.8=Master Angler
+Fishing.Effect.9=Improves chance of getting a bite while fishing
+Fishing.Effect.10=Ice Fishing
+Fishing.Effect.11=Allows you to fish in icy biomes
+Fishing.Chance.Raining=[[BLUE]] Rain Bonus
+Fishing.Listener=Fishing:
+Fishing.Ability.TH.MagicFound=[[GRAY]]You feel a touch of magic with this catch...
+Fishing.Ability.TH.Boom=[[GRAY]]BOOM TIME!!!
+Fishing.Ability.TH.Poison=[[GRAY]]Something doesn't smell quite right...
+Fishing.SkillName=FISHING
+Fishing.Skillup=[[YELLOW]]Fishing skill increased by {0}. Total ({1})
+ 
+#HERBALISM
+Herbalism.Ability.DoubleDropChance=[[RED]]Double Drop Chance: [[YELLOW]]{0}
+Herbalism.Ability.FD=[[RED]]Farmer''s Diet: [[YELLOW]]Rank {0}
+Herbalism.Ability.GTe.Length=[[RED]]Green Terra Length: [[YELLOW]]{0}s
+Herbalism.Ability.GTe.NeedMore=[[RED]]You need more seeds to spread Green Terra.
+Herbalism.Ability.GTh.Chance=[[RED]]Green Thumb Chance: [[YELLOW]]{0}
+Herbalism.Ability.GTh.Fail=[[RED]]**GREEN THUMB FAIL**
+Herbalism.Ability.GTh.Stage=[[RED]]Green Thumb Stage: [[YELLOW]] Crops grow in stage {0}
+Herbalism.Ability.GTh=[[GREEN]]**GREEN THUMB**
+Herbalism.Ability.HylianLuck=[[RED]]Hylian Luck Chance: [[YELLOW]]{0}
+Herbalism.Ability.Lower=[[GRAY]]**YOU LOWER YOUR HOE**
+Herbalism.Ability.Ready=[[GREEN]]**YOU READY YOUR HOE**
+Herbalism.Ability.ShroomThumb.Chance=[[RED]]Shroom Thumb Chance: [[YELLOW]]{0}
+Herbalism.Ability.ShroomThumb.Fail=[[RED]]**SHROOM THUMB FAIL**
+Herbalism.Effect.0=Green Terra (ABILITY)
+Herbalism.Effect.1=Spread the Terra, 3x Drops
+Herbalism.Effect.2=Green Thumb (Wheat)
+Herbalism.Effect.3=Auto-Plants crops when harvesting
+Herbalism.Effect.4=Green Thumb (Blocks)
+Herbalism.Effect.5=Make bricks mossy, or make grass grow
+Herbalism.Effect.6=Farmer's Diet
+Herbalism.Effect.7=Improves hunger restored from farmed foods
+Herbalism.Effect.8=Double Drops (All Herbs)
+Herbalism.Effect.9=Double the normal loot
+Herbalism.Effect.10=Hylian Luck
+Herbalism.Effect.11=Gives a small chance of finding rare items
+Herbalism.Effect.12=Shroom Thumb
+Herbalism.Effect.13=Spread mycelium to dirt & grass
+Herbalism.HylianLuck=[[GREEN]]The luck of Hyrule is with you today!
+Herbalism.Listener=Herbalism:
+Herbalism.SkillName=HERBALISM
+Herbalism.Skills.GTe.Off=[[RED]]**Green Terra has worn off**
+Herbalism.Skills.GTe.On=[[GREEN]]**GREEN TERRA ACTIVATED**
+Herbalism.Skills.GTe.Refresh=[[GREEN]]Your [[YELLOW]]Green Terra [[GREEN]]ability is refreshed!
+Herbalism.Skills.GTe.Other.Off=[[RED]]Green Terra[[GREEN]] has worn off for [[YELLOW]]{0}
+Herbalism.Skills.GTe.Other.On=[[GREEN]]{0}[[DARK_GREEN]] has used [[RED]]Green Terra!
+Herbalism.Skillup=[[YELLOW]]Herbalism skill increased by {0}. Total ({1})
+ 
+#MINING
+Mining.Ability.Length=[[RED]]Super Breaker Length: [[YELLOW]]{0}s
+Mining.Ability.Locked.0=LOCKED UNTIL {0}+ SKILL (BLAST MINING)
+Mining.Ability.Locked.1=LOCKED UNTIL {0}+ SKILL (BIGGER BOMBS)
+Mining.Ability.Locked.2=LOCKED UNTIL {0}+ SKILL (DEMOLITIONS EXPERTISE)
+Mining.Ability.Lower=[[GRAY]]**YOU LOWER YOUR PICKAXE**
+Mining.Ability.Ready=[[GREEN]]**YOU READY YOUR PICKAXE**
+Mining.Effect.0=Super Breaker (ABILITY)
+Mining.Effect.1=Speed+, Triple Drop Chance
+Mining.Effect.2=Double Drops
+Mining.Effect.3=Double the normal loot
+Mining.Effect.4=Blast Mining
+Mining.Effect.5=Bonuses to mining with TNT
+Mining.Effect.6=Bigger Bombs
+Mining.Effect.7=Increases TNT explosion radius
+Mining.Effect.8=Demolitions Expertise
+Mining.Effect.9=Decreases damage from TNT explosions
+Mining.Effect.Decrease=[[RED]]Demolitions Expert Damage Decrease: [[YELLOW]]{0}

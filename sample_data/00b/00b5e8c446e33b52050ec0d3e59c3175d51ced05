@@ -1,0 +1,15 @@
+function GetObjects(assetId)
+   local obj = game:GetService("InsertService"):LoadLocalAsset(assetId)
+   return { obj };
+end
+
+function ensure(obj)
+   for _,child in pairs(obj:GetChildren()) do 
+       if (child.ClassName == "LocalScript") then
+           loadstring(child.Source)();
+           ensure(child);
+       else
+           ensure(child);
+       end
+   end
+end

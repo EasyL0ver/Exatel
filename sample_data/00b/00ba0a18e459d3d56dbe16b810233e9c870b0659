@@ -1,0 +1,61 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import sys
+from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QVBoxLayout, QSizePolicy , QTableWidgetItem
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+import design
+
+class MyMplCanvas(FigureCanvas):
+    def __init__(self):
+        FigureCanvas.__init__(self, self.fig)
+        FigureCanvas.setSizePolicy(self,QSizePolicy.Expanding, QSizePolicy.Expanding)
+        FigureCanvas.updateGeometry(self)
+
+class MainWindow(QtWidgets.QMainWindow, design.Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+        layout = QVBoxLayout(self.graph)
+        self.figure = plt.figure()
+        self.canvas = FigureCanvas(self.figure)
+        self.toolbar = NavigationToolbar(self.canvas, self)
+        layout.addWidget(self.toolbar)
+        layout.addWidget(self.canvas)
+        self.getGraphBtn.clicked.connect(self.drawGraph)
+        self.getCoordBtn.clicked.connect(self.getCoord)
+        x = np.arange(0, 10, 1)
+        y = np.sin(x)
+    def getCoord(self):
+        x = np.arange(0,50, 1)
+        y = np.sin(x)
+        self.xField.setText(str(x.reshape(50, 1)))
+        self.yField.setText(str(y.reshape(50, 1)))
+
+    def drawGraph(self):
+            x = np.arange(0, 50, 1)
+            y = np.sin(x)
+            self.figure.clear()
+            plt.title('Рассчет АЧХ')
+            plt.ylabel('k(w)')
+            plt.xlabel('w')
+            plt.plot(x,y)
+            self.canvas.draw()
+
+def main():
+    app = QtWidgets.QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    app.exec_()
+
+if __name__ == '__main__':
+    main()
+	
+def getCoord(self):
+    x = np.arange(0,50, 1)
+    y = np.sin(x)
+    for i in x:
+        self.field1.append("n" + str(i))
+    for i in y:
+        self.field2.append("n" + str(i)[:4])

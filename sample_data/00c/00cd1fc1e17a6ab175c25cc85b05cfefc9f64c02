@@ -1,0 +1,126 @@
+F:\openmrs modules\modules\openmrs-module-appframework>mvn clean install
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO]
+[INFO] App Framework Module                                               [pom]
+[INFO] App Framework Module Apps for testing                              [jar]
+[INFO] App Framework Module API                                           [jar]
+[INFO] App Framework Module OMOD                                          [jar]
+[INFO]
+[INFO] ------------------< org.openmrs.module:appframework >-------------------
+[INFO] Building App Framework Module 2.9                                  [1/4]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ appframework ---
+[INFO]
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ appframework ---
+[INFO] Installing F:\openmrs modules\modules\openmrs-module-appframework\pom.xml to C:\Users\DELL\.m2\repository\org\openmrs\module\appframework\2.9\appframework-2.9.pom
+[INFO]
+[INFO] -----------< org.openmrs.module:appframework-appsfortesting >-----------
+[INFO] Building App Framework Module Apps for testing 2.9                 [2/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ appframework-appsfortesting ---
+[INFO] Deleting F:\openmrs modules\modules\openmrs-module-appframework\appsfortesting\target
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ appframework-appsfortesting ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 7 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ appframework-appsfortesting ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ appframework-appsfortesting ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 7 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ appframework-appsfortesting ---
+[INFO] No sources to compile
+[INFO]
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ appframework-appsfortesting ---
+[INFO]
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ appframework-appsfortesting ---
+[INFO] Building jar: F:\openmrs modules\modules\openmrs-module-appframework\appsfortesting\target\appframework-appsfortesting-2.9.jar
+[INFO]
+[INFO] --- maven-jar-plugin:2.4:test-jar (default) @ appframework-appsfortesting ---
+[INFO] Building jar: F:\openmrs modules\modules\openmrs-module-appframework\appsfortesting\target\appframework-appsfortesting-2.9-tests.jar
+[INFO]
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ appframework-appsfortesting ---
+[INFO] Installing F:\openmrs modules\modules\openmrs-module-appframework\appsfortesting\target\appframework-appsfortesting-2.9.jar to C:\Users\DELL\.m2\repository\org\openmrs\module\appframework-appsfortesting\2.9\appframework-appsfortesting-2.9.jar
+[INFO] Installing F:\openmrs modules\modules\openmrs-module-appframework\appsfortesting\pom.xml to C:\Users\DELL\.m2\repository\org\openmrs\module\appframework-appsfortesting\2.9\appframework-appsfortesting-2.9.pom
+[INFO] Installing F:\openmrs modules\modules\openmrs-module-appframework\appsfortesting\target\appframework-appsfortesting-2.9-tests.jar to C:\Users\DELL\.m2\repository\org\openmrs\module\appframework-appsfortesting\2.9\appframework-appsfortesting-2.9-tests.jar
+[INFO]
+[INFO] ----------------< org.openmrs.module:appframework-api >-----------------
+[INFO] Building App Framework Module API 2.9                              [3/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ appframework-api ---
+[INFO] Deleting F:\openmrs modules\modules\openmrs-module-appframework\api\target
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ appframework-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ appframework-api ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 37 source files to F:\openmrs modules\modules\openmrs-module-appframework\api\target\classes
+[WARNING] /F:/openmrs modules/modules/openmrs-module-appframework/api/src/main/java/org/openmrs/module/appframework/domain/Extension.java: F:\openmrs modules\modules\openmrs-module-appframework\api\src\main\java\org\openmrs\module\appframework\domain\Extension.java uses or overrides a deprecated API.
+[WARNING] /F:/openmrs modules/modules/openmrs-module-appframework/api/src/main/java/org/openmrs/module/appframework/domain/Extension.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /F:/openmrs modules/modules/openmrs-module-appframework/api/src/main/java/org/openmrs/module/appframework/repository/AllUserApps.java: F:\openmrs modules\modules\openmrs-module-appframework\api\src\main\java\org\openmrs\module\appframework\repository\AllUserApps.java uses unchecked or unsafe operations.
+[WARNING] /F:/openmrs modules/modules/openmrs-module-appframework/api/src/main/java/org/openmrs/module/appframework/repository/AllUserApps.java: Recompile with -Xlint:unchecked for details.
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ appframework-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 15 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ appframework-api ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to F:\openmrs modules\modules\openmrs-module-appframework\api\target\test-classes
+[WARNING] /F:/openmrs modules/modules/openmrs-module-appframework/api/src/test/java/org/openmrs/module/appframework/repository/AllComponentsStateTest.java: Some input files use or override a deprecated API.
+[WARNING] /F:/openmrs modules/modules/openmrs-module-appframework/api/src/test/java/org/openmrs/module/appframework/repository/AllComponentsStateTest.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /F:/openmrs modules/modules/openmrs-module-appframework/api/src/test/java/org/openmrs/module/appframework/service/AppFrameworkServiceTest.java: F:\openmrs modules\modules\openmrs-module-appframework\api\src\test\java\org\openmrs\module\appframework\service\AppFrameworkServiceTest.java uses unchecked or unsafe operations.
+[WARNING] /F:/openmrs modules/modules/openmrs-module-appframework/api/src/test/java/org/openmrs/module/appframework/service/AppFrameworkServiceTest.java: Recompile with -Xlint:unchecked for details.
+[INFO]
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ appframework-api ---
+[INFO] Surefire report directory: F:\openmrs modules\modules\openmrs-module-appframework\api\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.openmrs.module.appframework.AppFrameworkActivatorComponentTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 89.581 sec
+Running org.openmrs.module.appframework.AppFrameworkActivatorTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.103 sec
+Running org.openmrs.module.appframework.config.AppFrameworkConfigDescriptorTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec
+Running org.openmrs.module.appframework.config.AppFrameworkConfigRuntimeTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.126 sec
+Running org.openmrs.module.appframework.config.AppFrameworkConfigTest
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.484 sec
+Running org.openmrs.module.appframework.ContextLoadTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.384 sec
+Running org.openmrs.module.appframework.domain.AppDescriptorTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 sec
+Running org.openmrs.module.appframework.domain.AppTemplateTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec
+Running org.openmrs.module.appframework.domain.DomainValidationsTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 sec
+Running org.openmrs.module.appframework.domain.ExtensionTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.26 sec
+Running org.openmrs.module.appframework.factory.AppConfigurationLoaderFactoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.499 sec
+Running org.openmrs.module.appframework.repository.AllAppDescriptorsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 sec
+Running org.openmrs.module.appframework.repository.AllComponentsStateTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec
+Running org.openmrs.module.appframework.repository.AllFreeStandingExtensionsTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 sec
+Running org.openmrs.module.appframework.service.AdministrativeNotificationServiceImplTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.068 sec
+Running org.openmrs.module.appframework.service.AppFrameworkServiceImplTest
+Tests run: 9, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 31.57 sec <<< FAILURE!
+testGetAllEnabledExtensionsShouldIgnoreEnabledToggledOffInFeatureTogglesFile(org.openmrs.module.appframework.service.AppFrameworkServiceImplTest)  Time elapsed: 0.332 sec  <<< FAILURE!
+java.lang.AssertionError: expected:<2> but was:<0>
+        at org.junit.Assert.fail(Assert.java:88)
+        at

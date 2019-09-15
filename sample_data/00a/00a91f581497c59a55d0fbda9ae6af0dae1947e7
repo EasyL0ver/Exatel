@@ -1,0 +1,208 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+
+namespace Dun
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Maze m = new Maze(File.ReadAllText("D:\\maze.txt"));
+            Console.ReadLine();
+        }
+    }
+
+    public struct Point
+    {
+        public Point(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+        public int X, Y;
+    }
+
+    public class Node
+    {
+        public Point State;
+        public Node Parent;
+        public int F, G, H;
+        public Node(Point state, Node parent, int g, int h)
+        {
+            State = state;
+            Parent = parent;
+            F = g + h;
+            G = g;
+            H = h;
+        }
+    }
+
+    public class Maze
+    {
+        public char[,] maze;
+        public int MaxX
+        {
+            get
+            {
+                return maze.GetLength(0);
+            }
+        }
+        public int MaxY
+        {
+            get
+            {
+                return maze.GetLength(1);
+            }
+        }
+
+        public Point Start;
+        public Point End;
+
+        public List<Node> Open = new List<Node>();
+        public List<Node> Close = new List<Node>();
+
+        public Maze(string text)
+        {
+            text = text.Replace("\r", "");
+            string[] temp = text.Split('\n');
+            Console.WriteLine(text);
+
+            maze = new char[temp[0].Length, temp.Length];
+
+            for (int x = 0; x < MaxX; x++)
+            {
+                for (int y = 0; y < MaxY; y++)
+                {
+                    maze[x, y] = temp[y][x];
+                    if (maze[x, y] == 's')
+                    {
+                        Start = new Point(x, y);
+                    }
+                    else if (maze[x, y] == 'e')
+                    {
+                        End = new Point(x, y);
+                    }
+                }
+            }
+
+            Console.WriteLine("Start({0}:{1}) End({2}:{3})", Start.X, Start.Y, End.X, End.Y);
+            AStar();
+        }
+
+        public void ShowMaze()
+        {
+            for (int y = 0; y < MaxY; y++)
+            {
+                for (int x = 0; x < MaxX; x++)
+                {
+                    Console.Write(maze[x, y]);
+                }
+                Console.WriteLine("");
+            }
+        }
+
+        public int GetG(Point a, Point b)
+        {
+            int x = a.X - b.X;
+            int y = a.Y - b.Y;
+            return (int)(Math.Sqrt(x * x + y * y));
+        }
+
+        public int GetH(Point from)
+        {
+            int x = End.X - from.X;
+            int y = End.Y - from.Y;
+            return (int)(Math.Sqrt(x * x + y * y));
+        }
+
+        public Node PointExistO(Point p)
+        {
+            foreach (Node d in Open)
+            {
+                if (d.State.X == p.X && d.State.Y == p.Y)
+                    return d;
+            }
+            return null;
+        }
+
+        public Node PointExistC(Point p)
+        {
+            foreach (Node d in Close)
+            {
+                if (d.State.X == p.X && d.State.Y == p.Y)
+                    return d;
+            }
+            return null;
+        }
+
+        public void AStar()
+        {
+            Node d = new Node(Start, null, 0, -1);
+            Open.Add(d);
+
+            while (Open.Count != 0)
+            {
+                Node minF = Open[0];
+                for (int i = 1; i < Open.Count; i++)
+                    if (Open[i].F < minF.F)
+                        minF = Open[i];
+
+                Close.Add(minF);
+                Open.Remove(minF);
+                if (minF.H == 0)
+                {
+                    Found(minF);
+                    ShowMaze();
+                    return;
+                }
+
+                AddNode(minF, new Point(minF.State.X, minF.State.Y + 1));
+                AddNode(minF, new Point(minF.State.X, minF.State.Y - 1));
+                AddNode(minF, new Point(minF.State.X + 1, minF.State.Y));
+                AddNode(minF, new Point(minF.State.X - 1, minF.State.Y));
+               //Allow go to the corners
+               // AddNode(minF, new Point(minF.State.X + 1, minF.State.Y - 1));
+               // AddNode(minF, new Point(minF.State.X + 1, minF.State.Y + 1));
+               // AddNode(minF, new Point(minF.State.X - 1, minF.State.Y - 1));
+               // AddNode(minF, new Point(minF.State.X - 1, minF.State.Y + 1));
+            }
+            Console.WriteLine("Fail");
+        }
+
+        public void Found(Node minF)
+        {
+          if (minF == null)
+                return;
+          if (minF.H != -1 && minF.H != 0)
+                maze[minF.State.X, minF.State.Y] = '-';
+          Found(minF.Parent);
+        }
+
+        public void AddNode(Node minF, Point p)
+        {
+            if (maze[p.X, p.Y] != '#')
+            {
+                if (PointExistC(p) == null)
+                {
+                    var x = PointExistO(p);
+                    if (x == null)
+                    {
+                        Open.Add(new Node(p, minF, minF.G + GetG(p, minF.State), GetH(p)));
+                    }
+                    else
+                    {
+                        if (x.Parent.F > minF.F)
+                        {
+                            x.Parent = minF;
+                            x.G = minF.G + GetG(p, minF.State);
+                            x.F = x.G + x.H;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

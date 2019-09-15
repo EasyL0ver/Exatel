@@ -1,0 +1,57 @@
+using namespace std;
+ #include <unordered_map>
+ #include <boost/mpi.hpp>
+ #include <boost/serialization/vector.hpp>
+ #include <boost/serialization/unordered_map.hpp>
+
+class LCAIndexes {
+private:
+
+friend class boost::serialization::access;
+
+template<class Archive>
+void serialize(Archive & ar, const unsigned int version) {
+
+    ar & ElementaryFlowsIndex;
+    ar & ElementaryFlowsIndexIndices;
+
+    ar & IntermediateFlowsIndex;
+    ar & IntermediateFlowsIndexIndices;
+
+    ar & ProcessesIndex;
+    ar & ProcessesIndexIndices;
+
+    ar & ImpactCategoryIndex;
+    ar & ImpactCategoryIndexIndices;
+
+}
+public:
+
+
+vector<long> ElementaryFlowsIndex;
+unordered_map<long, long> ElementaryFlowsIndexIndices;
+
+vector<long> IntermediateFlowsIndex;
+unordered_map<long, int> IntermediateFlowsIndexIndices;
+
+vector<long> ProcessesIndex;
+unordered_map<long, int> ProcessesIndexIndices;
+
+vector<int> ImpactCategoryIndex;
+unordered_map<int, int> ImpactCategoryIndexIndices;
+	
+int numworkers = settings.Parallelism + 1; //omp_get_num_procs();
+    MPI_Comm_spawn("./processes/montecarlo", MPI_ARGV_NULL, numworkers,
+            MPI_INFO_NULL,
+            0, MPI_COMM_SELF, &workercomm, MPI_ERRCODES_IGNORE);
+
+    boost::mpi::environment env;
+    boost::mpi::communicator world;
+    cout << world.size() << endl;
+
+    boost::mpi::communicator boost_worker = 
+    boost::mpi::intercommunicator(workercomm, 
+    boost::mpi::comm_take_ownership);
+
+    obj=getLCAIndex();
+    boost_worker.send(0, 8, obj);

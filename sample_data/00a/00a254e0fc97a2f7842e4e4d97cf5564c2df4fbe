@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+.wrapper__title {
+  border: 1px solid black;
+  border-radius: 5px 5px 0 0;
+  padding: 5px;
+}
+
+.wrapper__content {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 0 0 5px 5px;
+  padding: 5px;
+}
+
+.content {
+  padding: 5px;
+}
+
+.content td {
+  border-bottom: 1px solid black;
+}
+
+.content tr:last-child td {
+  border-bottom: none;
+}
+</style>
+</head>
+<body>
+
+  <table border="0" cellPadding="0" cellSpacing="0" class='wrapper'>
+    <tbody>
+      <tr>
+        <td class='wrapper__title'>Title</td>
+      </tr>
+      <tr>
+        <td class='wrapper__content'>
+          <table class='content' border="0" cellPadding="0" cellSpacing="0">
+            <tbody>
+              <tr>
+                <td>
+                  <p>Some Content</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>More Content</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+
+<script id="jsbin-source-css" type="text/css">.wrapper__title {
+  border: 1px solid black;
+  border-radius: 5px 5px 0 0;
+  padding: 5px;
+}
+
+.wrapper__content {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-radius: 0 0 5px 5px;
+  padding: 5px;
+}
+
+.content {
+  padding: 5px;
+}
+
+.content td {
+  border-bottom: 1px solid black;
+}
+
+.content tr:last-child td {
+  border-bottom: none;
+}
+</script>
+</body>
+</html>

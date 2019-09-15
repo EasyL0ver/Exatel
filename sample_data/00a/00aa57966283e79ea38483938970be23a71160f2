@@ -1,0 +1,79 @@
+Chise:ldm artemd$ epio django syncdb
+Syncing...
+Creating tables ...
+Creating table south_migrationhistory
+Creating table djcelery_intervalschedule
+Creating table djcelery_crontabschedule
+Creating table djcelery_periodictasks
+Creating table djcelery_periodictask
+Creating table djcelery_workerstate
+Creating table djcelery_taskstate
+Creating table auth_permission
+Creating table auth_group_permissions
+Creating table auth_group
+Creating table auth_user_user_permissions
+Creating table auth_user_groups
+Creating table auth_user
+Creating table auth_message
+Creating table django_content_type
+Creating table django_session
+Creating table django_site
+Creating table django_admin_log
+Creating table registration_registrationprofile
+
+You just installed Django's auth system, which means you don't have any superusers defined.
+Would you like to create one now? (yes/no): yes
+Username (Leave blank to use 'app-29600'): artemd
+E-mail address: artem@lumolink.com
+Password: 
+Password (again): 
+Traceback (most recent call last):
+  File "/usr/local/bin/django-admin.py", line 5, in <module>
+    management.execute_from_command_line()
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 429, in execute_from_command_line
+    utility.execute()
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 379, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/base.py", line 191, in run_from_argv
+    self.execute(*args, **options.__dict__)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/base.py", line 220, in execute
+    output = self.handle(*args, **options)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/base.py", line 351, in handle
+    return self.handle_noargs(**options)
+  File "/bundles/port-8379/app_image/pyenv/lib/python2.7/site-packages/south/management/commands/syncdb.py", line 90, in handle_noargs
+    syncdb.Command().execute(**options)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/base.py", line 220, in execute
+    output = self.handle(*args, **options)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/base.py", line 351, in handle
+    return self.handle_noargs(**options)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/commands/syncdb.py", line 109, in handle_noargs
+    emit_post_sync_signal(created_models, verbosity, interactive, db)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/sql.py", line 190, in emit_post_sync_signal
+    interactive=interactive, db=db)
+  File "/usr/local/lib/python2.7/dist-packages/django/dispatch/dispatcher.py", line 172, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/auth/management/__init__.py", line 70, in create_superuser
+    call_command("createsuperuser", interactive=True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/__init__.py", line 166, in call_command
+    return klass.execute(*args, **defaults)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/management/base.py", line 220, in execute
+    output = self.handle(*args, **options)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/auth/management/commands/createsuperuser.py", line 134, in handle
+    User.objects.create_superuser(username, email, password)
+  File "/usr/local/lib/python2.7/dist-packages/django/contrib/auth/models.py", line 144, in create_superuser
+    u.save(using=self._db)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 460, in save
+    self.save_base(using=using, force_insert=force_insert, force_update=force_update)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/base.py", line 522, in save_base
+    manager.using(using).filter(pk=pk_val).exists())):
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/query.py", line 496, in exists
+    return self.query.has_results(using=self.db)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/query.py", line 424, in has_results
+    return bool(compiler.execute_sql(SINGLE))
+  File "/usr/local/lib/python2.7/dist-packages/django/db/models/sql/compiler.py", line 735, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python2.7/dist-packages/django/db/backends/postgresql_psycopg2/base.py", line 44, in execute
+    return self.cursor.execute(query, args)
+django.db.utils.DatabaseError: current transaction is aborted, commands ignored until end of transaction block
+
+Connection to upload.ep.io closed.

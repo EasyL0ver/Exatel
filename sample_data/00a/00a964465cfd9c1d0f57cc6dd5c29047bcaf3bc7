@@ -1,0 +1,7 @@
+lastMessageDOM2
+
+#main div:nth-last-child(2) > div > div > div.copyable-text > div > span
+
+LastMessageStatus2DOMSelector
+
+#main > div._3zJZ2 > div > div > div._9tCEa > div:nth-last-child(2) > div > div > div._2f-RV > div > div

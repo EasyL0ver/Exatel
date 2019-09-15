@@ -1,0 +1,15 @@
+assignment operator with maps
+map<char *, int> sym_addr;
+map<char *, int> sym_tbl;
+void set_map(map<char *, int> & sym_tbl)
+{
+ sym_addr = sym_tbl;
+}
+	
+typedef std::map< std::string, int> myMapType;
+myMapType sym_addr;
+myMapType sym_tbl;
+void set_map(const myMapType & sym_tbl)
+{
+ sym_addr = sym_tbl;
+}

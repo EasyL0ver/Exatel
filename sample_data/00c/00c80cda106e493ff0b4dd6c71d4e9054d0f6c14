@@ -1,0 +1,32 @@
+understanding jquery and ajax
+$.extend({
+    ay: {
+        ajaxRequest: {
+            abort: function(){}
+        }
+    }
+});
+	
+$.ay.ajaxRequest = $.ajax({
+    data: {
+        ay: {
+            action: 'update',
+            element: {
+                id: $(this).data().id
+            },
+            input: {
+                name: $(this).attr('name'),
+                value: $(this).val()
+            }
+        }
+    },
+    type: 'post'
+});​
+	
+jQuery.ay.ajaxRequest.abort();
+	
+jQuery.ay.ajaxRequest.abort = jQuery.noop;
+	
+$.ay = {
+          ajaxRequest : {...}
+       };

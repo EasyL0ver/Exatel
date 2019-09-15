@@ -1,0 +1,83 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <locale.h>
+
+void input_matrix(int**, int);
+int sum(int*, int);
+void output_matrix(int**, int);
+
+
+int main()
+{
+	int memory = 0;
+	setlocale(LC_ALL, "Russian");
+	printf("Выделите память\n");
+	scanf_s("%d", &memory);
+	int** matrix = (int**)malloc(memory * sizeof(int*));
+	input_matrix(matrix, memory);
+	output_matrix(matrix, memory);
+
+	int sum_of_all = 0;
+	for (int i = 0; i < memory; ++i)
+	{
+		sum_of_all += sum(matrix[i], memory);
+	}
+	printf("\n%d\n", sum_of_all);
+
+	system("pause");
+	return 0;
+}
+
+void input_matrix(int** matrix, int memory)
+{
+	for (int i = 0; i < memory; ++i)
+	{
+		matrix[i] = (int*)malloc(memory * sizeof(int));
+		for (int j = 0; j < memory; ++j)
+		{
+			rewind(stdin);
+			//scanf_s("%d", &matrix[i][j]);
+			matrix[i][j] = rand() % 10 + 1;
+		}
+	}
+	return;
+}
+
+void output_matrix(int** matrix, int memory)
+{
+	for (int i = 0; i < memory; ++i)
+	{
+		for (int j = 0; j < memory; ++j)
+		{
+			printf("%d\t", matrix[i][j]);
+		}
+		printf("\n");
+	}
+	return;
+}
+
+int check_pime(int num)
+{
+	int buf = num;
+	for (int i = 2; i <= buf; ++i)
+	{
+		if (num%i == 0 && num != i)
+		{
+			return 0;
+		}
+	}
+	return 1;
+}
+
+int sum(int* matrix_i, int memory)
+{
+	int sum = 0;
+	for (int j = 0; j < memory; ++j)
+	{
+		if (check_pime(matrix_i[j]))
+		{
+			sum += matrix_i[j];
+		}
+	}
+	return sum;
+}

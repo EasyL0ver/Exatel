@@ -1,0 +1,20 @@
+SELECT
+	`s`.`subdomain`,
+	`d`.`domain`,
+	`s`.`template_name`,
+	`t`.`name` AS `type`
+FROM
+	`dpk8z_readmin_sites` 	AS `s`
+INNER JOIN
+	`dpk8z_readmin_domains`	AS `d`
+ON
+	`s`.`domain_id` = `d`.`id`
+INNER JOIN
+	`dpk8z_readmin_site_types` AS `t`
+ON
+	s.site_type = t.id
+WHERE
+	`s`.`published` = 1 AND
+	`s`.`enabled`   = 1
+
+-- AND s.subdomain = '' AND d.domain = 'someonesdomain.com'

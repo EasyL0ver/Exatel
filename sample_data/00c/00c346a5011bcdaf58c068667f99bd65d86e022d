@@ -1,0 +1,34 @@
+{
+  "nodes": [
+    {"id": "mo-mo", "group": 1},
+    {"id": "hro-hro", "group": 1},
+    {"id": "ospa", "group": 2},
+    {"id": "sber", "group": 2},
+    {"id": "Rahul", "group": 3},
+	{"id": "papa", "group": 3},
+	{"id": "mama", "group": 3},
+	{"id": "sema", "group": 3},
+	{"id": "Juan", "group": 3},
+	{"id": "Andrea", "group": 3},
+	{"id": "Rachid", "group": 3},
+	{"id": "Benedetta", "group": 3}
+
+  ],
+  "links": [
+    {"source": "ospa", "target": "hro-hro", "value": 1},
+    {"source": "ospa", "target": "papa", "value": 8},
+    {"source": "ospa", "target": "mo-mo", "value": 10},
+    {"source": "sber", "target": "hro-hro", "value": 6},
+    {"source": "sber", "target": "mo-mo", "value": 1},
+    {"source": "sber", "target": "mama", "value": 1},
+    {"source": "sber", "target": "Andrea", "value": 1},
+    {"source": "Rahul", "target": "hro-hro", "value": 1},
+{"source": "Rahul", "target": "mo-mo", "value": 1},
+
+{"source": "papa", "target": "mo-mo", "value": 1},
+{"source": "Juan", "target": "mo-mo", "value": 1},
+{"source": "sema", "target": "hro-hro", "value": 1},
+{"source": "Andrea", "target": "hro-hro", "value": 1},
+{"source": "Andrea", "target": "mo-mo", "value": 1}    
+  ]
+}

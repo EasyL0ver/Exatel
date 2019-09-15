@@ -1,0 +1,15 @@
+......
+
+var Router = Backbone.Router.extend({
+    routes: {
+      "": "index",
+      "catalog": "catalog",
+      "catalog/:catID": "items",
+      "approve": "approve"
+    },
+
+    index: function( hash ) {
+      var mainView = new Main.Views.Main;
+
+
+......

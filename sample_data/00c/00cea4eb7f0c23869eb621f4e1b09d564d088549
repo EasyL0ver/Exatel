@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+#define ll long long
+#define vi vector<int>
+#define loop(i,n) for(int i=0;i<n;i++)
+#define loop1(i,n) for(int i=1;i<=n;i++)
+#define revloop(i,n) for(int i=n-1;i>=0;i--)
+#define revloop1(i,n) for(int i=n;i>=1;i--)
+#define pb push_back
+#define mp make_pair
+#define pii pair<int,int>
+#define vpii vector< pair<int,int> >
+#define ff first
+#define ss second
+#define print(x) printf("%.9Lf\n",x)
+#define MOD 1000000007
+#define MAX 100005
+#define MAX6 500000
+#define MAX3 1005
+#define nw cout<<endl
+#define lc 2*node+1
+#define rc 2*node+2
+#define PRINT(v) for(int i=0;i!=v.size();i++)cout<<v[i]<<" "
+#define modInverse(x) power(x,MOD-2)
+using namespace std;
+ll c[MAX3][MAX3];
+int main(){
+
+
+
+    int  T,x,y,k;
+    T=1;
+    loop1(t,T){
+        int n;
+        cin>>n>>k;
+        vector<pii> v;
+        for(int i=0;i<n;i++){
+            cin>>x;v.pb({x,i});
+        }
+        sort(v.begin(),v.end());
+        int sum=0;
+        int s=1;
+        vector<int> pos;
+        for(int i=n-1;s<=k && i>=0;i--){
+            pos.pb(v[i].ss);
+            sum+=v[i].ff;
+            s++;
+        }
+        sort(pos.begin(),pos.end());
+        vector<int> ans;
+        int prev=0;
+        for(int i=0;i<k;i++){
+            ans.pb(pos[i]-prev+1);
+            prev=pos[i]+1;
+        }
+        ans[k-1]=ans[k-1]+(n-prev);
+        cout<<sum;nw;
+        for(int i=0;i<k;i++){
+            cout<<ans[i]<<" ";
+        }
+
+    }
+
+}

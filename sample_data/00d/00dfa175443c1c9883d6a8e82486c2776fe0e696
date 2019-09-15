@@ -1,0 +1,25 @@
+struct Struct
+{
+    public int X { get; set; }
+}
+
+class Class
+{   
+    public Struct Struct { get; set; }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var str = new Class() {Struct = new Struct() {X = 10}};
+        Console.WriteLine(str.Struct.X);
+        str.Struct.X++;
+        Console.WriteLine(str.Struct.X);
+    }
+}
+	
+class Class
+{   
+    public Struct Struct { get; set; }
+}

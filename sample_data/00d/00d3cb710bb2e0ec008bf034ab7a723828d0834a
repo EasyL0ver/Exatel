@@ -1,0 +1,5 @@
+rror in event handler for (unknown): TypeError: Cannot read property 'tagName' of null
+    at Initializer.load (chrome-extension://dpinolbolalkdokimalcbeoibbcmjohe/js/page.bundle.js:28194:31)
+    at new Typed (chrome-extension://dpinolbolalkdokimalcbeoibbcmjohe/js/page.bundle.js:27669:33)
+    at Marafon.registration (chrome-extension://dpinolbolalkdokimalcbeoibbcmjohe/js/page.bundle.js:28816:25)
+    at chrome-extension://dpinolbolalkdokimalcbeoibbcmjohe/js/page.bundle.js:28915:30

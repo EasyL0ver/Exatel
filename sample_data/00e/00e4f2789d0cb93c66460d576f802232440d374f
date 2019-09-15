@@ -1,0 +1,9 @@
+from libraries.XMLValidator import XMLValidator
+#...
+XMLValidator.validate_xml(xml_schema_file, xsd_schema_file)
+	
+sys.path.insert(0, './libraries')
+from XMLValidator import XMLValidator
+#...
+XMLValidator1 = XMLValidator()
+XMLValidator1.validate_xml(xml_schema_file, xsd_schema_file)

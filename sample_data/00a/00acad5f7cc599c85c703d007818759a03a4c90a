@@ -1,0 +1,41 @@
+(use gauche.lazy)
+(use util.match)
+
+(define-syntax define*
+  (syntax-rules ()
+    [(_ (fn . pats) . body) (define fn (match-lambda* [pats . body]))]))
+
+(define (stream next safe prod kons seed xs)
+  (^[] (let loop ([y (next seed)])
+         (cond [(safe seed y) (set! seed (prod seed y)) y]
+               [else (set! seed (kons seed (car xs)))
+                     (set! xs (cdr xs))
+                     (loop (next seed))]))))
+
+(define (lft q r s t)
+  (let1 f (gcd q r s t)
+    (vector (/ q f) (/ r f) (/ s f) (/ t f))))
+
+(define *unit-lft* '#(1 0 0 1))
+
+(define* (lft*v #(q r s t) x y)
+  (floor (/ (+ (* q x) (* r y)) (+ (* s x) (* t y)))))
+
+(define* (lft*lft #(q r s t)  #(u v w x))
+  (lft (+ (* q u) (* r w)) (+ (* q v) (* r x))
+       (+ (* s u) (* t w)) (+ (* s v) (* t x))))
+
+(define (pi)
+  (define lfts (lmap (^k (lft k (+ (* 4 k) 2) 0 (+ (* 2 k) 1))) (lrange 1)))
+  (define (next z)   (lft*v z 3 1))
+  (define (safe z n) (= n (lft*v z 4 1)))
+  (define (prod z n) (lft*lft (lft 10 (* -10 n) 0 1) z))
+  (stream next safe prod lft*lft *unit-lft* lfts))
+
+(define (piL)
+  (define lfts (lmap (^i (lft (- (* 2 i) 1) (* i i) 1 0)) (lrange 1)))
+  (define* (next (z . i))    (lft*v z (- (* 2 i) 1) 1))
+  (define* (safe (z . i) n)  (= n (lft*v z (- (* 5 i) 2) 2)))
+  (define* (prod (z . i) n)  (cons (lft*lft (lft 10 (* -10 n) 0 1) z) i))
+  (define* (kons (z . i) z_) (cons (lft*lft z z_) (+ i 1)))
+  (stream next safe prod kons `(,(lft 0 4 1 0) . 1) lfts))

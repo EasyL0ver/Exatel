@@ -1,0 +1,13 @@
+kits:
+  archer:
+    name: "§7Archer"
+    items:
+      - "items"
+      - "items"
+      - "items"
+  knight:
+    name: "Name"
+    items:
+      - "items"
+      - "items"
+      - "items"

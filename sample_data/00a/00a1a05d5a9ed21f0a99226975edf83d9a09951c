@@ -1,0 +1,35 @@
+			if (name.equalsIgnoreCase(player.getUsername())) {
+				player.setDisplayName(null);
+				player.getAppearence().generateAppearenceData();
+				player.getPackets().sendGameMessage(
+						"You changed your display name back to default.");
+				return true;
+			}
+			if (SerializableFilesManager.containsPlayer(name)) {
+				player.getPackets()
+						.sendGameMessage(
+								"You cannot use another person's username as a display.");
+				return true;
+			}
+			String invalid[] = { "<img", "<img=", "<col", "<col=", "<shad",
+					"<shad=", "<str>", "<u>" };
+			String as[];
+			int k = (as = invalid).length;
+			for (int j = 0; j < k; j++) {
+				String s = as[j];
+				if (name.contains(s)) {
+					name = name.replace(s, "");
+					player.getPackets().sendGameMessage(
+							"You cannot add additional code to your name.");
+					return true;
+				}
+			}
+
+			player.getPackets().sendGameMessage(
+					(new StringBuilder("You changed your display name to "))
+							.append(Misc.formatPlayerNameForDisplay(name))
+							.append(".").toString());
+			player.setDisplayName(Misc.formatPlayerNameForDisplay(name));
+			player.getAppearence().generateAppearenceData();
+			return true;
+		}

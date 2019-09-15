@@ -1,0 +1,54 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+double armstrong(int);
+
+int main()
+{
+    int input;
+	double number4;
+    
+    cout<<"Enter an integer between and including 10 and 10000000:";
+    cin>>input;
+
+    cout<<"Armstrong numbers between and including 10 and "<<input<<":"<<endl;
+
+	for(int i=10;i<=input;i++)
+	{
+		number4=armstrong(input);
+		cout<<number4<<endl;
+	}
+
+	system("pause");
+	return 0;
+}
+
+double armstrong(int input)
+{
+	int number2;
+	double number1,number3=0,number4=0,number[1000]={0};
+	
+	number1=input;
+	number2=input;
+
+	if(input>=10&&input<=10000000)
+	{
+		for(int i=10;i<=input;i++)
+		{
+			for(int i=0;number2!=0;i++)
+			{
+				input=number2%10;
+				number[i]=input;
+				number2=number2/10;
+				number3++;
+			}
+			for(int j=0;j<number3;j++)
+			{
+				number4+=pow(number[j],number3);
+			}
+			if(number4==number1)
+				return number4;
+		}
+	}
+}

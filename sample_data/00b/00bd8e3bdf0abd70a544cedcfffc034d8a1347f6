@@ -1,0 +1,72 @@
+#include <iostream>
+#include <cstdlib>
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+using namespace std;
+bool sprawdzanie(int pesel[]);
+int main(int argc, char** argv) {
+	string dane;
+	cin >> dane;
+	dane = "11101858854";
+	int pesel[11]={0},pomoc=0;
+	if(dane.length()==11)
+	{
+	for(int i=0;i<11;i++)
+		{
+			pesel[i]=dane[i]-'0';
+		}
+		pomoc=pesel[10];
+		int a=(pesel[0]+pesel[4]+pesel[8])*9;
+		int b=(pesel[1]+pesel[5]+pesel[9])*7;
+		int c=(pesel[2]+pesel[6])*3;
+		int e=(pesel[3]+pesel[7])*1;
+		int d=(a+b+c+e)%10;
+	if(pomoc==d)
+	{
+		cout << "dobry pesel"<< endl;;
+		if(pesel[9]%2==0)
+		{
+			cout << "Plec zenska" << endl;
+		}else
+		cout << "Plec meska" << endl;
+		int rok=0;
+		if(pesel[2]==0||pesel[2]==1)
+		{
+			rok=pesel[0]*10+pesel[1]+1900;
+		}
+		if(pesel[2]==2||pesel[2]==3)
+		{
+			rok=pesel[0]*10+pesel[1]+2000;	
+		}
+		if(pesel[2]==4||pesel[2]==5)
+		{
+			rok=pesel[0]*10+pesel[1]+2100;
+		}
+		if(pesel[2]==6||pesel[2]==7)
+		{
+			rok=pesel[0]*10+pesel[1]+2200;	
+		}
+		if(pesel[2]==8||pesel[2]==9)
+		{
+			rok=pesel[0]*10+pesel[1]+1800;
+		}
+		cout << "Rok urodzenia :" << rok << endl;
+		int miesiac=0;
+		if(pesel[2]%2==0)
+		{
+			miesiac=pesel[3];
+		}else
+		{
+			miesiac=pesel[3]+10;
+		}
+		int dzien=10*pesel[4]+pesel[5];
+		cout << "dzien"<<dzien << endl;
+		
+		cout << "miesiac :" << miesiac << endl;
+	}else
+	cout << "zly pesel"<< endl;
+	}else
+{
+	cout << "za krutki pesel" << endl;
+}
+	return 0;
+}

@@ -1,0 +1,29 @@
+import { types, Instance, cast } from 'mobx-state-tree';
+
+const ToggleArray = types
+  .model('ToggleArray', {
+    items: types.array(types.string)
+  })
+  .actions(self => ({
+    remove: (id: string) => {
+      self.items = cast(self.items.filter(i => i !== id));
+    },
+    add: (id: string) => {
+      self.items.push(id);
+    },
+    reset: () => {
+      self.items = cast([]);
+    }
+  }))
+  .actions(self => ({
+    toggle: (id: string) => {
+      if (self.items.indexOf(id)!==-1) {
+        self.remove(id);
+      } else {
+        self.add(id);
+      }
+    }
+  }));
+
+export default ToggleArray;
+export type IToggleArray = Instance<typeof ToggleArray>;

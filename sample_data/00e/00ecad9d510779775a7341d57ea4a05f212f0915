@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main(void)
+{
+	int K=0;
+printf("Hello! How old are you? (1-9) : ");
+scanf("%d",&K);
+
+//код который проверяет циферки и вывододит соответствующие словечки
+	printf("Mne %d ",K);
+
+	if(K==1)
+{
+	printf("god");
+}
+	else if(K<5)
+	{
+	printf("goda");	
+	}	
+	else
+	{
+		printf("let");
+	}
+	
+	
+
+
+
+
+}

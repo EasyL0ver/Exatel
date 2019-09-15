@@ -1,0 +1,6 @@
+ r = []
+    for i in range(len(car_data)):
+        r.append(car_data[i][1] / car_data[i][0])
+    ratArray = np.array(r)
+    shiftGear = len(np.unique(ratArray))
+    return shiftGear

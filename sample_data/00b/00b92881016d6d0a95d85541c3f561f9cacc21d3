@@ -1,0 +1,150 @@
+private JsonHttpResult execJsonHttpMethod(final int requestId, BaseRequest request, int maxRequestCount) throws BaseApiException, NullPointerException {
+        if (maxRequestCount <= 0) {
+            maxRequestCount = REQUESTS_ATTEMPTS_COUNT;
+        }
+        int timeToWaitBeforeNextRequestIncaseError = 500;
+        HttpRetryManager httpRetryManager = new HttpRetryManager(maxRequestCount, timeToWaitBeforeNextRequestIncaseError); // Instance created for each thread
+
+        int count = 0; // Only for logging purpose - thread safe | thread local variable
+        JsonHttpResult result = null;
+        while (httpRetryManager.canRetry()) {
+            count++;
+            try {
+                reloginLock.readLock().lock();
+                final HttpMethod httpMethod = compileHttpMethod(request);
+                printRequestLog(request, "execJsonHttpMethod[request]: requestId=" + requestId + ", count=" + count + ", url=" + httpMethod.getURI(), false);
+                result = mTransportProvider.execJsonHttpMethod(httpMethod);
+
+
+                boolean isResEmpty = errorIfResponseEmpty(result);
+                if (isResEmpty) {
+                    try {
+                        httpRetryManager.onErrorUpdateCountAndSleep(new HttpStatusException(result.getHttpStatus(), "Unexpected empty response body"));
+                    } catch (HttpStatusException responseEmpty) {
+                        responseEmpty.printStackTrace();
+                        throw responseEmpty;
+                    }
+                }
+
+                boolean isSessionInvalid = errorIfResponseUnAuthorized(result);
+                if (isSessionInvalid) {
+                    if (updateSessionIncaseApiGot401()) {
+                        try {
+                            //In-case session does not update, logout the user by escalating 401 to 403 ( InvalidSessionException() ---> InvalidUserException())
+                            httpRetryManager.onErrorUpdateCountAndSleep(new InvalidUserException());
+                            continue; //Start next iteration - no need to check for the rest of the conditions
+                        } catch (InvalidUserException exceptionSessEsclatedToInvalidUser) {
+                            exceptionSessEsclatedToInvalidUser.printStackTrace();
+                            throw exceptionSessEsclatedToInvalidUser;
+                        }
+                    } else {
+                        throw new InvalidUserException(); // WILL TRY ONLY ONCE - IF UPDATE FAILS LOGOUT - 403
+                    }
+                }
+
+                //Logout user incase API threw 403 - Pops up the stack, no retry action required
+                if (errorIfResponseForbidden(result)) {
+                    throw new InvalidUserException();
+                }
+
+                boolean isHttpErrCodeNotOk = errorIfHttpStatusNotOk(result);
+                if (!isHttpErrCodeNotOk) {
+                    if (result.getHttpStatus() != HttpStatus.SC_OK && result.getHttpStatus() != HttpStatus.SC_CREATED
+                            && result.getHttpStatus() != HttpStatus.SC_NO_CONTENT) {
+                        if (result.httpError != null) {
+                            throw new HttpStatusDetailedException(result.getHttpStatus(), "Unexpected HTTP(S) result: " + result.toString(), result.httpError);
+                        } else {
+                            throw new HttpStatusException(result.getHttpStatus(), "Unexpected HTTP(S) result: " + result.toString());
+                        }
+                    }
+                }
+                //Success
+                HttpUUIDController.getInstance().handleSuccessRequest(request);
+                break;
+            } catch (TransportLevelException ex) {
+                printRequestLog(request, "execJsonHttpMethod[error]: request failed, requestId=" + requestId + ", count=" + count + ", ex=" + ex, false);
+                try {
+                    httpRetryManager.onErrorUpdateCountAndSleep(ex);
+                } catch (Exception transportException) {
+                    transportException.printStackTrace();
+                    throw transportException;
+                }
+            } catch (URIException ex) {
+                printRequestLog(request, "execJsonHttpMethod[error]: request failed, ex=" + ex.getMessage(), false);
+                throw new InvalidUrlException();
+            } finally {
+                printRequestLog(request, "execJsonHttpMethod[result]: finished, requestId=" + requestId + ", count=" + count + ", result=" + result, false);
+                reloginLock.readLock().unlock();
+            }
+        }
+        simpleLog("Loop has been exited, Iterations: " + count);
+        return result;
+    }
+	
+private boolean errorIfResponseEmpty(HttpResult result) {
+        if (result.getHttpStatus() == HttpStatus.SC_OK && result.getHttpResponse() == null) {
+            printResponseLog(result.getHttpStatus() + " Unexpected empty response body", true);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean errorIfResponseUnAuthorized(HttpResult result) {
+        if (result.getHttpStatus() == HttpStatus.SC_UNAUTHORIZED) {
+            printResponseLog(result.getHttpStatus() + " Session Failed", true);
+            return true;
+        }
+        return false;
+
+    }
+
+    private boolean errorIfHttpStatusNotOk(HttpResult result) {
+        if (result.getHttpStatus() != HttpStatus.SC_OK && result.getHttpStatus() != HttpStatus.SC_CREATED && result.getHttpStatus() != HttpStatus.SC_NO_CONTENT) {
+            if (result.httpError != null) {
+                printResponseLog(result.getHttpStatus() + " Unexpected HTTP(S) result: " + result.toString() + " " + result.httpError, true);
+            } else {
+                printResponseLog(result.getHttpStatus() + " Unexpected HTTP(S) result: " + result.toString(), true);
+            }
+            return false;
+        }
+        return true;
+    }
+
+
+    private boolean errorIfResponseForbidden(HttpResult result) {
+        return (result.getHttpStatus() == HttpStatus.SC_FORBIDDEN);
+
+    }
+	
+private int leftRetries;
+    private long timeToWait;
+
+    public HttpRetryManager(int retries, long timeToWait) {
+        this.timeToWait = timeToWait;
+        leftRetries = retries;
+    }
+
+    public boolean canRetry() {
+        return leftRetries > 0;
+    }
+
+    public void onErrorUpdateCountAndSleep(BaseApiException ex) throws BaseApiException {
+        leftRetries--;
+        if (!canRetry()) {
+            throw ex;
+        }
+        waitUntilNextTry();
+    }
+
+    private long getTimeToWait() {
+        return timeToWait;
+    }
+
+    private void waitUntilNextTry() {
+        try {
+            Thread.sleep(getTimeToWait());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}

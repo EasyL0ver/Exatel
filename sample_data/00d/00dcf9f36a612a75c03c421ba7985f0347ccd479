@@ -1,0 +1,97 @@
+bool exit = false;
+
+        do
+        {
+            Console.WriteLine("");
+            Console.WriteLine("1. Create age list");
+            Console.WriteLine("2. Add age to list");
+            Console.WriteLine("3. Remove age from list");
+            Console.WriteLine("4. Display ages and average");
+            Console.WriteLine("5. exit");
+            Console.WriteLine("");
+            string input = Console.ReadLine();
+            Console.WriteLine("");
+
+            List<int> ages = new List<int>();
+            int totalAges = 0;
+            int age;
+
+            if (input == "1")
+            {
+
+                //List<int> ages = new List<int>();
+                //int totalAges = 0;
+
+                //User Input
+                Console.WriteLine("How many ages do you want to enter? ");
+                Console.WriteLine("");
+
+                //While loop for TryParse
+                while (!int.TryParse(Console.ReadLine(), out totalAges))
+                {
+                    Console.WriteLine("Please enter a valid number");
+                    Console.WriteLine("");
+                }
+                while (ages.Count != totalAges)
+                {
+                    // Read grade
+                    System.Console.WriteLine("Enter Grade: ");
+                    //int age;
+
+                    while (!int.TryParse(System.Console.ReadLine(), out age))
+                    {
+                        System.Console.WriteLine("Please enter a valid age.");
+                    }
+
+                    ages.Add(age);
+                }
+
+                for (int index = 0; index < ages.Count(); index++)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine($"Age { ages[index] }");
+                    Console.WriteLine("");
+                    totalAges = ages.Sum();
+                }
+
+                double avg = 0.0;
+                avg = totalAges / (ages.Count);
+                Console.WriteLine("");
+                Console.WriteLine($"The average age was { avg}");
+
+
+            }
+            else if (input == "2")
+            {
+                exit = true;
+            }
+            else if (input == "3")
+            {
+                exit = true;
+            }
+            else if (input == "4")
+            {
+
+                for (int index = 0; index < ages.Count(); index++)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine($"Age { ages[index] }");
+                    Console.WriteLine("");
+                    totalAges = ages.Sum();
+                }
+
+                double avg = 0.0;
+                avg = totalAges / (ages.Count);
+                Console.WriteLine("");
+                Console.WriteLine($"The average age was { avg}");
+            }
+            else if (input == "5")
+            {
+                exit = true;
+            }
+
+            else
+            {
+                Console.WriteLine("How hard is it to type 1 or 2? Try again!");
+            }
+        } while (exit == false);

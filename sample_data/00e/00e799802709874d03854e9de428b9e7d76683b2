@@ -1,0 +1,13 @@
+fc.22
+penssl s_client | fpaste
+socket: Bad file descriptor
+connect:errno=9
+No text to send.
+
+debian stretch
+openssl s_client
+139722700866944:error:0200206F:system library:connect:Connection refused:../crypto/bio/b_sock2.c:108:
+139722700866944:error:2008A067:BIO routines:BIO_connect:connect error:../crypto/bio/b_sock2.c:109:
+139722700866944:error:0200206F:system library:connect:Connection refused:../crypto/bio/b_sock2.c:108:
+139722700866944:error:2008A067:BIO routines:BIO_connect:connect error:../crypto/bio/b_sock2.c:109:
+connect:errno=111

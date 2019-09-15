@@ -1,0 +1,52 @@
+for((i=1;i<=4;i++))
+do
+    for((j=4;j>=i;j--))
+    do
+        echo -ne "# "
+    done
+    echo;
+done
+
+for((i=1;i<=4;i++))
+do
+    for((j=4;j>=i;j--))
+    do
+        echo -ne "  "
+    done
+    for((k=1;k<=i;k++))
+    do
+        echo -ne "# "
+    done
+    for((k=2;k<=i;k++))
+    do
+        echo -ne "# "
+    done
+    echo;
+done
+
+
+k=1;
+for((i=1;i<=4;i++))
+do
+    for((j=1;j<=i;j++))
+    do
+        echo -ne $k" "
+        k=`expr $k + 1`
+    done
+    echo;
+done
+
+k=2;
+for((i=1;i<=5;i++))
+do
+    for((j=1;j<=i;j++))
+    do
+        if((j==1))
+        then
+            k=`expr $k - 1`
+        fi
+        echo -ne $k" "
+        k=`expr $k + 1`
+    done
+    echo;
+done

@@ -1,0 +1,11 @@
+def isAInDic(A, dic):
+	keys = dic.keys()
+	for key in keys:
+		if A == key:
+			#print("A exists in Dic")
+			return True
+	return False
+
+#ce qui suit me sert juste à tester la fonction 
+dic = {"a": "arbre", "b": "banane"}
+isAInDic('a',dic);

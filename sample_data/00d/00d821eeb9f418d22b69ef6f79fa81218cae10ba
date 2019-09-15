@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class MakeChange {
+
+	public static void main(String[] args) {
+		System.out.println("Enter price dollars:");
+		Scanner sc = new Scanner(System.in);
+		int dollarCost = sc.nextInt();
+		dollarCost = dollarCost * 100;
+		
+		System.out.println("Enter price cents:");
+		int centCost = sc.nextInt();
+		
+		int cost = dollarCost + centCost;
+		
+		System.out.println("Enter dollars recieved:");
+		int dollarRec = sc.nextInt();
+		dollarRec = dollarRec * 100;
+		
+		System.out.println("Enter cents recieved:");
+		int centRec = sc.nextInt();
+		
+		int rec = dollarRec + centRec;
+		
+		int dollarBack = (rec - cost) / 100;
+		int centBack = (rec - cost) % 100;
+		
+		System.out.println("Change returned is: " + dollarBack + " dollar(s)");
+		//System.out.println(centBack + " centBack");
+		
+		int quarters = centBack / 25;
+		System.out.println(quarters + " quarter(s)");
+		centBack = centBack - (quarters * 25);
+		
+		int dimes = centBack / 10;
+		System.out.println(dimes + " dime(s)");
+		centBack = centBack - (dimes * 10);
+		
+		int nickels = centBack / 5;
+		System.out.println(nickels + " nickel(s)");
+		centBack = centBack - (nickels * 5);
+		
+		int pennies = centBack;
+		System.out.println(pennies + " pennies");
+		
+	}
+
+}

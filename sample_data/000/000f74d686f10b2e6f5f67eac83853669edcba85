@@ -1,0 +1,32 @@
+{
+    "workbench.colorTheme": "Atom One Dark",
+    "workbench.startupEditor": "newUntitledFile",
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "workbench.statusBar.feedback.visible": false,
+    "editor.minimap.enabled": false,
+    "explorer.confirmDelete": false,
+    "eslint.validate": [
+        {
+            "language": "html",
+            "autoFix": true
+        },
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "javascript",
+            "autoFix": true
+        },
+        {
+            "language": "javascriptreact",
+            "autoFix": true
+        }
+    ],
+    "editor.formatOnSave": false,
+    "eslint.autoFixOnSave": true,
+    "vetur.validation.template": false
+}

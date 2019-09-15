@@ -1,0 +1,12 @@
+preg_replace('/^[^!]+/i', 'X', $string); //меняем первый по счету
+preg_replace('/^([^!]+)(!)([^!])/i', 'X', $string); //меняем второй по счету
+preg_replace('/^([^!]+)(!)([^!])(!)([^!])/i', 'X', $string); //меняем третий по счету...
+	
+$text = "aaa!bbbb!ccccc!ddddd!eeeeee!ffffff!gggg!";
+
+$number = 2;
+$replace = preg_replace ('/!/e',"$number--==1?'X':'\0'", $text);
+
+echo $replace;
+	
+aaa!bbbb!cccccXddddd!eeeeee!ffffff!gggg!

@@ -1,0 +1,30 @@
+## /vendor/plugins/open_id/authentication/lib/open_id_authentication.rb
+    def authenticate_with_open_id(identity_url = nil, options = {}, &block) #:doc:
+      identity_url ||= params[:openid_identifier] || params[:openid_url]
+
+      if params[:open_id_complete].nil?
+        begin_open_id_authentication(identity_url, options, &block)
+      else
+        complete_open_id_authentication(&block)
+      end
+    end
+
+  private
+    def begin_open_id_authentication(identity_url, options = {})
+      identity_url = normalize_identifier(identity_url)
+      return_to    = options.delete(:return_to)
+      method       = options.delete(:method)
+      
+      options[:required] ||= []  # reduces validation later
+      options[:optional] ||= []
+
+      open_id_request = open_id_consumer.begin(identity_url)
+      add_simple_registration_fields(open_id_request, options)
+      add_ax_fields(open_id_request, options)
+      redirect_to(open_id_redirect_url(open_id_request, return_to, method))
+    rescue OpenIdAuthentication::InvalidOpenId => e
+      yield Result[:invalid], identity_url, nil
+    rescue OpenID::OpenIDError, Timeout::Error => e
+      logger.error("[OPENID] #{e}")
+      yield Result[:missing], identity_url, nil
+    end

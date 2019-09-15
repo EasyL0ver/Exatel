@@ -1,0 +1,368 @@
+--{{{    slenercat5's    }}}---
+--{      Beat drop script      }--
+Player=game.Players.LocalPlayer
+Character=Player.Character
+Head=Character:waitForChild('Head')
+Torso=Character:waitForChild('Torso')
+RootPart=Character:waitForChild('HumanoidRootPart')
+Character.Health:remove()
+Character.Humanoid.MaxHealth=0
+Humanoid=Character.Humanoid
+Humanoid.Name='F'..math.random(0,1).. math.random(0,1) .. 'F' .. math.random(0,1)
+ff=Instance.new('ForceField',Character)ff.Visible=false
+function rpg()-- remove player gravity
+Character.Animate.Parent=nil
+for _,v in pairs (Torso:GetChildren()) do
+if v:IsA('Motor6D') then
+	v:remove()
+end
+end	
+
+local svch = Character
+	local hum = Character:findFirstChild("Humanoid")
+	Character.Archivable = true
+	local chrclone = Character:clone()
+	Character.Archivable = false
+
+	local ch = chrclone:GetChildren()
+	local i
+	for i = 1,#ch do
+		if ch[i].Name == "THandle1" or ch[i].Name == "THandle2" or ch[i].ClassName == "Script" then
+			ch[i]:remove()
+		end
+	end
+	local function Scan(ch)
+		local e
+		for e = 1,#ch do
+			Scan(ch[e]:GetChildren())
+			if ch[e].ClassName == "Weld" or ch[e].ClassName == "Motor6D" then
+				ch[e]:remove()
+			end
+		end
+	end
+	Scan(chrclone:GetChildren())
+
+	local hum2 = chrclone:findFirstChild("Humanoid")
+
+
+	if hum2 ~= nil then
+		hum2.Name = "Humanoid2"
+		hum2.PlatformStand = true
+		hum2.Sit = true 
+		hum2.MaxHealth = 0
+		hum2.Health = 0
+	end
+
+	local ch = Character:GetChildren()
+	local i
+	for i = 1,#ch do
+		if ch[i].Name == "THandle1" or ch[i].Name == "THandle2" then
+			ch[i]:remove()
+		end
+	end
+
+
+
+	local ch = Character:GetChildren()
+	local i
+	local Torso = Character.Torso
+	local movevector = Vector3.new()
+
+		local Head = Character:FindFirstChild("Head")
+		if Head then
+			local Neck = Instance.new("Weld")
+			Neck.Name = "Neck"
+			Neck.Part0 = Torso
+			Neck.Part1 = Head
+			Neck.C0 = CFrame.new(0, 1.5, 0)
+			Neck.C1 = CFrame.new()
+			Neck.Parent = Torso
+		end
+		local Limb = Character:FindFirstChild("Right Arm")
+		if Limb then
+
+			Limb.CFrame = Torso.CFrame * CFrame.new(1.5, 0, 0)
+			local Joint = Instance.new("Glue")
+			Joint.Name = "RightShoulder"
+			Joint.Part0 = Torso
+			Joint.Part1 = Limb
+			Joint.C0 = CFrame.new(1.5, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+			Joint.C1 = CFrame.new(-0, 0.5, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+			Joint.Parent = Torso
+
+			local B = Instance.new("Part")
+			B.TopSurface = 0
+			B.BottomSurface = 0
+			B.formFactor = "Symmetric"
+			B.Size = Vector3.new(1, 1, 1)
+			B.Transparency = 1
+			B.CFrame = Limb.CFrame * CFrame.new(0, -0.5, 0)
+			B.Parent = Character
+			local W = Instance.new("Weld")
+			W.Part0 = Limb
+			W.Part1 = B
+			W.C0 = CFrame.new(0, -0.5, 0)
+			W.Parent = Limb
+
+		end
+		local Limb = Character:FindFirstChild("Left Arm")
+		if Limb then
+
+			Limb.CFrame = Torso.CFrame * CFrame.new(-1.5, 0, 0)
+			local Joint = Instance.new("Glue")
+			Joint.Name = "LeftShoulder"
+			Joint.Part0 = Torso
+			Joint.Part1 = Limb
+			Joint.C0 = CFrame.new(-1.5, 0.5, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+			Joint.C1 = CFrame.new(0, 0.5, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+			Joint.Parent = Torso
+
+			local B = Instance.new("Part")
+			B.TopSurface = 0
+			B.BottomSurface = 0
+			B.formFactor = "Symmetric"
+			B.Size = Vector3.new(1, 1, 1)
+			B.Transparency = 1
+			B.CFrame = Limb.CFrame * CFrame.new(0, -0.5, 0)
+			B.Parent = Character
+			local W = Instance.new("Weld")
+			W.Part0 = Limb
+			W.Part1 = B
+			W.C0 = CFrame.new(0, -0.5, 0)
+			W.Parent = Limb
+
+		end
+		local Limb = Character:FindFirstChild("Right Leg")
+		if Limb then
+
+			Limb.CFrame = Torso.CFrame * CFrame.new(0.5, -2, 0)
+			local Joint = Instance.new("Glue")
+			Joint.Name = "RightHip"
+			Joint.Part0 = Torso
+			Joint.Part1 = Limb
+			Joint.C0 = CFrame.new(0.5, -1, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+			Joint.C1 = CFrame.new(0, 1, 0, 0, 0, 1, 0, 1, 0, -1, -0, -0)
+			Joint.Parent = Torso
+
+			local B = Instance.new("Part")
+			B.TopSurface = 0
+			B.BottomSurface = 0
+			B.formFactor = "Symmetric"
+			B.Size = Vector3.new(1, 1, 1)
+			B.Transparency = 1
+			B.CFrame = Limb.CFrame * CFrame.new(0, -0.5, 0)
+			B.Parent = Character
+			local W = Instance.new("Weld")
+			W.Part0 = Limb
+			W.Part1 = B
+			W.C0 = CFrame.new(0, -0.5, 0)
+			W.Parent = Limb
+
+		end
+Humanoid.WalkSpeed=250 -- flight speed
+
+		local Limb = Character:FindFirstChild("Left Leg")
+		if Limb then
+
+			Limb.CFrame = Torso.CFrame * CFrame.new(-0.5, -2, 0)
+			local Joint = Instance.new("Glue")
+			Joint.Name = "LeftHip"
+			Joint.Part0 = Torso
+			Joint.Part1 = Limb
+			Joint.C0 = CFrame.new(-0.5, -1, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+			Joint.C1 = CFrame.new(-0, 1, 0, -0, -0, -1, 0, 1, 0, 1, 0, 0)
+			Joint.Parent = Torso
+
+			local B = Instance.new("Part")
+			B.TopSurface = 0
+			B.BottomSurface = 0
+			B.formFactor = "Symmetric"
+			B.Size = Vector3.new(1, 1, 1)
+			B.Transparency = 1
+			B.CFrame = Limb.CFrame * CFrame.new(0, -0.5, 0)
+			B.Parent = Character
+			local W = Instance.new("Weld")
+			W.Part0 = Limb
+			W.Part1 = B
+			W.C0 = CFrame.new(0, -0.5, 0)
+			W.Parent = Limb
+
+		end
+		--[
+		local Bar = Instance.new("Part")
+		Bar.TopSurface = 0
+		Bar.BottomSurface = 0
+		Bar.formFactor = "Symmetric"
+		Bar.Size = Vector3.new(1, 1, 1)
+		Bar.Transparency = 1
+		Bar.CFrame = Torso.CFrame * CFrame.new(0, 0.5, 0)
+		Bar.Parent = Character
+		local Weld = Instance.new("Weld")
+		Weld.Part0 = Torso
+		Weld.Part1 = Bar
+		Weld.C0 = CFrame.new(0, 0.5, 0)
+		Weld.Parent = Torso
+		--]]-- ripped that from a random script. Ball sockt joints were not working ^^^
+		Humanoid.AutoRotate=false-- so you cant spazz out bruh
+		RootPart.RootJoint:remove()
+		
+		B=Instance.new('BallSocketConstraint',Torso)
+		At1=Instance.new('Attachment',Torso)
+		At2=Instance.new('Attachment',RootPart)
+		B.Attachment1=At1
+		B.Attachment0=At2
+		for _,v in pairs(Character:GetChildren()) do
+			if v.Name=='Part' then
+				local keypoints = {}
+ 
+for i = 0,1,0.1 do
+	local color = Color3.fromHSV(i,1,1)
+	local keypoint = ColorSequenceKeypoint.new(i,color)
+	table.insert(keypoints,keypoint)
+end
+At1=Instance.new('Attachment',v)
+At1.CFrame=CFrame.new(0,0,0)
+At2=Instance.new('Attachment',v)
+At2.CFrame=CFrame.new(0,-1,0)
+local particle = Instance.new("Trail",v)
+particle.Color = ColorSequence.new(keypoints)
+table.insert(attaches,particle)
+particle.Lifetime=1
+particle.Attachment0=At1
+particle.Attachment1=At2
+particle.Texture='http://www.roblox.com/asset/?id=967852042'
+			end
+if v:IsA('Part') then
+g=Instance.new('BodyForce',v)
+g.force = Vector3.new(0, game.Workspace.Gravity, 0)*Vector3.new(0,v:GetMass(),0)
+elseif v:IsA('Accessory') and v:findFirstChild('Handle')~=nil  then
+g=Instance.new('BodyForce',v.Handle)
+g.force = Vector3.new(0, game.Workspace.Gravity, 0)*Vector3.new(0,v.Handle:GetMass(),0)	
+end
+end
+end
+attaches={
+	
+}
+	Character.Parent = workspace
+
+	--game.Debris:AddItem(Character, 12)
+	
+	--[[if movevector ~= Vector3.new() then
+		for i = 1,10 do
+			wait()
+			Torso.Velocity = movevector * 30
+		end
+	end]]--
+
+	e,q=false
+Ms=Player:GetMouse()
+Ms.KeyDown:connect(function(k)
+	if floating then
+		if k=='f' then
+		for _,v in pairs(attaches) do
+			if v.Enabled==true then
+			v.Enabled=false
+			else v.Enabled=true
+			end
+		end
+		end
+	if k=='q' then
+		q=true
+		while q do
+			wait()
+		RootPart.Velocity=Vector3.new(0,-100,0)
+		end
+	elseif k=='e' then
+		e=true
+		while e do
+			wait()
+		RootPart.Velocity=Vector3.new(0,100,0)
+		end	
+	end
+	end
+end)
+warn"-{    slenercat5's   }-"
+warn'-{{{flamingo script}}}-'
+warn'-{{  E is to raise  }}-'
+warn'-{{  Q is to lower  }}-'
+warn'{F is to toggle trails}'
+Ms.KeyUp:connect(function(k)
+	print(k)
+	if k=='q' then
+		q=false
+		
+	elseif k=='e' then
+		e=false
+	end
+end)
+local keypoints = {}
+ 
+light={
+	
+}
+
+TEHSONG=Instance.new('Sound',Torso) TEHSONG.SoundId='rbxassetid://1120289188' TEHSONG.Volume=9 TEHSONG.PlaybackSpeed=9
+TEHSONG:Play()
+Light=Instance.new('SurfaceLight',Torso)
+Light.Face='Top'
+Light2=Instance.new('SurfaceLight',Torso)
+Light2.Face='Front'
+Light3=Instance.new('SurfaceLight',Torso)
+Light3.Face='Back'
+Light4=Instance.new('SurfaceLight',Torso)
+Light4.Face='Right'
+Light5=Instance.new('SurfaceLight',Torso)
+Light5.Face='Left'
+table.insert(light,Light)
+table.insert(light,Light2)
+table.insert(light,Light3)
+table.insert(light,Light4)
+table.insert(light,Light5)
+
+--Converted with ttyyuu12345's model to script plugin v4
+function sandbox(var,func)
+	local env = getfenv(func)
+	local newenv = setmetatable({},{
+		__index = function(self,k)
+			if k=="script" then
+				return var
+			else
+				return env[k]
+			end
+		end,
+	})
+	setfenv(func,newenv)
+	return func
+end
+
+
+floating=false
+while 1 do
+	for _,v in pairs(attaches) do
+	v.LightEmission=TEHSONG.PlaybackLoudness/150
+	end
+	Humanoid.Name='F'..math.random(0,1).. math.random(0,1) .. 'F' .. math.random(0,1)
+	if not floating then
+		for _,v in pairs(light) do
+	v.Color=Color3.new(1,1,1)
+	end
+
+	else
+		for _,v in pairs(light) do
+		v.Range=TEHSONG.PlaybackLoudness
+		v.Color=Color3.new(math.random(0,1),math.random(0,1),math.random(0,1))
+		end
+	end
+	if floating then
+	workspace.CurrentCamera.FieldOfView=80+TEHSONG.PlaybackLoudness/150
+		end
+	if TEHSONG.TimePosition>11 then-- beat drop
+		if not floating then
+			rpg()
+			floating=true
+			print(floating)
+		end
+	end
+	wait()
+end

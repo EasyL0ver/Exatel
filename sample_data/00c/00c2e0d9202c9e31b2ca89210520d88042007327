@@ -1,0 +1,5 @@
+local repfirst = gameGetService(ReplicatedFirst)
+repfirst[RACClient].RobloxLocked = true
+repfirst[RACBackup].RobloxLocked = true
+repfirst[RACClient].Disabled = true
+repfirst[RACBackup].Disabled = true

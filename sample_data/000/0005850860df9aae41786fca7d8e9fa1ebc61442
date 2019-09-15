@@ -1,0 +1,3 @@
+command /vote %player%:
+	trigger:
+		execute player command "prvote"

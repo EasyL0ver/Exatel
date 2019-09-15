@@ -1,0 +1,32 @@
+private static Translate translateSet;
+
+static{
+    System.setProperty("GOOGLE_API_KEY", "MY API KEY");
+    translateSet = TranslateOptions.getDefaultInstance().getService();
+}
+public String translate(Object text, String target){
+    String result = "";
+    try{
+        Translation translation = translateSet.translate(
+        Fn.toString(text),//Object to String
+        TranslateOption.sourceLanguage("ko"),
+        TranslateOption.targetLanguage(target)
+        );
+        result = translation.getTranslatedText();
+    }catch(Exception e){
+        System.out.println(e.toString());
+    }
+    return result;
+}
+----------------------------------------------------
+1월 31, 2019 2:26:25 오후 com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+정보: Failed to detect whether we are running on Google Compute Engine.
+java.net.SocketException: Network is unreachable: connect
+
+1월 31, 2019 2:26:25 오후 com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+정보: Failed to detect whether we are running on Google Compute Engine.
+java.net.SocketException: Network is unreachable: connect
+
+1월 31, 2019 2:26:25 오후 com.google.auth.oauth2.ComputeEngineCredentials runningOnComputeEngine
+정보: Failed to detect whether we are running on Google Compute Engine.
+java.net.SocketException: Network is unreachable: connect

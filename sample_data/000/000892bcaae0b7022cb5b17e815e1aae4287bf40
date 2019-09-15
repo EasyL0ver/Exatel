@@ -1,0 +1,27 @@
+os.pullEvent = os.pullEventRaw
+
+local printcentered =
+function(text)
+local maxw, maxh =term.getSize()
+local curx, cury = term.getCursorPos()
+term.setCursorPos((maxw-#text)/2,cury)
+term.write(text)
+term.setCursorPos(curx,cury+1)
+end
+local maxw, maxh = term.getSize()
+term.setCursorPos(1,math.floor(maxh/2))
+printcentered("Welcome to")
+printcentered("Observatoria")
+printcentered("Bank")
+printcentered("")
+printcentered("Press Space")
+printcentered("To start")
+
+--while(true) do
+--local event, param = os.pullEventRaw()
+--if event == "key" and param == 57 then
+--term.setCursorPos(1,1)
+--term.clear()
+--shell.run(program_name)
+--end
+--end

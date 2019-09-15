@@ -1,0 +1,237 @@
+# SimC Addon 1.10.4
+
+paladin="Nahlorea"
+level=110
+race=human
+region=us
+server=stormrage
+role=attack
+professions=mining=55/jewelcrafting=40
+talents=2213132
+spec=retribution
+
+head=,id=137526,bonus_id=3536/40/1560/3337
+neck=,id=134497,enchant_id=5437,bonus_id=3536/41/1570/3337
+shoulder=,id=152019,gem_id=151583,bonus_id=3611/1808/1502/3337
+back=,id=137020,enchant_id=5434,bonus_id=3459/3630
+chest=,id=136976,bonus_id=3536/1560/3337
+wrist=,id=137337,gem_id=151583,bonus_id=3536/1808/1545/3337
+hands=,id=152686,bonus_id=3611/1492/3336
+waist=,id=134269,gem_id=130246,bonus_id=3536/1561/3337
+legs=,id=142127,bonus_id=3510/41/1550/3337
+feet=,id=144500,bonus_id=3536/1555/3337
+finger1=,id=134542,bonus_id=3536/1530/3528
+finger2=,id=151644,enchant_id=5428,gem_id=151583,bonus_id=3459/3630
+trinket1=,id=152093,gem_id=151583,bonus_id=3611/1808/41/1492/3336
+trinket2=,id=154176,bonus_id=3985/3997
+main_hand=,id=120978,gem_id=155851/155849/137474,bonus_id=737/1504/1505/1505
+
+### Gear from Bags
+#
+# Saruan's Resolve (265)
+# head=,id=144275,bonus_id=1811/3630
+#
+# Light's Vanguard Helm (230)
+# head=,id=152151,gem_id=151583,bonus_id=3611/1808/1492/3336
+#
+# Skoldiir Helm (230)
+# head=,id=134182,bonus_id=3536/1541/3336
+#
+# Justice Gaze (265)
+# head=,id=137065,bonus_id=3459/3630
+#
+# Prydaz, Xavaric's Magnum Opus (265)
+# neck=,id=132444,enchant_id=5437,gem_id=151583,bonus_id=3459/3630
+#
+# Chain of Scorched Bones (220)
+# neck=,id=134529,bonus_id=3536/1530/3528
+#
+# Chain of the Unmaker (240)
+# neck=,id=152283,bonus_id=3611/1492/3336
+#
+# Lavadrip Pendant (240)
+# neck=,id=137535,bonus_id=3536/1550/3337
+#
+# Amulet of the Last Guardian (240)
+# neck=,id=142207,enchant_id=5439,bonus_id=3536/1540/3337
+#
+# Pendant of the Watchful Eye (220)
+# neck=,id=137536,enchant_id=5890,gem_id=151584,bonus_id=3536/1808/42/1530/3528
+#
+# Ashes to Dust (265)
+# shoulder=,id=144358,bonus_id=3459/3630
+#
+# Pillars of Inmost Light (265)
+# shoulder=,id=151812,bonus_id=1811/3630
+#
+# Light's Vanguard Shoulderplates (225)
+# shoulder=,id=152153,enchant_id=5883,gem_id=151583,bonus_id=3611/1808/1487/3528
+#
+# Pauldrons of the Eternal Offensive (245)
+# shoulder=,id=152019,bonus_id=3611/1507/3337
+#
+# Light's Vanguard Greatcloak (230)
+# back=,id=152149,bonus_id=3611/1492/3336
+#
+# Cloak of Fading Echoes (255)
+# back=,id=134405,enchant_id=5434,bonus_id=3534/1565/3337
+#
+# Goldscar Pelt (220)
+# back=,id=133639,bonus_id=3536/1530/3528
+#
+# Radiant Lightbringer Cape (195)
+# back=,id=147158,bonus_id=3562/1483/3528
+#
+# Tenderized Breastplate (240)
+# chest=,id=144499,bonus_id=3536/43/1550/3337
+#
+# Breastplate of the Golden Val'kyr (265)
+# chest=,id=137017,bonus_id=1811/3630
+#
+# Scarlet Inquisitor's Expurgation (265)
+# chest=,id=151813,bonus_id=1811/3630
+#
+# Light's Vanguard Breastplate (235)
+# chest=,id=152148,bonus_id=3611/1497/3336
+#
+# Soul-Tempered Chestplate (240)
+# chest=,id=152017,bonus_id=3612/40/1502/3528
+#
+# Aegisjalmur, the Armguards of Awe (265)
+# wrist=,id=140846,bonus_id=3459/3630
+#
+# Vambraces of Lost Hope (220)
+# wrist=,id=151328,bonus_id=3536/1808/1530/3528
+#
+# Uther's Guard (265)
+# wrist=,id=137105,bonus_id=3459/3630
+#
+# Light's Vanguard Gauntlets (240)
+# hands=,id=152150,bonus_id=3611/42/1502/3337
+#
+# Tyr's Hand of Faith (265)
+# hands=,id=137059,bonus_id=1811/3630
+#
+# Nightsfall Gauntlets (240)
+# hands=,id=139056,bonus_id=3536/1551/3337
+#
+# Arcane Defender's Gauntlets (225)
+# hands=,id=134268,bonus_id=3536/1536/3336
+#
+# Greatbelt of Alpha Dominance (230)
+# waist=,id=136773,bonus_id=3536/1540/3336
+#
+# Light's Vanguard Legplates (240)
+# legs=,id=152152,bonus_id=3611/40/1502/3337
+#
+# Tyelca, Ferren Marcus's Stature (265)
+# legs=,id=137070,bonus_id=1811/3630
+#
+# Horizon Line Warboots (240)
+# feet=,id=134505,bonus_id=3536/1550/3337
+#
+# Valkyra Protector Greatboots (225)
+# feet=,id=136772,bonus_id=3536/1535/3336
+#
+# Val'kyr Ascension Signet (240)
+# finger1=,id=133679,bonus_id=3536/1550/3337
+#
+# Zealous Tormentor's Ring (225)
+# finger1=,id=152284,enchant_id=5428,bonus_id=3611/1487/3528
+#
+# Heathcliff's Immortality (265)
+# finger1=,id=137047,bonus_id=3459/3630
+#
+# Ring of Mind-Shielding (245)
+# finger1=,id=137432,enchant_id=5428,bonus_id=3536/1555/3337
+#
+# Loop of the Life-Binder (230)
+# finger1=,id=152688,bonus_id=3611/1492/3336
+#
+# Band of Fused Coral (220)
+# finger1=,id=134532,bonus_id=3536/1530/3528
+#
+# Seal of the Nazjatar Empire (240)
+# finger1=,id=134525,enchant_id=5428,bonus_id=3536/1550/3337
+#
+# Liadrin's Fury Unleashed (265)
+# finger1=,id=137048,enchant_id=5428,gem_id=130246,bonus_id=1811/3630
+#
+# Sephuz's Secret (265)
+# finger1=,id=132452,gem_id=151583,bonus_id=3459/3630
+#
+# Insignia of the Grand Army (265)
+# finger1=,id=152626,enchant_id=5428,gem_id=151583,bonus_id=3459/3630
+#
+# Chrono Shard (220)
+# trinket1=,id=137419,bonus_id=3536/1530/3528
+#
+# Horn of Valor (220)
+# trinket1=,id=133642,bonus_id=3536/1530/3528
+#
+# Umbral Moonglaives (188)
+# trinket1=,id=147012,bonus_id=3561/1476/3528
+#
+# Mark of Dargrul (192)
+# trinket1=,id=137357,bonus_id=3573/1808/1502/3528
+#
+# Toe Knee's Promise (245)
+# trinket1=,id=142164,bonus_id=3536/1547/3337
+#
+# Hunger of the Pack (225)
+# trinket1=,id=136975,bonus_id=3536/41/1535/3336
+#
+# Terrorbound Nexus (240)
+# trinket1=,id=137406,bonus_id=3536/1550/3337
+#
+# Orb of Torment (225)
+# trinket1=,id=137538,bonus_id=3536/1535/3336
+#
+# Memento of Angerboda (220)
+# trinket1=,id=133644,bonus_id=3536/1530/3528
+#
+# Forgefiend's Fabricator (230)
+# trinket1=,id=151963,bonus_id=3611/1492/3336
+#
+# Aggramar's Conviction (255)
+# trinket1=,id=154173,bonus_id=3985/3992
+#
+# Velen's Future Sight (265)
+# trinket1=,id=144258,bonus_id=1811/3630
+#
+# Kil'jaeden's Burning Wish (265)
+# trinket1=,id=144259,bonus_id=3459/3630
+#
+# Archimonde's Hatred Reborn (265)
+# trinket1=,id=144249,bonus_id=3459/3630
+#
+# Seeping Scourgewing (235)
+# trinket1=,id=151964,bonus_id=3611/1497/3336
+#
+# Smoldering Titanguard (230)
+# trinket1=,id=151978,bonus_id=3611/1808/1492/3336
+#
+# Eye of Command (235)
+# trinket1=,id=142167,bonus_id=3536/1535/3337
+#
+# Shadow-Singed Fang (230)
+# trinket1=,id=151968,bonus_id=3611/1492/3336
+#
+# Parjesh's Medallion (230)
+# trinket1=,id=137362,bonus_id=3536/1540/3336
+#
+# Writhing Heart of Darkness (225)
+# trinket1=,id=137315,bonus_id=3536/40/1535/3336
+#
+# Bloodstained Handkerchief (220)
+# trinket1=,id=142159,bonus_id=3536/1522/3528
+#
+# Void Stalker's Contract (240)
+# trinket1=,id=151307,bonus_id=3536/1550/3337
+#
+# Shadow's Edge (100)
+# main_hand=,id=49888
+#
+# Necromedes, the Death Resonator (180)
+# main_hand=,id=151255,bonus_id=3628,drop_level=110
+#

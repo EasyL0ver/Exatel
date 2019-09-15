@@ -1,0 +1,18 @@
+List<Idea> ideas = new List<Idea>();
+
+Idea idea1 = new Idea();
+idea1.CommunityId = '09a5000000005HpAAI'; 
+idea1.Title = 'Test Idea 1';
+ideas.add(idea1);
+
+Idea idea2 = new Idea();
+idea2.CommunityId = idea1.CommunityId;
+idea2.Title = 'Test Idea 2';
+ideas.add(idea2);
+
+insert ideas;
+
+idea2.ParentIdeaId = idea1.Id;
+update idea2; 
+     
+merge idea1 idea2;

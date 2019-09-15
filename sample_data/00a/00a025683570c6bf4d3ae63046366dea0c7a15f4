@@ -1,0 +1,30 @@
+import time
+import progressbar
+
+widgets=[
+    '[', progressbar.Timer(), '] ',
+    #progressbar.Bar(),
+    #' (', progressbar.ETA(), ') ',
+    '[Status:', progressbar.DynamicMessage("Running"),'] '
+    '[Active routers: ', progressbar.DynamicMessage("2"),'] '
+]
+
+progress = progressbar.bar.ProgressBar(redirect_stdout=True).start()
+
+for i in progressbar.progressbar(range(20), widgets=widgets):
+    time.sleep(0.1)
+    print "hello"
+
+widgets=[
+    '[', progressbar.Timer(), '] ',
+    #progressbar.Bar(),
+    #' (', progressbar.ETA(), ') ',
+    '[Status:', progressbar.DynamicMessage("ERROR"),'] '
+    '[Active routers: ', progressbar.DynamicMessage("3"),'] '
+]
+
+for i in progressbar.progressbar(range(20), widgets=widgets):
+    time.sleep(0.1)
+    print "hello"
+
+progress.finish()

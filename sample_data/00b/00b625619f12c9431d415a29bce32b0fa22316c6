@@ -1,0 +1,17 @@
+// este é um objeto wrapper, que precisa por causa de complicações com o java generics
+{
+       // esta é a lista de noticias
+	"news": [
+                // essa é a instancia da noticia
+		{
+			"id":"123",
+			"title": "blabla",
+			"phone": "lalala"
+		},
+		{
+			"id":"465",
+			"title": "blabla",
+			"phone": "lalala"
+		}
+	]
+}

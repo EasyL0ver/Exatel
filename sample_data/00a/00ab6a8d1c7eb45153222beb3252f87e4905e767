@@ -1,0 +1,340 @@
+self =
+  {
+  header: "Header",
+  header2: "Header2",
+  header3: "Header3",
+  header4: "Header4",
+  header5: "Header5",
+  header6: "Header6",
+  list: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+  };
+
+attrs = function (obj, escaped) {
+  var buf = []
+    , terse = obj.terse;
+
+  delete obj.terse;
+  var keys = Object.keys(obj)
+    , len = keys.length;
+
+  if (len) {
+    buf.push('');
+    for (var i = 0; i < len; ++i) {
+      var key = keys[i]
+        , val = obj[key];
+
+      if ('boolean' == typeof val || null == val) {
+        if (val) {
+          terse
+            ? buf.push(key)
+            : buf.push(key + '="' + key + '"');
+        }
+      } else if (0 == key.indexOf('data') && 'string' != typeof val) {
+        buf.push(key + "='" + JSON.stringify(val) + "'");
+      } else if ('class' == key && Array.isArray(val)) {
+        buf.push(key + '="' + exports.escape(val.join(' ')) + '"');
+      } else if (escaped[key]) {
+        buf.push(key + '="' + exports.escape(val) + '"');
+      } else {
+        buf.push(key + '="' + val + '"');
+      }
+    }
+  }
+
+  return buf.join(' ');
+};
+
+attrs2 = function (obj, escaped) {
+  var terse = obj.terse;
+
+  delete obj.terse;
+  var keys = Object.keys(obj)
+    , len = keys.length;
+
+  var s = ' ';
+  if (len) {
+    for (var i = 0; i < len; ++i) {
+      var key = keys[i]
+        , val = obj[key];
+
+      if ('boolean' == typeof val || null == val) {
+        if (val) {
+          terse
+            ? (s+=key)
+            : (s+=key + '="' + key + '" ');
+        }
+      } else if (0 == key.indexOf('data') && 'string' != typeof val) {
+        s += key + "='" + JSON.stringify(val) + "' ";
+      } else if ('class' == key && Array.isArray(val)) {
+        s += key + '="' + exports.escape(val.join(' ')) + '" ';
+      } else if (escaped[key]) {
+        s += key + '="' + exports.escape(val) + '" ';
+      } else {
+        s += key + '="' + val + '" ';
+      }
+    }
+  }
+
+  return s;
+};
+
+jt1 = function ()
+  {
+  //var attrs = jade.attrs, escape = jade.escape, rethrow = jade.rethrow;
+  var buf = [];
+  //var self = locals || {};
+  var interp;
+  buf.push('<div><h1');
+  buf.push(attrs({ "class": ('header') }, {}));
+  buf.push('>');
+  var __val__ = self.header
+  buf.push(null == __val__ ? "" : __val__);
+  buf.push('</h1><h2');
+  buf.push(attrs({ "class": ('header2') }, {}));
+  buf.push('>');
+  var __val__ = self.header2
+  buf.push(null == __val__ ? "" : __val__);
+  buf.push('</h2><h3');
+  buf.push(attrs({ "class": ('header3') }, {}));
+  buf.push('>');
+  var __val__ = self.header3
+  buf.push(null == __val__ ? "" : __val__);
+  buf.push('</h3><h4');
+  buf.push(attrs({ "class": ('header4') }, {}));
+  buf.push('>');
+  var __val__ = self.header4
+  buf.push(null == __val__ ? "" : __val__);
+  buf.push('</h4><h5');
+  buf.push(attrs({ "class": ('header5') }, {}));
+  buf.push('>');
+  var __val__ = self.header5
+  buf.push(null == __val__ ? "" : __val__);
+  buf.push('</h5><h6');
+  buf.push(attrs({ "class": ('header6') }, {}));
+  buf.push('>');
+  var __val__ = self.header6
+  buf.push(null == __val__ ? "" : __val__);
+  buf.push('</h6><ul');
+  buf.push(attrs({ "class": ('list') }, {}));
+  buf.push('>');
+  // iterate self.list
+  (function()
+    {
+    if ('number' == typeof self.list.length) 
+      {
+      for (var $index = 0, $$l = self.list.length; $index < $$l; $index++)
+        {
+        var item = self.list[$index];
+        buf.push('<li');
+        buf.push(attrs({ "class": ('item') }, {}));
+        buf.push('>');
+        var __val__ = item
+        buf.push(null == __val__ ? "" : __val__);
+        buf.push('</li>');
+        }
+      }
+    else 
+      {
+      for (var $index in self.list)
+        {
+        if (self.list.hasOwnProperty($index))
+          {
+          var item = self.list[$index];
+
+          buf.push('<li');
+          buf.push(attrs({ "class": ('item') }, {}));
+          buf.push('>');
+          var __val__ = item
+          buf.push(null == __val__ ? "" : __val__);
+          buf.push('</li>');
+          }
+        }
+      }
+  }).call(this);
+  buf.push('</ul></div>');return new Buffer(buf.join(""));
+  }
+
+jt2 = function ()
+  {
+  //var attrs = jade.attrs, escape = jade.escape, rethrow = jade.rethrow;
+  //var self = locals || {};
+  s ='<div><h1' + attrs2({ "class": ('header') }, {}) + '>';
+  var __val__ = self.header;
+  s += (null == __val__ ? "" : __val__) + '</h1><h2' + attrs2({ "class": ('header2') }, {}) + '>';
+  var __val__ = self.header2;
+  s += (null == __val__ ? "" : __val__) + '</h2><h3' + attrs2({ "class": ('header3') }, {}) + '>';
+  var __val__ = self.header3;
+  s += (null == __val__ ? "" : __val__) + '</h3><h4' + attrs2({ "class": ('header4') }, {}) + '>';
+  var __val__ = self.header4;
+  s += (null == __val__ ? "" : __val__) + '</h4><h5' + attrs2({ "class": ('header5') }, {}) + '>';
+  var __val__ = self.header5;
+  s += (null == __val__ ? "" : __val__) + '</h5><h6' + attrs2({ "class": ('header6') }, {}) + '>';
+  var __val__ = self.header6;
+  s += (null == __val__ ? "" : __val__) + '</h6><ul' + attrs2({ "class": ('list') }, {}) + '>';
+  // iterate self.list
+  (function()
+    {
+    if ('number' == typeof self.list.length) 
+      {
+      for (var $index = 0, $$l = self.list.length; $index < $$l; $index++)
+        {
+        var item = self.list[$index];
+        s += '<li' + attrs2({ "class": ('item') }, {}) + '>';
+        var __val__ = item;
+        s += (null == __val__ ? "" : __val__) + '</li>';
+        }
+      }
+    else 
+      {
+      for (var $index in self.list)
+        {
+        if (self.list.hasOwnProperty($index))
+          {
+          var item = self.list[$index];
+          s += '<li' + attrs2({ "class": ('item') }, {}) + '>';
+          var __val__ = item;
+          s += (null == __val__ ? "" : __val__) + '</li>';
+          }
+        }
+      }
+  }).call(this);
+  s += '</ul></div>';
+  return new Buffer(s);
+  }
+
+jt3 = function ()
+  {
+  //var attrs = jade.attrs, escape = jade.escape, rethrow = jade.rethrow;
+  //var self = locals || {};
+  s ='<div><h1' + attrs2({ "class": ('header') }, {}) + '>';
+  var __val__ = self.header;
+  s += (null == __val__ ? "" : __val__);
+  s += '</h1><h2';
+  s += attrs2({ "class": ('header2') }, {});
+  s += '>';
+  var __val__ = self.header2;
+  s += (null == __val__ ? "" : __val__);
+  s += '</h2><h3';
+  s += attrs2({ "class": ('header3') }, {});
+  s += '>';
+  var __val__ = self.header3;
+  s += (null == __val__ ? "" : __val__);
+  s += '</h3><h4';
+  s += attrs2({ "class": ('header4') }, {});
+  s += '>';
+  var __val__ = self.header4;
+  s += (null == __val__ ? "" : __val__);
+  s += '</h4><h5';
+  s += attrs2({ "class": ('header5') }, {});
+  s += '>';
+  var __val__ = self.header5;
+  s += (null == __val__ ? "" : __val__);
+  s += '</h5><h6';
+  s += attrs2({ "class": ('header6') }, {});
+  s += '>';
+  var __val__ = self.header6;
+  s += (null == __val__ ? "" : __val__);
+  s += '</h6><ul';
+  s += attrs2({ "class": ('list') }, {});
+  s += '>';
+  // iterate self.list
+  (function()
+    {
+    if ('number' == typeof self.list.length) 
+      {
+      for (var $index = 0, $$l = self.list.length; $index < $$l; $index++)
+        {
+        var item = self.list[$index];
+        s += '<li';
+        s += attrs2({ "class": ('item') }, {});
+        s += '>';
+        var __val__ = item;
+        s += (null == __val__ ? "" : __val__);
+        s += '</li>';
+        }
+      }
+    else 
+      {
+      for (var $index in self.list)
+        {
+        if (self.list.hasOwnProperty($index))
+          {
+          var item = self.list[$index];
+          s += '<li';
+          s += attrs2({ "class": ('item') }, {});
+          s += '>';
+          var __val__ = item;
+          s += (null == __val__ ? "" : __val__);
+          s += '</li>';
+          }
+        }
+      }
+  }).call(this);
+  s += '</ul></div>';
+  return new Buffer(s);
+  }
+
+jt4 = function ()
+  {
+  //var attrs = jade.attrs, escape = jade.escape, rethrow = jade.rethrow;
+  //var self = locals || {};
+  s ='<div><h1' + attrs({ "class": ('header') }, {}) + '>';
+  var __val__ = self.header;
+  s += (null == __val__ ? "" : __val__) + '</h1><h2' + ({ "class": ('header2') }, {}) + '>';
+  var __val__ = self.header2;
+  s += (null == __val__ ? "" : __val__) + '</h2><h3' + attrs({ "class": ('header3') }, {}) + '>';
+  var __val__ = self.header3;
+  s += (null == __val__ ? "" : __val__) + '</h3><h4' + attrs({ "class": ('header4') }, {}) + '>';
+  var __val__ = self.header4;
+  s += (null == __val__ ? "" : __val__) + '</h4><h5' + attrs({ "class": ('header5') }, {}) + '>';
+  var __val__ = self.header5;
+  s += (null == __val__ ? "" : __val__) + '</h5><h6' + attrs({ "class": ('header6') }, {}) + '>';
+  var __val__ = self.header6;
+  s += (null == __val__ ? "" : __val__) + '</h6><ul' + attrs({ "class": ('list') }, {}) + '>';
+  // iterate self.list
+  (function()
+    {
+    if ('number' == typeof self.list.length) 
+      {
+      for (var $index = 0, $$l = self.list.length; $index < $$l; $index++)
+        {
+        var item = self.list[$index];
+        s += '<li' + attrs({ "class": ('item') }, {}) + '>';
+        var __val__ = item;
+        s += (null == __val__ ? "" : __val__) + '</li>';
+        }
+      }
+    else 
+      {
+      for (var $index in self.list)
+        {
+        if (self.list.hasOwnProperty($index))
+          {
+          var item = self.list[$index];
+          s += '<li' + attrs({ "class": ('item') }, {}) + '>';
+          var __val__ = item;
+          s += (null == __val__ ? "" : __val__) + '</li>';
+          }
+        }
+      }
+  }).call(this);
+  s += '</ul></div>';
+  return new Buffer(s);
+  }
+
+jt5 = function ()
+  {
+  //var attrs = jade.attrs, escape = jade.escape, rethrow = jade.rethrow;
+  var buf = [];
+  //var self = locals || {};
+  var interp;
+  buf.push('<div><h1');
+  buf.push(attrs2({ "class": ('header') }, {}));
+  buf.push('>');
+  var __val__ = self.header
+  buf.push(null == __val__ ? "" : __val__);
+  buf.push('</h1><h2');
+  buf.push(attrs2({ "class": ('header2') }, {}));
+  buf.push('>');
+  var __val__ = self.header2
+  buf.push(null == __val__ ? "" : __val__);

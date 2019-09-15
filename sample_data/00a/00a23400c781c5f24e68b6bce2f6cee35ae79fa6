@@ -1,0 +1,172 @@
+/nix/store/rhi2lnvqzs7ah98na24rx0zlbj9gacn9-webkitgtk-2.22.5
+├── bin
+│   └── WebKitWebDriver
+├── lib
+│   ├── girepository-1.0
+│   │   ├── JavaScriptCore-4.0.typelib
+│   │   ├── WebKit2-4.0.typelib
+│   │   └── WebKit2WebExtension-4.0.typelib
+│   ├── libjavascriptcoregtk-4.0.so -> libjavascriptcoregtk-4.0.so.18
+│   ├── libjavascriptcoregtk-4.0.so.18 -> libjavascriptcoregtk-4.0.so.18.11.6
+│   ├── libjavascriptcoregtk-4.0.so.18.11.6
+│   ├── libwebkit2gtk-4.0.so -> libwebkit2gtk-4.0.so.37
+│   ├── libwebkit2gtk-4.0.so.37 -> libwebkit2gtk-4.0.so.37.33.6
+│   ├── libwebkit2gtk-4.0.so.37.33.6
+│   └── webkit2gtk-4.0
+│       └── injected-bundle
+│           └── libwebkit2gtkinjectedbundle.so
+├── libexec
+│   └── webkit2gtk-4.0
+│       ├── jsc
+│       ├── WebKitNetworkProcess
+│       ├── WebKitPluginProcess
+│       ├── WebKitStorageProcess
+│       └── WebKitWebProcess
+└── share
+    └── locale
+        ├── ar
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── as
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── bg
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── ca
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── cs
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── de
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── el
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── en_CA
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── en_GB
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── eo
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── es
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── et
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── eu
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── fi
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── fr
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── gl
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── gu
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── he
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── hi
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── hu
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── id
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── it
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── ja
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── kn
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── ko
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── lt
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── lv
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── ml
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── mr
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── nb
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── nl
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── or
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── pa
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── pl
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── pt
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── pt_BR
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── ro
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── ru
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── sl
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── sr
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── sr@latin
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── sv
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── ta
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── te
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── tr
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── uk
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        ├── vi
+        │   └── LC_MESSAGES
+        │       └── WebKit2GTK-4.0.mo
+        └── zh_CN
+            └── LC_MESSAGES
+                └── WebKit2GTK-4.0.mo
+
+105 directories, 64 files

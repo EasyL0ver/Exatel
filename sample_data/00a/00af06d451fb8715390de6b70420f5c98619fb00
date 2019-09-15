@@ -1,0 +1,82 @@
+---- Minecraft Crash Report ----
+// I just don't know what went wrong :(
+
+Time: 2019-01-13 21:27:01 EST
+Description: Exception in server tick loop
+
+Missing Mods:
+    unknown : need [14.23.4.2718,): have 14.23.4.2705
+
+Missing Mods:
+    unknown : need [14.23.4.2749,): have 14.23.4.2705
+
+net.minecraftforge.fml.common.MultipleModsErrored
+    at net.minecraftforge.fml.common.Loader.sortModList(Loader.java:298)
+    at net.minecraftforge.fml.common.Loader.loadMods(Loader.java:570)
+    at net.minecraftforge.fml.server.FMLServerHandler.beginServerLoading(FMLServerHandler.java:97)
+    at net.minecraftforge.fml.common.FMLCommonHandler.onServerStart(FMLCommonHandler.java:332)
+    at net.minecraft.server.dedicated.DedicatedServer.init(DedicatedServer.java:125)
+    at net.minecraft.server.MinecraftServer.run(MinecraftServer.java:486)
+    at java.lang.Thread.run(Thread.java:748)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- System Details --
+  Minecraft Version: 1.12.2
+  Operating System: Linux (amd64) version 4.9.103-xxxx-std-ipv6-64
+  Java Version: 1.8.0_171, Oracle Corporation
+  Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+  Memory: 755800888 bytes (720 MB) / 1368915968 bytes (1305 MB) up to 1908932608 bytes (1820 MB)
+  JVM Flags: 4 total; -Xmx2048M -Xms1024M -XX:ParallelGCThreads=2 -XX:ThreadStackSize=512
+  IntCache: cache: 0, tcache: 0, allocated: 0, tallocated: 0
+  FML: MCP 9.42 Powered by Forge 14.23.4.2705 115 mods loaded, 115 mods active
+       States: 'U' = Unloaded 'L' = Loaded 'C' = Constructed 'H' = Pre-initialized 'I' = Initialized 'J' = Post-initialized 'A' = Available 'D' = Disabled 'E' = Errored
+       
+       | State | ID                                   | Version                  | Source                                              | Signature                                |
+       |:----- |:------------------------------------ |:------------------------ |:--------------------------------------------------- |:---------------------------------------- |
+       | U     | minecraft                            | 1.12.2                   | minecraft.jar                                       | None                                     |
+       | U     | mcp                                  | 9.42                     | minecraft.jar                                       | None                                     |
+       | U     | FML                                  | 8.0.99.99                | custom.jar                                          | e3c3d50c7c986df74c645c0ac54639741c90a557 |
+       | U     | forge                                | 14.23.4.2705             | custom.jar                                          | e3c3d50c7c986df74c645c0ac54639741c90a557 |
+       | U     | foamfixcore                          | 7.7.4                    | minecraft.jar                                       | None                                     |
+       | U     | opencomputers|core                   | 1.7.2.67                 | minecraft.jar                                       | None                                     |
+       | U     | randompatches                        | 1.12.2-1.5.0.4           | randompatches-1-12-2-1-5-0-4-jar-jar.jar            | None                                     |
+       | U     | additionalpipes                      | 6.0.0.8                  | additionalpipes-6-0-0-8-jar.jar                     | None                                     |
+       | U     | autoreglib                           | 1.3-18                   | autoreglib-1-3-18-jar.jar                           | None                                     |
+       | U     | bno                                  | 1.12.2-1.0.2.0           | basicnetherores-1-12-2-1-0-2-0-jar.jar              | None                                     |
+       | U     | baubles                              | 1.5.2                    | baubles-1-12-1-5-2-jar.jar                          | None                                     |
+       | U     | bdlib                                | 1.14.3.12                | bdlib-1-14-3-12-mc1-12-2-jar.jar                    | None                                     |
+       | U     | binniecore                           | 2.5.0.168                | binnie-mods-1-12-2-2-5-0-168-jar.jar                | None                                     |
+       | U     | botany                               | 2.5.0.168                | binnie-mods-1-12-2-2-5-0-168-jar.jar                | None                                     |
+       | U     | binniedesign                         | 2.5.0.168                | binnie-mods-1-12-2-2-5-0-168-jar.jar                | None                                     |
+       | U     | extrabees                            | 2.5.0.168                | binnie-mods-1-12-2-2-5-0-168-jar.jar                | None                                     |
+       | U     | extratrees                           | 2.5.0.168                | binnie-mods-1-12-2-2-5-0-168-jar.jar                | None                                     |
+       | U     | genetics                             | 2.5.0.168                | binnie-mods-1-12-2-2-5-0-168-jar.jar                | None                                     |
+       | U     | bloodarsenal                         | 1.12.2-2.1.0-24          | bloodarsenal-1-12-2-2-1-0-24-jar.jar                | None                                     |
+       | U     | bloodmagic                           | 1.12.2-2.3.1-99          | bloodmagic-1-12-2-2-3-1-99-jar.jar                  | None                                     |
+       | U     | bookshelf                            | 2.3.552                  | bookshelf-1-12-2-2-3-552-jar.jar                    | None                                     |
+       | U     | botania                              | r1.10-357                | botania-r1-10-357-jar.jar                           | None                                     |
+       | U     | buildcraftbuilders                   | 7.99.19                  | buildcraft-7-99-19-jar.jar                          | None                                     |
+       | U     | buildcraftcore                       | 7.99.19                  | buildcraft-7-99-19-jar.jar                          | None                                     |
+       | U     | buildcraftenergy                     | 7.99.19                  | buildcraft-7-99-19-jar.jar                          | None                                     |
+       | U     | buildcraftfactory                    | 7.99.19                  | buildcraft-7-99-19-jar.jar                          | None                                     |
+       | U     | buildcraftlib                        | 7.99.19                  | buildcraft-7-99-19-jar.jar                          | None                                     |
+       | U     | buildcraftrobotics                   | 7.99.19                  | buildcraft-7-99-19-jar.jar                          | None                                     |
+       | U     | buildcraftsilicon                    | 7.99.19                  | buildcraft-7-99-19-jar.jar                          | None                                     |
+       | U     | buildcrafttransport                  | 7.99.19                  | buildcraft-7-99-19-jar.jar                          | None                                     |
+       | U     | buildcraftcompat                     | 7.99.15                  | buildcraft-compat-7-99-15-jar.jar                   | None                                     |
+       | U     | codechickenlib                       | 3.2.2.353                | codechickenlib-1-12-2-3-2-2-353-universal-jar.jar   | None                                     |
+       | U     | cofhcore                             | 4.6.1                    | cofhcore-1-12-2-4-6-1-22-universal-jar.jar          | None                                     |
+       | U     | cofhworld                            | 1.3.0                    | cofhworld-1-12-2-1-3-0-6-universal-jar.jar          | None                                     |
+       | U     | compactsolars                        | 1.12.2-5.0.17.340        | compactsolars-1-12-2-5-0-17-340-universal-jar.jar   | None                                     |
+       | U     | computercraft                        | 1.80pr1                  | computercraft1-80pr1-jar.jar                        | None                                     |
+       | U     | computronics                         | 1.6.5                    | computronics-1-12-1-1-6-5-jar.jar                   | None                                     |
+       | U     | asielib                              | 1.0.0                    | computronics-1-12-1-1-6-5-jar.jar                   | None                                     |
+       | U     | cookingforblockheads                 | 6.4.44                   | cookingforblockheads-1-12-2-6-4-44-jar.jar          | None                                     |
+       | U     | cosmeticarmorreworked                | 1.12.2-v3                | cosmeticarmorreworked-1-12-2-v3-jar.jar             | None                                     |
+       | U     | cosmeticarmorreworked|tombmanygraves | 1.12.2-v3                | cosmeticarmorreworked-1-12-2-v3-jar.jar             | None                                     |
+       | U     | crafttweaker                         | 4.1.9                    | crafttweaker2-1-12-4-1-9-jar.jar                    | None                                     |
+       | U     | crafttweakerjei                      | 2.0.2                    | crafttweaker2-1-12-4-1-9-jar.jar                    | None                                     |
+       | U

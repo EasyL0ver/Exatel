@@ -1,0 +1,133 @@
+how to replace a block of text after a match in sed
+seq 31|sed 's/5/& match/' >/tmp/file
+sed ':a;$q;N;s/n/&/3;Ta;/match/!{P;D};:b;$bc;N;s/n/&/8;Tb;:c;s/.*/bar1nbar2/' /tmp/file
+1
+bar1
+bar2
+11
+bar1
+bar2
+21
+bar1
+bar2
+31
+sed ':a;$q;N;s/n/&/3;Ta;/match/!{P;D};h;s/([^n]*n)*([^n]*match[^n]*).*/2/;x;:b;$bc;N;s/n/&/8;Tb;:c;s/.*/bar1nbar2/;G' /tmp/file
+1
+bar1
+bar2
+5 match
+11
+bar1
+bar2
+15 match
+21
+bar1
+bar2
+25 match
+31
+	
+$ echo '1
+2 oooh
+3
+4
+match
+5
+6
+7
+8
+9 oooh
+10 ' | sed ': label; N; s/[^n]*n[^n]*n[^n]*nmatchn[^n]*n[^n]*n[^n]*n[^n]*n[^n]*n/bar1nbar2/; T label'
+	
+echo '1
+2 oooh
+3
+4
+match
+5
+6
+7
+8
+9 oooh
+10 ' | sed ': label; N; s/([^n]*n){3}matchn([^n]*n){5}/bar1nbar2/; T label'
+	
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+	
+## From first line until a line that matches the pattern (number ten in 
+## this example), save lines in buffer and print each one when there are
+## more than three lines between one of them and the line with the pattern
+## to search.
+0,/10/ {
+
+        ## Mark 'a'
+        :a
+
+        ## If line matches the pattern break this loop.
+        /10/ {
+                bb
+        }
+
+        ## Until the pattern matches, if more than three lines (checking 'n') are
+        ## saved, print the oldest one and delete it, because I only want to save last
+        ## three.
+        /(n[^n]*){3}/ {
+                P
+                D
+        }
+
+        ## Append next line to pattern space and goto mark 'a' in a loop.
+        N
+        ba
+}
+
+## It should never match (I think), but it's a sanity check to avoid the
+## following mark 'b'.
+bc
+
+## Here we are when found the line with the pattern, so read next five six
+## lines and delete all of them but the sixth. If end of file found in this
+## process none of them will be printed, so it seems ok.
+:b
+N;N;N;N;N
+N
+s/^.*n//
+
+## Here we are after deleting both '-3' and '+5' lines from the pattern matched,
+## so only is left to print the remainder of the file in a loop.
+:c
+p
+N
+s/^.*n//
+bc
+	
+sed -nf script.sed infile
+	
+1
+2
+3
+4
+5
+6
+16
+17
+18
+19
+20

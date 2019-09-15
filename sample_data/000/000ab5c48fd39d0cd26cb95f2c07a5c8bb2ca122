@@ -1,0 +1,24 @@
+public IEnumerator Share(Texture2D takenPicture, Action<Result> then) {
+        var form = new WWWForm();
+        form.AddBinaryData("file", takenPicture.EncodeToPNG(), "img.png", "image/png");
+
+        const string relativeURL = "/files";
+        //const string relativeURL = "/mirror";
+        using (var request = UnityWebRequest.Post(_baseURL + relativeURL, form)) {
+            request.SetRequestHeader("id", SystemInfo.deviceUniqueIdentifier);
+            yield return request.SendWebRequest();
+            switch (request.responseCode) {
+                case 200:
+                case 201:
+                case 202:
+                    then(Result.Success());
+                    break;
+                case 503:
+                    then(Result.Error("The Grand Appeal Collage Server is currently unavailable. Please try again later."));
+                    break;
+                default:
+                    then(Result.Error("Looks like we ran into a little trouble whilst trying to upload to the Grand Appeal Collage Server. (Error: " +request.responseCode + ")"));
+                    break;
+            }
+        }
+    }

@@ -1,0 +1,71 @@
+
+Jack Drvosjek ima tvrtku koja se bavi sječom drveća. Državni zavod za prostorno uređenje mu je 
+omogućio sječu drveća na jednom prostoru, ali pod određenim uvjetima. Naime, na prostoru 
+gdje Jack smije sječi se nalaze drva ali i kuće, te pri sječi drveća se mora osigurati da u kojem 
+god smjeru drvo počne padati neće oštetiti niti jednu obližnju kuću. Dodatno, Jack ne smije 
+posjeći sva drva koja zadovoljavaju gornji uvjet, već ima ograničenje na maksimalni broj drva 
+koje smije posjeći. Vi ste mu odlučili pomoći na način da mu napišete program u koji će unijeti 
+podatke o drvima, njihovim visinama i kućama, a program će izračunati koja drva Jack smije 
+posjeći kako bi zadovoljio sva ograničenja i dobio najveću metražu drva (višlje drvo daje veću 
+metražu).
+Svako drvo i svaka kuća je definirana kao jedna točka, s koordinatama (x,y). Dodatno, svako 
+drvo ima definirano i visinu u metrima. Drvo je sigurno za sječu ukoliko ne postoji niti jedna 
+kuća u krugu v metara od drveta, gdje je v visina drveta. 
+Ulazni podaci se nalaze u datoteci jack.in, na način da se u prvom retku nalazi broj  D koji 
+označava broj drva na karti i broj M koji označava koliko najviše drva Jack smije srušiti, te 
+nakon toga slijedi D redaka s podacima x, y, v koji vrijede za pojedino drvo. U sljedećem retku 
+se nalazi broj K koji označava koliko kuća je na definiranom području, i nakon toga K redaka s 
+podacima x i y koji označavaju koordinate pojedine kuće.
+Rezultat je potrebno ispisati u datoteku jack.out, i to na način da se u prvom retku nalazi broj S
+koji govori koliko drva Jack može posjeći, broj T koji označava koliko metara drva će Jack 
+dobiti sječom, i nakon toga S redaka koji označavaju koja drva da Jack sruši (s koordinatama x i 
+y). Ukoliko Jack ne može srušiti niti jedno drvo, potrebno je ispisati „0 0“. Poredak drva u ispisu 
+nije bitan.
+Za koordinate x i y vrijedi:
+-10000 < x < 10000
+-10000 < y < 10000
+Za visinu drveta vrijedi:
+0 < v < 1000
+Za broj drveća vrijedi:
+0 < D < 100
+Broj koji označava maksimalan broj drveća koji se smije posjeći:
+0 < M < 8
+Za broj kuća na području vrijedi:
+0 <= K < 100PROGRAMIRANJE PREDISPIT – ULAZNI ZADATAK 12.10.2012 2
+Primjer ulazne datoteke jack.in: Točan izlaz jack.out:
+3 1
+(1,1) 7
+(2,1) 1
+(0,0) 4
+1
+(4,1)
+
+
+1 4
+(0,0)
+Pojašnjenje: Na području imamo 3 drveta, a smijemo posjeći najviše 1 drvo. Prvo drvo je na 
+lokaciji s koordinatama 1,1 i ima visinu 7; drugo drvo je na lokaciji 2,1 i ima visinu 1 i treće 
+drvo je u ishodištu koordinatnog sustava i ima visinu 4. Kuća se nalazi na lokaciji 4,1, što znači
+da možemo sigurno posjeći drugo ili treće drvo, jer ukoliko bi sjekli prvo drvo moglo bi pasti na 
+kuću pošto od kuće do prvog drveta ima 3m, a samo drvo je visoko 7m. S obzirom da je treće 
+drvo višlje od drugog, najbolji izbor bi bio posjeći upravo treće  drvo jer bi od njega dobili 
+ukupno 4m drva.
+Primjer ulazne datoteke jack.in: Točan izlaz jack.out:
+4 4
+(0,0) 1
+(2,0) 2
+(0,-6) 3
+(1,-6) 3
+2
+(1,1)
+(0,-3)
+
+2 4
+(0,0)
+(1,-6)
+
+Pojašnjenje: Na području imamo 4 drveta, a dopušteno je posjeći sva 4. Međutim, ukoliko bi 
+sjekli drvo na lokaciji (2,0) ono bi moglo pasti na kuću na lokaciji (1,1). Također, ako bi sjekli 
+drvo na lokaciji (0,-6) ono bi moglo pasti na kuću na lokaciji (0,-3) jer su udaljene točno 3m a 
+drvo je visoko 3m. Stoga, sigurno je posjeći samo 2 drveta, i to na lokacijama (0,0) visine 1m i 
+(1,-6) visine 3m, što daje ukupno 4m.

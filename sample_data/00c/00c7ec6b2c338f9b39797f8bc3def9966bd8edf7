@@ -1,0 +1,3 @@
+PM> Script-Migration
+	
+PM> Script-Migration -OutputDir Areas/Identity/Data/Migrations/Script.sql

@@ -1,0 +1,35 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity reg_file is
+
+    port (  
+        control: in  std_logic_vector(1 downto 0);
+        A: in  std_logic_vector(1 downto 0);
+        B: in  std_logic_vector(1 downto 0);
+        vaikkavittu: out std_logic_vector(1 downto 0)
+	
+          );
+end reg_file;
+
+architecture Behavioral of reg_file is
+
+begin
+    process(control, A, B)
+        variable w_data_aux : std_logic_vector (1 downto 0);
+        variable r_data_aux : std_logic_vector (1 downto 0);
+    begin
+
+        case control is
+            when "00" => r_data_aux := "00";        
+            when "01" => r_data_aux := "01";     
+            when "10" => r_data_aux := "10";       
+            when others => r_data_aux := "10";   
+        end case;
+	vaikkavittu <= r_data_aux; 
+    end process;
+
+end Behavioral;

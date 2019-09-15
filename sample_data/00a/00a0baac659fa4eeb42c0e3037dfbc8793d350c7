@@ -1,0 +1,11 @@
+head(db)
+    # A tibble: 6 x 12
+      Data       Bank  Taxonomy      PC      AC    Loan   Profit      Aa               A       B
+      <date>     <chr> <chr>      <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl>   <dbl>
+    1 2017-01-01 BANC~ BANCOS ~ 5.03e 8 5.86e 8 NA       NA      NA      NA      NA     
+    2 2017-01-01 BANC~ BANCOS ~ 1.72e 9 1.87e 9  2.64e8  NA       1.09e8 NA       8.28e7
+    3 2017-01-01 BANC~ BANCOS ~ 5.33e 9 7.97e 9  6.65e9  NA       4.58e9  1.57e6  2.32e8
+    4 2017-01-01 BANC~ BANCOS ~ 9.89e10 9.59e10  7.08e9  NA       2.70e9  7.58e8  1.12e9
+    5 2017-01-01 BANC~ BANCOS ~ 5.96e 8 7.93e 8  6.99e8  -1.34e8  4.68e8 NA       1.84e7
+    6 2017-01-01 BANC~ BANCOS ~ 1.17e 8 7.89e 8 NA       -1.45e8 NA      NA      NA     
+    # ... with 2 more variables: PL <dbl>, Assets <dbl>

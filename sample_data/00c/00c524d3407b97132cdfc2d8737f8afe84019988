@@ -1,0 +1,104 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "dental deals finder",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "dealFinderIntent",
+                    "slots": [
+                        {
+                            "name": "city",
+                            "type": "AMAZON.GB_CITY",
+                            "samples": [
+                                "I need a dentist in {city}",
+                                "I'm in {city}",
+                                "{city}",
+                                "my location is {city}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "{city}",
+                        "my location is {city}",
+                        "find a dentist in {city}",
+                        "find dental deals in {city}",
+                        "find dental deals near me",
+                        "find a dentist near {city}",
+                        "find me a dentist near me"
+                    ]
+                },
+                {
+                    "name": "AMAZON.YesIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NoIntent",
+                    "samples": []
+                },
+                {
+                    "name": "registerIntent",
+                    "slots": [],
+                    "samples": [
+                        "i want to register myself",
+                        "register my dental practice",
+                        "register dental practice",
+                        "register my dental",
+                        "register my clinic",
+                        "i want to register",
+                        "register me",
+                        "register my practice",
+                        "register my practise"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "dealFinderIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "city",
+                            "type": "AMAZON.GB_CITY",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.40481182440.39597333185"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.40481182440.39597333185",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What is your location?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Can you tell me the city you are in?"
+                    }
+                ]
+            }
+        ]
+    }
+}

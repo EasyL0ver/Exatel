@@ -1,0 +1,13 @@
+;;;###autoload
+(defcustom diredp-w32-local-drives
+  '(("C:" "Local disk")
+    ("G:" "Google Drive File Stream")
+    ("D:" "Removable Drive 1")
+    ("E:" "Removable Drive 2"))
+  "*Local MS Windows drives that you want to use for `diredp-w32-drives'.
+Each entry is a list (DRIVE DESCRIPTION), where DRIVE is the drive
+name and DESCRIPTION describes DRIVE."
+  :type '(alist
+          :key-type   (string        :tag "Drive name")
+          :value-type (group (string :tag "Drive description")))
+  :group 'Dired-Plus)

@@ -1,0 +1,17 @@
+
+fails.jst.cshamlcoffee
+-if true
+  %a{href : '#new'} create new
+
+succedes.jst.cshamlcoffee
+%a{href : '#new'} create new
+-if true
+  text to show if statement works
+
+Uncaught Incorrect embedded code has resulted in an invalid Haml function - Error: Parse error on line 5: Unexpected 'INDENT'
+Generated Function:
+undefined
+CoffeeCodeGenerator.generateJsFunctionhaml.js:1121
+root.haml.compileHamlhaml.js:1310
+(anonymous function)weapons.js:3
+(anonymous function)

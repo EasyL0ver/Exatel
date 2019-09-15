@@ -1,0 +1,88 @@
+#ifndef ARTISTS_H
+#define ARTISTS_H
+
+#include "despotify_cpp.h"
+
+#include <vector>
+#include <QString>
+#include <QAbstractListModel>
+
+class Artists : public QAbstractListModel
+{
+    Q_OBJECT
+
+public:
+    Artists(QObject *parent = 0);
+
+    bool parseArtists(artist *art, int art_tot);
+    void clear();
+
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
+    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
+
+private:
+    struct Artist_one {
+        QString name;
+        QString id;
+        QString text;
+        QString portrait_id;
+    };
+
+    std::vector<Artist_one*> _list;
+};
+
+#endif // ARTISTS_H
+
+
+Artists::Artists(QObject *parent) : QAbstractListModel(parent)
+{
+
+}
+
+void Artists::clear() {
+    beginResetModel();
+    _list.clear();
+    endResetModel();
+}
+
+bool Artists::parseArtists(artist *art, int art_tot) {
+    Artist_one *art_ptr;
+    int i;
+
+    clear();
+
+    //beginInsertRows(QModelIndex(), 0, art_tot);
+    beginResetModel();
+
+    //parse artists from source
+
+    //endInsertRows();
+    endResetModel();
+}
+
+int Artists::rowCount(const QModelIndex & /*parent*/) const
+ {
+    qDebug("size requestet returning %d", _list.size());
+    return _list.size();
+ }
+
+QVariant Artists::data(const QModelIndex &index, int role) const
+{
+
+    int row = index.row();
+
+    qDebug("row %d requestet", row);
+
+    if(row >= 0 and row < _list.size()) {
+        Artist_one *art_ptr = _list[row];
+
+        qDebug("returning %s", qPrintable(art_ptr->name));
+
+        return art_ptr->name;
+    }
+
+    qDebug("return void QVariant()");
+
+    return QVariant();
+
+}

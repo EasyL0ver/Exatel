@@ -1,0 +1,59 @@
+wifi.sta.config({ssid = "SSID", pwd = "PASS"})
+wifi.setmode(wifi.STATION)
+wifi.sta.connect()
+i2c.setup(0, 1, 2, i2c.SLOW)
+oled = u8g2.ssd1306_i2c_128x64_noname(0, 0x3c)
+ 
+tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()
+    if wifi.sta.getip() then
+        tmr.stop(1)
+    end
+end)
+ 
+function work_time(seconds)
+    days = math.floor(seconds / 86400)
+    hours = math.floor(seconds / 3600 - days * 24)
+    mins = math.floor(seconds / 60 - days * 1440 - hours * 60)
+    secs = math.floor(seconds - days * 86400 - hours * 3600 - mins * 60)
+    return days .. "д, " .. hours .. "ч, " .. mins .. "мин, " .. secs .. "с"
+end
+ 
+function receiver(socket, data)
+    print(data)
+    info = data:match("GET /(%a+)")
+    socket:on("sent", function(socket) socket:close() end)
+    socket:send("HTTP/1.1 200 OK\r\n")
+    if info then
+        if info == "display" then
+            oled:drawCircle(60, 35, 28, U8G2_DRAW_ALL)
+            oled:sendBuffer()
+            oled:clearBuffer()
+            oled:sendBuffer()
+        end
+    else
+        socket:send("Content-Type: text/html; charset=utf-8\r\n\r\n" ..
+        "<html>" ..
+        "<head>" ..
+        "<title>NodeMCU</title>" ..
+        "</head>" ..
+        "<body>" ..
+        "<button onclick='fetch(\"/display\")'>Нарисовать круг</button>" ..
+        "</body>" ..
+        "</html>")
+    end
+end
+ 
+tmr.alarm(2, 1000, 1, function()
+    if not wifi.sta.getip() and not tmr.state(1) then
+        wifi.sta.connect()
+        tmr.start(1)
+    end
+end)
+ 
+web_server = net.createServer(net.TCP)
+ 
+if web_server then
+    web_server:listen(80, function(conn)
+        conn:on("receive", receiver)
+    end)
+end

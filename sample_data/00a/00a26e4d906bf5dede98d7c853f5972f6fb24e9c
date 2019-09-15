@@ -1,0 +1,42 @@
+ffffe7ba2cffffe7c52cffffe7c22cffffe7c12cffffe7c82cffffe7c62cffffe7b52cffffe7a02c
+	
+tmp = "ffffe7ba2cffffe7c52cffffe7c22cffffe7c12cffffe7c82cffffe7c62cffffe7b52cffffe7a02c"
+tmp.split("2c")
+
+Out[37]: 
+['ffffe7ba',
+ 'ffffe7c5',
+ 'ffffe7c2',
+ 'ffffe7c1',
+ 'ffffe7c8',
+ 'ffffe7c6',
+ 'ffffe7b5',
+ 'ffffe7a0',
+ '']
+	
+In [1]: s = "ffffe7ba2cffffe7c52cffffe7c22cffffe7c12cffffe7c82cffffe7c62cffffe7b52cffffe7a02c"
+In [2]: s.split("2c")
+Out[2]: 
+['ffffe7ba',
+ 'ffffe7c5',
+ 'ffffe7c2',
+ 'ffffe7c1',
+ 'ffffe7c8',
+ 'ffffe7c6',
+ 'ffffe7b5',
+ 'ffffe7a0',
+ '']
+	
+myHex = 0xffffe7ba2cffffe7c52cffffe7c22cffffe7c12cffffe7c82cffffe7c62cffffe7b52cffffe7a02c
+myStringForHex = str(hex(myHex))[2:]
+myStringForHex.split('2c')
+	
+['ffffe7ba',
+ 'ffffe7c5',
+ 'ffffe7c2',
+ 'ffffe7c1',
+ 'ffffe7c8',
+ 'ffffe7c6',
+ 'ffffe7b5',
+ 'ffffe7a0',
+ '']

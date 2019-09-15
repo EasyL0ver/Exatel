@@ -1,0 +1,51 @@
+How To Install:
+
+1. Mount the "Photoshop_12_LS1.dmg"
+2. Locate and click on the file "Install"
+3. Select "Install this product as a trial" and click on next.
+4. Now click on "Install" and wait for it to finish.
+5. Quit Photoshop CS5 if it opens after launch.
+6. Open the "Terminal" application and paste in the following:
+
+Code:
+sudo /Applications/TextEdit.app/Contents/MacOS/TextEdit /etc/hosts
+
+
+
+7. The host file should open in "TextEdit".
+8. Paste in the following between 127.0.0.1 localhost and 255.255.255.255 broadcasthost:
+
+
+
+
+Code:
+127.0.0.1 activate.adobe.com
+         127.0.0.1 practivate.adobe.com
+         127.0.0.1 ereg.adobe.com
+         127.0.0.1 activate.wip3.adobe.com
+         127.0.0.1 wip3.adobe.com
+         127.0.0.1 3dns-3.adobe.com
+         127.0.0.1 3dns-2.adobe.com
+         127.0.0.1 adobe-dns.adobe.com
+         127.0.0.1 adobe-dns-2.adobe.com
+         127.0.0.1 adobe-dns-3.adobe.com
+         127.0.0.1 ereg.wip3.adobe.com
+         127.0.0.1 activate-sea.adobe.com
+         127.0.0.1 wwis-dubc1-vip60.adobe.com
+         127.0.0.1 activate-sjc0.adobe.com
+         127.0.0.1 hl2rcv.adobe.com
+
+
+
+9. Save and close.
+10. Run the following in "Terminal" app to flush your cache:
+
+
+Code:
+sudo dscacheutil -flushcache
+
+
+
+
+11. Open "Photoshop CS5" and enter the serial number.
+12. Use Photoshop CS5 Full Version

@@ -1,0 +1,32 @@
+@mixin type-system($font-size, $line-height, $content-width, $container-width, $index) {
+  body {
+    font-size: $font-size;
+    line-height: $line-height;
+  }
+
+  %text {
+    margin: {
+      top: $line-height;
+      bottom: $line-height;
+    };
+  }
+
+  .l-container {
+    max-width: $container-width;
+  }
+
+  .post-content {
+    width: $content-width;
+
+    // Okay. I go a bit crazy and also calculate the optimal line height for
+    // headings, because they have different font sizes but share the same
+    // content width. Thus, the optimal line height will be different.
+    h1 {
+      @include golden-text-adjusted($font-size * 2, $content-width);
+    }
+
+    h2 {
+      @include golden-text-adjusted($font-size * 1.5, $content-width);
+    }
+  }
+}

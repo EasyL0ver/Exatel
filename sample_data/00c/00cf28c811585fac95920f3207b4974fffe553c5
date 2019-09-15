@@ -1,0 +1,78 @@
+#! /usr/bin/env python
+from Configurables import DaVinci
+import GaudiPython
+import os
+
+INTERACTIVE = 100
+
+rootInTes = "/Event/Leptonic"
+from PhysConf.MicroDST import uDstConf
+uDstConf ( rootInTes )
+
+from Configurables import CondDB
+
+DaVinci().EvtMax = 0    
+DaVinci().DataType = "2018"
+DaVinci().Simulation = False
+DaVinci().TupleFile = "KSpipiee-ntuple.root"
+CondDB(UseOracle = False, DisableLFC = True)
+
+
+
+if INTERACTIVE:
+    root = "/eos/lhcb/grid/prod/lhcb/LHCb/Collision18/LEPTONIC.MDST/00076476/0000/"
+
+    files = filter(lambda x: ".mdst" in x,os.listdir(root))
+    DaVinci().Input = map(lambda x: root+x,files)
+
+
+
+
+cats = ["LV","LU","UU","UV","VV"]
+
+outputLocations = []
+for cat in cats:
+    outputLocations.append("Phys/Kshort2eePiPi_%sLine/Particles"%(cat))
+    
+
+from DecayTreeTuple.Configuration import *
+
+    
+tuple,LoKi_KS0 = {},{}
+for name in cats:
+    tuple[name] = DecayTreeTuple(name)
+    tuple[name].RootInTES = rootInTes
+    tuple[name].Decay = "KS0 -> ^pi+ ^pi- ^e+ ^e-"
+    tuple[name].Inputs = ["Phys/Kshort2eePiPi_%sLine/Particles"%(name)]
+    
+    ## save isolation stuff
+    # tuple[name].addBranches({
+    #     "KS0" : "KS0 -> pi+ pi- e+ e-",
+    #     "piplus" : "KS0 -> ^pi+ pi- e+ e-",
+    #     "piminus" : "KS0 -> pi+ ^pi- e+ e-",
+    #     "eplus" :  "KS0 -> pi+ pi- ^e+ e-",
+    #     "eminus" :  "KS0 -> pi+ pi- e+ ^e-"
+    #     })
+    
+
+    
+    DaVinci().UserAlgorithms.append(tuple[name])
+
+gaudi = GaudiPython.AppMgr()
+gaudi.initialize()
+
+TES = gaudi.evtsvc()
+
+
+if INTERACTIVE:
+    gaudi.run(INTERACTIVE)
+    gaudi.stop()
+    gaudi.finalize()
+    from ROOT import *
+    f = TFile(DaVinci().TupleFile)
+    t = f.Get("LV/DecayTree")
+    
+else:
+    gaudi.run(-1)
+    gaudi.stop()
+    gaudi.finalize()

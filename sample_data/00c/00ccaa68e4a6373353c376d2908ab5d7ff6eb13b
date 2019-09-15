@@ -1,0 +1,341 @@
+package controller;
+
+import java.awt.Color;
+import controller.Main;
+
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.FileInputStream;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+
+public class Gameplay extends JPanel implements KeyListener, ActionListener{
+
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int[] snake_xlength = new int [780];   
+	private int[] snake_ylength = new int [780]; 
+	
+	private int[] antisnake_xlength = new int [780];
+	private int[] antisnake_ylength = new int [780];
+	
+	private boolean up =false;
+	private boolean down =false;
+	private boolean right =false;
+	private boolean left =false;
+	private boolean isRunning = true; //Detect the movement of the snakes
+	
+	private static AudioStream theStream;
+
+	
+	//Brick background
+	private ImageIcon brick;
+	
+//---- snake
+	private ImageIcon titleSnake;
+	private ImageIcon titlePokeball;
+	
+	private ImageIcon rightmouth;
+	private ImageIcon leftmouth;
+	private ImageIcon upmouth;
+	private ImageIcon downmouth;
+	private ImageIcon snake_Body;
+	private ImageIcon pokeball_image;
+	
+//----Anti snake
+	
+	private ImageIcon anti_rightmouth;
+	private ImageIcon anti_downmouth;
+	private ImageIcon anti_snake_Body;
+	
+	
+	 private int lengthofantisnake = 4;
+	 private int counter = 0;
+	 private int random_value = 0;
+	 private int sending;
+	
+//-----
+//defaults
+	private int moves = 0;
+	private int lengthofsnake = 13;
+	private int pokemon_catch = 0;
+	
+//---speed of the game play
+	private Timer timer;
+	private int delay = 100;
+		
+//-----Randomness
+		private int random_xaxis;
+		private int random_yaxis;
+		
+		private int [] x_array = new int[30]; 
+		private int [] y_array = new int[26];
+		
+		Random random_Images = new Random();
+		int random_Img = 1;	
+		
+//----constructor
+	public Gameplay() {
+	
+		addKeyListener(this);
+		setFocusable(true);
+		setFocusTraversalKeysEnabled(false);
+		timer = new Timer(delay,this);
+		timer.start();
+		random();
+		
+	}
+
+	
+	public void paint (Graphics g) {
+		
+		super.paintComponent(g);
+		
+		if(moves == 0) {	
+				snake_xlength[2] = 375;      //375,400,425 [MITTE]
+				snake_xlength[1] = 400;	
+				snake_xlength[0] = 425;
+				
+				snake_ylength[2] = 375;     //375
+				snake_ylength[1] = 375;	
+				snake_ylength[0] = 375;	
+		}
+//......................................................................................
+		
+		//main background
+		/* Color myColor = new Color(124,252,0);
+		 g.setColor(myColor);
+		 g.fillRect(0,0,800,710);*/
+		g.setColor(Color.orange);
+		g.fillRect(0,0,800,710);
+		
+		
+		//draw the title image
+	    titleSnake = new ImageIcon("resources/Gsnake_title.png");
+		titleSnake.paintIcon(this, g, 55, 8); 
+	
+		titlePokeball = new ImageIcon("resources/POKEMON_EATER_title.png");
+		titlePokeball.paintIcon(this,g,150,0);
+
+		
+		//draw border for game play
+		g.setColor(Color.orange);
+		g.drawRect(25,100,750,550);   //initial pixel 
+	
+		
+		//draw background for the game play
+		g.setColor(Color.DARK_GRAY); //DARK_GRAY
+		g.fillRect(25,100,750,550);   // 25,90,750,535
+		
+		//draw at end hint to restart
+		g.setFont(new Font("arial", Font.ROMAN_BASELINE, 12));
+		g.drawString("Press Space to RESTART the Game", 280, 668);
+		
+		g.setColor(Color.RED);
+		g.setFont(new Font("arial", Font.BOLD, 14));
+		g.drawString("Pokemon Catch: " + pokemon_catch, 640, 90);
+		
+//.........................................................................................		
+//--------IMAGES ALGORTIHMS-------------------------------------------------
+		
+		if(moves == 0) {
+			
+			rightmouth = new ImageIcon("resources/GsnakeRight_25x25.png");
+			rightmouth.paintIcon(this, g, snake_xlength[0], snake_ylength[0]);
+			
+			snake_Body = new ImageIcon("resources/hexagon-Gsankebody_RIGHTLEFT.png");//GsnakeBody_25x25.png
+			snake_Body.paintIcon(this, g,snake_xlength[1], snake_ylength[1]);	
+			
+			snake_Body = new ImageIcon("resources/hexagon-Gsankebody_RIGHTLEFT.png");//GsnakeBody_25x25.png
+			snake_Body.paintIcon(this, g,snake_xlength[2], snake_ylength[2]);	
+			
+		}	
+		
+		for(int i = 0; i < lengthofsnake;i++) {
+			
+			if(i==0 && right) {
+				
+				rightmouth = new ImageIcon("resources/GsnakeRight_25x25.png");
+				rightmouth.paintIcon(this, g, snake_xlength[i], snake_ylength[i]);
+			}
+			
+			if(i==0 && left) {
+				
+				leftmouth = new ImageIcon("resources/GsnakeLeft_25x25.png");
+				leftmouth.paintIcon(this, g, snake_xlength[i], snake_ylength[i]);
+			}
+			
+			if(i==0 && up) {
+				upmouth = new ImageIcon("resources/GsnakeUP_25x25.png");
+				upmouth.paintIcon(this, g, snake_xlength[i], snake_ylength[i]);
+			}
+			
+			if(i==0 && down) {
+	
+				downmouth = new ImageIcon ("resources/GsnakeDown_25x25.png");
+				downmouth.paintIcon(this, g, snake_xlength[i], snake_ylength[i]);
+			}
+			
+			if(i != 0) {
+				
+					if(right || left){
+						snake_Body = new ImageIcon ("resources/hexagon-Gsankebody_RIGHTLEFT.png");//GsnakeBody_25x25.png
+						snake_Body.paintIcon(this, g,snake_xlength[i], snake_ylength[i]);	
+					}
+					
+					 if(up || down) {
+						snake_Body = new ImageIcon ("resources/hexagon-Gsankebody_UPDOWN.png");//GsnakeBody_25x25.png
+						snake_Body.paintIcon(this, g,snake_xlength[i], snake_ylength[i]);
+					}
+					 
+				 
+			  }
+		  }
+		
+		//draw 1st set of bricks------------------------------------
+        for (int a = 100; a < 800; a += 100) {
+			
+			for (int b = 150; b < 700; b += 200) {	
+				
+		    brick = new ImageIcon("resources/newbrick_25x25.png");
+		    brick.paintIcon(this, g, a, b);
+		    
+		    if (a == snake_xlength[0] && b == snake_ylength[0]) {
+				
+				right = false;
+				left = false;
+				up = false;
+				down = false;
+				isRunning = false;
+				
+				g.setColor(Color.orange);
+				g.setFont(new Font("arial", Font.BOLD, 50));
+				g.drawString("GAME OVER", 250, 340);
+	
+	
+				
+				g.setFont(new Font("arial", Font.BOLD, 30));
+				g.drawString("SPACE  TO  RESTART", 250, 400);
+				
+		    }
+		    
+    		}
+		}
+        //------------------------------------------------------------
+        
+            //draw second set of bricks----------------------------------------
+      		for (int b = 200; b < 300; b += 25) {
+      			      			
+      			brick = new ImageIcon("resources/newbrick2_25x25.png");
+      		    brick.paintIcon(this, g, 50, b);
+      		    
+      		    if (50 == snake_xlength[0] && b == snake_ylength[0]) {
+      				
+      				right = false;
+      				left = false; 
+      				up = false;
+      				down = false;
+      				isRunning = false;
+      				
+      				g.setColor(Color.orange);
+    				g.setFont(new Font("arial", Font.BOLD, 50));
+    				g.drawString("GAME OVER", 250, 340);
+    				
+    				g.setFont(new Font("arial", Font.BOLD, 30));
+    				g.drawString("SPACE  TO  RESTART", 250, 400);
+    				
+      				}
+      		}
+      		//----------------------------------------------------------------
+      		
+      		//draw third set of bricks----------------
+      		for (int b = 400; b < 525; b += 25) {
+      			      			
+      			brick = new ImageIcon("resources/newbrick2_25x25.png");
+      		    brick.paintIcon(this, g, 700, b);
+      		    
+      		    if (700 == snake_xlength[0] && b == snake_ylength[0]) {
+      				
+      				right = false;
+      				left = false;
+      				up = false;
+      				down = false;
+      				isRunning = false;
+      				
+      				g.setColor(Color.orange);
+    				g.setFont(new Font("arial", Font.BOLD, 50));
+    				g.drawString("GAME OVER", 250, 340);
+    				
+    				g.setFont(new Font("arial", Font.BOLD, 30));
+    				g.drawString("SPACE  TO  RESTART", 250, 400);
+      				}
+      		    //------------------------------------------------
+      		}
+		
+//.........................................................................................	
+//--------EATING ALGORTIHMS-------------------------------------------------
+//...eating pokemon
+      	
+      	//avoiding bricks in x-axis-----------
+	    	for (int i = 100; i < 800; i += 100) {
+	    		if (random_xaxis == i || random_xaxis == 50) random_xaxis = 250;
+	    	}
+	    //---------------------------------------
+		
+		pokeball_image = new ImageIcon("resources/"+ "pokemon" + random_Img + ".png");
+		pokeball_image.paintIcon(this, g, random_xaxis, random_yaxis);
+		
+		if((random_xaxis == snake_xlength[0]) && (random_yaxis == snake_ylength[0])){
+				
+				lengthofsnake++;
+				pokemon_catch++;
+				random_Img = (int)(Math.random()*10)+1;
+				random();
+				
+		        try{
+		            theStream = new AudioStream(new FileInputStream("dead.wav"));
+		            AudioPlayer.player.start(theStream);
+		        }
+		        catch(Exception e){e.printStackTrace();}
+		    }							
+		
+//----------------------------------------------------------------------		
+//....if collide with itself
+		
+		for(int i = 1; i<=lengthofsnake; i++) {
+			
+			if(snake_xlength[0] == snake_xlength[i] && snake_ylength[0] == snake_ylength[i] ) {
+				
+				
+			     try{
+			            theStream = new AudioStream(new FileInputStream("gameOver.wav"));
+			            AudioPlayer.player.start(theStream);
+			       }
+			        catch(Exception e){e.printStackTrace();}
+			     System.out.println("sdadaa :" + i);
+				
+				right = false;
+				left = false;
+				up = false;
+				down = false;
+				isRunning = false;
+				
+				g.setColor(Color.orange);
+				g.setFont(new Font("arial", Font.BOLD, 50));
+				g.drawString("GAME OVER", 250, 340);
+				
+				g.setFont(new Font("arial", Font.BOLD, 30));
+				g.drawString("SPACE  TO  RESTART",

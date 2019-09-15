@@ -1,0 +1,40 @@
+'use strict';
+const {
+    featuresProperties
+} = require('../../../../utils/credits_merchants_utils');
+
+module.exports = class BaseCreditsMerchantsWhatsappDecorator {
+
+    constructor(news, device, format) {
+        this._news = news;
+        this._device = device;
+        this._format = format;
+    }
+
+    static get typeSpec() {
+        return {
+            event: {
+                queue: 'default',
+                schema: {
+                    required: ['site_id'],
+                    properties: {
+                        site_id: {
+                            type: 'string',
+                            format: 'site_id'
+                        },
+                        user: {/*...schema de user*/}
+                        loan: {/*...schmea de loan*/}
+                        /*... y asi con todos los schemas posibles de credits merchants*/
+                    }
+                }
+            },
+            channels_to_push: [{
+                channels: [{
+                    platform: 'whatsapp',
+                    min_version: "0.0.0",
+                    marketplace: 'MERCADOLIBRE'
+                }]
+            }]
+        };
+    }
+};

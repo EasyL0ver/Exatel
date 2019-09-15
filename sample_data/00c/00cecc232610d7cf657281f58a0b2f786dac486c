@@ -1,0 +1,14 @@
+import "symbol-observable";
+import {
+  componentFromStreamWithConfig,
+  createEventHandlerWithConfig
+} from "recompose";
+import { from } from "rxjs";
+
+const rxjsConfig = {
+  fromESObservable: from,
+  toESObservable: stream => stream
+};
+
+export const createEventHandler = createEventHandlerWithConfig(rxjsConfig);
+export const componentFromStream = componentFromStreamWithConfig(rxjsConfig);

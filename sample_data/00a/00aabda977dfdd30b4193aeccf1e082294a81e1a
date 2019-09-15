@@ -1,0 +1,34 @@
+--KARVA FUCKER
+
+--1.HOW TO USE THIS
+
+--2.GET PHONE TOUCH OTHERS PLAYER
+
+--3.AND PLAYER GOT LAGGY
+
+--IF YOU USE THIS YOU CAN LAG
+--I RECOMMAND USE FPS UNLOCKER.
+
+--Add iPhone
+local PhoneAdd = 3 -- Your Can Change This
+for i = 1,PhoneAdd do
+local Phone = game.StarterPack.iPhone
+	local PlrChar = game.Players.LocalPlayer.Character
+	local PhoneClone = Phone:clone()
+	PhoneClone.Parent = game.Players.LocalPlayer.Backpack
+	wait(0.1)
+	PhoneClone.Parent = PlrChar
+end
+
+--Destroy iPhone
+local PhoneDel = 3 --Your Can Change This
+for i = 1,PhoneDel do
+local Phone = game.Players.LocalPlayer.Backpack.iPhone
+	local PlrChar = game.Players.LocalPlayer.Character
+	Phone:Destroy()
+	end
+	
+--Add iPhone to StarterPack {[If Your Delete iPhone In StarterPack]}
+local Phone = game.Players.LocalPlayer.Backpack.iPhone
+local PhoneClone = Phone:clone()
+PhoneClone.Parent = game.StarterPack

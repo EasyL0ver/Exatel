@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Intro to animation</title>
+</head>
+<canvas id="canvas1" width="640" height="480" style="border: 1px solid black;position:absolute; left:0; top 0; z-index: 0,"></canvas>
+<canvas id="canvas2" width="640" height="480" style="border: 1px solid black;position:absolute; left: 0; top 0; z-index: 1;"></canvas>
+
+<body>
+	
+<script>
+
+var layer1 = document.getElementById("canvas1");
+var dt1 = layer1.getContext("2d");
+var layer2 = document.getElementById("canvas2");
+var dt2 = layer2.getContext("2d");
+
+
+dt1.fillStyle = "LightGray";
+dt1.fillRect(0, 0, layer1.width, layer1.height);
+
+var rectXPos = 0;
+var speed = 5;
+    
+setInterval(draw, 30);
+
+    
+function draw()
+{
+    myRectangle();
+    
+}
+    
+function myRectangle()
+{
+    dt2.clearRect(0, 0, layer2.width, layer2.height);
+    dt2.fillStyle = "cyan";
+    dt2.strokeStyle = "black";
+    dt2.fillRect(rectXPos,0, 50, 50);
+    dt2.strokeRect(rectXPos, 0, 50, 50);
+    rectXPos = rectXPos + speed;
+    
+    if (rectXPos <0 || rectXPos >590)
+        {
+            speed = speed * -1;
+        }
+    
+}
+
+
+
+
+</script>
+
+</body>
+</html>

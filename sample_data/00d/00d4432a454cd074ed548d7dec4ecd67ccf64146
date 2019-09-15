@@ -1,0 +1,157 @@
+#include<iostream>
+#include<list>
+#include<vector>
+#include<string>
+using namespace std;
+class student {
+private:
+	string name;
+	vector<int>oc;
+public:
+	student() {
+		name = "Ime";
+	}
+	student(string nm) {
+		name = nm;
+	}
+	student(string nm, vector<int>&v) {
+		name = nm;
+		oc = v;
+	}
+	void setoc(vector<int> &v) {
+		oc = v;
+	}
+	vector<int>&getoc() {
+		return oc;
+	}
+	void setname(string nm) {
+		name = nm;
+	}
+	string getname() {
+		return name;
+	}
+	double sruspeh() {
+		double sum = 0;
+		for (int i = 0; i < oc.size(); i++) {
+			sum = sum + oc[i];
+		}
+		double sr = sum / oc.size();
+		return sr;
+
+	}
+	int broioc(int k) {
+		int br = 0;
+		for (int i = 0; i < oc.size(); i++) {
+			if (oc[i] == k) br++;
+		}
+		return br;
+	}
+	void addoc(int k) {
+		oc.push_back(k);
+	}
+	void print() {
+		cout << name << endl;
+		for (int i = 0; i < oc.size(); i++) {
+			cout << oc[i] << " ";
+			cout << endl;
+		}
+	}
+	bool deloc(int n) {
+		vector<int> ::iterator it = oc.begin();
+		bool flag = false;
+		while (it != oc.end()) {
+			if (*it == n)
+			{
+				it = oc.erase(it); flag = true;
+			}
+			else it++;
+		}
+		return flag;
+	}
+	bool IsGood() {
+		bool flag = false;
+		if (sruspeh() >= 4.50&&broioc(2) == 0) flag = true;
+		else flag = false;
+		return flag;
+	}
+};
+void main() {
+	setlocale(LC_ALL, "Bulgarian");
+	string nm;
+	list<student> gr, gr2;
+	student s1("Петър");
+	s1.addoc(6);
+	s1.addoc(3);
+	s1.addoc(5);
+	int mas[] = { 5,3,4,6,2 };
+	vector<int> v(mas, mas + 5);
+	int m[] = { 3,4,6,4,5,5,4,6,2,3 };
+	vector<int> v1(m, m + 3), v2(m + 2, m + 6),v3(m+4,m+9);
+	student s2("Ани"),s3("Симо", v1), s4("Иван", v2), s5("Мартин", v3);
+	s2.setoc(v);
+	s1.print();
+	s2.print();
+	s3.print();
+	s4.print();
+	s3.deloc(3);
+	s3.print();
+	cout<<s1.getname()<<endl;
+	s1.getoc();
+	cout<<"Среден успех:"<<s1.sruspeh()<<endl;
+	cout<<"Брой петици:"<<s1.broioc(5)<<endl;
+	if (s1.deloc(6) == 1)  cout << "Има изтрити eлементи"<<endl; 
+	else cout << "Няма изтрити елементи"<<endl;
+	s1.print();
+	if (s3.IsGood() == 1)  cout << "Ученикът е със среден успех над 4.50 и няма двойки!" << endl;
+	else cout << "Ученикът е със среден успех под 4.50 или има двойки" << endl;
+	cout << endl;
+	gr.push_back(s1);
+	gr.push_back(s2);
+	gr.push_back(s3);
+	gr.push_back(s4);
+	gr.push_back(s5);
+	list<student>::iterator it= gr.begin();
+	while (it != gr.end()) {
+		(*it).print(); 
+		it++;
+	} 
+	it=gr.begin();
+	double result = 0;
+	while (it != gr.end()) {
+			result = result+(*it).sruspeh();		
+			it++;
+	}
+	cout << "Средният успех на групата е:" << result / gr.size() << endl;
+	double max = 0,var=0;
+	it = gr.begin();
+	while (it != gr.end()) {
+		if (max < (*it).sruspeh())
+			max = (*it).sruspeh();
+		it++;
+	}
+	it = gr.begin();
+	while (it != gr.end()) {
+		if (max == (*it).sruspeh())
+			cout << "Студентът с най-висок успех е: " << (*it).getname() << " със успех:" << (*it).sruspeh() << endl;
+		it++;
+	}
+	it = gr.begin();
+	int br = 0;
+	while (it != gr.end()) {
+		if ((*it).broioc(2) != 0) {
+			gr2.push_back(*it);
+			br++;
+		}
+		it++;
+	}
+
+	it = gr2.begin();
+	cout << "Студенти,които имат поправителен!" << endl;
+	while (it != gr2.end()) {
+		(*it).print();
+		it++;
+	}
+	
+	cout << "Брой студенти с поне една двойка:" << br;
+	system("pause");
+}

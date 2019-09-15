@@ -1,0 +1,13 @@
+#Ruby version <= 1.8
+    lambda { .... } 
+
+    lambda do
+        ....
+    end
+
+#Ruby version >= 1.9, "stabby lambda" syntax is added
+    -> { .... }
+
+    -> do
+        ....
+    end

@@ -1,0 +1,8 @@
+class global::default_soft::test_env {
+windows_env { 'testenv':
+	ensure	=> present,
+  variable	=> 'C:\Python27',
+  value     => 'stuff',
+  mergemode => clobber,
+}
+}

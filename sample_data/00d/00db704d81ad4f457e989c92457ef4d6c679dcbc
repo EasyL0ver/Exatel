@@ -1,0 +1,100 @@
+Equipment variables
+
+The following variables return a pointer to an item for which you can access various properties which will be outlined in the next section.
+
+
+$head (pointer): Returns the data structure of the item in your head slot.
+$neck (pointer): Returns the data structure of the item in your neck slot.
+$back (pointer): Returns the data structure of the item in your back slot.
+$chest (pointer): Returns the data structure of the item in your chest slot.
+$lhand (pointer): Returns the data structure of the item in your left hand slot (appears on the right side).
+$rhand (pointer): Returns the data structure of the item in your right hand slot (appears on the left side).
+$legs (pointer): Returns the data structure of the item in your legs slot.
+$feet (pointer): Returns the data structure of the item in your feet slot.
+$finger (pointer): Returns the data structure of the item in finger slot.
+$belt (pointer): Returns the data structure of the item in your belt slot.
+
+The following properties can be appended to an item pointer (ie: $lhand.id) and return a value as defined.
+
+.id (int): Returns the id of the item.
+.count (int): Returns the count of the item.
+
+
+
+
+
+Client info variables
+
+The following variables return various information relating to the game client.
+
+
+$battleopen (bool): Returns true if the battle window is open, false otherwise.
+$connected (bool): Returns true if connected to a server, false otherwise.
+$focused (bool): Returns true if client is focused, false otherwise.
+$minimized (bool): Returns true if client is minimized, false otherwise.
+$tradeopen (bool): Returns true if the trade window is open, false otherwise.
+$typedtext (string): Returns the currently typed-in text in the chat window.
+
+
+
+
+
+Creature variables
+
+The following variables return a pointer to a creature for which you can access various properties which will be outlined in the next section.
+
+$attacked (pointer): Returns the creature data structure of the creature currently red boxed.
+$followed (pointer): Returns the creature data structure of the creature currently green boxed.
+$me (pointer): Returns the creature data structure of your character.
+$target (pointer): Returns the creature data structure of the last creature you have attacked.
+$targetingtarget (pointer) : Returns the target of the targeting system.
+
+The following properties can be appended to a creature pointer (ie: $self.speed) and return a value as defined.
+
+.name (string): Returns the creature's name.
+.id (int): Returns the unique id of the creature.
+.posx (int): Returns the creature's x coordinate.
+.posy (int): Returns the creature's y coordinate.
+.posz (int): Returns the creature's z coordinate.
+.dir (string): Returns the creature's direction as either 'n', 'e', 's' or 'w'.
+.outfit (int): Returns the creature's outfit id.
+.color1 (int): Returns the creature's head color id.
+.color2 (int): Returns the creature's primary color id.
+.color3 (int): Returns the creature's secondary color id.
+.color4 (int) : Returns the creature's detail color id.
+.addons (int): Returns the creature's addons as a number.
+. mount (int): Returns the creature's mount as a number.
+.lightintensity (int): Returns the intensity of the creature's light.
+.lightcolor (int): Returns the color id of the creature's light.
+.hppc (int): Returns the creature's health percentage.
+.speed (int): Returns the creature's speed.
+.skull (int): Returns the creature's skull type id.
+.party (int): Returns the creature's party type id.
+.warbanner (int): Returns the creature's warbanner type id.
+.dist (int): Returns the biggest distance in either x or y between the creature and your character.
+.ismonster (bool): Returns true if creature is a monster, false otherwise.
+.isplayer (bool) : Returns true if creature is a player, false otherwise.
+.isshootable (bool): Returns true can be shot from your position, false otherwise.
+
+The following variable return a pointer to a whole creature structure.
+
+creature([]param) (creature)
+
+Where param can be:
+p: creature must be a player
+m: creature must be a monster
+f: creature must be on the same floor as you
+s: creature must be on the same floor as you and on the visible portion of the screen
+
+
+Example of a creature foreach loop in IronRuby:
+
+// Player will say names of all visible players on screen
+creature("ps").each do |c|
+say(c.name)
+end
+
+// Player will attack all creatures on screen
+creature("ms").each do |c|
+attack(c)
+end

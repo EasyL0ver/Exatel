@@ -1,0 +1,11 @@
+c:\mtasa-blue\shared\sdk\SharedUtil.SysInfo.hpp(40) : error C2065: 'COINIT_MULTITHREADED' : undeclared identifier
+ 
+c:\mtasa-blue\shared\sdk\SharedUtil.SysInfo.hpp(40) : error C3861: 'CoInitializeEx': identifier not found
+ 
+c:\mtasa-blue\shared\sdk\SharedUtil.SysInfo.hpp(64) : error C2065: 'EOAC_NONE' : undeclared identifier
+ 
+c:\mtasa-blue\shared\sdk\SharedUtil.SysInfo.hpp(56) : error C3861: 'CoInitializeSecurity': identifier not found
+ 
+c:\mtasa-blue\shared\sdk\SharedUtil.SysInfo.hpp(133) : error C2065: 'EOAC_NONE' : undeclared identifier
+ 
+c:\mtasa-blue\shared\sdk\SharedUtil.SysInfo.hpp(124) : error C3861: 'CoSetProxyBlanket': identifier not found

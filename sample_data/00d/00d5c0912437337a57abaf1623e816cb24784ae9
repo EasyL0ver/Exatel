@@ -1,0 +1,131 @@
+#pragma semicolon 1
+
+#include <sourcemod>
+#include <sdktools>
+#include <morecolors>
+#include <clients.inc>
+
+#define PLUGIN_VERSION			"1.0.2 RDG"
+
+ConVar cvarTempo;
+
+public Plugin:myinfo =
+{
+	name = "Log-in Message",
+	author = "Shadow Mario",
+	description = "Envia uma mensagem no chat do jogador quando ele entrar.",
+	version = PLUGIN_VERSION,
+	url = ""
+}
+
+public OnPluginStart()
+{
+	LoadTranslations("logmessage.phrases");
+	cvarTempo = CreateConVar("logmsg_timer", "15.0", "Tempo do Timer para enviar a mensagem depois que o jogador é detectado.", _, true, 0.0, false);
+	
+	AutoExecConfig(true, "plugin.logmessage");
+}
+
+public OnClientPutInServer(client)
+{
+	if(!IsValidClient(client) || IsFakeClient(client))
+	{
+		return;
+	}
+	
+	CreateTimer(GetConVarFloat(cvarTempo), Timer_BoasVindas, GetClientUserId(client), TIMER_FLAG_NO_MAPCHANGE);
+}
+
+char GetGmtDate()
+{
+	int timestamp = GetTime();
+	
+	// Fix timezones
+	char offsetstr[10];
+	FormatTime(offsetstr, sizeof(offsetstr), "%z", timestamp);
+	timestamp -= (StringToInt(offsetstr) / 100) * 3600;
+	
+	// Build sring
+	char GMTTime[40];
+	FormatTime(GMTTime, sizeof(GMTTime), "%H:%M:%S", timestamp);
+	
+	return GMTTime;
+}
+
+public Action:Timer_BoasVindas(Handle:hTimer, any:userid)
+{
+	new client = GetClientOfUserId(userid);
+	if(!IsValidClient(client) || IsFakeClient(client))
+	{
+		return;
+	}
+	
+	new AdminId:admin=GetUserAdmin(client);
+	char messagetext[253], messagetext2[253], playername[32], map[32], adminlevel[32];
+	if(GetAdminFlag(admin, Admin_Generic) && !GetAdminFlag(admin, Admin_Cheats) && !GetAdminFlag(admin, Admin_Password) && !GetAdminFlag(admin, Admin_Root) && !GetAdminFlag(admin, Admin_Custom4) && !GetAdminFlag(admin, Admin_Custom5))
+	{
+		adminlevel = "Ajudante";
+	}
+	else if(GetAdminFlag(admin, Admin_Cheats) && !GetAdminFlag(admin, Admin_Password) && !GetAdminFlag(admin, Admin_Root) && !GetAdminFlag(admin, Admin_Custom4) && !GetAdminFlag(admin, Admin_Custom5))
+	{
+		adminlevel = "Moderador";
+	}
+	else if(GetAdminFlag(admin, Admin_Password) && !GetAdminFlag(admin, Admin_Root) && !GetAdminFlag(admin, Admin_Custom4) && !GetAdminFlag(admin, Admin_Custom5))
+	{
+		adminlevel = "Administrador";
+	}
+	else if(GetAdminFlag(admin, Admin_Custom3) && !GetAdminFlag(admin, Admin_Generic))
+	{
+		adminlevel = "VIP Diamond";
+	}
+	else if(GetAdminFlag(admin, Admin_Custom2) && !GetAdminFlag(admin, Admin_Generic))
+	{
+		adminlevel = "VIP Gold";
+	}
+	else if(GetAdminFlag(admin, Admin_Custom1) && !GetAdminFlag(admin, Admin_Generic))
+	{
+		adminlevel = "VIP Silver";
+	}
+	else if(GetAdminFlag(admin, Admin_Custom4) && !GetAdminFlag(admin, Admin_Root))
+	{
+		adminlevel = "Desenvolvedor de Plugins";
+	}
+	else if(GetAdminFlag(admin, Admin_Custom5) && !GetAdminFlag(admin, Admin_Root))
+	{
+		adminlevel = "Desenvolvedor de Mapas";
+	}
+	else if(GetAdminFlag(admin, Admin_Custom6) && !GetAdminFlag(admin, Admin_Generic) && !GetAdminFlag(admin, Admin_Custom1) && !GetAdminFlag(admin, Admin_Custom2) && !GetAdminFlag(admin, Admin_Custom3))
+	{
+		adminlevel = "Membro do Grupo";
+	}
+	else if(GetAdminFlag(admin, Admin_Root))
+	{
+		adminlevel = "Dono";
+	}
+	else
+	{
+		adminlevel = "Jogador Comum";
+	}
+	
+	GetClientName(client, playername, sizeof(playername));
+	GetCurrentMap(map, sizeof(map));
+	Format(messagetext, sizeof(messagetext), "%t", "message_text", playername, adminlevel);
+	Format(messagetext2, sizeof(messagetext2), "%t", "message_text3", map, GetGmtDate());
+	PrintToChat(client, "%s", GetGmtDate());
+	CPrintToChat(client, "%t", "message_box");
+	CPrintToChat(client, messagetext);
+	CPrintToChat(client, "%t", "message_text2");
+	CPrintToChat(client, messagetext2);
+	CPrintToChat(client, "%t", "message_text4");
+	CPrintToChat(client, "%t", "message_text5");
+	CPrintToChat(client, "%t", "message_box");
+}
+
+stock bool:IsValidClient(client, bool:replay = true)
+{
+	if(client <= 0 || client > MaxClients || !IsClientInGame(client))
+		return false;
+	if(replay && (IsClientSourceTV(client) || IsClientReplay(client)))
+		return false;
+	return true;
+}

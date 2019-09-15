@@ -1,0 +1,108 @@
+_____Old_____
+
+class ActionRunContext(object):
+    """Context object that gives us access to data about the action run
+    itself
+    """
+
+    def __init__(self, action_run):
+        self.action_run = action_run
+
+    ... some unrelated code removed ...
+
+    def __getitem__(self, name):
+        # We've got a complex getitem implementaiton because we want to suport
+        # crazy date arithmetic syntax for the run time of the action.
+        # This allows features like running a job with an argument that is the
+        # previous day by doing something like
+        #   ./my_job --run-date=%(shortdate-1)s
+        run_time = self.action_run.run_time
+
+        match = re.match(r'([\w]+)([+-]*)(\d*)', name)
+        attr, op, value = match.groups()
+        if attr in ("shortdate", "year", "month", "day"):
+            if value:
+                int_value = int(value)
+                if op == '-':
+                    int_value = -int_value
+                if attr == "year":
+                    delta = timeutils.macro_timedelta(run_time,
+                                                      years=int_value)
+                elif attr == "month":
+                    delta = timeutils.macro_timedelta(run_time,
+                                                      months=int_value)
+                else:
+                    delta = timeutils.macro_timedelta(run_time,
+                                                      days=int_value)
+                run_date = run_time + delta
+            else:
+                run_date = run_time
+
+            if attr == "year":
+                return run_date.strftime("%Y")
+            elif attr == "month":
+                return run_date.strftime("%m")
+            elif attr == "day":
+                return run_date.strftime("%d")
+            else:
+                return run_date.strftime("%Y-%m-%d")
+        elif attr == "unixtime":
+            delta = 0
+            if value:
+                delta = int(value)
+            if op == "-":
+                delta *= -1
+            return int(timeutils.to_timestamp(run_time)) + delta
+        elif attr == "daynumber":
+            delta = 0
+            if value:
+                delta = int(value)
+            if op == "-":
+                delta *= -1
+            return run_time.toordinal() + delta
+        else:
+            raise KeyError(name)
+
+
+
+_____New_____
+
+class DateArithmetic(object):
+    """Parses a string which contains a date arithmetic pattern and returns
+    a date with the delta added or subtracted.
+    """
+
+    DATE_TYPE_PATTERN = re.compile(r'(\w+)([+-]\d+)?')
+
+    DATE_FORMATS = {
+        'year':                 '%Y',
+        'month':                '%m',
+        'day':                  '%d',
+        'shortdate':            '%Y-%m-%d'
+    }
+
+    @classmethod
+    def parse(cls, date_str, dt=None):
+        """Parse a date arithmetic pattern (Ex: 'shortdate-1'). Supports 
+        date strings: shortdate, year, month, day, unixtime, daynumber.
+        Supports subtraction and addition operations of integers. Time unit is
+        based on date format (Ex: seconds for unixtime, days for day).
+        """
+        dt = dt or current_time()
+        match = cls.DATE_TYPE_PATTERN.match(date_str)
+        if not match:
+            return
+        attr, value = match.groups()
+        delta = int(value) if value else 0
+
+        if attr in ('shortdate', 'year', 'month', 'day'):
+            if value:
+                kwargs = {'days' if attr == 'shortdate' else attr + 's': delta}
+                dt += macro_timedelta(dt, **kwargs)
+            return dt.strftime(cls.DATE_FORMATS[attr])
+
+        if attr == 'unixtime':
+            return int(to_timestamp(dt)) + delta
+
+        if attr == 'daynumber':
+            return dt.toordinal() + delta

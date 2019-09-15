@@ -1,0 +1,12 @@
+Use JQuery dialog box to submit form and display success, failure message
+$data_validates = false;
+$data_stores = false;
+	
+if($data_validates && $data_stores)
+{
+    echo "<script>alert('success');</script>";
+}
+else
+{
+    echo "<script>alert('success');</script>";
+}

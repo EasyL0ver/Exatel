@@ -1,0 +1,11 @@
+template <typename T>
+void printParameter(T parameter) { 	cout << "yayyyyy, " << parameter << "!" << endl; }
+
+int main () {
+	printParameter<int>(3);
+	printParameter<string>("hello");
+	printParameter<double>(2.6);
+	printParameter<char>('f');
+	printParameter<long>(444444444444);
+	printParameter<float>(43.06);
+}

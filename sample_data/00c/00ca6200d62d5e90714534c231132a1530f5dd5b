@@ -1,0 +1,9 @@
+In Emacs, what is the command to move the pointer to the location of the last edit?
+(autoload 'session-jump-to-last-change "session")
+(global-set-key (kbd "C-x C-/") 'session-jump-to-last-change)
+(global-set-key (kbd "C-A-/") 'session-jump-to-last-change)
+	
+(autoload 'goto-last-change "goto-last-change"
+   "Set point to the position of the last change." t)
+;; bind to C-x C-
+(global-set-key (kbd "C-x C-\") 'goto-last-change)

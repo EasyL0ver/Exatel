@@ -1,0 +1,51 @@
+import { Component, OnInit } from '@angular/core';
+    import { Empleado } from '../modelo-de-datos/empleados';
+    import { EmpleadoServiceService } from '../servicios/empleado-service.service';
+    import {Router, ActivatedRoute, Params} from '@angular/router';
+
+    @Component({
+      selector: 'app-empleados-info',
+      templateUrl: './empleados-info.component.html',
+      styleUrls: ['./empleados-info.component.css']
+    })
+    export class EmpleadosInfoComponent implements OnInit {
+
+      private empleado: Empleado;
+      activatedRoute: any;
+
+
+      constructor(
+        private empleadoService: EmpleadoServiceService,
+        private route: ActivatedRoute
+      ) { }
+
+      ngOnInit() {
+        this.getFullInfo();
+      }
+
+      getFullInfo() {
+        let id: string;
+
+        this.route.snapshot.queryParamMap.get('_id');
+
+        console.log('ID = '+id);
+
+        this.empleadoService.getEmpleado(id).subscribe(
+
+          res => {
+            this.empleado = res as Empleado;
+            console.log(this.empleado);
+          },
+          error =>{
+            console.log(error);
+          }
+
+
+        )
+      }
+
+
+
+    }
+	
+http://localhost:3000/getEmpleado/undefined net::ERR_EMPTY_RESPONSE

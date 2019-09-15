@@ -1,0 +1,112 @@
+class atomic_count
+{
+public:
+
+    explicit atomic_count( long v ) : value_( static_cast< int >( v ) ) {}
+
+    long locked_inc()
+    {
+        return lock_xadd( &value_, +1 );
+    }
+
+    long locked_dec()
+    {
+        return lock_xadd( &value_, -1 );
+    }
+	
+    long nonlocked_inc()
+    {
+        return nonlock_xadd( &value_, +1 );
+    }
+
+    long nonlocked_dec()
+    {
+        return nonlock_xadd( &value_, -1 );
+    }
+
+    operator long() const
+    {
+        return lock_xadd( &value_, 0 );
+    }
+
+private:
+
+    atomic_count(atomic_count const &);
+    mutable int value_;
+private:
+
+    static int lock_xadd( int * pw, int dv )
+    {
+        int r;
+        __asm__ __volatile__
+        (
+            "lock\n\t"
+            "xadd %1, %0":
+            "+m"( *pw ), "=r"( r ): // outputs (%0, %1)
+            "1"( dv ): // inputs (%2 == %1)
+            "memory", "cc" // clobbers
+        );
+
+        return r;
+    }
+    static int nonlock_xadd( int * pw, int dv )
+    {
+        int r;
+        __asm__ __volatile__
+        (
+            "xadd %1, %0":
+            "+m"( *pw ), "=r"( r ): // outputs (%0, %1)
+            "1"( dv ): // inputs (%2 == %1)
+            "memory", "cc" // clobbers
+        );
+
+        return r;
+    }
+};
+
+
+#include <boost/thread.hpp>
+#include <boost/bind.hpp>
+#include <iostream>
+
+atomic_count count(0);
+boost::barrier barrier(4);
+
+void inc_nonlocked(const int num)
+{
+	barrier.wait();
+	for(int i=0;i<num;++i){
+		count.nonlocked_inc();
+	}
+}
+void inc_locked(const int num)
+{
+	barrier.wait();
+	for(int i=0;i<num;++i){
+		count.locked_inc();
+	}
+}
+
+void dec_nonlocked(const int num)
+{
+	barrier.wait();
+	for(int i=0;i<num;++i){
+		count.nonlocked_dec();
+	}
+}
+void dec_locked(const int num)
+{
+	barrier.wait();
+	for(int i=0;i<num;++i){
+		count.locked_dec();
+	}
+}
+
+int main(){
+	boost::thread a(boost::bind(inc_locked, 1000000));
+	boost::thread b(boost::bind(inc_locked, 1000000));
+	boost::thread c(boost::bind(dec_locked, 1000000));
+	boost::thread d(boost::bind(dec_locked, 1000000));
+	a.join();b.join();c.join();d.join();
+	std::cout << "difference is " << count << std::endl;
+}

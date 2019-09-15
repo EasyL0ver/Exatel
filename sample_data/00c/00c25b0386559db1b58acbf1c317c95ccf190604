@@ -1,0 +1,76 @@
+# SimC Addon 1.10.7
+# 8.0 Note: reforge= is being used as a hacky way to capture item context. This will be changed in 8.1
+
+rogue="Jaemî"
+level=120
+race=blood_elf
+region=eu
+server=thrall
+role=attack
+professions=herbalism=136/mining=73
+talents=2122213
+spec=subtlety
+
+head=,id=160623,bonus_id=4823/1492/4786,reforge=5,azerite_powers=483/22
+neck=,id=158075,bonus_id=4933/4936/4929/1512,reforge=11,azerite_level=21
+shoulder=,id=160620,bonus_id=4823/1492/4786,reforge=5,azerite_powers=483
+back=,id=160644,bonus_id=4799/1492/4786,reforge=5
+chest=,id=160619,bonus_id=4823/1492/4786,reforge=5,azerite_powers=483/31
+wrist=,id=160720,bonus_id=4799/1808/1502/4783,reforge=5
+hands=,id=155889,gem_id=153711,bonus_id=4779/4802/1512/4786,reforge=23
+waist=,id=163439,gem_id=153711,bonus_id=5126/4802/40/1567/4783,reforge=6
+legs=,id=160625,bonus_id=4799/1808/1492/4786,reforge=5
+feet=,id=160624,bonus_id=4799/1492/4786,reforge=5
+finger1=,id=158318,enchant_id=5939,bonus_id=4779/1512/4786,reforge=23
+finger2=,id=159463,bonus_id=5005/1532/4783,reforge=35
+trinket1=,id=159125,reforge=13
+trinket2=,id=155881,bonus_id=4779/1512/4786,reforge=23
+main_hand=,id=163868,bonus_id=5125/1532/4786,reforge=28
+off_hand=,id=159653,bonus_id=5005/1527/4786,reforge=16
+
+### Gear from Bags
+#
+# Hood of the Slithering Loa (340)
+# head=,id=159318,bonus_id=4819/1512/4786,reforge=23,azerite_powers=240/30/83
+#
+# Dire-Tooth Spaulders (370)
+# shoulder=,id=161457,bonus_id=5120/1492/4786,reforge=3,azerite_powers=490/22
+#
+# Drape of the Blood Purge (320)
+# back=,id=160531,reforge=14
+#
+# Fetid Horror's Tanglecloak (370)
+# back=,id=160643,bonus_id=4799/1492/4786,reforge=5
+#
+# Honorbound Outrider's Tunic (370)
+# chest=,id=163283,bonus_id=5126/1562/4786,reforge=6,azerite_powers=
+#
+# Gore-Splattered Vest (340)
+# chest=,id=159330,bonus_id=4819/1512/4786,reforge=23,azerite_powers=
+#
+# Wristwraps of Coursing Miasma (370)
+# wrist=,id=160621,bonus_id=4799/1492/4786,reforge=5
+#
+# Quarantine Protocol Treads (360)
+# feet=,id=160624,bonus_id=4798/1482/4783,reforge=3
+#
+# Overseer's Lost Seal (340)
+# finger1=,id=159460,bonus_id=4779/1512/4786,reforge=23
+#
+# Footbomb Championship Ring (340)
+# finger1=,id=159462,enchant_id=5939,bonus_id=4779/1512/4786,reforge=23
+#
+# Rot-Scour Ring (370)
+# finger1=,id=160645,bonus_id=4799/1808/1492/4786,reforge=5
+#
+# Seal of the City Watch (340)
+# finger1=,id=162542,bonus_id=4779/1512/4786,reforge=23
+#
+# Bleached Bone Cutlass of the Quickblade (266)
+# main_hand=,id=159595,bonus_id=4796/4802/1681,drop_level=120
+#
+# Bleached Bone Cutlass of the Quickblade (266)
+# off_hand=,id=159595,bonus_id=4796/4802/1681,drop_level=120
+
+# Stacks of reorigination array based on hidden quest completion
+# bfa.reorigination_array_stacks=1

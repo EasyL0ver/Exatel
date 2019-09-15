@@ -1,0 +1,14 @@
+/* Database config */
+    $db_host        = 'servera.com';
+    $db_user        = 'shop';
+    $db_pass        = '0192837465';
+    $db_database    = 'shop'; 
+    /* End config */
+
+    try{
+        $db_online = new PDO('mysql:host='.$db_host.';dbname='.$db_database, $db_user, $db_pass);
+        $db_online->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }catch(Exception $e){
+        echo "There was an error connecting to the database<br/>";
+        echo $e->getMessage();
+    }

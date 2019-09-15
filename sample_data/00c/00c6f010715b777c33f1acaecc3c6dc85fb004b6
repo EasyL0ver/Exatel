@@ -1,0 +1,20 @@
+    create_ob(mrowka_001) //plik: 
+    {
+        set_prop(cur_bal, 1000);
+        set_prop(cur_hp, 1500);
+        set_prop(max_bal, 1000);
+        set_prop(max_hp, 1500);
+        set_prop(mob);
+        set_prop(original);
+        set_env(bisq_075);
+        create_out();
+        add_name("mrowka", "mrowki", "mrowce", "mrowke", "mrowka", "mrowce",
+                 "mrowki", "mrowek", "mrowkom", "mrowki", "mrowkami", "mrowkach", "ZENSKI");
+        add_name("owad", "owada", "owadowi", "owada", "owadem", "owadzie",
+                 "owady", "owadow", "owadom", "owady", "owadami", "owadach", "MESKI_NOS_ZYW");
+        add_name("insekt", "insekta", "insektowi", "insekta", "insektem", "insekcie",
+                 "insekty", "insektow", "insektom", "insekty", "insektami", "insektach", "MESKI_NOS_ZYW");
+        add_adj("zapracowany", "zapracowani");
+        add_adj("duzy", "duzi");
+        set_look("Owad na ktorego wlasnie spogladasz to po prostu mrowka rudnica - formica rufa, pospolity stawonog, wystepujacy niemal na kazdej szerokosci geograficznej. Ma wyraznie metalicznie-czarny odwlok, czerwony tulow i trzy pary dlugich, mocnych odnozy zakonczonych nieduzymi haczykowatymi wloskami. Stosunkowo niewielka glowa jest pozbawiona oczu, role narzadow zmyslow pelnia bardzo dlugie czulki, pokryte cala siecia przeroznych receptorow. Ot, typowa mrowka. Nie sposob jednak pominac pewnego istotnego szczegolu odrozniacego tego osobnika od innych, znanych juz przedszkolakom, mrowek. Ten owad ma blisko metr wysokosci! Porusza sie z niewiarygodna szybkoscia, raz po raz, szczyrzac czulkami. Pomimo swoich niebagatelnych rozmiarow nie wyglada na wojowniczo nastawiona. Zuwaczki, chociaz duze i mocne, sluza raczej jako narzedzie pracy niz bron, jenak przyparta do muru robotnica z pewnoscia wie jak bronic sie z ich pomoca.");
+    }

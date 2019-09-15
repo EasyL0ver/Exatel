@@ -1,0 +1,16 @@
+/ # ps
+  PID USER       VSZ STAT COMMAND
+    1 0          748 S    init
+    2 0            0 SW   [keventd]
+    3 0            0 RWN  [ksoftirqd_CPU0]
+    4 0            0 SW   [kswapd]
+    5 0            0 SW   [bdflush]
+    6 0            0 SW   [kupdated]
+    7 0            0 SW   [mtdblockd]
+   10 0          752 S    telnetd -l /bin/sh -p 23
+   13 0            0 SW   [ae531x_phy_poll]
+   84 0         1048 S    hostapd -B /etc/hostapd/hostapd.conf
+   85 0          748 S    init
+  278 0          772 S    /bin/sh
+  320 0         1620 S    pppd call dom
+  327 0          748 R    ps

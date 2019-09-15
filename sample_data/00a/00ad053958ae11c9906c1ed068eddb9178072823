@@ -1,0 +1,27 @@
+require 'spec_helper'
+
+describe DomainsController do
+  render_views
+
+  before(:each) do
+    @domain = Factory.create(:domain) 
+  end
+
+  context "#update_keyword_data" do
+
+    before(:each) do
+      @keyword_terms = [
+        "refurbished toughbooks",
+        "toughbook repair",
+        "toughbook touchscreen repair"
+      ]
+      @keyword_terms.each do |term|
+        @domain.keywords << Factory.create(:keyword, :term => term)
+      end
+    end
+
+    
+
+  end
+
+end

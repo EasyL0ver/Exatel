@@ -1,0 +1,3 @@
+var f = require('./test/f');
+
+console.log('test: ' + __dirname);

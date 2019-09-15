@@ -1,0 +1,43 @@
+context = new DataBaseContext();
+
+var NotebookInfo =
+    (from 
+            note in context.Notebooks
+        join
+            scn in context.Screens
+                on note.Screen.ScreenId equals scn.ScreenId
+        join
+            process in context.Processors
+                    on note.cpu.CpuId equals process.CpuId
+        join
+            rammem in context.Rammem
+                    on note.ram.IdRAM equals rammem.IdRAM
+        join
+            rommem in context.Rommem
+                    on note.rom.IdROM equals rommem.IdROM
+        join
+            vid in context.videocards
+                    on note.videocard.IdVideocard equals vid.IdVideocard
+        where note.Maker.Contains(MAKER) && scn.Permission.Contains(PERMISSION)
+        select new
+        {
+            note.ImagePath,
+            note.Maker,
+            note.OS,
+            note.Price,
+            scn.Matrix,
+            scn.Permission,
+            scn.Diogonal,
+            NameCpu = process.Maker,
+            process.Model,
+            process.Mhz,
+            process.TDP,
+            process.Cores,
+            rammem.TypeofRAM,
+            rammem.AnoutGBRAM,
+            rommem.TypeofROM,
+            rommem.AnoutGBROM,
+            NameVideo = vid.Maker,
+            ModelVideo = vid.Model,
+            vid.SizeMem
+        }).ToList();

@@ -1,0 +1,4 @@
+    Haptics haptics;
+    QDeclarativeView w;
+    QDeclarativeEngine* engine = w.engine();
+    engine->rootContext()->setContextProperty("haptics", &haptics);

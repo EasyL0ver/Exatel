@@ -1,0 +1,17 @@
+public static void main(String[] args) throws XMLStreamException {
+      XMLEventReader xmlEventReader = XMLInputFactory.newInstance().createXMLEventReader(
+              Test.class.getResourceAsStream("test.xml")
+      );
+      while(xmlEventReader.hasNext()) {
+        XMLEvent xmlEvent = xmlEventReader.nextEvent();
+        if(xmlEvent.isStartElement()){
+            if(Objects.equals(xmlEvent.asStartElement().getName().getLocalPart(),"statusCode")) {
+                xmlEvent = xmlEventReader.nextEvent();
+                if (xmlEvent.isCharacters()) {
+                    System.out.println(xmlEvent.asCharacters().getData());
+                }
+            }
+
+        }
+    }
+}

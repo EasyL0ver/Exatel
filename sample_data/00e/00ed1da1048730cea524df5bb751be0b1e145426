@@ -1,0 +1,18 @@
+#include <iostream.h>
+#include <math.h>
+void main ()
+{
+float a=0.1;
+float y;
+float b=1.0;
+int n=15;
+float h;
+h=(b-a)/n;
+for(float x=a;x<b+h;x=x+h)
+{
+y=exp(x);
+cout<<"y("<<x<<")="<<y<<endl;
+}
+int key;
+cin>>key;
+}

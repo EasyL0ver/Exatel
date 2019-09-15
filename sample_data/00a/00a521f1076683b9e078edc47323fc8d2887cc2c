@@ -1,0 +1,19 @@
+sudo pip install firebase-admin
+	
+import firebase_admin
+	
+import firebase_admin
+from firebase_admin import credentials
+
+Traceback (most recent call last):
+  File "/var/www/html/google.py", line 24, in <module>
+    from firebase_admin import credentials
+  File "/usr/local/lib/python2.7/dist-packages/firebase_admin/__init__.py", line 23, in <module>
+    from firebase_admin import credentials
+  File "/usr/local/lib/python2.7/dist-packages/firebase_admin/credentials.py", line 21, in <module>
+    from google.auth.transport import requests
+  File "/usr/local/lib/python2.7/dist-packages/google/auth/transport/requests.py", line 37, in <module>
+    from google.auth import exceptions
+  File "/var/www/html/google.py", line 24, in <module>
+    from firebase_admin import credentials
+ImportError: cannot import name credentials

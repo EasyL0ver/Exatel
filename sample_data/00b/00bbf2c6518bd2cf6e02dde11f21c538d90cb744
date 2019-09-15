@@ -1,0 +1,150 @@
+
+[root@stlinux]#killall mgcamd.sh4
+[root@stlinux]#killall mgcamd.sh4
+killall: mgcamd.sh4: no process killed
+[root@stlinux]#/var/bin/mgcamd.sh4
+tuxbox mgcamd v1.35 by mixvt (compiled Jan 20 2010 22:15:45)
+[mg] Net:1:7:2:2s Show ecm:0, emm:0 Up:1 Au:3 Dir:0 Osd:no:8080:0 Cache:7 Log:2:127.0.0.1:28007 Reread:0
+[mg] Ecm cache time: 15
+Box type: mips dreambox (dm7025, dm800)
+[root@stlinux]#Conax.Key error 2: No such file or directory
+Keys readed
+Conax.Key error 2: No such file or directory
+ignore prov 0600:000028
+ignore prov 0600:000015
+ignore prov 0600:000013
+ignore prov 0600:000002
+ignore prov 0600:000003
+ignore prov 0600:000004
+ignore prov 0600:000005
+ignore prov 0600:000006
+ignore prov 0600:000072
+ignore prov 0600:000074
+ignore prov 0600:000078
+ignore prov 0600:000071
+ignore prov 0600:000077
+ignore prov 0500:020A10
+ignore prov 0500:020A20
+ignore prov 0500:040600
+ignore prov 0500:040610
+ignore prov 0500:040620
+ignore prov 0500:050100
+ignore prov 0100:000072
+ignore prov 0100:000084
+ignore caid 0626
+ignore caid 4AE0
+priority prov 0500:023700
+priority prov 0500:030600
+priority prov 0500:040600
+priority prov 0600:000001
+priority caid 4AE1
+priority prov 0500:024B00
+priority prov 0500:023100
+priority prov 0500:041700
+priority prov 0500:042700
+priority prov 0500:032000
+priority prov 0500:042200
+priority prov 0500:021110
+priority prov 0500:030700
+priority prov 0500:020810
+priority prov 0600:000014
+priority prov 0600:00005A
+priority prov 0600:00005B
+priority prov 0100:000000
+priority prov 0100:000033
+priority caid 090F
+priority caid 0961
+priority caid 093B
+priority caid 1702
+priority caid 1801
+priority caid 1722
+priority caid 0B00
+priority prov 0600:000015
+priority prov 0600:00FFFF
+priority prov 0600:000004
+ecm replace 6987:4AE1:000000:0028 -> 0000:000000:0000
+ecm replace 426D:4AE1:000000:0091 -> 0000:000000:0000
+ecm replace 697D:4AE1:000000:0028 -> 0000:000000:0000
+[config] newcamd route = 1e1baae:cserv1.net:10001
+[config] newcamd route = 1e1baae:cserv1.net:13650
+newcamd keep alive: 300, incoming port: 12000
+got 166 cmd 9F
+[mg0] namespace 168305C t-id 2 on-id 70
+[mg0] descramble on 1, source 0
+[mgcam] emm thread started
+[newcamd] Connecting to cserv1.net:10001...
+[mg0] service 27DB index 0 pmt pid 70 (1), pids: video 0x0142, audio  0x0194
+[mg0] ECM: CaID: 0x0500  -> CaPID: 0x0BBB ProvID: 030600
+[mg0] ECM: CaID: 0x0500  -> CaPID: 0x0FA3 ProvID: 050B00
+[mg0] ECM: CaID: 0x0500  -> CaPID: 0x1453 ProvID: 050A00
+[mg0] ECM: CaID: 0x5601  -> CaPID: 0x0323 ProvID: 000000
+[newcamd] Connecting to cserv1.net:13650...
+Client <- Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: ab 5b f5 d8 6b 55 98 5a 1b 2b eb d8 3b 72         .[..kU.Z.+..;r
+
+Client -> Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: e0 00 00 31 65 31 62 61 61 65 00 24 31 24 61 62  ...1e1baae.$1$ab
+010: 63 64 65 66 67 68 24 2f 71 36 59 44 30 52 2e 57  cdefgh$/q6YD0R.W
+020: 6c 4c 38 6a 42 2f 39 53 6e 5a 66 30 30 00         lL8jB/9SnZf00.
+
+Client -> Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: e3 00 2b                                          ..+
+
+Client <- Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: 3b 70 ae d8 59 4a 71 83 50 d3 81 e5 ad 82         ;p..YJq.P.....
+
+Client -> Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: e0 00 00 31 65 31 62 61 61 65 00 24 31 24 61 62  ...1e1baae.$1$ab
+010: 63 64 65 66 67 68 24 2f 71 36 59 44 30 52 2e 57  cdefgh$/q6YD0R.W
+020: 6c 4c 38 6a 42 2f 39 53 6e 5a 66 30 30 00         lL8jB/9SnZf00.
+
+[mg0] network can't decode
+Client -> Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: e3 00 2b                                          ..+
+
+Client <- Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: e1 00 00                                          ...
+
+[newcamd] Login to cserv1.net:13650 as 1e1baae accepted (67ms)
+Client <- Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: e4 10 17 2d 4a e1 00 00 00 00 00 00 00 00 01 00  ...-J...........
+010: 00 00 00 00 00 00 00 00 00 00                     ..........
+
+[newcamd] Card data from cserv1.net:13650 (118ms):
+        Userid 45 caid 4AE1 providers 1
+        Idents: 000000
+
+Client <- Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: e1 00 00                                          ...
+
+[newcamd] Login to cserv1.net:10001 as 1e1baae accepted (82ms)
+Client <- Server: -- Tue Oct 23 22:37:13 2012
+----------------------------------------------------
+000: e4 10 17 2d 05 00 00 00 00 00 00 00 00 00 01 04  ...-............
+010: 06 00 00 00 00 00 00 00 00 00                     ..........
+
+[newcamd] Card data from cserv1.net:10001 (164ms):
+        Userid 45 caid 500 providers 1
+        Idents: 040600
+
+[mg0] network can't decode
+[mg0] network can't decode
+[mg0] network can't decode
+[mgcamd] emm started
+ EMM: CaID: 0x0500  -> CaPID: 0x03EB ProvID: 030600
+ EMM: CaID: 0x0500  -> CaPID: 0x03E8 ProvID: 050B00
+ EMM: CaID: 0x0500  -> CaPID: 0x03ED ProvID: 040610
+ EMM: CaID: 0x0500  -> CaPID: 0x03EE ProvID: 050100
+ EMM: CaID: 0x0500  -> CaPID: 0x03EC ProvID: 040600
+ EMM: CaID: 0x0500  -> CaPID: 0x03EA ProvID: 040620
+ EMM: CaID: 0x0500  -> CaPID: 0x03E9 ProvID: 050A00
+[mgcamd] emm stopped

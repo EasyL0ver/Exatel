@@ -1,0 +1,28 @@
+nathan@Big-Blue:~$ sudo apt-get install libc-bin
+[sudo] password for nathan: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  libc-bin
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/1,173 kB of archives.
+After this operation, 3,559 kB of additional disk space will be used.
+WARNING: The following packages cannot be authenticated!
+  libc-bin
+Install these packages without verification? [y/N] y
+Can't exec "locale": No such file or directory at /usr/share/perl5/Debconf/Encoding.pm line 16.
+Use of uninitialized value $Debconf::Encoding::charmap in scalar chomp at /usr/share/perl5/Debconf/Encoding.pm line 17.
+dpkg: warning: 'ldconfig' not found in PATH or not executable
+dpkg: error: 1 expected program not found in PATH or not executable
+Note: root's PATH should usually contain /usr/local/sbin, /usr/sbin and /sbin
+E: Sub-process /usr/bin/dpkg returned an error code (2)
+	
+apt-get download libc-bin
+dpkg -x libc-bin*.deb unpackdir/
+sudo cp unpackdir/sbin/ldconfig /sbin/
+sudo apt-get install --reinstall libc-bin
+	
+sudo apt-get install libc-bin:i386
+	
+sudo apt-get install libc-bin

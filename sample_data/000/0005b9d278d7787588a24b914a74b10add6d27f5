@@ -1,0 +1,6 @@
+$body = "<br><hr><br>
+Name: {$_POST['name']} <br>
+Email: {$_POST['email']} <br>
+Subject: {$_POST['subject']} <br>
+Message: {$_POST['message']} <br>
+";

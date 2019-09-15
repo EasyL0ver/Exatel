@@ -1,0 +1,122 @@
+/*Cabecalho
+    Descricao:
+    Data: 01/09/2012
+    Natureza: Circuitos Elétricos
+    Versao: 1.0
+    Solicitante: Professor
+    Observacao:
+*/
+/*Entradas/Insumos
+    Variaveis:
+    Entrada:
+            opc: numérica (opção 1)
+            opc2: numérica (opcão 2)
+            vi: numérica (valor inicial)
+            vf: numérica (valor final)
+            i: numérica (linha da matriz)
+            j: numérica (coluna da matriz)
+            y: numérica (quantidade de valores
+            qtdr: numérica (quantidade de resistências)
+            x: numérica (resistência fornecida pelo usuário)
+    Saida:
+
+Constantes:
+            V: numérica (tensão fixa=45v)
+*/
+//Inicio Algoritmo
+/*Processamento
+Inicio
+        escrever ("Escolha a opção desejada para análise do circuito: 1-Informe a faixa da resistência equivalente 2-Informe o conjunto de valores da resistência equivalente")
+        leia ("opc")
+        se opc=1, então
+            escrever ("Entre com o valor da resistência inicial:")
+            leia ("vi")
+            escrever ("Entre com o valor da resistência final:")
+            leia ("vf")
+            y=((vf-v1)/10)+1
+            float mat_ia[y][2]: numérica (matriz de armazenamento)
+            i=0
+            j=0
+            para i<-1 até y, faça
+                mat_ia[i][1]<-vi+((i-1)*10)
+                i<-i+1
+            fim para
+            para i<-1 até y, faça
+                mat_ia[i][2]<-(45/mat_ia[i][1])
+                imprimie ("O valor da resistência é"<<mat_ia[i][1]<<"e a corrente do cricuito é"<<mat_ia[i][2]<<)
+                i<-i+1
+            fim para
+        se opc=2, então
+            escrever ("Entre com a quantidade de resistências desejadas")
+            leia(qtdr)
+            float mat_ia2[qtdr][2]
+            i=0
+            j=0
+            x=0
+            para i<-1 até qtdr, faça
+                escreva ("Digite o valor da resistência:")
+                leia (x)
+                mat_ia2[i][1]<-x
+                i<-i+1
+            fim para
+            para i<-1 até qtdr, faça
+                mat_ia2[i][2]<-(45/mat_ia2[i][1])
+                imprimie ("O valor da resistência é"<<mat_ia2[i][1]<<"e a corrente do cricuito é"<<mat_ia2[i][2]<<)
+                i<-i+1
+            fim para
+*/
+/*Saida
+        Imprimir a corrente do cricuito.
+*/
+// Fim do Algoritmo
+#include <iostream>
+#include <math.h>
+#define V 45
+
+using namespace std;
+
+int main()
+{
+    int opc, vi, vf, y, i, j, qtdr, x;
+
+    cout<<"Escolha a opcao desejada para analise do circuito:\n1-Informe a faixa da resistencia equivalente\n2-Informe o conjunto de valores da resistencia equivalente\n";
+    cin>>opc;
+    if (opc==1) {
+        cout<<"Entre com o valor da resistencia inicial, em ohms:\n";
+        cin>>vi;
+        cout<<"Entre com o valor da resistencia final, em ohms:\n";
+        cin>>vf;
+            y=((vf-vi)/10)+1;
+        float mat_ia[y][2];
+        for (i=1;i<=y;i=i+1){
+            mat_ia[i][1]=vi+((i-1)*10);
+        }
+        cout<<"\nNome do circuito: Circuito serie opcao 1\nProgramador: Igor Araujo e Raphael Diniz\n\nO programa ira calcular e informar o valor da corrente para cada caso de resistencia, que varia de dez em dez, de acordo com o valor final e valor inicial desejado.\n\n";
+        for (i=1;i<=y;i=i+1){
+            mat_ia[i][2]=(V/mat_ia[i][1]);
+            cout<<"O valor da resistencia e "<<mat_ia[i][1]<<" Ohms e a corrente do cricuito e "<<mat_ia[i][2]<<" Amperes.\n";
+        }
+    }
+    else if (opc==2) {
+        cout<<"Entre com a quantidade de resistencias desejadas:\n";
+        cin>>qtdr;
+        float mat_ia2[qtdr][2];
+        i=0;
+        j=0;
+        x=0;
+        for (i=1;i<=qtdr;i=i+1){
+            cout<<"\nDigite o valor da resistencia:\n";
+            cin>>x;
+            mat_ia2[i][1]=x;
+        }
+        cout<<"\nNome do circuito: Circuito serie opcao 2\nProgramador: Igor Araujo e Raphael Diniz\n\nO usuario ira informar a quantidade e o valor dos resistores para que seja calculado e informado a corrente em cada caso.\n\n";
+        for (i=1;i<=qtdr;i=i+1) {
+            mat_ia2[i][2]=(V/mat_ia2[i][1]);
+            cout<<"O valor da resistencia e "<<mat_ia2[i][1]<<" Ohms e a corrente do cricuito e "<<mat_ia2[i][2]<<" Amperes.\n";
+        }
+    }
+    else if (opc!=(1&2)) {
+        cout<<"Opcao invalida. O programa sera abortado.\n";
+    }
+    return 0;
+}

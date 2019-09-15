@@ -1,0 +1,230 @@
+Imports System.Data.OleDb
+Imports System.Data.SqlClient
+Imports System.IO
+Imports System.Text
+Imports CsvHelper
+Imports IBM.Data.DB2
+
+Public Class ExportImportUtils
+
+    Public Sub ExportTableToCSV(udlPath As String, tableName As String, directoryPath As String)
+        Dim selectStatement As String = "select * from " & tableName
+
+        Dim csvFilePath As String = directoryPath & "\" & tableName & ".csv"
+
+        Using conn As New OleDbConnection
+            conn.ConnectionString = "File Name=" & udlPath
+            Dim command As OleDbCommand = New OleDbCommand(selectStatement, conn)
+            conn.Open()
+
+            Using reader As OleDbDataReader = command.ExecuteReader()
+                Dim columnNames As String() = GetColumnNames(reader).ToArray()
+                Dim numberOfColumns As Integer = columnNames.Count
+                Using writer As New IO.StreamWriter(New FileStream(csvFilePath, FileMode.Create))
+                    Using csv As New CsvWriter(writer)
+                        For Each header In columnNames
+                            csv.WriteField(header)
+                        Next
+                        csv.NextRecord()
+                        If reader.HasRows Then
+                            While reader.Read()
+                                For index As Integer = 0 To numberOfColumns - 1 Step 1
+                                    csv.WriteField(reader.GetValue(index))
+                                Next
+                                csv.NextRecord()
+                            End While
+                        End If
+                    End Using
+                End Using
+            End Using
+        End Using
+
+    End Sub
+
+    Private Sub ExportTablesToCSV(udlPath As String, directoryPath As String)
+        Dim dbType As String = GetDbType(udlPath)
+        Dim selectStatement As String = String.Empty
+
+        Select Case dbType
+            Case "SQLSERVER"
+                selectStatement = "SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE='BASE TABLE'"
+            Case "DB2"
+                selectStatement = "SELECT name FROM SYSIBM.SYSTABLES WHERE type = 'T' AND creator = 'DB2USER'"
+            Case "ORACLE"
+                selectStatement = "SELECT table_name FROM all_tables"
+        End Select
+
+        Dim tables As DataTable = ReadFromDataBase(udlPath, selectStatement)
+        tables.Columns(0).ColumnName = "table_name"
+        Dim listOfTables As List(Of String) = tables.Rows.OfType(Of DataRow)().[Select](Function(dr) dr.Field(Of String)("table_name")).ToList()
+
+        For Each table As String In listOfTables
+            ExportTableToCSV(udlPath, table, directoryPath)
+        Next
+
+    End Sub
+
+    Private Sub ImportCSV(csvFilePath As String, udlPath As String)
+
+        Dim dbType As String = GetDbType(udlPath)
+
+        Dim tableName As String = GetTableNameFromCSV(csvFilePath)
+
+        Using reader As New StreamReader(csvFilePath)
+            Using csvReader As New CsvHelper.CsvReader(reader)
+                Using csvDataReader As New CsvDataReader(csvReader)
+                    Dim columnNames As String() = GetColumnNames(csvDataReader).ToArray()
+                    Dim connString As String = GetConnectionString(udlPath)
+                    If dbType.Equals("SQLSERVER") Then
+                        Using conn As New SqlConnection(connString)
+                            Using bulkCopy As New SqlBulkCopy(conn)
+                                conn.Open()
+                                For Each header As String In columnNames
+                                    bulkCopy.ColumnMappings.Add(header, header)
+                                Next
+                                bulkCopy.DestinationTableName = tableName
+                                Try
+                                    bulkCopy.WriteToServer(csvDataReader)
+                                Catch ex As Exception
+                                    Throw New Exception(ex.Message)
+                                End Try
+                            End Using
+                        End Using
+                    ElseIf dbType.Equals("DB2") Then
+                        Using conn As New DB2Connection(connString)
+                            Using bulkCopy As New DB2BulkCopy(conn, DB2BulkCopyOptions.Truncate)
+                                conn.Open()
+                                For Each header As String In columnNames
+                                    bulkCopy.ColumnMappings.Add(header, header)
+                                Next
+                                bulkCopy.DestinationTableName = tableName
+                                Try
+                                    bulkCopy.WriteToServer(csvDataReader)
+                                Catch ex As Exception
+                                    Throw New Exception(ex.Message)
+                                End Try
+                            End Using
+                        End Using
+                    Else
+                        Exit Sub
+                    End If
+                End Using
+            End Using
+        End Using
+
+    End Sub
+
+    Private Sub ImportAllCSVs(directoryPath As String, udlPath As String)
+
+        For Each csv As String In Directory.EnumerateFiles(directoryPath, ".csv")
+            ImportCSV(csv, udlPath)
+        Next
+    End Sub
+
+    Private Function GetTableNameFromCSV(csvFilePath As String) As String
+        Dim splitAttrChar As Char = "\"c
+        Dim splitCsvChar As Char = "."c
+        Dim attrValueArray As String() = csvFilePath.Split({splitAttrChar}, StringSplitOptions.RemoveEmptyEntries)
+        Dim csvFileName As String() = attrValueArray(attrValueArray.Length - 1).Split({splitCsvChar}, StringSplitOptions.RemoveEmptyEntries)
+
+        Return csvFileName(0)
+
+    End Function
+
+    Private Iterator Function GetColumnNames(ByVal reader As IDataReader) As IEnumerable(Of String)
+        For Each row As DataRow In reader.GetSchemaTable().Rows
+            Yield CStr(row("ColumnName"))
+        Next
+
+    End Function
+
+    Private Function GetDbType(udlPath As String) As String
+        Dim sConnection As String = File.ReadAllLines(udlPath)(2)
+        Dim sDbType As String = String.Empty
+
+        If InStr(1, UCase(sConnection), "SQLOLEDB", CompareMethod.Text) > 0 Or InStr(1, UCase(sConnection), "SQLNCLI", CompareMethod.Text) > 0 Then
+            sDbType = "SQLSERVER"
+        ElseIf sConnection.Contains("IBMDADB2") Or sConnection.Contains("IBMOLEDB") Then
+            sDbType = "DB2"
+        Else
+            sDbType = "ORACLE"
+        End If
+
+        Return sDbType
+
+    End Function
+
+    Private Function ReadFromDataBase(udlPath As String, selectStatement As String) As DataTable
+        Dim returnTable As New DataTable
+
+        Using conn As New OleDbConnection
+            conn.ConnectionString = "File Name=" & udlPath
+            conn.Open()
+
+            Using cmd As New OleDbCommand(selectStatement, conn)
+                Using da As OleDbDataAdapter = New OleDbDataAdapter(cmd)
+                    da.Fill(returnTable)
+                End Using
+            End Using
+
+        End Using
+
+        Return returnTable
+
+    End Function
+
+    Private Function GetConnectionString(udlPath As String) As String
+        Dim dbType As String = GetDbType(udlPath)
+        Dim udlConnectionString As String = File.ReadAllLines(udlPath)(2)
+
+        Return ProcessConnectionString(udlConnectionString, dbType)
+
+    End Function
+
+    Private Function ProcessConnectionString(connString As String, dbType As String)
+        Dim sb As New StringBuilder()
+        Dim splitAttrChar As Char = ";"c
+        Dim splitAttrValueChar As Char = "="c
+
+        Dim attrToRemoveList As New List(Of String) From {"Provider", "DataTypeCompatibility", "MARS Connection", "ccrSSLClientKeystoredb", "ccrSSLClientKeystorePassword", "ccrSSLClientKeystoreType", "ccrSSLClientTruststoredb", "ccrSSLClientTruststoreType", "ccrSSLClientTruststorePassword", "oracle.net.ssl_cipher_suites", "Use Encryption for Data"}
+        Dim attrToUpdateDict As Dictionary(Of String, String) = Nothing
+
+        Select Case dbType
+            Case "SQLSERVER"
+                attrToUpdateDict = New Dictionary(Of String, String) From {{"Initial Catalog", "database"}, {"Data Source", "server"}, {"Location", "Server"}}
+            Case "ORACLE"
+                attrToUpdateDict = New Dictionary(Of String, String) From {{"Initial Catalog", "database"}, {"Location", "Server"}}
+            Case "DB2"
+                attrToUpdateDict = New Dictionary(Of String, String) From {{"Password", "PWD"}, {"User ID", "UID"}, {"Initial Catalog", "database"}, {"Data Source", "Database"}, {"Location", "Server"}}
+        End Select
+
+        Dim attrArray As String() = connString.Split({splitAttrChar}, StringSplitOptions.RemoveEmptyEntries)
+
+        For Each item As String In attrArray
+            Dim attrValueArray As String() = item.Split({splitAttrValueChar}, StringSplitOptions.RemoveEmptyEntries)
+
+            If attrValueArray.Length = 2 Then
+                Dim key As String = attrValueArray(0).Trim
+                Dim value As String = attrValueArray(1).Trim
+
+                If Not attrToRemoveList.Contains(key) Then
+                    If attrToUpdateDict.ContainsKey(key) Then
+                        key = attrToUpdateDict(key)
+                    End If
+                    sb.AppendFormat("{0}", key & splitAttrValueChar & value & splitAttrChar)
+                End If
+            End If
+
+        Next
+
+        If sb.Length > 0 Then
+            sb.Remove(sb.Length - 1, 1)
+        End If
+
+        Return sb.ToString()
+    End Function
+
+    Private Sub ZipFolder(directoryPath As String)
+        Using zip As New Ionic.Zip.ZipFile
+            zip.AddDirectory(directoryPath)
+        

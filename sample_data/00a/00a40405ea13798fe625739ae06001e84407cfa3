@@ -1,0 +1,252 @@
+Esecuzione di Ping 151.7.200.106 con 32 byte di dati:
+Risposta da 151.7.200.106: byte=32 durata=5ms TTL=63
+Risposta da 151.7.200.106: byte=32 durata=5ms TTL=63
+Risposta da 151.7.200.106: byte=32 durata=5ms TTL=63
+Risposta da 151.7.200.106: byte=32 durata=5ms TTL=63
+
+Statistiche Ping per 151.7.200.106:
+    Pacchetti: Trasmessi = 4, Ricevuti = 4,
+    Persi = 0 (0% persi),
+Tempo approssimativo percorsi andata/ritorno in millisecondi:
+    Minimo = 5ms, Massimo =  5ms, Medio =  5ms
+
+
+
+Traccia instradamento verso aruba.it [62.149.188.200]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        *        5 ms  151.7.200.106
+  3     5 ms     4 ms     5 ms  151.7.40.132
+  4     5 ms     5 ms     5 ms  151.7.40.21
+  5    20 ms     9 ms    11 ms  151.6.4.205
+  6    21 ms    25 ms    25 ms  151.6.4.153
+  7    24 ms    24 ms    24 ms  151.6.0.90
+  8    22 ms    30 ms    22 ms  151.6.68.23
+  9    22 ms    22 ms     *     151.6.64.61
+ 10    27 ms    26 ms    26 ms  151.14.96.14
+ 11    25 ms    24 ms    24 ms  62.149.191.126
+ 12    25 ms    25 ms    25 ms  62.149.191.132
+ 13    25 ms    25 ms    24 ms  62.149.191.68
+ 14    27 ms    26 ms    26 ms  62.149.188.200
+
+Traccia completata.
+
+
+
+Traccia instradamento verso kpnqwest.it [109.168.113.92]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        5 ms     5 ms  151.7.200.106
+  3     4 ms     4 ms     4 ms  151.7.40.130
+  4     6 ms     5 ms     5 ms  151.7.40.19
+  5    30 ms     9 ms     9 ms  151.6.4.205
+  6    19 ms    19 ms    19 ms  151.6.1.37
+  7    18 ms    18 ms    20 ms  151.6.1.182
+  8    20 ms    20 ms    20 ms  kpnqwest.mix-it.net [217.29.66.10]
+  9    20 ms    20 ms     *     cr1-tenge0-0-0-0-cal1.mil.kpnqwest.it [109.168.0.161]
+ 10    19 ms    19 ms    18 ms  cr2-hunge0-0-1-1-cal2.mil.kpnqwest.it [109.168.0.6]
+ 11    21 ms    21 ms    21 ms  er1-tenge4-7-cal2.mil.kpnqwest.it [109.168.0.50]
+ 12    19 ms    19 ms    19 ms  kqi-cal2-fw.comm2000.it [94.141.30.244]
+ 13    19 ms    19 ms    19 ms  esrever.kpnqwest.it [109.168.113.92]
+
+Traccia completata.
+
+
+
+Traccia instradamento verso cloudflare.net [104.16.194.150]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        *        *     Richiesta scaduta.
+  3     5 ms     5 ms     4 ms  151.7.40.130
+  4     6 ms     6 ms     6 ms  151.7.40.117
+  5    10 ms    10 ms    10 ms  151.6.5.238
+  6    11 ms    10 ms    10 ms  151.6.0.128
+  7     9 ms     9 ms     9 ms  cloudflare-nap.namex.it [193.201.28.33]
+  8    10 ms    10 ms    10 ms  104.16.194.150
+
+Traccia completata.
+
+
+
+Traccia instradamento verso gamesnet.it [195.36.6.10]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        5 ms     4 ms  151.7.200.106
+  3     5 ms     4 ms     4 ms  151.7.40.132
+  4     8 ms     5 ms     5 ms  151.7.40.79
+  5    44 ms    29 ms     9 ms  151.6.4.205
+  6    19 ms    19 ms    19 ms  RMID-T02-MICL-N01-po02.wind.it [151.6.1.53]
+  7    19 ms    19 ms    19 ms  151.6.6.141
+  8    22 ms    21 ms    21 ms  telnet.mix-it.net [217.29.66.5]
+  9    20 ms    21 ms    20 ms  www.gamesnet.it [195.36.6.10]
+
+
+Traccia instradamento verso sbg.proof.ovh.net [5.135.128.81]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     5 ms     4 ms     4 ms  151.7.200.106
+  3     5 ms     5 ms     4 ms  151.7.40.130
+  4     5 ms     6 ms     6 ms  151.7.40.69
+  5    10 ms    10 ms    10 ms  151.6.5.238
+  6    10 ms     8 ms     9 ms  151.6.5.237
+  7     *        *        *     Richiesta scaduta.
+  8    34 ms    26 ms    25 ms  be103.sbg-g2-nc5.fr.eu [91.121.215.220]
+  9     *        *        *     Richiesta scaduta.
+ 10    29 ms    27 ms    26 ms  be50-7.sbg-4a-a9.fr.eu [188.165.9.72]
+ 11    24 ms    24 ms    25 ms  sbg.proof.ovh.net [5.135.128.81]
+
+Traccia completata.
+
+
+Traccia instradamento verso verygames.net [94.23.214.174]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        *        5 ms  151.7.200.106
+  3     4 ms     4 ms     4 ms  151.7.40.132
+  4     5 ms     5 ms     5 ms  151.7.40.75
+  5    10 ms    10 ms    10 ms  151.6.5.238
+  6     9 ms     8 ms     8 ms  151.6.5.237
+  7     *        *        *     Richiesta scaduta.
+  8    24 ms    24 ms    24 ms  be103.sbg-g1-nc5.fr.eu [91.121.215.194]
+  9     *        *        *     Richiesta scaduta.
+ 10    35 ms    35 ms    35 ms  vl1250.rbx-g1-a75.fr.eu [37.187.232.26]
+ 11     *        *        *     Richiesta scaduta.
+ 12     *        *        *     Richiesta scaduta.
+ 13    36 ms    36 ms    36 ms  www-3.verygames.net [94.23.214.174]
+
+Traccia completata.
+
+
+Traccia instradamento verso hetzner.de [78.47.166.55]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        5 ms     5 ms  151.7.200.106
+  3     5 ms     4 ms     5 ms  151.7.40.130
+  4     6 ms     6 ms     6 ms  151.7.40.117
+  5     9 ms     9 ms     9 ms  151.6.3.77
+  6    10 ms     9 ms     9 ms  151.6.3.15
+  7    30 ms    30 ms    30 ms  ae10-1.fra30.core-backbone.com [80.81.195.147]
+  8    27 ms    26 ms    27 ms  ae11-2025.fra20.core-backbone.com [5.56.17.25]
+  9    32 ms    27 ms     *     core-backbone.hetzner.com [80.255.15.122]
+ 10    30 ms    30 ms    30 ms  core11.nbg1.hetzner.com [213.239.224.233]
+ 11    31 ms    30 ms    31 ms  ex9k2.dc1.nbg1.hetzner.com [213.239.203.214]
+ 12    31 ms    31 ms    30 ms  dedihetznernew.your-server.de [78.47.166.55]
+
+Traccia completata.
+
+
+
+Traccia instradamento verso aixit.com [195.225.198.153]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        5 ms     5 ms  151.7.200.106
+  3     4 ms     5 ms     9 ms  151.7.40.130
+  4     6 ms     6 ms     5 ms  151.7.40.15
+  5    10 ms     9 ms    10 ms  151.6.5.238
+  6    10 ms     9 ms     9 ms  151.6.3.15
+  7    28 ms    28 ms    28 ms  10GE-7-1.DECIX1.FRA.IAG.EU [80.81.194.46]
+  8    28 ms    28 ms    28 ms  decix.cr1.of.aixit.net [83.141.0.253]
+  9    28 ms    28 ms     *     ae0-3002.er1.of.aixit.net [83.141.5.102]
+ 10    28 ms    27 ms    27 ms  lb-virt.ash.aixit.com [195.225.198.153]
+
+Traccia completata.
+
+
+Traccia instradamento verso intergenia.de [85.25.0.17]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        *        *     Richiesta scaduta.
+  3     4 ms     4 ms     4 ms  151.7.40.132
+  4     5 ms     5 ms     5 ms  151.7.40.83
+  5    11 ms    10 ms    10 ms  151.6.5.238
+  6     9 ms     9 ms    11 ms  151.6.3.15
+  7    28 ms    28 ms    27 ms  et-7-0-0-u100.cr-polaris.fra1.core.heg.com [80.81.192.239]
+  8    31 ms    33 ms    31 ms  ae1.cr-vega.sxb1.core.heg.com [87.230.114.9]
+  9    31 ms    30 ms     *     ae2.sxb1-rr-1-2-f1-3.sxb1.legacy [87.230.114.162]
+ 10    30 ms    30 ms    30 ms  static-ip-85-25-0-17.inaddr.ip-pool.com [85.25.0.17]
+
+Traccia completata.
+
+
+
+Traccia instradamento verso ngz-server.de [213.202.193.170]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        *        *     Richiesta scaduta.
+  3     4 ms     4 ms     4 ms  151.7.40.130
+  4     5 ms    12 ms     5 ms  151.7.40.1
+  5     9 ms    10 ms     9 ms  151.6.5.238
+  6     9 ms     9 ms     9 ms  151.6.3.15
+  7    46 ms    29 ms    26 ms  xe1-decix-v4.fra1-de.myloc.de [80.81.192.162]
+  8    31 ms    31 ms    31 ms  core2-dus1.bb.myloc.de [81.30.145.49]
+  9    33 ms    33 ms     *     xe-1-0-39.core.net.unigs.de [217.79.186.198]
+ 10    31 ms    31 ms    31 ms  213.202.193.170.static.rdns-uclo.net [213.202.193.170]
+
+Traccia completata.
+
+
+
+Traccia instradamento verso multiplay.co.uk [85.236.96.26]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        *        5 ms  151.7.200.106
+  3     5 ms     4 ms     4 ms  151.7.40.132
+  4     5 ms     5 ms     5 ms  151.7.40.86
+  5     9 ms     9 ms     9 ms  151.6.4.205
+  6    11 ms    11 ms    10 ms  151.6.1.66
+  7     *        9 ms     9 ms  lag-21.bear1.Italy2.Level3.net [212.133.7.9]
+  8    38 ms     *        *     ae-21-3509.ear2.London15.Level3.net [4.69.167.154]
+  9     *        *        *     Richiesta scaduta.
+ 10    37 ms    37 ms    37 ms  195.50.120.99
+ 11    36 ms    36 ms    37 ms  ha01.multiplay.co.uk [85.236.96.26]
+
+Traccia completata.
+
+
+Traccia instradamento verso bbc.co.uk [151.101.64.81]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        *        5 ms  151.7.200.106
+  3     4 ms     4 ms     5 ms  151.7.40.132
+  4     6 ms     5 ms     5 ms  151.7.40.5
+  5    11 ms    12 ms    10 ms  151.6.5.238
+  6     9 ms     9 ms    10 ms  151.6.5.142
+  7    11 ms     9 ms     9 ms  lag-21.bear1.Italy2.Level3.net [212.133.7.9]
+  8    28 ms    27 ms    27 ms  ae-2-3209.edge3.Frankfurt1.Level3.net [4.69.163.102]
+  9    28 ms    27 ms     *     62.67.34.222
+ 10    30 ms    30 ms    30 ms  151.101.64.81
+
+Traccia completata.
+
+
+Traccia instradamento verso coreix.net [85.13.193.200]
+su un massimo di 30 punti di passaggio:
+
+  1    <1 ms    <1 ms    <1 ms  192.168.1.1
+  2     *        5 ms     5 ms  151.7.200.106
+  3     4 ms     5 ms     5 ms  151.7.40.130
+  4     6 ms     5 ms     6 ms  151.7.40.85
+  5    17 ms    10 ms    10 ms  151.6.4.208
+  6    18 ms    18 ms    18 ms  151.6.1.13
+  7    19 ms    18 ms    18 ms  151.6.7.181
+  8    39 ms    39 ms    39 ms  ge-0-1-0-68.peering1.the.lon1.coreix.net [195.66.225.58]
+  9    40 ms    41 ms     *     xe-6-1.edge3.enf.lon5.coreix.net [89.187.93.136]
+ 10    42 ms    41 ms    41 ms  85.13.193.200.reverse.coreix.net [85.13.193.200]
+
+Traccia completata.
+
+
+
+Traccia instradamento verso proserve.nl

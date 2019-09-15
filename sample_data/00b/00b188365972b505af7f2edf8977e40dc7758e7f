@@ -1,0 +1,9 @@
+		static private int percent;
+
+		static public int Percent
+		{
+			get { return percent; }
+			set { percent = value; }
+		}
+		//Лучше делать так
+		static public int Percent { get; /*private*/ set; }

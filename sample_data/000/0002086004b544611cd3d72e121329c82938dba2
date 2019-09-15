@@ -1,0 +1,20 @@
+:nth-child() odd/even pseudo classes with definition list
+<dl>
+    <dt>green foo</dt>
+    <dd>green bar</dd>
+    <dt>red foo</dt>
+    <dd>red bar</dd>
+    <dt>green foo</dt>
+    <dd>green bar</dd>
+</dl>
+
+<style>
+dl { color: blue }
+dd:nth-child(odd) { color:green }
+dd:nth-child(even) { color:red }​
+</style>
+	
+dd:nth-of-type(even) {color: red;}
+dt:nth-of-type(even) {color: red;}
+dd:nth-of-type(odd) {color: green;}
+dt:nth-of-type(odd) {color: green;}

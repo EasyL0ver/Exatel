@@ -1,0 +1,45 @@
+function validationProductName()
+{
+	var name = document.getElementById('productName');
+	var nameVal = name.value;
+	var error = document.getElementById('name_error');
+	
+	if (!nameVal) //// nameVal.lenght == 0 / nameVal == ' '
+	{
+		error.classList.remove("valid-feedback"); //usuwa dobre
+		error.classList.add("invalid-feedback"); //dodaje niedobre
+		name.classList.add("is-invalid"); //dodaje niedobre, czerwona obramowka dookola inputu
+		error.innerHTML='Pole obowiązkowe'; //wyswietla blad
+	}
+	else
+	{
+		if (nameVal.length < 5)
+		{
+			error.classList.remove("valid-feedback");
+			error.classList.add("invalid-feedback");
+			name.classList.remove("is-valid");
+			name.classList.add("is-invalid");
+			error.innerHTML='Nazwa produktu musi mieć przynajmniej 5 znaków';
+		}
+		else
+		{
+			if(nameVal.match(/[^a-zA-Z]/))
+			{
+				error.classList.remove("valid-feedback");
+				error.classList.add("invalid-feedback");
+				name.classList.remove("is-valid");
+				name.classList.add("is-invalid");
+				error.innerHTML='Nazwa produktu może zawierać tylko znaki';
+			}
+			else
+			{
+				error.classList.remove("invalid-feedback");
+				error.classList.add("valid-feedback");
+				name.classList.remove("is-invalid");
+				name.classList.add("is-valid");
+				error.innerHTML='';
+			}
+		}
+	}
+}
+//// nie jest puste, nie wiecej niz 5 znakow, tylko litery

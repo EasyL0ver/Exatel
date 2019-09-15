@@ -1,0 +1,10 @@
+		const db = await Database.connect("mongodb");
+
+		var investors = await db.collection("investor")
+		//.select('_id email firstName lastName phone country agreeTos isVerified')
+		.find()
+		//
+		.sort({
+			_id: -1
+		})
+		.toArray();

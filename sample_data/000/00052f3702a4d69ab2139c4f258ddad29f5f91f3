@@ -1,0 +1,90 @@
+;; Set up queue for offline email (use mu, mkdir  ~/Maildir/queue to set up first)
+(setq smtpmail-queue-mail nil  ;; start in normal mode
+      smtpmail-queue-dir   "~/Maildir/queue/cur")
+
+;; Default sent & drafts
+(setq mu4e-sent-folder   "/Work/[Gmail].Sent Mail")
+(setq mu4e-drafts-folder "/Work/[Gmail].Drafts")
+
+;; ;; Setup Async as the default sending function
+;; (require 'smtpmail-async)
+
+;; (setq
+;;   send-mail-function 'async-smtpmail-send-it
+;;   message-send-mail-function 'async-smtpmail-send-it)
+
+;; Old way sending through smtpmail
+(setq
+  send-mail-function 'smtpmail-send-it
+  message-send-mail-function 'smtpmail-send-it)
+
+;; Setup Email account selection for sending email
+(defvar my-mu4e-account-alist
+  '(("work"
+     ;; Signature
+     (user-full-name "Michael")
+     (mu4e-compose-signature
+      (concat
+       "Michaeln"
+       ))
+     ;; Folder settings
+     (mu4e-sent-folder "/Work/[Gmail].Sent Mail")
+     (mu4e-drafts-folder "/Work/[Gmail].Drafts")
+     (user-mail-address "michael@work.com.au")
+     ;; SMTP settings
+     (smtpmail-smtp-user "michael@work.com.au")
+     (smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil)))
+     (smtpmail-auth-credentials (expand-file-name "~/.authinfo2.gpg"))
+     (smtpmail-default-smtp-server "smtp.gmail.com")
+     (smtpmail-smtp-server "smtp.gmail.com")
+     (smtpmail-smtp-service 587)
+     (smtpmail-debug-info t))
+    ("personal"
+     ;; Signature
+     (user-full-name "Michael")
+     (mu4e-compose-signature
+      (concat
+       "Mickn"
+       ))
+     ;; Folder settings
+     (mu4e-sent-folder "/Personal/[Gmail].Sent Mail")
+     (mu4e-drafts-folder "/Personal/[Gmail].Drafts")
+     (user-mail-address "<my email>@gmail.com")
+     ;; SMTP settings
+     (smtpmail-smtp-user "<my email>@gmail.com")
+     (smtpmail-starttls-credentials '(("smtp.gmail.com" "587" nil nil)))
+     (smtpmail-auth-credentials (expand-file-name "~/.authinfo2.gpg"))
+     (smtpmail-default-smtp-server "smtp.gmail.com")
+     (smtpmail-smtp-server "smtp.gmail.com")
+     (smtpmail-smtp-service 587)
+     (smtpmail-debug-info t)
+     )))
+
+;; Prompt user for 'from address' selection
+(defun my-mu4e-set-account ()
+  "Set the account for composing a message."
+  (let* ((account
+          (if mu4e-compose-parent-message
+              (let ((maildir (mu4e-message-field mu4e-compose-parent-message :maildir)))
+                (string-match "/\(.*?\)/" maildir)
+                (match-string 1 maildir))
+            (completing-read (format "Compose with account: (%s) "
+                                     (mapconcat #'(lambda (var) (car var))
+                                                   my-mu4e-account-alist "/"))
+                             (mapcar #'(lambda (var) (car var))
+                                       my-mu4e-account-alist)
+                             nil t nil nil (caar my-mu4e-account-alist))))
+         (account-vars (cdr (assoc account my-mu4e-account-alist))))
+    (if account-vars
+        (mapc #'(lambda (var)
+                  (set (car var) (cadr var)))
+                account-vars)
+      (error "No email account found"))))
+
+;; Prompt user just before composing an email
+(add-hook 'mu4e-compose-pre-hook 'my-mu4e-set-account)
+	
+echo "test" | /usr/sbin/ssmtp <my email>@gmail.com
+	
+machine imap.gmail.com login <my email>@gmail.com port 993 password <my pass>
+machine smtp.gmail.com login <my email>@gmail.com port 587 password <my pass>

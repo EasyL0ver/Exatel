@@ -1,0 +1,44 @@
+wp_title(): <?php wp_title('', true,''); ?><br>
+the_title(): <?php the_title(); ?><br>
+single_post_title(): <?php single_post_title(); ?><br>
+$post->post_name: <?php echo 'page name: ' . $post->post_name; ?><br>
+ispage? : <?php echo (is_page() ? 'yes' : 'no'); ?><br>
+ispage(about-us) : <?php echo (is_page('about-us') ? 'yes' : 'no'); ?><br>
+ispage(About Us) : <?php echo (is_page('About Us') ? 'yes' : 'no'); ?>
+	
+wp_title() About UsAt The Tabernacle
+the_title(): About Us
+single_post_title(): About Us
+$post->post_name: page name: about-us
+ispage? : yes
+ispage(about-us) : yes
+ispage(About Us) : yes
+	
+wp_title(): At The Tabernacle My site motto here
+the_title(): Home
+single_post_title(): Home
+$post->post_name: page name: home
+ispage? : yes
+ispage(about-us) : no
+ispage(About Us) : no
+	
+wp_title(): Hello world!At The Tabernacle
+the_title(): Hello world!
+single_post_title(): Hello world!
+$post->post_name: page name: hello-world
+ispage? : no
+ispage(about-us) : no
+ispage(About Us) : no
+	
+<head> 
+ <title> post title here </title> 
+</head>
+	
+<head>
+ <title> <?php wp_title('', true,''); ?> </title>
+</head>
+	
+function theme_slug_setup() {
+add_theme_support( 'title-tag' );
+}
+add_action( 'after_setup_theme', 'theme_slug_setup' );

@@ -1,0 +1,25 @@
+       private int speed;
+
+        public int Speed
+        {
+            get
+            {
+                return speed;
+            }
+
+            set
+            {
+                //a
+                if (value < 0)
+                    speed = 0;
+                else
+                    speed = value;
+                
+                //b
+                /*
+                if(value < 0)
+                    throw new ArgumentOutOfRangeException(
+                        $"{nameof(value)} must be greater or equal to zero.");
+                 */ 
+            }
+        }

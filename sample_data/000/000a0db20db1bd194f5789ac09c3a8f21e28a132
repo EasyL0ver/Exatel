@@ -1,0 +1,86 @@
+etna@linux-7ruw:~> cd .local/share/sddm/
+etna@linux-7ruw:~/.local/share/sddm> cat wayland-session.log
+startplasmacompositor: Starting up...
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.freedesktop.systemd1' requested by ':1.1' (uid=1000 pid=2145 comm="dbus-update-activation-environment --systemd --all")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activated service 'org.freedesktop.systemd1' failed: Process org.freedesktop.systemd1 exited with status 1
+dbus-update-activation-environment: warning: error sending to systemd: org.freedesktop.DBus.Error.Spawn.ChildExited: Process org.freedesktop.systemd1 exited with status 1
+No backend specified through command line argument, trying auto resolution
+_XSERVTransSocketUNIXCreateListener: ...SocketCreateListener() failed
+_XSERVTransMakeAllCOTSServerListeners: server already running
+glamor: EGL version 1.4 (DRI2):
+Configuring Lock Action
+org.kde.knotifications: env says KDE is running but SNI unavailable -- check KDE_FULL_SESSION and XDG_CURRENT_DESKTOP
+kf5.kcoreaddons.desktopparser: Property type "Url" is not a known QVariant type. Found while parsing property definition for "X-KWin-Video-Url" in "/usr/share/kservicetypes5/kwineffect.desktop"
+Session path: "/org/freedesktop/login1/session/_33"
+Using Wayland-EGL
+Using the 'xdg-shell-v6' shell integration
+startplasma: Starting up...
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.freedesktop.systemd1' requested by ':1.6' (uid=1000 pid=2202 comm="dbus-update-activation-environment --systemd --all")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activated service 'org.freedesktop.systemd1' failed: Process org.freedesktop.systemd1 exited with status 1
+dbus-update-activation-environment: warning: error sending to systemd: org.freedesktop.DBus.Error.Spawn.ChildExited: Process org.freedesktop.systemd1 exited with status 1
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='ca.desrt.dconf' requested by ':1.12' (uid=1000 pid=2228 comm="/usr/bin/gsettings set org.gnome.desktop.a11y.appl")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'ca.desrt.dconf'
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/disable_kmix.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/fonts_akregator.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/fonts_global.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/fonts_global_toolbar.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/fonts_kate.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/gtkbreeze5.5.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/kcalcrc.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/kde4breeze.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/knotes.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/konversation.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/krdb_libpathwipe.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/krunnerplugins.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/kscreenlocker.upd' for new updates
+2018-12-17T23:36:58 Checking update-file '/usr/share/kconf_update/okular.upd' for new updates
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.freedesktop.Tracker1' requested by ':1.23' (uid=1000 pid=2286 comm="/usr/bin/gdbus call -e -d org.freedesktop.DBus -o ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.kde.ActivityManager' requested by ':1.19' (uid=1000 pid=2245 comm="/usr/bin/plasmashell ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.gtk.vfs.Daemon' requested by ':1.24' (uid=1000 pid=2295 comm="/usr/lib/tracker-store ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.gtk.vfs.Daemon'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.freedesktop.Tracker1'
+(uint32 1,)
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.gtk.vfs.UDisks2VolumeMonitor' requested by ':1.27' (uid=1000 pid=2284 comm="/usr/lib/tracker-miner-fs ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.kde.ActivityManager'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.gtk.vfs.UDisks2VolumeMonitor'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.gtk.vfs.AfcVolumeMonitor' requested by ':1.27' (uid=1000 pid=2284 comm="/usr/lib/tracker-miner-fs ")
+Cleaning up...
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.gtk.vfs.AfcVolumeMonitor'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.gtk.vfs.MTPVolumeMonitor' requested by ':1.27' (uid=1000 pid=2284 comm="/usr/lib/tracker-miner-fs ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.gtk.vfs.MTPVolumeMonitor'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.gtk.vfs.GPhoto2VolumeMonitor' requested by ':1.27' (uid=1000 pid=2284 comm="/usr/lib/tracker-miner-fs ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.gtk.vfs.GPhoto2VolumeMonitor'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.gtk.vfs.GoaVolumeMonitor' requested by ':1.27' (uid=1000 pid=2284 comm="/usr/lib/tracker-miner-fs ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.gnome.OnlineAccounts' requested by ':1.38' (uid=1000 pid=2433 comm="/usr/lib/gvfs/gvfs-goa-volume-monitor ")
+goa-daemon-Message: goa-daemon version 3.26.2 starting
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.gnome.Identity' requested by ':1.39' (uid=1000 pid=2437 comm="/usr/lib/goa-daemon ")
+
+HP Linux Imaging and Printing System (ver. 3.17.9)
+System Tray Status Service ver. 2.0
+
+Copyright (c) 2001-15 HP Development Company, LP
+This software comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to distribute it
+under certain conditions. See COPYING file for more details.
+
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.gnome.OnlineAccounts'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.gtk.vfs.GoaVolumeMonitor'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.gnome.Identity'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.bluez.obex' requested by ':1.9' (uid=1000 pid=2212 comm="kded5 [kdeinit5]                                  ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.bluez.obex'
+
+HP Linux Imaging and Printing System (ver. 3.17.9)
+HPLIP upgrade latest version ver. 1.0
+
+Copyright (c) 2001-15 HP Development Company, LP
+This software comes with ABSOLUTELY NO WARRANTY.
+This is free software, and you are welcome to distribute it
+under certain conditions. See COPYING file for more details.
+
+error: HPLIP upgrade is disabled by openSUSE for security reasons, see https://bugzilla.novell.com/show_bug.cgi?id=853405 - if you like to upgrade HPLIP, use an openSUSE software package manager like YaST or zypper.
+
+Done.
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.gnome.GConf' requested by ':1.47' (uid=1000 pid=2497 comm="/usr/lib/pulse/gconf-helper ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.gnome.GConf'
+dbus-daemon[2117]: [session uid=1000 pid=2117] Activating service name='org.kde.kuiserver' requested by ':1.19' (uid=1000 pid=2245 comm="/usr/bin/plasmashell ")
+dbus-daemon[2117]: [session uid=1000 pid=2117] Successfully activated service 'org.kde.kuiserver'

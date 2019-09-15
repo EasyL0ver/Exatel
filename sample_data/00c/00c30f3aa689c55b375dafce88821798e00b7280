@@ -1,0 +1,24 @@
+const httpOptions = {
+      headers: new HttpHeaders({
+          'Content-Type':  'application/json'
+          ,'Authorization' : "Bearer " + token
+        })
+      };
+
+      var payload = {
+        "fields": {
+          "Title" : name
+        }
+      }
+
+
+     return this.http.post(this.sharePointHost + '/items',JSON.stringify(payload), httpOptions)
+	
+const httpOptions = {
+      headers: new HttpHeaders({
+          'Accept':  'application/json;odata.metadata=minimal'
+          ,'Authorization' : "Bearer " + token
+        })
+      };
+
+    return this.http.get(this.sharePointHost + '?select=id,name,lastModifiedDateTime&expand=items(expand=fields(select=Title,Attachments))', httpOptions)

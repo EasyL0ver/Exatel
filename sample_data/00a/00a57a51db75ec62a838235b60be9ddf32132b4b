@@ -1,0 +1,257 @@
+wait(2.0)
+local char = game.Players.LocalPlayer.Character
+for i,v in pairs(char:children()) do
+    if v:IsA("Accessory") then
+        v:Destroy()
+    end
+end
+local aura = Instance.new("ParticleEmitter",game.Players.LocalPlayer.Character.Torso)
+aura.Size = NumberSequence.new(0)
+aura.Lifetime = NumberRange.new(0)
+aura.LightEmission = 0
+local jun = game.Players.LocalPlayer
+local p = game.Players.LocalPlayer
+local char = p.Character
+local mouse = p:GetMouse()
+local larm = char["Left Arm"]
+local rarm = char["Right Arm"]
+local lleg = char["Left Leg"]
+local rleg = char["Right Leg"]
+local hed = char.Head
+local torso = char.Torso
+local hum = char.Humanoid
+local cam = game.Workspace.CurrentCamera
+local root = char.HumanoidRootPart
+local deb = false
+local shot = 0
+local debris=game:service"Debris"
+local l = game:GetService("Lighting")
+local rs = game:GetService("RunService").RenderStepped
+
+ypcall(function()
+shirt = Instance.new("Shirt", char)
+shirt.Name = "Shirt"
+pants = Instance.new("Pants", char)
+pants.Name = "Pants"
+char.Shirt.ShirtTemplate = "http://www.roblox.com/asset/?id=393374766"
+char.Pants.PantsTemplate = "http://www.roblox.com/asset/?id=237836991"
+end)
+char["Body Colors"].HeadColor = BrickColor.new("Pastel brown")
+char["Body Colors"].TorsoColor = BrickColor.new("Pastel brown")
+char["Body Colors"].LeftArmColor = BrickColor.new("Pastel brown")
+char["Body Colors"].RightArmColor = BrickColor.new("Pastel brown")
+Hair99 = Instance.new("Part")
+
+Hair99.Parent = jun.Character
+Hair99.Name = "Hair"
+Hair99.formFactor = "Symmetric"
+Hair99.Size = Vector3.new(1, 1, 1)
+Hair99.CFrame = jun.Character.Head.CFrame
+Hair99:BreakJoints()
+Hair99.CanCollide = false
+Hair99.TopSurface = "Smooth"
+Hair99.BottomSurface = "Smooth"
+Hair99.BrickColor = BrickColor.new("New Yeller")
+Hair99.Transparency = 1
+
+Weld = Instance.new("Weld") 
+Weld.Part0 = jun.Character.Head 
+Weld.Part1 = Hair99
+Weld.Parent = jun.Character.Head 
+Weld.C0 = CFrame.new(0, 0.26, 0.06)*CFrame.fromEulerAnglesXYZ(0, 0, 0) 
+
+Hair7 = Instance.new("Part")
+Hair7.Parent = jun.Character
+Hair7.Name = "Hair"
+Hair7.CanCollide = false
+Hair7.Locked = true
+Hair7.TopSurface = "Smooth"
+Hair7.BottomSurface = "Smooth"
+Hair7.formFactor = "Symmetric"
+Hair7.Material = "Neon"
+Hair7.BrickColor = BrickColor.new("Black")
+Hair7.CFrame = jun.Character.Torso.CFrame
+Hair7.Size = Vector3.new(1, 1, 1)
+Hair7.Transparency = 1
+
+Mesh = Instance.new("SpecialMesh")
+Mesh.Parent = Hair99
+Mesh.MeshType = "Sphere"
+Mesh.Offset = Vector3.new(0, 0.1, 0.1)
+Mesh.Scale = Vector3.new(1.2, 1.2, 1.2)
+
+
+Weld = Instance.new("Weld")
+Weld.Parent = jun.Character.Head
+Weld.Part0 = jun.Character.Head
+Weld.Part1 = Hair7
+Weld.C0 = CFrame.new(0, 1, 0)
+
+Mesh = Instance.new("SpecialMesh")
+Mesh.Offset = Vector3.new(0.2, -0.2, 0.2)
+Mesh.Parent = Hair7
+Mesh.Scale = Vector3.new(1, 1, 1)
+Mesh.MeshType = "FileMesh"
+Mesh.MeshId = "http://www.roblox.com/asset/?id=476757756"
+Mesh.TextureId = ""
+
+
+for i = 1, 6 do
+Hair99.Transparency = Hair99.Transparency - .2
+Hair7.Transparency = Hair7.Transparency - .2
+wait(0)
+end
+local m = Instance.new("Model")
+game.Players.LocalPlayer.Character.Head.face.Texture = "rbxassetid://0"
+local p = game.Players.LocalPlayer
+local char = p.Character
+local mouse = p:GetMouse()
+local larm = char["Left Arm"]
+local rarm = char["Right Arm"]
+local lleg = char["Left Leg"]
+local rleg = char["Right Leg"]
+local hed = char.Head
+local torso = char.Torso
+local hum = char.Humanoid
+local cam = game.Workspace.CurrentCamera
+local root = char.HumanoidRootPart
+local deb = false
+local shot = 0
+local debris=game:service"Debris"
+local l = game:GetService("Lighting")
+local rs = game:GetService("RunService").RenderStepped
+
+
+local p = game.Players.LocalPlayer
+local char = p.Character
+z = Instance.new("Sound", char)
+z.SoundId = "rbxassetid://740161429"
+z.Pitch = 1
+z.Volume = 999
+wait(.1)
+z:Play()
+Vegeta = Instance.new("Model",game.Players.LocalPlayer.Character.Torso)
+Vegeta.Name = "Vegeta"
+humanoid = Instance.new("Humanoid",game.Players.LocalPlayer.Character.Torso.Vegeta)
+shirt = Instance.new("Shirt",game.Players.LocalPlayer.Character.Torso.Vegeta)
+shirt.Name = "Shirt"
+pants = Instance.new("Pants",game.Players.LocalPlayer.Character.Torso.Vegeta)
+pants.Name = "Pants"
+torso = Instance.new("Part",game.Players.LocalPlayer.Character.Torso.Vegeta)
+torso.Size = Vector3.new(2,2,1)
+torso.Rotation = Vector3.new(0,180,0)
+torso.Position = Vector3.new(0,4,0)
+torso.BrickColor = BrickColor.new("Pastel brown")
+torso.Name = "Torso"
+head = Instance.new("Part",game.Players.LocalPlayer.Character.Torso.Vegeta)
+head.Size = Vector3.new(1.25,1.25,1.25)
+head.BrickColor = BrickColor.new("Pastel brown")
+head.Name = "Head"
+head.Position = Vector3.new(0,6,0)
+headmesh = Instance.new("SpecialMesh",head)
+headmesh.MeshType = "Head"
+larm = Instance.new("Part",game.Players.LocalPlayer.Character.Torso.Vegeta)
+larm.Size = Vector3.new(1,2,1)
+larm.BrickColor = BrickColor.new("Pastel brown")
+larm.Name = "Left Arm"
+larm.Position = Vector3.new(-2,4,0)
+rarm = Instance.new("Part",game.Players.LocalPlayer.Character.Torso.Vegeta)
+rarm.Size = Vector3.new(1,2,1)
+rarm.BrickColor = BrickColor.new("Pastel brown")
+rarm.Name = "Right Arm"
+rarm.Position = Vector3.new(2,4,0)
+lleg = Instance.new("Part",game.Players.LocalPlayer.Character.Torso.Vegeta)
+lleg.Size = Vector3.new(1,2,1)
+lleg.Name = "Left Leg"
+lleg.Position = Vector3.new(1,2,0)
+rleg = Instance.new("Part",game.Players.LocalPlayer.Character.Torso.Vegeta)
+rleg.Size = Vector3.new(1,2,1)
+rleg.Name = "Right Leg"
+rleg.Position = Vector3.new(-1,2,0)
+headweld = Instance.new("Weld",game.Players.LocalPlayer.Character.Torso.Vegeta.Head)
+headweld.Part0 = game.Players.LocalPlayer.Character.Torso.Vegeta.Head
+headweld.Part1 = torso
+headweld.C0 = CFrame.new(0, -1.5, 0)
+larmweld = Instance.new("Weld",game.Players.LocalPlayer.Character.Torso.Vegeta.Torso)
+larmweld.Part0 = game.Players.LocalPlayer.Character.Torso.Vegeta.Torso
+larmweld.Part1 = larm
+larmweld.C0 = CFrame.new(1.5, 0, 0)
+rarmweld = Instance.new("Weld",game.Players.LocalPlayer.Character.Torso.Vegeta.Torso)
+rarmweld.Part0 = game.Players.LocalPlayer.Character.Torso.Vegeta.Torso
+rarmweld.Part1 = rarm
+rarmweld.C0 = CFrame.new(-1.5, 0, 0)
+rlegweld = Instance.new("Weld",game.Players.LocalPlayer.Character.Torso.Vegeta.Torso)
+rlegweld.Part0 = game.Players.LocalPlayer.Character.Torso.Vegeta.Torso
+rlegweld.Part1 = rleg
+rlegweld.C0 = CFrame.new(-0.5, -2, 0)
+llegweld = Instance.new("Weld",game.Players.LocalPlayer.Character.Torso.Vegeta.Torso)
+llegweld.Part0 = game.Players.LocalPlayer.Character.Torso.Vegeta.Torso
+llegweld.Part1 = lleg
+llegweld.C0 = CFrame.new(0.5, -2, 0)
+modelhair = Instance.new("Model",game.Players.LocalPlayer.Character.Torso.Vegeta)
+modelhair.Name = "Hair"
+hair = Instance.new("Part",game.Players.LocalPlayer.Character.Torso.Vegeta.Hair)
+hair.Name = "hair"
+hair.BrickColor = BrickColor.new("Black")
+hairmesh = Instance.new("SpecialMesh",hair)
+hairmesh.Scale = Vector3.new(7,7,7)
+hairmesh.Offset = Vector3.new(0, 0.8, 0.7)
+hairmesh.MeshType = "FileMesh"
+hairmesh.MeshId = "http://www.roblox.com/asset/?id=560180459"
+hairweld = Instance.new("Weld",game.Players.LocalPlayer.Character.Torso.Vegeta.Hair)
+hairweld.Part0 = game.Players.LocalPlayer.Character.Torso.Vegeta.Head
+hairweld.Part1 = hair
+hairweld.C0 = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+npctoplayer = Instance.new("Weld",game.Players.LocalPlayer.Character.Torso)
+npctoplayer.Part0 = game.Players.LocalPlayer.Character.Torso
+npctoplayer.Part1 = torso
+npctoplayer.C0 = CFrame.new(5, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+game.Players.LocalPlayer.Character.Torso.Vegeta.Shirt.ShirtTemplate = "http://www.roblox.com/asset/?id=268667762"
+game.Players.LocalPlayer.Character.Torso.Vegeta.Pants.PantsTemplate = "http://www.roblox.com/asset/?id=268667843"
+hum.WalkSpeed = 0
+
+
+earring1 = Instance.new("Part",game.Players.LocalPlayer.Character.Head)
+earring1.Size = Vector3.new(2,2,2)
+earring1.CanCollide = false
+earring1.Position = earring1.Position + Vector3.new(999,999,999)
+earring1.BrickColor = BrickColor.new("New Yeller")
+earmesh1 = Instance.new("SpecialMesh",earring1)
+earmesh1.MeshType = "Sphere"
+earmesh1.Scale = Vector3.new(0.15,0.15,0.15)
+earweld1 = Instance.new("Weld",game.Players.LocalPlayer.Character.Head)
+earweld1.Part0 = game.Players.LocalPlayer.Character.Torso.Vegeta.Head
+earweld1.Part1 = earring1
+earweld1.C0 = CFrame.new(0.7, -0.2, 0)
+earring2 = Instance.new("Part",game.Players.LocalPlayer.Character.Torso.Vegeta.Head)
+earring2.Size = Vector3.new(2,2,2)
+earring2.Position = earring2.Position + Vector3.new(999,999,999)
+earring2.CanCollide = false
+earring2.BrickColor = BrickColor.new("New Yeller")
+earmesh2 = Instance.new("SpecialMesh",earring2)
+earmesh2.MeshType = "Sphere"
+earmesh2.Scale = Vector3.new(0.15,0.15,0.15)
+earweld2 = Instance.new("Weld",game.Players.LocalPlayer.Character.Head)
+earweld2.Part0 = game.Players.LocalPlayer.Character.Head
+earweld2.Part1 = earring2
+earweld2.C0 = CFrame.new(-0.7, -0.2, 0)
+wait(3)
+game:GetService("Chat"):Chat(game.Players.LocalPlayer.Character,"Lets Go","Red")
+wait(2.0)
+earring5 = Instance.new("Part",game.Players.LocalPlayer.Character.Head)
+earring5.Size = Vector3.new(2,2,2)
+earring5.CanCollide = false
+earring5.Position = earring5.Position + Vector3.new(999,999,999)
+earring5.BrickColor = BrickColor.new("White")
+earmesh5 = Instance.new("SpecialMesh",earring5)
+earmesh5.MeshType = "Sphere"
+earring5.TopSurface = "Smooth"
+earring5.BottomSurface = "Smooth"
+earmesh5.Scale = Vector3.new(0.15,0.15,0.15)
+earweld5 = Instance.new("Weld",game.Players.LocalPlayer.Character.Head)
+earweld5.Part0 = game.Players.LocalPlayer.Character.Torso
+earweld5.Part1 = earring5
+earweld5.C0 = CFrame.new(2.5, 1, 0)
+
+for i=1,5 do
+	wait(0.1)

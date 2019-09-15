@@ -1,0 +1,28 @@
+function getReport() {
+    $.ajax({
+        url: queryUrl,
+        method: "GET",
+        headers: {
+            "accept": "application/json; odata=verbose"
+        },
+        success: function(data) {
+            try {
+                $(data.d.results).each(function(index) {
+                   //process your logic
+                });
+                //Pagging
+                if (data.d.__next) {
+                    queryUrl = data.d.__next;
+                    getReport();
+                } else {                
+                 //last page       
+                }
+            } catch (err2) {                 
+                console.log(JSON.stringify(err2));
+            }
+        },
+        error: function(jQxhr, errorCode, errorThrown) {            
+            console.log(errorThrown);
+        }
+    });
+}

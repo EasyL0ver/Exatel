@@ -1,0 +1,6 @@
+"azureFile": {
+  "shareName": "string",
+  "readOnly": boolean,
+  "storageAccountName": "string",
+  "storageAccountKey": "string"
+},

@@ -1,0 +1,15 @@
+(1..100).each do |x|
+  File.open("Fizzbuzz.sh" , "a") do |y|
+    a = x
+    if x % 15 == 0
+      a = "FizzBuzz"
+    elsif x % 5 == 0
+      a = "Buzz"
+    elsif x % 3 == 0
+      a = "Fizz"
+    end
+    y.write "echo \"#{a}\";\n"
+  end
+end
+a = %x"bash Fizzbuzz.sh"
+puts a

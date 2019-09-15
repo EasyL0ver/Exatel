@@ -1,0 +1,11 @@
+@Override
+    public List<Entry> getToDoListEntries(String key, String path) throws IOException {
+        List<Entry> result = new ArrayList<>();
+        List<String> lines = read(path);
+
+        for (String line : lines) {
+            Entry entry = new Entry(line, ";");
+            result.add(entry);
+        }
+        return result;
+    }

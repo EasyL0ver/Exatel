@@ -1,0 +1,64 @@
+// WARNING: This output format is intended for human consumers only
+// and is subject to change without notice. Knock yourself out.
+fn x316576dlwfbgu50() -> ! {
+    let mut _0: !;                       // return place
+    let mut _1: &(&str, &str, u32, u32);
+    let mut _2: &(&str, &str, u32, u32);
+
+    bb0: {                              
+        StorageLive(_1);                 // bb0[0]: scope 0 at <::core::macros::panic macros>:4:1: 4:72
+        StorageLive(_2);                 // bb0[1]: scope 0 at <::core::macros::panic macros>:4:1: 4:72
+        _2 = &(promoted[0]: (&str, &str, u32, u32)); // bb0[2]: scope 0 at <::core::macros::panic macros>:4:1: 4:72
+        _1 = _2;                         // bb0[3]: scope 0 at <::core::macros::panic macros>:4:1: 4:72
+        const core::panicking::panic(move _1); // bb0[4]: scope 0 at <::core::macros::panic macros>:3:1: 4:74
+                                         // ty::Const
+                                         // + ty: for<'r> fn(&'r (&'static str, &'static str, u32, u32)) -> ! {core::panicking::panic}
+                                         // + val: Scalar(Bits { size: 0, bits: 0 })
+                                         // mir::Constant
+                                         // + span: <::core::macros::panic macros>:3:1: 3:30
+                                         // + ty: for<'r> fn(&'r (&'static str, &'static str, u32, u32)) -> ! {core::panicking::panic}
+                                         // + literal: Evaluated(Const { ty: for<'r> fn(&'r (&'static str, &'static str, u32, u32)) -> ! {core::panicking::panic}, val: Scalar(Bits { size: 0, bits: 0 }) })
+    }
+}
+
+promoted[0] in x316576dlwfbgu50: (&str, &str, u32, u32) = {
+    let mut _0: (&str, &str, u32, u32);  // return place
+    let mut _1: (&str, &str, u32, u32);
+
+    bb0: {                              
+        (_1.0: &str) = const "Hello world"; // bb0[0]: scope 0 at <::core::macros::panic macros>:4:3: 4:72
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Slice(Ptr(Pointer { alloc_id: AllocId(0), offset: Size { raw: 0 }, tag: () }), 11)
+                                         // mir::Constant
+                                         // + span: examples/panic-ramdump.rs:14:12: 14:25
+                                         // + ty: &str
+                                         // + literal: Evaluated(Const { ty: &str, val: Slice(Ptr(Pointer { alloc_id: AllocId(0), offset: Size { raw: 0 }, tag: () }), 11) })
+        (_1.1: &str) = const "examples/panic-ramdump.rs"; // bb0[1]: scope 0 at <::core::macros::panic macros>:4:3: 4:72
+                                         // ty::Const
+                                         // + ty: &str
+                                         // + val: Slice(Ptr(Pointer { alloc_id: AllocId(1), offset: Size { raw: 0 }, tag: () }), 25)
+                                         // mir::Constant
+                                         // + span: examples/panic-ramdump.rs:14:5: 14:27
+                                         // + ty: &str
+                                         // + literal: Evaluated(Const { ty: &str, val: Slice(Ptr(Pointer { alloc_id: AllocId(1), offset: Size { raw: 0 }, tag: () }), 25) })
+        (_1.2: u32) = const 14u32;       // bb0[2]: scope 0 at <::core::macros::panic macros>:4:3: 4:72
+                                         // ty::Const
+                                         // + ty: u32
+                                         // + val: Scalar(Bits { size: 4, bits: 14 })
+                                         // mir::Constant
+                                         // + span: examples/panic-ramdump.rs:14:5: 14:27
+                                         // + ty: u32
+                                         // + literal: Evaluated(Const { ty: u32, val: Scalar(Bits { size: 4, bits: 14 }) })
+        (_1.3: u32) = const 5u32;        // bb0[3]: scope 0 at <::core::macros::panic macros>:4:3: 4:72
+                                         // ty::Const
+                                         // + ty: u32
+                                         // + val: Scalar(Bits { size: 4, bits: 5 })
+                                         // mir::Constant
+                                         // + span: examples/panic-ramdump.rs:14:5: 14:27
+                                         // + ty: u32
+                                         // + literal: Evaluated(Const { ty: u32, val: Scalar(Bits { size: 4, bits: 5 }) })
+        _0 = move _1;                    // bb0[4]: scope 0 at <::core::macros::panic macros>:4:1: 4:72
+        return;                          // bb0[5]: scope 0 at <::core::macros::panic macros>:4:1: 4:72
+    }
+}

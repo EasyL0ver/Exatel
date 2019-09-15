@@ -1,0 +1,75 @@
+How to get words frequency in efficient way with ruby?
+"I was 09809 home -- Yes! yes!  You was"
+	
+{ 'yes' => 2, 'was' => 2, 'i' => 1, 'home' => 1, 'you' => 1 }
+	
+def get_words_f(myStr)
+    myStr=myStr.downcase.scan(/w/).to_s;
+    h = Hash.new(0)
+    myStr.split.each do |w|
+       h[w] += 1 
+    end
+    return h.to_a;
+end
+
+print get_words_f('I was 09809 home -- Yes! yes!  You was');
+	
+def count_words(string)
+  words = string.scan(/w+/)
+  frequency = Hash.new(0)
+  words.each { |word| frequency[word.downcase] += 1 }
+  return frequency
+end
+	
+print count_words('I was 09809 home -- Yes! yes!  You was');
+
+#{"i"=>1, "was"=>2, "09809"=>1, "home"=>1, "yes"=>2, "you"=>1}
+	
+def count_words(string)
+  Hash[
+    string.scan(/[a-zA-Z]+/)
+      .group_by{|word| word.downcase}
+      .map{|word, words|[word, words.size]}
+  ]
+ end
+
+puts count_words 'I was 09809 home -- Yes! yes!  You was'
+	
+def get_words(my_str)
+    my_str = my_str.scan(/w+/)
+    h = Hash.new(0)
+    my_str.each do |s|
+        s = s.downcase
+        if s !~ /^[0-9]*.?[0-9]+$/ 
+            h[s] += 1
+        end
+    end
+    return h
+end
+
+print get_words('I was there 1000 !')
+puts 'n'
+	
+sentence = "Ala ma kota za 5zł i 10$."
+splitter = SRX::Polish::WordSplitter.new(sentence)
+histogram = Hash.new(0)
+splitter.each do |word,type|
+  histogram[word.downcase] += 1 if type == :word
+end
+p histogram
+	
+class String
+  def frequency
+    self.scan(/[a-zA-Z]+/).each.with_object(Hash.new(0)) do |word, hash|
+      hash[word.downcase] += 1
+    end
+  end
+end
+	
+def count_words(string)
+  string.scan(/w+/).reduce(Hash.new{|i|0}){|res,w| res[w.downcase]+=1;res}
+end
+	
+def count_words(string)
+  string.scan(/w+/).each_with_object(Hash.new{|i|0}){|w,h| h[w.downcase]+=1}
+end

@@ -1,0 +1,58 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include "stdlib.h"
+#include "stdio.h"
+#include "conio.h"
+#include "math.h"
+#include "string.h"
+#include "locale.h"
+#include "windows.h"
+#include "time.h"
+
+int check(int fdiap, int bdiap,int mem_type) {
+	char c[255]; int y = 0;
+	do {
+		fgets(c, 255, stdin);
+		if (mem_type == 1)
+			y = atoi(c);
+		else
+			y = atof(c);
+		if ((y < fdiap) || (y > bdiap)) {
+			printf("Ви ввели помилкове значення, спробуйте ще раз\n");
+			y = 0;
+			continue;
+		}
+		break;
+	} while (y == 0);
+	return y;
+}
+float resistance_detect(float first, float second, int type) {
+	float main_r;
+	if (type==1)
+	{
+		main_r = first + second;
+		return main_r;
+	}
+	else
+	{
+		main_r = ((first*second) / (first + second));
+		return main_r;
+	}
+}
+int main()
+{
+	float r1, r2, res;
+	int type;
+	setlocale(LC_ALL, "RUS");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	printf("Введіть опір першого резисору : \n");
+	r1= check(0, 1000000, 2);
+	printf("Введіть опір другого резисору : \n");
+	r2= check(0, 1000000, 2);
+		printf("Введіь тип з'єднання резисорів (тільки число) \n 1.Послідовно \n 2.Паралельно \n");
+		type = check(1, 2, 1);
+	res = resistance_detect(r1, r2, type);
+	printf("Сума опорів при обраному з'єднанні %.2f Ом \n " , res);
+	system("pause");
+	return 0;
+}

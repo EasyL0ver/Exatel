@@ -1,0 +1,104 @@
+[UIView beginAnimations:nil context:NULL];
+[UIView setAnimationDuration:0.5];
+
+imageView.transform = CGAffineTransformMakeRotation(M_PI_2);
+
+[UIView commitAnimations];
+	
+[[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didRotate:)
+                                                  name:@"UIDeviceOrientationDidChangeNotification" 
+                                                  object:nil];
+	
+- (void) didRotate:(NSNotification *)notification { 
+UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+
+/*
+DEVICE JUST ROTATED TO PORTRAIT MODE
+
+ orientation == UIDeviceOrientationFaceUp ||
+orientation == UIDeviceOrientationFaceDown
+
+ */
+if(orientation == UIDeviceOrientationPortrait) {
+
+
+
+
+
+/*
+DEVICE JUST ROTATED TO LANDSCAPE MODE
+ */
+}else if(orientation == UIInterfaceOrientationLandscapeLeft ||
+    orientation == UIInterfaceOrientationLandscapeRight) {
+
+
+
+
+
+
+}
+
+}
+	
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOr‌​ientation 
+{ 
+    return YES;
+}
+	
+#import "RotateViewController.h"
+
+@interface AppDelegate () {
+    UINavigationController* nc;
+}
+
+- (void)pushVC;
+- (void)openVC;
+
+@end
+
+@implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+    UIViewController* vc = [[UIViewController alloc] init];
+    vc.view.backgroundColor = [UIColor blueColor];
+    vc.title = @"Root";
+
+    UIButton* b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    b.frame = CGRectMake(50, 150, 220, 40);
+    [b.titleLabel setText:@"Push VC"];
+    [b addTarget:self action:@selector(pushVC) forControlEvents:UIControlEventTouchUpInside];
+    [vc.view addSubview:b];
+
+    b = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    b.frame = CGRectMake(50, 200, 220, 40);
+    [b.titleLabel setText:@"Modal VC"];
+    [b addTarget:self action:@selector(openVC) forControlEvents:UIControlEventTouchUpInside];
+    [vc.view addSubview:b];
+
+    nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    UITabBarController* tc = [[UITabBarController alloc] init];
+    [tc addChildViewController:nc];
+
+//  uncomment this line to see this work in a nav controller
+//  [self.window setRootViewController:nc];
+    [self.window setRootViewController:tc];
+
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    return YES;
+}
+
+- (void)openVC {
+    RotateViewController* rc = [[RotateViewController alloc] init];
+    [nc presentModalViewController:rc animated:YES];
+}
+
+- (void)pushVC {
+    RotateViewController* rc = [[RotateViewController alloc] init];
+    [nc pushViewController:rc animated:YES];
+}

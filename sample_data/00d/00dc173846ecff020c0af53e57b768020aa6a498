@@ -1,0 +1,73 @@
+// Zadanie 1
+
+        var guzik = document.querySelector('a.button');
+        
+        
+        guzik.addEventListener("click", function() {
+            
+            
+           var newListItem = document.createElement('li'),
+               list = document.querySelector('ul');
+            
+            // jesli ul nie ma potomków to dodaj wykorzystując metodę appendChild
+            if (list.firstElementChild == null) {
+                
+                var listCount = list.children.length;
+                    
+                newListItem.innerHTML = 'Element ' + (listCount+1)  + ' - w chwili dodania było ' + listCount + ' elementów';
+
+                list.appendChild(newListItem);
+           
+            // jesli wewnątrz ul w momencie dodanie znajdują się potomki to użyj mentody insertBefore
+            } else if (list.firstElementChild !== null) {
+                
+                
+                var firstChildOfUl = list.firstElementChild,
+                    listCount = list.children.length;                
+                
+                
+                newListItem.innerHTML = 'Element ' + (listCount+1)  + ' - w chwili dodania było ' + listCount + ' elementów';         
+                firstChildOfUl.parentElement.insertBefore(newListItem, firstChildOfUl.parentElement.firstElementChild);
+            }
+            
+            
+        });
+
+// Zadanie 2 
+
+        var guzik = document.querySelector('.button'),
+            tableElement = document.querySelector('table');
+        
+        
+        // klikam guzik 'dodaj przedmiot'
+        guzik.addEventListener("click", function(e) {
+            
+            e.stopImmediatePropagation();
+            
+            //zapisuję do zmiennych poszczególne inputy:                 
+            var orderIdElement = document.querySelector('#orderId'),
+                itemElement = document.querySelector('#item'),
+                quantityElement = document.querySelector('#quantity'), 
+            //pobieram wartości z wpisanych inputow i zapisuję je do zmiennych       
+                orderIdElementValue = orderIdElement.value,
+                itemElementValue = itemElement.value,                  
+                quantityElementValue = quantityElement.value;
+            
+            
+            //Klonuję istniejący TR wewnątrz tablicy aby móc dodać kolejny TR jako nowy element
+            var trToCopyElement = document.querySelector('table tr'),
+                newTableItemElement = trToCopyElement.cloneNode(true);
+            
+            
+           //przekazuję wartości z inputów do poszczególnych TD wewnątrz nowopowstałego sklonowanego TR 
+            
+            newTableItemElement.children[0].innerHTML = orderIdElementValue;
+            newTableItemElement.children[1].innerHTML = itemElementValue;
+            newTableItemElement.children[2].innerHTML = quantityElementValue;
+            
+            
+            // Dodaję newTableItemElement jako nowy Element wewnątrz tabeli
+            
+            tableElement.appendChild(newTableItemElement);
+            
+        });

@@ -1,0 +1,164 @@
+
+
+
+                 ATP  MAG               Price
+Buster Sword    | 18 |  2 |O=O         |    - | D:C
+Mythril Saber   | 23 |  4 |O=OO        | 1000 | Kalm
+Hardedge        | 32 |  6 |O=OO O      | 1500 | S: SOLDIER 3rd, Junon, Gongaga
+Force Stealer   | 36 |  7 |O OO        | 2200 | (Junon), North Corel, 2xAP
+Butterfly Edge  | 39 |  8 |O=OO=O      | 2800 | Cosmo Canyon
+Rune Blade      | 40 |  9 |O OO O      | 3800 | (Mt. Nibel), Junon-D2, 2xAP
+Enhance Sword   | 43 | 16 |O=OO=OO=OO=O|  12k | (Gaea's Cliff), Junon-D2
+Murasame        | 51 | 12 |O=OO=OO     | 6500 | Wutai
+Yoshiyuki       | 56 |  9 |O O         |    - | (Rocket Town)
+Organics        | 62 | 15 |O=OO=OO O   |  12k | Icicle Inn
+Nail Bat        | 70 |  - |            | 2800 | (Temple of the Ancients)
+Crystal Sword   | 76 | 19 |O=OO=OO=O   |  18k | Mideel
+Apocalypse      | 88 | 43 |O OO        |    - | (Ancient Forest), 3xAP, Spr+16
+Heaven's Cloud  | 93 | 31 |O OO OO O   |    - | (Gelnika)
+Ragnarök        | 97 | 43 |O=OO=OO=O   |    - | Proud Clod, Spr +35
+Ultima Weapon   |100 | 51 |O=OO=OO=OO=O|    - | Ultimate Weapon, 0 AP, Spr +24
+
+Leather Glove   | 13 |  - |O           |    - | D:T
+Metal Knuckle   | 18 |  1 |O=O         |  320 | Wall Market
+Mythril Claw    | 24 |  3 |O=OO        |  750 | Kalm
+Motor Drive     | 27 |  6 |O OO        |    - | (Costa del Sol), 2xAP
+Powersoul       | 28 |  7 |O OO O      | 4200 | (Mt. Nibel), 2xAP
+Platinum Fist   | 30 |  7 |O OO O      | 2700 | (Nibelheim), 2xAP
+Grand Glove     | 31 |  6 |O=OO O      | 1200 | S: Madouge, Junon
+Tiger Fang      | 38 |  8 |O=OO=O      | 2500 | Cosmo Canyon
+Master Fist     | 38 |  - |O OO OO O   |    - | (Midgar-D2)
+Kaiser Knuckle  | 44 | 13 |O=OO OO OO O|  15k | (Whirlwind Maze), Junon-D2
+Diamond Knuckle | 51 | 10 |O=OO=OO     | 5800 | Wutai
+Dragon Claw     | 62 | 13 |O=OO=OO O   |  10k | Icicle Inn
+Work Glove      | 68 |  - |            | 2200 | (Temple of the Ancients)
+Crystal Glove   | 75 | 16 |O=OO=OO=O   |  16k | Mideel
+God's Hand      | 86 | 34 |O=OO=O      |    - | Carry Armor, 255 Accy
+Premium Heart   | 99 | 32 |O=OO=OO=OO=O|    - | (Wall Market D2-3), 0 AP
+
+4-Point Shuriken| 23 |  6 |O=OO        |    - | D:Y
+Boomerang       | 30 |  7 |O=OO O      | 1400 | S: Formula, Junon
+Wind Slash      | 30 |  7 |O OO        | 2000 | (Cargo Ship), 2xAP
+Twin Viper      | 36 |  8 |O OO O      | 3200 | (Shinra Mansion), 2xAP
+Pinwheel        | 37 |  9 |O=OO=O      | 2600 | Cosmo Canyon
+Razor Ring      | 49 | 12 |O=OO=OO     | 6000 | Wutai
+Hawkeye         | 61 | 14 |O=OO=OO O   |  12k | Icicle Inn
+Magic Shuriken  | 64 |  - |O OO        | 6000 | (Wutai), Junon-D2
+Superball       | 68 | 10 |            | 3000 | (Fort Condor), Junon-D2
+Spiral Shuriken | 68 | 18 |O=OO OO OO O|  14k | Costa del Sol-D2
+Rising Sun      | 68 | 16 |O=OO=O      |    - | S: Diamond Weapon, 2xAP
+Crystal Cross   | 74 | 18 |O=OO=OO=O   |  18k | Mideel
+Oritsuru        | 90 | 38 |O=OO=OO OO O|    - | (Wutai - Leviathan Scales)
+Conformer       | 96 | 42 |O=OO=OO=OO=O|    - | (Gelnika), 0 AP
+
+Gatling Gun     | 14 |  - |O           |    - | D:B
+Assault Gun     | 17 |  1 |O=O         |  350 | Guard Scorpion, Wall Market
+Cannon Ball     | 23 |  2 |O=OO        |  950 | Kalm, SR
+W Machine Gun   | 30 |  3 |O OO        | 2000 | (Mt. Corel), 2xAP
+Atomic Scissors | 32 |  4 |O=OO O      | 1400 | S: Custom Sweeper, Junon, SR
+Enemy Launcher  | 35 |  7 |O=OO OO     | 3300 | (Shinra Mansion), Junon-D2
+Drill Arm       | 37 |  - |O OO O      | 3300 | (Rocket Town), 2xAP, SR
+Heavy Vulcan    | 39 |  8 |O=OO=O      | 2700 | Cosmo Canyon
+Chainsaw        | 52 | 10 |O=OO=OO     | 6300 | Wutai, SR
+Solid Bazooka   | 61 | 15 |O=OO=OO=OO=O|  16k | Costa del Sol-D2
+Rocket Punch    | 62 |  - |            | 3200 | (Temple of the Ancients), SR
+Microlaser      | 63 | 13 |O=OO=OO O   |  12k | Icicle Inn
+AM Cannon       | 77 | 16 |O=OO=OO=O   |  18k | Mideel
+Pile Banger     | 90 |  - |O=OO=OO=O   |    - | (Midgar-D2), 0 AP, SR
+Max Ray         | 97 | 30 |O=OO=OO=O   |    - | (Midgar-D2)
+Missing Score   | 98 | 49 |O=OO=OO=OO=O|    - | (Midgar-D2), 0 AP
+
+Spear           | 44 |  8 |O=OO=O      | 1200 | D:D, Junon-D2
+Slash Lance     | 56 | 10 |O=OO=OO     | 6500 | Wutai
+Viper Halberd   | 58 | 13 |O OO O      | 7000 | (Forgotten Capital), 2xAP
+Trident         | 60 | 12 |O OO OO O   | 7500 | (Temple of the Ancients)
+Javelin         | 62 | 12 |O=OO=OO     |    - | (Gaea's Cliff), 2xAP
+Mast Ax         | 64 | 15 |O=OO=OO O   |  13k | Icicle Inn
+Dragoon Lance   | 66 |  7 |O OO OO OO O| 6200 | (Wutai), Junon-D2
+Mop             | 68 |  3 |            | 3200 | (Bone Village), Junon-D2
+Partisan        | 78 | 17 |O=OO=OO=O   |  19k | Mideel
+Grow Lance      | 78 | 31 |O=OO=OO=O   |    - | (Midgar-D2)
+Scimitar        | 86 | 20 |O=O         |    - | (Underwater Reactor), 3xAP
+Spirit Lance    | 92 | 43 |O=OO=O      |    - | (Gelnika), Spr +20
+Venus Gospel    | 97 | 42 |O=OO=OO=OO=O|    - | (Rocket Town), 0 AP
+Flayer          |100 | 20 |O=OO=OO=O   |    - | (GS - Speed D2)
+
+Mythril Clip    | 24 |  6 |O=OO        | (800)| D:N, Junon
+Diamond Pin     | 33 |  8 |O=OO O      | 1300 | Junon
+Magic Comb      | 37 |  4 |O OO        | 2000 | (Fort Condor), Junon-D2, 2xAP
+Plus Barrette   | 39 | 12 |O OO O      | 3500 | (Mt. Nibel), 2xAP
+Silver Barrette | 40 | 10 |O=OO=O      | 2500 | Cosmo Canyon
+Gold Barrette   | 50 | 13 |O=OO=OO     | 6000 | Wutai
+Hairpin         | 57 | 15 |            | 6000 | (Wutai), Junon-D2, LR
+Centclip        | 58 | 22 |O OO OO OO O|  14k | Costa del Sol-D2
+Adaman Clip     | 60 | 15 |O=OO=OO O   |  11k | Icicle Inn
+Seraph Comb     | 68 | 14 |O OO O      |    - | (Cosmo Canyon)
+Crystal Comb    | 76 | 20 |O=OO=OO=O   |  17k | Mideel
+Spring Gun Clip | 87 | 55 |O=OO=OO=O   |    - | (Ancient Forest)
+Behemoth Horn   | 91 | 26 |O OO OO O   |    - | (Midgar-D2), 75 Accy
+Limited Moon    | 93 | 31 |O=OO=OO=OO=O|    - | (Cosmo Canyon-D3), 0 AP
+
+Quicksilver     | 38 | 10 |O=OO O      | 1000 | D:V, Junon-D2
+Peacemaker      | 38 |  8 |O=OO        | 3500 | (Kalm), 2xAP
+Sniper CR       | 42 |  7 |O=OO=O      | 3300 | (Mt. Nibel), Junon-D2
+Shotgun         | 48 | 12 |O=OO=O      |(3100)| Rocket Town
+Buntline        | 48 | 28 |O=OO=O      | 6800 | (Bone Village), 2xAP
+Shortbarrel     | 51 | 24 |O=OO=OO     | 6400 | Wutai
+Silver Rifle    | 62 |  - |            | 3000 | (Temple of the Ancients)
+Lariat          | 64 | 16 |O=OO=OO O   |  12k | Icicle Inn
+Long Barrel R   | 66 | 14 |O=OO=OO=OO=O|  13k | Costa del Sol-D2
+Winchester      | 73 | 18 |O=OO=OO=O   |  18k | Mideel
+Outsider        | 80 | 48 |O=OO=OO OO O|    - | (Gelnika)
+Supershot ST    | 97 | 52 |O=OO=OO=O   |    - | (Ancient Forest), 0 AP
+Death Penalty   | 99 | 34 |O=OO=OO=OO=O|    - | (Lucrecia's Cave), 0 AP
+
+Silver M-phone  | 28 | 14 |O OO OO OO O| 3300 | (Shinra Mansion), Junon-D2
+Black M-phone   | 31 | 10 |O OO O      | 2800 | (Cave of the Gi), 2xAP
+Yellow M-phone  | 36 |  8 |O=OO O      |  500 | D:S, Junon-D2
+White M-phone   | 35 |  8 |O OO        | 2300 | (Gongaga), 2xAP
+Green M-phone   | 41 |  9 |O=OO=O      | 2400 | Cosmo Canyon
+Blue M-phone    | 48 | 10 |O=OO=OO     | 5500 | Wutai
+Gold M-phone    | 58 | 28 |O=OO=OO=OO=O|  15k | Costa del Sol-D2
+Red M-phone     | 60 | 15 |O=OO=OO O   |  11k | Icicle Inn
+Trumpet Shell   | 68 |  2 |            | 3000 | (Temple of the Ancients)
+Crystal M-phone | 74 | 20 |O=OO=OO=O   |  18k | Mideel
+Starlight Phone | 88 | 31 |O=OO=OO=OO=O|    - | (Midgar-D2), Vit +30
+Battle Trumpet  | 95 |  - |O=OO=OO=O   |    - | (Underwater Reactor), 0 AP
+HP Shout        | 95 | 44 |O=OO=OO=OO=O|    - | (Midgar-D2), 0 AP
+
+Guard Stick     | 12 |  2 |O           |    - | D:A
+Mythril Rod     | 16 |  3 |O=O         |  370 | Wall Market
+Full Metal Staff| 22 |  4 |O=OO        |  800 | Kalm
+Wizard Staff    | 28 |  6 |O OO        | 1800 | (Mt. Corel), Junon-D2, 2xAP
+Striking Staff  | 32 |  7 |O=OO O      | 1300 | S: Eligor, Junon
+Wizer Staff     | 33 |  7 |O OO O      | 3200 | Gi Nattak, Junon-D2, 2xAP
+Fairy Tale      | 37 |  8 |O OO OO OO  | 2500 | Reno 2, Junon-D2
+Prism Staff     | 40 | 10 |O=OO=O      | 2600 | Cosmo Canyon
+Aurora Rod      | 51 | 14 |O=OO=OO     | 5800 | Wutai
+Princess Guard  | 52 | 22 |O=OO=OO=OO  |    - | (Temple of the Ancients)
+Umbrella        | 58 | 10 |            |    - | (GS - Speed D1)
+
+
+
+                 DFP  MDF* EVA  MEVA
+Precious Watch  |  - |  - |  - |  - |O OO OO OO O|    - | (GSaucer - ChocoboS)
+Wizard Bracelet |  6 | 85 |  3 |  3 |O=OO=OO=OO=O|  12k | Mideel
+Bronze Bangle   |  8 |  0 |  - |  - |            |    - | D:CBTA
+Iron Bangle     | 10 |  2 |  - |  - |O           | (160)| Sector 7 Slums
+Four Slots      | 12 | 10 |  - |  - |O OO O      |(1300)| Costa del Sol
+Titan Bangle    | 14 |  4 |  2 |  - |O O         |  280 | Sector 5 Slums
+Mythril Armlet  | 18 |  8 |  3 |  - |O=O         |  350 | Wall Market
+Platinum Bangle | 20 | 12 |  - |  - |O O         | 1800 | Costa del Sol,2xAP
+Carbon Bangle   | 27 | 14 |  3 |  - |O=OO        |  800 | S: Moth Slasher,CdS
+Shinra Beta     | 30 |  0 |  - |  - |O=OO O      |    - | S: Marine
+Silver Armlet   | 34 | 22 |  4 |  - |O=OO O      | 1300 | Cosmo Canyon
+Chocobracelet   | 35 | 10 | 38 | 10 |O OO O      |    - | (GSaucer - ChocoboS)
+Rune Armlet     | 43 | 24 |  5 |  - |O OO O      | 3700 | Bone Village, 2xAP
+Gold Armlet     | 46 | 28 |  4 |  - |O=OO=O      | 2000 | Rocket Town
+Edincoat        | 50 | 33 |  - |  - |O OO OO OO  | 8000 | Palmer,RocketTown-D2
+Aegis Armlet    | 55 | 86 | 15 | 50 |O=OO=O      |    - | (Midgar-D2)
+Diamond Bangle  | 57 | 37 |  6 |  - |O=OO=OO     | 3200 | Bone Village
+Dragon Armlet   | 58 | 47 |  3 |  2 |O=OO=OO=O   |    - | S: Dark Dragon
+Gigas Armlet    | 59 |  0 |  - |  - |O=OO=OO     |    - | S:Gigas, 0 AP,Str+30
+Minerva Band    | 60 | 57 |  8 |  - |O=OO=OO=O   |    - |(AncientFrst),S:Elena
+Escort Guard    | 62 | 55 |  5 |  - |O=OO=OO=O   |    - | (Gelnika)

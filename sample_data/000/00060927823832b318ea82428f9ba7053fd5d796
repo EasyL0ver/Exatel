@@ -1,0 +1,318 @@
+LOKI Build Report
+Class: Healer
+Level: 49
+
+Dual Wield
+Item Utility: 688.2
+Build Utility: 703.2
+Useable Utility: 701.8
+TOA Utility: 446.5
+PvE Utility:  0.0
+
+Statistic
+Strength: 0/73
+Constitution: 72/73
+Dexterity: 100/98
+Quickness: 0/73
+Intelligence: 0/73
+Piety: 96/98
+Charisma: 0/73
+Empathy: 0/73
+Hits: 242/246
+Power: 0/39
+
+Resistance
+Body: 25/25
+Cold: 25/25
+Heat: 24/25
+Energy: 24/25
+Matter: 21/25
+Spirit: 16/25+5
+Crush: 24/25
+Thrust: 25/25+3
+Slash: 23/25+2
+
+Skill
+Augmentation: 7/10
+Mending: 3/10
+
+Cap Increase
+Dexterity: 27/25
+Piety: 27/25
+Hits: 50/196
+Power: 15/49
+
+TOA Bonus
+Armour Factor: 20/49
+Power Pool: 26/39
+Debuff Effectiveness: 6/24
+Buff Effectiveness: 26/24
+Healing Effectiveness: 20/24
+Spell Duration: 21/24
+Casting Speed: 9/9
+Spell Range: 9/9
+Archery Range: 9/9
+Archery Speed: 9/9
+
+Chest (E Haub Healer):
+Imbue: 18.0
+   Acuity: 15
+   Slash: 5%
+   Thrust: 5%
+   Acuity (Cap Increase): 5
+   Healing Effectiveness: 5
+   Buff Effectiveness: 5
+Utility: 30.0
+TOA Utility: 30.0
+PvE Utility: 0.0
+
+Arms (Crafted):
+Imbue: 37.5/32 (Quality: 99)
+   Dexterity: 25
+   Constitution: 19
+   Energy: 7%
+   Body: 9%
+   Healing Effectiveness: 5
+Utility: 61.3
+TOA Utility: 10.0
+PvE Utility: 0.0
+
+Head (Crafted):
+Imbue: 37.5/32 (Quality: 99)
+   Crush: 9%
+   Heat: 9%
+   Cold: 9%
+   Constitution: 16
+   Constitution: 15
+Utility: 74.7
+TOA Utility: 0.0
+PvE Utility: 0.0
+
+Legs (Hunter SLAYER Arms):
+Imbue: 32.5
+   Dexterity: 22
+   Hits: 40
+   Cold: 5%
+   Heat: 5%
+   Spirit: 5%
+   Dexterity (Cap Increase): 5
+   Casting Speed: 1
+Utility: 54.7
+TOA Utility: 15.0
+PvE Utility: 0.0
+
+Hands (Crafted):
+Imbue: 37.0/32 (Quality: 99)
+   Crush: 7%
+   Hits: 60
+   Slash: 9%
+   Augmentation: 4
+   Healing Effectiveness: 5
+Utility: 67.0
+TOA Utility: 10.0
+PvE Utility: 0.0
+
+Feet (Crafted):
+Imbue: 37.0/32 (Quality: 99)
+   Hits: 52
+   Energy: 7%
+   Dexterity: 13
+   Thrust: 11%
+   Armour Factor: 10
+Utility: 57.7
+TOA Utility: 10.0
+PvE Utility: 0.0
+
+Right Hand (Frigid Soul Quencher):
+Imbue: 16.5
+   Dexterity: 22
+   Power Pool: 10
+   Crush: 1%
+   Thrust: 1%
+   Slash: 1%
+   Dexterity (Cap Increase): 5
+   Acuity (Cap Increase): 5
+   Power (Cap Increase): 5
+   Casting Speed: 4
+Utility: 20.7
+TOA Utility: 70.0
+PvE Utility: 0.0
+
+Left Hand (Runed Saga Etched Shield):
+Imbue: 12.5
+   Acuity: 15
+   Crush: 1%
+   Thrust: 1%
+   Slash: 1%
+   Body: 1%
+   Cold: 1%
+   Buff Effectiveness: 10
+   Dexterity (Cap Increase): 10
+   Acuity (Cap Increase): 10
+   Casting Speed: 2
+Utility: 20.0
+TOA Utility: 70.0
+PvE Utility: 0.0
+
+Neck (Public Awareness):
+Imbue: 38.0
+   Thrust: 7%
+   Slash: 7%
+   Crush: 6%
+   Body: 6%
+   Matter: 6%
+   Energy: 6%
+Utility: 76.0
+TOA Utility: 0.0
+PvE Utility: 0.0
+
+Cloak (Cloak of Heavenly Bodies):
+Imbue: 18.0
+   Dexterity: 18
+   Acuity: 18
+   Debuff Effectiveness: 6
+   Spell Duration: 10
+   Casting Speed: 2
+Utility: 24.0
+TOA Utility: 42.0
+PvE Utility: 0.0
+
+Jewel (AT):
+Imbue: 20.0
+   ALL magic skills: 3
+   Hits: 40
+   Armour Factor: 10
+   Acuity: 15
+Utility: 35.0
+TOA Utility: 10.0
+PvE Utility: 0.0
+
+Belt (Sash):
+Imbue: 0.0
+   Buff Effectiveness: 6
+   Spell Duration: 6
+   Power Pool: 5
+   Power (Cap Increase): 5
+   Spell Range: 5
+Utility: 0.0
+TOA Utility: 69.0
+PvE Utility: 0.0
+
+Left Ring (Construct Forged Ring):
+Imbue: 0.0
+   Power Pool: 5
+   Power (Cap Increase): 5
+   Buff Effectiveness: 5
+   Healing Effectiveness: 5
+   Spell Duration: 5
+   Dexterity (Cap Increase): 7
+   Acuity (Cap Increase): 7
+Utility: 0.0
+TOA Utility: 78.0
+PvE Utility: 0.0
+
+Right Ring (CTR):
+Imbue: 25.0
+   Body: 4%
+   Cold: 4%
+   Heat: 4%
+   Energy: 4%
+   Matter: 4%
+   Acuity: 15
+Utility: 50.0
+TOA Utility: 0.0
+PvE Utility: 0.0
+
+Left Wrist (Springtime Folly Bracer):
+Imbue: 41.0
+   Constitution: 22
+   Hits: 50
+   Cold: 6%
+   Heat: 6%
+   Matter: 6%
+   Spirit: 6%
+   Hits (Cap Increase): 50
+Utility: 75.2
+TOA Utility: 12.5
+PvE Utility: 0.0
+
+Right Wrist (Zo):
+Imbue: 24.0
+   Acuity: 18
+   Body: 5%
+   Matter: 5%
+   Spirit: 5%
+   Power Pool: 6
+   Spell Range: 4
+Utility: 42.0
+TOA Utility: 32.0
+PvE Utility: 0.0
+
+
+
+LOKI Craft Report
+Arms
+Imbue: 37.5/32 (Quality: 99)
+Flawless Vapor Essence Jewel (Dexterity: 25)
+	Kath Gem: 1, Essence of Life: 33, Swamp Fog: 9
+Faceted Earthen Essence Jewel (Constitution: 19)
+	Ros Gem: 1, Essence of Life: 25, Treant Blood: 7
+Imperfect Light Shielding Jewel (Energy: 7%)
+	Pal Gem: 1, Ground Draconic Scales: 21, Sun Light: 5
+Polished Dusty Shielding Jewel (Body: 9%)
+	Mon Gem: 1, Ground Draconic Scales: 26, Undead Ash and Holy Water: 6
+
+Head
+Imbue: 37.5/32 (Quality: 99)
+Polished Fiery Shielding Jewel (Crush: 9%)
+	Mon Gem: 1, Ground Draconic Scales: 26, Draconic Fire: 6
+Polished Heated Shielding Jewel (Heat: 9%)
+	Mon Gem: 1, Ground Draconic Scales: 26, Heat From an Unearthly Pyre: 6
+Polished Icy Shielding Jewel (Cold: 9%)
+	Mon Gem: 1, Ground Draconic Scales: 26, Frost From a Wasteland: 6
+Polished Earthen Essence Jewel (Constitution: 16)
+	Mon Gem: 1, Essence of Life: 21, Treant Blood: 6
+
+Hands
+Imbue: 37.0/32 (Quality: 99)
+Imperfect Fiery Shielding Jewel (Crush: 7%)
+	Pal Gem: 1, Ground Draconic Scales: 21, Draconic Fire: 5
+Precious Blood Essence Jewel (Hits: 60)
+	Zo Gem: 1, Essence of Life: 29, Giant Blood: 8
+Polished Watery Shielding Jewel (Slash: 9%)
+	Mon Gem: 1, Ground Draconic Scales: 26, Leviathan Blood: 6
+Flawed Airy Chaos Rune (Augmentation: 4)
+	Ee Gem: 1, Soot From Niflheim: 13, Air Elemental Essence: 4
+
+Feet
+Imbue: 37.0/32 (Quality: 99)
+Faceted Blood Essence Jewel (Hits: 52)
+	Ros Gem: 1, Essence of Life: 25, Giant Blood: 7
+Imperfect Light Shielding Jewel (Energy: 7%)
+	Pal Gem: 1, Ground Draconic Scales: 21, Sun Light: 5
+Imperfect Vapor Essence Jewel (Dexterity: 13)
+	Pal Gem: 1, Essence of Life: 17, Swamp Fog: 5
+Faceted Airy Shielding Jewel (Thrust: 11%)
+	Ros Gem: 1, Ground Draconic Scales: 31, Air Elemental Essence: 7
+
+
+Material Totals
+	Ee Gem: 1
+	Pal Gem: 4
+	Mon Gem: 6
+	Ros Gem: 3
+	Zo Gem: 1
+	Kath Gem: 1
+	Essence of Life: 150
+	Ground Draconic Scales: 224
+	Soot From Niflheim: 13
+	Draconic Fire: 11
+	Treant Blood: 13
+	Swamp Fog: 14
+	Air Elemental Essence: 11
+	Undead Ash and Holy Water: 6
+	Leviathan Blood: 6
+	Frost From a Wasteland: 6
+	Heat From an Unearthly Pyre: 6
+	Giant Blood: 15
+	Sun Light: 10

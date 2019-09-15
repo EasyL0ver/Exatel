@@ -1,0 +1,11 @@
+import memfiles 
+var
+	test_stdout: MemFile
+
+test_stdout = memfiles.open("{absolute_path_to_current_dir}/tests/fixtures/out_testdata")
+
+Output:
+filestuff.nim(5)		filestuff
+memfiles.nim(244)        open
+oserr.nim(110)           raiseOSError
+Unhandled exception: Invalid argument

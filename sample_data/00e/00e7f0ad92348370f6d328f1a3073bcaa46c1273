@@ -1,0 +1,128 @@
+me@home:/mnt/4TB/BBC/BBC.Attenborough.Specials$ tree -h
+.
+├── [4.0K]  BBC.David.Attenboroughs.Natural.Curiosities
+│   ├── [530M]  BBC.David.Attenboroughs.Natural.Curiosities.S04E01.Animal.Frankensteins.720p.HDTV-MVGroup.mp4
+│   ├── [686M]  BBC.David.Attenboroughs.Natural.Curiosities.S04E02.Finding.the.Way.720p.HDTV.x264.AAC-MVGroup.mp4
+│   ├── [683M]  BBC.David.Attenboroughs.Natural.Curiosities.S04E03.Extreme.Babies.720p.HDTV.x264.AAC-MVGroup.mp4
+│   ├── [698M]  BBC.David.Attenboroughs.Natural.Curiosities.S04E04.Curious.Counters.720p.HDTV.x264.AAC-MVGroup.mp4
+│   ├── [676M]  BBC.David.Attenboroughs.Natural.Curiosities.S04E05.Incredible.Shells.720p.HDTV.x264.AAC-MVGroup.mp4
+│   ├── [681M]  BBC.David.Attenboroughs.Natural.Curiosities.S04E06.Ferocious.Fighters.720p.HDTV.x264.AAC-MVGroup.mp4
+│   └── [535M]  BBC.David.Attenboroughs.Natural.Curiosities.Series.4.1of6.Animal.Frankensteins.REDO.720p.HDTV.x264.AAC-MVGroup.mp4
+├── [4.0K]  BBC.Frozen.Planet.with.David.Attenborough
+│   ├── [1.6G]  sir.david.attenborough.frozen.planet.s01e01.To.the.Ends.of.the.Earth.1080p.bluray.AAC.5.1.HEVC.x265.sharpysword.mkv
+│   ├── [1.6G]  sir.david.attenborough.frozen.planet.s01e02.Spring.1080p.bluray.AAC.5.1.HEVC.x265.sharpysword.mkv
+│   ├── [1.6G]  sir.david.attenborough.frozen.planet.s01e03.Summer.1080p.bluray.AAC.5.1.HEVC.x265.sharpysword.mkv
+│   ├── [1.6G]  sir.david.attenborough.frozen.planet.s01e04.Autumn.1080p.bluray.AAC.5.1.HEVC.x265.sharpysword.mkv
+│   ├── [1.6G]  sir.david.attenborough.frozen.planet.s01e05.Winter.1080p.bluray.AAC.5.1.HEVC.x265.sharpysword.mkv
+│   ├── [1.6G]  sir.david.attenborough.frozen.planet.s01e06.The.Last.Frontier.1080p.bluray.AAC.5.1.HEVC.x265.sharpysword.mkv
+│   ├── [1.6G]  sir.david.attenborough.frozen.planet.s01e07.EXTRAS.On.Thin.Ice.1080p.bluray.AAC.5.1.HEVC.x265.sharpysword.mkv
+│   └── [665M]  sir.david.attenborough.frozen.planet.s01e08.EXTRAS.Science.At.The.End.Of.The.World.1080p.bluray.AAC.HEVC.x265.sharpysword.mkv
+├── [4.0K]  BBC.Galapagos.with.David.Attenborough
+│   ├── [947M]  Galapagos.with.David.Attenborough.2013.S01E01.Origin.1080p.BluRay.ENG.AAC-5.1.10bit.HEVC.x265-KiEF.mkv
+│   ├── [997M]  Galapagos.with.David.Attenborough.2013.S01E02.Adaptation.1080p.BluRay.ENG.AAC-5.1.10bit.HEVC.x265-KiEF.mkv
+│   └── [1.1G]  Galapagos.with.David.Attenborough.2013.S01E03.Evolution.1080p.BluRay.ENG.AAC-5.1.10bit.HEVC.x265-KiEF.mkv
+├── [4.0K]  BBC.Great.Barrier.Reef.with.David.Attenborough
+│   ├── [1.7G]  1. Builders.mkv
+│   ├── [ 59K]  1. Builders.srt
+│   ├── [1.5G]  2. Visitors.mkv
+│   ├── [ 60K]  2. Visitors.srt
+│   ├── [1.6G]  3. Survival.mkv
+│   └── [ 58K]  3. Survival.srt
+├── [4.0K]  BBC.Kingdom of Plants.with.David.Attenborough
+│   ├── [1.8G]  David Attenborough's Kingdom of Plants.2D.HD1080.pt1.thebox.hannibal.mkv
+│   ├── [1.9G]  David.Attenboroughs.Kingdom.of.Plants.Part.2.1080p.HDTV.x264-FiSH.mkv
+│   └── [1.9G]  David.Attenboroughs.Kingdom.of.Plants.Part.3.1080p.HDTV.x264-FiSH.mkv
+├── [4.0K]  BBC.Life.Story.with.David.Attenborough
+│   ├── [2.0G]  Life Story (2014) - S01E01 - First Steps (1080p BluRay x265 Silence).mkv
+│   ├── [1.9G]  Life Story (2014) - S01E02 - Growing Up (1080p BluRay x265 Silence).mkv
+│   ├── [2.2G]  Life Story (2014) - S01E03 - Home (1080p BluRay x265 Silence).mkv
+│   ├── [2.0G]  Life Story (2014) - S01E04 - Power (1080p BluRay x265 Silence).mkv
+│   ├── [2.0G]  Life Story (2014) - S01E05 - Courtship (1080p BluRay x265 Silence).mkv
+│   └── [2.8G]  Life Story (2014) - S01E06 - Parenthood (1080p BluRay x265 Silence).mkv
+├── [4.0K]  BBC.Life.with.David.Attenborough
+│   ├── [2.1G]  Life (2009) - S01E01 - Challenges of Life (1080p BluRay x265 Silence).mkv
+│   ├── [2.6G]  Life (2009) - S01E02 - Reptiles and Amphibians (1080p BluRay x265 Silence).mkv
+│   ├── [2.7G]  Life (2009) - S01E03 - Mammals (1080p BluRay x265 Silence).mkv
+│   ├── [2.5G]  Life (2009) - S01E04 - Fish (1080p BluRay x265 Silence).mkv
+│   ├── [2.1G]  Life (2009) - S01E05 - Birds (1080p BluRay x265 Silence).mkv
+│   ├── [2.8G]  Life (2009) - S01E06 - Insects (1080p BluRay x265 Silence).mkv
+│   ├── [3.2G]  Life (2009) - S01E07 - Hunters and Hunted (1080p BluRay x265 Silence).mkv
+│   ├── [2.4G]  Life (2009) - S01E08 - Creatures of the Deep (1080p BluRay x265 Silence).mkv
+│   ├── [2.1G]  Life (2009) - S01E09 - Plants (1080p BluRay x265 Silence).mkv
+│   └── [2.4G]  Life (2009) - S01E10 - Primates (1080p BluRay x265 Silence).mkv
+├── [4.0K]  BBC.Micro.Monsters.with.David.Attenborough
+│   ├── [  98]  Downloaded From PublicHD.SE.txt
+│   ├── [2.2G]  micro.monsters.with.david.attenborough.s01e01.1080p.bluray.x264-redblade.mkv
+│   ├── [2.2G]  micro.monsters.with.david.attenborough.s01e02.1080p.bluray.x264-redblade.mkv
+│   ├── [2.2G]  micro.monsters.with.david.attenborough.s01e03.1080p.bluray.x264-redblade.mkv
+│   ├── [2.2G]  micro.monsters.with.david.attenborough.s01e04.1080p.bluray.x264-redblade.mkv
+│   ├── [2.2G]  micro.monsters.with.david.attenborough.s01e05.1080p.bluray.x264-redblade.mkv
+│   ├── [2.2G]  micro.monsters.with.david.attenborough.s01e06.1080p.bluray.x264-redblade.mkv
+│   └── [3.3G]  micro.monsters.with.david.attenborough.s01e07.1080p.bluray.x264-redblade.mkv
+├── [4.0K]  BBC.Natures.Great.Events.with.David.Attenborough
+│   ├── [1.9G]  Nature's Great Events (2009) - S01E01 - The Great Melt (1080p BluRay x265 Silence).mkv
+│   ├── [2.0G]  Nature's Great Events (2009) - S01E02 - The Great Salmon Run (1080p BluRay x265 Silence).mkv
+│   ├── [1.9G]  Nature's Great Events (2009) - S01E03 - The Great Migration (1080p BluRay x265 Silence).mkv
+│   ├── [2.1G]  Nature's Great Events (2009) - S01E04 - The Great Tide (1080p BluRay x265 Silence).mkv
+│   ├── [2.1G]  Nature's Great Events (2009) - S01E05 - The Great Flood (1080p BluRay x265 Silence).mkv
+│   └── [2.1G]  Nature's Great Events (2009) - S01E06 - The Great Feast (1080p BluRay x265 Silence).mkv
+├── [4.0K]  BBC.Planet.Earth.2.with.David.Attenborough
+│   ├── [1.5G]  Planet Earth II S01E01 Islands (1080p x265 10bit Tigole).mkv
+│   ├── [1.5G]  Planet Earth II S01E02 Mountains (1080p x265 10bit Tigole).mkv
+│   ├── [1.4G]  Planet Earth II S01E03 Jungles (1080p x265 10bit Tigole).mkv
+│   ├── [1.5G]  Planet Earth II S01E04 Deserts (1080p x265 10bit Tigole).mkv
+│   ├── [1.5G]  Planet Earth II S01E05 Grasslands (1080p x265 10bit Tigole).mkv
+│   └── [1.5G]  Planet Earth II S01E06 Cities (1080p x265 10bit Tigole).mkv
+├── [4.0K]  BBC.Planet.Earth.with.David.Attenborough
+│   ├── [914M]  Planet Earth S01E01 From Pole To Pole (1080p x265 10bit Tigole).mkv
+│   ├── [893M]  Planet Earth S01E02 Mountains (1080p x265 10bit Tigole).mkv
+│   ├── [918M]  Planet Earth S01E03 Fresh Water (1080p x265 10bit Tigole).mkv
+│   ├── [908M]  Planet Earth S01E04 Caves (1080p x265 10bit Tigole).mkv
+│   ├── [908M]  Planet Earth S01E05 Deserts (1080p x265 10bit Tigole).mkv
+│   ├── [914M]  Planet Earth S01E06 Ice Worlds (1080p x265 10bit Tigole).mkv
+│   ├── [912M]  Planet Earth S01E07 Great Plains (1080p x265 10bit Tigole).mkv
+│   ├── [914M]  Planet Earth S01E08 Jungles (1080p x265 10bit Tigole).mkv
+│   ├── [916M]  Planet Earth S01E09 Shallow Seas (1080p x265 10bit Tigole).mkv
+│   ├── [916M]  Planet Earth S01E10 Seasonal Forests (1080p x265 10bit Tigole).mkv
+│   └── [915M]  Planet Earth S01E11 Ocean Deep (1080p x265 10bit Tigole).mkv
+├── [4.0K]  BBC.The.Blue.Planet.2.with.David.Attenborough
+│   ├── [1.3G]  Blue.Planet.II.S01E01.1080p.BRRip.6CH.MkvCage.mkv
+│   ├── [1.3G]  Blue.Planet.II.S01E02.1080p.BRRip.6CH.MkvCage.mkv
+│   ├── [1.3G]  Blue.Planet.II.S01E03.1080p.BRRip.6CH.MkvCage.mkv
+│   ├── [1.3G]  Blue.Planet.II.S01E04.1080p.BRRip.6CH.MkvCage.mkv
+│   ├── [1.3G]  Blue.Planet.II.S01E05.1080p.BRRip.6CH.MkvCage.mkv
+│   ├── [1.3G]  Blue.Planet.II.S01E06.1080p.BRRip.6CH.MkvCage.mkv
+│   └── [1.3G]  Blue.Planet.II.S01E07.1080p.BRRip.6CH.MkvCage.mkv
+├── [4.0K]  BBC.The.Blue.Planet.with.David.Attenborough
+│   ├── [4.0K]  Featurettes
+│   │   ├── [645M]  Amazon Abyss.mkv
+│   │   ├── [606M]  Deep Trouble.mkv
+│   │   ├── [632M]  Dive to Shark Volcano.mkv
+│   │   ├── [ 78M]  Interview - Alastair Fothergill.mkv
+│   │   ├── [ 37M]  Interview - Doug Allan.mkv
+│   │   ├── [ 30M]  Interview - Penny Allen.mkv
+│   │   ├── [124M]  Making Waves - Coasts.mkv
+│   │   ├── [130M]  Making Waves - Coral Seas.mkv
+│   │   ├── [130M]  Making Waves - Frozen Seas.mkv
+│   │   ├── [117M]  Making Waves - Ocean World.mkv
+│   │   ├── [130M]  Making Waves - Open Ocean.mkv
+│   │   ├── [127M]  Making Waves - Seasonal Seas.mkv
+│   │   ├── [129M]  Making Waves - The Deep.mkv
+│   │   └── [131M]  Making Waves - Tidal Seas.mkv
+│   ├── [1.3G]  The Blue Planet S01E01 Ocean World (1080p x265 10bit Tigole).mkv
+│   ├── [1.3G]  The Blue Planet S01E02 Frozen Seas (1080p x265 10bit Tigole).mkv
+│   ├── [1.3G]  The Blue Planet S01E03 Open Ocean (1080p x265 10bit Tigole).mkv
+│   ├── [1.3G]  The Blue Planet S01E04 The Deep (1080p x265 10bit Tigole).mkv
+│   ├── [1.3G]  The Blue Planet S01E05 Seasonal Seas (1080p x265 10bit Tigole).mkv
+│   ├── [1.3G]  The Blue Planet S01E06 Coral Seas (1080p x265 10bit Tigole).mkv
+│   ├── [1.4G]  The Blue Planet S01E07 Tidal Seas (1080p x265 10bit Tigole).mkv
+│   └── [1.3G]  The Blue Planet S01E08 Coasts (1080p x265 10bit Tigole).mkv
+├── [4.0K]  BBC.The.Hunt.with.David.Attenborough
+│   ├── [1.9G]  The.Hunt.(2015).S01E01.1080p.Bluray.x265.10bit.AAC.5.1-LION[UTR].mkv
+│   ├── [1.1G]  The.Hunt.(2015).S01E02.1080p.Bluray.x265.10bit.AAC.5.1-LION[UTR].mkv
+│   ├── [1.6G]  The.Hunt.(2015).S01E03.1080p.Bluray.x265.10bit.AAC.5.1-LION[UTR].mkv
+│   ├── [2.3G]  The.Hunt.(2015).S01E04.1080p.Bluray.x265.10bit.AAC.5.1-LION[UTR].mkv
+│   ├── [1.6G]  The.Hunt.(2015).S01E05.1080p.Bluray.x265.10bit.AAC.5.1-LION[UTR].mkv
+│   ├── [2.4G]  The.Hunt.(2015).S01E06.1080p.Bluray.x265.10bit.AAC.5.1-LION[UTR].mkv
+│   └── [1.7G]  The.Hunt.(2015).S01E07.1080p.Bluray.x265.10bit.AAC.5.1-LION[UTR].mkv
+├── [4.0K] 

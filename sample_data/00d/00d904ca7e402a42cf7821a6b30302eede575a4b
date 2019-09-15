@@ -1,0 +1,10 @@
+To enable BS2B crossfeed on a particular PulseAudio output channel, you need to install `ladspa-bs2b`, which should also install `libbs2b`. Then, you need to figure out the name of the ALSA output that the headphones are connected to.
+
+To do that, run `pacmd list-sinks`, which should print out all of the available ALSA output sinks. Get the name of the relevant ALSA output sink (something like `alsa_output.usb-The_Name_of_the_Card-00.analog-stereo`) and use it, with the following line, at the bottom of `/etc/pulse/default.pa`.
+
+```text
+### Load the LADSPA plugin for BS2B
+load-module module-ladspa-sink sink_name=crossfeed master=alsa_output.usb-GFEC_ASSP_DigiHug_USB_Audio-01.analog-stereo plugin=bs2b label=bs2b control=700,6.0
+```
+
+Now, use the `crossfeed` sink to play and you should get BS2B crossfeed out of your headphone source.

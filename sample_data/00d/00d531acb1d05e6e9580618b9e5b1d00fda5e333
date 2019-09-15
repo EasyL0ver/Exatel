@@ -1,0 +1,100 @@
+00:09:41.785 : <ERROR> Missing wheel accessory data!
+00:09:41.785 : <ERROR> Missing wheel accessory data!
+00:09:41.785 : <ERROR> Missing wheel accessory data!
+00:09:41.785 : <ERROR> Missing wheel accessory data!
+00:09:41.850 : <ERROR> [fs] Failed to open file '/font/license_plate/belarus.font' in the read_only mode.
+00:09:41.850 : <ERROR> [resource_task] Can not open '/font/license_plate/belarus.font'
+00:09:41.850 : <ERROR> Missing wheel accessory removed!
+00:09:41.850 : <ERROR> Missing wheel accessory removed!
+00:09:41.850 : <ERROR> Missing wheel accessory removed!
+00:09:41.850 : <ERROR> Missing wheel accessory removed!
+00:09:41.851 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/doorstep/shape6.sii)!
+00:09:41.851 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:41.851 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:41.851 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:41.851 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:41.851 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:41.851 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:41.851 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/set_lglass/gps02sisltr.sisl_tr.sii)!
+00:09:41.851 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/curtain_f/bayraklar.sisl_tr.sii)!
+00:09:41.851 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/toyhang/wunderbaum02.sisl_tr.sii)!
+00:09:41.851 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/toystand/susisesi.sisl_tr.sii)!
+00:09:41.853 : <ERROR> Unable to find addon hookup (cancola.sisl.addon_hookup)
+00:09:41.853 : <ERROR> Unable to find addon hookup (cupsrlcvrt.sisl.addon_hookup)
+00:09:41.853 : <ERROR> Unable to find addon hookup (garfield.sisl.addon_hookup)
+00:09:41.853 : <ERROR> [fs] Failed to open file '/font/license_plate/belarus.font' in the read_only mode.
+00:09:41.853 : <ERROR> [font parse] can't open /font/license_plate/belarus.font
+00:09:41.853 : <ERROR> [font] Error parsing font file '/font/license_plate/belarus.font'.
+00:09:41.854 : <ERROR> [fs] Failed to open file '/font/license_plate/belarus.font' in the read_only mode.
+00:09:41.854 : <ERROR> [font parse] can't open /font/license_plate/belarus.font
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/truck/scania.streamline/accessory/doorstep/shape6.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/f_disc/50k_alcoa_mb.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/f_cover/front_hub_cover_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/f_hub/front_hub_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/f_nuts/front_nuts_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/f_disc/50k_alcoa_mb.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/f_cover/front_hub_cover_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/f_hub/front_hub_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/f_nuts/front_nuts_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/r_disc/50k_alcoa_mb.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/r_cover/rear_hub_cover_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/r_hub/rear_hub_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/r_nuts/rear_nuts_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/r_disc/50k_alcoa_mb.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/r_cover/rear_hub_cover_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/r_hub/rear_hub_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/r_nuts/rear_nuts_no.sii' in the read_only mode.
+00:09:42.169 : <ERROR> [fs] Failed to open file '/def/vehicle/r_tire/50k_315_80_gy.sii' in the read_only mode.
+00:09:42.170 : <ERROR> [fs] Failed to open file '/def/vehicle/r_tire/50k_315_80_gy.sii' in the read_only mode.
+00:09:42.170 : <ERROR> [fs] Failed to open file '/def/vehicle/f_tire/50k_315_80_gy.sii' in the read_only mode.
+00:09:42.170 : <ERROR> [fs] Failed to open file '/def/vehicle/f_tire/50k_315_80_gy.sii' in the read_only mode.
+00:09:42.170 : <ERROR> [fs] Failed to open file '/def/vehicle/truck/scania.streamline/accessory/set_lglass/gps02sisltr.sisl_tr.sii' in the read_only mode.
+00:09:42.170 : <ERROR> [fs] Failed to open file '/def/vehicle/truck/scania.streamline/accessory/curtain_f/bayraklar.sisl_tr.sii' in the read_only mode.
+00:09:42.170 : <ERROR> [fs] Failed to open file '/def/vehicle/truck/scania.streamline/accessory/toyhang/wunderbaum02.sisl_tr.sii' in the read_only mode.
+00:09:42.170 : <ERROR> [fs] Failed to open file '/def/vehicle/truck/scania.streamline/accessory/toystand/susisesi.sisl_tr.sii' in the read_only mode.
+00:09:42.633 : <ERROR> Missing accessory (/def/vehicle/f_disc/50k_alcoa_mb.sii) replaced by (/def/vehicle/f_disc/front_disc_02_matt_gray.sii).
+00:09:42.633 : <ERROR> Missing accessory (/def/vehicle/f_hub/front_hub_no.sii) replaced by (/def/vehicle/f_hub/front_hub_01.sii).
+00:09:42.633 : <ERROR> Missing accessory (/def/vehicle/f_nuts/front_nuts_no.sii) replaced by (/def/vehicle/f_nuts/front_nuts_01_steel.sii).
+00:09:42.633 : <ERROR> Missing accessory (/def/vehicle/f_disc/50k_alcoa_mb.sii) replaced by (/def/vehicle/f_disc/front_disc_02_matt_gray.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/f_hub/front_hub_no.sii) replaced by (/def/vehicle/f_hub/front_hub_01.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/f_nuts/front_nuts_no.sii) replaced by (/def/vehicle/f_nuts/front_nuts_01_steel.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/r_disc/50k_alcoa_mb.sii) replaced by (/def/vehicle/r_disc/rear_disc_01_matt_gray.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/r_hub/rear_hub_no.sii) replaced by (/def/vehicle/r_hub/rear_hub_01.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/r_nuts/rear_nuts_no.sii) replaced by (/def/vehicle/r_nuts/rear_nuts_01_steel.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/r_disc/50k_alcoa_mb.sii) replaced by (/def/vehicle/r_disc/rear_disc_01_matt_gray.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/r_hub/rear_hub_no.sii) replaced by (/def/vehicle/r_hub/rear_hub_01.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/r_nuts/rear_nuts_no.sii) replaced by (/def/vehicle/r_nuts/rear_nuts_01_steel.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/r_tire/50k_315_80_gy.sii) replaced by (/def/vehicle/r_tire/1.sii).
+00:09:42.634 : <ERROR> Missing accessory (/def/vehicle/r_tire/50k_315_80_gy.sii) replaced by (/def/vehicle/r_tire/1.sii).
+00:09:42.635 : <ERROR> Missing accessory (/def/vehicle/f_tire/50k_315_80_gy.sii) replaced by (/def/vehicle/f_tire/1.sii).
+00:09:42.635 : <ERROR> Missing accessory (/def/vehicle/f_tire/50k_315_80_gy.sii) replaced by (/def/vehicle/f_tire/1.sii).
+00:09:42.635 : <ERROR> Missing wheel accessory data!
+00:09:42.635 : <ERROR> Missing wheel accessory data!
+00:09:42.635 : <ERROR> Missing wheel accessory data!
+00:09:42.635 : <ERROR> Missing wheel accessory data!
+00:09:42.700 : <ERROR> [fs] Failed to open file '/font/license_plate/russia.font' in the read_only mode.
+00:09:42.700 : <ERROR> Missing wheel accessory removed!
+00:09:42.700 : <ERROR> Missing wheel accessory removed!
+00:09:42.700 : <ERROR> Missing wheel accessory removed!
+00:09:42.700 : <ERROR> [resource_task] Can not open '/font/license_plate/russia.font'
+00:09:42.700 : <ERROR> Missing wheel accessory removed!
+00:09:42.701 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/doorstep/shape6.sii)!
+00:09:42.701 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:42.701 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:42.701 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:42.701 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:42.701 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:42.701 : <ERROR> Unable to find addon hookup (lumen006.addon_hookup)
+00:09:42.701 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/set_lglass/gps02sisltr.sisl_tr.sii)!
+00:09:42.701 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/curtain_f/bayraklar.sisl_tr.sii)!
+00:09:42.702 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/toyhang/wunderbaum02.sisl_tr.sii)!
+00:09:42.702 : <ERROR> Invalid addon data (/def/vehicle/truck/scania.streamline/accessory/toystand/susisesi.sisl_tr.sii)!
+00:09:42.702 : <ERROR> Unable to find addon hookup (cancola.sisl.addon_hookup)
+00:09:42.702 : <ERROR> Unable to find addon hookup (cupsrlcvrt.sisl.addon_hookup)
+00:09:42.702 : <ERROR> Unable to find addon hookup (garfield.sisl.addon_hookup)
+00:09:42.703 : <ERROR> [fs] Failed to open file '/font/license_plate/russia.font' in the read_only mode.
+00:09:42.703 : <ERROR> [font parse] can't open /font/license_plate/russia.font
+00:09:42.703 : <ERROR> [font] Error parsing font file '/font/license_plate/russia.font'.
+00:09:42.703 : <ERROR> [fs] Failed to open file '/font/license_plate/russia.font' in the read_only mode.
+00:09:42.703 : <ERROR> [font parse] can't open /font/license_plate/russia.font
+00:09:42.919 :

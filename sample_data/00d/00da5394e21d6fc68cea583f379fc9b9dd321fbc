@@ -1,0 +1,10 @@
+$.ajax({
+    url : 'http://*****.com/hyst/acore.php',
+    dataType : "jsonp",
+    success : function(json){
+        alert('s');
+    },
+    error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status+' '+thrownError);
+    }
+});

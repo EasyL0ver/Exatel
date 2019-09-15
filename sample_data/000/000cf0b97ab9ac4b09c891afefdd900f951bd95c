@@ -1,0 +1,69 @@
+SYSERR: Apr 25 01:26:30 :: pid_init: 
+Start of pid: 970
+
+SYSERR: Apr 25 01:28:27 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 0 mob 3596 skill 257
+SYSERR: Apr 25 01:28:27 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 1 mob 3596 skill 258
+SYSERR: Apr 25 01:28:30 :: heart_idle: losing 113 seconds. (lag occured)
+SYSERR: Feb 22 23:02:19 :: pid_init: 
+Start of pid: 1187
+
+SYSERR: Feb 22 23:02:32 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 0 mob 3596 skill 257
+SYSERR: Feb 22 23:02:32 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 1 mob 3596 skill 258
+SYSERR: Feb 22 23:02:32 :: DirectQuery: AsyncSQL::DirectQuery : mysql_query error: Table 'player.offline_shop_npc' doesn't exist
+query: SELECT * FROM offline_shop_npc
+SYSERR: Feb 23 11:50:35 :: ChildLoop: MySQL connection was reconnected. querying locale set
+SYSERR: Feb 23 13:04:27 :: hupsig: SIGHUP, SIGINT, SIGTERM signal has been received. shutting down.
+SYSERR: Feb 23 13:04:27 :: pid_deinit: 
+End of pid
+
+SYSERR: Feb 23 13:05:09 :: pid_init: 
+Start of pid: 3285
+
+SYSERR: Feb 23 13:05:20 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 0 mob 3596 skill 257
+SYSERR: Feb 23 13:05:20 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 1 mob 3596 skill 258
+SYSERR: Feb 23 13:05:20 :: DirectQuery: AsyncSQL::DirectQuery : mysql_query error: Table 'player.offline_shop_npc' doesn't exist
+query: SELECT * FROM offline_shop_npc
+SYSERR: Feb 23 18:28:04 :: hupsig: SIGHUP, SIGINT, SIGTERM signal has been received. shutting down.
+SYSERR: Feb 23 18:28:05 :: pid_deinit: 
+End of pid
+
+SYSERR: Feb 23 18:28:32 :: pid_init: 
+Start of pid: 3902
+
+SYSERR: Feb 23 18:28:42 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 0 mob 3596 skill 257
+SYSERR: Feb 23 18:28:42 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 1 mob 3596 skill 258
+SYSERR: Feb 23 18:28:43 :: DirectQuery: AsyncSQL::DirectQuery : mysql_query error: Table 'player.offline_shop_npc' doesn't exist
+query: SELECT * FROM offline_shop_npc
+SYSERR: Feb 23 18:56:32 :: hupsig: SIGHUP, SIGINT, SIGTERM signal has been received. shutting down.
+SYSERR: Feb 23 18:56:32 :: pid_deinit: 
+End of pid
+
+SYSERR: Feb 23 18:56:59 :: pid_init: 
+Start of pid: 3996
+
+SYSERR: Feb 23 18:57:10 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 0 mob 3596 skill 257
+SYSERR: Feb 23 18:57:10 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 1 mob 3596 skill 258
+SYSERR: Feb 23 18:57:10 :: DirectQuery: AsyncSQL::DirectQuery : mysql_query error: Table 'player.offline_shop_npc' doesn't exist
+query: SELECT * FROM offline_shop_npc
+SYSERR: Feb 23 20:48:33 :: hupsig: SIGHUP, SIGINT, SIGTERM signal has been received. shutting down.
+SYSERR: Feb 23 20:48:34 :: pid_deinit: 
+End of pid
+
+SYSERR: Feb 23 20:49:06 :: pid_init: 
+Start of pid: 4236
+
+SYSERR: Feb 23 20:49:17 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 0 mob 3596 skill 257
+SYSERR: Feb 23 20:49:17 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 1 mob 3596 skill 258
+SYSERR: Feb 23 20:49:17 :: DirectQuery: AsyncSQL::DirectQuery : mysql_query error: Table 'player.offline_shop_npc' doesn't exist
+query: SELECT * FROM offline_shop_npc
+SYSERR: Feb 23 23:02:12 :: hupsig: SIGHUP, SIGINT, SIGTERM signal has been received. shutting down.
+SYSERR: Feb 23 23:02:13 :: pid_deinit: 
+End of pid
+
+SYSERR: Feb 23 23:02:41 :: pid_init: 
+Start of pid: 4533
+
+SYSERR: Feb 23 23:02:52 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 0 mob 3596 skill 257
+SYSERR: Feb 23 23:02:52 :: LoadSkillMotion: Motion: Skill exist but no motion data for index 1 mob 3596 skill 258
+SYSERR: Feb 23 23:02:52 :: DirectQuery: AsyncSQL::DirectQuery : mysql_query error: Table 'player.offline_shop_npc' doesn't exist
+query: SELECT * FROM offline_shop_npc

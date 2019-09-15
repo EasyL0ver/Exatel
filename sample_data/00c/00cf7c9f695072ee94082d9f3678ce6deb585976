@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define PROB "cowdance"
+
+int R() {
+  int x = 0; int f = 1; char ch = 0;
+  while(!isdigit(ch)) {
+    if(ch == '-') f = -1;
+    ch = getchar();
+  }
+  while(isdigit(ch)) {
+    x = x*10 + ch - '0';
+    ch = getchar();
+  }
+  return x;
+}
+
+int d[10050];
+int n,Tmax;
+
+bool check(int k) {
+  priority_queue<int, vector<int>, greater<int> > pq;
+  int current_time = 0;
+  for (int i = 1; i <= min(k,n); ++i) {
+    pq.push(d[i]);
+  }
+  for (int i = k+1; i <= n; ++i) {
+    current_time = pq.top();
+    pq.pop();
+    if (current_time + d[i] > Tmax) {
+      return 0;
+    }
+    pq.push(d[i] + current_time);
+  }
+  return 1;
+}
+
+int main() {
+#ifndef DEBUG
+  freopen(PROB".in", "r", stdin);
+  freopen(PROB".out", "w", stdout);
+#endif 
+  n=R(), Tmax=R();
+  for (int i = 1; i <= n; ++i) {
+    d[i] = R();
+  }
+  int l = 0, r = n;
+  while(r - l > 1) {
+    int mid = (l+r)/2;
+    if(check(mid)) {
+      r = mid;
+    } else {
+      l = mid;
+    }
+  }
+  printf("%d\n", r);
+
+}

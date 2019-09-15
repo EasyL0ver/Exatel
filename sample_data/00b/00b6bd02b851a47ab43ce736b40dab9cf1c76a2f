@@ -1,0 +1,45 @@
+package Lesson_08;
+
+import java.util.Scanner;
+
+public class _05_ {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Add first string : ");
+        String[] acrossWord = scan.nextLine().split("");
+        System.out.print("Add second string : ");
+        String[] downWord = scan.nextLine().split("");
+
+        int commonRow = -1;
+        int commonCol = -1;
+
+        for (int row = 0; row < downWord.length; row++) {
+            for (int col = 0; col < acrossWord.length; col++) {
+                if (downWord[row].equals(acrossWord[col])) {
+                    commonRow = row;
+                    commonCol = col;
+                }
+            }
+        }
+        System.out.println(commonRow);
+        System.out.println(commonCol);
+
+        if (commonRow == -1) {
+            System.out.println("Not have common character.");
+        } else {
+            for (int currentRow = 0; currentRow < downWord.length; currentRow++) {
+                if (currentRow == commonRow) {
+                    for (int j = 0; j < acrossWord.length; j++) {
+                        System.out.print(acrossWord[j]);
+                    }
+                } else {
+                    for (int j = 0; j < commonCol; j++) {
+                        System.out.print(" ");
+                    }
+                    System.out.print(downWord[currentRow]);
+                }
+                System.out.println();
+            }
+        }
+    }
+}

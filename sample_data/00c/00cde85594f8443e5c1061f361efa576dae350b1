@@ -1,0 +1,217 @@
+------------------
+System Information
+------------------
+      Time of this report: 1/1/2019, 10:27:42
+             Machine name: DESKTOP-9NUNBPE
+               Machine Id: {4ED53879-9F18-4376-BA11-FCD6EE8E5D85}
+         Operating System: Windows 10 Pro 64-bit (10.0, Build 17134) (17134.rs4_release.180410-1804)
+                 Language: English (Regional Setting: English)
+      System Manufacturer: System manufacturer
+             System Model: System Product Name
+                     BIOS: 1908 (type: UEFI)
+                Processor: Intel(R) Core(TM) i5-3570K CPU @ 3.40GHz (4 CPUs), ~3.4GHz
+                   Memory: 8192MB RAM
+      Available OS Memory: 8138MB RAM
+                Page File: 6046MB used, 4011MB available
+              Windows Dir: C:\Windows
+          DirectX Version: DirectX 12
+      DX Setup Parameters: Not found
+         User DPI Setting: 144 DPI (150 percent)
+       System DPI Setting: 144 DPI (150 percent)
+          DWM DPI Scaling: UnKnown
+                 Miracast: Available, with HDCP
+Microsoft Graphics Hybrid: Not Supported
+           DxDiag Version: 10.00.17134.0001 64bit Unicode
+
+------------
+DxDiag Notes
+------------
+      Display Tab 1: No problems found.
+      Display Tab 2: No problems found.
+        Sound Tab 1: No problems found.
+        Sound Tab 2: No problems found.
+        Sound Tab 3: No problems found.
+        Sound Tab 4: No problems found.
+        Sound Tab 5: No problems found.
+          Input Tab: No problems found.
+
+--------------------
+DirectX Debug Levels
+--------------------
+Direct3D:    0/4 (retail)
+DirectDraw:  0/4 (retail)
+DirectInput: 0/5 (retail)
+DirectMusic: 0/5 (retail)
+DirectPlay:  0/9 (retail)
+DirectSound: 0/5 (retail)
+DirectShow:  0/6 (retail)
+
+---------------
+Display Devices
+---------------
+           Card name: Radeon RX 580 Series
+        Manufacturer: Advanced Micro Devices, Inc.
+           Chip type: AMD Radeon Graphics Processor (0x67DF)
+            DAC type: Internal DAC(400MHz)
+         Device Type: Full Device (POST)
+          Device Key: Enum\PCI\VEN_1002&DEV_67DF&SUBSYS_2378148C&REV_E7
+       Device Status: 0180200A [DN_DRIVER_LOADED|DN_STARTED|DN_DISABLEABLE|DN_NT_ENUMERATOR|DN_NT_DRIVER] 
+ Device Problem Code: No Problem
+ Driver Problem Code: Unknown
+      Display Memory: 12241 MB
+    Dedicated Memory: 8172 MB
+       Shared Memory: 4069 MB
+        Current Mode: 3840 x 2160 (32 bit) (60Hz)
+         HDR Support: Not Supported
+    Display Topology: Extend
+ Display Color Space: DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709
+     Color Primaries: Red(0.652844,0.335461), Green(0.305187,0.637219), Blue(0.148937,0.062023), White Point(0.313977,0.329602)
+   Display Luminance: Min Luminance = 0.500000, Max Luminance = 270.000000, MaxFullFrameLuminance = 270.000000
+        Monitor Name: Generic PnP Monitor
+       Monitor Model: LG Ultra HD
+          Monitor Id: GSM5B09
+         Native Mode: 3840 x 2160(p) (59.997Hz)
+         Output Type: Displayport External
+Monitor Capabilities: HDR Not Supported
+Display Pixel Format: DISPLAYCONFIG_PIXELFORMAT_32BPP
+      Advanced Color: Not Supported
+         Driver Name: C:\Windows\System32\DriverStore\FileRepository\c0337288.inf_amd64_3c3211f00f323cb5\B337205\aticfx64.dll,C:\Windows\System32\DriverStore\FileRepository\c0337288.inf_amd64_3c3211f00f323cb5\B337205\aticfx64.dll,C:\Windows\System32\DriverStore\FileRepository\c0337288.inf_amd64_3c3211f00f323cb5\B337205\aticfx64.dll,C:\Windows\System32\DriverStore\FileRepository\c0337288.inf_amd64_3c3211f00f323cb5\B337205\amdxc64.dll
+ Driver File Version: 25.20.15003.5010 (English)
+      Driver Version: 25.20.15003.5010
+         DDI Version: 12
+      Feature Levels: 12_0,11_1,11_0,10_1,10_0,9_3,9_2,9_1
+        Driver Model: WDDM 2.4
+ Graphics Preemption: Primitive
+  Compute Preemption: DMA
+            Miracast: Not Supported by Graphics driver
+ Hybrid Graphics GPU: Not Supported
+      Power P-states: Not Supported
+      Virtualization: Paravirtualization 
+          Block List: No Blocks
+  Catalog Attributes: Universal:False Declarative:False 
+   Driver Attributes: Final Retail
+    Driver Date/Size: 12/16/2018 4:00:00 PM, 1957856 bytes
+         WHQL Logo'd: Yes
+     WHQL Date Stamp: Unknown
+   Device Identifier: {D7B71EE2-249F-11CF-AE64-E3395CC2D435}
+           Vendor ID: 0x1002
+           Device ID: 0x67DF
+           SubSys ID: 0x2378148C
+         Revision ID: 0x00E7
+  Driver Strong Name: oem5.inf:cb0ae414b12389ca:ati2mtag_Polaris10DS:25.20.15003.5010:pci\ven_1002&dev_67df&rev_e7
+      Rank Of Driver: 00D12000
+         Video Accel: Unknown
+         DXVA2 Modes: DXVA2_ModeMPEG2_VLD  DXVA2_ModeMPEG2_IDCT  DXVA2_ModeH264_VLD_NoFGT  DXVA2_ModeHEVC_VLD_Main  DXVA2_ModeH264_VLD_Stereo_Progressive_NoFGT  DXVA2_ModeH264_VLD_Stereo_NoFGT  DXVA2_ModeVC1_VLD  DXVA2_ModeMPEG4pt2_VLD_AdvSimple_NoGMC  DXVA2_ModeHEVC_VLD_Main10  
+      Deinterlace Caps: n/a
+        D3D9 Overlay: Not Supported
+             DXVA-HD: Not Supported
+        DDraw Status: Enabled
+          D3D Status: Enabled
+          AGP Status: Enabled
+       MPO MaxPlanes: 1
+            MPO Caps: Not Supported
+         MPO Stretch: Not Supported
+     MPO Media Hints: Not Supported
+         MPO Formats: Not Supported
+    PanelFitter Caps: Not Supported
+ PanelFitter Stretch: Not Supported
+
+           Card name: Radeon RX 580 Series
+        Manufacturer: Advanced Micro Devices, Inc.
+           Chip type: AMD Radeon Graphics Processor (0x67DF)
+            DAC type: Internal DAC(400MHz)
+         Device Type: Full Device (POST)
+          Device Key: Enum\PCI\VEN_1002&DEV_67DF&SUBSYS_2378148C&REV_E7
+       Device Status: 0180200A [DN_DRIVER_LOADED|DN_STARTED|DN_DISABLEABLE|DN_NT_ENUMERATOR|DN_NT_DRIVER] 
+ Device Problem Code: No Problem
+ Driver Problem Code: Unknown
+      Display Memory: 12241 MB
+    Dedicated Memory: 8172 MB
+       Shared Memory: 4069 MB
+        Current Mode: 1080 x 1920 (32 bit) (59Hz)
+         HDR Support: Not Supported
+    Display Topology: Extend
+ Display Color Space: DXGI_COLOR_SPACE_RGB_FULL_G22_NONE_P709
+     Color Primaries: Red(0.640148,0.330578), Green(0.300305,0.600109), Blue(0.150891,0.060070), White Point(0.313977,0.329602)
+   Display Luminance: Min Luminance = 0.500000, Max Luminance = 270.000000, MaxFullFrameLuminance = 270.000000
+        Monitor Name: Generic PnP Monitor
+       Monitor Model: H233H
+          Monitor Id: ACR00E3
+         Native Mode: 1920 x 1080(p) (60.000Hz)
+         Output Type: HDMI
+Monitor Capabilities: HDR Not Supported
+Display Pixel Format: DISPLAYCONFIG_PIXELFORMAT_32BPP
+      Advanced Color: Not Supported
+         Driver Name: C:\Windows\System32\DriverStore\FileRepository\c0337288.inf_amd64_3c3211f00f323cb5\B337205\aticfx64.dll,C:\Windows\System32\DriverStore\FileRepository\c0337288.inf_amd64_3c3211f00f323cb5\B337205\aticfx64.dll,C:\Windows\System32\DriverStore\FileRepository\c0337288.inf_amd64_3c3211f00f323cb5\B337205\aticfx64.dll,C:\Windows\System32\DriverStore\FileRepository\c0337288.inf_amd64_3c3211f00f323cb5\B337205\amdxc64.dll
+ Driver File Version: 25.20.15003.5010 (English)
+      Driver Version: 25.20.15003.5010
+         DDI Version: 12
+      Feature Levels: 12_0,11_1,11_0,10_1,10_0,9_3,9_2,9_1
+        Driver Model: WDDM 2.4
+ Graphics Preemption: Primitive
+  Compute Preemption: DMA
+            Miracast: Not Supported by Graphics driver
+ Hybrid Graphics GPU: Not Supported
+      Power P-states: Not Supported
+      Virtualization: Paravirtualization 
+          Block List: No Blocks
+  Catalog Attributes: Universal:False Declarative:False 
+   Driver Attributes: Final Retail
+    Driver Date/Size: 12/16/2018 4:00:00 PM, 1957856 bytes
+         WHQL Logo'd: Yes
+     WHQL Date Stamp: Unknown
+   Device Identifier: {D7B71EE2-249F-11CF-AE64-E3395CC2D435}
+           Vendor ID: 0x1002
+           Device ID: 0x67DF
+           SubSys ID: 0x2378148C
+         Revision ID: 0x00E7
+  Driver Strong Name: oem5.inf:cb0ae414b12389ca:ati2mtag_Polaris10DS:25.20.15003.5010:pci\ven_1002&dev_67df&rev_e7
+      Rank Of Driver: 00D12000
+         Video Accel: Unknown
+         DXVA2 Modes: DXVA2_ModeMPEG2_VLD  DXVA2_ModeMPEG2_IDCT  DXVA2_ModeH264_VLD_NoFGT  DXVA2_ModeHEVC_VLD_Main  DXVA2_ModeH264_VLD_Stereo_Progressive_NoFGT  DXVA2_ModeH264_VLD_Stereo_NoFGT  DXVA2_ModeVC1_VLD  DXVA2_ModeMPEG4pt2_VLD_AdvSimple_NoGMC  DXVA2_ModeHEVC_VLD_Main10  
+      Deinterlace Caps: n/a
+        D3D9 Overlay: Not Supported
+             DXVA-HD: Not Supported
+        DDraw Status: Enabled
+          D3D Status: Enabled
+          AGP Status: Enabled
+       MPO MaxPlanes: 1
+            MPO Caps: Not Supported
+         MPO Stretch: Not Supported
+     MPO Media Hints: Not Supported
+         MPO Formats: Not Supported
+    PanelFitter Caps: Not Supported
+ PanelFitter Stretch: Not Supported
+
+-------------
+Sound Devices
+-------------
+            Description: Speakers (Logitech G430 Gaming Headset)
+ Default Sound Playback: Yes
+ Default Voice Playback: Yes
+            Hardware ID: USB\VID_046D&PID_0A4D&REV_0120&MI_00
+        Manufacturer ID: 65535
+             Product ID: 65535
+                   Type: WDM
+            Driver Name: USBAUDIO.sys
+         Driver Version: 10.00.17134.0001 (English)
+      Driver Attributes: Final Retail
+            WHQL Logo'd: Yes
+          Date and Size: 4/11/2018 12:00:00 AM, 151552 bytes
+            Other Files: 
+        Driver Provider: Microsoft
+         HW Accel Level: Basic
+              Cap Flags: 0xF1F
+    Min/Max Sample Rate: 100, 200000
+Static/Strm HW Mix Bufs: 1, 0
+ Static/Strm HW 3D Bufs: 0, 0
+              HW Memory: 0
+       Voice Management: No
+ EAX(tm) 2.0 Listen/Src: No, No
+   I3DL2(tm) Listen/Src: No, No
+Sensaura(tm) ZoomFX(tm): No
+
+            Description: Digital Audio (S/PDIF) (High Definition Audio Device)
+ Default Sound Playback: No
+ Default Voice Playback: No
+    

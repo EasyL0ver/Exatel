@@ -1,0 +1,13 @@
+NSURL *URL = [NSURL URLWithString:sourceUrl];
+    NSError *error=[[[NSError alloc]init] autorelease];
+
+
+    NSData* theData = [NSData dataWithContentsOfURL: URL];   // Line One to download
+    NSURLResponse *response1 = nil;
+    NSURLRequest *theRequest =[[NSURLRequest requestWithURL:URL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60] autorelease];
+    NSData* theData1 = [NSURLConnection sendSynchronousRequest:theRequest returningResponse:&response1 error:&error];   // Line two to download
+
+    if(error != nil)
+    {
+        NSString *errorIdentifier = [NSString stringWithFormat:@"(%@)[%d]",error.domain,error.code];        
+    }

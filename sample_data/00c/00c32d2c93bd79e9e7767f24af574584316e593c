@@ -1,0 +1,150 @@
+./UnixCutPaste.exe "1.txt"
+New York State Route 373 is a
+It begins at U.S. Route 9 at
+The road proceeds eastward, e
+It is the only connector betw
+Port Kent and the connecting
+The hamlet grew, and was even!
+The road that accessed Port K
+The highway that is now Route
+
+./UnixCutPaste.exe "1.9.txt"                                                                                                                                                     :
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+ ./UnixCutPaste.exe "1.9.txt" -d 'e' -f '100-0' "1.txt" "1.9.txt" "1.9.txt" "1.9.txt" "1.9.txt" "1.9.txt" --od "|"
+1| 373 is a| Rout|w York Stat|N|1|1|1|1|1
+2| 9 at |gins at U.S. Rout|It b|2|2|2|2|2
+3||astward, |ds || road proc|Th|3|3|3|3|3
+4|tw|ctor b| only conn|It is th|4|4|4|4|4
+5|cting | conn|nt and th|Port K|5|5|5|5|5
+6|n!|v|w, and was |t gr| haml|Th|6|6|6|6|6
+7|d Port K|ss| road that acc|Th|7|7|7|7|7
+8|| highway that is now Rout|Th|8|8|8|8|8
+9|9|9|9|9|9
+
+./UnixCutPaste.exe "1.9.txt" -d 'e' -f '100-0' "1.txt" "1.9.txt"
+1        373 is a        Rout   w York Stat     N       1
+2        9 at   gins at U.S. Rout       It b    2
+3               astward,        ds               road proc      Th      3
+4       tw      ctor b   only conn      It is th        4
+5       cting    conn   nt and th       Port K  5
+6       n!      v       w, and was      t gr     haml   Th      6
+7       d Port K        ss       road that acc  Th      7
+8                highway that is now Rout       Th      8
+9       9
+
+
+./UnixCutPaste.exe "24.txt"
+  13#11@9  text00 # masox00 @ #;1011001
+  16#13@10 text01 # masox01 @ #;1011010
+  19#15@11 text02 # masox02 @ #;1011011
+  22#17@12 text03 # masox03 @ #;1011100
+  25#19@13 text04 # masox04 @ #;1011101
+  28#21@14 text05 # masox05 @ #;1011110
+  31#23@15 text06 # masox06 @ #;1011111
+  34#25@16 text07 # masox07 @ #;1100000
+  37#27@17 text08 # masox08 @ #;1100001
+  40#29@18 text09 # masox09 @ #;1100010
+  43#31@19 text10 # masox0A @ #;1100011
+  46#33@20 text11 # masox0B @ #;1100100
+  49#35@21 text12 # masox0C @ #;1100101
+  52#37@22 text13 # masox0D @ #;1100110
+  55#39@23 text14 # masox0E @ #;1100111
+  58#41@24 text15 # masox0F @ #;1101000
+  61#43@25 text16 # masox10 @ #;1101001
+  64#45@26 text17 # masox11 @ #;1101010
+  67#47@27 text18 # masox12 @ #;1101011
+  70#49@28 text19 # masox13 @ #;1101100
+  73#51@29 text20 # masox14 @ #;1101101
+  76#53@30 text21 # masox15 @ #;1101110
+  79#55@31 text22 # masox16 @ #;1101111
+  82#57@32 text23 # masox17 @ #;1110000
+
+
+ ./UnixCutPaste.exe -d '#' --od 'HARMONOGRAM' "24.txt"
+  13HARMONOGRAM11@9  text00 HARMONOGRAM masox00 @ HARMONOGRAM;1011001
+  16HARMONOGRAM13@10 text01 HARMONOGRAM masox01 @ HARMONOGRAM;1011010
+  19HARMONOGRAM15@11 text02 HARMONOGRAM masox02 @ HARMONOGRAM;1011011
+  22HARMONOGRAM17@12 text03 HARMONOGRAM masox03 @ HARMONOGRAM;1011100
+  25HARMONOGRAM19@13 text04 HARMONOGRAM masox04 @ HARMONOGRAM;1011101
+  28HARMONOGRAM21@14 text05 HARMONOGRAM masox05 @ HARMONOGRAM;1011110
+  31HARMONOGRAM23@15 text06 HARMONOGRAM masox06 @ HARMONOGRAM;1011111
+  34HARMONOGRAM25@16 text07 HARMONOGRAM masox07 @ HARMONOGRAM;1100000
+  37HARMONOGRAM27@17 text08 HARMONOGRAM masox08 @ HARMONOGRAM;1100001
+  40HARMONOGRAM29@18 text09 HARMONOGRAM masox09 @ HARMONOGRAM;1100010
+  43HARMONOGRAM31@19 text10 HARMONOGRAM masox0A @ HARMONOGRAM;1100011
+  46HARMONOGRAM33@20 text11 HARMONOGRAM masox0B @ HARMONOGRAM;1100100
+  49HARMONOGRAM35@21 text12 HARMONOGRAM masox0C @ HARMONOGRAM;1100101
+  52HARMONOGRAM37@22 text13 HARMONOGRAM masox0D @ HARMONOGRAM;1100110
+  55HARMONOGRAM39@23 text14 HARMONOGRAM masox0E @ HARMONOGRAM;1100111
+  58HARMONOGRAM41@24 text15 HARMONOGRAM masox0F @ HARMONOGRAM;1101000
+  61HARMONOGRAM43@25 text16 HARMONOGRAM masox10 @ HARMONOGRAM;1101001
+  64HARMONOGRAM45@26 text17 HARMONOGRAM masox11 @ HARMONOGRAM;1101010
+  67HARMONOGRAM47@27 text18 HARMONOGRAM masox12 @ HARMONOGRAM;1101011
+  70HARMONOGRAM49@28 text19 HARMONOGRAM masox13 @ HARMONOGRAM;1101100
+  73HARMONOGRAM51@29 text20 HARMONOGRAM masox14 @ HARMONOGRAM;1101101
+  76HARMONOGRAM53@30 text21 HARMONOGRAM masox15 @ HARMONOGRAM;1101110
+  79HARMONOGRAM55@31 text22 HARMONOGRAM masox16 @ HARMONOGRAM;1101111
+  82HARMONOGRAM57@32 text23 HARMONOGRAM masox17 @ HARMONOGRAM;1110000
+
+
+./UnixCutPaste.exe -d '#' -f '0,2' --od 'HARMONOGRAM' "24.txt"
+  13HARMONOGRAM masox00 @
+  16HARMONOGRAM masox01 @
+  19HARMONOGRAM masox02 @
+  22HARMONOGRAM masox03 @
+  25HARMONOGRAM masox04 @
+  28HARMONOGRAM masox05 @
+  31HARMONOGRAM masox06 @
+  34HARMONOGRAM masox07 @
+  37HARMONOGRAM masox08 @
+  40HARMONOGRAM masox09 @
+  43HARMONOGRAM masox0A @
+  46HARMONOGRAM masox0B @
+  49HARMONOGRAM masox0C @
+  52HARMONOGRAM masox0D @
+  55HARMONOGRAM masox0E @
+  58HARMONOGRAM masox0F @
+  61HARMONOGRAM masox10 @
+  64HARMONOGRAM masox11 @
+  67HARMONOGRAM masox12 @
+  70HARMONOGRAM masox13 @
+  73HARMONOGRAM masox14 @
+  76HARMONOGRAM masox15 @
+  79HARMONOGRAM masox16 @
+  82HARMONOGRAM masox17 @
+
+
+ ./UnixCutPaste.exe -d '#' -f '0-2' --od 'HARMONOGRAM' "24.txt"
+  13HARMONOGRAM11@9  text00 HARMONOGRAM masox00 @
+  16HARMONOGRAM13@10 text01 HARMONOGRAM masox01 @
+  19HARMONOGRAM15@11 text02 HARMONOGRAM masox02 @
+  22HARMONOGRAM17@12 text03 HARMONOGRAM masox03 @
+  25HARMONOGRAM19@13 text04 HARMONOGRAM masox04 @
+  28HARMONOGRAM21@14 text05 HARMONOGRAM masox05 @
+  31HARMONOGRAM23@15 text06 HARMONOGRAM masox06 @
+  34HARMONOGRAM25@16 text07 HARMONOGRAM masox07 @
+  37HARMONOGRAM27@17 text08 HARMONOGRAM masox08 @
+  40HARMONOGRAM29@18 text09 HARMONOGRAM masox09 @
+  43HARMONOGRAM31@19 text10 HARMONOGRAM masox0A @
+  46HARMONOGRAM33@20 text11 HARMONOGRAM masox0B @
+  49HARMONOGRAM35@21 text12 HARMONOGRAM masox0C @
+  52HARMONOGRAM37@22 text13 HARMONOGRAM masox0D @
+  55HARMONOGRAM39@23 text14 HARMONOGRAM masox0E @
+  58HARMONOGRAM41@24 text15 HARMONOGRAM masox0F @
+  61HARMONOGRAM43@25 text16 HARMONOGRAM masox10 @
+  64HARMONOGRAM45@26 text17 HARMONOGRAM masox11 @
+  67HARMONOGRAM47@27 text18 HARMONOGRAM masox12 @
+  70HARMONOGRAM49@28 text19 HARMONOGRAM masox13 @
+  73HARMONOGRAM51@29 text20 HARMONOGRAM masox14 @
+  76HARMONOGRAM53@30 text21 HARMONOGRAM masox15 @
+  79HARMONOGRAM55@31 text22 HARMONOGRAM masox16 @
+  82HARMONOGRAM57@32 text23 HARMONOGRAM masox17 @

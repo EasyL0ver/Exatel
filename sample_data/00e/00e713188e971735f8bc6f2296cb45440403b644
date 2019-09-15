@@ -1,0 +1,41 @@
+package something;
+
+import java.util.Scanner;
+
+public class Trip {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		double budget = Double.parseDouble(sc.nextLine());
+		String season = sc.nextLine();
+		
+		if(budget <= 100) {
+			System.out.println("Somewhere in Bulgaria");
+			if(season.contentEquals("summer")) {
+				double spend = budget / 100.0 * 30;
+				System.out.printf("Camp - %.2f", spend);
+			}else if(season.equals("winter")) {
+				double spend = budget / 100.0 * 70;
+				System.out.printf("Hotel - %.2f", spend);
+			}	
+			
+		}else if(budget > 100 && budget <= 1000) {
+			System.out.println("Somewhere in Balkans");
+			if(season.equals("summer")) {
+				double spend = budget / 100.0 * 40;
+				System.out.printf("Camp - %.2f", spend);
+			}else if(season.equals("winter")) {
+				double spend = budget / 100.0 * 80;
+				System.out.printf("Hotel - %.2f", spend);
+			}
+			
+		}else if (budget > 1000){
+			System.out.println("Somewhere in Europe");
+			double spend = budget / 100.0 * 90;
+			System.out.printf("Hotel - %.2f", spend);
+			
+		}
+	
+	}
+
+}

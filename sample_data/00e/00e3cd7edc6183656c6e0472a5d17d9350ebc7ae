@@ -1,0 +1,32 @@
+<?php
+
+//cabeçalho oculto...
+
+class LancamentoController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return IlluminateHttpResponse
+     */
+    public function index()
+    {
+        $lanc = Lancamento::where('idglobal', Auth::user()->idglobal)->get();
+
+        $empresa = Empresa::where('id', Auth::user()->idglobal)->first();
+
+        $databx = new DateTime();
+        $datavc = new DateTime($empresa->permissao_uso); 
+
+        $diasatraso = ($databx->diff($datavc)->format('%r%a') < 0) ? $databx->diff($datavc)->format('%a') : 0;
+
+        if($diasatraso > 0){
+            return view('Financeiro.resumo', ['lancamentos'=> $lanc])->withErrors(['Plano Expirado' => '[Plano Expirado!] - Adquira um novo pacote de serviços para continuar usufruindo de nossos serviços!']);
+        }else{
+            return view('Financeiro.resumo', ['lancamentos'=> $lanc]);
+        }
+
+    }
+
+//Código oculto
+}

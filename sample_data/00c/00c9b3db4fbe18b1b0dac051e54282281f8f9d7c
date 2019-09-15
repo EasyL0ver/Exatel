@@ -1,0 +1,15 @@
+            # Before
+            #@login_page = Test::LoginPage.new(@browser)
+            #@dashboard_page = Test::DashboardPage.new(@browser)
+            #@email_search_page = Test::EmailSearchPage.new(@browser)
+            #@email_details_page = Test::EmailDetailsPage.new(@browser)
+            #@list_page = Test::ListPage.new(@browser)
+            #@lists_page = Test::ListsPage.new(@browser)
+
+            # After
+            # Initialize all of the page objects
+            %w(login_page dashboard_page email_search_page email_details_page
+               list_page lists_page templates_page template_editor).each do |page|
+               instance_variable_set('@' + page, eval("Test::" + 
+                   page.split('_').map {|w| w.capitalize}.join + ".new(@browser)"))
+            end

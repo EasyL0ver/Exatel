@@ -1,0 +1,17 @@
+library(parallel)
+docss<-c('https://stackoverflow.com/' , 'https://stackoverflow.com/')
+
+read_html(paste0(docss[1]))
+
+cl<-makeCluster(2)
+
+clusterEvalQ(cl, {require(rvest)})
+clusterExport(cl,'docss')
+
+dats<-parLapply(cl, docss, function(j){
+read_html(paste0(docss[1]))
+})
+
+dats
+
+stopCluster(cl)

@@ -1,0 +1,64 @@
+MonU3 = peripheral.wrap("monitor_1")
+MonU2 = peripheral.wrap("monitor_3")
+MonU1 = peripheral.wrap("monitor_5")
+MonE  = peripheral.wrap("monitor_7")
+Mon1  = peripheral.wrap("monitor_9")
+Mon2  = peripheral.wrap("monitor_11")
+Mon3  = peripheral.wrap("monitor_13")
+
+monitors = {MonU3,MonU2,MonU1,MonE,Mon1,Mon2,Mon3}
+level = {[16384] = "U3" , [8192] = "U2" , [4096] = "U1" , [2048] = "E" , [1024] = "1" , [512] = "2", [256] = "3"}
+oldAllButtons = 0;
+currentLevel = 0;
+function DisplayAllDisplays(Printlevel)
+toPrint = level[math.pow(2,14-(Printlevel-1))
+ for mon = 1, #monitors do
+    monitors[mon].clear()
+    monitors[mon].setCursorPos(1,1)
+    monitors[mon].write(toPrint)
+ end
+end
+
+function CallElevator(levelCalled)
+	if(levelCalled ~= currentLevel) then
+		if(levelCalled < currentLevel) then
+			for i = currentLevel, currentLevel-levelCalled,-1 do
+				os.sleep(1)
+				currentLevel = currentLevel-1
+				DisplayAllDisplays(currentLevel)
+			end
+		end
+		if(levelCalled > currentLevel) then
+			for i = currentLevel, currentLevel-levelCalled, 1 do
+				os.sleep(1)
+				currentLevel = currentLevel+1
+				DisplayAllDisplays(currentLevel])
+			end
+		end
+	end
+end
+
+
+
+while true do
+  event = os.pullEvent("redstone")
+  allColors = redstone.getBundledInput("right")
+  allButtons = redstone.getBundledInput("bottom")
+  
+  if allColors ~= 0 then
+	if (bit.band(allColors,allColors-1)) then
+		
+		DisplayAllDisplays(level[allColors])
+		currentLevel = ((math.log(allColors) / math.log(2))/2)
+	end
+  end
+  if(allButtons ~= oldAllButtons) then
+   if(allButtons ~= 0) then
+		if (bit.band(allButtons,allButtons-1)) then
+			print("Button: "..((math.log(allButtons) / math.log(2))/2).."Current Level:"..currentLevel)
+			CallElevator(((math.log(allButtons) / math.log(2))/2))
+			oldAllButtons = allButtons
+		end
+	end
+  end
+end

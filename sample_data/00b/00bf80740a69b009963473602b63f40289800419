@@ -1,0 +1,25 @@
+Items = {
+   [1] = {text = "cobble", amount = 0},
+   [2] = {text = "dirt", amount = 0},
+   [3] = {text = "stone", amount = 0},
+} -- Add the Items you want here following the pattern
+debug = false -- Change to true for debug
+
+rednet.open("back")
+while true do
+   senderID, message = rednet.receive()
+   for i=1,#Items do
+      if message == Items[i].text then
+         Items[i].amount = Items[i].amount + 1
+      end
+   end
+   mon = peripheral.wrap("right")
+   mon.clear()
+   for i=1,#Items do
+      mon.setCursorPos(3,i)
+      mon.write("You have "..Items[i].amount.." "..Items[i].text)
+      if debug then
+         print(Items[i].amount)
+      end
+   end
+end

@@ -1,0 +1,227 @@
+--------------------------------------------------------------
+ DoomRL (0.9.9.7) roguelike post-mortem character dump
+--------------------------------------------------------------
+
+ Gib Nano, level 24 Cacodemon 2nd Lieutenant Technician,
+ completed 100 levels of torture on level 100 of Hell.
+ He survived 424158 turns and scored 2348453 points. 
+ He played for 11 hours, 28 minutes and 1 second. 
+ He was a man of Ultra-Violence!
+
+ He killed 3657 out of 3657 hellspawn. (100%)
+ This ass-kicking marine killed all of them!
+ He was an Angel of 100!
+
+ He saved himself 3 times.
+
+-- Special levels --------------------------------------------
+
+  Levels generated : 0
+  Levels visited   : 0
+  Levels completed : 0
+
+-- Awards ----------------------------------------------------
+
+  Medal of Prejudice
+  UAC Star (bronze cluster)
+  Experience Medal
+  Centurial Bronze Badge
+  Centurial Silver Badge
+  Centurial Gold Badge
+  Centurial Platinum Badge
+
+-- Graveyard -------------------------------------------------
+
+  ###########################################################
+  .................#............%.......====.................
+  .0####.....}.|}..#..........##........===#................%
+  ..####......|....#..........###.%.....====.###...%....###..
+  ..####.".........#...####...####......%===.###|###....###.}
+  |.####.........../...####...####.........#.###.###....###||
+  }.........####...#...####%..}............#.....###........=
+  ..}|......####...#...####.|}|..####......#.....%.......%.==
+  .....####.####...#..===...|....####....../....##.........==
+  ...}.####.####..%#.=====.####..####......#..0.###........==
+  ...#+####........#.====..####.X####.....}#....###.===##...=
+  ..##.####....%...#.=..==..###........%...#.......=====#.%.#
+  ####......####...#..===...###.......##...#.###.}.====.##..#
+  ####......####...#..........0.......##...#.###...=====.....
+  ..........####...#.................###...#.###....===..###.
+  ..........####...#.%....|..........##.==.#...[.0........##.
+  .................#..........%...|...=.=.=#.............#.#.
+  .................#..................=====#...............%.
+  .............0...#......%...........=====#........|......%.
+  ###########################################################
+
+-- Statistics ------------------------------------------------
+
+  Health 46/50   Experience 828282/24
+  ToHit Ranged +6  ToHit Melee +10  ToDmg Ranged +5  ToDmg Melee +11
+
+-- Traits ----------------------------------------------------
+
+  Class : Technician
+
+    Finesse          (Level 3)
+    Hellrunner       (Level 3)
+    Tough as nails   (Level 2)
+    Son of a bitch   (Level 5)
+    Eagle Eye        (Level 3)
+    Brute            (Level 2)
+    Dodgemaster      (Level 1)
+    Intuition        (Level 2)
+    Whizkid          (Level 2)
+    Scavenger        (Level 1)
+
+  EE->EE->Int->Int->SoB->WK->WK->HR->MSc->HR->DM->HR->EE->SoB->SoB->SoB->TaN->SoB->TaN->Bru->Fin->Fin->Fin->Bru->
+
+-- Equipment -------------------------------------------------
+
+    [a] [ Armor      ]   cybernano Cybernetic Armor [13] (P)
+    [b] [ Weapon     ]   ripper (7d6) (B)
+    [c] [ Boots      ]   antigrav plasteel boots [2/2] (100%) (A)
+    [d] [ Prepared   ]   biggest fucking nuclear gun (16d12) [100/100]
+
+-- Inventory -------------------------------------------------
+
+    [a] tactical shotgun (9d3) [5/5] (P1)
+    [b] tactical rocket launcher (6d6) [5/5]
+    [c] burst plasma rifle (1d9)x8 [82/104] (B1)
+    [d] super shotgun (10d4)x2 [2/2] (P2)
+    [e] burst laser rifle (1d9)x7 [104/104] (B1)
+    [f] high power Railgun (8d11) [16/26] (P1)
+    [g] shotgun shell (x50)
+    [h] power cell (x50)
+    [i] large med-pack
+    [j] large med-pack
+    [k] large med-pack
+    [l] large med-pack
+    [m] large med-pack
+    [n] homing phase device
+    [o] power mod pack
+    [p] technical mod pack
+    [q] sniper weapon pack
+    [r] onyx armor pack
+    [s] fire skull
+    [t] Hell Staff
+    [u] power battery (x94)
+
+-- Resistances -----------------------------------------------
+
+    Bullet     - internal 0%    torso 50%   feet 0%   
+    Melee      - internal 0%    torso 50%   feet 0%   
+    Shrapnel   - internal 0%    torso 50%   feet 0%   
+    Acid       - internal 0%    torso 0%    feet 50%  
+    Fire       - internal 0%    torso 0%    feet 25%  
+
+-- Kills -----------------------------------------------------
+
+    179 former humans
+    275 former sergeants
+    412 former captains
+    167 imps
+    46 demons
+    301 lost souls
+    75 cacodemons
+    119 hell knights
+    472 barons of hell
+    188 arachnotrons
+    9 former commandos
+    23 pain elementals
+    308 revenants
+    276 mancubi
+    373 arch-viles
+    50 nightmare imps
+    87 nightmare cacodemons
+    102 nightmare demons
+    87 nightmare arachnotrons
+    5 nightmare arch-viles
+    5 elite former humans
+    2 elite former sergeants
+    5 elite former captains
+    7 elite former commandos
+    67 bruiser brothers
+    10 shamblers
+    4 lava elemental
+    2 agony elementals
+    1 Cyberdemon
+
+-- History ---------------------------------------------------
+
+  On level 12 he assembled a burst cannon!
+  On level 13 he assembled a tactical shotgun!
+  On level 22 he found the Cybernetic Armor!
+  On level 26 he stumbled into a complex full of revenants!
+  On level 28 he assembled a cerberus armor!
+  On level 32 he stumbled into a nightmare demon cave!
+  On level 34 he assembled a cerberus armor!
+  On level 36 he found the Medical Powerarmor!
+  On level 37 he assembled a tactical rocket launcher!
+  On level 38 he was targeted for extermination!
+  He sounded the alarm on level 40!
+  On level 40 he assembled a burst cannon!
+  On level 42 he found the Anti-Freak Jackal!
+  On level 45 he found the Shielded Armor!
+  On level 48, hell froze over!
+  On level 50 he stumbled into a nightmare arachnotron cave!
+  On level 50 he assembled a ripper!
+  He nuked level 51!
+  Level 52 was a hard nut to crack!
+  On level 53 he ran for his life from lava!
+  On level 56 he stumbled into a nightmare arachnotron cave!
+  On level 59 he assembled a cybernano armor!
+  On level 63 he stumbled into a nightmare arachnotron cave!
+  On level 65 he found the Hell Staff!
+  On level 67 he stumbled into a nightmare demon cave!
+  On level 69 he was bombarded!
+  On level 72 he found the Railgun!
+  On level 74 he assembled a assault rifle!
+  On level 78 he assembled a high power weapon!
+  On level 80 he was targeted for extermination!
+  On level 80 he found the Hellwave Pack!
+  On level 80 he assembled a speedloader pistol!
+  On level 82 he assembled a elephant gun!
+  On level 82 he assembled a biggest fucking gun!
+  Level 86 was a hard nut to crack!
+  On level 87 he stumbled into a complex full of revenants!
+  On level 87 he assembled a hyperblaster!
+  He sounded the alarm on level 88!
+  On level 90 he assembled a antigrav boots!
+  On level 91 he stumbled into a nightmare cacodemon cave!
+  On level 93 he ran for his life from lava!
+  On level 95 he ran for his life from acid!
+  On level 96 he ran for his life from acid!
+  On level 96 he found the Mega Buster!
+  On level 98 he found the Frag Shotgun!
+  On level 100 he finally completed 100 levels of torture.
+
+-- Messages -------------------------------------------------- 
+
+ You use a small med-pack. You feel healed. 
+ You hit the nightmare arch-vile. 
+ You hit the nightmare arch-vile. The nightmare arch-vile hits you. 
+ You hit the nightmare arch-vile. 
+ You hit the nightmare arch-vile. The nightmare arch-vile hits you. 
+ You hit the nightmare arch-vile. The nightmare arch-vile dies. 
+ You hit the baron of hell. 
+ You hit the baron of hell. The baron of hell dies. You feel relatively safe 
+ now. 
+ There is rocket (x3) lying here. 
+ There is rocket (x3) lying here. 
+ There are stairs leading downward here. 
+ You did it! You completed 100 levels of DoomRL! You're the champion! Press 
+ <Enter>... 
+
+-- General --------------------------------------------------- 
+
+ 268 brave souls have ventured into Phobos:
+ 246 of those were killed.
+ 1 of those was killed by something unknown.
+ And 15 couldn't handle the stress and committed a stupid suicide.
+
+ 6 souls destroyed the Mastermind...
+ 2 sacrificed itself for the good of mankind.
+ 2 killed the bitch and survived.
+ 2 showed that it can outsmart Hell itself.
+
+--------------------------------------------------------------

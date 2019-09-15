@@ -1,0 +1,8 @@
+myconn = new OleDbConnection(@"Provider=Micorsoft.Jet.OLEDB.4.0;" +
+         "Data Source= C:/Users/Sterling/Documents/My Dropbox/Puzzling Penguins/IS stuff/InvoiceAssignment3.mdb");
+
+     oAdapt = new OleDbDataAdapter();
+
+     OleDbCommand oSelectCmd = new OleDbCommand("SELECT * from tblCustomers", myconn);
+     oAdapt.SelectCommand = oSelectCmd;
+     oAdapt.Fill(d);
