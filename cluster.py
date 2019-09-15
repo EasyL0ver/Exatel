@@ -2,18 +2,11 @@ from database import DBProvider
 from datamodel import FileInfo, Cluster
 from sklearn.cluster import KMeans
 from scipy.sparse import vstack, hstack
-from common import File
+from common import File, VectorizedFile
 
-batch_size = 4
+batch_size = 400
 db = DBProvider(clear_database=False)
 means = KMeans(n_clusters=2, init='k-means++', max_iter=100)
-
-
-class VectorizedFile(File):
-    def __init__(self, file_info):
-        super().__init__(file_info.filepath, file_info.filename)
-        self.file_info = file_info
-        self.vector = file_info.get_vector()
 
 
 def run():
@@ -26,6 +19,11 @@ def run():
     vectorized_files = list(map(lambda info: VectorizedFile(info), all_file_infos))
 
     vectors = list(map(lambda m: m.vector, vectorized_files))
+
+    if len(vectors) <= 1:
+        print("Invalid batch size or all files are clustered")
+        return
+
     stacked_matrix = vstack(vectors)
 
     means.fit(stacked_matrix)
@@ -40,5 +38,6 @@ def run():
 
     cluster_session.commit()
     return
+
 
 run()

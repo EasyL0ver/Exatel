@@ -6,8 +6,8 @@ from common import File
 from database import DBProvider
 from datamodel import FileInfo
 
-g_path = 'D:\\hakaton\\zadaniedane\\data\\simpletest'
-batch_size = 3
+g_path = 'D:\\hakaton\\zadaniedane\\data\\testsubset\\000'
+batch_size = 300
 vectorizer = HashingVectorizer(n_features=1000)
 db = DBProvider(clear_database=True)
 
@@ -23,7 +23,7 @@ class MemoryFile(File):
 
     @staticmethod
     def load_content(file_path_object):
-        file = open(file_path_object.path, 'r')
+        file = open(file_path_object.path, 'r', encoding="utf8")
         return file.read()
 
     @staticmethod
