@@ -6,8 +6,8 @@ from common import File
 from database import DBProvider
 from datamodel import FileInfo
 
-g_path = 'D:\\hakaton\\zadaniedane\\data\\testsubset\\000'
-batch_size = 300
+g_path = './data/sample-data'
+batch_size = 3
 vectorizer = HashingVectorizer(n_features=1000)
 db = DBProvider(clear_database=True)
 
@@ -72,5 +72,3 @@ def run(root_path):
 
 
 run(g_path)
-
-
