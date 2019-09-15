@@ -6,11 +6,9 @@ from common import File
 from database import DBProvider
 from datamodel import FileInfo
 
-g_path = './data/sample-data'
 batch_size = 3
 vectorizer = HashingVectorizer(n_features=1000)
 db = DBProvider(clear_database=True)
-
 
 class MemoryFile(File):
     def __init__(self, file_path_object):
@@ -63,12 +61,13 @@ def commit_to_db(files):
     db_session.commit()
 
 
-def run(root_path):
+def run(root_path, _batch_size, _n_features):
+
+    batch_size = _batch_size
+    vectorizer = HashingVectorizer(n_features=_n_features)
+
     paths = get_batch_paths(root_path)
     files = list(map(lambda s: MemoryFile(s), paths))
 
     commit_to_db(files)
     return
-
-
-run(g_path)

@@ -4,12 +4,13 @@ from sklearn.cluster import KMeans
 from scipy.sparse import vstack, hstack
 from common import File, VectorizedFile
 
-batch_size = 400
 db = DBProvider(clear_database=False)
-means = KMeans(n_clusters=2, init='k-means++', max_iter=100)
+means = None
 
+def run(_batch_size, _n_clusters, _init, _max_iter):
+    batch_size = _batch_size
+    means = KMeans(n_clusters=_n_clusters, init=_init, max_iter=_max_iter)
 
-def run():
     cluster_session = db.get_session()
 
     all_file_infos = cluster_session.query(FileInfo).filter(FileInfo.cluster_id == None).limit(batch_size).all()
@@ -38,6 +39,3 @@ def run():
 
     cluster_session.commit()
     return
-
-
-run()
