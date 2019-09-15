@@ -2,6 +2,7 @@ Running the solution
 	use "pip install -r requirements.txt" to install python dependencies
 	execute "run.py" for example usage
 	database with results will be created after first execution
+	subset of the task data is included to the repo as sample data
 
 Project description
 	The Python script created allows to cluster large amounts of random text data scrapped from 
