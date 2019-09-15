@@ -1,18 +1,10 @@
-from database import DBProvider
+from scipy.sparse import vstack
+
+from common import VectorizedFile
 from datamodel import FileInfo, Cluster
-from sklearn.cluster import KMeans
-from scipy.sparse import vstack, hstack
-from common import File, VectorizedFile
 
-db = DBProvider(clear_database=False)
-means = None
 
-def run(_batch_size, _n_clusters, _init, _max_iter):
-    batch_size = _batch_size
-    means = KMeans(n_clusters=_n_clusters, init=_init, max_iter=_max_iter)
-
-    cluster_session = db.get_session()
-
+def run(batch_size, means, cluster_session, n_clusters):
     all_file_infos = cluster_session.query(FileInfo).filter(FileInfo.cluster_id == None).limit(batch_size).all()
 
     print("Loaded: " + str(len(all_file_infos)) + ' file infos')
@@ -21,7 +13,7 @@ def run(_batch_size, _n_clusters, _init, _max_iter):
 
     vectors = list(map(lambda m: m.vector, vectorized_files))
 
-    if len(vectors) <= 1:
+    if len(vectors) <= n_clusters:
         print("Invalid batch size or all files are clustered")
         return
 

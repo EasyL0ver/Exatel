@@ -10,7 +10,6 @@ class DBProvider(object):
         if clear_database and os.path.exists('data.db'):
             os.remove('data.db')
 
-        #echo for logging, switch off in final version ?
         self.db = create_engine('sqlite:///data.db')
         self.active_session = None
 
