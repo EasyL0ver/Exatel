@@ -8,6 +8,7 @@ class DBProvider(object):
     def __init__(self, clear_database):
         #for testing
         if clear_database and os.path.exists('data.db'):
+            print('Clearing database')
             os.remove('data.db')
 
         self.db = create_engine('sqlite:///data.db')

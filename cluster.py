@@ -6,8 +6,7 @@ from datamodel import FileInfo, Cluster
 
 def run(batch_size, means, cluster_session, n_clusters):
     all_file_infos = cluster_session.query(FileInfo).filter(FileInfo.cluster_id == None).limit(batch_size).all()
-
-    print("Loaded: " + str(len(all_file_infos)) + ' file infos')
+    print('Clustering: {}  files loaded from db. Cluster amount is: {}, this might take a while'.format(len(all_file_infos), n_clusters))
 
     vectorized_files = list(map(lambda info: VectorizedFile(info), all_file_infos))
 
@@ -30,4 +29,5 @@ def run(batch_size, means, cluster_session, n_clusters):
         vectorized_file.file_info.cluster = correct_entity
 
     cluster_session.commit()
+    print('Finished clustering files, storing data in db')
     return

@@ -55,6 +55,7 @@ def commit_to_db(files, db_session):
 
 
 def run(root_path, batch_size, vectorizer, db_session):
+    print('Crawling from the root path: {}, file batch size: {}'.format(root_path, batch_size))
     paths = get_batch_paths(root_path, batch_size)
 
     files = [None] * len(paths)
@@ -65,4 +66,6 @@ def run(root_path, batch_size, vectorizer, db_session):
             print('Something went wrong when trying to load file: {}'.format(paths[i].name))
 
     commit_to_db(files, db_session)
+
+    print('Finished crawling: {} files'.format(len(paths)))
     return
