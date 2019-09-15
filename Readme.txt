@@ -12,7 +12,8 @@ Hashing vectorization is employed to allow text file parametrization in very lar
 Optimal amount of clusters is calculated by applying silhouette method to small data subset.
 Multidimensional K-means clustering is used to group the files with the most similar ones.
 Program output is written to SQLite database or is printed in the console.
-Database lets user to keep context without program running and batch the work
+Database lets user to keep context without program running and batch the work, currently after processing files are moved
+to organized folder next to the project root
 
 
 Technology used
