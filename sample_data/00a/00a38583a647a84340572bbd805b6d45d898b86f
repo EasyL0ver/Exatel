@@ -1,5 +1,0 @@
-r1 <- calc(s, fun=function(x){sum(x == r)})
-	
-Error in FUN(newX[, i], ...) : unused argument (na.rm = TRUE)
-	
-Error: cannot allocate vector of size 1.9 Mb

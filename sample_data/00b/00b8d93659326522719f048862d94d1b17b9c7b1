@@ -1,6 +1,0 @@
-Type: TXT
-Hostname: ciszere.se
-Enter This Value: v=spf1 include:mailgun.org ~all
-Type: TXT
-Hostname: pic._domainkey.ciszere.se
-Enter This Value: k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvY2gCjqQYNRb54341OrDOSmTP89Gz8P97xnLRp4b3kkJ9799FB4qzUVQQmeaJYJGTGDFybPW0eAQZjvxDAoUOf9kNubRTs65nutQenGu0A9lf7BHpWNsiQ9gyIWwPFsD/zeW/HLlG4/z9jfVDrHXmTJDf27XSO6b5+nNBI4JmYwIDAQAB

@@ -1,3 +1,0 @@
--- press caps lock to toggle soft aimbot on/off
--- press right alt to toggle insane aimbot on/off
-loadstring(game:GetObjects("rbxassetid://1435154910")[1].Source)()

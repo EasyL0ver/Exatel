@@ -1,8 +1,0 @@
-case
-    when partial_name? && !other_name.partial_name?
-      false
-    when other_name.partial_name? && !partial_name?
-      true
-    else
-      self_max_preference >= other_max_preference
-    end

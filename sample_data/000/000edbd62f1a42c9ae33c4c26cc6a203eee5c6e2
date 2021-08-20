@@ -1,8 +1,0 @@
-
-	// Shuffle the riddles.
-	for (int i = 0; i < riddles.size(); i++) {
-	    riddles.get(i).clue.color.a = 0f;
-	    riddles.get(i).object.color.a = 0f;
-	    Riddle temp = riddles.remove(i);
-	    riddles.add((int) (Math.random() * riddles.size()), temp);
-	}

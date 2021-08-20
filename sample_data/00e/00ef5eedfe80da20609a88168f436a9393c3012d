@@ -1,4 +1,0 @@
-input id="header-search-input" class="form-control" name="ip" type="text" value="" required placeholder="IP or AS number search..." />
-        <button class="btn search-icon js-google-analytics" type="submit" data-ga-send-event="JsonWidget, HeaderSearch, #header-search-input">Search</button>
-    </form>
-</div>

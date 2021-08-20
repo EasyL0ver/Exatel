@@ -1,5 +1,0 @@
-Section 1.5.3 Amendment for clarification (with some changes).
-Over time, the reputation of a user with a global ban will increase by .33 per day.  That global ban will not impact the user reputation after 300 days.*  If that ban is disputed and the dispute is won by the user, the ban will be changed to a local ban and have no impact on the user's reputation.
-* If a user incurs a second global ban, the user's reputation will increase at a rate of .25 per day, taking a total of 400 days to recover fully from.
-* If a user incurs a third global ban, the user's third reputation will increase at a rate of .2 per day, taking a total of 500 days to recover from.
-* If a user incurs four or more global bans, the rate of reputation increase will remain the same, but the number of days that a user will need to wait before recovering resets to 500.

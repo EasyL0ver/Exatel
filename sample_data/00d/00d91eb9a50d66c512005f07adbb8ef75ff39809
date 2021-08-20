@@ -1,8 +1,0 @@
-ModRewrite and the url
-RewriteRule ^news/?(d+)/?$ /?pg=news&id=$1 [NC]
-	
-<link rel="stylesheet" href="../theme/style.css" media="all" >
-	
-/theme/style.css
-	
-RewriteRule ^(images¦javascript¦theme) - [L]

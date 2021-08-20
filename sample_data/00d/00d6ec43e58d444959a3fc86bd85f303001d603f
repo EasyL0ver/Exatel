@@ -1,5 +1,0 @@
-<xsl:for-each select="collection('./?select=*')" >
-     <xsl:element name='file'>
-        <xsl:value-of select="tokenize(document-uri(.), '/')[last()]"/>
-     </xsl:element>
-</xsl:for-each>

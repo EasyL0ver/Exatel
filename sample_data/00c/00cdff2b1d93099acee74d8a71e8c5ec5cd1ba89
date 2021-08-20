@@ -1,9 +1,0 @@
-previousUrl: string;
-constructor(router: Router) {
-  router.events
-  .filter(event => event instanceof NavigationEnd)
-  .subscribe(e => {
-    console.log('prev:', this.previousUrl);
-    this.previousUrl = e.url;
-  });
-}

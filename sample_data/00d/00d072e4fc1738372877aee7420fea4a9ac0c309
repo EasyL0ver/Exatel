@@ -1,5 +1,0 @@
-[_Rep]
-                       _M_length
-[basic_string<char>]   _M_capacity
-_M_dataplus            _M_refcount
-_M_p ----------------> unnamed array of char_type

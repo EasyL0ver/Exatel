@@ -1,9 +1,0 @@
-chpwd() {
-  ls  
-
-  git status > /tmp/git_status_output.txt 2>&1
-  if [[ $? == 0 ]]; then
-    echo
-    git status
-  fi  
-}

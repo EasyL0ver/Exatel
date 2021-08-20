@@ -1,9 +1,0 @@
-app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions(...
-	
-<location path="Error.aspx">
-  <system.web>
-    <authorization>
-      <allow users="*" />
-    </authorization>
-  </system.web>
-</location>

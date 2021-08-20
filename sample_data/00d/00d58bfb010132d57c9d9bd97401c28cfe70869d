@@ -1,5 +1,0 @@
-public static String twoDigits(int v) {
-    return v < 10 ? "0" + v : "" + v;
-}
-	
-String t = twoDigits(hh) + ":" + twoDigits(mm) + ":" + twoDigits(ss);

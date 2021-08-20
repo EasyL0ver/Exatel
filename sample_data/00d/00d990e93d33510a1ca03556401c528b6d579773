@@ -1,8 +1,0 @@
-c{cembed $channelid {
-"embed": {
-    "color": 10070709,
-    "image": {
-      "url": "https://cdn.discordapp.com/attachments/483007962860748821/518584232382300178/this_is_good.gif" }
-  }
-}
-}

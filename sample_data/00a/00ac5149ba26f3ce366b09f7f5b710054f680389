@@ -1,6 +1,0 @@
-struct Foo {
-}
-
-fn main() {
-    let myf: for<'a> fn(&'a Foo) = |arg: &'static Foo| {};
-}

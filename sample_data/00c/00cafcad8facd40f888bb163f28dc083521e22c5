@@ -1,4 +1,0 @@
-let emailRegExp = new RegExp("^[a-zA-ZæøåÆØÅ]+\@[a-zA-ZæøåÆØÅ]+\.[a-zA-ZæøåÆØÅ]+$");
-if(!emailRegExp.test(email)){
-    throw new Error("Invalid email");
-}

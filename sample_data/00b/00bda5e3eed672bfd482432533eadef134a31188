@@ -1,3 +1,0 @@
-The following packages have unmet dependencies:
- filezilla : Depends: filezilla-common (= 3.15.0.2-1ubuntu1) but 3.21.0-1~getdeb1 is to be installed
-E: Unable to correct problems, you have held broken packages.

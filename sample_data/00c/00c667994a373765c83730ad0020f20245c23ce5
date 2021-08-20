@@ -1,2 +1,0 @@
-// Load files from the server to the client!
-const model = await nsfwjs.load('/model/')

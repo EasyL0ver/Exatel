@@ -1,6 +1,0 @@
-create_default_packages:
- - pip
- - ipykernel
- - pyopenssl
-envs_dirs:
- - $HOME/miniconda3/envs

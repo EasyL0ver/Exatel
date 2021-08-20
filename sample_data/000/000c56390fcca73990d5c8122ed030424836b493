@@ -1,4 +1,0 @@
-$ w -i
- 21:14:08 up 2 days, 19:50,  2 users,  load average: 0.00, 0.01, 0.05
-USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-vagrant  pts/0    10.0.2.2         Sat20    0.00s  2.09s  0.01s sshd: vagrant [priv]

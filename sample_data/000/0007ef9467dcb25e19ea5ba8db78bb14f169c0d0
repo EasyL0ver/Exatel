@@ -1,6 +1,0 @@
-sudo systemctl isolate multi-user.target
-sudo systemctl isolate graphical.target
-
-sudo shutdown -h now
-
-ubuntu from gui to commandline and back

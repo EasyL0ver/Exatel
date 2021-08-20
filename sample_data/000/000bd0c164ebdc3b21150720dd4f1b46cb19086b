@@ -1,7 +1,0 @@
-$ type cc
-cc is a tracked alias for /usr/bin/cc
-$ ls -li /usr/bin/cc
-7951 -r-xr-xr-x 2 root wheel 49680 Dec 20 00:46 /usr/bin/cc $ type gcc
-gcc is a tracked alias for /usr/bin/gcc
-$ ls -li /usr/bin/gcc
-7951 -r-xr-xr-x 2 root wheel 49680 Dec 20 00:46 /usr/bin/gcc

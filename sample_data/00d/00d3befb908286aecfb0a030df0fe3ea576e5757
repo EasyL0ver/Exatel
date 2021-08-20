@@ -1,6 +1,0 @@
-* file bug with patch against compass wrt home dir
-* Finish fixing the startup script for thin
-* Get patched version of rubygem-thin in our repo
-* File bug with Fedora wrt rubygem-thin
-* Document new setup changes in our Install wiki doc
-* done

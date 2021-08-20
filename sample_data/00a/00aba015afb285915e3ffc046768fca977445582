@@ -1,9 +1,0 @@
-20190226_001
-20190226_002
-20190226_003 ...
-20190227_001
-20190227_002 ... 
-     
-select  (concat(date_format(now(), '%Y%m%d'), LPAD((coalesce((MAX(substr(i_ticket,10,12 ))),0))+1 ,4,'_00'  ))) AS i_ticket
- from   ticket_support
-WHERE i_ticket like ('20190227%') and  d_request= date_format(now(), '%Y%m%d');

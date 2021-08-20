@@ -1,4 +1,0 @@
-xx.195.118.5 - Servers real IP
-xx.195.109.0/24 - OpenVPN Port 1194 Clients (tap)
-xx.195.110.0/24 - OpenVPN Port 1195 Clients (tap)
-195.xx.182.0/23 - OpenVPN Port 1196 Clients (tap)

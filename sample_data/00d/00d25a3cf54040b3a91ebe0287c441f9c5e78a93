@@ -1,3 +1,0 @@
-:: An activity is a non-atomic task ( task is an non-atomic Activity and used when the work in progress can be broken down to a finer   level of detail) or procedure decomposable into actions.
-
-:: An action is a task or procedure that cannot be broken into parts.

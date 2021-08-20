@@ -1,6 +1,0 @@
-[(let vexp body) (value-of vexp env (lambda (v)
-                                       (k (value-of body (envr_extend v env) k))))]
-[(lambda body) (k (clos_closure body env))]
-[(app rator rand) (value-of rator env (lambda (proc)
-                                         (value-of rand env (lambda (a)
-                                             (apply-proc proc a k)))))])))

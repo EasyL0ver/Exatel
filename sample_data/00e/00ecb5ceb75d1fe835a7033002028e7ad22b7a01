@@ -1,9 +1,0 @@
-|_ ~a ^ (a v b)     premise
-|   ~a                    ^e
-|   a v b                ^e
-|   |_ a                   assumption
-|   |   #                   ~e
-|   |   b                   explosion (ex falso quodlibet)
-|   +
-|   |_ b                   assumption
-|   b                       ve

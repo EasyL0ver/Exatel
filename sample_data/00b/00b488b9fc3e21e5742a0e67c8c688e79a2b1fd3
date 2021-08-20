@@ -1,5 +1,0 @@
-{name: "basicPopup", kind: "enyo.Popup", floating: true, **centered: true,**
-        style: "background-color: yellow; padding: 10px", onHide: "popupHidden", components: [
-            {content: "Popup..."}
-        ]
-    },

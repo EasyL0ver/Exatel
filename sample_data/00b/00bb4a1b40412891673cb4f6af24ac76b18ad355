@@ -1,3 +1,0 @@
-local event = require ("event")
-local component = require("component")
-while true do ev = {event.pull("key_down")} for i,v in pairs(ev) do print(" ") x = ev[4] component.iron_noteblock.playNote(x-1) end end

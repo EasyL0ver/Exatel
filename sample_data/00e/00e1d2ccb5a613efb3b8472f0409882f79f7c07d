@@ -1,6 +1,0 @@
-RouterModule.forRoot([
- { 
- path: 'prayers', 
- loadChildren: './prayers/prayers.module#PrayersModule'
- },
- ]),

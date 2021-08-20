@@ -1,3 +1,0 @@
-/dev/sda1 / ext4 errors=remount-ro,discard 0 1
-/dev/sdb1 /mnt/mydisk ext4 nofail 0 0
-/dev/sdb1 /var ext4 defaults 0 2

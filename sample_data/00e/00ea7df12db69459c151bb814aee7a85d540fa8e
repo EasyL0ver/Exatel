@@ -1,9 +1,0 @@
-I wonder about .htaccess rule
-([a-zA-Z0-9_-]+)/
-	
-RewriteEngine on
-
-RewriteCond %{REQUEST_FILENAME} !-f 
-RewriteCond %{REQUEST_FILENAME} !-d 
-
-RewriteRule ^([/a-zA-Z0-9_-]+)$ index.php/$1 [L]

@@ -1,3 +1,0 @@
-return $product->formatUrlKey($urlKey === '' || $urlKey === null ? $product->getName() : $urlKey);
-	
-return $product->formatUrlKey($urlKey === '' || $urlKey === null ? $product->getName() . "-" . $product->getSku() : $urlKey);

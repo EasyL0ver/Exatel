@@ -1,1 +1,0 @@
-Reports.find( { _id: { $in : ids_array } }, (err, found) => {});

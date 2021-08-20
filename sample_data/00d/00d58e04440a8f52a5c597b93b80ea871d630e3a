@@ -1,3 +1,0 @@
-nm -m -arch x86_64 A | grep "<missing symbol>"
-
-                 (undefined) external <missing symbol>

@@ -1,9 +1,0 @@
-<?php
-
-// Assuming you have cf:_sale_price as a column in your table...
-add_filter( 'wc_product_table_data_custom_field__sale_price, function( $price, $product ) {
-    if ( empty( $price ) ) {
-        $price = get_post_meta( $product->get_id(), '_regular_price', true );
-    }
-    return $price;
-} );

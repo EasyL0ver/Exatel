@@ -1,2 +1,0 @@
-py4j.protocol.Py4JJavaError: An error occurred while  callingo70.getDynamicFrame.
-: org.postgresql.util.PSQLException: Connection attempt timed out.

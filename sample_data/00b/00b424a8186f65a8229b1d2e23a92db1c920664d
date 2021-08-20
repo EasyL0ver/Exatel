@@ -1,9 +1,0 @@
-var view3D:Viewport = new Viewport();
-view3D.camera = new TargetCamera();
-		
-var scnObj:BoxSceneObject = new BoxSceneObject();
-scnObj.material = new MaterialFill( 0xFF0000 );
-		
-view3D.scene.addChild( scnObj );
-		
-view3D.autoUpdate = true;

@@ -1,8 +1,0 @@
-void VideoCutterList::testMethod(int length)
-{
-    if(length !=0){
-        countOfVideo++;
-        layout->addWidget(new VideoCutter(nullptr,countOfVideo,QString::number(length/60) +":"+QString::number(length - length/60)));
-    }
-
-}

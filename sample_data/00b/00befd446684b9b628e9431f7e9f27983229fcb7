@@ -1,9 +1,0 @@
-blau ~ # doveconf -n namespace/Public
-namespace Public {
-  location = maildir:/srv/mail/.public/%X{gid}/Maildir:LAYOUT=fs:INDEX=~/Maildir/public
-  prefix = "#Public/"
-  separator = /
-  subscriptions = no
-  type = public
-}
-blau ~ #

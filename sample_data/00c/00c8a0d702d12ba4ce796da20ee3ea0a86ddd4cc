@@ -1,9 +1,0 @@
-@override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _buildBar(context),
-      backgroundColor: appDarkGreyColor,
-      body: _buildList(context),
-      resizeToAvoidBottomPadding: false,
-    );
-  }

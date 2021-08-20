@@ -1,7 +1,0 @@
-How to convert DIB to TPNGObject?
-var
-  lpbi: PBitmapInfoHeader;
-begin
-  // Get DIB header info from DIB handle
-  lpbi := PBitmapInfoHeader(GlobalLock(hdIB));
-end;

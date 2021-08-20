@@ -1,5 +1,0 @@
-select count(c.dui_owner) as cantidad, o.dui, o.nombre, o.apellidos
-from owner as o, casa as c
-where o.dui = c.dui_owner 
-group by o.dui,o.nombre, o.apellidos
-order by cantidad desc;

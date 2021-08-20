@@ -1,1 +1,0 @@
-if c.Name == "specialdiamond" then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(c.Position)

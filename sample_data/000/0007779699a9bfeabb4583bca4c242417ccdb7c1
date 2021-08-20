@@ -1,4 +1,0 @@
-#Chantalk On
-on *:TEXT:*mafia*:#: {
-  kick $chan $nick Do Not ADVERTISE!! 
-}

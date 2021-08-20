@@ -1,3 +1,0 @@
-// using the unchanged obj2 from above...
-var { foo: { dude: g } } = obj2;
-// g == "WTF"

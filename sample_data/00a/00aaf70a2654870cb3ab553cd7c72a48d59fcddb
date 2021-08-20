@@ -1,9 +1,0 @@
-Sub Main()
-    Dim row As Long() = {1, 2, 3, 4}
-    ChangeRow(row.Clone)
-    Console.WriteLine(row(0))
-End Sub
-
-Sub ChangeRow(ByVal array As Long())
-    array(0) = 0
-End Sub

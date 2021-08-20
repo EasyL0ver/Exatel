@@ -1,7 +1,0 @@
-def A1Next(Answer):
-print(Answer)
-Answer = str(Answer)
-if Answer == str('print("Hello World!")') or Answer == str("print('Hello World!')"):
-    print("Correct")
-else:
-    print("Incorrect")

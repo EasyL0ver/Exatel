@@ -1,6 +1,0 @@
-*Delete::
-if toggle := !toggle
-Send, {Insert down}
-else
-Send, {Insert up}
-return

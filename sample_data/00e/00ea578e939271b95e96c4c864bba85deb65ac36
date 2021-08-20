@@ -1,9 +1,0 @@
-Private Sub Worksheet_Change(ByVal Target As Range)
-    Dim A1 As Range
-    Set A1 = Range("A:I")
-    If Not Intersect(Target, A1) Is Nothing Then
-        Application.EnableEvents = False
-            Target.Value = UCase(Target.Value)
-        Application.EnableEvents = True
-    End If
-End Sub

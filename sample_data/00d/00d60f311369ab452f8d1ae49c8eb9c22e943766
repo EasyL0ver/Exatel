@@ -1,7 +1,0 @@
-fn main() {
-    let (mut a, mut b): (usize, usize) = (5,6);
-    
-    let (a_mut, b_mut) = (&mut a, &mut b);
-    
-    (b_mut, a_mut) = (a_mut, b_mut);
-}

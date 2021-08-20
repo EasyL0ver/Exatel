@@ -1,3 +1,0 @@
-on join:
- set {rpg.%player%health} to {rpg.%player%maxhealth}
- set {dead.or.alive.%player%} to "alive"

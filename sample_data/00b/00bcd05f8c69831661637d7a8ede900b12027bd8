@@ -1,3 +1,0 @@
-public interface Pi {
-	public double getPi(int broj);
-}

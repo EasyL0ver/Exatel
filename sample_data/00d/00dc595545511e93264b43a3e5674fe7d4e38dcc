@@ -1,7 +1,0 @@
-pub fn usart1(
-  usart: USART1, 
-  pins: PINS, 
-  config: Config, 
-  clocks: Clocks
-) -> Result<Serial<USART1, PINS>, InvalidConfig>
-where PINS: Pins<USART1>

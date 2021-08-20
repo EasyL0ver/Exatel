@@ -1,3 +1,0 @@
-Map<String, Object> param = new HashMap<>();
-param.put(ResourceResolverFactory.SUBSERVICE, "myservice");
-ResourceResolver resolver = resourceResolverFactory.getServiceResourceResolver(param);

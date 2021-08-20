@@ -1,4 +1,0 @@
-evalulate shell variable in perl [closed]
-open my $handle, "<$filename" or die $!;
-	
-$filename =~ s/$(w+)/$ENV{$1}/g;

@@ -1,3 +1,0 @@
-sigma_hat^2 = RSS/(n-p)
-	
-RSS = sum(w * (y-y_hat)^2)

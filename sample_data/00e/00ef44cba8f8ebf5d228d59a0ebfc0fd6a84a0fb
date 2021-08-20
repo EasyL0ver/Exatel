@@ -1,5 +1,0 @@
-	public Node(int d, Node n, Node f) {
-		d = data;
-		n = next;
-		f = front;
-	}

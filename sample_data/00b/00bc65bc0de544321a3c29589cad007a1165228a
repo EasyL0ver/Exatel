@@ -1,9 +1,0 @@
-cat /etc/crontab
-* * * * *  root /etc/echo.sh > /var/log/cron.log 2>&1
-
-
-/etc/init.d/cron reload
- * Reloading configuration files for periodic command scheduler cron     [ OK ]
-
-tail -f /var/log/cron.log
-hi

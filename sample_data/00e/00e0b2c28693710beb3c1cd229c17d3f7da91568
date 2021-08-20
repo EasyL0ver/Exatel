@@ -1,5 +1,0 @@
-export:
-mysqldump -u root -p mantel > mantel20180606.sql
-
-import:
-mysql -u root -p mantel < mantel20180606.sql

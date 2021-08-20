@@ -1,2 +1,0 @@
-launchctl load ~/Library/LaunchAgents/redis.plist
-launchctl start com.redis

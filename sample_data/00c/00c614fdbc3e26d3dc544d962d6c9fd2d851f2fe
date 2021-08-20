@@ -1,2 +1,0 @@
-select ep.name from employees ep 
-where (select mng.id from employees mng where mng.managerId = ep.id) is null

@@ -1,6 +1,0 @@
-{ player0: {select_by: "player_id", i: 107993, role: "main", team: "team1"}
-    player1: {select_by: "player_id", i: 108322, role: "main", team: "team1"}
-    player2: {select_by: "player_id", i: 107995, role: "main", team: "team1"}
-    player3: {select_by: "player_id", i: 108033, role: "main", team: "team1"}
-    player4: {select_by: "player_id", i: 108866, role: "main", team: "team1"}
-}

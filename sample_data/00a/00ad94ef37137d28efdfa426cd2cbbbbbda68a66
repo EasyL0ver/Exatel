@@ -1,9 +1,0 @@
-var config = {
-  // ... (rest of the config from earlier)
-  physics: {
-    default: "arcade",
-    arcade: {
-      gravity: { y: 0 } // Top down game, so no gravity
-    }
-  }
-};

@@ -1,8 +1,0 @@
-4 /wd4221 /wd4245 /wd4267 /wd4305 /wd4389 /wd4702 /wd4701 /wd4703 /wd4661 /wd4706 /wd4715 /O1 /Ob2 /Oy- /Zc:inline /Gw /Oi /MD /wd4267 /TP /wd4577 /GR- /c ../../../../../qt5-dev71-src/qtwebengine/src/3rdparty/chromium/gpu/ipc/in_process_command_buffer.cc /Foobj/gpu/ipc/gl_in_process_context/in_process_command_buffer.obj /Fd"obj/gpu/ipc/gl_in_process_context_cc.pdb"
-../../../../../qt5-dev71-src/qtwebengine/src/3rdparty/chromium\gpu/command_buffer/service/memory_tracking.h(60): warning C4146: unary minus operator applied to unsigned type, result still unsigned
-../../../../../qt5-dev71-src/qtwebengine/src/3rdparty/chromium/gpu/ipc/in_process_command_buffer.cc(1421): error C2664: 'HWND SetParent(HWND,HWND)': cannot convert argument 1 from 'gpu::SurfaceHandle' to 'HWND'
-../../../../../qt5-dev71-src/qtwebengine/src/3rdparty/chromium/gpu/ipc/in_process_command_buffer.cc(1421): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-../../../../../qt5-dev71-src/qtwebengine/src/3rdparty/chromium/gpu/ipc/in_process_command_buffer.cc(1423): error C2664: 'BOOL SetWindowPos(HWND,HWND,int,int,int,int,UINT)': cannot convert argument 1 from 'gpu::SurfaceHandle' to 'HWND'
-../../../../../qt5-dev71-src/qtwebengine/src/3rdparty/chromium/gpu/ipc/in_process_command_buffer.cc(1424): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
-[3/10873] CXX obj/components/viz/host/host/gpu_host_impl.obj
-FAILED: obj/components/viz/host/host/gpu_host_impl.obj

@@ -1,3 +1,0 @@
-ffmpeg -i http://admin:1234@192.168.0.172:80/video.cgi -r 1 -vcodec copy -an -t 30 ./cam4.mp4
-
-ffmpeg -use_wallclock_as_timestamps 1 -f mjpeg -i http://admin:1234@192.168.0.172:80/video.cgi -an -t 10 -c copy -y ./cam5.mp4

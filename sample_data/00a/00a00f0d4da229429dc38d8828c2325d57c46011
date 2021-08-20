@@ -1,5 +1,0 @@
-$username = 'quincyglenn';
-$result = $em->getRepository('Application\Entity\User')->findBy(array('username' => $username));
-if (count($result) > 0) {
-    throw new Exception('Username already exists');
-}

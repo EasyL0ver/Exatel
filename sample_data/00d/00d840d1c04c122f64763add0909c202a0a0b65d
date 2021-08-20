@@ -1,8 +1,0 @@
-H1 --> =IF(G1="N/A",0,1)
-H2 --> =IF(G2="N/A",H1,H1+1)
-J1 --> =IFERROR(INDEX(G:G,MATCH(I1,H:H,0)),"")
-	
-I1 --> 1
-I2 --> 2
-I3 --> 3
-I4 --> 4 and so on..

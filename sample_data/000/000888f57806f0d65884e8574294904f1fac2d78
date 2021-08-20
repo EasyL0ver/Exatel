@@ -1,4 +1,0 @@
-in main() {
-   print("Hello from ME");
-   return 0;
-}

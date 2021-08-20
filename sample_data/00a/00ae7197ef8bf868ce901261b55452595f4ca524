@@ -1,4 +1,0 @@
-How to add a custom style sheet to a web application utilizing EWL?
-protected override List<CssInfo> GetStyleSheets() {
-  return new List<CssInfo> { new Styles.MyStyles.Info() };
-}

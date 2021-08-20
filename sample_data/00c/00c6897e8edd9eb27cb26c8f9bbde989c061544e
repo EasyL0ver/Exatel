@@ -1,5 +1,0 @@
-d = {'col1': [1,2,3,4,5], 'col2': [['a'],['a','b','c'],['d'],['e'],['a','e','d']]}
-df = pd.DataFrame(data=d)
-word_list = []
-for i in df['col2']:
-  word_list = word_list + i

@@ -1,9 +1,0 @@
-Skrytyj kontjent. Dłja prosmotra informacii njeobchodimo 10 soobszczjenij.
-
-    Wyzow propiszitje w szabłon \modules\bbs\tpl\def\search.php , no objazatjełno oprjedjełitje catID wot tri stroki.
-    PHP:
-    $catData = bff::filter('bbs-search-category');
-    $catID = ( ! empty($catData['id']) ? $catData['id'] : 0 );
-
-    echo BBS::i()->subcatsList('search', bff::DEVICE_DESKTOP, $catID);
-    W szabłonje snaczała idjot kod php do 36 stroki. Wot w samom koncje do zakrytija ?> pomjestitje dannyj kod.

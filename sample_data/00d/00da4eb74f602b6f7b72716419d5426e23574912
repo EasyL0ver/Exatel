@@ -1,7 +1,0 @@
-String init[] = { "One", "Two", "Three", "One", "Two", "Three" };
-List list1 = new ArrayList(Arrays.asList(init));
-Stream<String> ss3 = list1.stream();
-Map<String, long> msl = ss3.collect(
-    Collectors.groupingBy(Function.identity(), counting()));//compilation failure
-	
-Map<String, long> msl = ss3.collect(Collectors.groupingBy(Function::identity, counting()));

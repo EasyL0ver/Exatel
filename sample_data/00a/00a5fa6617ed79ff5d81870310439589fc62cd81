@@ -1,7 +1,0 @@
-<% if positions.collect{|position| position.hidden}.include?(false) %>
-  ...
-<% end %>
-	
-<% if positions.any?{|position| !position.hidden} %>
-  ...
-<% end %>

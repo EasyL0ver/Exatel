@@ -1,6 +1,0 @@
-bill_files = BillFile.where(:state_abbr => "AL", :session => "12", :session_type => "1")
-
-bill_files.each do |bf|
-  bf.file_name.gsub!(/.\/..\/..\//, '')
-  bf.save!
-end

@@ -1,8 +1,0 @@
-#include<Array.au3>
-
-$sText = "USER James1337 Anonymous irc.afterworkchat.com :James C."
-
-$aSplit = StringSplit($sText,":",3)
-$aResult = StringSplit($aSplit[0]," ",3)
-$aResult[4] = $aSplit[1]
-_Arraydisplay($aResult)

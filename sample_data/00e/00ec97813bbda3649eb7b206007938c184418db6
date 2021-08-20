@@ -1,4 +1,0 @@
-if (!(alive G_PL_1)) && (_eastCasualty >= 85) exitWith {
-   
-    "The Army has routed the Gendarmerie and seized the  HQ." call FNC_EndMission;
-};

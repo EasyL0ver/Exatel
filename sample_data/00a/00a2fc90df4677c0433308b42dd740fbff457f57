@@ -1,9 +1,0 @@
-var i = 0;
-switch (i)
-{
-	default:
-		Console.WriteLine(i);
-		i++;
-		if (i == 10) { break; }
-		goto default;
-}

@@ -1,5 +1,0 @@
-button.background as? MaterialShapeDrawable?.let {
-    it.shapeAppearanceModel.apply {
-        cornerFamily = CutCornerTreatment(cornerSize)
-    }
-}

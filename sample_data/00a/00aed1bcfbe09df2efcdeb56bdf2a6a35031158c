@@ -1,5 +1,0 @@
-db.users.find({$or:[
-{acl_fields:{$elemMatch:{name:{$ne:"gender"}, circles:{$in:[]}, value : /aking/i}}},
-{acl_fields:{$elemMatch:{name:"gender", circles:{$in:[]}, value : /^aking$/i}}},
-{acl_fields:{$elemMatch:{name:"gender", public:true, value : /^aking$/i}}},
-{acl_fields:{$elemMatch:{name:{$ne:"gender"}, public:true, value:/aking/i}}}]})

@@ -1,2 +1,0 @@
-$ echo "My Gmail Password Is Orange" | md5sum
-97ec87f89796b683feae88008c302d22  -

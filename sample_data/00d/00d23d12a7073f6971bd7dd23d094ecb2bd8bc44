@@ -1,5 +1,0 @@
-public void jump() {
-		double xCoordinate = this.xCoordinate;
-		this.xCoordinate = this.nextX;
-		this.nextX = xCoordinate;
-		super.setLocation(this.xCoordinate, this.yCoordinate);

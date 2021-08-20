@@ -1,9 +1,0 @@
-# in a hook file
-
-case node[:environment][:name]
-
-when 'foobar'
-  run "ln -nfs foo bar"
-when "production
-  run "ln -nfs hi mom"
-end

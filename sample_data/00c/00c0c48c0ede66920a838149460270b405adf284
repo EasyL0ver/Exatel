@@ -1,5 +1,0 @@
-org.apache.spark.SparkException: Job aborted due to stage failure: Task 2003 in stage 32.0 failed 1 times, most recent failure: Lost task 2003.0 in stage 32.0 (TID 33046, localhost, executor driver): java.io.FileNotFoundException: /mnt/tmp/blockmgr-13430cd7-0455-4sfgs-a98f-7f96e0252471/13/temp_shuffle_e680c565-f17a-47cb-9ef9-29cdcf14e50f (No space left on device)
-	
-spark.executor.memory] =12G
-spark.driver.memory =64G
-spark.executor.cores =4

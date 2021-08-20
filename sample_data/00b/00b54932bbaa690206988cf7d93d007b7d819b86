@@ -1,6 +1,0 @@
-does not Core Data Automatically take care with inverse relationships
-Week* aWeek;
-Day *aDay;
-[aWeek addDayObject:aDay];
-	
-- (void)addXXXObject:(xxx)xxx

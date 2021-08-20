@@ -1,8 +1,0 @@
-@echo off
-	if not "%1"=="am_admin" (powershell start -verb runas '%0' am_admin & exit /b)
-	set date_=%DATE:/=-%_%TIME::=-%
-	set destdir="%~dp0\%ComputerName%\Benutzer"
-	mkdir %destdir%
-@echo on
-ECHO %date_%>%~dp0\letztes_Sicherungsdatum_%ComputerName%.txt
-robocopy.exe c:\Users %destdir% /V /MIR /ZB /R:0 /W:0 /XJ /NFL /XD OneDrive “Temporary Internet Files” OfficeFileCache Temp *cache* Spotify WER /XF *cache* *.ost

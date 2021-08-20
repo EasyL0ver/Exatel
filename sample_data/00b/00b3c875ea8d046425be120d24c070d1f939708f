@@ -1,9 +1,0 @@
-SDWebImagePrefetcher
-      .shared()
-      .prefetchURLs(
-        urls as [URL],
-        progress: nil,
-        completed: { finished, skipped in
-          onComplete([finished, skipped])
-        }
-      )

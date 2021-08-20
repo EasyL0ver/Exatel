@@ -1,3 +1,0 @@
-command /gomi:
- trigger:
-  open chest with 6 rows named "&lゴミ箱 (閉じると取り戻すことはできません)" to player

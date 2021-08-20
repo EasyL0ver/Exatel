@@ -1,8 +1,0 @@
-x86_64-darwin	gnomecast
-x86_64-linux	python36Packages.pycaption
-i686-linux	python36Packages.pycaption
-x86_64-linux	gnomecast
-aarch64-linux	python36Packages.pycaption
-aarch64-linux	gnomecast
-i686-linux	gnomecast
-x86_64-darwin	python36Packages.pycaption

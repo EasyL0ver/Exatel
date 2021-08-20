@@ -1,8 +1,0 @@
-.test:before {
-  content:'';
-  background: url(hello.png);
-}
-
-.test:before {
-  content:url(hello.png);
-}

@@ -1,8 +1,0 @@
-zpool                        109G   106G    96K  none
-zpool/crypt                  109G   106G   192K  none
-zpool/crypt/root            92.1G   106G  3.47M  legacy
-zpool/crypt/root/home       65.6G   106G  65.6G  legacy
-zpool/crypt/root/nix        20.1G   106G  62.0M  legacy
-zpool/crypt/root/nix/store  20.0G   106G  20.0G  legacy
-zpool/crypt/root/tmp        5.75G   106G  5.75G  legacy
-zpool/crypt/root/var         560M   106G   560M  legacy

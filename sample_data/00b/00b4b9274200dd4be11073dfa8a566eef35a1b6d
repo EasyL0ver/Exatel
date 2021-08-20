@@ -1,9 +1,0 @@
-var searchresults = nlapiSearchRecord('transaction', 'customsearch4906', null, null)
-
-for ( var i = 0; searchresults != null && i < searchresults.length; i++ ) {
-       var emailRecord = searchresults[i];
-var checkID = emailRecord.rawValues[0].value
-var lastContactDate = (emailRecord.rawValues[2].value)
-if(checkID == nlapiGetRecordId() && lastContactDate != nlapiGetFieldValue('custbody_dma_last_contact_days'))
-nlapiSetFieldValue('custbody_dma_last_contact_days', lastContactDate)
- }

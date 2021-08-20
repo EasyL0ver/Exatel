@@ -1,6 +1,0 @@
-dateInput(inputId = "dateRange",  
-               label =  "Date range",
-
-               value  = Sys.Date()
-),
-   # Show a plot of the generated distribution

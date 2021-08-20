@@ -1,8 +1,0 @@
-function func1() { document.querySelector('#app > div > div._3kwE8 > div._3rl_0 > div.DnHhI > span').click(); } setTimeout(func1, 1000);
-function func2() { document.querySelector('#app > div > div._3kwE8 > div._3rl_0 > div.DnHhI > span').click(); } setTimeout(func2, 2000);
-function func3() { document.querySelector('#app > div > div._3kwE8 > div._3rl_0 > div.DnHhI > span').click(); } setTimeout(func3, 3000);
-function func4() { document.querySelector('#app > div > div._3kwE8 > div._3rl_0 > div.DnHhI > span').click(); } setTimeout(func4, 4000);
-function func5() { document.querySelector('#app > div > div._3kwE8 > div._3rl_0 > div.DnHhI > span').click(); } setTimeout(func5, 5000);
-function func6() { document.querySelector('#app > div > div._3kwE8 > div._3rl_0 > div.DnHhI > span').click(); } setTimeout(func6, 6000);
-function func7() { document.querySelector('#app > div > div._3kwE8 > div._3rl_0 > div.DnHhI > span').click(); } setTimeout(func7, 7000);
-function func8() { document.querySelector('#app > div > div._3kwE8 > div._3rl_0 > div.DnHhI > span').click(); } setTimeout(func8, 8000);

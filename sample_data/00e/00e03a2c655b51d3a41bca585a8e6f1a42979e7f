@@ -1,8 +1,0 @@
-// parseInt usually works just fine
-parseInt("8") // outputs 8
-
-// until you are padded left with zeros
-parseInt("08") // outputs 0
-
-// easy to fix with radix parameter
-parseInt("08", 10) // outputs 8

@@ -1,3 +1,0 @@
-on join:
-	broadcast "%player% さんがログインしました！"
-　　　　if player's gamemode is adventure:

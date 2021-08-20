@@ -1,4 +1,0 @@
-/tmp/ccLjmUpy.o: In function `main':
-final.cpp:(.text+0x0): multiple definition of `main'
-/tmp/ccdt6DdO.o:final.cpp:(.text+0x0): first defined here
-collect2: ld returned 1 exit status

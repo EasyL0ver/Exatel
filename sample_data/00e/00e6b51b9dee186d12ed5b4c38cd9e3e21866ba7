@@ -1,7 +1,0 @@
-dsk01lnx Nyx # ./BuildAndPackage.py
-GT-i9000b_Galaxy_S:
-	 • Configuring...done
-	 • Building...not using ccache...done
-	 • Creating boot.img and copying kernel components...done
-	 • Making script...
-Locked or non-existant file: <_io.TextIOWrapper name='/Store/Android/KernelsICS/Nyx/BuildAndPackage/resources/updater-script.template' mode='r' encoding='UTF-8'>

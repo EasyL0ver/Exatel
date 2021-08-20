@@ -1,8 +1,0 @@
-int X, S = 4, D = 2, R = 1, T = 0;
-cin >> X;
-while (T >= 0) {
-R = R+1;
-D = D+2;
-S = S+D+1;
-T = X – S;
-}

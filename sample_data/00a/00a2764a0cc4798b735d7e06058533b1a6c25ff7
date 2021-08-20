@@ -1,6 +1,0 @@
-########################################################################
-### SHELL COMMAND
-########################################################################
-
-log: 'bash -c "[ -d /config/log ]; echo ''{{ now().strftime("%Y-%m-%d %H:%M:%S") }} {{text}}'' >> /config/log/$(date +%Y-%m-%d).log"'
-rmlog: 'bash -c "find /config/log -type f -mtime +{{day}} -exec rm -rf {} \+"'

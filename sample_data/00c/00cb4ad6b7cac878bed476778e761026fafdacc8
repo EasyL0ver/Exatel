@@ -1,7 +1,0 @@
-[globalVar = LIT:0 = {$config.absRefPrefix} ]
-    config.absRefPrefix >
-[globalVar = LIT: = {$config.absRefPrefix} ]
-    config.absRefPrefix < config.baseURL
-[else]  
-    config.absRefPrefix = {$config.absRefPrefix}
-[end]

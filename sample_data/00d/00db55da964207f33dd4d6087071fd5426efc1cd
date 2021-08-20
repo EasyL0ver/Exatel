@@ -1,4 +1,0 @@
-xsetroot -solid grey
-vncconfig -nowin &
-x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
-x-window-manager &

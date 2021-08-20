@@ -1,5 +1,0 @@
-public function __construct()
-   {
-        parent::__construct();
-        $this->load->view("css_file");
-   }

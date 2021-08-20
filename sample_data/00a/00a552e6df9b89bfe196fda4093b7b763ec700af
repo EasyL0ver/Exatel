@@ -1,5 +1,0 @@
-<div style="color: red"></div>
-
-.color::before {
-  content: 'String';
-}

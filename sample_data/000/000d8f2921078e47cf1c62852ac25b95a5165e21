@@ -1,6 +1,0 @@
-RewriteEngine on
-RewriteBase /
-Options +FollowSymLinks
-Options -indexes
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule (.*)$ $1.php [NC]

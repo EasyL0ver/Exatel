@@ -1,8 +1,0 @@
-$subscriber = $this->_subscriberFactory->create()->loadByEmail($email);
- if ($subscriber->getId()
-       && $subscriber->getSubscriberStatus() == MagentoNewsletterModelSubscriber::STATUS_SUBSCRIBED
- ) {
-      throw new MagentoFrameworkExceptionLocalizedException(
-                        __('This email address is already subscribed.')
-                    );
-  }

@@ -1,4 +1,0 @@
-if (x1-x2) % 2 == 0 and abs(x1-x2)/2 == abs(y1-y2):
-	
-if 5 < abs(x2-x1):
-print('hi')

@@ -1,2 +1,0 @@
-webReq = CType(Net.WebRequest.Create(Me.Files(fileNr).URL), HttpWebRequest)
-        webResp = CType(webReq.GetResponse, HttpWebResponse)

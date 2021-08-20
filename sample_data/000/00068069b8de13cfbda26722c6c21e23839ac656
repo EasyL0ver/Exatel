@@ -1,7 +1,0 @@
-class MyClass
-  def initialize(*)
-  end
-end
-	
-MyClass.new(1, 2, 3, 4, 5, 'etc')
-MyClass.new

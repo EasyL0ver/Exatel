@@ -1,1 +1,0 @@
-Error	1	'program.MainWindow' does not contain a definition for 'miExit_Click' and no extension method 'miExit_Click' accepting a first argument of type 'WinIPAM_NET.MainWindow' could be found (are you missing a using directive or an assembly reference?)	C:\Users\user\documents\visual studio 2010\Projects\program\program\MainWindow.xaml	27	77	program

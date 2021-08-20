@@ -1,8 +1,0 @@
-import sys
-from com.src.gameserver.model.actor.instance import L2PcInstance
-from java.util import Iterator
-from com.src.gameserver.datatables import SkillTable
-from com.src.util.database import L2DatabaseFactory
-from com.src.gameserver.model.quest import State
-from com.src.gameserver.model.quest import QuestState
-from com.src.gameserver.model.quest.jython import QuestJython as JQuest

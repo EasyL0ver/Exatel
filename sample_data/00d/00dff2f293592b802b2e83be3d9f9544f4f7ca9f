@@ -1,6 +1,0 @@
-maxReturn(i,x){
-	for(0...k, k<x; k++){
-		maxBenefit = max(maxBenefit, maxReturn(i-1, x-k)+g(i,k))
-	}
-	return maxBenefit
-}

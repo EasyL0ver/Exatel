@@ -1,2 +1,0 @@
-PartnerName = playersInInvitations.FirstOrDefault(y => y.p_id == (z.PartnerId != null ? z.PartnerId ?? 0 : 0)).FirstName + 
-                           " " + playersInInvitations.FirstOrDefault(y => y.p_id == (z.PartnerId != null ? z.PartnerId ?? 0 : 0)).LastName,

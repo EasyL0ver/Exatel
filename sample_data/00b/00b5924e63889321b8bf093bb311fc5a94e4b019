@@ -1,3 +1,0 @@
-Collection<?> additionalFilters = args == null
-                ? Collections.emptyList()
-                : args.additionalFilters;

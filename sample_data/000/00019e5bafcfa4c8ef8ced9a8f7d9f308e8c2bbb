@@ -1,6 +1,0 @@
-# Never do this for real.
-class Array
-  def count
-    'fish'
-  end
-end

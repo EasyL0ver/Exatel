@@ -1,6 +1,0 @@
-Sender: INFORMAZIONE@STAFF-ARUBA.IT (not existent - spoofed)
-Real sender host: developpez.com ec2-18-130-188-185.eu-west-2.compute.amazonaws.com [18.130.188.185]
-Subejct: ti informiamo che il dominio scadrà.
-
-The mail warns user about subscription renewal . The link used for this campaing is: http://www.allatorretta.com/wp-admin/js/ (62.149.140.208)
-The page is a puzzle of jpeg images showing a renewal request form that should be filled with all user data including the credit card details. The scirpt ./njl.php steals the credi card data and runs another .php file "sms.php" that shows another page where the user should insert a pin code "sent" via sms.

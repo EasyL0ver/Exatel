@@ -1,9 +1,0 @@
-Search-ADAccount -AccountExpiring -TimeSpan "90" -ResultPageSize:100 -ErrorAction SilentlyContinue |
-    where {$_.samaccountname.StartsWith("X") -or $_.samaccountname.StartsWith("Y")} |
-    Select-Object samaccountname,Name,AccountExpirationDate |
-    Export-Csv $PSScriptRootResultsAD_Expiration_Dates_Accounts_Next_90_days_$((Get-Date).ToString('dd_MM_yyyy')).csv -NoTypeInformation -Append
-	
-$now = get-date
-$90days = (get-date).adddays(90)
-get-aduser -filter '(AccountExpirationDate -gt $now) -and (AccountExpirationDate -le $90days) -and (samAccountName -like "X*" -or sAMAccountName -like "X*" )' -properties AccountExpirationDate 
-| Select-Object samaccountname,Name,AccountExpirationDate

@@ -1,4 +1,0 @@
-<script type="module">
-    import {content} from "import.html"
-    document.body.appendChild(content);
-</script>

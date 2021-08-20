@@ -1,8 +1,0 @@
-public Connection getConnection() throws SQLException
-   {
-      Connection conn = null;
-      if (this.hds != null) {
-         conn = this.hds.getConnection();
-      }   
-      return conn;
-   }

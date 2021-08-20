@@ -1,5 +1,0 @@
-<div class="container" style="border:2px solid #ccc; width:100%; height: 250px; overflow-y: scroll;">
-<?php $sql = "SELECT id, nome FROM colaborador where ativo = 1 order by nome";
-$res = mysql_query( $sql );
-while ( $row = mysql_fetch_assoc( $res ) ) {
-echo "<input type='checkbox' />".$row['nome'].'<br />';}?>

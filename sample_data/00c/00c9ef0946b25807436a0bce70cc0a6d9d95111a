@@ -1,6 +1,0 @@
-function checkParticipant(fname,mname,lname,foname){ Participant.findOne({fname:fname,mname:mname,lname:lname,foname:foname},function(err,participant){
-if(participant == null){
-  return true;
-}else{
-  return false;
-} }); }

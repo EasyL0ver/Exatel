@@ -1,4 +1,0 @@
-using CoreGraphics;
-
-// 1.5708 is 90 degrees in Radians
-myImageView.Transform = CGAffineTransform.MakeRotation(1.5708f);

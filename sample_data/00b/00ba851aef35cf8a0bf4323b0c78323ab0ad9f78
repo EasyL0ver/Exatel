@@ -1,8 +1,0 @@
-List<int> numbersList = new List<int>();
-numbersList.Add(convertedA);
-numbersList.Add(convertedB);
-numbersList.Add(convertedC);
-numbersList.Sort();
-min = numbersList[0];
-mid = numbersList[1];
-max = numbersList[2];

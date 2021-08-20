@@ -1,5 +1,0 @@
-<%= content_for:after_head do %>
-<!--[if IE]>
-<%= stylesheet_link_tag 'ie' %>
-<![endif]-->
-<%= end %>

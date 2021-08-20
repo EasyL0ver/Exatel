@@ -1,3 +1,0 @@
-setxkbmap -option caps:escape           # "Make Caps Lock an additional Esc"
-
-setxkbmap -option shfit:both_capslock   # "Both Shift together enable Caps Lock"

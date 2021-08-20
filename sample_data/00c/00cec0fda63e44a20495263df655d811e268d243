@@ -1,8 +1,0 @@
-public class APIService {
-    public class var sharedInstance : APIService {
-        struct Static {
-            static let instance : APIService = APIService()
-        }
-        return Static.instance
-    }
-}

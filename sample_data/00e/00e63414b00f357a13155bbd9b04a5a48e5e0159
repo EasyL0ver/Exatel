@@ -1,7 +1,0 @@
-jackmcbarn@bsdserver:~/testnetircd$ ./modulemanager install m_invisible
-Cannot find module m_invisible
-jackmcbarn@bsdserver:~/testnetircd$ ./modulemanager list
-Processing changes for list...
-Checking 150 items...
-Finished!
-jackmcbarn@bsdserver:~/testnetircd$

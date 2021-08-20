@@ -1,7 +1,0 @@
-output = tf.nn.embedding_lookup(embedding_table, input_ids) # original code in modeling.py
-# below is a stub to  output for token "wood" - token_id 3536 
-id = tf.constant([3536]) 
-output1 = tf.nn.embedding_lookup(embedding_table, id)
-sess = tf.Session()
-sess.run(tf.global_variables_initializer())
-print(sess.run(output1))

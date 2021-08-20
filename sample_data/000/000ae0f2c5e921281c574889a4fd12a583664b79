@@ -1,3 +1,0 @@
-$vars = array(
-            'teams' => Team::model()->with('capitan', 'members', 'members.char')->findAll(array('limit'=>16, 'order'=>'rating'))
-        );

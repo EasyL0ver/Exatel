@@ -1,2 +1,0 @@
-string value = (Session["ComplaintType"] != null) ? Session["ComplaintType"].ToString() : String.Empty;
-                ddlComplaint.Items.FindByValue(value).Selected = true;

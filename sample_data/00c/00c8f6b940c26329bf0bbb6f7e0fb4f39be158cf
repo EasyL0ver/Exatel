@@ -1,7 +1,0 @@
-.ELEMEMT-CLASS {
-	display: block;
-	width: XXXpx;
-	height: XXXpx;
-	background:#XXXXXX url(images/image.jpg) no-repeat 0 0;
-	text-indent:-9999;
-}

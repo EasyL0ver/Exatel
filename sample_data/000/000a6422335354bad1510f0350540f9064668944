@@ -1,5 +1,0 @@
-while True:  
-         ret,image = camera.read()
-         Width=image.shape[1]
-         Height=image.shape[0]
-         scale = 0.00392

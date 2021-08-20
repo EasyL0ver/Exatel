@@ -1,7 +1,0 @@
-$a = "1","Computer Name","2"
-$b = "3","4","Full Computer Name Here"
-foreach ($line in $a ) {
-    foreach ($line2 in $b) {
-         where "*$line*" -like "*$line2*"
-    }
-}

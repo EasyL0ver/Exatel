@@ -1,7 +1,0 @@
-Add animation in Expandable ListView
-<somelayout>
-    <normal>
-    </normal>
-    <expanded>
-    </expanded>
-</somelayout>

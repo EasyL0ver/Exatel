@@ -1,3 +1,0 @@
-chkconfig --list autofs
-systemctl is-enabled autofs
-ls /etc/rc*.d | grep autofs

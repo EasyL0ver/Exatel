@@ -1,8 +1,0 @@
-#!/bin/bash
-stack_name=${NATION}-spooncast-dynamodb-table-unsafe-image-${STAGE}
-
-aws cloudformation create-stack --stack-name $stack_name --template-body file://resources/unsafe-table.yml --parameters  ParameterKey=TableNameParam,ParameterValue=${UNSAFE_IMAGE_TABLE} --region $REGION
-echo "CREATE ${stack_name} IN PROGRESS..."
-
-aws cloudformation wait stack-create-complete --stack-name $stack_name --region $REGION
-echo "CREATE ${stack_name} COMPLETE"

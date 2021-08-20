@@ -1,4 +1,0 @@
-protected function _addBreadcrumb($label, $title=null, $link=null)
-{
-    $this->getLayout()->getBlock('breadcrumbs')->addLink($label, $title, $link);
-}

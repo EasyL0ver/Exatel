@@ -1,3 +1,0 @@
-myApp.directive('uiNavbar', function($compile, $location){
-  return function linkingFn(scope, element, attr) {
-    scope.$on('afterRouteChange', function(newVal, oldVal, scope) {

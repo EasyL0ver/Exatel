@@ -1,6 +1,0 @@
-BLManager bLManager = new BLManager();
-DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
-String name = (String) jComboBox1.getSelectedItem();
-Student student = bLManager.byName(name);
-if (jComboBox1.getSelectedItem().equals(name) && (evt.getKeyCode()) == KeyEvent.VK_ENTER) {
-    df.addRow(new Object[]{student.getName()});

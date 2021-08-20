@@ -1,6 +1,0 @@
-XPath - select text after certain node
-<data>
-<foo>foo</foo>
-bar
-<baz>baz</baz>
-</data>

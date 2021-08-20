@@ -1,7 +1,0 @@
-on chat:
-	if player has permission "OP":
-		broadcast "&c&l<鯖主> &b&l%player%&f: %message%"
-		stop
-	else:
-		broadcast "&b&l<鯖民> &6&l%player%&f: %message%"
-		stop

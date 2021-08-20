@@ -1,7 +1,0 @@
-private final int[][] logs = {new int[]{1276, 1278}, //normal
-            new int[]{1281}, //oak
-            new int[]{5551, 5552, 5553}, //willow
-            new int[]{1309}, //yew
-            new int[]{}}; //magic
-    
-    private int whichLogs = 2; //goes with logs e.g. getObjects(15, logs[whichLogs])

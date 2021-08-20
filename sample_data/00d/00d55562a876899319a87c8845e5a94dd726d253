@@ -1,7 +1,0 @@
-Shell("zip -j " & filePath, AppWinStyle.Hide, True)
-	
-vMailAttachment = New Mail.MailAttachment(filePath)
-vMailMsg.Attachments.Add(vMailAttachment)
-	
-vMailAttachment = New Mail.MailAttachment(filePath, MailEncoding.UUEncode)
-vMailMsg.Attachments.Add(vMailAttachment)
